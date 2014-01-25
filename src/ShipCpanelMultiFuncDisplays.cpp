@@ -54,7 +54,7 @@ void MsgLogWidget::Update()
 {
 	if (m_curMsgType != NONE) {
 		// has it expired?
-		bool expired = (SDL_GetTicks() - m_msgAge > 5000);
+		bool expired = (SDL_GetTicks() - m_msgAge > 3000);
 
 		if (expired || ((m_curMsgType == NOT_IMPORTANT) && !m_msgQueue.empty())) {
 			ShowNext();

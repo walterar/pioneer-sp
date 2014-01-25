@@ -81,8 +81,8 @@ timedate &timedate::operator=(int stamp)
 std::string timedate::fmt_time_date()
 {
 	char buf[32];
-	snprintf(buf, sizeof (buf), "%02d:%02d:%02d %d %s %d",
-	         hour, minute, second, day + 1, months[month], year);
+	snprintf(buf, sizeof (buf), " %d  %s  %d    %02d:%02d:%02d",
+						year, months[month], day + 1, hour, minute, second);
 	return buf;
 }
 

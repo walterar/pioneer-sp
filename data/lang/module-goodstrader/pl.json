@@ -1,0 +1,30 @@
+{
+   "GOODS_TRADER_0" : {
+      "description" : "",
+      "message" : "Uczciwy {name}'s - Magazyn Towarów"
+   },
+   "GOODS_TRADER_1" : {
+      "description" : "",
+      "message" : "Dom Handlowy {name}'s"
+   },
+   "GOODS_TRADER_2" : {
+      "description" : "",
+      "message" : "Skład {name}'s"
+   },
+   "GOODS_TRADER_3" : {
+      "description" : "",
+      "message" : "Wymiana Towarów {name}'s"
+   },
+   "GOODS_TRADER_4" : {
+      "description" : "",
+      "message" : "Gospodarstwo {name}"
+   },
+   "GOODS_TRADER_5" : {
+      "description" : "",
+      "message" : "{name} & Synowie"
+   },
+   "WELCOME_TO" : {
+      "description" : "",
+      "message" : "Witamy! "
+   }
+}

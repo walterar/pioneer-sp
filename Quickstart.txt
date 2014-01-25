@@ -1,0 +1,86 @@
+Getting started with Pioneer
+----------------------------
+
+The principles of the game are largely the same as those of Frontier: Elite 2.
+
+You can buy and sell on the commodities market, take missions on the bulletin
+board, buy and upgrade ships in the shipyard, when docked. Do all of this with
+the mouse.
+
+The eight main console buttons are activated by the F1-F8 keys or the mouse.
+
+F1: Change view mode (cockpit/external/sidereal)
+F2: Use the map system.
+F3: Look at your own information.
+F4: Select targets, operate autopilot and communicate.
+
+The view direction can be controlled, with keys:
+KP 8: Front Camera / Rotate External/Sidereal Up
+KP 2: Rear Camera / Rotate External/Sidereal Down
+KP 4: Left Camera / Rotate External/Sidereal Left
+KP 6: Right Camera / Rotate External/Sidereal Right
+KP 9: Top Camera
+KP 3: Bottom Camera / Roll External/Sidereal Right
+KP 7: Cockpit view forward
+KP 1: Cockpit view rearward / Roll External/Sidereal Left
++: Zoom in (external/sidereal view only)
+-: Zoom out (external/sidereal view only)
+Home: Reset zoom (sidereal view only)
+
+(NOTE: If you do not have a numeric keypad, please rebind the view direction
+controls from the View tab in the Settings screen)
+
+The next four buttons change function depending on the first four. Hover the
+mouse over them to see what they do.
+
+F5 turns off the autopilot, and changes between manual flight and set speed
+flight.
+
+Flight controls are:
+Q: Roll left
+W: Pitch forward
+E: Roll right
+A: Yaw left
+S: Pitch up
+D: Yaw right
+U: Ventral thruster (slide up)
+I: Aft thruster (go forwards)
+O: Dorsal thruster (slide down)
+J: Starboard thruster (slide left)
+K: Forward thruster (go backwards)
+L: Port thruster (slide right)
+
+In manual flight mode, the thrusters only fire when you tell them to.
+In "set speed" mode, the autopilot tries to keep your velocity vector
+in the direction that your vehicle is facing, with a constant speed.
+Thruster controls still work in "set speed" mode, and override the
+autopilot while you hold the thrust key down.
+
+"Set speed" controls:
+Enter: Set speed faster
+RightShift: Set speed slower
+
+You can also steer the ship with your mouse while holding the right mouse
+button.
+
+Use the cursor keys to move the camera in external and sidereal view. In
+sidereal view, use ',' (comma) and '.' (period) to roll the camera in place.
+
+To jump to another system, use the map (F2) and click on another system. Systems
+with ports are labelled in blue. You need enough Hydrogen to get there, and it
+must be close enough for your ship. F7 will start the hyperdrive.
+
+To fly to a station, press F4, and select one from the right. You can turn on
+the autopilot with the buttons on the left.
+
+Trade is hard. Deliveries are fun, but can be hard.
+
+Press Escape while in-game (not the main menu) to open the settings screen.
+Here you can change screen res/fullscreen mode, language, controls and other
+things. Many options require you to restart Pioneer before they will take
+effect.
+
+Pioneer is alpha-quality software. Saved games are not guaranteed to load in
+different versions of Pioneer.  The universe might not be the same in the next
+version of Pioneer. Anything can change. The game is not finished, and we would
+like feedback. See README.txt to find out how to do that.

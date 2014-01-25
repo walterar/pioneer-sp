@@ -1,0 +1,26 @@
+material Body-material
+
+tex_diff deneb.dds
+tex_glow deneb_glow.dds
+tex_spec deneb_spec.dds
+
+use_patterns
+
+collision deneb_collision.obj
+
+# LOD
+lod 1000
+mesh deneb.dae
+mesh deneb_shield.dae
+
+lod 500
+mesh deneb_medhigh.dae
+
+lod 50
+mesh deneb_med.dae
+
+lod 5
+mesh deneb_low.dae
+
+# Animations
+anim gear_down 0 73

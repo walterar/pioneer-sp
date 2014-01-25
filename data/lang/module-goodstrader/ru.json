@@ -1,0 +1,30 @@
+{
+   "GOODS_TRADER_0" : {
+      "description" : "",
+      "message" : "Торговый Центр {name}"
+   },
+   "GOODS_TRADER_1" : {
+      "description" : "",
+      "message" : "Торговый Дом {name}"
+   },
+   "GOODS_TRADER_2" : {
+      "description" : "",
+      "message" : "Складской Комплекс {name}"
+   },
+   "GOODS_TRADER_3" : {
+      "description" : "",
+      "message" : "Товарная Биржа {name}"
+   },
+   "GOODS_TRADER_4" : {
+      "description" : "",
+      "message" : "Холдинг {name}"
+   },
+   "GOODS_TRADER_5" : {
+      "description" : "",
+      "message" : "компания {name} и Сыновья"
+   },
+   "WELCOME_TO" : {
+      "description" : "",
+      "message" : "Добро пожаловать! Вас приветствует "
+   }
+}

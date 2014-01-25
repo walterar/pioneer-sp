@@ -1,0 +1,10 @@
+{
+   "YOUR_FUEL_TANK_IS_ALMOST_EMPTY" : {
+      "description" : "",
+      "message" : "Twój zbiornik paliwa jest prawie pusty."
+   },
+   "YOUR_FUEL_TANK_IS_EMPTY" : {
+      "description" : "",
+      "message" : "Twój zbiornik paliwa jest pusty."
+   }
+}

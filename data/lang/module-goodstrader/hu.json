@@ -1,0 +1,30 @@
+{
+   "GOODS_TRADER_0" : {
+      "description" : "",
+      "message" : "Becsületes {name} áruházában"
+   },
+   "GOODS_TRADER_1" : {
+      "description" : "",
+      "message" : "{name} kereskedőházban"
+   },
+   "GOODS_TRADER_2" : {
+      "description" : "",
+      "message" : "{name} raktáráruházában"
+   },
+   "GOODS_TRADER_3" : {
+      "description" : "",
+      "message" : "{name} piacán"
+   },
+   "GOODS_TRADER_4" : {
+      "description" : "",
+      "message" : "{name} holdingnál"
+   },
+   "GOODS_TRADER_5" : {
+      "description" : "",
+      "message" : "{name} & fiai-nál"
+   },
+   "WELCOME_TO" : {
+      "description" : "",
+      "message" : "Üdvözöllek"
+   }
+}

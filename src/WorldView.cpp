@@ -884,15 +884,14 @@ void WorldView::Update()
 		// note if we have to target the object in the crosshairs
 		targetObject = KeyBindings::targetObject.IsActive();
 	}
-
-	if (m_showCameraNameTimeout) {
-		if (SDL_GetTicks() - m_showCameraNameTimeout > 20000) {
+//	if (m_showCameraNameTimeout) {
+		if (SDL_GetTicks() - m_showCameraNameTimeout > 2000) {
 			m_showCameraName->Hide();
 			m_showCameraNameTimeout = 0;
 		} else {
 			m_showCameraName->Show();
 		}
-	}
+//	}
 
 	m_activeCameraController->Update();
 	m_camera->Update();

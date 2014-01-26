@@ -3,8 +3,8 @@
 
 local s = CustomSystem:new('Sol', { 'STAR_G' })
 	:govtype('EARTHDEMOC')
-	:short_desc('The historical birthplace of humankind')
-	:long_desc([[Sol is a fine joint]])
+	:short_desc('')
+	:long_desc([[The historical birthplace of humankind]])
 
 local sol = CustomSystemBody:new('Sol', 'STAR_G')
 	:radius(f(1,1))

@@ -1,0 +1,67 @@
+material concrete-material
+diffuse 0.9 0.9 0.8
+specular 0.5 0.5 0.5 
+shininess 10
+tex_diff city3k_skin.png
+tex_spec city3k_spec.png
+
+
+material factory-material
+diffuse 0.7 0.75 0.8
+specular 0.7 0.7 0.7
+shininess 30
+tex_diff city3k_skin.png
+tex_spec city3k_spec.png
+tex_glow city3k_glow.png
+
+
+material acid-material
+diffuse 0.9 1.0 0.0
+specular 1.0 1.0 1.0
+emissive 1.0 1.0 1.0
+shininess 100
+opacity 98
+tex_diff city3k_skin.png
+tex_spec city3k_spec.png
+
+
+material fence-material
+diffuse 0.8 0.95 1.0
+specular 0.0 0.0 0.0
+emissive 1.0 1.0 1.0
+shininess 10
+opacity 98
+tex_diff city3k_skin.png
+tex_spec city3k_spec.png
+
+
+material wins-material
+diffuse 0.8 0.95 1.0
+specular 1.0 1.0 1.0
+emissive 1.0 1.0 1.0
+shininess 100
+opacity 98
+tex_diff city3k_skin.png
+tex_spec city3k_spec.png
+
+
+material cutout-material
+diffuse 0.7 0.75 0.8
+specular 0.7 0.7 0.7
+shininess 30
+opacity 98
+tex_diff city3k_skin.png
+tex_spec city3k_spec.png
+
+
+collision factory_coll.obj
+
+lod 50
+mesh factory1_lod1.dae
+
+lod 200
+mesh factory1_lod2.dae
+
+lod 500
+mesh factory1_lod3.dae
+

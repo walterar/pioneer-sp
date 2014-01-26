@@ -1,0 +1,11 @@
+material default
+diffuse 0.9 0.9 0.9
+specular 0.7 0.7 0.7 
+shininess 10
+tex_diff bld1_skin.png
+tex_spec bld1_spec.png
+tex_glow bld1_glow.png
+
+
+lod 100
+mesh bld_3.obj

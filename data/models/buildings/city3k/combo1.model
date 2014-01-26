@@ -1,0 +1,90 @@
+material concrete-material
+diffuse 0.9 0.9 0.8
+specular 0.5 0.5 0.5 
+shininess 10
+tex_diff city3k_skin.png
+tex_spec city3k_spec.png
+
+
+material red-material
+diffuse 1.0 0.8 0.8
+specular 0.7 0.7 0.7
+shininess 30
+tex_diff city3k_skin.png
+tex_spec city3k_spec.png
+
+
+material green-material
+diffuse 0.8 1.0 0.8
+specular 0.7 0.7 0.7
+shininess 30
+tex_diff city3k_skin.png
+tex_spec city3k_spec.png
+
+
+material blue-material
+diffuse 0.8 0.8 1.0
+specular 0.7 0.7 0.7
+shininess 30
+tex_diff city3k_skin.png
+tex_spec city3k_spec.png
+tex_glow city3k_glow.png
+
+
+material fence-material
+diffuse 0.8 0.95 1.0
+specular 0.0 0.0 0.0
+emissive 1.0 1.0 1.0
+shininess 10
+opacity 98
+tex_diff city3k_skin.png
+tex_spec city3k_spec.png
+
+
+material wins_on-material
+diffuse 0.8 0.95 1.0
+specular 1.0 1.0 1.0
+emissive 1.0 1.0 1.0
+shininess 100
+opacity 98
+tex_diff city3k_skin.png
+tex_spec city3k_spec.png
+
+
+material wins_off-material
+diffuse 0.5 0.55 0.6
+specular 1.0 1.0 1.0
+shininess 100
+opacity 98
+tex_diff city3k_skin.png
+tex_spec city3k_spec.png
+
+
+material cutout-material
+diffuse 0.7 0.75 0.8
+specular 0.7 0.7 0.7
+shininess 30
+opacity 98
+tex_diff city3k_skin.png
+tex_spec city3k_spec.png
+
+
+material dome-material
+diffuse 0.4 0.4 0.7
+specular 1.0 1.0 1.0
+shininess 100
+opacity 40
+
+
+
+collision combo1_coll.obj
+
+lod 50
+mesh combo1_lod1.dae
+
+lod 250
+mesh combo1_lod2.dae
+
+lod 500
+mesh combo1_lod3.dae
+

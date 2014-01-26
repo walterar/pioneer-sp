@@ -10,8 +10,8 @@ namespace HudColors {
 
 	//iff colors
 	//these are too intense
-	extern const Color IFF_UNKNOWN = Color::GRAY;
-	extern const Color IFF_NEUTRAL = Color::BLUE;
+	extern const Color IFF_UNKNOWN = Color::BLUE;
+	extern const Color IFF_NEUTRAL = Color::HUD1;
 	extern const Color IFF_ALLY    = Color::GREEN;
 	extern const Color IFF_HOSTILE = Color::RED;
 }

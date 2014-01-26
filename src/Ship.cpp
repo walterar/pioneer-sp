@@ -445,7 +445,7 @@ void Ship::Explode()
 	if (m_invulnerable) return;
 
 	Pi::game->GetSpace()->KillBody(this);
-	Sfx::Add(this, Sfx::TYPE_EXPLOSION);
+	Sfx::AddExplosion(this, Sfx::TYPE_EXPLOSION);
 	Sound::BodyMakeNoise(this, "Explosion_1", 1.0f);
 	ClearThrusterState();
 }

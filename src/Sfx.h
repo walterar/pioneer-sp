@@ -21,6 +21,7 @@ public:
 	enum TYPE { TYPE_NONE, TYPE_EXPLOSION, TYPE_DAMAGE, TYPE_SMOKE };
 
 	static void Add(const Body *, TYPE);
+	static void AddExplosion(Body *, TYPE);
 	static void AddThrustSmoke(const Body *b, TYPE, float speed, vector3d adjustpos);
 	static void TimeStepAll(const float timeStep, Frame *f);
 	static void RenderAll(Graphics::Renderer *r, Frame *f, const Frame *camFrame);
@@ -39,6 +40,7 @@ public:
 	static Graphics::Material *damageParticle;
 	static Graphics::Material *ecmParticle;
 	static Graphics::Material *smokeParticle;
+	static Graphics::Material *explosionParticle;
 
 private:
 	static Sfx *AllocSfxInFrame(Frame *f);

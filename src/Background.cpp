@@ -28,7 +28,7 @@ using namespace Graphics;
 namespace
 {
 	static std::unique_ptr<Graphics::Texture> s_defaultCubeMap;
-	
+
 	static Uint32 GetNumSkyboxes()
 	{
 		char filename[1024];
@@ -183,7 +183,7 @@ void Starfield::Fill(Random &rand)
 
 	//fill the array
 	for (int i=0; i<BG_STAR_MAX; i++) {
-		Uint8 col = rand.Double(0.2,0.7)*255;
+		Uint8 col = rand.Double(0.3,0.8)*255;
 
 		// this is proper random distribution on a sphere's surface
 		const float theta = float(rand.Double(0.0, 2.0*M_PI));
@@ -193,7 +193,7 @@ void Starfield::Fill(Random &rand)
 				1000.0f * sqrt(1.0f - u*u) * cos(theta),
 				1000.0f * u,
 				1000.0f * sqrt(1.0f - u*u) * sin(theta)
-			), Color(col, col, col,	255)
+		), Color(rand.Double(0.3, 0.5)*255, rand.Double(0.4,0.7 )*255, col, 255)
 		);
 	}
 }
@@ -317,18 +317,18 @@ void Container::Draw(const matrix4x4d &transform)
 	m_renderer->SetBlendMode(BLEND_SOLID);
 	m_renderer->SetDepthTest(false);
 	m_renderer->SetTransform(transform);
-	if( DRAW_SKYBOX & m_drawFlags ) {
+//	if( DRAW_SKYBOX & m_drawFlags ) {
 		m_universeBox.Draw();
-	}
+/*	}
 	if( DRAW_MILKY & m_drawFlags ) {
 		m_milkyWay.Draw();
 	}
 	if( DRAW_STARS & m_drawFlags ) {
-		// squeeze the starfield a bit to get more density near horizon
+*/		// squeeze the starfield a bit to get more density near horizon
 		matrix4x4d starTrans = transform * matrix4x4d::ScaleMatrix(1.0, 0.4, 1.0);
 		m_renderer->SetTransform(starTrans);
 		const_cast<Starfield&>(m_starField).Draw();
-	}
+//	}
 	m_renderer->SetDepthTest(true);
 }
 

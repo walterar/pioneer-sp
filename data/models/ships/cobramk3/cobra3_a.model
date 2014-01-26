@@ -1,0 +1,56 @@
+material body-material
+diffuse 1.0 1.0 1.0
+specular 0.9 0.95 1.0
+shininess 50
+tex_diff skin_a.png
+tex_spec spec_a.png
+
+material mat-material
+diffuse 0.6 0.58 0.51
+specular 0.3 0.3 0.3
+shininess 10
+tex_diff skin_a.png
+tex_spec spec_a.png
+
+material cockpit-material
+diffuse 1.0 1.0 1.0
+specular 0.5 0.5 0.5
+shininess 30
+tex_diff skin_a.png
+tex_spec spec_a.png
+tex_glow glow.png
+
+material e_glow-material
+diffuse 1.0 1.0 1.0
+specular 0.0 0.0 0.0
+shininess 1
+opacity 98
+tex_diff skin_a.png
+tex_glow glow.png
+
+material wins-material
+diffuse 0.5 0.5 0.5
+specular 1.0 1.0 1.0
+shininess 100
+opacity 70
+tex_diff skin_a.png
+
+material semitrans-material
+diffuse 1.0 1.0 1.0
+specular 0.9 0.95 1.0
+shininess 10
+opacity 60
+tex_diff skin_a2.png
+tex_spec spec_a.png
+use_patterns
+
+
+collision collision.x
+
+lod 20
+mesh lod1_body.dae
+
+lod 100
+
+mesh lod2_body.dae
+anim gear_down 0 59

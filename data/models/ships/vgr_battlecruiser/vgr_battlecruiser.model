@@ -1,0 +1,47 @@
+# File produced by Open Asset Import Library (http://www.assimp.sf.net)
+# (assimp v3.0.1262)
+
+material m0badge
+diffuse 0.6 0.6 0.6
+specular 0.4 0.4 0.4
+tex_diff V_bc_badge_export[1].DDS
+tex_spec V_bc_badge_export[2].DDS
+
+material m1V_BC_Badge_EXPORT
+diffuse 0.6 0.6 0.6
+specular 0.4 0.4 0.4
+tex_diff V_bc_nose_export[1].DDS
+tex_spec V_bc_nose_export[1]SPEC.DDS
+tex_glow V_bc_nose_export[2]LUM.DDS
+
+material m2V_BC_Engine_EXPORT
+diffuse 0.6 0.6 0.6
+specular 1 1 1
+tex_diff V_bc_engine_export[1].DDS
+tex_spec V_bc_engine_export[2].DDS
+tex_glow V_bc_engine_export[3].DDS
+
+material m3V_BC_Jaw_EXPORT
+diffuse 0.6 0.6 0.6
+specular 0.4 0.4 0.4
+tex_diff V_bc_body_export[1].DDS
+tex_spec V_bc_body_export[1]SPEC.DDS
+tex_glow V_bc_body_export[2]LUM.DDS
+
+material m4V_BC_Nose_EXPORT
+diffuse 0.6 0.6 0.6
+specular 0.4 0.4 0.4
+tex_diff V_bc_jaw_export[1].DDS
+tex_spec V_bc_jaw_export[1]SPEC.DDS
+tex_glow V_bc_jaw_export[2]LUM.DDS
+
+material m5Vgr_BC_LOD2_EXPORT
+diffuse 0.6 0.6 0.6
+specular 0.4 0.4 0.4
+tex_diff V_bc_engine_export[1].DDS
+tex_spec V_bc_engine_export[2].DDS
+tex_glow V_bc_engine_export[3].DDS
+
+mesh vgr_battlecruiser.dae
+
+collision collision.obj

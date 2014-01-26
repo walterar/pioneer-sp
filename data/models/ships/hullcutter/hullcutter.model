@@ -1,0 +1,87 @@
+material steel-material
+diffuse 0.68 0.72 0.75
+specular 0.65 0.65 0.7
+shininess 30
+tex_diff hullcutter.png
+tex_spec spec.png
+tex_glow glow.png
+
+material chassis-material
+diffuse 0.68 0.72 0.75
+specular 0.65 0.65 0.7
+shininess 30
+opacity 98
+tex_diff hullcutter.png
+tex_spec spec.png
+tex_glow glow.png
+
+material hull-material
+diffuse 0.95 0.98 1.0
+specular 0.9 0.9 1.0
+shininess 30
+#opacity 98
+tex_diff hullcutter.png
+tex_spec spec.png
+use_patterns
+
+material glow-material
+diffuse 0.95 1.0 0.0
+specular 0.0 0.0 0.0
+shininess 1
+opacity 98
+tex_diff hullcutter.png
+tex_spec spec.png
+tex_glow glow.png
+
+material wins-material
+diffuse 1.0 1.0 1.0
+specular 1.0 1.0 1.0
+opacity 98
+shininess 100
+tex_diff hullcutter.png
+tex_spec spec.png
+
+material hullcutter-material
+diffuse 0.0 0.0 0.0
+specular 0.0 0.0 0.0
+opacity 0
+shininess 1
+
+#materials pilot
+
+material pilot-material
+diffuse 1.0 1.0 1.0
+specular 0.0 0.0 0.0
+shininess 100
+tex_diff pilot_skin.png
+tex_spec pilot_spec.png
+tex_glow pilot_glow.png
+
+material pilot_cv-material
+diffuse 1.0 1.0 1.0
+specular 0.0 0.0 0.0
+shininess 100
+tex_diff pilot_skin.png
+tex_spec pilot_spec.png
+tex_glow pilot_glow.png
+use_patterns
+
+material visor-material
+diffuse 0.0 0.0 0.1
+specular 0.9 0.9 1.0
+shininess 100
+opacity 40
+
+collision collision.obj
+
+lod 30
+mesh lod1_body.dae
+
+#lod 100
+#mesh lod2_body.dae
+#anim gear_down 0 29
+
+lod 1000 
+mesh lod3_body.dae
+
+anim gear_down 0 29

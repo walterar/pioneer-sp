@@ -1,0 +1,26 @@
+# Model by Leech, published in SpaceSimCentral.com
+#
+#Epiprocta work name ship Anax
+#Comments can be written like this
+
+#Define all used materials first
+material Hull-material
+tex_spec s-texture.png
+tex_diff diff-texture.png
+tex_glow glow-texture.png
+diffuse 1 1 1
+specular 1 1 1
+shininess 80
+
+#Meshes to be imported into this model, should be in the current folder
+#Mixing different formats should be OK
+
+collision coll.obj
+
+lod 1000
+mesh anax.dae
+
+lod 100
+mesh anax_low.dae
+
+anim gear_down 0 60

@@ -1,0 +1,28 @@
+material trans
+diffuse 2.0 2.0 2.0
+specular 2.0 2.0 2.0
+shininess 100
+opacity 98
+tex_diff skin.png
+tex_spec spec.png
+tex_glow glow.png
+
+material default
+diffuse 2.0 2.0 2.0
+specular 1.0 1.0 1.0
+shininess 30
+tex_diff skin.png
+tex_spec spec.png
+tex_glow glow.png
+use_patterns
+
+collision collision.x
+
+lod 20
+mesh lod1_body.dae
+
+lod 100
+mesh gear.x
+anim gear_down 0 59
+mesh scanner.x
+mesh lod2_body.dae

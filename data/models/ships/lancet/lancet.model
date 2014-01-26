@@ -1,0 +1,41 @@
+material body-material
+diffuse 1.6 1.7 1.8
+specular 1.0 1.2 1.3
+shininess 50
+tex_diff skin.png
+tex_glow glow.png
+tex_spec spec.png
+use_patterns
+
+material e_glow
+diffuse 1.0 1.0 1.0
+specular 0.0 0.0 0.0
+shininess 10
+opacity 99
+tex_diff skin.png
+tex_glow glow.png
+
+material a_glow
+diffuse 2.0 0.0 0.0
+specular 1.0 1.0 1.5
+emissive 2.0 0.0 0.0
+shininess 200
+
+material wins-material
+diffuse 0.0 0.0 0.1
+specular 1.0 1.0 1.5
+shininess 200
+
+collision collision.x
+
+lod 20
+mesh lod1_body.dae
+
+lod 100
+mesh lod2_body.dae
+anim gear_down 0 71
+
+mesh eglow.x
+
+mesh scanner.x
+

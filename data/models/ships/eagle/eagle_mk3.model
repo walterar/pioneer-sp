@@ -1,0 +1,87 @@
+
+material inside
+diffuse 0.6 0.65 0.7
+specular 0.4 0.45 0.45
+shininess 30
+tex_diff skin_mk3.png
+tex_spec spec_lrf.png
+tex_glow glow.png
+
+material black
+diffuse 0.3 0.3 0.3
+specular 0.3 0.3 0.3
+shininess 10
+tex_diff skin_mk3.png
+tex_spec spec_lrf.png
+
+material chrome
+diffuse 0.85 0.95 1.0
+specular 0.9 0.9 1.0
+shininess 30
+tex_diff skin_mk3.png
+tex_spec spec_lrf.png
+
+material matvar
+diffuse 1.0 1.0 1.0
+specular 0.9 0.9 1.0
+shininess 100
+tex_diff skin_mk3.png
+tex_spec spec_lrf.png
+#use_patterns
+
+material steel
+diffuse 0.6 0.65 0.7
+specular 0.4 0.45 0.45
+shininess 30
+tex_diff skin_mk3.png
+tex_spec spec_lrf.png
+
+material wins
+diffuse 0.9 0.95 1.0
+specular 0.9 0.9 1.0
+opacity 98
+shininess 100
+tex_diff skin_mk3.png
+tex_spec spec_lrf.png
+
+material pilot
+diffuse 1.0 1.0 1.0
+specular 0.5 0.5 0.5
+shininess 30
+tex_diff pilot_skin.png
+tex_spec pilot_spec.png
+
+material pilot_cv
+diffuse 1.0 1.0 1.0
+specular 0.5 0.5 0.5
+shininess 30
+tex_diff pilot_skin.png
+tex_spec pilot_spec.png
+use_patterns
+
+material visor
+diffuse 0.0 0.0 0.0
+specular 0.9 0.9 1.0
+shininess 200
+opacity 30
+
+
+collision collision_lrf.x
+
+lod 60
+mesh lod1_mk3_part.dae
+mesh lod1_body.dae
+
+lod 120
+mesh lod2_mk3_part.dae
+mesh lod2_body.dae
+mesh gear.x
+
+lod 1000
+mesh pilot.dae
+mesh lod3_mk3_part.dae
+mesh lod3_body.dae
+
+mesh gear.x
+anim gear_down 0 29
+

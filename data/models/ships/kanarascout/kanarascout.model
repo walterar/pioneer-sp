@@ -1,0 +1,28 @@
+material Hull-material
+diffuse 1.0 1.0 1.0
+specular 1.0 1.0 1.0
+shininess 80
+tex_diff shipHullMap2.png
+tex_spec shipHullMap2.png
+tex_glow shipHullMapglow2.png
+
+material Cockpit-material
+diffuse 1.0 1.0 1.0
+specular 1.0 1.0 1.0
+tex_diff win2.png
+tex_glow win2.png
+shininess 8
+
+material Thrusters-material
+diffuse 1.0 1.0 1.0
+specular 1.0 1.0 1.0
+tex_diff thrus2.png
+shininess 128
+
+lod 1000
+mesh kanarascout.dae
+
+lod 20
+mesh kanarascout-low.dae
+
+collision kanarascout_collision.obj

@@ -1,0 +1,30 @@
+{
+     "YOUR_SHIP": {
+        "description": "",
+        "message": "Your ship "
+   },
+    "IS_REGISTERED_IN_OUR_DOMAIN": {
+        "description": "",
+        "message": " is registered in our domain."
+   },
+   "You_are_in_space_controlled_by": {
+        "description": "",
+        "message": "You are in space controlled by "
+   },
+   "Explored": {
+        "description": "",
+        "message": " - explored"
+   },
+   "Unexplored": {
+        "description": "",
+        "message": " - unexplored"
+   },
+   "System_uninhabited": {
+        "description": "",
+        "message": "System uninhabited"
+   },
+   "POLICE_SHIP_LABEL": {
+        "description": "",
+        "message": "POLICE"
+   }
+}

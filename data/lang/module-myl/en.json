@@ -1,0 +1,158 @@
+{
+   "START_AT_ACHERNAR" : {
+      "description" : "",
+      "message" : "Start at Achernar"
+   },
+   "START_AT_LAVE" : {
+      "description" : "",
+      "message" : "Start at Lave"
+   },
+   "Hyperspace" : {
+      "description" : "",
+      "message" : "Hyperspace"
+   },
+   "light_year" : {
+      "description" : "",
+      "message" : " light year"
+   },
+   "Local" : {
+      "description" : "",
+      "message" : "Local"
+   },
+   "Experience" : {
+      "description" : "",
+      "message" : "Experience"
+   },
+    "Landed_in" : {
+      "description" : "",
+      "message" : "Landed in "
+   },
+   "In_space_of" : {
+      "description" : "",
+      "message" : "In space of "
+   },
+   "Successful_Missions" : {
+      "description" : "",
+      "message" : "Successful Missions:"
+   },
+   "Failed_Missions" : {
+      "description" : "",
+      "message" : "Failed Missions:"
+   },
+   "Shots_successful" : {
+      "description" : "",
+      "message":  "Shots successful:"
+   },
+   "Shots_received" : {
+      "description" : "",
+      "message" : "Shots received:"
+   },
+   "Origin" : {
+      "description" : "",
+      "message" : "Origin:"
+   },
+   "Registration" : {
+      "description" : "",
+      "message" : "Registration:"
+   },
+   "Previous_Position" : {
+      "description" : "",
+      "message" : "Previous Position:"
+   },
+   "Previous_Faction" : {
+      "description" : "",
+      "message" : "Previous Faction:"
+   },
+   "Current_Position" : {
+      "description" : "",
+      "message" : "Current Position:"
+   },
+   "Current_Faction" : {
+      "description" : "",
+      "message" : "Current Faction:"
+   },
+   "You_has_been_fined" : {
+      "description" : "",
+      "message" : "You has been fined "
+   },
+   "for_jettison" : {
+      "description" : "",
+      "message" : " for jettison "
+   },
+   "docked" : {
+      "description" : "",
+      "message" : " docked"
+   },
+    "have_enough_experience" : {
+      "message" : "You do not have enough experience for this mission.",
+      "description" : ""
+   },
+   "You_must_install_the_Life_Support_for_Cargo_Bay" : {
+      "message" : "You must install the Life Support for Cargo Bay",
+      "description" : ""
+   },
+   "UNDOCK_AND_ENTER_LOW_ORBIT" : {
+      "description" : "",
+      "message" : "Undock and Enter Low Orbit"
+   },
+   "ENTER_LOW_ORBIT_AT_CURRENT_TARGET" : {
+      "description" : "",
+      "message" : "Enter Low Orbit at Current Target"
+   },
+   "ENTER_MEDIUM_ORBIT_AT_CURRENT_TARGET" : {
+      "description" : "",
+      "message" : "Enter Medium Orbit at Current Target"
+   },
+   "ENTER_HIGH_ORBIT_AT_CURRENT_TARGET" : {
+      "description" : "",
+      "message" : "Enter High Orbit at Current Target"
+   },
+   "ACTIVE" : {
+      "description" : "",
+      "message" : "Active"
+   },
+   "INACTIVE" : {
+      "description" : "",
+      "message" : "Inactive"
+   },
+   "FAILED" : {
+      "description" : "",
+      "message" : "Failed"
+   },
+   "MAPPING" : {
+      "description" : "",
+      "message" : "Mapping"
+   },
+   "MAPPING_interrupted" : {
+      "description" : "",
+      "message" : "MAPPING INTERRUPTED.Very far from the goal! Correct orbit."
+   },
+   "SUSPENDED" : {
+      "description" : "",
+      "message" : "Suspended"
+   },
+   "COMPLETED" : {
+      "description" : "",
+      "message" : "Completed"
+   },
+   "Risk_Area" : {
+      "description" : "",
+      "message" : "Risk Area"
+   },
+   "YOU_DESERVE_TO_BE_IMMORTAL" : {
+      "description" : "",
+      "message" : "You deserve to be immortal!"
+   },
+   "LIGHT_SCOUT" : {
+      "description" : "",
+      "message" : "Light Scout"
+   },
+   "MEDIUM_SCOUT" : {
+      "description" : "",
+      "message" : "Medium Scout"
+   },
+   "HEAVY_SCOUT" : {
+      "description" : "",
+      "message" : "Heavy Scout"
+   }
+}

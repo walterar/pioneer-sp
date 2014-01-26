@@ -1,16 +1,20 @@
--- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2013 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
+-- modified for Pioneer Scout+ (c)2013 by walterar <walterar2@gmail.com>
+-- Work in progress.
 
-local Engine = import("Engine")
-local Lang = import("Lang")
-local Game = import("Game")
-local EquipDef = import("EquipDef")
-
+local Lang               = import("Lang")
+local Engine             = import("Engine")
+local Game               = import("Game")
+local EquipDef           = import("EquipDef")
 local SmallLabeledButton = import("ui/SmallLabeledButton")
-local InfoGauge = import("ui/InfoGauge")
+local InfoGauge          = import("ui/InfoGauge")
 
 local ui = Engine.ui
+
 local l = Lang.GetResource("ui-core");
+
+local function trim(s) return s:find'^%s*$' and '' or s:match'^%s*(.*%S)' end
 
 local econTrade = function ()
 
@@ -18,8 +22,8 @@ local econTrade = function ()
 
 	local player = Game.player
 
-	local usedCabins = Game.player:GetEquipCount("CABIN", "PASSENGER_CABIN")
-	local totalCabins = Game.player:GetEquipCount("CABIN", "UNOCCUPIED_CABIN") + usedCabins
+--	local usedCabins = Game.player:GetEquipCount("CABIN", "PASSENGER_CABIN")
+--	local totalCabins = Game.player:GetEquipCount("CABIN", "UNOCCUPIED_CABIN") + usedCabins
 
 	-- Using econTrade as an enclosure for the functions attached to the
 	-- buttons in the UI object that it returns. Seems like the most sane
@@ -61,7 +65,7 @@ local econTrade = function ()
 		-- Function returns a UI with which to populate the cargo list widget
 		return
 			ui:VBox(10):PackEnd({
-				ui:Label(l.CARGO):SetFont("HEADING_LARGE"),
+				ui:Label(l.CARGO):SetFont("HEADING_NORMAL"),
 				ui:Scroller():SetInnerWidget(
 					ui:Grid(3,1)
 						:SetColumn(0, { ui:VBox():PackEnd(cargoNameColumn) })
@@ -87,7 +91,7 @@ local econTrade = function ()
 	cargoUpdate()
 
 	local fuelGauge = InfoGauge.New({
-		label          = ui:NumberLabel("PERCENT"),
+		label          = ui:NumberLabel("PERCENT_INTEGER"),
 		warningLevel   = 0.1,
 		criticalLevel  = 0.05,
 		levelAscending = false,
@@ -125,16 +129,18 @@ local econTrade = function ()
 						ui:Grid(2,1)
 							:SetColumn(0, {
 								ui:VBox():PackEnd({
+									"",
 									ui:Label(l.CASH..":"),
 									ui:Margin(10),
 									ui:Label(l.CARGO_SPACE..":"),
-									ui:Margin(5),
-									ui:Label(l.CABINS..":"),
+									"",
+--									ui:Label(l.CABINS..":"),
 									ui:Margin(10),
 								})
 							})
 							:SetColumn(1, {
 								ui:VBox():PackEnd({
+									"",
 									ui:Label(string.format("$%.2f", cash)),
 									ui:Margin(10),
 									ui:Margin(0, "HORIZONTAL",
@@ -150,14 +156,15 @@ local econTrade = function ()
 											}):SetFont("XSMALL"),
 										})
 									),
-									ui:Grid(2,1):SetRow(0, { ui:Label(l.TOTAL..totalCabins), ui:Label(l.USED..": "..usedCabins) }),
+									"",
+--									ui:Grid(2,1):SetRow(0, { ui:Label(l.TOTAL..totalCabins), ui:Label(l.USED..": "..usedCabins) }),
 									ui:Margin(10),
 								})
 							}),
 						ui:Grid({50,10,40},1)
 							:SetRow(0, {
 								ui:HBox(5):PackEnd({
-									ui:Label(l.FUEL..":"),
+									ui:Label(trim(l.FUEL)..":"),
 									fuelGauge,
 								}),
 								nil,

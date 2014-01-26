@@ -1,10 +1,12 @@
--- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2013 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
+-- modified for Pioneer Scout+ (c)2013 by walterar <walterar2@gmail.com>
+-- Work in progress.
 
 local Engine = import("Engine")
-local Game = import("Game")
-local Music = import("Music")
-local Event = import("Event")
+local Game   = import("Game")
+local Music  = import("Music")
+local Event  = import("Event")
 
 local music = {}
 
@@ -107,8 +109,10 @@ Event.Register("onSongFinished", function ()
 end)
 
 -- start some ambient music when first arriving in system
-Event.Register("onEnterSystem", function ()
-	playAmbient()
+Event.Register("onEnterSystem", function (ship)
+	if ship:IsPlayer() then
+			Music.Play("music/core/faction/"..Game.system.faction.name,false)
+	end
 end)
 
 -- ship or player destruction (aka game over)
@@ -122,30 +126,29 @@ end)
 
 -- player docked
 Event.Register("onShipDocked", function (ship, station)
-	if not ship:IsPlayer() then return end
-	playRandomSongFromCategory("docked")
+	if ship:IsPlayer() then playRandomSongFromCategory("docked") end
 end)
 
 -- player undocked
 Event.Register("onShipUndocked", function (ship, station)
-	if not ship:IsPlayer() then return end
-	playRandomSongFromCategory("undocked")
+	if ship:IsPlayer() then playRandomSongFromCategory("undocked") end
 end)
 
 -- ship near the player
 Event.Register("onShipAlertChanged", function (ship, alert)
-	if not ship:IsPlayer() then return end
-	if alert == "SHIP_NEARBY" then
-		playRandomSongFromCategory("ship-nearby")
-	elseif alert == "SHIP_FIRING" then
-		playRandomSongFromCategory("ship-firing")
+	if ship:IsPlayer() then
+		if alert == "SHIP_NEARBY" then
+			playRandomSongFromCategory("ship-nearby")
+		elseif alert == "SHIP_FIRING" then
+			playRandomSongFromCategory("ship-firing")
+		end
 	end
 end)
 
--- player changed frame and might be near a planet or orbital station
+--[[-- player changed frame and might be near a planet or orbital station
 Event.Register("onFrameChanged", function (body)
 	if not body:isa("Ship") then return end
 	if not body:IsPlayer() then return end
 
 	playAmbient()
-end)
+end)--]]

@@ -1,11 +1,11 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-local Engine = import("Engine")
-local Lang = import("Lang")
-local Game = import("Game")
-local ShipDef = import("ShipDef")
-local Comms = import("Comms")
+local Engine   = import("Engine")
+local Lang     = import("Lang")
+local Game     = import("Game")
+local ShipDef  = import("ShipDef")
+local Comms    = import("Comms")
 local EquipDef = import("EquipDef")
 
 local EquipmentTableWidgets = import("EquipmentTableWidgets")

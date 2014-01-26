@@ -1,22 +1,28 @@
--- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2013 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
+-- Ship.lua modified to Pioneer Scout + (c)2013 by walterar <walterar2@gmail.com>
 
-local Ship = import_core("Ship")
-local Engine = import("Engine")
-local Event = import("Event")
+local Ship       = import_core("Ship")
+local Engine     = import("Engine")
+local Event      = import("Event")
 local Serializer = import("Serializer")
-local ShipDef = import("ShipDef")
-local Timer = import("Timer")
-local Lang = import("Lang")
+local ShipDef    = import("ShipDef")
+local Timer      = import("Timer")
+local Comms      = import("Comms")
+local Format     = import("Format")
+local Game       = import("Game")
+local Lang       = import("Lang")
 
-local l = Lang.GetResource("ui-core")
+local l   = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
+
 
 -- Temporary mapping while waiting for new-equipment to embed this information.
 local missile_names = {
-	MISSILE_UNGUIDED="missile_unguided",
-	MISSILE_GUIDED="missile_guided",
-	MISSILE_SMART="missile_smart",
-	MISSILE_NAVAL="missile_naval"
+	MISSILE_UNGUIDED ="missile_unguided",
+	MISSILE_GUIDED   ="missile_guided",
+	MISSILE_SMART    ="missile_smart",
+	MISSILE_NAVAL    ="missile_naval"
 }
 --
 -- Class: Ship
@@ -25,11 +31,16 @@ local missile_names = {
 --
 
 -- class method
-function Ship.MakeRandomLabel ()
-	local letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	local a = Engine.rand:Integer(1, #letters)
-	local b = Engine.rand:Integer(1, #letters)
-	return string.format("%s%s-%04d", letters:sub(a,a), letters:sub(b,b), Engine.rand:Integer(10000))
+function Ship.MakeRandomLabel (faction)
+	if faction == nil or faction == false  or faction == 0 then
+		local letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+		local a = Engine.rand:Integer(1, #letters)
+		local b = Engine.rand:Integer(1, #letters)
+		return string.format("%s%s-%04d", letters:sub(a,a), letters:sub(b,b), Engine.rand:Integer(10000))
+	else
+		local ship_prefix = string.upper(string.sub(Game.system.faction.name,1,2))
+		return string.format("%02s-%04d", ship_prefix, Engine.rand:Integer(0,9999))
+	end
 end
 
 -- This is a protected table (accessors only) in which details of each ship's crew
@@ -71,7 +82,7 @@ local CrewRoster = {}
 function Ship:FireMissileAt(missile, target)
 	local missile_object = false
 	if type(missile) == "number" then
-		missile_type = self:GetEquip("MISSILE", missile)
+		local missile_type = self:GetEquip("MISSILE", missile)
 		if missile_type ~= "NONE" then
 			missile_object = self:SpawnMissile(missile_names[missile_type])
 			if missile_object ~= nil then
@@ -91,18 +102,23 @@ function Ship:FireMissileAt(missile, target)
 	end
 
 	if missile_object then
-		if target then
+		if target:exists() then
 			missile_object:AIKamikaze(target)
 		end
 		-- Let's keep a safe distance before activating this device, shall we ?
 		Timer:CallEvery(2, function ()
-			if not missile_object:exists() then -- Usually means it has already exploded
+			if not missile_object:exists() or not target:exists() then
 				return true
 			end
-			if missile_object:DistanceTo(self) < 300 then
+			if missile_object:DistanceTo(target) > 500 then
 				return false
 			else
-				missile_object:Arm()
+				if ShipDef[missile_object.shipId].name == "MISSILE_NAVAL" then
+					missile_object:Explode()
+					target:Explode()
+				else
+					missile_object:Arm()
+				end
 				return true
 			end
 		end)
@@ -137,7 +153,7 @@ end
 Ship.Refuel = function (self,amount)
     local currentFuel = self.fuel
     if currentFuel == 100 then
-        Comms.Message(l.FUEL_TANK_FULL) -- XXX don't translate in libs
+		Comms.Message(l.FUEL_TANK_FULL)
         return 0
     end
     local fuelTankMass = ShipDef[self.shipId].fuelTankMass
@@ -175,18 +191,19 @@ end
 --   experimental
 --
 Ship.Jettison = function (self,equip)
-	if self.flightState ~= "FLYING" and self.flightState ~= "DOCKED" and self.flightState ~= "LANDED" then
-		return false
-	end
-	if self:RemoveEquip(equip, 1) < 1 then
-		return false
-	end
-	if self.flightState == "FLYING" then
+	local faction = Game.system.faction
+	local state = self.flightState
+	if state ~= "DOCKED" and state ~= "FLYING" and state ~= "LANDED" then return false end
+	if self:RemoveEquip(equip, 1) < 1 then return false end
+	if state == "FLYING" then
 		self:SpawnCargo(equip)
 		Event.Queue("onJettison", self, equip)
-	elseif self.flightState == "DOCKED" then
+	elseif state == "DOCKED" then
+		local money = Game.player:GetMoney() * Game.system.lawlessness
+		Comms.ImportantMessage(myl.You_has_been_fined .. Format.Money(money) .. myl.for_jettison .. equip .. myl.docked, faction.policeName)
+		Game.player:AddCrime("TRADING_ILLEGAL_GOODS", money)
 		Event.Queue("onCargoUnload", self:GetDockedWith(), equip)
-	elseif self.flightState == "LANDED" then
+	elseif state == "LANDED" then
 		Event.Queue("onCargoUnload", self.frameBody, equip)
 	end
 end
@@ -400,11 +417,11 @@ local serialize = function ()
 			CrewRoster[crewedShip] = nil
 		end
 	end
-    return CrewRoster
+	return CrewRoster
 end
 
 local unserialize = function (data)
-    loaded_data = data
+	loaded_data = data
 end
 
 -- Function to check whether ships exist after hyperspace, and if they do not,
@@ -433,6 +450,7 @@ end
 Event.Register("onEnterSystem", onEnterSystem)
 Event.Register("onShipDestroyed", onShipDestroyed)
 Event.Register("onGameStart", onGameStart)
+
 Serializer:Register("ShipClass", serialize, unserialize)
 
 return Ship

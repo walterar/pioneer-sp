@@ -1,0 +1,58 @@
+{
+   "you_have_been_challenged1" : {
+      "description" : "",
+      "message" : "Cavaliere, siete stato sfidato a combattere secondo le regole."
+   },
+   "the_time_has_come1" : {
+      "description" : "",
+      "message" : "Pilota, è giunto il momento. Che vinca il migliore!"
+   },
+   "I_have_taken1" : {
+      "description" : "",
+      "message" : "Cavaliere, ho preso "
+   },
+   "of_your_money1" : {
+      "description" : "",
+      "message" : " dei vostri soldi, spero che non vi dispiaccia."
+   },
+   "you_have_been_challenged2" : {
+      "description" : "",
+      "message" : "Cavaliere, siete nel nostro dominio. Dovrete combattere prima di proseguire oltre."
+   },
+   "the_time_has_come2" : {
+      "description" : "",
+      "message" : "Che stupenda astronave, Pilota... E che belle armi. Sai anche come usarle?"
+   },
+   "I_have_taken2" : {
+      "description" : "",
+      "message" : "Mi dispiace, ma ho bisogno di "
+   },
+   "of_your_money2" : {
+      "description" : "",
+      "message" : " per mantenere i miei figli.."
+   },
+   "you_have_been_challenged3" : {
+      "description" : "",
+      "message" : "Alt! Questi sono i miei domini. Se vuoi proseguire dovrai combattere."
+   },
+   "the_time_has_come3" : {
+      "description" : "",
+      "message" : "Wow! Degno avversario per un vecchio pirata. Immagino che tu sappia come usare le tue armi."
+   },
+   "I_have_taken3" : {
+      "description" : "",
+      "message" : "Ho appena preso i tuoi soldi "
+   },
+   "of_your_money3" : {
+      "description" : "",
+      "message" : " Ti prego di scusarmi per l'inconveniente."
+   },
+   "the_attacker_money" : {
+      "description" : "",
+      "message" : "Comandante, il denaro dell'avversario "
+   },
+   "is_now_yours" : {
+      "description" : "",
+      "message" : " ora è vostro."
+   }
+}

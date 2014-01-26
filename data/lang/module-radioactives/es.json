@@ -1,0 +1,10 @@
+{
+   "You_have_been_PENALIZED" : {
+      "description" : "",
+      "message" : "Ha sido PENALIZADO por arrojar desechos radioactivos al espacio.\nSu HIPERMOTOR ha sido DESTRUIDO."
+   },
+   "You_have_been_FINED" : {
+      "description" : "",
+      "message" : "Arrojar desechos radioactivos al espacio es un CRIMEN aquí.\nUsted deberá pagar una multa de "
+   }
+}

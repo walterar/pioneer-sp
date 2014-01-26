@@ -1,0 +1,74 @@
+{
+   "APPLY_FOR_MEMBERSHIP" : {
+      "description" : "",
+      "message" : "Apply for membership"
+   },
+   "BEGIN_TRADE" : {
+      "description" : "",
+      "message" : "Begin trade"
+   },
+   "FLAVOUR_CLUBNAME_0" : {
+      "description" : "",
+      "message" : " ** SPA ** Scouts Pilots Associates"
+   },
+   "FLAVOUR_MEMBER_INTRO_0" : {
+      "description" : "",
+      "message" : "You may purhase fuel and dispose of {radioactives} here."
+   },
+   "FLAVOUR_NONMEMBER_INTRO_0" : {
+      "description" : "",
+      "message" : "We are an independent trade union dedicated to defending the economy of its members with fabulous special benefits.\n*\nJoin us now, for just $ 2600 you'll get:\n*\n* * {hydrogen} at discount prices\n* * {military_fuel} at discount prices\n* * {metal_alloys} at discount prices\n* * {radioactives}, free disposal (conditions apply)\n* * * Exclusive High-Power-Ion-Propulsion installed free!\n "
+   },
+   "FLAVOUR_WELCOME_0" : {
+      "description" : "",
+      "message" : "Welcome to {clubname}"
+   },
+   "GO_BACK" : {
+      "description" : "",
+      "message" : "Go back"
+   },
+   "HANG_UP" : {
+      "description" : "",
+      "message" : "Hang up."
+   },
+   "HYDROGEN" : {
+      "description" : "",
+      "message" : "Hydrogen"
+   },
+   "MILITARY_FUEL" : {
+      "description" : "",
+      "message" : "Military fuel"
+   },
+   "RADIOACTIVES" : {
+      "description" : "",
+      "message" : "Radioactive waste"
+   },
+   "WATER" : {
+      "description" : "",
+      "message" : "Water"
+   },
+   "METAL_ALLOYS" : {
+      "description" : "",
+      "message" : "Metal alloys"
+   },
+   "WE_WILL_ONLY_DISPOSE_OF" : {
+      "description" : "",
+      "message" : "Now, to ships SPA members, will install a sophisticated new experimental active defense system. In case of attack (detected impact of plasma, and if you are armed with cannons), the system will take control of his ship and attempt to destroy the hostile ship, or disable their electronic systems.\nThis system has not yet gone on sale in the market and is, for the moment, for the exclusive use of members of SPA.\n*"
+   },
+   "WHAT_CONDITIONS_APPLY" : {
+      "description" : "",
+      "message" : "What are the special benefits?"
+   },
+   "YOUR_MEMBERSHIP_APPLICATION_HAS_BEEN_DECLINED" : {
+      "description" : "",
+      "message" : "Your membership application has been declined."
+   },
+   "YOU_ARE_NOW_A_MEMBER" : {
+      "description" : "",
+      "message" : "You are now a member. Your membership will expire on {expiry_date}."
+   },
+   "YOU_MUST_BUY" : {
+      "description" : "",
+      "message" : "You must buy our {military_fuel} before we will take your {radioactives}"
+   }
+}

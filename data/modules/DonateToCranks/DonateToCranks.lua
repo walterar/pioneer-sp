@@ -1,18 +1,20 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
+-- modified for Pioneer Scout+ (c)2013 by walterar <walterar2@gmail.com>
 
-local Engine = import("Engine")
-local Lang = import("Lang")
-local Game = import("Game")
-local Comms = import("Comms")
-local Event = import("Event")
+local Lang       = import("Lang")
+local Engine     = import("Engine")
+local Game       = import("Game")
+local Comms      = import("Comms")
+local Event      = import("Event")
 local Serializer = import("Serializer")
 
-local l = Lang.GetResource("module-donatetocranks")
+local l = Lang.GetResource("module-donatetocranks") or Lang.GetResource("module-donatetocranks","en")
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
 
-local flavours = {}
+local crank_flavours = {}
 for i = 0,5 do
-	table.insert(flavours, {
+	table.insert(crank_flavours, {
 		title     = l["FLAVOUR_" .. i .. "_TITLE"],
 		message   = l["FLAVOUR_" .. i .. "_MESSAGE"],
 	})
@@ -47,12 +49,12 @@ local onChat = function (form, ref, option)
 
 	if Game.player:GetMoney() < option then
 		Comms.Message(l.YOU_DO_NOT_HAVE_ENOUGH_MONEY)
-	else
-		if option >= 10000 then
+	elseif option == 1000 and DangerLevel > 0 then _G.DangerLevel = DangerLevel - 1
 			Comms.Message(l.WOW_THAT_WAS_VERY_GENEROUS)
-		else
-			Comms.Message(l.THANK_YOU_ALL_DONATIONS_ARE_WELCOME)
-		end
+	elseif option == 10000 then Game.player:SetInvulnerable(1)
+			Comms.Message(myl.YOU_DESERVE_TO_BE_IMMORTAL)
+	else
+		Comms.Message(l.THANK_YOU_ALL_DONATIONS_ARE_WELCOME)
 		Game.player:AddMoney(-option)
 	end
 end
@@ -62,11 +64,11 @@ local onDelete = function (ref)
 end
 
 local onCreateBB = function (station)
-	local n = Engine.rand:Integer(1, #flavours)
+	local n = Engine.rand:Integer(1, #crank_flavours)
 
 	local ad = {
-		title    = flavours[n].title,
-		message  = flavours[n].message,
+		title    = crank_flavours[n].title,
+		message  = crank_flavours[n].message,
 		station  = station,
 		faceseed = Engine.rand:Integer()
 	}
@@ -83,19 +85,16 @@ local loaded_data
 
 local onGameStart = function ()
 	ads = {}
-
-	if not loaded_data then return end
-
-	for k,ad in pairs(loaded_data.ads) do
-		local ref = ad.station:AddAdvert({
-			description = ad.title,
-			icon        = "donate_to_cranks",
-			onChat      = onChat,
-			onDelete    = onDelete})
-		ads[ref] = ad
+	if loaded_data then
+		for k,ad in pairs(loaded_data.ads) do
+			ads[ad.station:AddAdvert({
+				description = ad.title,
+				icon        = "donate_to_cranks",
+				onChat      = onChat,
+				onDelete    = onDelete})] = ad
+		end
+		loaded_data = nil
 	end
-
-	loaded_data = nil
 end
 
 local serialize = function ()

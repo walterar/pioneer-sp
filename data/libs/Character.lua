@@ -47,12 +47,15 @@
 -- and counted with the # operator.  The player's sheet is stored as
 -- Character.persistent.player, and is the special case.
 
-local Engine = import("Engine")
-local Game = import("Game")
-local Event = import("Event")
-local NameGen = import("NameGen")
+local Lang = import("Lang")
+local l = Lang.GetResource("ui-core");
+
+local Engine     = import("Engine")
+local Game       = import("Game")
+local Event      = import("Event")
+local NameGen    = import("NameGen")
 local Serializer = import("Serializer")
-local Ship = import("Ship")
+local Ship       = import("Ship")
 
 local Character;
 Character = {
@@ -979,23 +982,25 @@ Character = {
 --
 	GetCombatRating = function (self)
 		if self.killcount < 8 then
-			return('HARMLESS')
+			return 0
 		elseif self.killcount < 16 then
-			return('MOSTLY_HARMLESS')
+			return 1
 		elseif self.killcount < 32 then
-			return('POOR')
+			return 2
 		elseif self.killcount < 64 then
-			return('AVERAGE')
+			return 3
 		elseif self.killcount < 128 then
-			return('ABOVE_AVERAGE')
+			return 4
 		elseif self.killcount < 512 then
-			return('COMPETENT')
-		elseif self.killcount < 2400 then
-			return('DANGEROUS')
-		elseif self.killcount < 6000 then
-			return('DEADLY')
-		else 
-			return('ELITE')
+			return 5
+		elseif self.killcount < 1024 then
+			return 6
+		elseif self.killcount < 2048 then
+			return 7
+		elseif self.killcount < 4096 then
+			return 8
+		else
+			return 9
 		end
 	end,
 
@@ -1034,31 +1039,9 @@ Character = {
 -- Status:
 --
 --   experimental
---
+-- Keep for compatibility, or delete.
 	IsCombatRated = function (self,rating)
-		-- This function is completely agnostic of the values of the ratings.
-		local ratingflag = false
-		local combatrating = self:GetCombatRating()
-		for i,testrating in ipairs {'HARMLESS',
-									'MOSTLY_HARMLESS',
-									'POOR',
-									'AVERAGE',
-									'ABOVE_AVERAGE',
-									'COMPETENT',
-									'DANGEROUS',
-									'DEADLY',
-									'ELITE'} do
-			if testrating == rating then
-				-- We have reached the desired rating
-				ratingflag = true
-			end
-			if testrating == combatrating and ratingflag then
-				-- The character's rating is equal to the one we've rached, and
-				-- we have either reached or passed the desired rating
-				return true
-			end
-		end --for
-		return false
+		return rating
 	end,
 
 	-- Debug function
@@ -1108,7 +1091,12 @@ local onGameStart = function ()
 		-- the average values.  We'll find some way to ask the
 		-- player for a new name in the future.
 		local PlayerCharacter = Character.New()
-		PlayerCharacter.title = 'Commander'
+		if PlayerCharacter.female then
+			PlayerCharacter.name = 'Johanna Scout'
+		else
+			PlayerCharacter.name = 'John Scout'
+		end
+		PlayerCharacter.title = l.COMMANDER
 		PlayerCharacter.player = true
 		-- Gave the player a missions table (for Misssions.lua)
 		PlayerCharacter.missions = {}

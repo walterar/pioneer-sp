@@ -1,16 +1,16 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-local Engine = import("Engine")
-local Lang = import("Lang")
-local Game = import("Game")
-local Comms = import("Comms")
-local Event = import("Event")
-local Rand = import("Rand")
-local NameGen = import("NameGen")
-local Format = import("Format")
+local Engine     = import("Engine")
+local Lang       = import("Lang")
+local Game       = import("Game")
+local Comms      = import("Comms")
+local Event      = import("Event")
+local Rand       = import("Rand")
+local NameGen    = import("NameGen")
+local Format     = import("Format")
 local Serializer = import("Serializer")
-local EquipDef = import("EquipDef")
+local EquipDef   = import("EquipDef")
 
 local l = Lang.GetResource("module-breakdownservicing")
 
@@ -208,7 +208,6 @@ local loaded_data
 
 local onGameStart = function ()
 	ads = {}
-
 	if not loaded_data then
 		service_history = {
 			lastdate = 0, -- Default will be overwritten on game start
@@ -218,16 +217,13 @@ local onGameStart = function ()
 		}
 	else
 		for k,ad in pairs(loaded_data.ads) do
-		local ref = ad.station:AddAdvert({
+			ads[ad.station:AddAdvert({
 			description = ad.title,
 			icon        = "breakdown_servicing",
 			onChat      = onChat,
-			onDelete    = onDelete})
-			ads[ref] = ad
+			onDelete    = onDelete})] = ad
 		end
-
 		service_history = loaded_data.service_history
-
 		loaded_data = nil
 	end
 end

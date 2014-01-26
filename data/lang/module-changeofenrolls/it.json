@@ -1,0 +1,30 @@
+{
+   "You_are_owner_of_the_registration" : {
+      "description" : "",
+      "message" : "Lei è titolare della registrazione: "
+   },
+   "Work_we_do" : {
+      "description" : "",
+      "message" : "Salve Comandante. Può modificare la registrazione della sua nave per soli 100 $.\n\n"
+   },
+   "Not_have_enough_credit" : {
+      "description" : "",
+      "message" : "Lei non ha abbastanza crediti."
+   },
+   "Register_in" : {
+      "description" : "",
+      "message" : "Registrare nella "
+   },
+   "Hang" : {
+      "description" : "",
+      "message" : "Riaggancia"
+   },
+   "Change_of_enrolls_His_new_register_is" : {
+      "description" : "",
+      "message" : "CAMBIO DI REGISTRAZIONE\nLa vostra nuova registrazione è: "
+   },
+   "Change_of_enrolls" : {
+      "description" : "",
+      "message" : "Cambio di registrazione."
+   }
+}

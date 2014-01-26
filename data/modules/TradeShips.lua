@@ -1,16 +1,18 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
+-- modified for Pioneer Scout+ (c)2013 by walterar <walterar2@gmail.com>
+-- Work in progress.
 
-local Engine = import("Engine")
-local Game = import("Game")
-local Space = import("Space")
-local Comms = import("Comms")
-local Timer = import("Timer")
-local Event = import("Event")
+local Engine     = import("Engine")
+local Game       = import("Game")
+local Space      = import("Space")
+local Comms      = import("Comms")
+local Timer      = import("Timer")
+local Event      = import("Event")
 local Serializer = import("Serializer")
-local ShipDef = import("ShipDef")
-local Ship = import("Ship")
-local utils = import("utils")
+local ShipDef    = import("ShipDef")
+local Ship       = import("Ship")
+local utils      = import("utils")
 
 --[[
 	trade_ships
@@ -100,17 +102,17 @@ local addShipEquip = function (ship)
 	ship:AddEquip('SCANNER')
 	ship:AddEquip('AUTOPILOT')
 	ship:AddEquip('CARGO_LIFE_SUPPORT')
-
+--[[
 	-- add defensive equipment based on lawlessness, luck and size
 	local lawlessness = Game.system.lawlessness
 	local size_factor = ship.freeCapacity ^ 2 / 2000000
 
 	if Engine.rand:Number(1) - 0.1 < lawlessness then
-		local num = math.floor(math.sqrt(ship.freeCapacity / 50)) -
-					 ship:GetEquipCount('SHIELD', 'SHIELD_GENERATOR')
+		local num = math.floor(math.sqrt(ship.freeCapacity / 50))
+							- ship:GetEquipCount('SHIELD', 'SHIELD_GENERATOR')
 		if num > 0 then ship:AddEquip('SHIELD_GENERATOR', num) end
-		if ship_type.equipSlotCapacity.ENERGYBOOSTER > 0 and
-		Engine.rand:Number(1) + 0.5 - size_factor < lawlessness then
+		if ship_type.equipSlotCapacity.ENERGYBOOSTER > 0
+			and Engine.rand:Number(1) + 0.5 - size_factor < lawlessness then
 			ship:AddEquip('SHIELD_ENERGY_BOOSTER')
 		end
 	end
@@ -125,10 +127,11 @@ local addShipEquip = function (ship)
 	end
 
 	-- this should be rare
-	if ship_type.equipSlotCapacity.HULLAUTOREPAIR > 0 and
-	Engine.rand:Number(1) + 0.75 - size_factor < lawlessness then
+	if ship_type.equipSlotCapacity.HULLAUTOREPAIR > 0
+		and Engine.rand:Number(1) + 0.75 - size_factor < lawlessness then
 		ship:AddEquip('HULL_AUTOREPAIR')
 	end
+--]]
 end
 
 local addShipCargo = function (ship, direction)
@@ -190,8 +193,8 @@ doUndock = function (ship)
 	if ship:exists() and ship:GetDockedWith() then
 		local trader = trade_ships[ship]
 		if not ship:Undock() then
-			-- unable to undock, try again in ten minutes
-			trader['delay'] = Game.time + 600
+	-- unable to undock, try again in 5 minutes
+			trader['delay'] = Game.time + (60*5)
 			Timer:CallAt(trader.delay, function () doUndock(ship) end)
 		else
 			trader['delay'] = nil
@@ -307,13 +310,18 @@ local getAcceptableShips = function ()
 		filter_function = function(k,def)
 			-- XXX should limit to ships large enough to carry significant
 			--     cargo, but we don't have enough ships yet
-			return def.tag == 'SHIP' and def.defaultHyperdrive ~= 'NONE' and def.equipSlotCapacity.ATMOSHIELD > 0
+			return
+				def.tag == 'SHIP' and
+				def.defaultHyperdrive ~= 'NONE' and
+				def.equipSlotCapacity.ATMOSHIELD > 0
 		end
 	else
 		filter_function = function(k,def)
 			-- XXX should limit to ships large enough to carry significant
 			--     cargo, but we don't have enough ships yet
-			return def.tag == 'SHIP' and def.defaultHyperdrive ~= 'NONE'
+			return
+				def.tag == 'SHIP' and
+				def.defaultHyperdrive ~= 'NONE'
 		end
 	end
 	return utils.build_array(
@@ -363,7 +371,8 @@ local spawnInitialShips = function (game_start)
 	-- determine how many trade ships to spawn
 	local lawlessness = Game.system.lawlessness
 	-- start with three ships per two billion population
-	local num_trade_ships = population * 1.5
+	-- num_trade_ships = population * 4
+	local num_trade_ships = #starports * 4--1.5
 	-- add the average of import_score and export_score
 	num_trade_ships = num_trade_ships + (import_score + export_score) / 2
 	-- reduce based on lawlessness
@@ -377,7 +386,7 @@ local spawnInitialShips = function (game_start)
 		range = range * 1.5
 	end
 	-- the base number of seconds between ships spawned in hyperspace
-	trade_ships['interval'] = (864000 / (num_trade_ships / 4))
+	trade_ships['interval'] = ((60*60*24) /  (num_trade_ships / 4))
 	-- get nearby system paths for hyperspace spawns to come from
 	local from_systems, dist = {}, 10
 	while #from_systems < 10 do
@@ -395,8 +404,8 @@ local spawnInitialShips = function (game_start)
 		local ship_name = ship_names[Engine.rand:Integer(1, #ship_names)]
 		local ship = nil
 
-		if game_start and i < num_trade_ships / 4 then
-			-- spawn the first quarter in port if at game start
+		if game_start and i < num_trade_ships / 2 then
+			-- spawn the half in port if at game start
 			local starport = starports[Engine.rand:Integer(1, #starports)]
 
 			ship = Space.SpawnShipDocked(ship_name, starport)
@@ -457,7 +466,7 @@ local spawnInitialShips = function (game_start)
 		local trader = trade_ships[ship]
 
 		-- add cargo
-		local fuel_added = addFuel(ship)
+		local fuel_added = addFuel(ship) or 0
 		if trader.status == 'docked' then
 			local delay = fuel_added + addShipCargo(ship, 'export')
 			-- have ship wait 30-45 seconds per unit of cargo
@@ -473,8 +482,8 @@ local spawnInitialShips = function (game_start)
 			if fuel_added and fuel_added > 0 then
 				ship:RemoveEquip('HYDROGEN', Engine.rand:Integer(1, fuel_added))
 			end
-			if trader.status == 'inbound' then 
-				ship:AIDockWith(trader.starport) 
+			if trader.status == 'inbound' then
+				ship:AIDockWith(trader.starport)
 			end
 		end
 	end
@@ -494,11 +503,11 @@ local spawnReplacement = function ()
 		local ship = Space.SpawnShip(ship_name, 9, 11, {from, dest_time})
 		ship:SetLabel(Ship.MakeRandomLabel())
 		trade_ships[ship] = {
-			status		= 'hyperspace',
-			dest_time	= dest_time,
-			dest_path	= Game.system.path,
-			from_path	= from,
-			ship_name	= ship_name,
+			status    = 'hyperspace',
+			dest_time = dest_time,
+			dest_path = Game.system.path,
+			from_path = from,
+			ship_name = ship_name,
 		}
 
 		addShipEquip(ship)
@@ -537,7 +546,7 @@ local cleanTradeShipsTable = function ()
 			if trader.status == 'hyperspace' then
 				hyperspace = hyperspace + 1
 				-- remove well past due ships as the player can not catch them
-				if trader.dest_time + 86400 < Game.time then
+				if trader.dest_time + (60*60*2) < Game.time then
 					trade_ships[ship] = nil
 					removed = removed + 1
 				end
@@ -653,12 +662,12 @@ local onShipDocked = function (ship, starport)
 	delay = delay + addShipCargo(ship, 'export')
 	if damage > delay then delay = damage end
 
-	-- delay undocking by 30-45 seconds for every unit of cargo transfered
+	-- delay undocking by 10-25 seconds for every unit of cargo transfered
 	-- or 2-3 minutes for every unit of hull repaired
 	if delay > 0 then
-		trader['delay'] = Game.time + (delay * Engine.rand:Number(30, 45))
+		trader['delay'] = Game.time + (delay * Engine.rand:Number(10, 25))
 	else
-		trader['delay'] = Game.time + Engine.rand:Number(600, 3600)
+		trader['delay'] = Game.time + Engine.rand:Number((60*1), (60*6))
 	end
 
 	if trader.status == 'docked' then
@@ -668,12 +677,11 @@ end
 Event.Register("onShipDocked", onShipDocked)
 
 local onShipUndocked = function (ship, starport)
-	if trade_ships[ship] == nil then return end
-
+	if trade_ships[ship] then
 	-- fly to the limit of the starport frame
-	ship:AIFlyTo(starport)
-
-	trade_ships[ship]['status'] = 'outbound'
+		ship:AIFlyTo(ship.frameBody)
+		trade_ships[ship]['status'] = 'outbound'
+	end
 end
 Event.Register("onShipUndocked", onShipUndocked)
 
@@ -681,7 +689,8 @@ local onAICompleted = function (ship, ai_error)
 	if trade_ships[ship] == nil then return end
 	local trader = trade_ships[ship]
 	if ai_error ~= 'NONE' then
-		print(ship.label..' AICompleted: Error: '..ai_error..' Status: '..trader.status) end
+		print(ship.label..' AICompleted: Error: '..ai_error..' Status: '..trader.status)
+	end
 
 	if trader.status == 'outbound' then
 		if getSystemAndJump(ship) ~= 'OK' then
@@ -690,7 +699,7 @@ local onAICompleted = function (ship, ai_error)
 		end
 	elseif trader.status == 'orbit' then
 		if ai_error == 'NONE' then
-			trader['delay'] = Game.time + 21600 -- 6 hours
+			trader['delay'] = Game.time + (60*60*3) -- 3 hours
 			Timer:CallAt(trader.delay, function ()
 				if ship:exists() and ship.flightState ~= 'HYPERSPACE' then
 					trader['starport'] = getNearestStarport(ship, trader.starport)
@@ -718,7 +727,8 @@ Event.Register("onShipLanded", onShipLanded)
 local onShipAlertChanged = function (ship, alert)
 	if trade_ships[ship] == nil then return end
 	if alert == 'SHIP_FIRING' then
-		print(ship.label..' alert changed to '..alert) end
+		print(ship.label..' alert changed to '..alert)
+	end
 	local trader = trade_ships[ship]
 	if trader.attacker == nil then return end
 
@@ -813,17 +823,21 @@ local onShipCollided = function (ship, other)
 		onShipHit(ship, other)
 		return
 	end
+	print(ship.label.." collided with "..other.label)
+	if trade_ships[ship].status == 'outbound' or trade_ships[ship].status == 'hyperspace' then return end
+	ship:AIFlyTo(ship.frameBody)
+	trade_ships[ship]['status'] = 'outbound'
 
-	-- try to get away from body, onAICompleted will take over if we succeed
-	ship:AIFlyTo(other)
+	print(ship.label..' ordering FlyTo of '..ship.frameBody.label)
 end
 Event.Register("onShipCollided", onShipCollided)
 
 local onShipDestroyed = function (ship, attacker)
 	if trade_ships[ship] ~= nil then
 		local trader = trade_ships[ship]
-
-		print(ship.label..' destroyed by '..attacker.label..', status:'..trader.status..' ship:'..trader.ship_name..', starport:'..trader.starport.label)
+		if trader.starport then
+			print(ship.label..' destroyed by '..attacker.label..', status:'..trader.status..' ship:'..trader.ship_name..', starport:'..trader.starport.label)
+		end
 		trade_ships[ship] = nil
 
 		if not attacker:isa("Ship") then

@@ -35,13 +35,13 @@ local onShipDestroyed = function (ship, attacker)
 		Character.persistent.player.assistcount = Character.persistent.player.assistcount + 1
 	end
 end
+Event.Register("onShipDestroyed",onShipDestroyed)
 
 local onShipHit = function (ship, attacker)
-	if attacker:isa('Ship') and attacker:IsPlayer() then
-		PlayerDamagedShips[ship]=true
+	if attacker and attacker:IsPlayer() then
+		if ship then
+			PlayerDamagedShips[ship]=true
+		end
 	end
 end
-
-Event.Register("onShipDestroyed",onShipDestroyed)
---Commented out pending issue #887
---Event.Register("onShipHit",onShipHit)
+Event.Register("onShipHit",onShipHit)

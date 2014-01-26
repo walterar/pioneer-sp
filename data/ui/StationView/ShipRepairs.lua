@@ -1,16 +1,16 @@
--- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2013 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-local Engine = import("Engine")
-local Lang = import("Lang")
-local Game = import("Game")
-local ShipDef = import("ShipDef")
-local Format = import("Format")
-local Rand = import("Rand")
-local InfoGauge = import("ui/InfoGauge")
-local InfoFace = import("ui/InfoFace")
+local Engine       = import("Engine")
+local Lang         = import("Lang")
+local Game         = import("Game")
+local ShipDef      = import("ShipDef")
+local Format       = import("Format")
+local Rand         = import("Rand")
+local InfoGauge    = import("ui/InfoGauge")
+local InfoFace     = import("ui/InfoFace")
 local ModelSpinner = import("UI.Game.ModelSpinner")
-local Character = import("Character")
+local Character    = import("Character")
 
 local l = Lang.GetResource("ui-core")
 local ui = Engine.ui
@@ -30,13 +30,13 @@ local getRepairMessage = function (damage, price)
 end
 
 local shipRepairs = function (args)
-	local messageLabel = ui:Label('')
-	local feedbackLabel = ui:Label('')
-	local repairButtons = ui:VBox(5)
-	local repair1Label = ui:Label('')
+	local messageLabel   = ui:Label('')
+	local feedbackLabel  = ui:Label('')
+	local repairButtons  = ui:VBox(5)
+	local repair1Label   = ui:Label('')
 	local repairAllLabel = ui:Label('')
-	local repair1Btn = ui:Button(ui:Expand('HORIZONTAL', repair1Label))
-	local repairAllBtn = ui:Button(ui:Expand('HORIZONTAL', repairAllLabel))
+	local repair1Btn     = ui:Button(ui:Expand('HORIZONTAL', repair1Label))
+	local repairAllBtn   = ui:Button(ui:Expand('HORIZONTAL', repairAllLabel))
 
 	local integrityGauge = ui:Gauge()
 	integrityGauge:Bind("valuePercent", Game.player, "hullPercent")
@@ -44,10 +44,10 @@ local shipRepairs = function (args)
 	local damageAll, damage1, costRepairAll, costRepair1
 
 	local update = function (feedbackText)
-		local shipDef = ShipDef[Game.player.shipId]
+		local shipDef     = ShipDef[Game.player.shipId]
 		local hullPercent = Game.player.hullPercent
 
-		if hullPercent >= 100 then
+		if hullPercent > 99 then
 			messageLabel:SetText(l.SHIP_IS_ALREADY_FULLY_REPAIRED)
 			feedbackLabel:SetText(feedbackText)
 			repairButtons:Clear()

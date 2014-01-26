@@ -1,10 +1,10 @@
--- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2013 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-local Engine = import("Engine")
-local Lang = import("Lang")
-local Game = import("Game")
-local Comms = import("Comms")
+local Lang      = import("Lang")
+local Engine    = import("Engine")
+local Game      = import("Game")
+local Space     = import("Space")
 
 local ui = Engine.ui
 local l = Lang.GetResource("ui-core");
@@ -30,8 +30,8 @@ local orbitalAnalysis = function ()
 	local G = 6.67428e-11
 
 	local vCircular = math.sqrt((G * mass)/distance)
-	local vEscape = math.sqrt((2 * G * mass)/distance)
 	local vDescent = math.sqrt(G * mass * ((2 / distance) - (2 / (distance + radius))))
+	local vEscape = math.sqrt((2 * G * mass)/distance)
 
 	return ui:Expand():SetInnerWidget(
 		ui:VBox(20):PackEnd({
@@ -43,8 +43,8 @@ local orbitalAnalysis = function ()
 			ui:Table():SetColumnSpacing(10):AddRows({
 				-- convert to kilometres per second
 				{ l.CIRCULAR_ORBIT_SPEED,    string.format('%6.2fkm/s',vCircular/1000) },
-				{ l.ESCAPE_SPEED,            string.format('%6.2fkm/s',vEscape/1000)   },
 				{ l.DESCENT_TO_GROUND_SPEED, string.format('%6.2fkm/s',vDescent/1000)  },
+				{ l.ESCAPE_SPEED,            string.format('%6.2fkm/s',vEscape/1000)   },
 			}),
 			ui:MultiLineText((l.ORBITAL_ANALYSIS_NOTES):interp({name = name}))
 		})

@@ -1,12 +1,13 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
+-- modified for Pioneer Scout+ (c)2013 by walterar <walterar2@gmail.com>
+-- Work in progress.
 
-local Engine = import("Engine")
-local Lang = import("Lang")
-local Game = import("Game")
-local EquipDef = import("EquipDef")
-local ShipDef = import("ShipDef")
-
+local Lang         = import("Lang")
+local Engine       = import("Engine")
+local Game         = import("Game")
+local EquipDef     = import("EquipDef")
+local ShipDef      = import("ShipDef")
 local ModelSpinner = import("UI.Game.ModelSpinner")
 
 local ui = Engine.ui
@@ -15,12 +16,12 @@ local l = Lang.GetResource("ui-core");
 local shipInfo = function (args)
 	local shipDef = ShipDef[Game.player.shipId]
 
-	local hyperdrive =              table.unpack(Game.player:GetEquip("ENGINE"))
+	local hyperdrive              = table.unpack(Game.player:GetEquip("ENGINE"))
 	local frontWeapon, rearWeapon = table.unpack(Game.player:GetEquip("LASER"))
 
-	hyperdrive =  hyperdrive  or "NONE"
+	hyperdrive  = hyperdrive  or "NONE"
 	frontWeapon = frontWeapon or "NONE"
-	rearWeapon =  rearWeapon  or "NONE"
+	rearWeapon  = rearWeapon  or "NONE"
 
 	local player = Game.player
 
@@ -40,16 +41,19 @@ local shipInfo = function (args)
 		local type = Constants.EquipType[i]
 		local et = EquipDef[type]
 		local slot = et.slot
-		if (slot ~= "CARGO" and slot ~= "MISSILE" and slot ~= "ENGINE" and slot ~= "LASER") then
+--		if (slot ~= "CARGO" and slot ~= "MISSILE" and slot ~= "ENGINE" and slot ~= "LASER") then
+		if (slot ~= "CARGO" and slot ~= "ENGINE" and slot ~= "LASER") then
 			local count = Game.player:GetEquipCount(slot, type)
 			if count > 0 then
 				if count > 1 then
 					if type == "SHIELD_GENERATOR" then
 						table.insert(equipItems,
 							ui:Label(string.interp(l.N_SHIELD_GENERATORS, { quantity = string.format("%d", count) })))
-					elseif type == "PASSENGER_CABIN" then
+--					elseif type == "PASSENGER_CABIN" then
+					elseif type == "MISSILE" then
 						table.insert(equipItems,
-							ui:Label(string.interp(l.N_OCCUPIED_PASSENGER_CABINS, { quantity = string.format("%d", count) })))
+							ui:Label(string.interp(l.MISSILE, { quantity = string.format("%d", count) })))
+--							ui:Label(string.interp(l.N_OCCUPIED_PASSENGER_CABINS, { quantity = string.format("%d", count) })))
 					elseif type == "UNOCCUPIED_CABIN" then
 						table.insert(equipItems,
 							ui:Label(string.interp(l.N_UNOCCUPIED_PASSENGER_CABINS, { quantity = string.format("%d", count) })))
@@ -68,6 +72,7 @@ local shipInfo = function (args)
 			:SetColumn(0, {
 				ui:Table():AddRows({
 					ui:Table():SetColumnSpacing(10):AddRows({
+--						"",
 						{ l.HYPERDRIVE..":", EquipDef[hyperdrive].name },
 						{
 							l.HYPERSPACE_RANGE..":",
@@ -79,7 +84,7 @@ local shipInfo = function (args)
 							),
 						},
 						"",
-						{ l.WEIGHT_EMPTY..":",  string.format("%dt", player.totalMass - player.usedCapacity) },
+						{ l.WEIGHT_EMPTY,       string.format("%dt", player.totalMass - player.usedCapacity) },
 						{ l.CAPACITY_USED..":", string.format("%dt (%dt "..l.FREE..")", player.usedCapacity,  player.freeCapacity) },
 						{ l.FUEL_WEIGHT..":",   string.format("%dt (%dt "..l.MAX..")", player.fuelMassLeft, ShipDef[Game.player.shipId].fuelTankMass ) },
 						{ l.ALL_UP_WEIGHT..":", string.format("%dt", mass_with_fuel ) },

@@ -1,14 +1,14 @@
 -- Copyright © 2013 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-local Lang = import("Lang")
-local Event = import("Event")
+local Lang       = import("Lang")
+local Event      = import("Event")
 local Serializer = import("Serializer")
-local Engine = import("Engine")
-local Game = import("Game")
-local Character = import("Character")
-local Format = import("Format")
-local Timer = import("Timer")
+local Engine     = import("Engine")
+local Game       = import("Game")
+local Character  = import("Character")
+local Format     = import("Format")
+local Timer      = import("Timer")
 
 -- This module allows the player to hire crew members through BB adverts
 -- on stations, and handles periodic events such as their wages.
@@ -85,7 +85,7 @@ local scheduleWages = function (crewMember)
 			contract.outstanding = contract.outstanding + contract.wage
 			crewMember.playerRelationship = crewMember.playerRelationship - 1
 		end
-		
+
 		-- Attempt to pay off any arrears
 		local arrears = math.min(Game.player:GetMoney(),contract.outstanding)
 		Game.player:AddMoney(0 - arrears)
@@ -240,7 +240,7 @@ local onChat = function (form,ref,option)
 		form:AddOption(l.ASK_CANDIDATE_TO_SIT_A_TEST,6)
 		form:AddOption(l.GO_BACK, 0)
 	end
-	
+
 	if option > 0 then
 
 		if not candidate then

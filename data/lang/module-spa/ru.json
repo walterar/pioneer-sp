@@ -1,0 +1,74 @@
+{
+   "APPLY_FOR_MEMBERSHIP" : {
+      "description" : "",
+      "message" : "Подать заявку на членство"
+   },
+   "BEGIN_TRADE" : {
+      "description" : "",
+      "message" : "Начать торговлю"
+   },
+   "FLAVOUR_CLUBNAME_0" : {
+      "description" : "",
+      "message" : " ** SPA ** скаутов Пилоты Ассоциированные"
+   },
+   "FLAVOUR_MEMBER_INTRO_0" : {
+      "description" : "",
+      "message" : "Здесь, вы можете купить топливо, металлических сплавов или утилизировать {radioactives}."
+   },
+   "FLAVOUR_NONMEMBER_INTRO_0" : {
+      "description" : "",
+      "message" : "{clubname} - независимая организация, предоставляющая своим членам собственные топливные ресурсы. Наша организация работает по всей Галактике. Членство даёт следующие преимущества:\n	* Собственные запасы топлива,  независимые от предложения на открытом рынке.\n* 40% скидки на {hydrogen}.\n* 40% скидки на {metal_alloys}.\n* 50% скидки на {military_fuel}.\n* {radioactives}- принимаются для утилизации бесплатно (при определенных условиях).\n* Обеспечение всех ваших потребностей в топливе.\nПри вступлении в организацию - мощный ионный двигатель в подарок!\nЕжегодный членский взнос всего лишь {membership_fee}."
+   },
+   "FLAVOUR_WELCOME_0" : {
+      "description" : "",
+      "message" : "Добро пожаловать в {clubname}"
+   },
+   "GO_BACK" : {
+      "description" : "",
+      "message" : "Назад"
+   },
+   "HANG_UP" : {
+      "description" : "",
+      "message" : "вешать трубку"
+   },
+   "HYDROGEN" : {
+      "description" : "",
+      "message" : "Водород"
+   },
+   "MILITARY_FUEL" : {
+      "description" : "",
+      "message" : "Военная топлива"
+   },
+   "RADIOACTIVES" : {
+      "description" : "",
+      "message" : "Радиоактивные отходы"
+   },
+   "WATER" : {
+      "description" : "",
+      "message" : "Вода"
+   },
+   "METAL_ALLOYS" : {
+      "description" : "",
+      "message" : "Сплав металла"
+   },
+   "WE_WILL_ONLY_DISPOSE_OF" : {
+      "description" : "",
+      "message" : "Теперь, корабли SPA членов, они установят новые современные экспериментальные активной системой защиты. В случае нападения (воздействия плазмы обнаружено), и если вы вооружены ружьями, система будет взять под контроль ваш корабль и пытаются уничтожить вражеский корабль или выключить их электронных систем. Эта система еще не поступила в продажу на рынке и является, на данный момент, для исключительного использования членов SPA"
+   },
+   "WHAT_CONDITIONS_APPLY" : {
+      "description" : "",
+      "message" : "Каковы особые преимущества?"
+   },
+   "YOUR_MEMBERSHIP_APPLICATION_HAS_BEEN_DECLINED" : {
+      "description" : "",
+      "message" : "Ваша заявка на вступление была отклонена."
+   },
+   "YOU_ARE_NOW_A_MEMBER" : {
+      "description" : "",
+      "message" : "Добро пожаловать! Вы теперь член SPA с полными привилегиями.\n        Ваше членство истекает в {expiry_date}.\n"
+   },
+   "YOU_MUST_BUY" : {
+      "description" : "",
+      "message" : "Вы должны купить нашу {military_fuel} перед выходом их {radioactives}"
+   }
+}

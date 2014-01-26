@@ -1,0 +1,82 @@
+{
+    "HelloCommander1": {
+        "message": "Un placer tenerlo aquí Comandante. Hay excelentes oportunidades para usted.\n",
+        "description": ""
+    },
+    "HelloCommander2": {
+        "message": "Hola Comandante. He recibido nuevas naves que le pueden interesar.\n",
+        "description": ""
+    },
+    "HelloCommander3": {
+        "message": "Bienvenido Comandante, si está buscando algo especial seguramente lo tenemos.\n",
+        "description": ""
+    },
+    "HelloCommander4": {
+        "message": "Gracias por su visita Comandante, si busca una oportunidad, este es el lugar.\n",
+        "description": ""
+    },
+    "Sale1": {
+        "message": "Su vieja nave tiene valor para nosotros.\nCotización del día ",
+        "description": ""
+    },
+    "Sale2": {
+        "message": "Para su conocimiento.\nCotizamos su ",
+        "description": ""
+    },
+    "Sale3": {
+        "message": "Hoy estamos generosos y cotizamos su ",
+        "description": ""
+    },
+    "Sale4": {
+        "message": "Tengo un comprador para esta nave, hoy pago su ",
+        "description": ""
+    },
+    "His_ship_more": {
+        "message": " Nos deja su nave, más cash  ",
+        "description": ""
+    },
+    "His_ship_less": {
+        "message": " Nos deja su nave, le pagamos cash  ",
+        "description": ""
+    },
+    "in_exchange_for_a1": {
+        "message": "\ny saldrá de aquí a bordo de una bellísima  ",
+        "description": ""
+    },
+    "in_exchange_for_a2": {
+        "message": "\ny será el felíz propietario de una preciosa  ",
+        "description": ""
+    },
+    "in_exchange_for_a3": {
+        "message": "\ny nos dejará contento a bordo de una hermosa  ",
+        "description": ""
+    },
+    "in_exchange_for_a4": {
+        "message": "\ny saldrá de aquí disfrutando una magnífica  ",
+        "description": ""
+    },
+    "Exchange": {
+        "message": "Cambiar",
+        "description": ""
+    },
+    "passengers": {
+        "message": "Acaso pretende dejar pasajeros en parte de pago?",
+        "description": ""
+    },
+    "Not_have_enough_credit": {
+        "message": "Usted no tiene crédito suficiente.",
+        "description": ""
+    },
+    "Hang": {
+        "message": "\nColgar",
+        "description": ""
+    },
+    "Thanks": {
+        "message": "Gracias por su confianza, Comandante. Regrese cuando quiera.",
+        "description": ""
+    },
+    "Ships_Resale": {
+        "message": "Naves de segunda mano",
+        "description": ""
+    }
+}

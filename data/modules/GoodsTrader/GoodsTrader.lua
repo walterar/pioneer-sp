@@ -1,15 +1,19 @@
--- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2013 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
+-- modified for Pioneer Scout+ (c)2013 by walterar <walterar2@gmail.com>
+-- Work in progress.
 
-local Lang = import("Lang")
-local Engine = import("Engine")
-local Game = import("Game")
-local Event = import("Event")
-local NameGen = import("NameGen")
-local Rand = import("Rand")
+local Lang       = import("Lang")
+local Engine     = import("Engine")
+local Game       = import("Game")
+local Rand       = import("Rand")
+local Comms      = import("Comms")
+local Event      = import("Event")
+local NameGen    = import("NameGen")
 local Serializer = import("Serializer")
 
-local l = Lang.GetResource("module-goodstrader")
+local l   = Lang.GetResource("module-goodstrader")
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
 
 local num_names = 6 -- number of GOODS_TRADER_N names
 
@@ -33,8 +37,10 @@ local onChat = function (form, ref, option)
 			return true
 		end
 
-		local lawlessness = Game.system.lawlessness
-		Game.player:AddCrime("TRADING_ILLEGAL_GOODS", 400*(2-lawlessness))
+		local multiplier = 100 - (100 * Game.system.lawlessness)
+		local money = math.floor(Game.player:GetMoney() * (multiplier/1000))
+
+		Game.player:AddCrime("TRADING_ILLEGAL_GOODS", money)
 		form:GotoPolice()
 		return false
 	end
@@ -69,21 +75,22 @@ local onChat = function (form, ref, option)
 
 		-- do something when we buy this commodity
 		bought = function (ref, commodity)
-            ads[ref].stock[commodity] = ads[ref].stock[commodity] + 1
+			ads[ref].stock[commodity] = ads[ref].stock[commodity] + 1
 		end,
 
 		-- do something when we sell this commodity
 		sold = function (ref, commodity)
-            ads[ref].stock[commodity] = ads[ref].stock[commodity] - 1
+			ads[ref].stock[commodity] = ads[ref].stock[commodity] - 1
 		end,
 	})
-
 end
 
 local onDelete = function (ref)
 	ads[ref] = nil
 end
 
+
+local licon = "goods_trader"
 local onCreateBB = function (station)
 	local has_illegal_goods = false
 	for i,e in pairs(Constants.EquipType) do
@@ -92,21 +99,17 @@ local onCreateBB = function (station)
 		end
 	end
 	if not has_illegal_goods then return end
-
 	local rand = Rand.New(station.seed)
 	local num = rand:Integer(1,3)
 	for i = 1,num do
 		local ispolice = rand:Integer(1) == 1
-
 		local flavour = string.interp(l["GOODS_TRADER_"..rand:Integer(1, num_names)-1], {name = NameGen.Surname(rand)})
-
 		local ad = {
 			station  = station,
 			flavour  = flavour,
 			ispolice = ispolice,
 			faceseed = rand:Integer(),
 		}
-
 		ad.stock = {}
 		ad.price = {}
 		for i,e in pairs(Constants.EquipType) do
@@ -117,9 +120,9 @@ local onCreateBB = function (station)
 			end
 		end
 
-		local ref = ad.station:AddAdvert({
+		local ref = station:AddAdvert({
 			description = ad.flavour,
-			icon        = "goods_trader",
+			icon        = licon,
 			onChat      = onChat,
 			onDelete    = onDelete})
 		ads[ref] = ad
@@ -136,7 +139,7 @@ local onGameStart = function ()
 	for k,ad in pairs(loaded_data.ads) do
 		local ref = ad.station:AddAdvert({
 			description = ad.flavour,
-			icon        = "goods_trader",
+			icon        = licon,
 			onChat      = onChat,
 			onDelete    = onDelete})
 		ads[ref] = ad

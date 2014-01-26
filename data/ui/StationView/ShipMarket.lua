@@ -1,29 +1,31 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-local Engine = import("Engine")
+local Engine       = import("Engine")
+local Game         = import("Game")
+local Event        = import("Event")
+local Format       = import("Format")
+local Lang         = import("Lang")
+local Comms        = import("Comms")
+local ShipDef      = import("ShipDef")
 local SpaceStation = import("SpaceStation")
-local Game = import("Game")
-local Event = import("Event")
-local Format = import("Format")
-local Lang = import("Lang")
-local Comms = import("Comms")
-local ShipDef = import("ShipDef")
 
-local Model = import("SceneGraph.Model")
-local ModelSkin = import("SceneGraph.ModelSkin")
+local Model        = import("SceneGraph.Model")
 local ModelSpinner = import("UI.Game.ModelSpinner")
+local ModelSkin    = import("SceneGraph.ModelSkin")
 
 local SmallLabeledButton = import("ui/SmallLabeledButton")
 
 local ui = Engine.ui
 
-local l = Lang.GetResource("ui-core")
-
--- XXX equipment strings are in core. this sucks
+local l     = Lang.GetResource("ui-core")
 local lcore = Lang.GetResource("core")
+local myl   = Lang.GetResource("module-myl") or Lang.GetResource("module-myl", "en")
 
 local shipClassString = {
+	light_scout                = myl.LIGHT_SCOUT,
+	medium_scout               = myl.MEDIUM_SCOUT,
+	heavy_scout                = myl.HEAVY_SCOUT,
 	light_cargo_shuttle        = l.LIGHT_CARGO_SHUTTLE,
 	light_courier              = l.LIGHT_COURIER,
 	light_fighter              = l.LIGHT_FIGHTER,
@@ -51,7 +53,7 @@ local shipTable =
 		:SetRowSpacing(5)
 		:SetColumnSpacing(10)
 		:SetHeadingRow({'', l.SHIP, l.PRICE, l.CAPACITY})
-		:SetHeadingFont("LARGE")
+		:SetHeadingFont("HEADING_XSMALL")
 		:SetRowAlignment("CENTER")
 		:SetMouseEnabled(true)
 
@@ -153,16 +155,14 @@ shipTable.onRowClicked:Connect(function (row)
 							:AddRow({l.REVERSE_ACCEL_EMPTY, Format.AccelG(reverseAccelEmpty)})
 							:AddRow({l.REVERSE_ACCEL_FULL,  Format.AccelG(reverseAccelFull)})
 							:AddRow({l.DELTA_V_EMPTY, string.format("%d km/s", deltav / 1000)})
-							:AddRow({l.DELTA_V_FULL, string.format("%d km/s", deltav_f / 1000)})
-							:AddRow({l.DELTA_V_MAX, string.format("%d km/s", deltav_m / 1000)}),
+							:AddRow({l.DELTA_V_FULL, string.format("%d km/s", deltav_f / 1000)}),
 						ui:Table()
 							:SetColumnSpacing(5)
 							:AddRow({l.WEIGHT_EMPTY,        Format.MassTonnes(def.hullMass)})
 							:AddRow({l.CAPACITY,            Format.MassTonnes(def.capacity)})
-							:AddRow({l.MINIMUM_CREW,        def.minCrew})
-							:AddRow({l.MAXIMUM_CREW,        def.maxCrew})
 							:AddRow({l.WEIGHT_FULLY_LOADED, Format.MassTonnes(def.hullMass+def.capacity+def.fuelTankMass)})
 							:AddRow({l.FUEL_WEIGHT,         Format.MassTonnes(def.fuelTankMass)})
+							:AddRow({l.DELTA_V_MAX, string.format("%d km/s", deltav_m / 1000)})
 					})
 			),
 		})

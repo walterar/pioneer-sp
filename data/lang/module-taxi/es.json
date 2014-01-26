@@ -69,7 +69,7 @@
    },
    "FLAVOUR_0_ADTEXT" : {
       "description" : "",
-      "message" : "SE BUSCA: Pasaje para un pequeño grupo al Sistema {system}. Se pagará {cash}."
+      "message" : "PASAJE grupal a {starport}, {system} Pagaríamos {cash}."
    },
    "FLAVOUR_0_DANGER" : {
       "description" : "",
@@ -89,7 +89,7 @@
    },
    "FLAVOUR_0_SUCCESSMSG" : {
       "description" : "",
-      "message" : "Gracias por el agradable viaje. Se le ha pagado al completo."
+      "message" : "¡Excelente viaje, gracias!. Hemos depositado lo pactado."
    },
    "FLAVOUR_0_WHEREAREWE" : {
       "description" : "",
@@ -101,7 +101,7 @@
    },
    "FLAVOUR_10_ADTEXT" : {
       "description" : "",
-      "message" : "SE BUSCA NAVE: Pasaje en una nave rápida al Sistema {system}."
+      "message" : "PASAJE a {starport}, {system} BUSCO nave muy veloz."
    },
    "FLAVOUR_10_DANGER" : {
       "description" : "",
@@ -133,7 +133,7 @@
    },
    "FLAVOUR_11_ADTEXT" : {
       "description" : "",
-      "message" : "NAVE RÁPIDA: Pasaje en nave rápida al Sistema {system}."
+      "message" : "PASAJE a {starport}, {system} EN TRANSPORTE MUY VELOZ. Excelente pago."
    },
    "FLAVOUR_11_DANGER" : {
       "description" : "",
@@ -165,7 +165,7 @@
    },
    "FLAVOUR_12_ADTEXT" : {
       "description" : "",
-      "message" : "SE REQUIERE NAVE: Pasaje al Sistema {system}."
+      "message" : "PASAJE SEGURO a {starport}, {system} NECESITO"
    },
    "FLAVOUR_12_DANGER" : {
       "description" : "",
@@ -193,11 +193,11 @@
    },
    "FLAVOUR_12_WHYSOMUCH" : {
       "description" : "",
-      "message" : "Le debo pasta a alguien, y va tras de mi."
+      "message" : "Le debo algunos créditos a alguien muy poderoso, y ha enviado a sus amigos por mí."
    },
    "FLAVOUR_1_ADTEXT" : {
       "description" : "",
-      "message" : "SE BUSCA: Pasaje para un grupo pequeño al Sistema {system}. Se abonará {cash}."
+      "message" : "PASAJE grupal a {starport}, {system} Abonaríamos {cash}."
    },
    "FLAVOUR_1_DANGER" : {
       "description" : "",
@@ -217,7 +217,7 @@
    },
    "FLAVOUR_1_SUCCESSMSG" : {
       "description" : "",
-      "message" : "Gracias por el agradable trayecto. Se le ha pagado completamente."
+      "message" : "Gracias por el agradable trayecto. Se le ha pagado al completo."
    },
    "FLAVOUR_1_WHEREAREWE" : {
       "description" : "",
@@ -229,7 +229,7 @@
    },
    "FLAVOUR_2_ADTEXT" : {
       "description" : "",
-      "message" : "SE BUSCA: Pasaje para un grupo pequeño al Sistema {system}. Se pagarán {cash}."
+      "message" : "PASAJE GRUPAL a {starport}, {system} BUSCAMOS. Pagamos {cash}."
    },
    "FLAVOUR_2_DANGER" : {
       "description" : "",
@@ -261,7 +261,7 @@
    },
    "FLAVOUR_3_ADTEXT" : {
       "description" : "",
-      "message" : "SE REQUIERE NAVE: Pasaje al Sistema {system}. Se pagará {cash}."
+      "message" : "PASAJE SEGURO a {starport}, {system} NECESITO viajar ya. Pago {cash}."
    },
    "FLAVOUR_3_DANGER" : {
       "description" : "",
@@ -293,7 +293,7 @@
    },
    "FLAVOUR_4_ADTEXT" : {
       "description" : "",
-      "message" : "SE BUSCA NAVE: Pasaje al Sistema {system}. Se abonarán {cash}."
+      "message" : "PASAJE a {starport}, {system} BUSCO RAPIDEZ. Pago {cash}."
    },
    "FLAVOUR_4_DANGER" : {
       "description" : "",
@@ -321,11 +321,11 @@
    },
    "FLAVOUR_4_WHYSOMUCH" : {
       "description" : "",
-      "message" : "Soy viajante."
+      "message" : "Soy vendedor ambulante."
    },
    "FLAVOUR_5_ADTEXT" : {
       "description" : "",
-      "message" : "SE BUSCA: Pasaje al Sistema {system}. Se paga {cash}."
+      "message" : "PASAJE a {starport}, {system} BUSCO COMODIDAD. Pago {cash}."
    },
    "FLAVOUR_5_DANGER" : {
       "description" : "",
@@ -353,11 +353,11 @@
    },
    "FLAVOUR_5_WHYSOMUCH" : {
       "description" : "",
-      "message" : "Ah, no lo sabías - Soy una conocida Estrella."
+      "message" : "¡Ah! - ¿No lo sabías? - Soy una figura famosa en HoloCuentos."
    },
    "FLAVOUR_6_ADTEXT" : {
       "description" : "",
-      "message" : "SE BUSCA NAVE: Pasaje al Sistema {system}. Se abonará {cash}."
+      "message" : "PASAJE a {starport}, {system} BUSCO VELOCIDAD. Pago {cash}."
    },
    "FLAVOUR_6_DANGER" : {
       "description" : "",
@@ -377,7 +377,7 @@
    },
    "FLAVOUR_6_SUCCESSMSG" : {
       "description" : "",
-      "message" : "Gracias por el agradable crucero. Se le ha pagado el total."
+      "message" : "Gracias por tan bonito viaje. Se le ha pagado el total."
    },
    "FLAVOUR_6_WHEREAREWE" : {
       "description" : "",
@@ -389,11 +389,11 @@
    },
    "FLAVOUR_7_ADTEXT" : {
       "description" : "",
-      "message" : "SE REQUIERE NAVE: Pasaje seguro al Sistema {system}. Pagaré {cash}."
+      "message" : "PASAJE SEGURO a {starport}, {system} Tengo {cash} para usted."
    },
    "FLAVOUR_7_DANGER" : {
       "description" : "",
-      "message" : "A la Mafia no le sienta bien que alguien ayude a sus enemigos."
+      "message" : "A la Mafia no le cae bien que alguien ayude a sus enemigos."
    },
    "FLAVOUR_7_FAILUREMSG" : {
       "description" : "",
@@ -417,11 +417,11 @@
    },
    "FLAVOUR_7_WHYSOMUCH" : {
       "description" : "",
-      "message" : "La Mafia me quiere ver muerto."
+      "message" : "Estoy marcado por La Mafia. Han puesto precio a mi cabeza."
    },
    "FLAVOUR_8_ADTEXT" : {
       "description" : "",
-      "message" : "SE BUSCA NAVE: Pasaje en una nave rápida al Sistema {system}."
+      "message" : "PASAJE a {starport}, {system} BUSCO nave rápida."
    },
    "FLAVOUR_8_DANGER" : {
       "description" : "",
@@ -453,7 +453,7 @@
    },
    "FLAVOUR_9_ADTEXT" : {
       "description" : "",
-      "message" : "SE BUSCA NAVE: Pasaje en nave rápida al Sistema {system}."
+      "message" : "PASAJE SEGURO a {starport}, {system} BUSCO nave muy rápida."
    },
    "FLAVOUR_9_DANGER" : {
       "description" : "",
@@ -497,7 +497,7 @@
    },
    "HEY_YOU_ARE_GOING_TO_PAY_FOR_THIS" : {
       "description" : "",
-      "message" : "¡¿¡Ey!?! ¡¡¡Vas a pagar por esto!!!"
+      "message" : "¡Ey! ¡Maldita sea! ¡Vas a pagar por esto!"
    },
    "HOW_MANY_OF_YOU_ARE_THERE" : {
       "description" : "",
@@ -553,10 +553,10 @@
    },
    "WILL_I_BE_IN_ANY_DANGER" : {
       "description" : "",
-      "message" : "¿Estaré en peligro?"
+      "message" : "¿Existe algún riesgo?"
    },
    "YOU_DO_NOT_HAVE_ENOUGH_CABIN_SPACE_ON_YOUR_SHIP" : {
       "description" : "",
-      "message" : "No dispone de suficiente espacio en la cabina de su nave."
+      "message" : "Deberá instalar Cabina de Pasajeros para esta misión."
    }
 }

@@ -1,0 +1,30 @@
+{
+   "You_are_owner_of_the_registration" : {
+      "description" : "",
+      "message" : "Su matrícula actual es: "
+   },
+   "Work_we_do" : {
+      "description" : "",
+      "message" : "Hola Comandante.\nAquí podrá cambiar su matrícula por solo $100"
+   },
+   "Not_have_enough_credit" : {
+      "description" : "",
+      "message" : "Usted no tiene suficiente crédito."
+   },
+   "Register_in" : {
+      "description" : "",
+      "message" : "Registrar en "
+   },
+   "Hang" : {
+      "description" : "",
+      "message" : "Colgar"
+   },
+   "Change_of_enrolls_His_new_register_is" : {
+      "description" : "",
+      "message" : "* * * CAMBIO DE MATRÍCULA.* * *\n-\n* Su nueva matrícula es: "
+   },
+   "Change_of_enrolls" : {
+      "description" : "",
+      "message" : "Cambio de matrícula"
+   }
+}

@@ -1,17 +1,61 @@
--- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2013 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
+-- modified for Pioneer Scout+ (c)2013 by walterar <walterar2@gmail.com>
+-- Work in progress.
 
-local Engine = import("Engine")
-local Lang = import("Lang")
-local Character = import("Character")
-
-local InfoFace = import("ui/InfoFace")
+local Lang               = import("Lang")
+local Engine             = import("Engine")
+local Character          = import("Character")
+local Game               = import("Game")
+local InfoFace           = import("ui/InfoFace")
 local SmallLabeledButton = import("ui/SmallLabeledButton")
 
 local ui = Engine.ui
-local l = Lang.GetResource("ui-core");
+local l   = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
 
 local personalInfo = function ()
+
+	local CurrentPosition
+	local CurrentFaction
+	local StationName
+
+	local CurrentDanger
+	if DangerLevel == 0 then
+		CurrentDanger = ui:Label(myl.Risk_Area.." *")
+											:SetFont("HEADING_NORMAL")
+											:SetColor({ r = 0.0, g = 1.0, b = 0.0 }) -- green
+	elseif DangerLevel == 1 then
+		CurrentDanger = ui:Label(myl.Risk_Area.." **")
+											:SetFont("HEADING_NORMAL")
+											:SetColor({ r = 1.0, g = 1.0, b = 0.0 }) -- yellow
+	elseif DangerLevel == 2 then
+		CurrentDanger = ui:Label(myl.Risk_Area.." ***")
+											:SetFont("HEADING_NORMAL")
+											:SetColor({ r = 1.0, g = 0.0, b = 0.0 }) -- red
+	end
+
+	if Game.system == nil then
+		CurrentPosition = myl.Hyperspace
+		CurrentFaction  = myl.Hyperspace
+	else
+		if Game.player.flightState == "DOCKED" then
+			StationName = Game.player:GetDockedWith().label..", "
+		else
+			if Game.player.flightState == "LANDED" then
+				StationName = myl.Landed_in..Game.player.frameBody.label..", "
+			else
+				StationName = myl.In_space_of
+			end
+		end
+		CurrentPosition = StationName
+							..Game.system.name.." ("
+							..Game.system.path.sectorX..","
+							..Game.system.path.sectorY..","
+							..Game.system.path.sectorZ..")"
+		CurrentFaction = Game.system.faction.name
+	end
+
 	local player = Character.persistent.player
 	local faceFlags = { player.female and "FEMALE" or "MALE" }
 
@@ -44,17 +88,33 @@ local personalInfo = function ()
 		ui:Grid({48,4,48},1)
 			:SetColumn(0, {
 				ui:Table():AddRows({
-					ui:Label(l.COMBAT):SetFont("HEADING_LARGE"),
+					ui:Label(myl.Experience):SetFont("HEADING_LARGE"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
 					ui:Table():SetColumnSpacing(10):AddRows({
-						{ l.RATING, l[player:GetCombatRating()] },
+						{ myl.Successful_Missions, (MissionsSuccesses or 0)},
+						{ myl.Failed_Missions, (MissionsFailures or 0)},
+					"",
+						{ l.RATING, player:GetCombatRating() },
+						{ myl.Shots_successful, (ShotsSuccessful or 0)},
+						{ myl.Shots_received, (ShotsReceived or 0)},
 						{ l.KILLS,  string.format('%d',player.killcount) },
 					}),
 					"",
-					ui:Label(l.MILITARY):SetFont("HEADING_LARGE"),
+					ui:Label(l.MILITARY):SetFont("HEADING_LARGE"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
 					ui:Table():SetColumnSpacing(10):AddRows({
-						{ l.ALLEGIANCE, l.NONE }, -- XXX
-						{ l.RANK,      l.NONE }, -- XXX
-					})
+						{ myl.Origin, OriginFaction },
+						{ l.ALLEGIANCE, ShipFaction },
+						{ myl.Registration, Game.player.label },
+					}),
+					"",
+					ui:Label(l.NAVIGATION):SetFont("HEADING_LARGE"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
+					ui:Table():SetColumnSpacing(10):AddRows({
+						{ (myl.Previous_Position), PrevPos },
+						{ (myl.Previous_Faction), PrevFac },
+						{ (myl.Current_Position), CurrentPosition},
+						{ (myl.Current_Faction), CurrentFaction },
+					}),
+					"",
+					CurrentDanger
 				})
 			})
 			:SetColumn(2, {

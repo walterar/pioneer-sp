@@ -1,0 +1,26 @@
+{
+   "you_have_been_challenged" : {
+      "description" : "",
+      "message" : "рыцарь, вы были оспорены бороться."
+   },
+   "the_time_has_come" : {
+      "description" : "",
+      "message" : "Пилот, время пришло. Пусть победит сильнейший!"
+   },
+   "I_have_taken" : {
+      "description" : "",
+      "message" : "рыцарь, я взял "
+   },
+   "of_your_money" : {
+      "description" : "",
+      "message" : " из ваших денег, я надеюсь, вы не возражаете."
+   },
+   "the_attacker_money" : {
+      "description" : "",
+      "message" : "Командующего, злоумышленник деньги "
+   },
+   "is_now_yours" : {
+      "description" : "",
+      "message" : " , теперь твоя."
+   }
+}

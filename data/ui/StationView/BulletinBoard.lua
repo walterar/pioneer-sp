@@ -1,12 +1,12 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-local Engine = import("Engine")
-local Game = import("Game")
+local Engine       = import("Engine")
+local Game         = import("Game")
 local SpaceStation = import("SpaceStation")
-local Event = import("Event")
-local ChatForm = import("ChatForm")
-local utils = import("utils")
+local Event        = import("Event")
+local ChatForm     = import("ChatForm")
+local utils        = import("utils")
 
 local ui = Engine.ui
 

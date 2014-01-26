@@ -2,7 +2,7 @@
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 local Engine = import("Engine")
-local Lang = import("Lang")
+local Lang   = import("Lang")
 
 local Face = import("UI.Game.Face")
 
@@ -26,7 +26,7 @@ function ChatForm.New (chatFunc, removeFunc, ref, tabGroup)
 		chatFunc = chatFunc,
 		removeFunc = removeFunc,
 		ref = ref,
-        tabGroup = tabGroup,
+		tabGroup = tabGroup,
 	}
 	setmetatable(form, ChatForm.meta)
 	form.chatFunc(form, 0)
@@ -82,11 +82,11 @@ function ChatForm:BuildWidget ()
 			scrollBox:PackEnd(
 				ui:HBox(10):PackEnd({
 					ui:VBox():PackEnd({
-						ui:Label(l.AVAILABLE_FOR_PURCHASE):SetFont("HEADING_LARGE"),
+						ui:Label(l.AVAILABLE_FOR_PURCHASE):SetFont("HEADING_NORMAL"),
 						stationTable,
 					}),
 					ui:VBox():PackEnd({
-						ui:Label(l.IN_CARGO_HOLD):SetFont("HEADING_LARGE"),
+						ui:Label(l.IN_CARGO_HOLD):SetFont("HEADING_NORMAL"),
 						shipTable,
 					})
 				})

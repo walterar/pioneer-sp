@@ -1,12 +1,12 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-local Engine = import("Engine")
-local Lang = import("Lang")
-local Game = import("Game")
+local Engine   = import("Engine")
+local Lang     = import("Lang")
+local Game     = import("Game")
 local EquipDef = import("EquipDef")
-local Comms = import("Comms")
-local utils = import("utils")
+local Comms    = import("Comms")
+local utils    = import("utils")
 
 local l = Lang.GetResource("ui-core")
 
@@ -17,7 +17,10 @@ local ui = Engine.ui
 
 local equipIcon = {
 	HYDROGEN =              "Hydrogen",
+	WATER =                 "Water",
+	MILITARY_FUEL =         "Military_fuel",
 	LIQUID_OXYGEN =         "Liquid_Oxygen",
+	LIQUOR =                "Liquor",
 	METAL_ORE =             "Metal_ore",
 	CARBON_ORE =            "Carbon_ore",
 	METAL_ALLOYS =          "Metal_alloys",
@@ -25,11 +28,9 @@ local equipIcon = {
 	FRUIT_AND_VEG =         "Fruit_and_Veg",
 	ANIMAL_MEAT =           "Animal_Meat",
 	LIVE_ANIMALS =          "Live_Animals",
-	LIQUOR =                "Liquor",
 	GRAIN =                 "Grain",
 	TEXTILES =              "Textiles",
 	FERTILIZER =            "Fertilizer",
-	WATER =                 "Water",
 	MEDICINES =             "Medicines",
 	CONSUMER_GOODS =        "Consumer_goods",
 	COMPUTERS =             "Computers",
@@ -44,7 +45,6 @@ local equipIcon = {
 	BATTLE_WEAPONS =        "Battle_weapons",
 	NERVE_GAS =             "Nerve_Gas",
 	NARCOTICS =             "Narcotics",
-	MILITARY_FUEL =         "Military_fuel",
 	RUBBISH =               "Rubbish",
 	RADIOACTIVES =          "Radioactive_waste",
 }
@@ -145,7 +145,7 @@ function EquipmentTableWidgets.Pair (config)
 			:SetRowSpacing(5)
 			:SetColumnSpacing(10)
 			:SetHeadingRow(utils.build_table(utils.map(function (k,v) return k,stationColumnHeading[v] end, ipairs(config.stationColumns))))
-			:SetHeadingFont("LARGE")
+			:SetHeadingFont("HEADING_XSMALL")
 			:SetRowAlignment("CENTER")
 			:SetMouseEnabled(true)
 
@@ -170,7 +170,7 @@ function EquipmentTableWidgets.Pair (config)
 			:SetRowSpacing(5)
 			:SetColumnSpacing(10)
 			:SetHeadingRow(utils.build_table(utils.map(function (k,v) return k,shipColumnHeading[v] end, ipairs(config.shipColumns))))
-			:SetHeadingFont("LARGE")
+			:SetHeadingFont("HEADING_XSMALL")
 			:SetRowAlignment("CENTER")
 			:SetMouseEnabled(true)
 

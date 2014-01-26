@@ -1,0 +1,10 @@
+{
+   "You_have_been_PENALIZED" : {
+      "description" : "",
+      "message" : "You have been PENALIZED for dumping radioactive waste into space.\nYour HYPERDRIVE has been DESTROYED."
+   },
+   "You_have_been_FINED" : {
+      "description" : "",
+      "message" : "Jettisoning radioactives into space is a crime here.\nYou must pay a fine of "
+   }
+}

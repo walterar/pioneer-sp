@@ -1,12 +1,12 @@
--- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2013 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-local Engine = import("Engine")
-local Game = import("Game")
-local Rand = import("Rand")
+local Engine    = import("Engine")
+local Game      = import("Game")
+local Rand      = import("Rand")
 local Character = import("Character")
-local Lang = import("Lang")
-local Comms = import("Comms")
+local Lang      = import("Lang")
+local Comms     = import("Comms")
 
 local InfoFace = import("ui/InfoFace")
 
@@ -23,7 +23,7 @@ local lobby = function (tab)
 	local rand = Rand.New(station.seed)
 	local face = InfoFace.New(Character.New({ title = l.STATION_MANAGER }, rand))
 
-	local launchButton = ui:Button(l.REQUEST_LAUNCH):SetFont("HEADING_LARGE")
+	local launchButton = ui:Button(l.REQUEST_LAUNCH):SetFont("HEADING_NORMAL")
 	launchButton.onClick:Connect(function ()
 		if not Game.player:Undock() then
 			Comms.ImportantMessage(station.label, lcore.LAUNCH_PERMISSION_DENIED_BUSY)

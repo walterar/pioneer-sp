@@ -1,18 +1,21 @@
--- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2013 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-local Engine = import("Engine")
-local Lang = import("Lang")
-local Game = import("Game")
-local Format = import("Format")
-local ShipDef = import("ShipDef")
-local Comms = import("Comms")
+local Lang               = import("Lang")
+local Engine             = import("Engine")
+local Game               = import("Game")
+local Format             = import("Format")
+local ShipDef            = import("ShipDef")
+local Comms              = import("Comms")
+local Space              = import("Space")
 
-local InfoFace = import("ui/InfoFace")
+local InfoFace           = import("ui/InfoFace")
 local SmallLabeledButton = import("ui/SmallLabeledButton")
 
 local ui = Engine.ui
-local l = Lang.GetResource("ui-core");
+
+local l = Lang.GetResource("ui-core")
+--local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
 
 -- Anti-abuse feature - this locks out the piloting commands based on a timer.
 -- It knows when the crew were last checked for a piloting skill, and prevents
@@ -134,12 +137,101 @@ local crewRoster = function ()
 					end
 				end
 			end,
+--********************************************************************************************
+			UNDOCK_AND_ENTER_LOW_ORBIT = function ()
+				local state = Game.player.flightState
+				if state == "DOCKED" or state == "LANDED" then
+					local sbody = Game.player:GetDockedWith().path:GetSystemBody()
+					local body = Space.GetBody(sbody.parent.index)
+					local crewMember = checkPilotLockout() and testCrewMember('piloting')
+					if not crewMember then
+						feedback:SetText(l.THERE_IS_NOBODY_ELSE_ON_BOARD_ABLE_TO_FLY_THIS_SHIP)
+						pilotLockout()
+					else
+						feedback:SetText(l.PILOT_SEAT_IS_NOW_OCCUPIED_BY_NAME:interp({name = crewMember.name,repairPercent = repairPercent}))
+					Game.player:Undock()
+					Game.player:AIEnterLowOrbit(body)
+					end
+				end
+			end,
+--********************************************************************************************
+			ENTER_LOW_ORBIT_AT_CURRENT_TARGET = function ()
+				local target = Game.player:GetNavTarget()
+				if Game.player.flightState ~= 'FLYING'
+				then
+					feedback:SetText(({
+						DOCKED = l.YOU_MUST_REQUEST_LAUNCH_CLEARANCE_FIRST_COMMANDER,
+						LANDED = l.YOU_MUST_LAUNCH_FIRST_COMMANDER,
+						HYPERSPACE = l.WE_ARE_IN_HYPERSPACE_COMMANDER,
+						DOCKING = l.THE_SHIP_IS_UNDER_STATION_CONTROL_COMMANDER,
+					})[Game.player.flightState])
+				else
+					local crewMember = checkPilotLockout() and testCrewMember('piloting')
+					if not crewMember then
+						feedback:SetText(l.THERE_IS_NOBODY_ELSE_ON_BOARD_ABLE_TO_FLY_THIS_SHIP)
+						pilotLockout()
+					else
+						feedback:SetText(l.PILOT_SEAT_IS_NOW_OCCUPIED_BY_NAME:interp({name = crewMember.name,repairPercent = repairPercent}))
+						Game.player:AIEnterLowOrbit(target)
+					end
+				end
+			end,
+
+			ENTER_MEDIUM_ORBIT_AT_CURRENT_TARGET = function ()
+				local target = Game.player:GetNavTarget()
+				if Game.player.flightState ~= 'FLYING' then
+					feedback:SetText(({
+						DOCKED = l.YOU_MUST_REQUEST_LAUNCH_CLEARANCE_FIRST_COMMANDER,
+						LANDED = l.YOU_MUST_LAUNCH_FIRST_COMMANDER,
+						HYPERSPACE = l.WE_ARE_IN_HYPERSPACE_COMMANDER,
+						DOCKING = l.THE_SHIP_IS_UNDER_STATION_CONTROL_COMMANDER,
+					})[Game.player.flightState])
+				else
+					local crewMember = checkPilotLockout() and testCrewMember('piloting')
+					if not crewMember then
+						feedback:SetText(l.THERE_IS_NOBODY_ELSE_ON_BOARD_ABLE_TO_FLY_THIS_SHIP)
+						pilotLockout()
+					else
+						feedback:SetText(l.PILOT_SEAT_IS_NOW_OCCUPIED_BY_NAME:interp({name = crewMember.name,repairPercent = repairPercent}))
+						Game.player:AIEnterMediumOrbit(target)
+					end
+				end
+			end,
+
+			ENTER_HIGH_ORBIT_AT_CURRENT_TARGET = function ()
+				local target = Game.player:GetNavTarget()
+				if Game.player.flightState ~= 'FLYING' then
+					feedback:SetText(({
+						DOCKED = l.YOU_MUST_REQUEST_LAUNCH_CLEARANCE_FIRST_COMMANDER,
+						LANDED = l.YOU_MUST_LAUNCH_FIRST_COMMANDER,
+						HYPERSPACE = l.WE_ARE_IN_HYPERSPACE_COMMANDER,
+						DOCKING = l.THE_SHIP_IS_UNDER_STATION_CONTROL_COMMANDER,
+					})[Game.player.flightState])
+				else
+					local crewMember = checkPilotLockout() and testCrewMember('piloting')
+					if not crewMember then
+						feedback:SetText(l.THERE_IS_NOBODY_ELSE_ON_BOARD_ABLE_TO_FLY_THIS_SHIP)
+						pilotLockout()
+					else
+						feedback:SetText(l.PILOT_SEAT_IS_NOW_OCCUPIED_BY_NAME:interp({name = crewMember.name,repairPercent = repairPercent}))
+						Game.player:AIEnterHighOrbit(target)
+					end
+				end
+			end
 		}
 
 		local taskList = ui:VBox() -- This could do with being something prettier
 
 		for label,task in pairs(crewTasks) do
-			local taskButton = SmallLabeledButton.New(l[label])
+			local labelok
+			if not pcall(function () return (l[label]) end) then
+				l = Lang.GetResource("module-myl") or Lang.GetResource("module-myl", "en")
+				labelok = (l[label])
+				l = Lang.GetResource("ui-core")
+			else
+				labelok = (l[label])
+			end
+			local taskButton = SmallLabeledButton.New(labelok)
 			taskButton.button.onClick:Connect(task)
 			taskList:PackEnd(taskButton)
 		end

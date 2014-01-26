@@ -1,0 +1,37 @@
+-- Copyright © 2008-2013 Pioneer Developers. See AUTHORS.txt for details
+-- Licensed under the terms of CC-BY-SA 3.0. See licenses/CC-BY-SA-3.0.txt
+-- Balanced for Pioneer Scout + by walterar
+
+define_ship {
+	name='Inter Shuttle',
+	ship_class='medium_courier',
+	manufacturer='p66',
+	model='inter_shuttle',
+	forward_thrust = 8e5,
+	reverse_thrust = 5e5,
+	up_thrust = 5e5,
+	down_thrust = 5e5,
+	left_thrust = 5e5,
+	right_thrust = 5e5,
+	angular_thrust = 5e6,
+	max_cargo = 20,
+	max_laser = 0,
+	max_missile = 0,
+	max_fuelscoop = 0,
+	max_cargoscoop = 0,
+	max_cargolifesupport = 0,
+	max_shield = 0,
+	max_ecm = 0,
+	max_energybooster = 0,
+	max_engine = 0,
+	max_fuelscoop = 0,
+	max_hullautorepair = 0,
+	max_lasercooler = 0,
+	max_cabin = 4,
+	capacity = 20,
+	hull_mass = 13,
+	fuel_tank_mass = 2,
+	thruster_fuel_use = 0.0001,
+	price = 20000,
+	hyperdrive_class = 0,
+}

@@ -39,7 +39,7 @@ Game::Game(const SystemPath &path, double time) :
 	SpaceStation *station = static_cast<SpaceStation*>(m_space->FindBodyForPath(&path));
 	assert(station);
 
-	m_player.reset(new Player("kanara"));
+	m_player.reset(new Player("police"));
 
 	m_space->AddBody(m_player.get());
 
@@ -63,7 +63,7 @@ Game::Game(const SystemPath &path, const vector3d &pos, double time) :
 	Body *b = m_space->FindBodyForPath(&path);
 	assert(b);
 
-	m_player.reset(new Player("kanara"));
+	m_player.reset(new Player("police"));
 
 	m_space->AddBody(m_player.get());
 

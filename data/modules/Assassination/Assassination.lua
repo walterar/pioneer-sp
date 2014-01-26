@@ -229,11 +229,15 @@ local onShipDestroyed = function (ship, body)
 end
 
 local _setupHooksForMission = function (mission)
-	if mission.ship:exists() and
-	   mission.due > Game.time then
-		-- Target hasn't launched yet. set up a timer to do this
-		Timer:CallAt(mission.due, function () if mission.ship:exists() then mission.ship:Undock()
-			mission.timer = nil end end)
+	if mission.ship:exists() and mission.due > Game.time then
+-- Target hasn't launched yet. set up a timer to do this
+		Timer:CallAt(mission.due, function ()
+			if not pcall(function () return
+				mission.ship:Undock()
+				end) then
+				mission.timer = nil
+			end
+		end)
 		mission.timer = 'SET'
 	end
 end

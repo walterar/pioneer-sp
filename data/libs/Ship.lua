@@ -191,16 +191,15 @@ end
 --   experimental
 --
 Ship.Jettison = function (self,equip)
-	local faction = Game.system.faction
 	local state = self.flightState
-	if state ~= "DOCKED" and state ~= "FLYING" and state ~= "LANDED" then return false end
+	if state == "HYPERSPACE" then return false end
 	if self:RemoveEquip(equip, 1) < 1 then return false end
 	if state == "FLYING" then
 		self:SpawnCargo(equip)
 		Event.Queue("onJettison", self, equip)
 	elseif state == "DOCKED" then
 		local money = Game.player:GetMoney() * Game.system.lawlessness
-		Comms.ImportantMessage(myl.You_has_been_fined .. Format.Money(money) .. myl.for_jettison .. equip .. myl.docked, faction.policeName)
+		Comms.ImportantMessage(myl.You_has_been_fined .. Format.Money(money) .. myl.for_jettison .. equip .. myl.docked, Game.system.faction.policeName)
 		Game.player:AddCrime("TRADING_ILLEGAL_GOODS", money)
 		Event.Queue("onCargoUnload", self:GetDockedWith(), equip)
 	elseif state == "LANDED" then

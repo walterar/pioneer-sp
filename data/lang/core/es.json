@@ -737,7 +737,7 @@
    },
    "LARGE_PLASMA_ACCEL" : {
       "description" : "",
-      "message" : "Acelerador de plasma grande"
+      "message" : "Acelerador de Plasma XL"
    },
    "LASER_COOLING_BOOSTER" : {
       "description" : "",
@@ -1533,7 +1533,7 @@
    },
    "SMALL_PLASMA_ACCEL" : {
       "description" : "",
-      "message" : "Acelerador de plasma pequeño"
+      "message" : "Acelerador de Plasma X"
    },
    "SMALL_SCALE_PROSPECTING_NO_SETTLEMENTS" : {
       "description" : "",

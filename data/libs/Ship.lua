@@ -1,6 +1,6 @@
 -- Copyright © 2008-2013 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
--- Ship.lua modified to Pioneer Scout + (c)2013 by walterar <walterar2@gmail.com>
+-- Ship.lua modified to Pioneer Scout + (c)2013-2014 by walterar <walterar2@gmail.com>
 
 local Ship       = import_core("Ship")
 local Engine     = import("Engine")
@@ -104,26 +104,26 @@ function Ship:FireMissileAt(missile, target)
 	if missile_object then
 		if target:exists() then
 			missile_object:AIKamikaze(target)
+			_G.MissileActive = true
 		end
 		-- Let's keep a safe distance before activating this device, shall we ?
-		Timer:CallEvery(2, function ()
-			if not missile_object:exists() or not target:exists() then
-				return true
-			end
-			if missile_object:DistanceTo(target) > 500 then
-				return false
-			else
+		Timer:CallEvery(1, function ()
+				if not missile_object:exists() or not target:exists() then
+					return true
+				end
+				if missile_object:DistanceTo(target) > 500 then
+					return false
+				end
 				if ShipDef[missile_object.shipId].name == "MISSILE_NAVAL" then
 					missile_object:Explode()
 					target:Explode()
+					_G.MissileActive = false
 				else
 					missile_object:Arm()
 				end
 				return true
-			end
 		end)
 	end
-
 	return missile_object
 end
 

@@ -300,6 +300,7 @@ local jumpToSystem = function (ship, target_path)
 end
 
 local getSystemAndJump = function (ship)
+	if MissileActive then return end
 	return jumpToSystem(ship, getSystem(ship))
 end
 

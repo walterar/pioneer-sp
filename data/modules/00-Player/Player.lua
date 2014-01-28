@@ -32,6 +32,7 @@ _G.PrevPos           = "no"
 _G.PrevFac           = "no"
 _G.SpaMember         = 0
 _G.DangerLevel       = 0
+_G.MissileActive     = false
 
 local welcome = function ()
 	if (not Game.system) then return end
@@ -102,7 +103,7 @@ local onGameStart = function ()
 		_G.PrevFac           = shipData.prev_fac or "no"
 		_G.DangerLevel       = shipData.danger_level or 0
 		_G.true_joust        = shipData.true_joust or 0
-
+		_G.MissileActive     = shipData.missile_active or false
 	else
 
 		_G.MissionsSuccesses = 0
@@ -195,6 +196,7 @@ local serialize = function ()
 			prev_fac           = PrevFac,
 			danger_level       = DangerLevel,
 			true_joust         = true_joust,
+			missile_active     = MissileActive,
 			}
 	return {shipData = shipData}
 end

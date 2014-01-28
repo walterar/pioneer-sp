@@ -4,7 +4,7 @@
 
 define_ship {
 	name='Mola-Mola X2',
-	ship_class='medium_courier',
+	ship_class='medium_scout',
 	manufacturer='kaluri',
 	model='molamola',
 	forward_thrust = 259e5,

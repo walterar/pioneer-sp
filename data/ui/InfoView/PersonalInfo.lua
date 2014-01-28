@@ -22,16 +22,16 @@ local personalInfo = function ()
 
 	local CurrentDanger
 	if DangerLevel == 0 then
-		CurrentDanger = ui:Label(myl.Risk_Area.." *")
-											:SetFont("HEADING_NORMAL")
+		CurrentDanger = ui:Label(myl.Risk_Area)
+											:SetFont("HEADING_SMALL")
 											:SetColor({ r = 0.0, g = 1.0, b = 0.0 }) -- green
 	elseif DangerLevel == 1 then
-		CurrentDanger = ui:Label(myl.Risk_Area.." **")
-											:SetFont("HEADING_NORMAL")
+		CurrentDanger = ui:Label(myl.Risk_Area.." *")
+											:SetFont("HEADING_SMALL")
 											:SetColor({ r = 1.0, g = 1.0, b = 0.0 }) -- yellow
 	elseif DangerLevel == 2 then
-		CurrentDanger = ui:Label(myl.Risk_Area.." ***")
-											:SetFont("HEADING_NORMAL")
+		CurrentDanger = ui:Label(myl.Risk_Area.." **")
+											:SetFont("HEADING_SMALL")
 											:SetColor({ r = 1.0, g = 0.0, b = 0.0 }) -- red
 	end
 
@@ -88,7 +88,7 @@ local personalInfo = function ()
 		ui:Grid({48,4,48},1)
 			:SetColumn(0, {
 				ui:Table():AddRows({
-					ui:Label(myl.Experience):SetFont("HEADING_LARGE"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
+					ui:Label(myl.Experience):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
 					ui:Table():SetColumnSpacing(10):AddRows({
 						{ myl.Successful_Missions, (MissionsSuccesses or 0)},
 						{ myl.Failed_Missions, (MissionsFailures or 0)},
@@ -99,14 +99,14 @@ local personalInfo = function ()
 						{ l.KILLS,  string.format('%d',player.killcount) },
 					}),
 					"",
-					ui:Label(l.MILITARY):SetFont("HEADING_LARGE"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
+					ui:Label(l.MILITARY):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
 					ui:Table():SetColumnSpacing(10):AddRows({
 						{ myl.Origin, OriginFaction },
 						{ l.ALLEGIANCE, ShipFaction },
 						{ myl.Registration, Game.player.label },
 					}),
 					"",
-					ui:Label(l.NAVIGATION):SetFont("HEADING_LARGE"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
+					ui:Label(l.NAVIGATION):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
 					ui:Table():SetColumnSpacing(10):AddRows({
 						{ (myl.Previous_Position), PrevPos },
 						{ (myl.Previous_Faction), PrevFac },

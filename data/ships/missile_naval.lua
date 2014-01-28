@@ -4,9 +4,9 @@
 define_missile {
 	name = 'MISSILE_NAVAL',
 	model = 'missile',
-	forward_thrust = 4e5,
-	reverse_thrust = 2e5,
-	angular_thrust = 2e4,
+	forward_thrust = 6e5,
+	reverse_thrust = 3e5,
+	angular_thrust = 3e4,
 	up_thrust = 0.1,
 	down_thrust = 0.1,
 	left_thrust = 0.1,

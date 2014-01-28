@@ -28,7 +28,7 @@ local onChat = function (form, ref, option)
 	if option == 0 then
 		form:Clear()
 
-		form:SetTitle(ad.title)
+--		form:SetTitle(ad.title)
 		form:SetFace({ seed = ad.faceseed })
 		form:SetMessage(ad.message)
 

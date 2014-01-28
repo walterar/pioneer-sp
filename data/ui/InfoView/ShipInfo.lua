@@ -102,7 +102,7 @@ local shipInfo = function (args)
 						{ l.CREW_CABINS..":",  ShipDef[Game.player.shipId].maxCrew },
 					}),
 					"",
-					ui:Label(l.EQUIPMENT):SetFont("HEADING_LARGE"),
+					ui:Label(l.EQUIPMENT):SetFont("HEADING_NORMAL"),
 					ui:Table():AddRows(equipItems),
 				})
 			})

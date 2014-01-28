@@ -3,7 +3,7 @@
 
 define_ship {
 	name = "Anax",
-	ship_class='light_freighter',
+	ship_class='medium_scout',
 	manufacturer='kaluri',
 	model = "anax",
 	camera_offset = v(0,0,-30),

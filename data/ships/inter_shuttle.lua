@@ -4,7 +4,7 @@
 
 define_ship {
 	name='Inter Shuttle',
-	ship_class='medium_courier',
+	ship_class='light_scout',
 	manufacturer='p66',
 	model='inter_shuttle',
 	forward_thrust = 8e5,

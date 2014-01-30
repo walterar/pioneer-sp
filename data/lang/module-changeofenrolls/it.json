@@ -5,7 +5,7 @@
    },
    "Work_we_do" : {
       "description" : "",
-      "message" : "Salve Comandante. Può modificare la registrazione della sua nave per soli 100 $.\n\n"
+      "message" : "Salve Comandante.\nPuò modificare la registrazione della sua nave per soli 100 $."
    },
    "Not_have_enough_credit" : {
       "description" : "",
@@ -21,7 +21,7 @@
    },
    "Change_of_enrolls_His_new_register_is" : {
       "description" : "",
-      "message" : "CAMBIO DI REGISTRAZIONE\nLa vostra nuova registrazione è: "
+      "message" : "* * * CAMBIO DI REGISTRAZIONE.* * *\n-\n* La vostra nuova registrazione è: "
    },
    "Change_of_enrolls" : {
       "description" : "",

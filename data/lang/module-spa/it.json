@@ -17,7 +17,7 @@
    },
    "FLAVOUR_NONMEMBER_INTRO_0" : {
       "description" : "",
-      "message" : "{clubname} è un organizzazione sindacale indipendente dedicata a difendere economicamente i propri membri e fornire loro dei privilegi speciali. I nostri uffici sono dislocati lungo tutta la galassia. Attualmente, i vantaggi per gli iscritti includono:\n\n* Le nostre scoprte di combustibile, indipendenti dal mercato generale\n* {hydrogen} a prezzi scontati\n* {military_fuel} a prezzi scontati\n* {metal_alloys} a prezzi scontati\n* {radioactives}, smaltimento gratuito (si applicano delle condizioni)\n* Rabbocco di carburante, se necessario\n\nUnisciti a noi! Offerta speciale, ora con il regalo high-power-ion-propulsione! \nNuovo! APS membri avranno ora un nuovo sistema elettronico di difesa attiva!\n        Iscriviti ora! La quota d'iscrizione annuale è di soli {membership_fee}"
+      "message" : "Siamo un sindacato indipendente che difende la soldi dai loro di membri e offre favolose privilegi speciali.\n*\nIscriviti ora, per soli $ 2600, ed avrai:\n* * {hydrogen} a prezzi scontati\n* * {military_fuel} a prezzi scontati\n* * {metal_alloys} a prezzi scontati\n* * {radioactives}, smaltimento gratuito\n* * * High-power-ion-propulsion installato senza alcun costo!"
    },
    "FLAVOUR_WELCOME_0" : {
       "description" : "",
@@ -53,7 +53,7 @@
    },
    "WE_WILL_ONLY_DISPOSE_OF" : {
       "description" : "",
-      "message" : "Ora installiamo ai membri della APS un nuovo sofisticato e sperimentale sistema di difesa attiva. In caso di attacco (se viene rilevato l'impatto di plasma, e se siete armati di cannoni), il sistema prenderà il controllo dell'astronave e cercherà di distruggere l'astronave ostile o di disabilitare i suoi sistemi elettronici. Questo sistema non è ancora in commercio ed è, per ora, ad uso eslcusivo dei membri della APS."
+      "message" : "Ora installiamo ai membri della APS un nuovo sofisticato e sperimentale sistema di difesa attiva. In caso di attacco (se viene rilevato l'impatto di plasma, e se siete armati di cannoni), il sistema prenderà il controllo dell'astronave e cercherà di distruggere l'astronave ostile o di disabilitare i suoi sistemi elettronici. Questo sistema non è ancora in commercio ed è, per ora, ad uso eslcusivo dei membri della APS.\n*"
    },
    "WHAT_CONDITIONS_APPLY" : {
       "description" : "",

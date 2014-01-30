@@ -17,7 +17,7 @@
    },
    "FLAVOUR_NONMEMBER_INTRO_0" : {
       "description" : "",
-      "message" : "Somos una organización sindical independiente que defiende\nel dinero de sus socios y los provee de beneficios exclusivos.\n*\nÚnete a nosotros yá por solo {membership_fee} y obtendrás:\n*\n* High-power-ion-propulsión instalado sin costo alguno.\n* 40% de descuento en {hydrogen}\n* 50% de descuento en {military_fuel}\n* 40% de descuento en {metal_alloys}\n* Deposición gratuíta de {radioactives}"
+      "message" : "Somos una organización sindical independiente que defiende\nel dinero de sus socios y los provee de beneficios exclusivos.\n*\nÚnete a nosotros yá por solo {membership_fee} y obtendrás:\n*\n* * 40% de descuento en {hydrogen}\n* * 50% de descuento en {military_fuel}\n* * 40% de descuento en {metal_alloys}\n* * Deposición gratuíta de {radioactives}\n* * * ¡High-power-ion-propulsion instalado sin costo alguno!"
    },
    "FLAVOUR_WELCOME_0" : {
       "description" : "",

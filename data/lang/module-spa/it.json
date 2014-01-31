@@ -17,7 +17,7 @@
    },
    "FLAVOUR_NONMEMBER_INTRO_0" : {
       "description" : "",
-      "message" : "Siamo un sindacato indipendente che difende la soldi dai loro di membri e offre favolose privilegi speciali.\n*\nIscriviti ora, per soli $ 2600, ed avrai:\n* * {hydrogen} a prezzi scontati\n* * {military_fuel} a prezzi scontati\n* * {metal_alloys} a prezzi scontati\n* * {radioactives}, smaltimento gratuito\n* * * High-power-ion-propulsion installato senza alcun costo!"
+      "message" : "Siamo un sindacato indipendente che difende economicamente i propri membri e offre loro favolosi privilegi speciali.\n*\nIscriviti ora, per soli $ 2600, ed avrai:\n* * {hydrogen} a prezzi scontati\n* * {military_fuel} a prezzi scontati\n* * {metal_alloys} a prezzi scontati\n* * {radioactives}, smaltimento gratuito\n* * * Propulsione Ionica ad alta Potenza installata gratuitamente!"
    },
    "FLAVOUR_WELCOME_0" : {
       "description" : "",

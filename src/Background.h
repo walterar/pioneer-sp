@@ -60,7 +60,7 @@ namespace Background
 
 	private:
 		void Init();
-		static const int BG_STAR_MAX = 10000;
+		static const int BG_STAR_MAX = 7000;
 		std::unique_ptr<Graphics::StaticMesh> m_model;
 
 		//hyperspace animation vertex data
@@ -78,7 +78,7 @@ namespace Background
 		std::unique_ptr<Graphics::StaticMesh> m_model;
 	};
 
-	
+
 
 	// contains starfield, milkyway, possibly other Background elements
 	class Container

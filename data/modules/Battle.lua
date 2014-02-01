@@ -17,7 +17,7 @@ local max_hostiles = 5
 
 Event.Register("onEnterSystem", function (ship)
 	if Game.system.population == 0 then return end
-	if ship:IsPlayer() and Engine.rand:Integer(4) > 3 then
+	if ship:IsPlayer() and Engine.rand:Integer(3) > 3 then
 		Timer:CallAt(Game.time+Engine.rand:Integer(2,5), function ()
 			local hostiles = utils.build_array(utils.filter(function (k,def)
 				return
@@ -53,11 +53,8 @@ Event.Register("onEnterSystem", function (ship)
 			if (ship:GetEquipFree("LASER") < ShipDef[ship.shipId].equipSlotCapacity.LASER)
 				and Engine.rand:Integer(3) > 2 then
 				Timer:CallAt(Game.time+Engine.rand:Integer(10,20), function ()
-					if not pcall(function () return
+					if not pcall(function ()
 						hostil[1]:AIKill(ship)
-						end) then
-					end
-					if not pcall(function () return
 						hostil[n]:AIKill(ship)
 						end) then
 					end

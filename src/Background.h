@@ -61,7 +61,7 @@ namespace Background
 
 	private:
 		void Init();
-		static const int BG_STAR_MAX = 7000;
+		static const int BG_STAR_MAX = 10000;
 		std::unique_ptr<Graphics::StaticMesh> m_model;
 
 		//hyperspace animation vertex data

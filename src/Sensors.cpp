@@ -35,7 +35,7 @@ Color Sensors::IFFColor(IFF iff)
 {
 	switch (iff)
 	{
-		case IFF_NEUTRAL: return Color::BLUE;
+		case IFF_NEUTRAL: return Color::HUD1;
 		case IFF_ALLY:    return Color::GREEN;
 		case IFF_HOSTILE: return Color::RED;
 		case IFF_UNKNOWN:

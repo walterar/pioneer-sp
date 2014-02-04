@@ -1,8 +1,8 @@
--- Copyright © 2008-2013 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 -- create a custom system
-local sys = CustomSystem:new('Achernar',{'STAR_B'})
+local sys = CustomSystem:new('Achernar',{'STAR_B', 'BROWN_DWARF'})
 	:govtype('EMPIRERULE')
 	:short_desc('Imperial seat of the Empire')
 	:long_desc([[...mostly, they raise chickens, giant low-gravity chickens]])

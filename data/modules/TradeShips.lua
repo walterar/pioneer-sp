@@ -816,30 +816,13 @@ local onShipHit = function (ship, attacker)
 end
 Event.Register("onShipHit", onShipHit)
 
---local explosion = false
+
 local onShipCollided = function (ship, other)
 	if trade_ships[ship] == nil then return end
 	if other:isa('CargoBody') then return end
-
-	if other:isa('Ship') and other:IsPlayer() then
-		ship:Explode()
-		trade_ships[ship] = nil
---		onShipHit(ship, other)
-		print(ship.label.." collided with "..other.label.." and explodes")
-		return
-	end
---[[	print(ship.label.." collided with "..other.label)
-	if trade_ships[ship].status == 'outbound' or trade_ships[ship].status == 'hyperspace' then return end
-	if explosion == false then
-		print(ship.label..' ordering FlyTo of '..ship.frameBody.label)
-		ship:AIFlyTo(ship.frameBody)
-		trade_ships[ship]['status'] = 'outbound'
-		explosion = true
-	else
-		ship:Explode()
-		trade_ships[ship] = nil
-		explosion = false
-	end--]]
+	ship:Explode()
+	trade_ships[ship] = nil
+	print(ship.label.." collided with "..other.label.." and explodes")
 end
 Event.Register("onShipCollided", onShipCollided)
 

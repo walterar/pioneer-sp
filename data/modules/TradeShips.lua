@@ -818,8 +818,10 @@ Event.Register("onShipHit", onShipHit)
 
 
 local onShipCollided = function (ship, other)
-	if trade_ships[ship] == nil then return end
-	if other:isa('CargoBody') then return end
+	if trade_ships[ship] == nil
+		or other:isa('CargoBody')
+		or ship:IsPlayer() then return
+	end
 	ship:Explode()
 	trade_ships[ship] = nil
 	print(ship.label.." collided with "..other.label.." and explodes")

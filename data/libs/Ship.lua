@@ -114,12 +114,11 @@ function Ship:FireMissileAt(missile, target)
 				if missile_object:DistanceTo(target) > 500 then
 					return false
 				end
+				missile_object:Arm()
 				if ShipDef[missile_object.shipId].name == "MISSILE_NAVAL" then
 					missile_object:Explode()
 					target:Explode()
 					_G.MissileActive = false
-				else
-					missile_object:Arm()
 				end
 				return true
 		end)

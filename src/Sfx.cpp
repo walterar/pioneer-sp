@@ -127,7 +127,7 @@ void Sfx::Render(Renderer *renderer, const matrix4x4d &ftransform)
 			renderer->SetTransform(matrix4x4d::Translation(fpos));
 			//explosionParticle->diffuse = Color(255, 255, 0, (1.0f-(m_age/3.5f))*255);
 			float spriteframe=m_age*20+1;
-			std::string fname="explosion/image"+std::to_string(static_cast<int>(spriteframe))+".png";
+			std::string fname="textures/explosion/image"+std::to_string(static_cast<int>(spriteframe))+".png";
 			explosionParticle->texture0 = Graphics::TextureBuilder::Billboard(fname).GetOrCreateTexture(renderer, "billboard");
 
 			//face camera

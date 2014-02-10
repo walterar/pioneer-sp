@@ -35,8 +35,8 @@ void TextEntry::Layout()
 
 	// XXX see ::Draw. after Container::Draw we're still translated to the
 	// label origin so we calculate the cursor from there
-	const float cursorTop    = 0.0f;
 	const float cursorBottom = m_label->GetSize().y;
+	const float cursorTop    = cursorBottom - GetContext()->GetFont(GetFont())->GetHeight();
 
 	m_cursorVertices[0] = vector3f(0.0f, cursorTop,    0.0f);
 	m_cursorVertices[1] = vector3f(0.0f, cursorBottom, 0.0f);
@@ -159,6 +159,17 @@ void TextEntry::HandleKeyDown(const KeyboardEvent &event)
 						m_label->SetText(text);
 						onChange.emit(text);
 						break;
+					}
+
+					case SDLK_v: { // XXX SDLK_PASTE?
+						if (SDL_HasClipboardText()) {
+							char *paste = SDL_GetClipboardText();
+							int len = strlen(paste); // XXX strlen not utf8-aware
+							text.insert(m_cursor, paste, len);
+							m_label->SetText(text);
+							m_cursor += len;
+							SDL_free(paste);
+						}
 					}
 
 					default:

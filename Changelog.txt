@@ -9,6 +9,9 @@ February 2014
      * Added landing tag points to all ships (#2703)
      * Draw sectorview stars with sphere imposters (#2713)
      * New UI now available as an overlay in all views (#2716)
+     * Quicksave can now be loaded directly from main menu
+     * Paste support for text entry widgets (ie console)
+     * Improve skybox, restore star rendering (#2736)
 
    * Script API changes
      * Model.SetDebugFlags for adding debug effects to model drawing
@@ -23,6 +26,7 @@ February 2014
      * Fixing thruster tags (#2721)
      * Fix run-away terrain threads when ending the game (#2707,#2722)
      * Fix Lua error from TradeShips when colliding and hyperjumping (#2701,#2731)
+     * Reset mouse grab state on player death (#2739)
 
    * Internal changes
      * Moved model debug effects (wireframe, collision mesh) out of

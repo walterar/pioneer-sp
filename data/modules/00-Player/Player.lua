@@ -17,6 +17,7 @@ local Timer      = import("Timer")
 --local FlightLog  = import("FlightLog")
 
 local l = Lang.GetResource("module-00-player") or Lang.GetResource("module-00-player","en")
+local ll = Lang.GetResource("core") or Lang.GetResource("core","en")
 
 local shipData = {}
 local loaded_data
@@ -150,7 +151,7 @@ local trigger = 0
 local onShipHit = function (ship, attacker)
 	if ship:IsPlayer() then
 		if attacker then ship:SetCombatTarget(attacker) end
-		if attacker and attacker.shipId == "police" then return end
+		if attacker and attacker.label == ll.POLICE_SHIP_REGISTRATION then return end
 		if (ship:GetEquipFree("LASER") < ShipDef[ship.shipId].equipSlotCapacity.LASER) and
 			SpaMember == 1 and attacker then
 			ship:CancelAI()

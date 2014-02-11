@@ -108,19 +108,19 @@ function Ship:FireMissileAt(missile, target)
 		end
 		-- Let's keep a safe distance before activating this device, shall we ?
 		Timer:CallEvery(1, function ()
-				if not missile_object:exists() or not target:exists() then
-					return true
-				end
-				if missile_object:DistanceTo(target) > 500 then
-					return false
-				end
-				missile_object:Arm()
-				if ShipDef[missile_object.shipId].name == "MISSILE_NAVAL" then
-					missile_object:Explode()
-					target:Explode()
-					_G.MissileActive = false
-				end
+			if not missile_object:exists() or not target:exists() then
 				return true
+			end
+			if missile_object:DistanceTo(target) > 500 then
+				return false
+			end
+			missile_object:Arm()
+			if ShipDef[missile_object.shipId].name == "MISSILE_NAVAL" then
+				missile_object:Explode()
+				target:Explode()
+				_G.MissileActive = false
+			end
+			return true
 		end)
 	end
 	return missile_object

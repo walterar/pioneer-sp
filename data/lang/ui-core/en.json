@@ -215,6 +215,10 @@
       "description" : "",
       "message" : "Dismiss"
    },
+   "DISPLAY_HUD_TRAILS" : {
+      "description" : "",
+      "message" : "Display HUD trails"
+   },
    "DISPLAY_NAV_TUNNELS" : {
       "description" : "",
       "message" : "Display nav tunnels"
@@ -222,10 +226,6 @@
    "DISPLAY_SPEED_LINES" : {
       "description" : "",
       "message" : "Display speed lines"
-   },
-   "DISPLAY_HUD_TRAILS" : {
-      "description" : "",
-      "message" : "Display HUD trails"
    },
    "DOCK_AT_CURRENT_TARGET" : {
       "description" : "",

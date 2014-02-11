@@ -9,7 +9,7 @@
    },
    "AFTER_TRADE_IN" : {
       "description" : "",
-      "message" : "+ стоимость вашего корпуса"
+      "message" : "+ цена вашего корпуса"
    },
    "ALLEGIANCE" : {
       "description" : "",
@@ -265,7 +265,7 @@
    },
    "ENGINEERING" : {
       "description" : "",
-      "message" : "Инженерное дело"
+      "message" : "Инженерное дело:"
    },
    "EQUIPMENT" : {
       "description" : "",
@@ -409,7 +409,7 @@
    },
    "HYPERDRIVE_FITTED" : {
       "description" : "",
-      "message" : "Гипердвигатель:"
+      "message" : "Установленный двигатель:"
    },
    "HYPERSPACE_RANGE" : {
       "description" : "",
@@ -497,7 +497,7 @@
    },
    "LOBBY" : {
       "description" : "",
-      "message" : "Lobby"
+      "message" : "Приёмная"
    },
    "LOCATED_N_KM_FROM_THE_CENTRE_OF_NAME" : {
       "description" : "",
@@ -969,7 +969,7 @@
    },
    "YOU_MUST_FIRST_SELECT_A_SUITABLE_NAVIGATION_TARGET_COMMANDER" : {
       "description" : "",
-      "message" : "Сначала вы должны указать навигационную цель, Командир."
+      "message" : "Сначала вы должны указать цель навигации, Командир."
    },
    "YOU_MUST_LAUNCH_FIRST_COMMANDER" : {
       "description" : "",
@@ -977,7 +977,7 @@
    },
    "YOU_MUST_REQUEST_LAUNCH_CLEARANCE_FIRST_COMMANDER" : {
       "description" : "",
-      "message" : "Сначала мы должны запросить разрешение на взлет, капитан!"
+      "message" : "Сначала вы должны запросить разрешение на взлёт, Командир."
    },
    "YOU_NOT_ENOUGH_MONEY" : {
       "description" : "",

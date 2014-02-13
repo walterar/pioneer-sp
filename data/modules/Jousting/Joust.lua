@@ -23,10 +23,12 @@ local money = 0
 local killcount = 0
 
 local onEnterSystem = function (player)
-	if not player:IsPlayer() then return end
-	if Game.system.population > 0 then return end
-	if Engine.rand:Integer(5) > 0 then return end
-	_G.true_joust = 0
+	if not player:IsPlayer()
+		or Game.system.population > 0
+		or Engine.rand:Integer(3) > 0 then
+		return
+	end
+	_G.TrueJoust = false
 
 	local shipdefs = utils.build_array(utils.filter(function (k,def)
 		return
@@ -42,9 +44,9 @@ local onEnterSystem = function (player)
 	local max_laser_size = shipdef.capacity - EquipDef[default_drive].mass
 	local laserdefs = utils.build_array(utils.filter(function (k, def)
 		return
-				def.slot == 'LASER' and
-				def.mass <= max_laser_size and
-				string.sub(def.id,0,11) == 'PULSECANNON'
+			def.slot == 'LASER' and
+			def.mass <= max_laser_size and
+			string.sub(def.id,0,11) == 'PULSECANNON'
 		end, pairs(EquipDef)))
 	local laserdef = laserdefs[Engine.rand:Integer(1,#laserdefs)]
 	local hostil = Space.SpawnShipNear(shipdef.id, player, 5, 5)
@@ -61,7 +63,7 @@ local onEnterSystem = function (player)
 				msg = l["the_time_has_come"..Engine.rand:Integer(1,3)]
 				Comms.ImportantMessage(msg, hostil.label)
 				hostil:AIKill(player)
-				_G.true_joust = 1
+				_G.TrueJoust = true
 			else
 				multiplier = 100 - (100 * Game.system.lawlessness)
 				money = math.floor(player:GetMoney() * (multiplier/1000))
@@ -70,14 +72,14 @@ local onEnterSystem = function (player)
 				msg = l["I_have_taken"..nmsg].." $"..money.." "..l["of_your_money"..nmsg]
 				Comms.ImportantMessage(msg, hostil.label)
 				hostil:CancelAI()
-				_G.true_joust = 0
+				_G.TrueJoust = false
 			end
 		end
 	end)
 end
 
 local onShipHit = function (ship, attacker)
-	if ship:IsPlayer() and true_joust == 1 then
+	if ship:IsPlayer() and TrueJoust == true then
 		killcount = Character.persistent.player.killcount
 		multiplier = 100 - (100 * Game.system.lawlessness)
 		money = math.floor(ship:GetMoney() * (multiplier/1000))
@@ -85,7 +87,7 @@ local onShipHit = function (ship, attacker)
 end
 
 local onShipDestroyed = function (ship, attacker)
-	if attacker == Game.player and true_joust == 1 then
+	if attacker == Game.player and TrueJoust == true then
 		Timer:CallAt(Game.time+4, function ()
 			if killcount < Character.persistent.player.killcount and money > 0  then
 				Comms.ImportantMessage(l.the_attacker_money.." ( " .. Format.Money(money*4) .. " ) "..l.is_now_yours)
@@ -93,7 +95,7 @@ local onShipDestroyed = function (ship, attacker)
 				money = 0
 			end
 		end)
-		_G.true_joust = 0
+		_G.TrueJoust = false
 	end
 end
 

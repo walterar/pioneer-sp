@@ -185,11 +185,11 @@
    },
    "CARGO_SCOOP" : {
       "description" : "",
-      "message" : "Recogedor de carga"
+      "message" : "Recolector de carga"
    },
    "CARGO_SCOOP_ACTIVE_1_TONNE_X_COLLECTED" : {
       "description" : "",
-      "message" : "Recogedor de carga activo. Recogida 1 ton de %item."
+      "message" : "Recolector activo. 1 ton de %item recogida"
    },
    "CARGO_SCOOP_DESCRIPTION" : {
       "description" : "",
@@ -209,7 +209,7 @@
    },
    "CLEARANCE_GRANTED_BAY_N" : {
       "description" : "",
-      "message" : "ATRAQUE AUTORIZADO. Proceda en Bahía %bay."
+      "message" : "ACOPLAMIENTO AUTORIZADO. Proceda en Bahía %bay."
    },
    "CO2_ATMOSPHERE" : {
       "description" : "",
@@ -501,11 +501,11 @@
    },
    "FUEL_SCOOP" : {
       "description" : "",
-      "message" : "Recolector de combustible"
+      "message" : "Recolector de hidrógeno"
    },
    "FUEL_SCOOP_ACTIVE_N_TONNES_H_COLLECTED" : {
       "description" : "",
-      "message" : "Recolector de combustible activo. Dispone de %quantity toneladas de hidrógeno."
+      "message" : "Recolector activo. %quantity toneladas de hidrógeno recogidas."
    },
    "FUEL_SCOOP_DESCRIPTION" : {
       "description" : "",

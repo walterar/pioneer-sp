@@ -34,6 +34,7 @@ _G.PrevFac           = "no"
 _G.SpaMember         = 0
 _G.DangerLevel       = 0
 _G.MissileActive     = false
+_G.FuelHydrogen      = false
 
 local welcome = function ()
 	if (not Game.system) then return end
@@ -103,8 +104,9 @@ local onGameStart = function ()
 		_G.PrevPos           = shipData.prev_pos or "no"
 		_G.PrevFac           = shipData.prev_fac or "no"
 		_G.DangerLevel       = shipData.danger_level or 0
-		_G.true_joust        = shipData.true_joust or 0
+		_G.TrueJoust         = shipData.true_joust or false
 		_G.MissileActive     = shipData.missile_active or false
+		_G.FuelHydrogen      = shipData.fuel_hydrogen or false
 	else
 
 		_G.MissionsSuccesses = 0
@@ -114,6 +116,7 @@ local onGameStart = function ()
 		_G.PrevPos           = "no"
 		_G.PrevFac           = "no"
 		_G.SpaMember         = 0
+		_G.FuelHydrogen      = false
 
 		_G.ShipFaction       = Game.system.faction.name
 		_G.OriginFaction     = ShipFaction
@@ -161,7 +164,7 @@ local onShipHit = function (ship, attacker)
 		trigger = trigger + 1
 		if trigger > 4 and attacker and SpaMember == 1 then
 			if Engine.rand:Integer(1,5) == 5 then
-				_G.true_joust = 0
+				_G.TrueJoust = false
 				ship:CancelAI()
 				attacker:Explode()
 				Character.persistent.player.killcount = Character.persistent.player.killcount + 1
@@ -196,8 +199,9 @@ local serialize = function ()
 			prev_pos           = PrevPos,
 			prev_fac           = PrevFac,
 			danger_level       = DangerLevel,
-			true_joust         = true_joust,
+			true_joust         = TrueJoust,
 			missile_active     = MissileActive,
+			fuel_hydrogen      = FuelHydrogen,
 			}
 	return {shipData = shipData}
 end
@@ -218,7 +222,8 @@ local onGameEnd = function ()
 	_G.SpaMember         = nil
 	_G.PrevPos           = nil
 	_G.PrevFac           = nil
-	_G.true_joust        = nil
+	_G.TrueJoust         = nil
+	_G.FuelHydrogen      = nil
 end
 Event.Register("onGameEnd", onGameEnd)
 

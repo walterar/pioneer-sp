@@ -673,7 +673,7 @@
    },
    "OPTIONS" : {
       "description" : "",
-      "message" : "Configuración básica"
+      "message" : "Configuración"
    },
    "ORBIT" : {
       "description" : "",

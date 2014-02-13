@@ -1,6 +1,6 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
--- modified for Pioneer Scout+ (c)2013 by walterar <walterar2@gmail.com>
+-- modified for Pioneer Scout+ (c)2012-2014 by walterar <walterar2@gmail.com>
 -- Work in progress.
 
 local Engine     = import("Engine")
@@ -652,8 +652,7 @@ local onShipDocked = function (ship, starport)
 		delay = delay + ship:RemoveEquip(cargo, 1000000)
 	end
 
-	local damage = ShipDef[trader.ship_name].hullMass -
-					ship.hullMassLeft
+	local damage = ShipDef[trader.ship_name].hullMass - ship.hullMassLeft
 	if damage > 0 then
 		ship:SetHullPercent()
 		addShipEquip(ship)

@@ -65,7 +65,12 @@ local onChat = function (form, ref, option)
 
 		-- do something when a "buy" button is clicked
 		onClickBuy = function (ref, commodity)
-			return onClick(ref)
+			if commodity == 'SLAVES' or commodity == 'LIVE_ANIMALS' then
+				Comms.ImportantMessage(myl.You_must_install_the_Life_Support_for_Cargo_Bay)
+				return false
+			else
+				return onClick(ref)
+			end
 		end,
 
 		-- do something when a "sell" button is clicked

@@ -14,14 +14,16 @@ local Ship       = import("Ship")
 
 -- a tariff (reward) calculator
 _G.tariff = function (dist,risk,urgency,locate)
-	local typ = 70 -- $70 per light year, basic.(+risk+urgency+lawlessness-population)*multiplier
+	local typ = 70 -- $70 * light year, basic.(+risk+urgency+lawlessness-population)*multiplier
+
 	local sectorz = math.abs(locate.sectorZ)
 	if sectorz > 50 then sectorz = 50 end
-	local multiplier = 1 + ((math.abs(locate.sectorX) + math.abs(locate.sectorY) + sectorz)
-		/100)
-	if ShipFaction == Game.system.faction.name then
-		multiplier = multiplier * Engine.rand:Number(1.2,1.4)
+
+	local multiplier = 1 + ((math.abs(locate.sectorX) + math.abs(locate.sectorY) + sectorz)/100)
+	if string.sub(Game.player.label,1,2) == string.upper(string.sub(Game.system.faction.name,1,2)) then
+		multiplier = multiplier * 1.3--Engine.rand:Number(1.2,1.4)
 	end
+
 	local population = Game.system.population
 	if population > 1 then population = 1 end
 	return math.ceil(((dist * typ)

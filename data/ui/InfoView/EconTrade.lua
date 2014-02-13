@@ -1,6 +1,6 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
--- modified for Pioneer Scout+ (c)2013-2014 by walterar <walterar2@gmail.com>
+-- modified for Pioneer Scout+ (c)2012-2014 by walterar <walterar2@gmail.com>
 -- Work in progress.
 
 local Lang               = import("Lang")
@@ -102,8 +102,11 @@ local econTrade = function ()
 	-- Define the refuel button
 	local refuelButton = SmallLabeledButton.New(l.REFUEL)
 
+	local xfuel = 'WATER'
+	if FuelHydrogen == true then xfuel = 'HYDROGEN' end
+
 	local refuelButtonRefresh = function ()
-		if Game.player.fuel == 100 or Game.player:GetEquipCount('CARGO', 'HYDROGEN') == 0 then refuelButton.widget:Disable() end
+		if Game.player.fuel == 100 or Game.player:GetEquipCount('CARGO', xfuel) == 0 then refuelButton.widget:Disable() end
 		local fuel_percent = Game.player.fuel/100
 		fuelGauge.gauge:SetValue(fuel_percent)
 		fuelGauge.label:SetValue(fuel_percent)

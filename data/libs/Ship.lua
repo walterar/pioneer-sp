@@ -150,16 +150,18 @@ end
 --   experimental
 --
 Ship.Refuel = function (self,amount)
-    local currentFuel = self.fuel
-    if currentFuel == 100 then
+	local currentFuel = self.fuel
+	if currentFuel == 100 then
 		Comms.Message(l.FUEL_TANK_FULL)
-        return 0
-    end
-    local fuelTankMass = ShipDef[self.shipId].fuelTankMass
-    local needed = math.clamp(math.ceil(fuelTankMass - self.fuelMassLeft),0, amount)
-    local removed = self:RemoveEquip('HYDROGEN', needed)
-    self:SetFuelPercent(math.clamp(self.fuel + removed * 100 / fuelTankMass, 0, 100))
-    return removed
+		return 0
+	end
+	local fuelTankMass = ShipDef[self.shipId].fuelTankMass
+	local needed = math.clamp(math.ceil(fuelTankMass - self.fuelMassLeft),0, amount)
+	local xfuel = 'WATER'
+	if FuelHydrogen == true then xfuel = 'HYDROGEN' end
+	local removed = self:RemoveEquip(xfuel, needed)
+	self:SetFuelPercent(math.clamp(self.fuel + removed * 100 / fuelTankMass, 0, 100))
+	return removed
 end
 
 

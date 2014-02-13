@@ -19,13 +19,13 @@ local loaded_data
 local onChat = function (form, ref, option)
 	local ad = ads[ref]
 
---	local price = tariff(10,1,1,Game.system.path)
+	local price = tariff(10,1,1,Game.system.path)
 
 	if option == 0 then
 		form:Clear()
 		form:SetTitle(l.formtittle)
 		form:SetFace({seed = ad.faceseed+2})
-		form:SetMessage(l.formmessage..tariff(10,1,1,Game.system.path).."\n*\n*\n*\n")
+		form:SetMessage(l.formmessage..price.."\n*\n*\n*\n")
 		form:AddOption(l.convert, 1)
 		return
 	end

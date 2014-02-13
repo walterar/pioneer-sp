@@ -167,6 +167,10 @@
       "description" : "",
       "message" : "No se pudo cargar el juego: "
    },
+   "CREDIBLE" : {
+      "description" : "For player reputation",
+      "message" : "Creíble"
+   },
    "CREW_CABINS" : {
       "description" : "",
       "message" : "Cabinas de Tripulación"

@@ -1,4 +1,4 @@
--- 00-utils.lua for Pioneer Scout+ (c)2013-2014 by walterar <walterar2@gmail.com>
+-- 00-utils.lua for Pioneer Scout+ (c)2012-2014 by walterar <walterar2@gmail.com>
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- Work in progress.
 
@@ -44,20 +44,19 @@ _G.ship_hostil = function (risk)
 	if risk < 1 then return end
 	local hostil,hostile
 	local count_hostiles = Engine.rand:Integer(1,risk)
-	if DangerLevel > 1 then count_hostiles = risk end
 	local capacity1 = 20
 	local capacity2 = 400
 	if DangerLevel > 1 then
+		count_hostiles = risk
 		capacity1 = 40
 		capacity2 = 400
 	end
 	local hostiles = utils.build_array(utils.filter(function (k,def)
-		return
-			def.tag == 'SHIP'
-			and def.capacity >= capacity1
-			and def.capacity <= capacity2
-			and def.defaultHyperdrive ~= "NONE"--inter_shuttle 20t no cannon
-		end, pairs(ShipDef)))
+		return def.tag      == 'SHIP'
+			and  def.capacity >= capacity1
+			and  def.capacity <= capacity2
+			and  def.defaultHyperdrive ~= "NONE"
+	end, pairs(ShipDef)))
 	if #hostiles > 0 then
 		while count_hostiles > 0 do
 			count_hostiles = count_hostiles - 1
@@ -66,13 +65,12 @@ _G.ship_hostil = function (risk)
 				local default_drive = hostile.defaultHyperdrive
 				local max_laser_size = hostile.capacity - EquipDef[default_drive].mass
 				local laserdefs = utils.build_array(utils.filter(function (k,def)
-					return
-						def.slot == 'LASER'
-						and def.mass <= max_laser_size
-						and string.sub(def.id,0,11) == 'PULSECANNON'
+					return def.slot == 'LASER'
+						and  def.mass <= max_laser_size
+						and  string.sub(def.id,0,11) == 'PULSECANNON'
 					end, pairs(EquipDef)))
 				local laserdef = laserdefs[Engine.rand:Integer(1,#laserdefs)]
-				hostil = Space.SpawnShipNear(hostile.id, Game.player,2,2)
+				hostil = Space.SpawnShipNear(hostile.id, Game.player,10,10)
 				hostil:AddEquip(default_drive)
 				hostil:AddEquip(laserdef.id)
 				hostil:SetLabel(Ship.MakeRandomLabel())

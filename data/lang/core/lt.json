@@ -1,15 +1,15 @@
 {
    "AIR_PROCESSORS" : {
       "description" : "",
-      "message" : "空气处理器"
+      "message" : "Oro procesoriai"
    },
    "ALERT_CANCELLED" : {
       "description" : "",
-      "message" : "警报解除."
+      "message" : "Įspėjimas atšauktas."
    },
    "ALLEGIANCE" : {
       "description" : "",
-      "message" : "拥护:"
+      "message" : "Priklausomybė:"
    },
    "ALT" : {
       "description" : "Alt key on keyboard",
@@ -17,255 +17,255 @@
    },
    "ALT_IN_KM" : {
       "description" : "",
-      "message" : "Alt: %altitude{f.0}km (%vspeed{f.1}km/s)"
+      "message" : "Aukštis: %altitude{f.0}km (%vspeed{f.1}km/s)"
    },
    "ALT_IN_METRES" : {
       "description" : "",
-      "message" : "海拔: %altitude{f.0}m (%vspeed{f.1}m/s)"
+      "message" : "Aukštis: %altitude{f.0}m (%vspeed{f.1}m/s)"
    },
    "AND_HIGHLY_COMPLEX_ECOSYSTEM" : {
       "description" : "",
-      "message" : "\" and a highly complex ecosystem.\""
+      "message" : "\" ir laibai sudėtinga ekosistema.\""
    },
    "AND_INDIGENOUS_MICROBIAL_LIFE" : {
       "description" : "",
-      "message" : "\" 和本地微生物.\""
+      "message" : "\" ir tenykštė mikrobinė gyvybė.\""
    },
    "AND_INDIGENOUS_PLANT_LIFE" : {
       "description" : "",
-      "message" : "\" 和本地植物生命.\""
+      "message" : "\" ir tenykštė augalinė gyvybė.\""
    },
    "ANIMAL_MEAT" : {
       "description" : "",
-      "message" : "动物肉类"
+      "message" : "Gyvūnų mėsa"
    },
    "APOAPSIS_DISTANCE" : {
       "description" : "",
-      "message" : "远拱点距离"
+      "message" : "Apoapsis atstumas"
    },
    "AR_ATMOSPHERE" : {
       "description" : "",
-      "message" : "\" 氩大气层\""
+      "message" : "\" Argono atmosfera\""
    },
    "ASTEROID" : {
       "description" : "",
-      "message" : "小行星"
+      "message" : "Asteroidas"
    },
    "ATMOSPHERIC_SHIELDING" : {
       "description" : "",
-      "message" : "大气防护盾"
+      "message" : "Atmosferinis Skydas"
    },
    "ATMOSPHERIC_SHIELDING_DESCRIPTION" : {
       "description" : "",
-      "message" : "Shields your spaceship from the heat of atmospheric re-entry."
+      "message" : "Apsaugo jūsų laivą nuo atmosferinės trinties šilumos besileidžiant."
    },
    "AUTOPILOT" : {
       "description" : "",
-      "message" : "自动导航"
+      "message" : "Autopilotas"
    },
    "AUTOPILOT_DESCRIPTION" : {
       "description" : "",
-      "message" : "An on-board flight computer."
+      "message" : "Laivo skrydžio kompiuteris."
    },
    "AUTOPILOT_DOCK_WITH_STATION" : {
       "description" : "",
-      "message" : "自动导航: 停靠空间站"
+      "message" : "Autopilotas: Švartuotis kosminėje stotyje"
    },
    "AUTOPILOT_ENTER_HIGH_ORBIT_AROUND" : {
       "description" : "",
-      "message" : "自动驾驶仪: 进入%target 高环绕轨道"
+      "message" : "Autopilotas: įeiti į aukštą orbitą virš %target"
    },
    "AUTOPILOT_ENTER_LOW_ORBIT_AROUND" : {
       "description" : "",
-      "message" : "自动驾驶仪: 进入%target 低环绕轨道"
+      "message" : "Autopilotas: įeiti į žemą orbitą virš %target"
    },
    "AUTOPILOT_ENTER_MEDIUM_ORBIT_AROUND" : {
       "description" : "",
-      "message" : "自动驾驶仪: 进入%target 中环绕轨道"
+      "message" : "Autopilotas: Įeiti į vidutinę orbitą virš %target"
    },
    "AUTOPILOT_FLY_TO_VICINITY_OF" : {
       "description" : "",
-      "message" : "自动驾驶仪: 飞行到%target附近"
+      "message" : "Autopilotas: Skristi šalia %target"
    },
    "AUTOPILOT_ON" : {
       "description" : "",
-      "message" : "自动导航开启"
+      "message" : "Autopilotas įj."
    },
    "AXIAL_TILT" : {
       "description" : "",
-      "message" : "轴倾角"
+      "message" : "Ašinis pakrypimas"
    },
    "A_FEW_THOUSAND" : {
       "description" : "",
-      "message" : "Only a few thousand"
+      "message" : "Tik keli tūkstančiai"
    },
    "BATTLE_WEAPONS" : {
       "description" : "",
-      "message" : "战争武器"
+      "message" : "Koviniai ginklai"
    },
    "BINARY_SYSTEM" : {
       "description" : "",
-      "message" : "双星系统"
+      "message" : "Dvinarė sistema"
    },
    "BODIES" : {
       "description" : "",
-      "message" : "bodies"
+      "message" : "kūnai"
    },
    "BODY" : {
       "description" : "",
-      "message" : "body"
+      "message" : "kūnas"
    },
    "BROWN_DWARF" : {
       "description" : "",
-      "message" : "Brown dwarf sub-stellar object"
+      "message" : "Rudasis nykštukas - subžvaigždinis objektas"
    },
    "BUTTON" : {
       "description" : "",
-      "message" : "\" Button \""
+      "message" : "\" Mygtukas \""
    },
    "CAMERA_BOTTOM_VIEW" : {
       "description" : "",
-      "message" : "底部摄像机"
+      "message" : "Kamera iš apačios"
    },
    "CAMERA_FRONT_VIEW" : {
       "description" : "",
-      "message" : "前摄像机"
+      "message" : "Priekinė kamera"
    },
    "CAMERA_LEFT_VIEW" : {
       "description" : "",
-      "message" : "左摄像机"
+      "message" : "Kamera iš kairės"
    },
    "CAMERA_REAR_VIEW" : {
       "description" : "",
-      "message" : "后摄像机"
+      "message" : "Kamera iš galo"
    },
    "CAMERA_RIGHT_VIEW" : {
       "description" : "",
-      "message" : "右摄像机"
+      "message" : "Kamera iš kairės"
    },
    "CAMERA_TOP_VIEW" : {
       "description" : "",
-      "message" : "顶部摄像机"
+      "message" : "Kamera iš viršaus"
    },
    "CANT_SAVE_IN_HYPERSPACE" : {
       "description" : "",
-      "message" : "在跃迁中不能保存游戏"
+      "message" : "Negalima išsaugoti žaidimo esant hipererdvėje"
    },
    "CAPITALIST" : {
       "description" : "",
-      "message" : "Capitalist"
+      "message" : "Kapitalistinis(-ė)"
    },
    "CARBON_ORE" : {
       "description" : "",
-      "message" : "碳矿"
+      "message" : "Anglies rūda"
    },
    "CARBON_ORE_DESCRIPTION" : {
       "description" : "",
-      "message" : "Carbon ores (coal and oil) are required for the synthesis of many useful chemicals, including plastics, synthetic foodstuffs, medicines and textiles"
+      "message" : "Anglies rūdos (anglis ir nafta) - reikalingos sintezuojant daugelį naudingų chemikalų, įskaitant plastmases, sintetinį maistą, medikamentus bei tekstiles."
    },
    "CARGO" : {
       "description" : "",
-      "message" : "货物"
+      "message" : "Kroviniai"
    },
    "CARGO_BAY_LIFE_SUPPORT_LOST" : {
       "description" : "",
-      "message" : "Sensors report critical cargo bay life-support conditions."
+      "message" : "Sensoriai praneša kritines krovinių skyriaus gyvybės palaikymo sąlygas."
    },
    "CARGO_LIFE_SUPPORT" : {
       "description" : "",
-      "message" : "Cargo Bay Life Support"
+      "message" : "Krovinių skyriaus gyvybės palaikymas"
    },
    "CARGO_LIFE_SUPPORT_DESCRIPTION" : {
       "description" : "",
-      "message" : "允许活体运输."
+      "message" : "Leidžia pervežti gyvą krovinį."
    },
    "CARGO_N" : {
       "description" : "",
-      "message" : "货物: %{mass}吨"
+      "message" : "Kroviniai: %{mass}t"
    },
    "CARGO_SCOOP" : {
       "description" : "",
-      "message" : "货物收集舱"
+      "message" : "Krovinių semtuvas"
    },
    "CARGO_SCOOP_ACTIVE_1_TONNE_X_COLLECTED" : {
       "description" : "",
-      "message" : "货物收集开启. 得到了1吨 %item."
+      "message" : "Krovinių semtuvas aktyvus. Surinkta 1 tona %item."
    },
    "CARGO_SCOOP_DESCRIPTION" : {
       "description" : "",
-      "message" : "Permits scooping cargo pods from space."
+      "message" : "Leidžia surinkti krovinių talpas iš erdvės."
    },
    "CH4_ATMOSPHERE" : {
       "description" : "",
-      "message" : "\" 甲烷大气层\""
+      "message" : "\" Metano atmosfera\""
    },
    "CLEARANCE_ALREADY_GRANTED_BAY_N" : {
       "description" : "",
-      "message" : "许可已经授予. 请停靠在码头 %bay."
+      "message" : "Leidimas jau duotas. Skriskite į doką %bay."
    },
    "CLEARANCE_DENIED_NO_BAYS" : {
       "description" : "",
-      "message" : "许可被拒绝. 没有多余的停靠位置."
+      "message" : "Leidimas neduotas. Nėra laisvų švartavimosi vietų."
    },
    "CLEARANCE_GRANTED_BAY_N" : {
       "description" : "",
-      "message" : "许可授予. 请停靠在码头 %bay."
+      "message" : "Leidimas duotas. Skriskite į švartavimosi doką %bay."
    },
    "CO2_ATMOSPHERE" : {
       "description" : "",
-      "message" : "\" 二氧化碳大气层\""
+      "message" : "\" Anglies Dioksido atmosfera\""
    },
    "COMMA_HIGHLY_VOLCANIC" : {
       "description" : "",
-      "message" : ", highly volcanic"
+      "message" : ", stipriai vulkaninis"
    },
    "COMMS" : {
       "description" : "",
-      "message" : "Comms"
+      "message" : "Ryšiai"
    },
    "COMMUNIST" : {
       "description" : "",
-      "message" : "共产主义"
+      "message" : "Komunistinis(-ė)"
    },
    "COMPUTERS" : {
       "description" : "",
-      "message" : "计算机"
+      "message" : "Kompiuteriai"
    },
    "COMPUTER_HEADING_CONTROL" : {
       "description" : "",
-      "message" : "Computer heading control"
+      "message" : "Kompiuterinė krypties kontrolė"
    },
    "COMPUTER_SPEED_CONTROL" : {
       "description" : "",
-      "message" : "计算机速度控制"
+      "message" : "Kompiuterinis greičio valdymas"
    },
    "CONSUMER_GOODS" : {
       "description" : "",
-      "message" : "消耗品"
+      "message" : "Plataus vartojimo prekės"
    },
    "CONTROLS" : {
       "description" : "",
-      "message" : "Controls"
+      "message" : "Valdymas"
    },
    "CORPORATE_SYSTEM" : {
       "description" : "",
-      "message" : "Corporate system"
+      "message" : "Korporacinė sistema"
    },
    "COULD_NOT_OPEN_FILENAME" : {
       "description" : "",
-      "message" : "不能打开 %path"
+      "message" : "Nepavyko atverti %path"
    },
    "COUNT_ON_SURFACE" : {
       "description" : "",
-      "message" : "\" (%surfacecount on surface)\""
+      "message" : "\" (%surfacecount paviršiuje)\""
    },
    "COUNT_STARPORTS" : {
       "description" : "",
-      "message" : "星港"
+      "message" : "kosmouostai"
    },
    "CO_ATMOSPHERE" : {
       "description" : "",
-      "message" : "\" 一氧化碳大气层\""
+      "message" : "\" Anglies monoksido atmosfera\""
    },
    "CTRL" : {
       "description" : "Ctrl key on keyboard",
@@ -273,291 +273,291 @@
    },
    "CURRENT_SYSTEM" : {
       "description" : "",
-      "message" : "当前星系"
+      "message" : "Dabartinė sistema"
    },
    "DATE_DUE_N" : {
       "description" : "",
-      "message" : "Date due: %date"
+      "message" : "Numatyta data: %date"
    },
    "DAY_LENGTH" : {
       "description" : "",
-      "message" : "一天长度"
+      "message" : "Dienos ilgumas"
    },
    "DECREASE_SCAN_RANGE" : {
       "description" : "",
-      "message" : "减少扫描器范围"
+      "message" : "Sumažinti skanavimo nuotolį"
    },
    "DECREASE_SET_SPEED" : {
       "description" : "",
-      "message" : "降低速度"
+      "message" : "Sumažinti nustatytą greitį"
    },
    "DEMOGRAPHICS" : {
       "description" : "",
-      "message" : "人口统计"
+      "message" : "Demografija"
    },
    "DESTINATION" : {
       "description" : "",
-      "message" : "目的地"
+      "message" : "Paskirties vieta"
    },
    "DIRECTION" : {
       "description" : "",
-      "message" : "\" Dir \""
+      "message" : "\" Katalogas \""
    },
    "DISABLED_AUTOMATIC_SYSTEM_SELECTION" : {
       "description" : "",
-      "message" : "Disabled automatic system selection."
+      "message" : "Išjungtas automatinis sistemos parinkimas."
    },
    "DISTANCE_FROM_SHIP_TO_NAV_TARGET" : {
       "description" : "",
-      "message" : "飞船到航行目标的距离"
+      "message" : "Atstumas nuo laivo iki navigacinio taikinio"
    },
    "DISTANCE_LY" : {
       "description" : "",
-      "message" : "距离: %distance{f.2} 光年"
+      "message" : "Atstumas: %distance{f.2} šviesm."
    },
    "DOCKED" : {
       "description" : "",
-      "message" : "已停靠"
+      "message" : "Prisišvartuota"
    },
    "DOCKING" : {
       "description" : "",
-      "message" : "正在停靠"
+      "message" : "Švartuojamasi"
    },
    "DOCKING_CLEARANCE_EXPIRED" : {
       "description" : "",
-      "message" : "靠港通行证已过期. 如果你希望停靠, 你必须重复靠港请求. "
+      "message" : "Švartavimosi leidimas pasibaigė. Jei norite švartuotis - privalote pakartoti užklausimą."
    },
    "DOWNGRADING_ALERT_STATUS" : {
       "description" : "",
-      "message" : "60秒未检测到开火, 降低警报等级."
+      "message" : "Per 60 sekundžių nebuvo šaudoma. Įspėjimo kategorija sumažinta."
    },
    "DRAW_OUT_RANGE_LABELS" : {
       "description" : "",
-      "message" : "Label out-of-range systems"
+      "message" : "Žymėti nepasiekiamas sistemas"
    },
    "DRAW_UNINHABITED_LABELS" : {
       "description" : "",
-      "message" : "Label uninhabited systems"
+      "message" : "Žymėti neapgyvendintas sistemas"
    },
    "DRAW_VERTICAL_LINES" : {
       "description" : "",
-      "message" : "绘制垂直线"
+      "message" : "Vaizduoti vertikalės linijas."
    },
    "DRIVE_CLASS1" : {
       "description" : "",
-      "message" : "等级1超光速引擎"
+      "message" : "1 klasės hipervariklis"
    },
    "DRIVE_CLASS2" : {
       "description" : "",
-      "message" : "等级2超光速引擎"
+      "message" : "2 klasės hipervariklis"
    },
    "DRIVE_CLASS3" : {
       "description" : "",
-      "message" : "等级3超光速引擎"
+      "message" : "3 klasės hipervariklis "
    },
    "DRIVE_CLASS4" : {
       "description" : "",
-      "message" : "等级4超光速引擎"
+      "message" : "4 klasės hipervariklis"
    },
    "DRIVE_CLASS5" : {
       "description" : "",
-      "message" : "等级5超光速引擎"
+      "message" : "5 klasės hipervariklis"
    },
    "DRIVE_CLASS6" : {
       "description" : "",
-      "message" : "等级6超光速引擎"
+      "message" : "6 klasės hipervariklis"
    },
    "DRIVE_CLASS7" : {
       "description" : "",
-      "message" : "等级7超光速引擎"
+      "message" : "7 klasės hipervariklis"
    },
    "DRIVE_CLASS8" : {
       "description" : "",
-      "message" : "等级8超光速引擎"
+      "message" : "8 klasės hipervariklis"
    },
    "DRIVE_CLASS9" : {
       "description" : "",
-      "message" : "等级9超光速引擎"
+      "message" : "9 klasės hipervariklis"
    },
    "DRIVE_MIL1" : {
       "description" : "",
-      "message" : "等级1军用引擎"
+      "message" : "1 klasės sukarintas variklis"
    },
    "DRIVE_MIL2" : {
       "description" : "",
-      "message" : "等级2军用引擎"
+      "message" : "2 klasės sukarintas variklis"
    },
    "DRIVE_MIL3" : {
       "description" : "",
-      "message" : "等级3军用引擎"
+      "message" : "3 klasės sukarintas variklis"
    },
    "DRIVE_MIL4" : {
       "description" : "",
-      "message" : "等级4军用引擎"
+      "message" : "4 klasės sukarintas variklis"
    },
    "EARTH" : {
       "description" : "",
-      "message" : "地球"
+      "message" : "Žemė(-s)"
    },
    "EARTH_FEDERATION_COLONIAL_RULE" : {
       "description" : "",
-      "message" : "Earth Federation Colonial Rule"
+      "message" : "Žemės Federacijos Kolonijinė Vadovybė"
    },
    "EARTH_FEDERATION_DEMOCRACY" : {
       "description" : "",
-      "message" : "地球民主联邦"
+      "message" : "Žemės Federacijos Demokratija"
    },
    "ECCENTRICITY" : {
       "description" : "",
-      "message" : "离心率"
+      "message" : "Ekscentricitetas"
    },
    "ECM_ADVANCED" : {
       "description" : "",
-      "message" : "高级ECM系统"
+      "message" : "Pažangi ECM sistema"
    },
    "ECM_ADVANCED_DESCRIPTION" : {
       "description" : "",
-      "message" : "An electronic countermeasure missile defence system, capable of destroying more advanced types of homing missiles."
+      "message" : "Elektroninė priešraketinės gynybos sistema, gali sunaikinti pažangesnes nusitaikančias raketas. "
    },
    "ECM_BASIC" : {
       "description" : "",
-      "message" : "ECM系统"
+      "message" : "ECM sistema"
    },
    "ECM_BASIC_DESCRIPTION" : {
       "description" : "",
-      "message" : "An electronic countermeasure missile defence system, capable of destroying some homing missiles."
+      "message" : "Elektroninė priešraketinė gynybos sistema, gali sunaikinti kai kurias nusitaikančias raketas."
    },
    "ECONOMIC_INFO" : {
       "description" : "",
-      "message" : "经济信息"
+      "message" : "Ekonomikos informacija"
    },
    "ECONOMY_TYPE" : {
       "description" : "",
-      "message" : "经济类型:"
+      "message" : "Ekonomikos tipas:"
    },
    "ENABLED_AUTOMATIC_SYSTEM_SELECTION" : {
       "description" : "",
-      "message" : "Enabled automatic system selection."
+      "message" : "Įjungtas automatinis sistemos parinkimas."
    },
    "EQUATORIAL_RADIUS_TO_POLAR_RADIUS_RATIO" : {
       "description" : "",
-      "message" : "Equatorial to polar radius ratio"
+      "message" : "Ekvatorinio ir poliarinio spindulio santykis"
    },
    "EXACT_MATCH_X" : {
       "description" : "",
-      "message" : "精确匹配: %system"
+      "message" : "Tikslus atitikmuo: %system"
    },
    "EXTENSIVE_MINING" : {
       "description" : "",
-      "message" : "Extensive mining operations."
+      "message" : "Plačios kasybos operacijos."
    },
    "EXTERNAL_ATMOSPHERIC_PRESSURE" : {
       "description" : "",
-      "message" : "外部大气压"
+      "message" : "Išorinis atmosferos slėgis"
    },
    "EXTERNAL_VIEW" : {
       "description" : "",
-      "message" : "外部视角"
+      "message" : "Išorinis vaizdas"
    },
    "FARM_MACHINERY" : {
       "description" : "",
-      "message" : "农业机械"
+      "message" : "Žemės ūkio įranga"
    },
    "FERTILIZER" : {
       "description" : "",
-      "message" : "化肥"
+      "message" : "Trąšos"
    },
    "FINE_PAID_N" : {
       "description" : "",
-      "message" : "你已经缴纳了 %fine的罚款."
+      "message" : "Jūs užmokėjote %fine baudą."
    },
    "FINE_PAID_N_BUT_N_REMAINING" : {
       "description" : "",
-      "message" : "你已经支付了 %paid 但是还有剩余款项 %fine 需要支付."
+      "message" : "Jūs užmokėjote %paid, bet dar liko %fine neapmokėtos baudos."
    },
    "FIRE_LASER" : {
       "description" : "",
-      "message" : "发射激光"
+      "message" : "Šauti lazeriais"
    },
    "FIRE_MISSILE" : {
       "description" : "",
-      "message" : "发射导弹"
+      "message" : "Paleisti raketą"
    },
    "FOLLOWING_SELECTION" : {
       "description" : "",
-      "message" : "following selection"
+      "message" : "šis pasirinkimas"
    },
    "FRONT" : {
       "description" : "",
-      "message" : "前端"
+      "message" : "Priekis"
    },
    "FRUIT_AND_VEG" : {
       "description" : "",
-      "message" : "水果和蔬菜"
+      "message" : "Vaisiai ir daržovės"
    },
    "FUEL" : {
       "description" : "",
-      "message" : "燃料"
+      "message" : "Kuras"
    },
    "FUEL_SCOOP" : {
       "description" : "",
-      "message" : "燃料铲"
+      "message" : "Kuro semtuvas"
    },
    "FUEL_SCOOP_ACTIVE_N_TONNES_H_COLLECTED" : {
       "description" : "",
-      "message" : "燃料收集开启. 你现在已经获得 %quantity 吨氢."
+      "message" : "Kuro semtuvas aktyvuotas. Jūs dabar turite %quantity tonų vandenilio."
    },
    "FUEL_SCOOP_DESCRIPTION" : {
       "description" : "",
-      "message" : "允许从气体巨星收集氢燃料."
+      "message" : "Leidžia pasisemti vandenilio kuro iš dujų milžinių planetų."
    },
    "GALACTIC_VIEW" : {
       "description" : "",
-      "message" : "银河系视角"
+      "message" : "Galaktikos vaizdas"
    },
    "GALAXY_SECTOR_VIEW" : {
       "description" : "",
-      "message" : "银河区域视角"
+      "message" : "Galaktikos sektoriaus vaizdas"
    },
    "GAME_LOAD_CANNOT_OPEN" : {
       "description" : "",
-      "message" : "这个存储的游戏文件因为权限问题不能被打开..."
+      "message" : "Nepavyko atidaryti šios išsaugoto žaidimo rinkmenos dėl neteisingų leidimų ar ko kita ... "
    },
    "GAME_LOAD_CORRUPT" : {
       "description" : "",
-      "message" : "这个存储的游戏因为含有错误而不能被读取."
+      "message" : "Šis išsaugotas žaidimas negali būti užkrautas nes jame yra klaidų."
    },
    "GAME_LOAD_WRONG_VERSION" : {
       "description" : "",
-      "message" : "这个游戏不能被读取是因为它是被一个不同版本的Pioneer创建的."
+      "message" : "Šis išsaugotas žaidimas negali būti užkrautas nes buvo sukurtas skirtingos Pionieriaus versijos."
    },
    "GAME_SAVED_TO" : {
       "description" : "",
-      "message" : "\"游戏存储到 \""
+      "message" : "\"Žaidimas išsaugotas į \""
    },
    "GAME_SAVE_CANNOT_WRITE" : {
       "description" : "",
-      "message" : "这个存储的游戏因为系统错误而不能被保存."
+      "message" : "Ši žaidimo išsaugojimo rinkmena negali būti įrašyta dėl sistemos klaidos,"
    },
    "GENERAL_VIEW_CONTROLS" : {
       "description" : "",
-      "message" : "General View Controls"
+      "message" : "Bendras Vaizdo Valdymas"
    },
    "GOVERNMENT_TYPE" : {
       "description" : "",
-      "message" : "政府类型："
+      "message" : "Vyriausybės tipas:"
    },
    "GRAIN" : {
       "description" : "",
-      "message" : "稻谷"
+      "message" : "Grūdai"
    },
    "HAND_WEAPONS" : {
       "description" : "",
-      "message" : "手持武器"
+      "message" : "Rankiniai ginklai"
    },
    "HARD_CAPITALIST" : {
       "description" : "",
-      "message" : "彻底的资本主义 - 无政府福利供应"
+      "message" : "Visiškai kapitalistinė - nėra valstybinės socialinės paramos"
    },
    "HAT" : {
       "description" : "",
@@ -565,143 +565,143 @@
    },
    "HEADING_LOCK_BACKWARD" : {
       "description" : "",
-      "message" : "Heading Lock (aft)"
+      "message" : "Krypties Užrakinimas (atgalinis)"
    },
    "HEADING_LOCK_FORWARD" : {
       "description" : "",
-      "message" : "Heading Lock (fore)"
+      "message" : "Krypties užraktas (priekinis)"
    },
    "HEAVY_INDUSTRY" : {
       "description" : "",
-      "message" : "重工业."
+      "message" : "Sunkioji pramonė."
    },
    "HE_ATMOSPHERE" : {
       "description" : "",
-      "message" : "\" 氦大气层\""
+      "message" : "\" Helio atmosfera\""
    },
    "HIGHLY_VOLCANIC" : {
       "description" : "",
-      "message" : "Highly volcanic"
+      "message" : "Stipriai vulkaninė"
    },
    "HIGH_POPULATION_OUTDOOR_WORLD" : {
       "description" : "",
-      "message" : "High population outdoor world."
+      "message" : "Stipriai apgyvendintas lauko pasaulis."
    },
    "HULL_AUTOREPAIR" : {
       "description" : "",
-      "message" : "船体自动修复系统"
+      "message" : "Korpuso auto-remonto sistema"
    },
    "HULL_AUTOREPAIR_DESCRIPTION" : {
       "description" : "",
-      "message" : "自动修复被毁坏的船体。"
+      "message" : "Automatiškai remontuoja laivo kėbulą jei jis apgadintas."
    },
    "HULL_INTEGRITY" : {
       "description" : "",
-      "message" : "船体完整度"
+      "message" : "Kėbulo vientisumas"
    },
    "HULL_TEMP" : {
       "description" : "",
-      "message" : "Hull temp"
+      "message" : "Kėbulo temperatūra"
    },
    "HYDROGEN" : {
       "description" : "",
-      "message" : "氢"
+      "message" : "Vandenilis"
    },
    "HYDROGEN_DESCRIPTION" : {
       "description" : "",
-      "message" : "氢主要被作为核聚变燃料使用"
+      "message" : "Vandenilis pagrindinai naudojamas kaip atominės sintezės kuras"
    },
    "HYPERCLOUD_ANALYZER" : {
       "description" : "",
-      "message" : "跃迁云分析仪"
+      "message" : "Hiperdebesies analizatorius"
    },
    "HYPERCLOUD_ANALYZER_DESCRIPTION" : {
       "description" : "",
-      "message" : "Analyze hyperspace clouds to determine destination and time of arrival or departure."
+      "message" : "Analizuokite hipererdvės debesis kad nustatytumėte paskirties vietą ir atvykimo ar išvykimo laiką."
    },
    "HYPERSPACE" : {
       "description" : "",
-      "message" : "跃迁"
+      "message" : "Hipererdvė"
    },
    "HYPERSPACE_ARRIVAL_CLOUD" : {
       "description" : "",
-      "message" : "跃迁抵达云"
+      "message" : "Hipererdvės atvykimo debesis"
    },
    "HYPERSPACE_ARRIVAL_CLOUD_REMNANT" : {
       "description" : "",
-      "message" : "跃迁云剩余部分"
+      "message" : "Hipererdvės atvykimo debesies likutis"
    },
    "HYPERSPACE_DEPARTURE_CLOUD" : {
       "description" : "",
-      "message" : "跃迁到达云"
+      "message" : "Hipererdvės išvykimo debesis"
    },
    "HYPERSPACE_JUMP" : {
       "description" : "",
-      "message" : "跃迁"
+      "message" : "Hipererdvinis šuolis"
    },
    "HYPERSPACE_JUMP_ABORTED" : {
       "description" : "",
-      "message" : "跃迁终止."
+      "message" : "Hiperšuolis atšauktas."
    },
    "HYPERSPACE_TARGET" : {
       "description" : "",
-      "message" : "跃迁目标"
+      "message" : "Hipererdvės taikinys"
    },
    "HYPERSPACING_IN_N_SECONDS" : {
       "description" : "",
-      "message" : "Hyperspacing in %countdown{f.0} seconds"
+      "message" : "Hiperšuolis už %countdown{f.0} sekundžių"
    },
    "H_ATMOSPHERE" : {
       "description" : "",
-      "message" : "\" 氢大气层\""
+      "message" : "\" Vandenilinė atmosfera\""
    },
    "ICE_WORLD" : {
       "description" : "",
-      "message" : "\" 冰雪世界\""
+      "message" : "\" ledo planeta\""
    },
    "ILLEGAL_GOODS" : {
       "description" : "",
-      "message" : "非法货物:"
+      "message" : "Nelegalios prekės:"
    },
    "IMPERIAL_RULE" : {
       "description" : "",
-      "message" : "Imperial Rule"
+      "message" : "Imperinė vadovybė"
    },
    "INCREASE_SCAN_RANGE" : {
       "description" : "",
-      "message" : "增加扫描器范围"
+      "message" : "Padidinti skanavimo nuotolį"
    },
    "INCREASE_SET_SPEED" : {
       "description" : "",
-      "message" : "增加速度"
+      "message" : "Padidinti nustatytą greitį"
    },
    "INDUSTRIAL_COLONY" : {
       "description" : "",
-      "message" : "工业殖民地。"
+      "message" : "Industrinė kolonija."
    },
    "INDUSTRIAL_HUB_SYSTEM" : {
       "description" : "",
-      "message" : "工业化中心系统"
+      "message" : "Sistema - indutrinis centras."
    },
    "INDUSTRIAL_MACHINERY" : {
       "description" : "",
-      "message" : "机械工业品"
+      "message" : "Industrinė mašinerija"
    },
    "INTERNAL_VIEW" : {
       "description" : "",
-      "message" : "内部视角"
+      "message" : "Vidinis vaizdas"
    },
    "INT_LY" : {
       "description" : "",
-      "message" : "%scale 光年"
+      "message" : "%scale šviesm."
    },
    "IN_TRANSIT" : {
       "description" : "",
-      "message" : "在途中"
+      "message" : "Pakeliui"
    },
    "IN_TRANSIT_TO_N_X_X_X" : {
       "description" : "",
-      "message" : "In transit to %system [%x,%y,%z]"
+      "message" : "Pakeliui į %system [%x,%y,%z]"
    },
    "JOY" : {
       "description" : "",
@@ -709,7 +709,7 @@
    },
    "JOYSTICK_INPUT" : {
       "description" : "",
-      "message" : "手柄输入"
+      "message" : "Vairasvirtės įvestis"
    },
    "JOY_AXIS" : {
       "description" : "",
@@ -717,91 +717,91 @@
    },
    "KM_S_RELATIVE_TO" : {
       "description" : "",
-      "message" : "%speed{f.2} km/s 相对于 %frame"
+      "message" : "%speed{f.2} km/s palyginus su %frame"
    },
    "LANDED" : {
       "description" : "",
-      "message" : "已着陆"
+      "message" : "Nusileido"
    },
    "LANG_NAME" : {
       "description" : "The name that native speakers use for this language. This will be used in the language selection screen. For obscure reasons this currently must only use Latin-1 characters.",
-      "message" : "英文"
+      "message" : "Angliškai"
    },
    "LARGE" : {
       "description" : "",
-      "message" : "大型"
+      "message" : "Didelė(-is)"
    },
    "LARGE_GAS_GIANT" : {
       "description" : "",
-      "message" : "大型气体巨星"
+      "message" : "Didelis dujų milžinas"
    },
    "LARGE_PLASMA_ACCEL" : {
       "description" : "",
-      "message" : "大型等离子加速器"
+      "message" : "Didelis plazmos greitintuvas"
    },
    "LASER_COOLING_BOOSTER" : {
       "description" : "",
-      "message" : "激光冷却助推器"
+      "message" : "Lazerių aušintuvas"
    },
    "LASER_COOLING_BOOSTER_DESCRIPTION" : {
       "description" : "",
-      "message" : "一个改良的武器冷却系统."
+      "message" : "Patobulinta šaldymo sistema jūsų ginklams."
    },
    "LASER_FIRE_DETECTED" : {
       "description" : "",
-      "message" : "检测到激光攻击。"
+      "message" : "Aptiktas Lazerių panaudojimas."
    },
    "LAUNCH_PERMISSION_DENIED_BUSY" : {
       "description" : "",
-      "message" : "着陆许可被拒绝：港口繁忙。"
+      "message" : "Leidimas kilimui neduotas: dokas užimtas."
    },
    "LIBERAL_DEMOCRACY" : {
       "description" : "",
-      "message" : "自由民主制"
+      "message" : "Liberali demokratija"
    },
    "LIQUID_OXYGEN" : {
       "description" : "",
-      "message" : "液态氧"
+      "message" : "Suskystintas Deguonis"
    },
    "LIQUID_OXYGEN_DESCRIPTION" : {
       "description" : "",
-      "message" : "有生命的星系和一些工业流程需要氧"
+      "message" : "Deguonis reikalingas gyvybės palaikymo sistemoms ir kai kuriems industriniams procesams"
    },
    "LIQUOR" : {
       "description" : "",
-      "message" : "烈酒"
+      "message" : "Likeris"
    },
    "LIVE_ANIMALS" : {
       "description" : "",
-      "message" : "活体动物"
+      "message" : "Gyvi gyvūnai"
    },
    "LOCKED" : {
       "description" : "",
-      "message" : "locked"
+      "message" : "užrakinta"
    },
    "MAJOR_EXPORTS" : {
       "description" : "",
-      "message" : "主要出口："
+      "message" : "Pagr. eksportas:"
    },
    "MAJOR_IMPORTS" : {
       "description" : "",
-      "message" : "主要进口："
+      "message" : "Pagr. importas:"
    },
    "MANUAL_CONTROL" : {
       "description" : "",
-      "message" : "手动制动"
+      "message" : "Rankinis valdymas"
    },
    "MANUAL_CONTROL_MODE" : {
       "description" : "",
-      "message" : "手动控制模式"
+      "message" : "Rankinis valdymo režimas"
    },
    "MAP_LOCK_HYPERSPACE_TARGET" : {
       "description" : "",
-      "message" : "Lock Hyperspace Target"
+      "message" : "Nustatyti hipererdvės taikinį"
    },
    "MAP_TOGGLE_INFO_PANEL" : {
       "description" : "",
-      "message" : "Toggle Info Panel"
+      "message" : "Įj./Išj. Informacinį Skydą"
    },
    "MAP_TOGGLE_SELECTION_FOLLOW_VIEW" : {
       "description" : "",
@@ -809,79 +809,79 @@
    },
    "MAP_VIEW_ROTATE_DOWN" : {
       "description" : "",
-      "message" : "Rotate View Down"
+      "message" : "Pakreipti vaizdą žemyn"
    },
    "MAP_VIEW_ROTATE_LEFT" : {
       "description" : "",
-      "message" : "Rotate View Left"
+      "message" : "Pasukti vaizdą kairėn"
    },
    "MAP_VIEW_ROTATE_RIGHT" : {
       "description" : "",
-      "message" : "Rotate View Right"
+      "message" : "Pasukti vaizdą dešinėn"
    },
    "MAP_VIEW_ROTATE_UP" : {
       "description" : "",
-      "message" : "Rotate View Up"
+      "message" : "Pakreipti vaizdą aukštyn"
    },
    "MAP_VIEW_SHIFT_BACKWARD" : {
       "description" : "",
-      "message" : "Shift View Backwards"
+      "message" : "Paslinkti vaizdą atgal"
    },
    "MAP_VIEW_SHIFT_DOWN" : {
       "description" : "",
-      "message" : "Shift View Down"
+      "message" : "Paslinkti vaizdą žemyn"
    },
    "MAP_VIEW_SHIFT_FORWARD" : {
       "description" : "",
-      "message" : "Shift View Forwards"
+      "message" : "Paslinkti vaizdą pirmyn"
    },
    "MAP_VIEW_SHIFT_LEFT" : {
       "description" : "",
-      "message" : "Shift View Left"
+      "message" : "Paslinkti vaizdą kairėn"
    },
    "MAP_VIEW_SHIFT_RIGHT" : {
       "description" : "",
-      "message" : "Shift View Right"
+      "message" : "Paslinkti vaizdą dešinėn"
    },
    "MAP_VIEW_SHIFT_UP" : {
       "description" : "",
-      "message" : "Shift View Up"
+      "message" : "Paslinkti vaizdą aukštyn"
    },
    "MAP_WARP_TO_CURRENT_SYSTEM" : {
       "description" : "",
-      "message" : "Warp to Current System"
+      "message" : "Persikelti į dabartinę sistemą"
    },
    "MAP_WARP_TO_HYPERSPACE_TARGET" : {
       "description" : "",
-      "message" : "Warp to Hyperspace Target"
+      "message" : "Persikelti į hipererdvės taikinį"
    },
    "MAP_WARP_TO_SELECTED_SYSTEM" : {
       "description" : "",
-      "message" : "Warp to Selected System"
+      "message" : "Persikelti į pasirinktą sistemą"
    },
    "MASS" : {
       "description" : "",
-      "message" : "质量"
+      "message" : "Masė"
    },
    "MASSIVE" : {
       "description" : "",
-      "message" : "大规模的"
+      "message" : "Masyvus(-i)"
    },
    "MASS_N_TONNES" : {
       "description" : "",
-      "message" : "质量: %{mass}吨"
+      "message" : "Masė: %{mass}t"
    },
    "MEDICINES" : {
       "description" : "",
-      "message" : "药品"
+      "message" : "Medikamentai"
    },
    "MEDIUM_GAS_GIANT" : {
       "description" : "",
-      "message" : "中型气体巨星"
+      "message" : "Vidutinis dujų milžinas"
    },
    "MESSAGE_FROM_X" : {
       "description" : "",
-      "message" : "信息来自 %sender:"
+      "message" : "Pranešimas nuo %sender:"
    },
    "META" : {
       "description" : "'Meta' key on keyboard",
@@ -889,195 +889,195 @@
    },
    "METAL_ALLOYS" : {
       "description" : "",
-      "message" : "金属合金"
+      "message" : "Metalų lydiniai"
    },
    "METAL_ORE" : {
       "description" : "",
-      "message" : "金属矿石"
+      "message" : "Metalų rūdos"
    },
    "MILITARY_DICTATORSHIP" : {
       "description" : "",
-      "message" : "军事独裁"
+      "message" : "Karinė diktatūra"
    },
    "MILITARY_FUEL" : {
       "description" : "",
-      "message" : "军用燃料"
+      "message" : "Karinis kuras"
    },
    "MININGCANNON_17MW" : {
       "description" : "",
-      "message" : "17兆瓦爆矿炮"
+      "message" : "17MW sprogstamoji kasybos patranka"
    },
    "MININGCANNON_17MW_DESCRIPTION" : {
       "description" : "",
-      "message" : "被用于爆破采矿富含矿物质的小行星。"
+      "message" : "Naudojamas turtingų mineralais asteroidų sprogdyminei kasybai."
    },
    "MINING_COLONY" : {
       "description" : "",
-      "message" : "矿业殖民地"
+      "message" : "Kasybos kolonija."
    },
    "MINING_MACHINERY" : {
       "description" : "",
-      "message" : "采矿机械"
+      "message" : "Kasybos įranga"
    },
    "MINOR_EXPORTS" : {
       "description" : "",
-      "message" : "次要出口："
+      "message" : "Šalutinis eksportas:"
    },
    "MINOR_IMPORTS" : {
       "description" : "",
-      "message" : "次要进口："
+      "message" : "Šalutinis importas"
    },
    "MISCELLANEOUS" : {
       "description" : "",
-      "message" : "混杂的"
+      "message" : "Įvairus(-ūs)"
    },
    "MISSILE" : {
       "description" : "",
-      "message" : "导弹"
+      "message" : "raketa"
    },
    "MISSILE_GUIDED" : {
       "description" : "",
-      "message" : "制导导弹"
+      "message" : "Valdoma raketa"
    },
    "MISSILE_NAVAL" : {
       "description" : "",
-      "message" : "巡航导弹"
+      "message" : "Karinės Laivybos Raketa"
    },
    "MISSILE_SMART" : {
       "description" : "",
-      "message" : "智能导弹"
+      "message" : "Gudri raketa"
    },
    "MISSILE_UNGUIDED" : {
       "description" : "",
-      "message" : "R40非制导导弹"
+      "message" : "R40 Nevaldoma Raketa"
    },
    "MIXED_ECONOMY" : {
       "description" : "",
-      "message" : "混合型经济"
+      "message" : "Mišri ekonomika"
    },
    "MONTH_APR" : {
       "description" : "",
-      "message" : "四月"
+      "message" : "Balandis"
    },
    "MONTH_AUG" : {
       "description" : "",
-      "message" : "八月"
+      "message" : "Rugpj."
    },
    "MONTH_DEC" : {
       "description" : "",
-      "message" : "十二月"
+      "message" : "Gruodis"
    },
    "MONTH_FEB" : {
       "description" : "",
-      "message" : "二月"
+      "message" : "Vasaris"
    },
    "MONTH_JAN" : {
       "description" : "",
-      "message" : "一月"
+      "message" : "Saus."
    },
    "MONTH_JUL" : {
       "description" : "",
-      "message" : "七月"
+      "message" : "Liepa"
    },
    "MONTH_JUN" : {
       "description" : "",
-      "message" : "六月"
+      "message" : "Birželis"
    },
    "MONTH_MAR" : {
       "description" : "",
-      "message" : "三月"
+      "message" : "Kovas"
    },
    "MONTH_MAY" : {
       "description" : "",
-      "message" : "五月"
+      "message" : "Gegužė"
    },
    "MONTH_NOV" : {
       "description" : "",
-      "message" : "十一月"
+      "message" : "Lapkritis"
    },
    "MONTH_OCT" : {
       "description" : "",
-      "message" : "十月"
+      "message" : "Spalis"
    },
    "MONTH_SEP" : {
       "description" : "",
-      "message" : "九月"
+      "message" : "Rugsėjis"
    },
    "MURDER" : {
       "description" : "",
-      "message" : "谋杀"
+      "message" : "Žmogžudystė"
    },
    "M_S_RELATIVE_TO" : {
       "description" : "",
-      "message" : "%speed{f.0} m/s 相对于 %frame"
+      "message" : "%speed{f.0} m/s rel-to %frame"
    },
    "NAME_OBJECT" : {
       "description" : "For an item or object",
-      "message" : "Name"
+      "message" : "Vardas"
    },
    "NAME_PERSON" : {
       "description" : "For a person",
-      "message" : "Name"
+      "message" : "Vardas"
    },
    "NARCOTICS" : {
       "description" : "",
-      "message" : "Narcotics"
+      "message" : "Narkotikai"
    },
    "NAVIGATION_STAR_MAPS" : {
       "description" : "",
-      "message" : "航行和星系图"
+      "message" : "Navigacija ir žvaigždėlapiai"
    },
    "NAVIGATION_TARGETS_IN_THIS_SYSTEM" : {
       "description" : "",
-      "message" : "在这个星系中的航行目标"
+      "message" : "Navigaciniai objektai šioje sistemoje"
    },
    "NERVE_GAS" : {
       "description" : "",
-      "message" : "神经毒气"
+      "message" : "Nervus paral. dujos"
    },
    "NONE" : {
       "description" : "",
-      "message" : "没有"
+      "message" : "Joks"
    },
    "NORMA_ARM" : {
       "description" : "",
-      "message" : "矩尺座旋臂"
+      "message" : "Norma arm"
    },
    "NOT_FOUND" : {
       "description" : "",
-      "message" : "没有找到"
+      "message" : "Nerasta"
    },
    "NOT_FOUND_BEST_MATCH_X" : {
       "description" : "",
-      "message" : "没有找到最佳匹配: %system"
+      "message" : "Nerasta, artimiausias atitikmuo: %system"
    },
    "NO_ALERT" : {
       "description" : "",
-      "message" : "没有警报"
+      "message" : "Nėra įspejimų"
    },
    "NO_CENTRAL_GOVERNANCE" : {
       "description" : "",
-      "message" : "没有中央政府"
+      "message" : "Nėra centrinės valdžios"
    },
    "NO_ESTABLISHED_ORDER" : {
       "description" : "",
-      "message" : "No established order"
+      "message" : "Nėra nustatytos tvarkos"
    },
    "NO_HYPERDRIVE" : {
       "description" : "",
-      "message" : "No hyperdrive"
+      "message" : "Nėra hipervariklio"
    },
    "NO_REGISTERED_INHABITANTS" : {
       "description" : "",
-      "message" : "没有记录的栖息地"
+      "message" : "Gyventojų neužregistruota"
    },
    "NO_TARGET_SELECTED" : {
       "description" : "",
-      "message" : "Ship Computer: No target selected"
+      "message" : "Laivo kompiuteris: nepasirinktas taikinys"
    },
    "NUMBER_DAYS" : {
       "description" : "",
-      "message" : "%days{f.0} 日"
+      "message" : "%days{f.0} dienos(-ų)"
    },
    "NUMBER_G" : {
       "description" : "",
@@ -1085,391 +1085,391 @@
    },
    "NUMBER_HOURS" : {
       "description" : "",
-      "message" : "%hours{f.1} 小时"
+      "message" : "%hours{f.1} val."
    },
    "NUMBER_LY" : {
       "description" : "",
-      "message" : "%distance{f.2} 光年"
+      "message" : "%distance{f.2} šviesm."
    },
    "NUMBER_TONNES" : {
       "description" : "",
-      "message" : "%{mass}吨"
+      "message" : "%{mass}t"
    },
    "N_ATMOSPHERE" : {
       "description" : "",
-      "message" : "\" 氮大气层\""
+      "message" : "\" Azoto atmosfera\""
    },
    "N_CELSIUS" : {
       "description" : "",
-      "message" : "%temperature 摄氏度"
+      "message" : "%temperature C"
    },
    "N_DAYS" : {
       "description" : "",
-      "message" : "%days{f.1} 日"
+      "message" : "%days{f.1} dienų"
    },
    "N_DEGREES" : {
       "description" : "",
-      "message" : "%angle{f.1} 度"
+      "message" : "%angle{f.1} laipsnių"
    },
    "N_DISTANCE_TO_TARGET" : {
       "description" : "",
-      "message" : "%distance 距离目标"
+      "message" : "%distance iki taikinio"
    },
    "N_EARTH_DAYS" : {
       "description" : "",
-      "message" : "%days{f.1} 地球日"
+      "message" : "%days{f.1} Žemės dienų"
    },
    "N_WHATEVER_MASSES" : {
       "description" : "",
-      "message" : "%mass{f.3} %units masses"
+      "message" : "%mass{f.3} %units masių"
    },
    "N_WHATEVER_RADII" : {
       "description" : "",
-      "message" : "%radius{f.3} %units radii (%radkm{f.0} km)"
+      "message" : "%radius{f.3} %units spindulys (%radkm{f.0} km)"
    },
    "N_YEARS" : {
       "description" : "",
-      "message" : "%years{f.1} 年"
+      "message" : "%years{f.1} metų(-ai)"
    },
    "O2_ATMOSPHERE" : {
       "description" : "",
-      "message" : "\" 氧大气层\""
+      "message" : "\" Deguonies atmosfera\""
    },
    "OCEANICWORLD" : {
       "description" : "",
-      "message" : "\" 海洋世界\""
+      "message" : "\" vandenynų planeta\""
    },
    "ORBITAL_PERIOD" : {
       "description" : "",
-      "message" : "轨道周期"
+      "message" : "Orbitinis periodas"
    },
    "ORBITAL_STARPORT" : {
       "description" : "",
-      "message" : "轨道星港"
+      "message" : "Orbitinė kosminė stotis"
    },
    "OUTDOOR_AGRICULTURAL_WORLD" : {
       "description" : "",
-      "message" : "Outdoor agricultural world."
+      "message" : "Lauko žemės ūkio pasaulis."
    },
    "OUTER_ARM" : {
       "description" : "",
-      "message" : "外层旋臂"
+      "message" : "Outer arm"
    },
    "OVER_N_BILLION" : {
       "description" : "",
-      "message" : "超过 %population 十亿"
+      "message" : "Virš %population milijardų"
    },
    "OVER_N_MILLION" : {
       "description" : "",
-      "message" : "超过 %population 百万"
+      "message" : "Virš %population milijonų"
    },
    "PASSENGER_CABIN" : {
       "description" : "",
-      "message" : "被占用的客仓"
+      "message" : "Užimta keleivio kabina"
    },
    "PAUSED" : {
       "description" : "",
-      "message" : "停止"
+      "message" : "PAUZĖ"
    },
    "PAY_FINE_REMOTELY" : {
       "description" : "",
-      "message" : "Pay fine by remote transfer (%amount)"
+      "message" : "Užmokėti baudą nuotoliniu pervedimu (%amount)"
    },
    "PERIAPSIS_DISTANCE" : {
       "description" : "",
-      "message" : "近拱点距距离"
+      "message" : "Periapsio atstumas"
    },
    "PERSEUS_ARM" : {
       "description" : "",
-      "message" : "英仙座旋臂"
+      "message" : "Persėjo ranka"
    },
    "PIONEER" : {
       "description" : "",
-      "message" : "PIONEER"
+      "message" : "PIONIERIUS"
    },
    "PIRACY" : {
       "description" : "",
-      "message" : "非法行为"
+      "message" : "Piratavimas"
    },
    "PITCH" : {
       "description" : "",
-      "message" : "定位"
+      "message" : "Nuolydis"
    },
    "PITCH_DOWN" : {
       "description" : "",
-      "message" : "向下"
+      "message" : "Polinkis žemyn"
    },
    "PITCH_UP" : {
       "description" : "",
-      "message" : "向上"
+      "message" : "Polinkis aukštyn"
    },
    "PLANETARY_INFO" : {
       "description" : "",
-      "message" : "行星信息"
+      "message" : "Planetų informacija"
    },
    "PLANET_CONTAINING_LIQUID_WATER" : {
       "description" : "",
-      "message" : "\" 含有液态水的行星\""
+      "message" : "\" planeta su skystu vandeniu\""
    },
    "PLANET_WITH_SOME_ICE" : {
       "description" : "",
-      "message" : "\" 行星上有一些冰\""
+      "message" : "\" planeta su trupučiu ledo\""
    },
    "PLANNED_ECONOMY" : {
       "description" : "",
-      "message" : "中央计划经济"
+      "message" : "Centralizuota planinė ekonomika"
    },
    "PLASTICS" : {
       "description" : "",
-      "message" : "塑料"
+      "message" : "Plastmasės"
    },
    "PLUTOCRATIC_DICTATORSHIP" : {
       "description" : "",
-      "message" : "Plutocratic dictatorship"
+      "message" : "Plutokratinė diktatūra"
    },
    "POLICE_SHIP_REGISTRATION" : {
       "description" : "",
-      "message" : "警察"
+      "message" : "POLICIJA"
    },
    "POPULATION" : {
       "description" : "",
-      "message" : "人口:"
+      "message" : "Populiacija:"
    },
    "PRECIOUS_METALS" : {
       "description" : "",
-      "message" : "贵金属"
+      "message" : "Brangieji metalai"
    },
    "PRESSURE_N_ATMOSPHERES" : {
       "description" : "",
-      "message" : "大气压: %pressure{f.2} 标准大气压"
+      "message" : "P: %pressure{f.2} atm"
    },
    "PROBABILITY_OF_ARRIVAL_X_PERCENT" : {
       "description" : "",
-      "message" : "预计到达: %probability%%"
+      "message" : "Atvykimo tikimybė: %probability%%"
    },
    "PULSECANNON_10MW" : {
       "description" : "",
-      "message" : "10兆瓦脉冲加农炮"
+      "message" : "10MW pulsinė patranka"
    },
    "PULSECANNON_1MW" : {
       "description" : "",
-      "message" : "1兆瓦脉冲加农炮"
+      "message" : "1MW pulsinė patranka"
    },
    "PULSECANNON_20MW" : {
       "description" : "",
-      "message" : "20兆瓦脉冲加农炮"
+      "message" : "20MW pulsinė patranka"
    },
    "PULSECANNON_2MW" : {
       "description" : "",
-      "message" : "2兆瓦脉冲加农炮"
+      "message" : "2MW pulsinė patranka"
    },
    "PULSECANNON_4MW" : {
       "description" : "",
-      "message" : "4兆瓦脉冲加农炮"
+      "message" : "4MW pulsinė patranka"
    },
    "PULSECANNON_DUAL_1MW" : {
       "description" : "",
-      "message" : "1兆瓦双火脉冲加农炮"
+      "message" : "1MW dviguba pulsinė patranka"
    },
    "PULSECANNON_RAPID_2MW" : {
       "description" : "",
-      "message" : "2兆瓦速射脉冲加农炮"
+      "message" : "2MW greitašaudė pulsinė patranka"
    },
    "QUADRUPLE_SYSTEM" : {
       "description" : "",
-      "message" : "四星系统"
+      "message" : "Keturnarė sistema"
    },
    "RADAR_MAPPER" : {
       "description" : "",
-      "message" : "Radar Mapper"
+      "message" : "Radaro Žymiklis"
    },
    "RADAR_MAPPER_DESCRIPTION" : {
       "description" : "",
-      "message" : "Used to remotely inspect the equipment, cargo and state of other ships."
+      "message" : "Naudojamas įvertinti kitų laivų krovinį ir būseną per atstumą."
    },
    "RADIOACTIVES" : {
       "description" : "",
-      "message" : "放射性废料"
+      "message" : "Radioaktyvios atliekos"
    },
    "RADIUS" : {
       "description" : "",
-      "message" : "半径"
+      "message" : "Spindulys"
    },
    "REAR" : {
       "description" : "",
-      "message" : "后部"
+      "message" : "Užnugaris"
    },
    "REQUEST_DOCKING_CLEARANCE" : {
       "description" : "",
-      "message" : "请求靠港许可"
+      "message" : "Pareikalauti švartavimosi leidimo"
    },
    "RESET" : {
       "description" : "",
-      "message" : "重置"
+      "message" : "Perkrauti"
    },
    "RESET_ORIENTATION_AND_ZOOM" : {
       "description" : "",
-      "message" : "Reset Orientation and Zoom"
+      "message" : "Atitaisyti kryptį ir priartinimą"
    },
    "ROBOTS" : {
       "description" : "",
-      "message" : "机器人"
+      "message" : "Robotai"
    },
    "ROCKY_PLANET" : {
       "description" : "",
-      "message" : "\" 岩石行星\""
+      "message" : "\" uolėta planeta\""
    },
    "ROCKY_PLANET_CONTAINING_COME_LIQUIDS" : {
       "description" : "",
-      "message" : "\" 含有一些液体的岩石星球。\""
+      "message" : "\" akmenuota planeta su trupučiu skysčių \""
    },
    "ROLL" : {
       "description" : "",
-      "message" : "翻"
+      "message" : "Ristis"
    },
    "ROLL_LEFT" : {
       "description" : "",
-      "message" : "左翻"
+      "message" : "Ristis kairėn"
    },
    "ROLL_RIGHT" : {
       "description" : "",
-      "message" : "右翻"
+      "message" : "Ristis dešinėn"
    },
    "ROTATE_DOWN" : {
       "description" : "",
-      "message" : "下翻"
+      "message" : "Suktis žemyn"
    },
    "ROTATE_LEFT" : {
       "description" : "",
-      "message" : "左翻"
+      "message" : "Suktis kairėn"
    },
    "ROTATE_RIGHT" : {
       "description" : "",
-      "message" : "右翻"
+      "message" : "Suktis dešinėn"
    },
    "ROTATE_UP" : {
       "description" : "",
-      "message" : "上翻"
+      "message" : "Sukti viršun"
    },
    "ROTATIONAL_PERIOD" : {
       "description" : "",
-      "message" : "\" (rotational period)\""
+      "message" : "\" (apsisukimo periodas)\""
    },
    "ROTATION_DAMPING_OFF" : {
       "description" : "",
-      "message" : "Rotation damping off"
+      "message" : "Sukimosi slopinimas išjungtas"
    },
    "ROTATION_DAMPING_ON" : {
       "description" : "",
-      "message" : "Rotation damping on"
+      "message" : "Sukimosi slopinimas įjungtas"
    },
    "RUBBISH" : {
       "description" : "",
-      "message" : "废物"
+      "message" : "Šiukšlės"
    },
    "SAGITTARIUS_ARM" : {
       "description" : "",
-      "message" : "人马座旋臂"
+      "message" : "Šaulio ranka"
    },
    "SCANNER" : {
       "description" : "",
-      "message" : "扫描器"
+      "message" : "Skaneris"
    },
    "SCANNER_CONTROL" : {
       "description" : "",
-      "message" : "Scanner control"
+      "message" : "Skanerio kontrolė"
    },
    "SCANNER_DESCRIPTION" : {
       "description" : "",
-      "message" : "提供附近飞船的3D图."
+      "message" : "Parodo artimų laivų 3D žemėlapį."
    },
    "SCREENSHOT_FILENAME_TEMPLATE" : {
       "description" : "",
-      "message" : "截图%index{d08}.png"
+      "message" : "ekranvaizdis%index{d08}.png"
    },
    "SCUTUM_CENTAURUS_ARM" : {
       "description" : "",
-      "message" : "半人马座旋臂"
+      "message" : "Kentauro žvaigždynas"
    },
    "SEARCH" : {
       "description" : "",
-      "message" : "搜索"
+      "message" : "Ieškoti"
    },
    "SEARCH_MAP" : {
       "description" : "",
-      "message" : "Search Map"
+      "message" : "Ieškoti žemėlapyje"
    },
    "SECTOR_COORDINATES" : {
       "description" : "",
-      "message" : "区域坐标 :"
+      "message" : "Sektoriaus koordinatės:"
    },
    "SECTOR_MAP_VIEW" : {
       "description" : "",
-      "message" : "Sector Map View"
+      "message" : "Sektoriaus žemėlapis"
    },
    "SECTOR_X_Y_Z" : {
       "description" : "",
-      "message" : "区域: %x,%y,%z"
+      "message" : "Sektorius: %x,%y,%z"
    },
    "SELECTED_SYSTEM" : {
       "description" : "",
-      "message" : "已选择的星系"
+      "message" : "Pasirinkta sistema"
    },
    "SELECT_A_TARGET" : {
       "description" : "",
-      "message" : "选择一个目标"
+      "message" : "Pasirinkite taikinį"
    },
    "SELECT_LOW_THRUST_POWER_LEVEL" : {
       "description" : "",
-      "message" : "Select low thrust power level"
+      "message" : "Pasirinkti mažą traukos galią."
    },
    "SEMI_MAJOR_AXIS" : {
       "description" : "",
-      "message" : "长半轴"
+      "message" : "Pusiau pagrindinė ašis"
    },
    "SET_HYPERSPACE_DESTINATION_TO" : {
       "description" : "",
-      "message" : "设置跃迁目的地到 %system"
+      "message" : "Nustatyti hipererdvės taikiniu %system sistemą"
    },
    "SET_HYPERSPACE_TARGET_TO_FOLLOW_THIS_DEPARTURE" : {
       "description" : "",
-      "message" : "跃迁云分析仪: 设置启程到这里跃迁目标"
+      "message" : "Hipererdvės debasies analizatorius: Nustatyti hipererdvės taikinį sekti šį išvykimą. "
    },
    "SET_LOW_THRUST_POWER_LEVEL_TO_X_PERCENT" : {
       "description" : "",
-      "message" : "Set low thrust power level to %power%%"
+      "message" : "Nustatyti mažą traukos lygį ties %power%%"
    },
    "SET_SPEED_KM_S" : {
       "description" : "",
-      "message" : "速度: %speed{f.2} km/s"
+      "message" : "Nustatytas greitis: %speed{f.2} km/s"
    },
    "SET_SPEED_M_S" : {
       "description" : "",
-      "message" : "速度: %speed{f.0} m/s"
+      "message" : "Nustatytas greitis: %speed{f.0} m/s"
    },
    "SHIELD_ENERGY_BOOSTER" : {
       "description" : "",
-      "message" : "护盾能量推进器"
+      "message" : "Skydo Energijos Stiprintuvas"
    },
    "SHIELD_ENERGY_BOOSTER_DESCRIPTION" : {
       "description" : "",
-      "message" : "Increases the rate at which shields recharge."
+      "message" : "Padidina skydo atsinaujinimo greitį."
    },
    "SHIELD_GENERATOR" : {
       "description" : "",
-      "message" : "护盾发生器"
+      "message" : "Skydo Generatorius"
    },
    "SHIELD_GENERATOR_DESCRIPTION" : {
       "description" : "",
-      "message" : "Provides additional hull defences with each unit fitted."
+      "message" : "Suteikia papildomą kėbulo apsaugą su kiekvienu įrengtu vienetu."
    },
    "SHIELD_INTEGRITY" : {
       "description" : "",
-      "message" : "护盾完整度"
+      "message" : "Skydo vientisumas"
    },
    "SHIELD_STRENGTH_N" : {
       "description" : "",
-      "message" : "护盾强度: %shields{f.2}"
+      "message" : "Skydo stiprumas: %shields{f.2}"
    },
    "SHIFT" : {
       "description" : "Shift key on keyboard",
@@ -1477,335 +1477,335 @@
    },
    "SHIP" : {
       "description" : "",
-      "message" : "飞船"
+      "message" : "Laivas"
    },
    "SHIP_ALTITUDE_ABOVE_TERRAIN" : {
       "description" : "",
-      "message" : "飞船相对地面高度"
+      "message" : "Laivo aukštis virš paviršiaus"
    },
    "SHIP_DETECTED_NEARBY" : {
       "description" : "",
-      "message" : "附近检测到飞船."
+      "message" : "Netoliese aptiktas laivas."
    },
    "SHIP_INFORMATION" : {
       "description" : "",
-      "message" : "飞船信息"
+      "message" : "Laivo informacija"
    },
    "SHIP_MASS_N_TONNES" : {
       "description" : "",
-      "message" : "飞船质量: %{mass}吨"
+      "message" : "Laivo masė: %{mass}t"
    },
    "SHIP_NEARBY" : {
       "description" : "",
-      "message" : "附近的飞船"
+      "message" : "Laivas netoliese"
    },
    "SHIP_ORIENTATION" : {
       "description" : "",
-      "message" : "飞船方向"
+      "message" : "Laivo kryptis"
    },
    "SHIP_VELOCITY_BY_REFERENCE_OBJECT" : {
       "description" : "",
-      "message" : "Ship velocity by reference object"
+      "message" : "Laivo greitis santykinai nurodytam objektui "
    },
    "SIDEREAL_VIEW" : {
       "description" : "",
-      "message" : "恒星视角"
+      "message" : "Žvaigždžių vaizdas"
    },
    "SIMULATING_UNIVERSE_EVOLUTION_N_BYEARS" : {
       "description" : "",
-      "message" : "Simulating evolution of the universe: %age{f.1} billion years ;-)"
+      "message" : "Simuliuojama visatos evoliucija: %age{f.1} milijardų metų ;-)"
    },
    "SLAVES" : {
       "description" : "",
-      "message" : "Slaves"
+      "message" : "Vergai"
    },
    "SMALL" : {
       "description" : "",
-      "message" : "小型"
+      "message" : "Mažas"
    },
    "SMALL_GAS_GIANT" : {
       "description" : "",
-      "message" : "小型气体巨星"
+      "message" : "Mažas dujų milžinas"
    },
    "SMALL_INDUSTRIAL_OUTPOST" : {
       "description" : "",
-      "message" : "小型工业基地."
+      "message" : "Maža industrinė gyvenvietė."
    },
    "SMALL_PLASMA_ACCEL" : {
       "description" : "",
-      "message" : "小型等离子加速器"
+      "message" : "Mažas plazmos greitintuvas"
    },
    "SMALL_SCALE_PROSPECTING_NO_SETTLEMENTS" : {
       "description" : "",
-      "message" : "小规模前景. 没有记录的定居点."
+      "message" : "Nedidelio masto žvalgyba. Nėra užregistruotų gyvenviečių."
    },
    "SOCIAL_DEMOCRACY" : {
       "description" : "",
-      "message" : "社会主义"
+      "message" : "Socialinė Demokratija"
    },
    "SOLAR" : {
       "description" : "",
-      "message" : "太阳"
+      "message" : "Saulės"
    },
    "SOME_ESTABLISHED_MINING" : {
       "description" : "",
-      "message" : "一些已经建立的采矿业"
+      "message" : "Truputis nusistovėjusios kasybos."
    },
    "SOURCE" : {
       "description" : "",
-      "message" : "Origin"
+      "message" : "Šaltinis"
    },
    "SPEED_CONTROL_MODE" : {
       "description" : "",
-      "message" : "速度控制模式"
+      "message" : "Greičio valdymo režimas"
    },
    "STABLE_SYSTEM_WITH_N_MAJOR_BODIES_STARPORTS" : {
       "description" : "",
-      "message" : "Stable system with %bodycount major %{body(s)} and %portcount %{starport(s)}"
+      "message" : "Stabili sistema su %bodycount svarbių %{body(s)} bei %portcount %{starport(s)}"
    },
    "STARPORT" : {
       "description" : "",
-      "message" : "星港"
+      "message" : "Kosmouostas"
    },
    "STARPORTS" : {
       "description" : "",
-      "message" : "星港"
+      "message" : "Kosmouostai"
    },
    "STAR_A" : {
       "description" : "",
-      "message" : "炽热的A型白色主序星"
+      "message" : "'A' tipo karšta baltoji žvaigždė"
    },
    "STAR_AF_GIANT" : {
       "description" : "",
-      "message" : "白巨星"
+      "message" : "Baltoji milžinė žvaigždė"
    },
    "STAR_AF_HYPER_GIANT" : {
       "description" : "",
-      "message" : "白超巨星"
+      "message" : "Baltoji hiper milžinė žvaigždė"
    },
    "STAR_AF_SUPER_GIANT" : {
       "description" : "",
-      "message" : "白超巨星"
+      "message" : "Žvaigždė baltoji super milžinė"
    },
    "STAR_B" : {
       "description" : "",
-      "message" : "明亮的B型蓝色主序星"
+      "message" : "Ryški 'B' tipo mėlynoji žvaigždė"
    },
    "STAR_B_GIANT" : {
       "description" : "",
-      "message" : "蓝巨星"
+      "message" : "Žvaigždė mėlynoji milžinė"
    },
    "STAR_B_HYPER_GIANT" : {
       "description" : "",
-      "message" : "蓝超巨星"
+      "message" : "Žvaigždė mėlynoji hiper milžinė"
    },
    "STAR_B_SUPER_GIANT" : {
       "description" : "",
-      "message" : "蓝超巨星"
+      "message" : "Mėlyna super gigantė žvaigždė"
    },
    "STAR_B_WF" : {
       "description" : "",
-      "message" : "沃尔夫-拉叶星 - 有坍塌的危险"
+      "message" : "Wolf-Rayet žvaigždė - kolapso rizika"
    },
    "STAR_F" : {
       "description" : "",
-      "message" : "F型白色主序星"
+      "message" : "'F' tipo baltoji žvaigždė"
    },
    "STAR_G" : {
       "description" : "",
-      "message" : "G型黄色主序星"
+      "message" : "'G' tipo geltona žvaigždė"
    },
    "STAR_G_GIANT" : {
       "description" : "",
-      "message" : "黄巨星 - 不稳定"
+      "message" : "Žvaigždė geltonoji milžinė - Nestabili"
    },
    "STAR_G_HYPER_GIANT" : {
       "description" : "",
-      "message" : "黄超巨星 - 不稳定"
+      "message" : "Žvaigždė geltonoji hipermilžinė - Nestabili"
    },
    "STAR_G_SUPER_GIANT" : {
       "description" : "",
-      "message" : "黄超巨星"
+      "message" : "Geltonasis super milžinas žvaigždė"
    },
    "STAR_IM_BH" : {
       "description" : "",
-      "message" : "一个中等质量的黑洞"
+      "message" : "Vidutinės masės juodoji skylė"
    },
    "STAR_K" : {
       "description" : "",
-      "message" : "K型橙色主序星"
+      "message" : "'K' tipo oranžinė žvaigždė"
    },
    "STAR_K_GIANT" : {
       "description" : "",
-      "message" : "橙巨星 - 不稳定"
+      "message" : "Oranžinė gigantė žvaigždė - Nestabili"
    },
    "STAR_K_HYPER_GIANT" : {
       "description" : "",
-      "message" : "橙超巨星 - 不稳定"
+      "message" : "Oranžinė hiper milžinė žvaigždė - Nestabili"
    },
    "STAR_K_SUPER_GIANT" : {
       "description" : "",
-      "message" : "橙超巨星"
+      "message" : "Žvaigždė oranžinė supermilžinė."
    },
    "STAR_M" : {
       "description" : "",
-      "message" : "M型红色主序星"
+      "message" : "'M' tipo raudona žvaigždė"
    },
    "STAR_M_GIANT" : {
       "description" : "",
-      "message" : "红巨星"
+      "message" : "Žvaigždė raudonoji milžinė"
    },
    "STAR_M_HYPER_GIANT" : {
       "description" : "",
-      "message" : "红超巨星"
+      "message" : "Žvaigždė raudonoji hiper milžinė"
    },
    "STAR_M_SUPER_GIANT" : {
       "description" : "",
-      "message" : "红超巨星"
+      "message" : "Žvaigždė raudonoji super milžinė"
    },
    "STAR_M_WF" : {
       "description" : "",
-      "message" : "沃尔夫-拉叶星 - 不稳定"
+      "message" : "Wolf-Rayet žvaigždė - Nestabili"
    },
    "STAR_O" : {
       "description" : "",
-      "message" : "炽热巨大的O型主序星"
+      "message" : "Karšta, masyvi 'O' tipo žvaigždė"
    },
    "STAR_O_GIANT" : {
       "description" : "",
-      "message" : "炽热的蓝巨星"
+      "message" : "Žvaigždė karšta mėlynoji milžinė "
    },
    "STAR_O_HYPER_GIANT" : {
       "description" : "",
-      "message" : "炽热的蓝超巨星"
+      "message" : "Karšta žvaigždė, mėlynoji hiper milžinė"
    },
    "STAR_O_SUPER_GIANT" : {
       "description" : "",
-      "message" : "炽热的蓝超巨星"
+      "message" : "Karšta mėlynoji super milžinė žvaigždė"
    },
    "STAR_O_WF" : {
       "description" : "",
-      "message" : "沃尔夫-拉叶星 - 即将坍塌"
+      "message" : "Wolf-Rayet žvaigždė - gresiantis kolapsas"
    },
    "STAR_SM_BH" : {
       "description" : "",
-      "message" : "Our galactic anchor"
+      "message" : "Mūsų galaktikos inkaras"
    },
    "STAR_SYSTEM_INFORMATION" : {
       "description" : "",
-      "message" : "恒星系统信息"
+      "message" : "Žvaigždžių sistemos informacija"
    },
    "STAR_S_BH" : {
       "description" : "",
-      "message" : "一个星际黑洞"
+      "message" : "Žvsigždinė juodoji skylė"
    },
    "SUGGESTED_RESPONSES" : {
       "description" : "",
-      "message" : "Suggested responses:"
+      "message" : "Siūlomi atsakymai:"
    },
    "SURFACE_GRAVITY" : {
       "description" : "",
-      "message" : "表面重力"
+      "message" : "Paviršiaus gravitacija"
    },
    "SURFACE_TEMPERATURE" : {
       "description" : "",
-      "message" : "表面温度"
+      "message" : "Paviršiaus temperatūra"
    },
    "SYSTEM" : {
       "description" : "",
-      "message" : "星系"
+      "message" : "Sistema"
    },
    "SYSTEM_NUMBER" : {
       "description" : "",
-      "message" : "星系编号:"
+      "message" : "Sistemos numeris:"
    },
    "SYSTEM_ORBIT_VIEW" : {
       "description" : "",
-      "message" : "星系轨道图"
+      "message" : "Sistemos orbitų vaizdas"
    },
    "SYSTEM_TYPE" : {
       "description" : "",
-      "message" : "星系类型:"
+      "message" : "Sistemos tipas:"
    },
    "S_ATMOSPHERE" : {
       "description" : "",
-      "message" : "\" 硫大气层\""
+      "message" : "\" Sieros atmosfera\""
    },
    "TAKEOFF" : {
       "description" : "",
-      "message" : "出发"
+      "message" : "Pakilimas"
    },
    "TARGET_OBJECT_IN_SIGHTS" : {
       "description" : "",
-      "message" : "Target object in cross-hairs"
+      "message" : "Nusitaikyti į objektą taikiklyje"
    },
    "TENUOUS" : {
       "description" : "",
-      "message" : "贫乏的"
+      "message" : "silpnas(-a)"
    },
    "TEXTILES" : {
       "description" : "",
-      "message" : "纺织品"
+      "message" : "Tekstilės"
    },
    "THICK" : {
       "description" : "",
-      "message" : "厚"
+      "message" : "tiršta(-s)"
    },
    "THIN" : {
       "description" : "",
-      "message" : "薄"
+      "message" : "plona(-s)"
    },
    "THRIVING_OUTDOOR_WORLD" : {
       "description" : "",
-      "message" : "Thriving outdoor world."
+      "message" : "Klestintis lauko pasaulis."
    },
    "THRUSTER_DORSAL" : {
       "description" : "",
-      "message" : "Thrust down"
+      "message" : "Trauka žemyn"
    },
    "THRUSTER_MAIN" : {
       "description" : "",
-      "message" : "前推进"
+      "message" : "Trauka pirmyn"
    },
    "THRUSTER_PORT" : {
       "description" : "",
-      "message" : "左推进"
+      "message" : "Trauka kairėn"
    },
    "THRUSTER_RETRO" : {
       "description" : "",
-      "message" : "Thrust backwards"
+      "message" : "Trauka atgal"
    },
    "THRUSTER_STARBOARD" : {
       "description" : "",
-      "message" : "右推进"
+      "message" : "Trauka dešinėn"
    },
    "THRUSTER_VENTRAL" : {
       "description" : "",
-      "message" : "上推进"
+      "message" : "Trauka aukštyn"
    },
    "TIME_POINT" : {
       "description" : "",
-      "message" : "时间点："
+      "message" : "Laiko riba:"
    },
    "TINY" : {
       "description" : "",
-      "message" : "微型"
+      "message" : "Mažytis"
    },
    "TOGGLE_HUD_MODE" : {
       "description" : "",
-      "message" : "Toggle HUD mode"
+      "message" : "Perjungti HUD režimą"
    },
    "TOGGLE_LUA_CONSOLE" : {
       "description" : "",
-      "message" : "切换Lua控制台"
+      "message" : "Įj./Išj. Lua konsolę"
    },
    "TOGGLE_ROTATION_DAMPING" : {
       "description" : "",
-      "message" : "Toggle rotation damping"
+      "message" : "Įj./Išj. sukimosi slopinimą"
    },
    "TOGGLE_SCAN_MODE" : {
       "description" : "",
-      "message" : "Toggle scanner mode"
+      "message" : "Perjungti skanerio režimą"
    },
    "TOMBSTONE_EPITAPH" : {
       "description" : "",
@@ -1813,103 +1813,103 @@
    },
    "TRADING_ILLEGAL_GOODS" : {
       "description" : "",
-      "message" : "交易非法货物"
+      "message" : "Prekiavimas nelegaliomis prekėmis"
    },
    "TRIPLE_SYSTEM" : {
       "description" : "",
-      "message" : "三星系统"
+      "message" : "Trinarė sistema"
    },
    "UNEXPLORED_SYSTEM_NO_DATA" : {
       "description" : "",
-      "message" : "未探索的星系。没有更多数据可用。"
+      "message" : "Neištirta sistema. Daugiau duomenų nėra."
    },
    "UNEXPLORED_SYSTEM_NO_SYSTEM_VIEW" : {
       "description" : "",
-      "message" : "未探索的星系. 没有星系图可用."
+      "message" : "Neištirta sistema. Sistemos apžvalga negalima."
    },
    "UNEXPLORED_SYSTEM_STAR_INFO_ONLY" : {
       "description" : "",
-      "message" : "未探索的星系. 恒星信息已经被远程望远镜收集, 但是行星信息不可用"
+      "message" : "Neištirta sistema. Žvaigždės informacija surinkta naudojant teleskopą, bet nėra informacijos apie planetas."
    },
    "UNKNOWN" : {
       "description" : "",
-      "message" : "<unknown>"
+      "message" : "<nežinoma>"
    },
    "UNLAWFUL_WEAPONS_DISCHARGE" : {
       "description" : "",
-      "message" : "非法武器开火"
+      "message" : "Neteisėtas ginklų panaudojimas"
    },
    "UNOCCUPIED_CABIN" : {
       "description" : "",
-      "message" : "额外客舱"
+      "message" : "Papildoma keleivio kajutė"
    },
    "UNOCCUPIED_CABIN_DESCRIPTION" : {
       "description" : "",
-      "message" : "Required for transport of a single passenger"
+      "message" : "Reikalingas vieno keleivio transportavimui"
    },
    "USE_LOW_THRUST" : {
       "description" : "",
-      "message" : "Use low thrust"
+      "message" : "Naudoti mažą trauką"
    },
    "VAST_STRIP_MINE" : {
       "description" : "",
-      "message" : "大型露天开采殖民地."
+      "message" : "Didelė atvirosios kasybos kolonija."
    },
    "VERY_DENSE" : {
       "description" : "",
-      "message" : "非常浓密"
+      "message" : "labai tankus"
    },
    "VERY_LARGE_GAS_GIANT" : {
       "description" : "",
-      "message" : "非常大型气体巨星"
+      "message" : "Labai didelis dujų milžinas"
    },
    "VID_CONNECTING" : {
       "description" : "",
-      "message" : "连接中..."
+      "message" : "Jungiamasi..."
    },
    "VID_LINK_ESTABLISHED" : {
       "description" : "",
-      "message" : "Video link established"
+      "message" : "Vaizdo ryšys užmegztas"
    },
    "VIEW" : {
       "description" : "",
-      "message" : "视图"
+      "message" : "Žiūrėti"
    },
    "VIOLENT_ANARCHY" : {
       "description" : "",
-      "message" : "Disorder - Overall governance contested by armed factions"
+      "message" : "Suirutė - Dėl valdžios varžosi ginkluotos grupuotės"
    },
    "WATER" : {
       "description" : "",
-      "message" : "水"
+      "message" : "Vanduo"
    },
    "WEAPONS" : {
       "description" : "",
-      "message" : "武器"
+      "message" : "Ginklai"
    },
    "WEAPON_TEMP" : {
       "description" : "",
-      "message" : "Weapon temp"
+      "message" : "Ginklų temperatūra"
    },
    "WHEELS_ARE_DOWN" : {
       "description" : "",
-      "message" : "机轮已放下"
+      "message" : "Ratai nuleisti"
    },
    "WHEELS_ARE_UP" : {
       "description" : "",
-      "message" : "机轮已挂起"
+      "message" : "Ratai pakelti"
    },
    "WHITE_DWARF" : {
       "description" : "",
-      "message" : "残留的白矮星"
+      "message" : "Baltasis nykštukas - žvaigždės likutis"
    },
    "WITH_A" : {
       "description" : "",
-      "message" : "\" with a \""
+      "message" : "\" su \""
    },
    "WITH_NO_SIGNIFICANT_ATMOSPHERE" : {
       "description" : "",
-      "message" : "\" 没有显著的大气层\""
+      "message" : "\" neturi reikšmingos atmosferos\""
    },
    "X" : {
       "description" : "",
@@ -1917,7 +1917,7 @@
    },
    "X_CANNOT_BE_TOLERATED_HERE" : {
       "description" : "",
-      "message" : "%crime 在这儿不被容忍."
+      "message" : "%crime čia nebus toleruojama."
    },
    "Y" : {
       "description" : "",
@@ -1925,23 +1925,23 @@
    },
    "YAW" : {
       "description" : "",
-      "message" : "舵"
+      "message" : "Nuokrypis"
    },
    "YAW_LEFT" : {
       "description" : "",
-      "message" : "左舵"
+      "message" : "Nuokrypis kairėn"
    },
    "YAW_RIGHT" : {
       "description" : "",
-      "message" : "右舵"
+      "message" : "Nuokrypis dešinėn"
    },
    "YOUNG_FARMING_COLONY" : {
       "description" : "",
-      "message" : "新兴农业殖民地."
+      "message" : "Jauna žemės ūkio kolonija."
    },
    "YOU_NO_MONEY" : {
       "description" : "",
-      "message" : "你压根没有钱."
+      "message" : "Jūs visiškai neturite pinigų."
    },
    "Z" : {
       "description" : "",
@@ -1949,10 +1949,10 @@
    },
    "ZOOM_IN" : {
       "description" : "",
-      "message" : "放大"
+      "message" : "Priartinti"
    },
    "ZOOM_OUT" : {
       "description" : "",
-      "message" : "缩小"
+      "message" : "Atitolinti"
    }
 }

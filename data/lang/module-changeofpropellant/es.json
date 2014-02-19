@@ -1,0 +1,30 @@
+{
+   "formtittle" : {
+      "description" : "",
+      "message" : "Nosotros podemos convertir su propulsor\npara que utilice Hidrógeno en lugar de Agua"
+   },
+   "formmessage" : {
+      "description" : "",
+      "message" : "\n*\n* Hola Comandante.\n*\n* Convierta aquí su viejo propulsor por solo $"
+   },
+   "Not_have_enough_credit" : {
+      "description" : "",
+      "message" : "Usted no tiene suficiente crédito."
+   },
+   "convert" : {
+      "description" : "",
+      "message" : "Convertir"
+   },
+   "Hang" : {
+      "description" : "",
+      "message" : "Colgar"
+   },
+   "convertok" : {
+      "description" : "",
+      "message" : "La conversión de su propulsor se ha completado.\nAhora puede usar Hidrógeno en vez de Agua."
+   },
+   "adtittle" : {
+      "description" : "",
+      "message" : "Utilice Hidrógeno en lugar de Agua en su Propulsor"
+   }
+}

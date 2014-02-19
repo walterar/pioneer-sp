@@ -1,0 +1,30 @@
+{
+   "formtittle" : {
+      "description" : "",
+      "message" : "We can convert your thruster\nto use hydrogen instead of water"
+   },
+   "formmessage" : {
+      "description" : "",
+      "message" : "\n*\n* Hello Commander\n*\n* Convert here your old thruster for only $"
+   },
+   "Not_have_enough_credit" : {
+      "description" : "",
+      "message" : "You don't have enough credits."
+   },
+   "convert" : {
+      "description" : "",
+      "message" : "Convert"
+   },
+   "Hang" : {
+      "description" : "",
+      "message" : "Hang"
+   },
+   "convertok" : {
+      "description" : "",
+      "message" : "Converting your thruster has been complete.\nNow you can use hydrogen instead of water."
+   },
+   "adtittle" : {
+      "description" : "",
+      "message" : "Use Hydrogen instead of Water in your thruster"
+   }
+}

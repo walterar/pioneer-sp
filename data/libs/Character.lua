@@ -1059,6 +1059,7 @@ Character = {
 -- Keep for compatibility, or delete.
 	IsCombatRated = function (self,rating)
 		return rating
+	end,
 
 --
 -- Method: GetReputationRating

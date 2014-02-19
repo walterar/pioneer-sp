@@ -173,7 +173,7 @@
    },
    "CARGO_LIFE_SUPPORT" : {
       "description" : "",
-      "message" : "Bahía de carga de soporte vital"
+      "message" : "Soporte vital para carga"
    },
    "CARGO_LIFE_SUPPORT_DESCRIPTION" : {
       "description" : "",
@@ -1809,7 +1809,7 @@
    },
    "TOMBSTONE_EPITAPH" : {
       "description" : "",
-      "message" : "RIP VIEJO AMIGO"
+      "message" : "R.I.P."
    },
    "TRADING_ILLEGAL_GOODS" : {
       "description" : "",

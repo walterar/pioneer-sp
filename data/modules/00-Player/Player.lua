@@ -174,7 +174,7 @@ local onShipHit = function (ship, attacker)
 			trigger = 0
 		elseif trigger == 1 then ship:SetInvulnerable(false)
 		end
-	elseif attacker:IsPlayer() then
+	elseif attacker and attacker:IsPlayer() then
 		_G.ShotsSuccessful = (ShotsSuccessful or 0) + 1
 	end
 end

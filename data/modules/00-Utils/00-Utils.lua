@@ -70,7 +70,7 @@ _G.ship_hostil = function (risk)
 						and  string.sub(def.id,0,11) == 'PULSECANNON'
 					end, pairs(EquipDef)))
 				local laserdef = laserdefs[Engine.rand:Integer(1,#laserdefs)]
-				hostil = Space.SpawnShipNear(hostile.id, Game.player,10,10)
+				hostil = Space.SpawnShipNear(hostile.id, Game.player,5,5)
 				hostil:AddEquip(default_drive)
 				hostil:AddEquip(laserdef.id)
 				hostil:SetLabel(Ship.MakeRandomLabel())

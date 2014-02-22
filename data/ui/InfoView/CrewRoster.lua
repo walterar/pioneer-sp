@@ -249,12 +249,12 @@ local crewRoster = function ()
 	local makeCrewList = function ()
 		local crewTable =
 			ui:Table()
-				:SetColumnSpacing(80)
+				:SetHeadingRow({l.NAME_PERSON, l.POSITION, l.WAGE, l.OWED, l.NEXT_PAID})
 				:SetHeadingFont("HEADING_SMALL")
 				:SetRowSpacing(5)
 				:SetRowAlignment("CENTER")
-				:SetColumnAlignment("LEFT")
-				:SetHeadingRow({l.NAME_PERSON, l.POSITION, l.WAGE, l.OWED, l.NEXT_PAID})
+				:SetColumnAlignment("JUSTIFY")
+
 		-- Create a row for each crew member
 		local wageTotal = 0
 		local owedTotal = 0

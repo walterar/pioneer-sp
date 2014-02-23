@@ -4,7 +4,7 @@ How to compile Pioneer
 Pioneer is known to build on the following platforms and build systems:
 
 Linux: GNU Autotools with GCC or Clang
-Windows: Microsoft Visual C++ 2008, 2010 & 2012
+Windows: Microsoft Visual C++ 2013 (Express Edition or Pro)
 Windows: GNU Autotools with MXE (MinGW GCC) (cross-compile on Linux)
 OS X: GNU Autotools or XCode 4
 

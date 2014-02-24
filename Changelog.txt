@@ -17,6 +17,7 @@ February 2014
      * The `console.lua` script is now run at each game start (#2746)
      * Config values can be overidden on the command line
      * Use tables instead of grids for layout
+     * Donating money or not paying wages affects reputation (#2786)
 
    * Script and UI API changes
      * Model.SetDebugFlags for adding debug effects to model drawing
@@ -25,6 +26,8 @@ February 2014
      * hasprop method to see if the named property exists (#2734)
      * Ship:InitiateHyperjumpTo to jump regardless of range or fuel (#2747)
      * UI.Table.SetColumnAlignment, various ways to position table columns (#2778)
+     * UI.Table.ScrollToTop and ScrollToBottom, basic scroll control
+     * Empty grid cells now expand to the available size to assist with layout
 
    * Model changes
      * Removed two_sided material property, it didn't handle lighting correctly (#2697)
@@ -42,7 +45,8 @@ February 2014
      * Fix pattern for Xylophis (#2723,#2759)
      * Render to texture Skybox alpha fix (#2763)
      * Remove Lua timers at game exit (#1962)
-     * Copy n' waste error fixed (#2770)
+     * Properly set terrain detail settings (#2770)
+     * Always relayout tables and single containers after content change
 
    * Internal changes
      * Moved model debug effects (wireframe, collision mesh) out of
@@ -57,6 +61,7 @@ February 2014
      * Removed Visual Studio 2010 and 2012 support (#2772)
      * IterationProxy for save access to embedded containers (#2783)
      * Automatically manage the cancellation of jobs with RAII (#2758)
+     * Added a Profile Config to VS2013 (#2785)
 
 January 2014
 

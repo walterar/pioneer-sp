@@ -16,21 +16,21 @@ local l = Lang.GetResource("ui-core")
 
 local commodityMarket = function (args)
 	local stationTable, shipTable = EquipmentTableWidgets.Pair({
-		stationColumns = { "icon", "name", "price", "stock" },
+		stationColumns = { "icon", "name", "buy", "sell", "stock" },
 		shipColumns = { "icon", "name", "amount" },
 	})
 
 	return
-		ui:Grid({48,4,48},1)
+		ui:Grid({58,4,38},1)
 			:SetColumn(0, {
 				ui:VBox():PackEnd({
-					ui:Label(l.AVAILABLE_FOR_PURCHASE):SetFont("HEADING_NORMAL"),
+					ui:Label(l.AVAILABLE_FOR_PURCHASE):SetFont("HEADING_SMALL"),
 					ui:Expand():SetInnerWidget(stationTable),
 				})
 			})
 			:SetColumn(2, {
 				ui:VBox():PackEnd({
-					ui:Label(l.IN_CARGO_HOLD):SetFont("HEADING_NORMAL"),
+					ui:Label(l.IN_CARGO_HOLD):SetFont("HEADING_SMALL"),
 					ui:Expand():SetInnerWidget(shipTable),
 				})
 			})

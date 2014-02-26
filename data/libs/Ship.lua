@@ -104,7 +104,7 @@ function Ship:FireMissileAt(missile, target)
 	if missile_object then
 		if target:exists() then
 			missile_object:AIKamikaze(target)
-			_G.MissileActive = true
+			_G.MissileActive = MissileActive +1
 		end
 		-- Let's keep a safe distance before activating this device, shall we ?
 		Timer:CallEvery(1, function ()
@@ -118,7 +118,7 @@ function Ship:FireMissileAt(missile, target)
 			if ShipDef[missile_object.shipId].name == "MISSILE_NAVAL" then
 				missile_object:Explode()
 				target:Explode()
-				_G.MissileActive = false
+				_G.MissileActive = MissileActive - 1
 			end
 			return true
 		end)

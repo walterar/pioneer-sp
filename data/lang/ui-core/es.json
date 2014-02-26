@@ -51,6 +51,10 @@
       "description" : "",
       "message" : "Comprar"
    },
+   "BUY" : {
+      "description" : "Commodities and equipment prices",
+      "message" : "COMPRA"
+   },
    "CABINS" : {
       "description" : "",
       "message" : "Cabinas"
@@ -850,6 +854,10 @@
    "SELECT_GAME_TO_LOAD" : {
       "description" : "",
       "message" : "Selecciona juego salvado..."
+   },
+   "SELL" : {
+      "description" : "Commodities and equipment prices",
+      "message" : "VENTA"
    },
    "SENSORS" : {
       "description" : "",

@@ -17,23 +17,23 @@ local ui = Engine.ui
 
 local equipmentMarket = function (args)
 	local stationTable, shipTable = EquipmentTableWidgets.Pair({
-		stationColumns = { "name", "price", "mass", "stock" },
+		stationColumns = { "name", "buy", "sell", "mass" , "stock" },
 		shipColumns = { "name", "amount", "mass", "massTotal" },
 
 		canTrade = function (e) return EquipDef[e].purchasable and EquipDef[e].slot ~= "CARGO" end,
 	})
 
 	return
-		ui:Grid({48,4,48},1)
+		ui:Grid({58,4,38},1)
 			:SetColumn(0, {
 				ui:VBox():PackEnd({
-					ui:Label(l.AVAILABLE_FOR_PURCHASE):SetFont("HEADING_NORMAL"),
+					ui:Label(l.AVAILABLE_FOR_PURCHASE):SetFont("HEADING_SMALL"),
 					ui:Expand():SetInnerWidget(stationTable),
 				})
 			})
 			:SetColumn(2, {
 				ui:VBox():PackEnd({
-					ui:Label(l.EQUIPPED):SetFont("HEADING_NORMAL"),
+					ui:Label(l.EQUIPPED):SetFont("HEADING_SMALL"),
 					ui:Expand():SetInnerWidget(shipTable),
 				})
 			})

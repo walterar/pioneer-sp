@@ -132,3 +132,96 @@ function StarSystem:GetNearbyStationPaths(range_ly, system_filter, station_filte
 
 	return nearby_stations
 end
+
+---============================================================
+-- function format_num(amount, decimal, prefix, neg_prefix)
+-- original from sam_lie
+-- modified for Pioneer Scout+ by walterar
+---============================================================
+-- add comma to separate thousands
+--
+local thousands_separator = "%1.%2"
+local decimal_separator = ","
+
+
+local function comma_value(amount)
+  local formatted = amount
+  while true do
+    formatted, k = string.gsub(formatted, "^(-?%d+)(%d%d%d)", thousands_separator)
+    if (k==0) then
+      break
+    end
+  end
+  return formatted
+end
+
+---============================================================
+-- rounds a number to the nearest decimal places
+--
+local function round(val, decimal)
+--  if (decimal) then
+		return tonumber(string.format("%." .. (decimal or 0) .. "f", val))
+--    return math.floor( (val * 10^decimal) + 0.5) / (10^decimal)
+--  else
+--    return math.floor(val+0.5)
+--  end
+end
+
+--===================================================================
+-- given a numeric value formats output with comma to separate thousands
+-- and rounded to given decimal places
+--
+--
+function _G.format_num(amount, decimal, prefix, neg_prefix)
+	local str_amount,  formatted, famount, remain
+	decimal = decimal or 2  -- default 2 decimal places
+	neg_prefix = neg_prefix or "-" -- default negative sign
+
+	famount = math.abs(round(amount,decimal))
+	famount = math.floor(famount)
+
+	remain = round(math.abs(amount) - famount, decimal)
+
+-- comma to separate the thousands
+	formatted = comma_value(famount)
+
+-- attach the decimal portion
+	if (decimal > 0) then
+		remain = string.sub(tostring(remain),3)
+		formatted = formatted .. decimal_separator .. remain .. string.rep("0", decimal - string.len(remain))
+  end
+
+-- attach prefix string e.g '$'
+	formatted = (prefix or "") .. formatted
+
+-- if value is negative then format accordingly
+	if (amount<0) then
+		if (neg_prefix=="()") then
+			formatted = "("..formatted ..")"
+		else
+			formatted = neg_prefix .. formatted
+		end
+	end
+
+	return formatted
+end
+
+--[[
+Example usage:
+
+amount = 1333444.1
+print(format_num(amount,2))
+print(format_num(amount,-2,"US$"))
+Output:
+1,333,444.10
+US$1,333,400
+
+amount = -22333444.5634
+print(format_num(amount,2,"$"))
+print(format_num(amount,2,"$","()"))
+print(format_num(amount,3,"$","NEG "))
+Output:
+-$22,333,444.56
+($22,333,444.56)
+NEG $22,333,444.563
+--]]

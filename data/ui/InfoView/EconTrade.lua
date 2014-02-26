@@ -137,14 +137,13 @@ local econTrade = function ()
 									ui:Margin(10),
 									ui:Label(l.CARGO_SPACE..":"),
 									"",
---									ui:Label(l.CABINS..":"),
 									ui:Margin(10),
 								})
 							})
 							:SetColumn(1, {
 								ui:VBox():PackEnd({
 									"",
-									ui:Label(string.format("$%.2f", cash)),
+									ui:Label(format_num(cash, 2, "$", "-")),
 									ui:Margin(10),
 									ui:Margin(0, "HORIZONTAL",
 										ui:HBox(10):PackEnd({

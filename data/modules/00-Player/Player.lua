@@ -33,7 +33,7 @@ _G.PrevPos           = "no"
 _G.PrevFac           = "no"
 _G.SpaMember         = 0
 _G.DangerLevel       = 0
-_G.MissileActive     = false
+_G.MissileActive     = 0
 _G.FuelHydrogen      = false
 
 local welcome = function ()
@@ -105,7 +105,7 @@ local onGameStart = function ()
 		_G.PrevFac           = shipData.prev_fac or "no"
 		_G.DangerLevel       = shipData.danger_level or 0
 		_G.TrueJoust         = shipData.true_joust or false
-		_G.MissileActive     = shipData.missile_active or false
+		_G.MissileActive     = shipData.missile_active or 0
 		_G.FuelHydrogen      = shipData.fuel_hydrogen or false
 	else
 

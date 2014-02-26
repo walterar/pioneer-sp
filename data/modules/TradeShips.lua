@@ -193,8 +193,8 @@ doUndock = function (ship)
 	if ship:exists() and ship:GetDockedWith() then
 		local trader = trade_ships[ship]
 		if not ship:Undock() then
-	-- unable to undock, try again in 5 minutes
-			trader['delay'] = Game.time + (60*5)
+			-- unable to undock, try again in ten minutes
+			trader['delay'] = Game.time + 600
 			Timer:CallAt(trader.delay, function () doUndock(ship) end)
 		else
 			trader['delay'] = nil
@@ -300,8 +300,9 @@ local jumpToSystem = function (ship, target_path)
 end
 
 local getSystemAndJump = function (ship)
-	if MissileActive then return end
-	return jumpToSystem(ship, getSystem(ship))
+	if MissileActive == 0 then
+		return jumpToSystem(ship, getSystem(ship))
+	end
 end
 
 local getAcceptableShips = function ()
@@ -372,8 +373,7 @@ local spawnInitialShips = function (game_start)
 	-- determine how many trade ships to spawn
 	local lawlessness = Game.system.lawlessness
 	-- start with three ships per two billion population
-	-- num_trade_ships = population * 4
-	local num_trade_ships = #starports * 4--1.5
+	local num_trade_ships = population * 1.5
 	-- add the average of import_score and export_score
 	num_trade_ships = num_trade_ships + (import_score + export_score) / 2
 	-- reduce based on lawlessness
@@ -405,8 +405,8 @@ local spawnInitialShips = function (game_start)
 		local ship_name = ship_names[Engine.rand:Integer(1, #ship_names)]
 		local ship = nil
 
-		if game_start and i < num_trade_ships / 2 then
-			-- spawn the half in port if at game start
+		if game_start and i < num_trade_ships / 4 then
+			-- spawn the first quarter in port if at game start
 			local starport = starports[Engine.rand:Integer(1, #starports)]
 
 			ship = Space.SpawnShipDocked(ship_name, starport)
@@ -547,7 +547,7 @@ local cleanTradeShipsTable = function ()
 			if trader.status == 'hyperspace' then
 				hyperspace = hyperspace + 1
 				-- remove well past due ships as the player can not catch them
-				if trader.dest_time + (60*60*2) < Game.time then
+				if trader.dest_time + (60*60*24) < Game.time then
 					trade_ships[ship] = nil
 					removed = removed + 1
 				end
@@ -662,12 +662,12 @@ local onShipDocked = function (ship, starport)
 	delay = delay + addShipCargo(ship, 'export')
 	if damage > delay then delay = damage end
 
-	-- delay undocking by 10-25 seconds for every unit of cargo transfered
+	-- delay undocking by 30-45 seconds for every unit of cargo transfered
 	-- or 2-3 minutes for every unit of hull repaired
 	if delay > 0 then
-		trader['delay'] = Game.time + (delay * Engine.rand:Number(10, 25))
+		trader['delay'] = Game.time + (delay * Engine.rand:Number(30, 45))
 	else
-		trader['delay'] = Game.time + Engine.rand:Number((60*1), (60*6))
+		trader['delay'] = Game.time + Engine.rand:Number(600, 3600)
 	end
 
 	if trader.status == 'docked' then
@@ -699,7 +699,7 @@ local onAICompleted = function (ship, ai_error)
 		end
 	elseif trader.status == 'orbit' then
 		if ai_error == 'NONE' then
-			trader['delay'] = Game.time + (60*60*3) -- 3 hours
+			trader['delay'] = Game.time + (60*60*6) -- 6 hours
 			Timer:CallAt(trader.delay, function ()
 				if ship:exists() and ship.flightState ~= 'HYPERSPACE' then
 					trader['starport'] = getNearestStarport(ship, trader.starport)
@@ -814,7 +814,6 @@ local onShipHit = function (ship, attacker)
 	end
 end
 Event.Register("onShipHit", onShipHit)
-
 
 local onShipCollided = function (ship, other)
 	if trade_ships[ship] == nil

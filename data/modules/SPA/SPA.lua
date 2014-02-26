@@ -61,17 +61,13 @@ onChat = function (form, ref, option)
 	end
 
 	form:Clear()
---	form:SetFace(ad.character)
---	form:SetFace({female = false, armour = false, seed = ad.faceseed})
 	form:SetTitle(ad.flavour.clubname)
---	form:SetTitle(ad.flavour.welcome:interp({clubname = ad.flavour.clubname}))
 	local membership = memberships[ad.flavour.clubname]
 
 	if membership and (membership.joined + membership.expiry > Game.time) then
 		Game.player:SetFuelPercent()
 
 		setMessage(ad.flavour.member_intro)
---		setMessage("* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *")--75c ad.flavour.member_intro)
 
 		form:AddGoodsTrader({
 			canTrade = function (ref, commodity)
@@ -84,23 +80,31 @@ onChat = function (form, ref, option)
 			end,
 			getStock = function (ref, commodity)
 				ad.stock[commodity] = ({
-					['HYDROGEN'] = ad.stock.HYDROGEN or (Engine.rand:Integer(2,50) + Engine.rand:Integer(3,25)),
+					['HYDROGEN']      = ad.stock.HYDROGEN or (Engine.rand:Integer(2,50) + Engine.rand:Integer(3,25)),
 					['MILITARY_FUEL'] = ad.stock.MILITARY_FUEL or (Engine.rand:Integer(2,25) + Engine.rand:Integer(3,25)),
-					['METAL_ALLOYS'] = ad.stock.METAL_ALLOYS or (Engine.rand:Integer(2,25) + Engine.rand:Integer(3,25)),
-					['RADIOACTIVES'] = 0,
+					['METAL_ALLOYS']  = ad.stock.METAL_ALLOYS or (Engine.rand:Integer(2,25) + Engine.rand:Integer(3,25)),
+					['RADIOACTIVES']  = 0,
 				})[commodity]
 				return ad.stock[commodity]
 			end,
-			getPrice = function (ref, commodity)
+			getBuyPrice = function (ref, commodity)
 				return ad.station:GetEquipmentPrice(commodity) * ({
 					['HYDROGEN']      = 0.5, -- half price Hydrogen
-					['MILITARY_FUEL'] = 0.60, -- 40% off Milfuel
-					['METAL_ALLOYS']  = 0.60, -- 40% off Metal_Alloys
+					['MILITARY_FUEL'] = 0.6, -- 40% off Milfuel
+					['METAL_ALLOYS']  = 0.6, -- 40% off Metal_Alloys
 					['RADIOACTIVES']  = 0, -- Radioactives go free
 				})[commodity]
 			end,
 			onClickBuy = function (ref, commodity)
 				return membership.joined + membership.expiry > Game.time
+			end,
+			getSellPrice = function (ref, commodity)
+				return ad.station:GetEquipmentPrice(commodity) * ({
+					['HYDROGEN']      = 0.45,
+					['MILITARY_FUEL'] = 0.55,
+					['METAL_ALLOYS']  = 0.55,
+					['RADIOACTIVES']  = 0,
+				})[commodity]
 			end,
 			onClickSell = function (ref, commodity)
 				if (commodity == 'RADIOACTIVES' and membership.milrads < 1) then

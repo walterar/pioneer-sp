@@ -159,7 +159,7 @@ onChat = function (form, ref, option)
 
 	else
 		setMessage(ad.flavour.nonmember_intro:interp({
-			membership_fee = Format.Money(ad.flavour.annual_fee)
+			membership_fee = format_num(ad.flavour.annual_fee, 2, "$", "-")
 		}))
 		form:AddOption(l.WHAT_CONDITIONS_APPLY:interp({radioactives = l.RADIOACTIVES}),1)
 		form:AddOption(l.APPLY_FOR_MEMBERSHIP,2)

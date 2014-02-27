@@ -21,7 +21,7 @@ _G.tariff = function (dist,risk,urgency,locate)
 
 	local multiplier = 1 + ((math.abs(locate.sectorX) + math.abs(locate.sectorY) + sectorz)/100)
 	if string.sub(Game.player.label,1,2) == string.upper(string.sub(Game.system.faction.name,1,2)) then
-		multiplier = multiplier * 1.3--Engine.rand:Number(1.2,1.4)
+		multiplier = multiplier * 1.3
 	end
 
 	local population = Game.system.population
@@ -135,6 +135,7 @@ end
 
 ---============================================================
 -- function format_num(amount, decimal, prefix, neg_prefix)
+-- ej. format_num(amount, 2, "$", "-")
 -- original from sam_lie
 -- modified for Pioneer Scout+ by walterar
 ---============================================================
@@ -142,7 +143,6 @@ end
 --
 local thousands_separator = "%1.%2"
 local decimal_separator = ","
-
 
 local function comma_value(amount)
   local formatted = amount
@@ -159,14 +159,8 @@ end
 -- rounds a number to the nearest decimal places
 --
 local function round(val, decimal)
---  if (decimal) then
 		return tonumber(string.format("%." .. (decimal or 0) .. "f", val))
---    return math.floor( (val * 10^decimal) + 0.5) / (10^decimal)
---  else
---    return math.floor(val+0.5)
---  end
 end
-
 --===================================================================
 -- given a numeric value formats output with comma to separate thousands
 -- and rounded to given decimal places

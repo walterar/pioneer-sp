@@ -337,13 +337,13 @@ end
 
 local spawnInitialShips = function (game_start)
 	-- check if the current system can be traded in
+	local population = Game.system.population
+	if population == 0 then return nil end
 	starports = Space.GetBodies(function (body) return body.superType == 'STARPORT' end)
 	if #starports == 0 then return nil end
 	vacuum_starports = Space.GetBodies(function (body)
 		return body.superType == 'STARPORT' and (body.type == 'STARPORT_ORBITAL' or (not body.path:GetSystemBody().parent.hasAtmosphere))
 	end)
-	local population = Game.system.population
-	if population == 0 then return nil end
 	local ship_names = getAcceptableShips()
 	if #ship_names == 0 then return nil end
 

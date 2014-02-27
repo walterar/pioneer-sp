@@ -25,7 +25,7 @@ local getRepairMessage = function (damage, price)
 	return string.interp(
 		l.REPAIR_X_HULL_DAMAGE_FOR_X, {
 			damage = string.format('%.1f', damage),
-			price = Format.Money(price)
+			price = format_num(price, 2, "$", "-")
 		})
 end
 

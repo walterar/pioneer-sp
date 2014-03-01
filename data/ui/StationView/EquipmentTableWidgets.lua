@@ -116,8 +116,8 @@ local shipColumnHeading = {
 local stationColumnValue = {
 	icon  = function (e, funcs) return equipIcon[e] and ui:Image("icons/goods/"..equipIcon[e]..".png") or "" end,
 	name  = function (e, funcs) return lcore[e] end,
-	buy   = function (e, funcs) return format_num(funcs.getBuyPrice(e), 2, "", "-") end,
-	sell  = function (e, funcs) return format_num(funcs.getSellPrice(e), 2, "", "-") end,
+	buy   = function (e, funcs) return format_num(funcs.getBuyPrice(e),2, "") end,
+	sell  = function (e, funcs) return format_num(funcs.getSellPrice(e),2, "") end,
 	stock = function (e, funcs) return funcs.getStock(e) end,
 	mass  = function (e, funcs) return string.format("%dt", EquipDef[e].mass) end,
 }

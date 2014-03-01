@@ -108,7 +108,7 @@ local missions = function (tabGroup)
 			{data = mission.client.name},
 			{data = dist, widget = locationBox},
 			{data = mission.due, widget = dueBox},
-			{data = mission.reward, widget = ui:Label(format_num(mission.reward, 2, "$", "-")):SetColor({ r = 0.0, g = 1.0, b = 0.2 })}, -- green
+			{data = mission.reward, widget = ui:Label(format_num(mission.reward)):SetColor({ r = 0.0, g = 1.0, b = 0.2 })}, -- green
 			-- nil description means mission type isn't registered.
 			{data = (description and myl[mission.status]) or l.INACTIVE},
 			{widget = moreButton.widget}

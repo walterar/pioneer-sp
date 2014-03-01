@@ -38,7 +38,7 @@ local onShipDocked = function (ship)
 				if multiplier < .05 then multiplier = 1 + multiplier end
 				local money = math.floor(Game.player:GetMoney() * multiplier)
 				Game.player:AddCrime("TRADING_ILLEGAL_GOODS", money)
-				Comms.ImportantMessage(l.You_have_been_FINED .. format_num(money, 2, "$", "-"), Game.system.faction.policeName)
+				Comms.ImportantMessage(l.You_have_been_FINED .. format_num(money), Game.system.faction.policeName)
 			end
 		end
 		charge = 0

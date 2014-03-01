@@ -133,16 +133,16 @@ function StarSystem:GetNearbyStationPaths(range_ly, system_filter, station_filte
 	return nearby_stations
 end
 
----============================================================
+---===================================================================
 -- function format_num(amount, decimal, prefix, neg_prefix)
 -- ej. format_num(amount, 2, "$", "-")
--- original from sam_lie
+-- original from sam_lie http://lua-users.org/wiki/FormattingNumbers
 -- modified for Pioneer Scout+ by walterar
----============================================================
+---===================================================================
 -- add comma to separate thousands
 --
-local thousands_separator = "%1.%2"
-local decimal_separator = ","
+local thousands_separator = "%1,%2"
+local decimal_separator = "."
 
 local function comma_value(amount)
   local formatted = amount
@@ -155,20 +155,21 @@ local function comma_value(amount)
   return formatted
 end
 
----============================================================
+---===================================================================
 -- rounds a number to the nearest decimal places
 --
 local function round(val, decimal)
 		return tonumber(string.format("%." .. (decimal or 0) .. "f", val))
 end
---===================================================================
+--====================================================================
 -- given a numeric value formats output with comma to separate thousands
 -- and rounded to given decimal places
 --
 --
 function _G.format_num(amount, decimal, prefix, neg_prefix)
 	local str_amount,  formatted, famount, remain
-	decimal = decimal or 2  -- default 2 decimal places
+	decimal    = decimal    or  2  -- default 2 decimal places
+	prefix     = prefix     or "$" -- default dollar
 	neg_prefix = neg_prefix or "-" -- default negative sign
 
 	famount = math.abs(round(amount,decimal))

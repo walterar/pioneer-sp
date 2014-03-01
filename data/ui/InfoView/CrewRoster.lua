@@ -271,8 +271,8 @@ local crewRoster = function ()
 			crewTable:AddRow({
 				crewMember.name,
 				crewMember.title or l.GENERAL_CREW,
-				ui:Label(format_num(crewWage, 2, "$", "-")):SetColor({ r = 0.0, g = 1.0, b = 0.2 }), -- green
-				ui:Label(format_num(crewOwed, 2, "$", "-")):SetColor({ r = 1.0, g = 0.0, b = 0.0 }), -- red
+				ui:Label(format_num(crewWage)):SetColor({ r = 0.0, g = 1.0, b = 0.2 }), -- green
+				ui:Label(format_num(crewOwed)):SetColor({ r = 1.0, g = 0.0, b = 0.0 }), -- red
 				Format.Date(crewMember.contract and crewMember.contract.payday or 0),
 				moreButton
 			})
@@ -280,8 +280,8 @@ local crewRoster = function ()
 		crewTable:AddRow({
 			"", -- first column, empty
 			ui:Label(l.TOTAL):SetFont("HEADING_NORMAL"):SetColor({ r = 1.0, g = 1.0, b = 0.0 }), -- yellow
-			ui:Label(format_num(wageTotal, 2, "$", "-")):SetColor({ r = 0.0, g = 1.0, b = 0.2 }), -- green
-			ui:Label(format_num(owedTotal, 2, "$", "-")):SetColor({ r = 1.0, g = 0.0, b = 0.0 }), -- red
+			ui:Label(format_num(wageTotal)):SetColor({ r = 0.0, g = 1.0, b = 0.2 }), -- green
+			ui:Label(format_num(owedTotal)):SetColor({ r = 1.0, g = 0.0, b = 0.0 }), -- red
 		})
 
 		local taskCrewButton = ui:Button():SetInnerWidget(ui:Label(l.GIVE_ORDERS_TO_CREW))

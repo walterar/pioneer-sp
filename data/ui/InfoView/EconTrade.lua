@@ -133,7 +133,8 @@ local econTrade = function ()
 							:SetColumn(0, {
 								ui:VBox():PackEnd({
 									"",
-									ui:Label(l.CASH..":"):SetFont('HEADING_SMALL'),--:SetColor({ r = 0.0, g = 0.0, b = 1.0 }),
+									ui:Label(l.CASH..": "..format_num(cash)):SetFont('HEADING_NORMAL'),
+--										:SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
 									ui:Margin(10),
 									ui:Label(l.CARGO_SPACE..":"),
 									"",
@@ -143,7 +144,7 @@ local econTrade = function ()
 							:SetColumn(1, {
 								ui:VBox():PackEnd({
 									"",
-									ui:Label(format_num(cash, 2, "$", "-")),
+									"",
 									ui:Margin(10),
 									ui:Margin(0, "HORIZONTAL",
 										ui:HBox(10):PackEnd({

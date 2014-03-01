@@ -51,6 +51,7 @@ anim gear_down 1 31
 
 lod 1000
 mesh lod3_body.dae
+mesh caiman_shield.dae
 
 mesh gear.x
 anim gear_down 1 31

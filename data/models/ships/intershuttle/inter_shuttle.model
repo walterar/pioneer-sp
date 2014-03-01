@@ -22,7 +22,8 @@ lod 20
 mesh lod1_body.dae
 
 lod 100
+mesh lod2_body.dae
+mesh intershuttle_landing.dae
 mesh gear.x
 anim gear_down 0 59
 mesh scanner.x
-mesh lod2_body.dae

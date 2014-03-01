@@ -1,0 +1,40 @@
+-- Model by potsmoke66 (Gernot)
+-- Configured for Pioneer Scout+ by walterar <walterar2@gmail.com>
+-- Licensed under the terms of CC-BY-SA 3.0. See licenses/CC-BY-SA-3.0.txt
+
+define_ship {
+	name='MCU-1',
+	ship_class='medium_cargo_shuttle',
+	manufacturer='p66',
+	model='mcu1',
+	forward_thrust = 2e6,
+	reverse_thrust = 2e6,
+	up_thrust = 2e6,
+	down_thrust = 2e6,
+	left_thrust = 2e6,
+	right_thrust = 2e6,
+	angular_thrust = 2e7,
+
+	max_cargo = 40,
+	max_laser = 0,
+	max_engine = 0,
+	max_missile = 0,
+	max_ecm = 0,
+	max_hypercloud = 0,
+	max_hullautorepair = 0,
+	max_energybooster = 0,
+	max_shield = 0,
+	max_fuelscoop = 0,
+	max_cargoscoop = 0,
+	max_lasercooler = 0,
+	max_radarmapper = 0,
+	max_cabin = 5,
+	min_crew = 1,
+	max_crew = 1,
+	capacity = 40,
+	hull_mass = 40,
+	fuel_tank_mass = 40,
+	effective_exhaust_velocity = 5e7,
+	price = 30000,
+	hyperdrive_class = 0,
+}

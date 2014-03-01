@@ -71,6 +71,8 @@ mesh lod1_body.dae
 
 lod 100
 mesh pilot_f.dae
+mesh sidie_landing.dae
+mesh sidie_shield.dae
 mesh lod2_body.dae
 
 anim gear_down 0 29

@@ -33,6 +33,7 @@ mesh lod1_body.dae
 
 lod 100
 mesh lod2_body.dae
+mesh lancet_shield.dae
 anim gear_down 0 71
 
 mesh eglow.x

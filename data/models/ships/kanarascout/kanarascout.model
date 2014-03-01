@@ -21,6 +21,8 @@ shininess 128
 
 lod 1000
 mesh kanarascout.dae
+mesh kanarascout_landing.dae
+mesh kanarascout_shield.dae
 
 lod 20
 mesh kanarascout-low.dae

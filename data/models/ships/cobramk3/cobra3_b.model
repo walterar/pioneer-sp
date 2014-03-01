@@ -54,4 +54,5 @@ mesh lod1_body.dae
 lod 100
 
 mesh lod2_body.dae
+mesh cobramk3_shield.dae
 anim gear_down 0 59

@@ -112,6 +112,7 @@ mesh scanner.x
 
 lod 500
 mesh lod3_body.dae
+mesh cobramk1_shield.dae
 mesh jaws.dae
 
 mesh gear.x

@@ -83,5 +83,7 @@ mesh lod1_body.dae
 
 lod 1000 
 mesh lod3_body.dae
+mesh hullcutter_landing.dae
+mesh hullcutter_shield.dae
 
 anim gear_down 0 29

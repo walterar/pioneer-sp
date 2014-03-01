@@ -19,6 +19,7 @@ collision coll.obj
 
 lod 1000
 mesh anax.dae
+mesh anax_shield.dae
 
 lod 100
 mesh anax_low.dae

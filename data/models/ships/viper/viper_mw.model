@@ -11,3 +11,5 @@ mesh viper.x
 anim gear_down 0 31840
 
 mesh extras.dae
+mesh viper_landing.dae
+mesh viper_shield.dae

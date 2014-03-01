@@ -92,5 +92,6 @@ mesh lod1_body.dae
 lod 100
 mesh lod3_body.dae
 mesh gear.x
+mesh adder_shield.dae
 
 anim gear_down 0 29

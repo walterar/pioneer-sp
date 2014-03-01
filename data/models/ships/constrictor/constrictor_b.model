@@ -49,6 +49,8 @@ mesh lod1_body.dae
 
 lod 100
 mesh lod2_body.dae
+mesh constrictor_landing.dae
+mesh constrictor_shield.dae
 mesh jaws.x
 mesh scoop.x
 

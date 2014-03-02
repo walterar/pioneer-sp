@@ -154,5 +154,13 @@
    "HEAVY_SCOUT" : {
       "description" : "",
       "message" : "Тяжелая Проводник"
+   },
+   "BUY" : {
+      "description" : "Commodities and equipment prices",
+      "message" : "покупка"
+   },
+   "SELL" : {
+      "description" : "Commodities and equipment prices",
+      "message" : "продажа"
    }
 }

@@ -1,3 +1,12 @@
+March 2014
+
+   * Fixes
+     * Fix volume control layout (#2798)
+     * Support horizontally-expanding widgets in table rows
+
+   * Internal changes
+     * On-demand glyph caching (#2796)
+
 February 2014
 
    * New features
@@ -5,6 +14,7 @@ February 2014
      * Now any star in a multiple system can be the hyperjump target (#2712)
      * Rewrote console on the new UI (#2726)
      * Characters have reputation, which is required by missions (#2675)
+     * New (rare) "News" event for commodities on the BBS (#2753)
 
    * Minor changes and tweaks
      * Added landing tag points to all ships (#2703)
@@ -62,6 +72,7 @@ February 2014
      * IterationProxy for save access to embedded containers (#2783)
      * Automatically manage the cancellation of jobs with RAII (#2758)
      * Added a Profile Config to VS2013 (#2785)
+     * Update terrain to use the new VertexBuffer (#2795)
 
 January 2014
 

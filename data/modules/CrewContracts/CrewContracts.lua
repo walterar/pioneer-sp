@@ -229,14 +229,14 @@ local onChat = function (form,ref,option)
 		form:SetMessage(l.CREWDETAILSHEETBB:interp({
 			name = candidate.name,
 			experience = experience,
-			wage = format_num(offer),
+			wage = FormatNum(offer),
 			response = response,
 		}))
 		form:AddOption(l.MAKE_OFFER_OF_POSITION_ON_SHIP_FOR_STATED_AMOUNT,1)
-		form:AddOption(l.SUGGEST_NEW_WEEKLY_WAGE_OF_N:interp({newAmount=format_num(checkOffer(offer*2))}),2)
-		form:AddOption(l.SUGGEST_NEW_WEEKLY_WAGE_OF_N:interp({newAmount=format_num(checkOffer(offer+5))}),3)
-		form:AddOption(l.SUGGEST_NEW_WEEKLY_WAGE_OF_N:interp({newAmount=format_num(checkOffer(offer-5))}),4)
-		form:AddOption(l.SUGGEST_NEW_WEEKLY_WAGE_OF_N:interp({newAmount=format_num(checkOffer(math.floor(offer/2)))}),5)
+		form:AddOption(l.SUGGEST_NEW_WEEKLY_WAGE_OF_N:interp({newAmount=FormatNum(checkOffer(offer*2))}),2)
+		form:AddOption(l.SUGGEST_NEW_WEEKLY_WAGE_OF_N:interp({newAmount=FormatNum(checkOffer(offer+5))}),3)
+		form:AddOption(l.SUGGEST_NEW_WEEKLY_WAGE_OF_N:interp({newAmount=FormatNum(checkOffer(offer-5))}),4)
+		form:AddOption(l.SUGGEST_NEW_WEEKLY_WAGE_OF_N:interp({newAmount=FormatNum(checkOffer(math.floor(offer/2)))}),5)
 		form:AddOption(l.ASK_CANDIDATE_TO_SIT_A_TEST,6)
 		form:AddOption(l.GO_BACK, 0)
 	end

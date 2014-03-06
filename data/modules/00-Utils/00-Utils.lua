@@ -134,8 +134,8 @@ function StarSystem:GetNearbyStationPaths(range_ly, system_filter, station_filte
 end
 
 ---===================================================================
--- function format_num(amount, decimal, prefix, neg_prefix)
--- ej. format_num(amount, 2, "$", "-")
+-- function FormatNum(amount, decimal, prefix, neg_prefix)
+-- ej. FormatNum(amount, 2, "$", "-")
 -- original from sam_lie http://lua-users.org/wiki/FormattingNumbers
 -- modified for Pioneer Scout+ by walterar
 ---===================================================================
@@ -166,7 +166,7 @@ end
 -- and rounded to given decimal places
 --
 --
-function _G.format_num(amount, decimal, prefix, neg_prefix)
+function _G.FormatNum(amount, decimal, prefix, neg_prefix)
 	local str_amount,  formatted, famount, remain
 	decimal    = decimal    or  2  -- default 2 decimal places
 	prefix     = prefix     or "$" -- default dollar
@@ -205,16 +205,16 @@ end
 Example usage:
 
 amount = 1333444.1
-print(format_num(amount,2))
-print(format_num(amount,-2,"US$"))
+print(FormatNum(amount,2))
+print(FormatNum(amount,-2,"US$"))
 Output:
 1,333,444.10
 US$1,333,400
 
 amount = -22333444.5634
-print(format_num(amount,2,"$"))
-print(format_num(amount,2,"$","()"))
-print(format_num(amount,3,"$","NEG "))
+print(FormatNum(amount,2,"$"))
+print(FormatNum(amount,2,"$","()"))
+print(FormatNum(amount,3,"$","NEG "))
 Output:
 -$22,333,444.56
 ($22,333,444.56)

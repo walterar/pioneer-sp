@@ -1,0 +1,107 @@
+[main]
+host = https://www.transifex.com
+
+[pioneer-sp.core]
+file_filter = data/lang/core/<lang>.json
+source_file = data/lang/core/en.json
+source_lang = en
+
+[pioneer-sp.ui-core]
+file_filter = data/lang/ui-core/<lang>.json
+source_file = data/lang/ui-core/en.json
+source_lang = en
+
+[pioneer-sp.module-00-player]
+file_filter = data/lang/module-00-player/<lang>.json
+source_file = data/lang/module-00-player/en.json
+source_lang = en
+
+[pioneer-sp.module-changeofenrolls]
+file_filter = data/lang/module-changeofenrolls/<lang>.json
+source_file = data/lang/module-changeofenrolls/en.json
+source_lang = en
+
+[pioneer-sp.module-changeofpropellant]
+file_filter = data/lang/module-changeofpropellant/<lang>.json
+source_file = data/lang/module-changeofpropellant/en.json
+source_lang = en
+
+[pioneer-sp.module-jousting]
+file_filter = data/lang/module-jousting/<lang>.json
+source_file = data/lang/module-jousting/en.json
+source_lang = en
+
+[pioneer-sp.module-myl]
+file_filter = data/lang/module-myl/<lang>.json
+source_file = data/lang/module-myl/en.json
+source_lang = en
+
+[pioneer-sp.module-radioactives]
+file_filter = data/lang/module-radioactives/<lang>.json
+source_file = data/lang/module-radioactives/en.json
+source_lang = en
+
+[pioneer-sp.module-scout]
+file_filter = data/lang/module-scout/<lang>.json
+source_file = data/lang/module-scout/en.json
+source_lang = en
+
+[pioneer-sp.module-shipsresale]
+file_filter = data/lang/module-shipsresale/<lang>.json
+source_file = data/lang/module-shipsresale/en.json
+source_lang = en
+
+[pioneer-sp.module-spa]
+file_filter = data/lang/module-spa/<lang>.json
+source_file = data/lang/module-spa/en.json
+source_lang = en
+
+[pioneer-sp.module-breakdownservicing]
+file_filter = data/lang/module-breakdownservicing/<lang>.json
+source_file = data/lang/module-breakdownservicing/en.json
+source_lang = en
+
+[pioneer-sp.module-deliverpackage]
+file_filter = data/lang/module-deliverpackage/<lang>.json
+source_file = data/lang/module-deliverpackage/en.json
+source_lang = en
+
+[pioneer-sp.module-donatetocranks]
+file_filter = data/lang/module-donatetocranks/<lang>.json
+source_file = data/lang/module-donatetocranks/en.json
+source_lang = en
+
+[pioneer-sp.module-crewcontracts]
+file_filter = data/lang/module-crewcontracts/<lang>.json
+source_file = data/lang/module-crewcontracts/en.json
+source_lang = en
+
+[pioneer-sp.module-goodstrader]
+file_filter = data/lang/module-goodstrader/<lang>.json
+source_file = data/lang/module-goodstrader/en.json
+source_lang = en
+
+[pioneer-sp.module-newseventcommodity]
+file_filter = data/lang/module-newseventcommodity/<lang>.json
+source_file = data/lang/module-newseventcommodity/en.json
+source_lang = en
+
+[pioneer-sp.module-stationrefuelling]
+file_filter = data/lang/module-stationrefuelling/<lang>.json
+source_file = data/lang/module-stationrefuelling/en.json
+source_lang = en
+
+[pioneer-sp.module-statstracking]
+file_filter = data/lang/module-statstracking/<lang>.json
+source_file = data/lang/module-statstracking/en.json
+source_lang = en
+
+[pioneer-sp.module-system]
+file_filter = data/lang/module-system/<lang>.json
+source_file = data/lang/module-system/en.json
+source_lang = en
+
+[pioneer-sp.module-taxi]
+file_filter = data/lang/module-taxi/<lang>.json
+source_file = data/lang/module-taxi/en.json
+source_lang = en

@@ -107,7 +107,7 @@ local onChat = function (form, ref, option)
 	-- Replace those tokens into ad's intro text that can change during play
 	message = string.interp(ad.intro, {
 		drive = EquipDef[hyperdrive].name,
-		price = FormatNum(price),
+		price = showCurrency(price),
 	})
 
 	if option == -1 then

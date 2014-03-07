@@ -64,14 +64,14 @@ local onChat = function (form, ref, option)
 
 		form:SetTitle(ad.title)
 --		form:SetFace({female = false, armour = false, seed = ad.faceseed})
-		form:SetMessage(string.interp(l["HelloCommander"..Engine.rand:Integer(1,4)]..l["Sale"..Engine.rand:Integer(1,4)].."[ "..my_ship_name.." ] "..FormatNum(my_ship_price)))
+		form:SetMessage(string.interp(l["HelloCommander"..Engine.rand:Integer(1,4)]..l["Sale"..Engine.rand:Integer(1,4)].."[ "..my_ship_name.." ] "..showCurrency(my_ship_price)))
 
 		for i = 1,maxsales do
 			local difer = (saleship[i].basePrice - my_ship_price)
 			if difer >= 0 then
-				venta = l.His_ship_more..FormatNum(difer)..l["in_exchange_for_a"..Engine.rand:Integer(1,4)].." [ "..saleship[i].name.." ]"
+				venta = l.His_ship_more..showCurrency(difer)..l["in_exchange_for_a"..Engine.rand:Integer(1,4)].." [ "..saleship[i].name.." ]"
 			else
-				venta = l.His_ship_less..FormatNum(math.abs (difer))..l["in_exchange_for_a"..Engine.rand:Integer(1,4)].." [ "..saleship[i].name.." ]"
+				venta = l.His_ship_less..showCurrency(math.abs (difer))..l["in_exchange_for_a"..Engine.rand:Integer(1,4)].." [ "..saleship[i].name.." ]"
 			end
 			form:AddOption(venta, i)
 		end

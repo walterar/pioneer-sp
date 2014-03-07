@@ -56,6 +56,11 @@ file_filter = data/lang/module-spa/<lang>.json
 source_file = data/lang/module-spa/en.json
 source_lang = en
 
+[pioneer-sp.module-aiwarning]
+file_filter = data/lang/module-aiwarning/<lang>.json
+source_file = data/lang/module-aiwarning/en.json
+source_lang = en
+
 [pioneer-sp.module-breakdownservicing]
 file_filter = data/lang/module-breakdownservicing/<lang>.json
 source_file = data/lang/module-breakdownservicing/en.json

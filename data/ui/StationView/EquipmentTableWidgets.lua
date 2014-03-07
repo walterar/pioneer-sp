@@ -8,10 +8,12 @@ local EquipDef = import("EquipDef")
 local Comms    = import("Comms")
 local utils    = import("utils")
 
-local l = Lang.GetResource("ui-core")
+local l = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
 
 -- XXX equipment strings are in core. this sucks
-local lcore = Lang.GetResource("core")
+local lcore = Lang.GetResource("core") or Lang.GetResource("core","en")
+
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
 
 local ui = Engine.ui
 
@@ -100,8 +102,8 @@ local defaultFuncs = {
 local stationColumnHeading = {
 	icon  = "",
 	name  = l.NAME_OBJECT,
-	buy   = l.BUY,
-	sell  = l.SELL,
+	buy   = myl.BUY,
+	sell  = myl.SELL,
 	stock = l.IN_STOCK,
 	mass  = l.MASS,
 }
@@ -116,8 +118,8 @@ local shipColumnHeading = {
 local stationColumnValue = {
 	icon  = function (e, funcs) return equipIcon[e] and ui:Image("icons/goods/"..equipIcon[e]..".png") or "" end,
 	name  = function (e, funcs) return lcore[e] end,
-	buy   = function (e, funcs) return format_num(funcs.getBuyPrice(e),2, "") end,
-	sell  = function (e, funcs) return format_num(funcs.getSellPrice(e),2, "") end,
+	buy   = function (e, funcs) return showCurrency(funcs.getBuyPrice(e),2, "") end,
+	sell  = function (e, funcs) return showCurrency(funcs.getSellPrice(e),2, "") end,
 	stock = function (e, funcs) return funcs.getStock(e) end,
 	mass  = function (e, funcs) return string.format("%dt", EquipDef[e].mass) end,
 }

@@ -112,7 +112,7 @@ local onChat = function (form, ref, option)
 			faction    = faction.name,
 			police     = faction.policeName,
 			military   = faction.militaryName,
-			cash       = FormatNum(ad.reward),
+			cash       = showCurrency(ad.reward),
 			systembody = sbody.name,
 			system     = sys.name,
 			sectorx    = ad.location.sectorX,
@@ -127,7 +127,7 @@ local onChat = function (form, ref, option)
 			faction    = faction.name,
 			police     = faction.policeName,
 			military   = faction.militaryName,
-			cash       = FormatNum(ad.reward),
+			cash       = showCurrency(ad.reward),
 			systembody = sbody.name,
 			system     = sys.name,
 			sectorx    = ad.location.sectorX,
@@ -271,7 +271,7 @@ local makeAdvert = function (station)
 		police     = faction.policeName,
 		military   = faction.militaryName,
 		system     = nearbysystem.name,
-		cash       = FormatNum(ad.reward),
+		cash       = showCurrency(ad.reward),
 		dist       = string.format("%.2f", ad.dist),
 		systembody = sbody.name,
 	})
@@ -440,7 +440,7 @@ local onShipDocked = function (player, station)
 				local money = math.floor(Game.player:GetMoney() * multiplier)
 				Game.player:AddCrime("TRADING_ILLEGAL_GOODS", money)
 				Comms.ImportantMessage(l.Unauthorized_data_here_is_REMOVED, faction.militaryName)
-				Comms.ImportantMessage(l.You_have_been_fined .. FormatNum(money), faction.policeName)
+				Comms.ImportantMessage(l.You_have_been_fined .. showCurrency(money), faction.policeName)
 --				_G.MissionsFailures = MissionsFailures + 1
 				mission:Remove()
 				missions[ref] = nil
@@ -511,7 +511,7 @@ local onClick = function (mission)
 							sectory    = mission.location.sectorY,
 							sectorz    = mission.location.sectorZ,
 							dist       = dist,
-							cash       = FormatNum(mission.reward),
+							cash       = showCurrency(mission.reward),
 						})
 					),
 					"",
@@ -588,7 +588,7 @@ local onClick = function (mission)
 							sectorx    = mission.location.sectorX,
 							sectory    = mission.location.sectorY,
 							sectorz    = mission.location.sectorZ,
-							cash       = FormatNum(mission.reward),
+							cash       = showCurrency(mission.reward),
 							dist       = dist})
 					),
 					"",

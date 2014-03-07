@@ -138,8 +138,8 @@ shipTable.onRowClicked:Connect(function (row)
 				ui:Expand("HORIZONTAL", ui:Align("RIGHT", manufacturerIcon(def.manufacturer))),
 			}),
 			ui:HBox(20):PackEnd({
-				l.PRICE..": "..format_num(def.basePrice, 0),
-				l.AFTER_TRADE_IN..": "..format_num(def.basePrice - tradeInValue(ShipDef[Game.player.shipId]), 0),
+				l.PRICE..": "..showCurrency(def.basePrice, 0),
+				l.AFTER_TRADE_IN..": "..showCurrency(def.basePrice - tradeInValue(ShipDef[Game.player.shipId]), 0),
 				ui:Expand("HORIZONTAL", ui:Align("RIGHT", buyButton)),
 			}),
 			ModelSpinner.New(ui, def.modelName, currentShipOnSale.skin, currentShipOnSale.pattern),
@@ -184,7 +184,7 @@ local function updateStation (station, shipsOnSale)
 			seen = true
 		end
 		local def = sos.def
-		shipTable:AddRow({shipClassIcon(def.shipClass), def.name, format_num(def.basePrice,0), def.capacity.."t"})
+		shipTable:AddRow({shipClassIcon(def.shipClass), def.name, showCurrency(def.basePrice,0), def.capacity.."t"})
 	end
 
 	if currentShipOnSale then

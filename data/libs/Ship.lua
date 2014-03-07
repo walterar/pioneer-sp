@@ -200,7 +200,7 @@ Ship.Jettison = function (self,equip)
 		Event.Queue("onJettison", self, equip)
 	elseif state == "DOCKED" then
 		local money = Game.player:GetMoney() * Game.system.lawlessness
-		Comms.ImportantMessage(myl.You_has_been_fined .. format_num(money, 2, "$", "-") .. myl.for_jettison .. equip .. myl.docked, Game.system.faction.policeName)
+		Comms.ImportantMessage(myl.You_has_been_fined .. showCurrency(money, 2, "$", "-") .. myl.for_jettison .. equip .. myl.docked, Game.system.faction.policeName)
 		Game.player:AddCrime("TRADING_ILLEGAL_GOODS", money)
 		Event.Queue("onCargoUnload", self:GetDockedWith(), equip)
 	elseif state == "LANDED" then

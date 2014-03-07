@@ -13,7 +13,7 @@ AM_CFLAGS += $(WARN_CFLAGS)
 AM_CPPFLAGS += $(WARN_CPPFLAGS)
 AM_CXXFLAGS += $(STD_CXXFLAGS) $(WARN_CXXFLAGS)
 
-bin_PROGRAMS = pioneer
+bin_PROGRAMS = pioneersp
 noinst_HEADERS = \
 	Aabb.h \
 	AmbientSounds.h \
@@ -149,7 +149,7 @@ noinst_HEADERS = \
 	vector3.h \
 	enum_table.h
 
-pioneer_SOURCES	= \
+pioneersp_SOURCES	= \
 	AmbientSounds.cpp \
 	Background.cpp \
 	Body.cpp \
@@ -275,7 +275,7 @@ pioneer_SOURCES	= \
 	utils.cpp \
 	enum_table.cpp
 
-pioneer_LDADD = \
+pioneersp_LDADD = \
 	collider/libcollider.a \
 	gui/libgui.a \
 	graphics/libgraphics.a \
@@ -291,27 +291,27 @@ pioneer_LDADD = \
 	../contrib/glew/libglew.a \
 	../contrib/profiler/libprofiler.a
 
-pioneer_LDADD += \
+pioneersp_LDADD += \
 	$(FREETYPE_LIBS) $(GL_LIBS) \
 	$(SDL2_LIBS) $(SIGC_LIBS) $(LUA_LIBS) $(VORBIS_LIBS) \
 	$(PNG_LIBS) $(ASSIMP_LIBS) $(EXTRA_LIBS)
 
 if BUILD_WIN32
-pioneer_LDFLAGS = -Wl,-Map=pioneer.map
+pioneersp_LDFLAGS = -Wl,-Map=pioneersp.map
 endif
 
 if !HAVE_LUA
-pioneer_LDADD += ../contrib/lua/liblua.a
+pioneersp_LDADD += ../contrib/lua/liblua.a
 endif
 
 if DO_STRIP
-PIONEER_V_STRIP = $(PIONEER_V_STRIP_@AM_V@)
-PIONEER_V_STRIP_ = $(PIONEER_V_STRIP_@AM_DEFAULT_V@)
-PIONEER_V_STRIP_0 = @echo "  STRIP   " $<;
-PIONEER_V_STRIP_1 =
+pioneersp_V_STRIP = $(pioneersp_V_STRIP_@AM_V@)
+pioneersp_V_STRIP_ = $(pioneersp_V_STRIP_@AM_DEFAULT_V@)
+pioneersp_V_STRIP_0 = @echo "  STRIP   " $<;
+pioneersp_V_STRIP_1 =
 
 all-local: $(bin_PROGRAMS)
-	$(PIONEER_V_STRIP)$(STRIP) $(bin_PROGRAMS)
+	$(pioneersp_V_STRIP)$(STRIP) $(bin_PROGRAMS)
 endif
 
 
@@ -411,17 +411,17 @@ AM_CPPFLAGS += -isystem @top_srcdir@/contrib/lua
 endif
 
 if BUILD_WIN32
-    pioneer_LDADD += win32/libwin32.a $(MINGW_LIBS)
+    pioneersp_LDADD += win32/libwin32.a $(MINGW_LIBS)
 endif
 
 if BUILD_POSIX
-    pioneer_LDADD += posix/libposix.a
+    pioneersp_LDADD += posix/libposix.a
 endif
 
 if HAVE_WINDRES
 # note: this can't be correctly packed into libwin32.a
 SUFFIXES = .rc
-pioneer_SOURCES += win32/pioneer.rc
+pioneersp_SOURCES += win32/pioneersp.rc
 .rc.o:
 	$(AM_V_GEN)$(MXE_WINDRES) $< $@
 endif

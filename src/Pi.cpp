@@ -118,7 +118,7 @@ float Pi::frameTime;
 #if WITH_DEVKEYS
 bool Pi::showDebugInfo = false;
 #endif
-#if PIONEER_PROFILER
+#if PIONEERSP_PROFILER
 std::string Pi::profilerPath;
 bool Pi::doProfileSlow = false;
 bool Pi::doProfileOne = false;
@@ -178,8 +178,8 @@ void Pi::CreateRenderTarget(const Uint16 width, const Uint16 height) {
 		Graphics::LINEAR_CLAMP, false, false, 0);
 	Pi::renderTexture.Reset(Pi::renderer->CreateTexture(texDesc));
 	Pi::renderQuad.reset(new Graphics::Drawables::TexturedQuad(
-		Pi::renderer, Pi::renderTexture.Get(), 
-		vector2f(0.0f,0.0f), vector2f(float(Graphics::GetScreenWidth()), float(Graphics::GetScreenHeight())), 
+		Pi::renderer, Pi::renderTexture.Get(),
+		vector2f(0.0f,0.0f), vector2f(float(Graphics::GetScreenWidth()), float(Graphics::GetScreenHeight())),
 		quadRenderState));
 
 	// Complete the RT description so we can request a buffer.
@@ -200,7 +200,7 @@ void Pi::CreateRenderTarget(const Uint16 width, const Uint16 height) {
 void Pi::DrawRenderTarget() {
 #if USE_RTT
 	Pi::renderer->BeginFrame();
-	Pi::renderer->SetViewport(0, 0, Graphics::GetScreenWidth(), Graphics::GetScreenHeight());	
+	Pi::renderer->SetViewport(0, 0, Graphics::GetScreenWidth(), Graphics::GetScreenHeight());
 	Pi::renderer->SetTransform(matrix4x4f::Identity());
 
 	//Gui::Screen::EnterOrtho();
@@ -212,7 +212,7 @@ void Pi::DrawRenderTarget() {
 		Pi::renderer->PushMatrix();
 		Pi::renderer->LoadIdentity();
 	}
-	
+
 	Pi::renderQuad->Draw( Pi::renderer );
 
 	//Gui::Screen::LeaveOrtho();
@@ -347,7 +347,7 @@ std::string Pi::GetSaveDir()
 
 void Pi::Init(const std::map<std::string,std::string> &options)
 {
-#ifdef PIONEER_PROFILER
+#ifdef PIONEERSP_PROFILER
 	Profiler::reset();
 #endif
 
@@ -355,7 +355,7 @@ void Pi::Init(const std::map<std::string,std::string> &options)
 
 	FileSystem::Init();
 	FileSystem::userFiles.MakeDirectory(""); // ensure the config directory exists
-#ifdef PIONEER_PROFILER
+#ifdef PIONEERSP_PROFILER
 	FileSystem::userFiles.MakeDirectory("profiler");
 	profilerPath = FileSystem::JoinPathBelow(FileSystem::userFiles.GetRoot(), "profiler");
 #endif
@@ -784,7 +784,7 @@ void Pi::HandleEvents()
 							Pi::showDebugInfo = !Pi::showDebugInfo;
 							break;
 
-#ifdef PIONEER_PROFILER
+#ifdef PIONEERSP_PROFILER
 						case SDLK_p: // alert it that we want to profile
 							if (KeyState(SDLK_LSHIFT) || KeyState(SDLK_RSHIFT))
 								Pi::doProfileOne = true;
@@ -1127,7 +1127,7 @@ void Pi::MainLoop()
 	while (Pi::game) {
 		PROFILE_SCOPED()
 
-#ifdef PIONEER_PROFILER
+#ifdef PIONEERSP_PROFILER
 		Profiler::reset();
 #endif
 
@@ -1295,7 +1295,7 @@ void Pi::MainLoop()
 		}
 		Pi::statSceneTris = 0;
 
-#ifdef PIONEER_PROFILER
+#ifdef PIONEERSP_PROFILER
 		const Uint32 profTicks = SDL_GetTicks();
 		if (Pi::doProfileOne || (Pi::doProfileSlow && (profTicks-newTicks) > 100)) { // slow: < ~10fps
 			Output("dumping profile data\n");

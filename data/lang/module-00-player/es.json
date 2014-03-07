@@ -1,30 +1,30 @@
 {
-    "YOUR_SHIP": {
-        "message": "Su nave ",
-        "description": ""
+   "YOUR_SHIP": {
+      "description": "",
+      "message": "Su nave "
     },
     "IS_REGISTERED_IN_OUR_DOMAIN": {
-        "message": " está registrada en nuestros dominios.",
-        "description": ""
+      "description": "",
+      "message": " está registrada en nuestros dominios."
     },
    "You_are_in_space_controlled_by": {
-        "message": "Usted esta en espacio controlado por ",
-        "description": ""
+      "description": "",
+      "message": "Usted esta en espacio controlado por "
    },
    "Explored": {
-        "message": " - explorado",
-        "description": ""
+      "description": "",
+      "message": " - explorado"
    },
    "Unexplored": {
-        "message": " - inexplorado",
-        "description": ""
+      "description": "",
+      "message": " - inexplorado"
    },
    "System_uninhabited": {
-        "description": "",
-        "message": "Sistema deshabitado"
+      "description": "",
+      "message": "Sistema deshabitado"
    },
    "POLICE_SHIP_LABEL": {
-        "description": "",
-        "message": "POLICÍA"
+      "description": "",
+      "message": "POLICÍA"
    }
 }

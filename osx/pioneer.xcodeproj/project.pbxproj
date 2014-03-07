@@ -2297,7 +2297,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "git=/usr/bin/git\nversion=`$git log -n1 --pretty=%h`\necho \"#define GIT_VERSION $version\" > InfoPlist.h\ncat ../src/buildopts.h | grep \"#define PIONEER_VERSION\" >> InfoPlist.h\n";
+			shellScript = "git=/usr/bin/git\nversion=`$git log -n1 --pretty=%h`\necho \"#define GIT_VERSION $version\" > InfoPlist.h\ncat ../src/buildopts.h | grep \"#define PIONEERSP_VERSION\" >> InfoPlist.h\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2733,7 +2733,7 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "pioneer/pioneer-Prefix.pch";
+				GCC_PREFIX_HEADER = "pioneersp/pioneer-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DEBUG,
 					_XCODE,
@@ -2752,7 +2752,7 @@
 					/opt/local/include/freetype2,
 					/opt/local/include/SDL,
 				);
-				INFOPLIST_FILE = "pioneer/pioneer-Info.plist";
+				INFOPLIST_FILE = "pioneersp/pioneer-Info.plist";
 				INFOPLIST_PREFIX_HEADER = InfoPlist.h;
 				INFOPLIST_PREPROCESS = YES;
 				LIBRARY_SEARCH_PATHS = (
@@ -2785,7 +2785,7 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "pioneer/pioneer-Prefix.pch";
+				GCC_PREFIX_HEADER = "pioneersp/pioneer-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = _XCODE;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -2801,7 +2801,7 @@
 					/opt/local/include/freetype2,
 					/opt/local/include/SDL,
 				);
-				INFOPLIST_FILE = "pioneer/pioneer-Info.plist";
+				INFOPLIST_FILE = "pioneersp/pioneer-Info.plist";
 				INFOPLIST_PREFIX_HEADER = InfoPlist.h;
 				INFOPLIST_PREPROCESS = YES;
 				LIBRARY_SEARCH_PATHS = (
@@ -2839,7 +2839,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4A20B0D31353194B0020F43E /* Build configuration list for PBXProject "pioneer" */ = {
+		4A20B0D31353194B0020F43E /* Build configuration list for PBXProject "pioneersp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4A20B0D51353194B0020F43E /* Debug */,
@@ -2848,7 +2848,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		4A20B0FA135319780020F43E /* Build configuration list for PBXNativeTarget "pioneer" */ = {
+		4A20B0FA135319780020F43E /* Build configuration list for PBXNativeTarget "pioneersp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4A20B0FB135319780020F43E /* Debug */,

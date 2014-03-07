@@ -5,11 +5,11 @@
 #define _BUILDOPTS_H
 
 // game version. usually defined by configure
-#ifndef PIONEER_VERSION
-#define PIONEER_VERSION "unknown"
+#ifndef PIONEERSP_VERSION
+#define PIONEERSP_VERSION "unknown"
 #endif
-#ifndef PIONEER_EXTRAVERSION
-#define PIONEER_EXTRAVERSION ""
+#ifndef PIONEERSP_EXTRAVERSION
+#define PIONEERSP_EXTRAVERSION ""
 #endif
 
 // define to include the object viewer in the build

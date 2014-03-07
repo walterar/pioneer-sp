@@ -141,7 +141,7 @@ public:
 #if WITH_DEVKEYS
 	static bool showDebugInfo;
 #endif
-#if PIONEER_PROFILER
+#if PIONEERSP_PROFILER
 	static std::string profilerPath;
 	static bool doProfileSlow;
 	static bool doProfileOne;

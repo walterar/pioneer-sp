@@ -28,4 +28,4 @@ EXTRA_DIST = \
 	generic-exec \
 	Makefile.common \
 	modelviewer \
-	pioneer
+	pioneersp

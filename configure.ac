@@ -8,7 +8,7 @@ dnl Setup
 dnl ###########################################################################
 AC_PREREQ(2.59)
 
-AC_INIT([pioneer], [0.00], [pioneer-dev@pioneerspacesim.net])
+AC_INIT([pioneersp], [0.00], [pioneersp-dev@gmail.com])
 dnl AC_CONFIG_HEADERS([config.h])
 
 AC_DEFUN([MXE_SETUP], [
@@ -87,7 +87,7 @@ fi
 
 dnl Add a flag, if supported by the compiler or preprocessor
 dnl Assumes that -Werror works
-AC_DEFUN([_PIONEER_COMPILER_FLAG], dnl Language, prefix (EXTRA), flags variable 'foo' (EXTRA_fooFLAGS), flag, $CC/$CXX/$CPP/similar, if yes, if no
+AC_DEFUN([_PIONEERSP_COMPILER_FLAG], dnl Language, prefix (EXTRA), flags variable 'foo' (EXTRA_fooFLAGS), flag, $CC/$CXX/$CPP/similar, if yes, if no
     [AC_LANG_PUSH([$1])
      saved_flags="$][$3][FLAGS"
      ][$3][FLAGS="$saved_flags -Werror $4"
@@ -97,33 +97,33 @@ AC_DEFUN([_PIONEER_COMPILER_FLAG], dnl Language, prefix (EXTRA), flags variable 
      AC_LANG_POP([$1])
     ])
 
-AC_DEFUN([PIONEER_CFLAG], [_PIONEER_COMPILER_FLAG([C], [EXTRA], [C], [$1], [$CC], [$2], [$3])])
-AC_DEFUN([PIONEER_CXXFLAG], [_PIONEER_COMPILER_FLAG([C++], [EXTRA], [CXX], [$1], [$CXX], [$2], [$3])])
-AC_DEFUN([PIONEER_CPPFLAG], [_PIONEER_COMPILER_FLAG([CPP], [EXTRA], [CPP], [$1], [$CPP], [$2], [$3])])
+AC_DEFUN([PIONEERSP_CFLAG], [_PIONEERSP_COMPILER_FLAG([C], [EXTRA], [C], [$1], [$CC], [$2], [$3])])
+AC_DEFUN([PIONEERSP_CXXFLAG], [_PIONEERSP_COMPILER_FLAG([C++], [EXTRA], [CXX], [$1], [$CXX], [$2], [$3])])
+AC_DEFUN([PIONEERSP_CPPFLAG], [_PIONEERSP_COMPILER_FLAG([CPP], [EXTRA], [CPP], [$1], [$CPP], [$2], [$3])])
 
-AC_DEFUN([PIONEER_C_CXX_FLAG],
-	[_PIONEER_COMPILER_FLAG([C], [EXTRA], [C], [$1], [$CC/$CXX], [EXTRA_CXXFLAGS="$EXTRA_CXXFLAGS $1"])])
+AC_DEFUN([PIONEERSP_C_CXX_FLAG],
+	[_PIONEERSP_COMPILER_FLAG([C], [EXTRA], [C], [$1], [$CC/$CXX], [EXTRA_CXXFLAGS="$EXTRA_CXXFLAGS $1"])])
 
-AC_DEFUN([PIONEER_WARN_CFLAG], [_PIONEER_COMPILER_FLAG([C], [WARN], [C], [$1], [$CC], [$2], [$3])])
-AC_DEFUN([PIONEER_WARN_CXXFLAG], [_PIONEER_COMPILER_FLAG([C++], [WARN], [CXX], [$1], [$CXX], [$2], [$3])])
-AC_DEFUN([PIONEER_WARN_CPPFLAG], [_PIONEER_COMPILER_FLAG([CPP], [WARN], [CPP], [$1], [$CPP], [$2], [$3])])
+AC_DEFUN([PIONEERSP_WARN_CFLAG], [_PIONEERSP_COMPILER_FLAG([C], [WARN], [C], [$1], [$CC], [$2], [$3])])
+AC_DEFUN([PIONEERSP_WARN_CXXFLAG], [_PIONEERSP_COMPILER_FLAG([C++], [WARN], [CXX], [$1], [$CXX], [$2], [$3])])
+AC_DEFUN([PIONEERSP_WARN_CPPFLAG], [_PIONEERSP_COMPILER_FLAG([CPP], [WARN], [CPP], [$1], [$CPP], [$2], [$3])])
 
-AC_DEFUN([PIONEER_WARN_C_CXX_FLAG],
-	[_PIONEER_COMPILER_FLAG([C], [WARN], [C], [$1], [$CC/$CXX], [WARN_CXXFLAGS="$WARN_CXXFLAGS $1"])])
+AC_DEFUN([PIONEERSP_WARN_C_CXX_FLAG],
+	[_PIONEERSP_COMPILER_FLAG([C], [WARN], [C], [$1], [$CC/$CXX], [WARN_CXXFLAGS="$WARN_CXXFLAGS $1"])])
 
 dnl Early check for C++11
 dnl     -std=c++11 defines __STRICT_ANSI__, which causes MinGW some problems so use gnu++11 on it instead
 case "$host" in
   i686-pc-mingw32|x86_64-pc-mingw64)
-	_PIONEER_COMPILER_FLAG([C++], [STD], [CXX], [-std=gnu++11], [$CXX], [], [AC_MSG_ERROR([No compiler support for C++11. Unable to build])])
+	_PIONEERSP_COMPILER_FLAG([C++], [STD], [CXX], [-std=gnu++11], [$CXX], [], [AC_MSG_ERROR([No compiler support for C++11. Unable to build])])
 	;;
   *)
-	_PIONEER_COMPILER_FLAG([C++], [STD], [CXX], [-std=c++11], [$CXX], [], [AC_MSG_ERROR([No compiler support for C++11. Unable to build])])
+	_PIONEERSP_COMPILER_FLAG([C++], [STD], [CXX], [-std=c++11], [$CXX], [], [AC_MSG_ERROR([No compiler support for C++11. Unable to build])])
 esac
 
 
 dnl Always add -Wall, where supported
-PIONEER_WARN_C_CXX_FLAG([-Wall])
+PIONEERSP_WARN_C_CXX_FLAG([-Wall])
 
 dnl Add -O0 if requested
 OPTIMISE=-O3
@@ -133,10 +133,10 @@ AC_SUBST([OPTIMISE])
 dnl Debug stuff
 AC_ARG_ENABLE([debug], AS_HELP_STRING([--enable-debug], [Enable debugging code (stack checks, debug tools features, etc)]), [EXTRA_CPPFLAGS="$EXTRA_CPPFLAGS -DDEBUG"])
 AC_ARG_ENABLE([ldb], AS_HELP_STRING([--enable-ldb], [Enable ldb support.]), [EXTRA_CPPFLAGS="$EXTRA_CPPFLAGS -DENABLE_LDB" ; EXTRA_LIBS="$EXTRA_LIBS -lldbcore"])
-AC_ARG_ENABLE([profiler], AS_HELP_STRING([--enable-profiler], [Enable internal profiler]), [EXTRA_CPPFLAGS="$EXTRA_CPPFLAGS -DPIONEER_PROFILER"])
+AC_ARG_ENABLE([profiler], AS_HELP_STRING([--enable-profiler], [Enable internal profiler]), [EXTRA_CPPFLAGS="$EXTRA_CPPFLAGS -DPIONEERSP_PROFILER"])
 
-AC_ARG_WITH([fno-inline],  AS_HELP_STRING([--with-fno-inline], [Compile without inlining. Helps debugging segaults that occur in STL code]), [PIONEER_C_CXX_FLAG([-fno-inline])])
-AC_ARG_WITH([gprof],       AS_HELP_STRING([--with-gprof], [Compile with gprof profiler]), [PIONEER_C_CXX_FLAG([-pg])])
+AC_ARG_WITH([fno-inline],  AS_HELP_STRING([--with-fno-inline], [Compile without inlining. Helps debugging segaults that occur in STL code]), [PIONEERSP_C_CXX_FLAG([-fno-inline])])
+AC_ARG_WITH([gprof],       AS_HELP_STRING([--with-gprof], [Compile with gprof profiler]), [PIONEERSP_C_CXX_FLAG([-pg])])
 
 dnl Strip binary after build
 DO_STRIP=no
@@ -145,23 +145,23 @@ AM_CONDITIONAL([DO_STRIP], [test "$DO_STRIP" = yes])
 
 
 dnl Versioning. If this is a git checkout, try to get details from it
-PIONEER_VERSION=
-PIONEER_EXTRAVERSION=
+PIONEERSP_VERSION=
+PIONEERSP_EXTRAVERSION=
 if test -d .git ; then
     AC_MSG_NOTICE([This is a git checkout])
-    PIONEER_VERSION=git
+    PIONEERSP_VERSION=git
     gitbin=`which git`
     if test "x$gitbin" != x; then
-        PIONEER_EXTRAVERSION=`$gitbin log -n1 --format=%h`
-        AC_MSG_NOTICE([git ref: $PIONEER_EXTRAVERSION])
+        PIONEERSP_EXTRAVERSION=`$gitbin log -n1 --format=%h`
+        AC_MSG_NOTICE([git ref: $PIONEERSP_EXTRAVERSION])
     fi
 fi
 
 dnl And override with anything on the command line
-AC_ARG_WITH([version], AS_HELP_STRING([--with-version], [Game version]), [PIONEER_VERSION=$withval])
-AC_ARG_WITH([extra-version], AS_HELP_STRING([--with-extra-version], [Additional version info]), [PIONEER_EXTRAVERSION=$withval])
+AC_ARG_WITH([version], AS_HELP_STRING([--with-version], [Game version]), [PIONEERSP_VERSION=$withval])
+AC_ARG_WITH([extra-version], AS_HELP_STRING([--with-extra-version], [Additional version info]), [PIONEERSP_EXTRAVERSION=$withval])
 
-EXTRA_CPPFLAGS="$EXTRA_CPPFLAGS -DPIONEER_VERSION=\\\"$PIONEER_VERSION\\\" -DPIONEER_EXTRAVERSION=\\\"$PIONEER_EXTRAVERSION\\\""
+EXTRA_CPPFLAGS="$EXTRA_CPPFLAGS -DPIONEERSP_VERSION=\\\"$PIONEERSP_VERSION\\\" -DPIONEERSP_EXTRAVERSION=\\\"$PIONEERSP_EXTRAVERSION\\\""
 
 EXTRA_CPPFLAGS="$EXTRA_CPPFLAGS -DGLEW_STATIC"
 
@@ -180,52 +180,52 @@ if test "x$with_extra_warnings" != xno; then
 -Wcast-qual				\
 -Wcast-align				\
   ; do
-    PIONEER_WARN_C_CXX_FLAG([$warn_opt])
+    PIONEERSP_WARN_C_CXX_FLAG([$warn_opt])
   done
   dnl -Wformat-security requires -Wformat first, so it needs a slightly customised test
   dnl we assume that if this test passes then the test (above) for -Wformat passed
   dnl and therefore -Wformat should already be in WARN_CXXFLAGS
-  _PIONEER_COMPILER_FLAG([C], [WARN], [C], [-Wformat -Wformat-security], [$CC/$CXX], [WARN_CXXFLAGS="$WARN_CXXFLAGS -Wformat-security"])
+  _PIONEERSP_COMPILER_FLAG([C], [WARN], [C], [-Wformat -Wformat-security], [$CC/$CXX], [WARN_CXXFLAGS="$WARN_CXXFLAGS -Wformat-security"])
   for warn_opt in \
 -Wno-format-zero-length			\
 -Werror-implicit-function-declaration	\
   ; do
-    PIONEER_WARN_CFLAG([$warn_opt])
+    PIONEERSP_WARN_CFLAG([$warn_opt])
   done
   for warn_opt in \
 -Wstrict-null-sentinel			\
 -Wold-style-cast			\
 -Wsign-promo				\
   ; do
-    PIONEER_WARN_CXXFLAG([$warn_opt])
+    PIONEERSP_WARN_CXXFLAG([$warn_opt])
   done
 fi
 
 dnl Add some useful args for clang under ccache
 dnl http://petereisentraut.blogspot.com.au/2011/05/ccache-and-clang.html
 if test "x$CCACHE" != x; then
-    PIONEER_C_CXX_FLAG([-Qunused-arguments])
-    PIONEER_C_CXX_FLAG([-fcolor-diagnostics])
+    PIONEERSP_C_CXX_FLAG([-Qunused-arguments])
+    PIONEERSP_C_CXX_FLAG([-fcolor-diagnostics])
 fi
 
 dnl Data files directory
-if test "$PIONEER_DATA_DIR" = ''; then
-  AC_MSG_WARN([Using the default value for PIONEER_DATA_DIR.])
+if test "$PIONEERSP_DATA_DIR" = ''; then
+  AC_MSG_WARN([Using the default value for PIONEERSP_DATA_DIR.])
   AC_MSG_WARN([Installing is NOT recommended.])
   AC_MSG_WARN([IF YOU ARE PACKAGING PIONEER, SET THIS VARIABLE!])
   AC_MSG_WARN([To install: make install DESTDIR=/path/to/install/dir/])
   AC_MSG_WARN([The trailing path separator is required.])
   AC_MSG_WARN([The installed Pioneer is only runnable from that directory.])
 fi
-PIONEER_DATA_DIR=${PIONEER_DATA_DIR:-data}
-AC_ARG_VAR([PIONEER_DATA_DIR], [where Pioneer expects its data files to be [data]. Packagers MUST set this!])
+PIONEERSP_DATA_DIR=${PIONEERSP_DATA_DIR:-data}
+AC_ARG_VAR([PIONEERSP_DATA_DIR], [where Pioneer expects its data files to be [data]. Packagers MUST set this!])
 
 dnl ###########################################################################
 dnl Library checks
 dnl ###########################################################################
 
 dnl FIXME: should really check for headers (if no pkgconfig)
-AC_DEFUN([PIONEER_CHECK_LIB],
+AC_DEFUN([PIONEERSP_CHECK_LIB],
     [PKG_CHECK_MODULES([$1], [$2], [],
 	[AC_CHECK_LIB([$3], [$4], [], [AC_MSG_ERROR([$1 is required])])
 	 ][$1][_CFLAGS=
@@ -323,7 +323,7 @@ if test "x$MXE_CROSS" = "xyes" ; then
 	AC_SUBST([GL_CFLAGS], [])
 	AC_SUBST([GL_LIBS], [-lopengl32])
 else
-	PIONEER_CHECK_LIB([GL],   [gl],   [GL],   [glBegin])
+	PIONEERSP_CHECK_LIB([GL],   [gl],   [GL],   [glBegin])
 fi
 
 dnl ###########################################################################

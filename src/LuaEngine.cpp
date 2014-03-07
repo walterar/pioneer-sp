@@ -105,8 +105,8 @@ static int l_engine_attr_ui(lua_State *l)
  */
 static int l_engine_attr_version(lua_State *l)
 {
-	std::string version(PIONEER_VERSION);
-	if (strlen(PIONEER_EXTRAVERSION)) version += " (" PIONEER_EXTRAVERSION ")";
+	std::string version(PIONEERSP_VERSION);
+	if (strlen(PIONEERSP_EXTRAVERSION)) version += " (" PIONEERSP_EXTRAVERSION ")";
     lua_pushlstring(l, version.c_str(), version.size());
     return 1;
 }

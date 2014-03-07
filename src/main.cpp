@@ -17,7 +17,7 @@ enum RunMode {
 
 int main(int argc, char** argv)
 {
-#ifdef PIONEER_PROFILER
+#ifdef PIONEERSP_PROFILER
 	Profiler::detect( argc, argv );
 #endif
 
@@ -89,14 +89,14 @@ start:
 		}
 
 		case MODE_VERSION: {
-			std::string version(PIONEER_VERSION);
-			if (strlen(PIONEER_EXTRAVERSION)) version += " (" PIONEER_EXTRAVERSION ")";
-			Output("pioneer %s\n", version.c_str());
+			std::string version(PIONEERSP_VERSION);
+			if (strlen(PIONEERSP_EXTRAVERSION)) version += " (" PIONEERSP_EXTRAVERSION ")";
+			Output("pioneer-sp %s\n", version.c_str());
 			break;
 		}
 
 		case MODE_USAGE_ERROR:
-			Output("pioneer: unknown mode %s\n", argv[1]);
+			Output("pioneer-sp: unknown mode %s\n", argv[1]);
 			// fall through
 
 		case MODE_USAGE:

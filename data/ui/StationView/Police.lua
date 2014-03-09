@@ -55,7 +55,7 @@ local police = function (tab)
 	if fine == 0 then
 		noBusiness()
 	else
-		local b = SmallLabeledButton.New(string.interp(l.PAY_FINE_OF_N, { amount = format_num(fine, 2, "$", "-") }))
+		local b = SmallLabeledButton.New(string.interp(l.PAY_FINE_OF_N, { amount = showCurrency(fine) }))
 		actionBox:PackEnd(b)
 		b.button.onClick:Connect(function ()
 			if Game.player:GetMoney() < fine then

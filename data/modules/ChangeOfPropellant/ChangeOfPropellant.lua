@@ -25,7 +25,7 @@ local onChat = function (form, ref, option)
 		form:Clear()
 		form:SetTitle(l.formtittle)
 		form:SetFace({seed = ad.faceseed+2})
-		form:SetMessage(l.formmessage..showCurrency(price).."\n*\n*\n*\n")--, 2, "$", "-"
+		form:SetMessage(l.formmessage..showCurrency(price).."\n*\n*\n*\n")
 		form:AddOption(l.convert, 1)
 		return
 	end

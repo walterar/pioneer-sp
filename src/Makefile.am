@@ -19,6 +19,7 @@ noinst_HEADERS = \
 	AmbientSounds.h \
 	AnimationCurves.h \
 	Background.h \
+	BaseSphere.h \
 	Body.h \
 	ByteRange.h \
 	Camera.h \
@@ -44,6 +45,7 @@ noinst_HEADERS = \
 	Frame.h \
 	GalacticView.h \
 	Game.h \
+	GasGiant.h \
 	GeoSphere.h \
 	HudTrail.h \
 	HyperspaceCloud.h \
@@ -152,6 +154,7 @@ noinst_HEADERS = \
 pioneersp_SOURCES	= \
 	AmbientSounds.cpp \
 	Background.cpp \
+	BaseSphere.cpp \
 	Body.cpp \
 	Camera.cpp \
 	CameraController.cpp \
@@ -172,6 +175,7 @@ pioneersp_SOURCES	= \
 	Frame.cpp \
 	GalacticView.cpp \
 	Game.cpp \
+	GasGiant.cpp \
 	GeoPatch.cpp \
 	GeoPatchContext.cpp \
 	GeoPatchID.cpp \
@@ -305,13 +309,13 @@ pioneersp_LDADD += ../contrib/lua/liblua.a
 endif
 
 if DO_STRIP
-pioneersp_V_STRIP = $(pioneersp_V_STRIP_@AM_V@)
-pioneersp_V_STRIP_ = $(pioneersp_V_STRIP_@AM_DEFAULT_V@)
-pioneersp_V_STRIP_0 = @echo "  STRIP   " $<;
-pioneersp_V_STRIP_1 =
+PIONEERSP_V_STRIP = $(PIONEERSP_V_STRIP_@AM_V@)
+PIONEERSP_V_STRIP_ = $(PIONEERSP_V_STRIP_@AM_DEFAULT_V@)
+PIONEERSP_V_STRIP_0 = @echo "  STRIP   " $<;
+PIONEERSP_V_STRIP_1 =
 
 all-local: $(bin_PROGRAMS)
-	$(pioneersp_V_STRIP)$(STRIP) $(bin_PROGRAMS)
+	$(PIONEERSP_V_STRIP)$(STRIP) $(bin_PROGRAMS)
 endif
 
 

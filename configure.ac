@@ -212,7 +212,7 @@ dnl Data files directory
 if test "$PIONEERSP_DATA_DIR" = ''; then
   AC_MSG_WARN([Using the default value for PIONEERSP_DATA_DIR.])
   AC_MSG_WARN([Installing is NOT recommended.])
-  AC_MSG_WARN([IF YOU ARE PACKAGING PIONEER, SET THIS VARIABLE!])
+  AC_MSG_WARN([IF YOU ARE PACKAGING PIONEERSP, SET THIS VARIABLE!])
   AC_MSG_WARN([To install: make install DESTDIR=/path/to/install/dir/])
   AC_MSG_WARN([The trailing path separator is required.])
   AC_MSG_WARN([The installed Pioneer is only runnable from that directory.])

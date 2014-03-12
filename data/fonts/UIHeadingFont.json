@@ -3,13 +3,13 @@
    "faces" : [
       {
          "fontFile" : "Orbiteer-Bold.ttf",
-         "pixelWidth" : 20,
-         "pixelHeight" : 20
+         "pixelWidth" : 17,
+         "pixelHeight" : 17
       },
       {
          "fontFile" : "DejaVuSans.ttf",
-         "pixelWidth" : 18,
-         "pixelHeight" : 18,
+         "pixelWidth" : 17,
+         "pixelHeight" : 17,
          "ranges" : [
             [ "0x0400", "0x04FF" ],
             [ "0x0500", "0x0527" ],
@@ -20,8 +20,8 @@
       },
       {
         "fontFile" : "wqy-microhei.ttc",
-        "pixelWidth" : 20,
-        "pixelHeight" : 20,
+        "pixelWidth" : 17,
+        "pixelHeight" : 17,
         "ranges" : [
             [ "0x4E00",  "0x9FFF"  ],
             [ "0x3400",  "0x4DFF"  ],

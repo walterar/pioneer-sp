@@ -3,8 +3,8 @@
    "faces" : [
       {
          "fontFile" : "TitilliumText22L004.otf",
-         "pixelWidth" : 20,
-         "pixelHeight" : 20
+         "pixelWidth" : 17,
+         "pixelHeight" : 17
       },
       {
          "fontFile" : "DejaVuSans.ttf",
@@ -20,8 +20,8 @@
       },
       {
         "fontFile" : "wqy-microhei.ttc",
-        "pixelWidth" : 20,
-        "pixelHeight" : 20,
+        "pixelWidth" : 17,
+        "pixelHeight" : 17,
         "ranges" : [
             [ "0x4E00",  "0x9FFF"  ],
             [ "0x3400",  "0x4DFF"  ],

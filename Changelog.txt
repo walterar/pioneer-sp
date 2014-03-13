@@ -3,22 +3,29 @@ March 2014
    * New features
      * Support for CJK fonts and Simplified Chinese translation
 
+   * Minor changes and tweaks
+     * Message boxes used for warnings in station screens
+
    * Fixes
      * Fix volume control layout (#2798)
      * Support horizontally-expanding widgets in table rows
      * Fix compilation with gcc 4.7 (#2799)
      * Fix crash with gcc 4.7 compiled binary (#2802)
-     * Fix crash when attacked during deliver package mission (#2806) * Old bug of Pioneer SS, fixed in Scout long ago.
+     * Fix crash when attacked during deliver package mission (#2806)
+     * Try to fix spiky asteroids (#2809) * Not in Scout+
+
+   * Script and UI API changes
+     * New `inherits` function in the `utils` module to quickly implement
+       class hierarchies in Lua (#2767)
+     * MessageBox.Message and MessageBox.OK for modal alerts
 
    * Internal changes
      * Update terrain to use the new VertexBuffer (#2795)
      * On-demand glyph caching (#2796, #2804)
      * Select fonts by Unicode range (#2808)
      * Gas Giant rewrite (#2803)
-
-   * Script and UI API changes
-     * New `inherits` function in the `utils` module to quickly implement
-       class hierarchies in Lua (#2767)
+     * Support C++11 enum features in scan_enums.py (#2782)
+     * Mouse and keyboard events now only distributed to the top UI layer
 
 February 2014
 
@@ -36,7 +43,7 @@ February 2014
      * Quicksave can now be loaded directly from main menu
      * Paste support for text entry widgets (ie console)
      * Improve skybox, restore star rendering (#2736)
-     * New wheels up/down icon (#2754) not in Scout+
+     * New wheels up/down icon (#2754) * Not in Scout+
      * The `console.lua` script is now run at each game start (#2746)
      * Config values can be overidden on the command line
      * Use tables instead of grids for layout

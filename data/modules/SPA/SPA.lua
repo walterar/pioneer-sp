@@ -5,7 +5,7 @@
 local Lang       = import("Lang")
 local Engine     = import("Engine")
 local Game       = import("Game")
-local Comms      = import("Comms")
+local MessageBox = import("ui/MessageBox")
 local Event      = import("Event")
 local Format     = import("Format")
 local Serializer = import("Serializer")
@@ -108,7 +108,7 @@ onChat = function (form, ref, option)
 			end,
 			onClickSell = function (ref, commodity)
 				if (commodity == 'RADIOACTIVES' and membership.milrads < 1) then
-					Comms.Message(l.YOU_MUST_BUY:interp({
+					MessageBox.Message(l.YOU_MUST_BUY:interp({
 						military_fuel = l.MILITARY_FUEL,
 						radioactives  = l.RADIOACTIVES,
 						metal_alloys  = l.METAL_ALLOYS,
@@ -184,12 +184,12 @@ end
 local onShipFuelChanged = function (ship, state)
 	if ship:IsPlayer() and (state == "WARNING" or state == "EMPTY") then
 		if SpaMember > 0 then
---			Comms.Message(t('The propellent cell has been recharged.'))
+--			MessageBox.Message(t('The propellent cell has been recharged.'))
 			Game.player:SetFuelPercent(50)
 		elseif state == "WARNING" then
-			Comms.ImportantMessage(ls.YOUR_FUEL_TANK_IS_ALMOST_EMPTY)
+			MessageBox.ImportantMessage(ls.YOUR_FUEL_TANK_IS_ALMOST_EMPTY)
 		elseif state == "EMPTY" then
-			Comms.ImportantMessage(ls.YOUR_FUEL_TANK_IS_EMPTY)
+			MessageBox.ImportantMessage(ls.YOUR_FUEL_TANK_IS_EMPTY)
 		end
 	end
 end

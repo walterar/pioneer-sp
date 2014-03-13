@@ -1,14 +1,14 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-local Engine     = import("Engine")
-local Lang       = import("Lang")
-local Game       = import("Game")
-local Rand       = import("Rand")
-local Character  = import("Character")
-local Format     = import("Format")
-local utils      = import("utils")
-local MessageBox = import("ui/MessageBox")
+local Engine = import("Engine")
+local Lang = import("Lang")
+local Game = import("Game")
+local Rand = import("Rand")
+local Character = import("Character")
+local Format = import("Format")
+local Comms = import("Comms")
+local utils = import("utils")
 
 local InfoFace = import("ui/InfoFace")
 local SmallLabeledButton = import("ui/SmallLabeledButton")
@@ -59,7 +59,7 @@ local police = function (tab)
 		actionBox:PackEnd(b)
 		b.button.onClick:Connect(function ()
 			if Game.player:GetMoney() < fine then
-				MessageBox.Message(l.YOU_NOT_ENOUGH_MONEY)
+				Comms.Message(l.YOU_NOT_ENOUGH_MONEY)
 				return
 			end
 

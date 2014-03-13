@@ -1,7 +1,6 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-local Character    = import("Character")
 local Engine       = import("Engine")
 local Lang         = import("Lang")
 local Game         = import("Game")
@@ -11,6 +10,7 @@ local Rand         = import("Rand")
 local InfoGauge    = import("ui/InfoGauge")
 local InfoFace     = import("ui/InfoFace")
 local ModelSpinner = import("UI.Game.ModelSpinner")
+local Character    = import("Character")
 
 local l = Lang.GetResource("ui-core")
 local ui = Engine.ui

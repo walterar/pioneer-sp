@@ -1,12 +1,12 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-local Engine     = import("Engine")
-local Lang       = import("Lang")
-local Game       = import("Game")
-local EquipDef   = import("EquipDef")
-local MessageBox = import("ui/MessageBox")
-local utils      = import("utils")
+local Engine   = import("Engine")
+local Lang     = import("Lang")
+local Game     = import("Game")
+local EquipDef = import("EquipDef")
+local Comms    = import("Comms")
+local utils    = import("utils")
 
 local l = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
 
@@ -211,25 +211,25 @@ function EquipmentTableWidgets.Pair (config)
 		if not funcs.onClickBuy(e) then return end
 
 		if funcs.getStock(e) <= 0 then
-			MessageBox.Message(l.ITEM_IS_OUT_OF_STOCK)
+			Comms.Message(l.ITEM_IS_OUT_OF_STOCK)
 			return
 		end
 
 		local player = Game.player
 
 		if player:GetEquipFree(EquipDef[e].slot) < 1 then
-			MessageBox.Message(l.SHIP_IS_FULLY_LADEN)
+			Comms.Message(l.SHIP_IS_FULLY_LADEN)
 			return
 		end
 
 		if player.freeCapacity < EquipDef[e].mass then
-			MessageBox.Message(l.SHIP_IS_FULLY_LADEN)
+			Comms.Message(l.SHIP_IS_FULLY_LADEN)
 			return
 		end
 
 		local price = funcs.getBuyPrice(e)
 		if player:GetMoney() < funcs.getBuyPrice(e) then
-			MessageBox.Message(l.YOU_NOT_ENOUGH_MONEY)
+			Comms.Message(l.YOU_NOT_ENOUGH_MONEY)
 			return
 		end
 

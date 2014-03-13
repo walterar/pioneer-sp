@@ -149,18 +149,6 @@ bool Widget::IsSelected() const
 	return (GetContext()->GetSelected() == this);
 }
 
-bool Widget::IsOnTopLayer() const
-{
-	const Layer *topLayer = GetContext()->GetTopLayer();
-	Widget *scan = GetContainer();
-	while (scan) {
-		if (scan == topLayer)
-			return true;
-        scan = scan->GetContainer();
-    }
-	return false;
-}
-
 void Widget::Disable()
 {
 	SetDisabled(true);

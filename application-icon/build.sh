@@ -4,7 +4,7 @@ FLAGS='--export-area-page --export-background="#000000" --export-background-opac
 
 png_name() {
    for sz in $*; do
-      printf 'pngs/pioneer-%dx%d.png\n' "$sz" "$sz"
+      printf 'pngs/pioneersp-%dx%d.png\n' "$sz" "$sz"
    done
 }
 
@@ -31,6 +31,6 @@ build_png 16 badge-square.svg
 
 sizes="16 24 32 48 64 256"
 names="$(png_name $sizes)"
-CMD="icotool --create --icon --output=pioneer.ico $names"
+CMD="icotool --create --icon --output=pioneersp.ico $names"
 printf 'running %s\n' "$CMD"
 $CMD

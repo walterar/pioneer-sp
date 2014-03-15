@@ -5,7 +5,7 @@
    },
    "FLAVOUR_0_NEWSBODY" : {
       "description" : "Imply high demand for MEDICINE commodity.",
-      "message" : "Plague harvests lives in the {system} system ({sectorx}, {sectory}, {sectorz}). Officials urge for medical aid."
+      "message" : "Praga pochłania kolejne ofiary w systemie {system}({sectorx},{sectory},{sectorz}). Urzędnicy apelują o pomoc medyczną."
    },
    "FLAVOUR_10_HEADLINE" : {
       "description" : "",
@@ -93,7 +93,7 @@
    },
    "FLAVOUR_1_NEWSBODY" : {
       "description" : "Imply high demand of BATTLE_WEAPONS. I.e. the word combat is important.",
-      "message" : "The long standing conflict in the {system} system ({sectorx}, {sectory}, {sectorz}) escalates as the armies engage in full open combat."
+      "message" : "Długotrwały konflikt w systemie {system}({sectorx},{sectory},{sectorz}) przeobraził się w bezpośrednie i otwarte starcie wojsk."
    },
    "FLAVOUR_20_HEADLINE" : {
       "description" : "",
@@ -125,7 +125,7 @@
    },
    "FLAVOUR_23_NEWSBODY" : {
       "description" : "Imply high demand of METAL_ALLOYS. Amissionox is a play on words for Victorinox.",
-      "message" : "The new Amissionox factory in the {system} system ({sectorx}, {sectory}, {sectorz}) is now up and running. It will produce high quality knifes capable of cutting through a space boot; however, due to low supply of resources needed for the blades, they have not yet reached full production potential."
+      "message" : "Nowa fabryka koncernu Amissionox w systemie {system}({sectorx},{sectory},{sectorz}) została uruchomiona i pracuje. Będzie produkować wysokiej jakości noże, zdolne do przecięcia buta od skafandra kosmicznego. Jednak nie rozwinęła jeszcze pełnego potencjału produkcyjnego z powodu słabego zaopatrzenie w surowce potrzebne do produkcji ostrzy."
    },
    "FLAVOUR_2_HEADLINE" : {
       "description" : "",

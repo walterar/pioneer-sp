@@ -220,7 +220,7 @@ void Starfield::Fill(Random &rand)
 	auto vtxPtr = m_vertexBuffer->Map<StarVert>(Graphics::BUFFER_MAP_WRITE);
 	//fill the array
 	for (int i=0; i<BG_STAR_MAX; i++) {
-		const Uint8 col = rand.Double(0.3,0.8)*255;
+		const Uint8 col = rand.Double(0.2,0.7)*255;
 
 		// this is proper random distribution on a sphere's surface
 		const float theta = float(rand.Double(0.0, 2.0*M_PI));

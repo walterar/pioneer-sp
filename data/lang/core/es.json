@@ -1079,13 +1079,25 @@
       "description" : "",
       "message" : "%days{f.0} días"
    },
+   "NUMBER_DECIMAL_POINT" : {
+      "description" : "Decimal delimiter used when displaying monetary values.",
+      "message" : "."
+   },
    "NUMBER_G" : {
       "description" : "",
       "message" : "%acceleration{f.1} G"
    },
+   "NUMBER_GROUP_NUM" : {
+      "description" : "For large number, group digits by this many. European languages use 3 (group thousands). 0 means no grouping.",
+      "message" : "3"
+   },
+   "NUMBER_GROUP_SEP" : {
+      "description" : "For large number, separator used when grouping digits. E.g. 1,000 or 1 000 or 1'000.",
+      "message" : ","
+   },
    "NUMBER_HOURS" : {
       "description" : "",
-      "message" : "%hours{f.1} hrs"
+      "message" : "%hours{f.1} hrs "
    },
    "NUMBER_LY" : {
       "description" : "",
@@ -1309,7 +1321,7 @@
    },
    "RESET_ORIENTATION_AND_ZOOM" : {
       "description" : "",
-	  "message" : "Reset Orientation and Zoom"
+      "message" : "Reiniciar orientación y zoom"
    },
    "ROBOTS" : {
       "description" : "",
@@ -1404,8 +1416,8 @@
       "message" : "Coordenadas de sector:"
    },
    "SECTOR_MAP_VIEW" : {
-       "description" : "",
-       "message": "Sector Map View"
+      "description" : "",
+      "message": "Sector Map View"
    },
    "SECTOR_X_Y_Z" : {
       "description" : "",

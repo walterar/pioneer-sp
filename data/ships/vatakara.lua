@@ -29,4 +29,3 @@ define_ship {
 	price = 720000,
 	hyperdrive_class = 0,
 }
-

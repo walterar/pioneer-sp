@@ -9,8 +9,8 @@ local Comms      = import("Comms")
 local Event      = import("Event")
 local Serializer = import("Serializer")
 
-local l = Lang.GetResource("module-donatetocranks") or Lang.GetResource("module-donatetocranks","en")
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
+local l = Lang.GetResource("module-donatetocranks") or Lang.GetResource("module-donatetocranks","en");
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en");
 
 local crank_flavours = {}
 for i = 0,5 do

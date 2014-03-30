@@ -1,314 +1,314 @@
 {
-   "ADTEXT_1" : {
-      "description" : "",
-      "message" : "NECESITO EXPLORADOR. Sistema {system} distante {dist} ly. {cash}"
-   },
-   "INTROTEXT1_1" : {
-      "description" : "",
-      "message" : "Hola. Soy {name}, ingeniero en minería exótica. Mis amigos y yo tenemos algunas dudas acerca de< {systembody} > en {system} ({sectorx}, {sectory}, {sectorz}) distante {dist} ly.Pagaremos {cash} por un mapeado de la zona."
-   },
-   "INTROTEXT2_1" : {
-      "description" : "",
-      "message" : "Hola. Si usted está viendo esto es porque los datos fueron obtenidos con éxito y están dentro de lo que sospechabamos.Lo esperamos en:"
-   },
-   "WHYSOMUCHTEXT_1" : {
-      "description" : "",
-      "message" : "Es nuestra tarifa estándar, son reguladas por el mercado."
-   },
-   "SUCCESSMSG_1" : {
-      "description" : "",
-      "message" : "Gracias por la información. Lo acordado fue transferido a su cuenta"
-   },
-   "ADTEXT_2" : {
-      "description" : "",
-      "message" : "NECESITO EXPLORAR {system} distante {dist} ly. {cash}"
-   },
-   "INTROTEXT1_2" : {
-      "description" : "",
-      "message" : "Hola. Soy {name}. Dispongo de {cash} para un mapeado de < {systembody} > en {system} ({sectorx}, {sectory}, {sectorz}) a {dist} ly."
-   },
-   "INTROTEXT2_2" : {
-      "description" : "",
-      "message" : "Hola. Si usted está viendo esto es porque los datos fueron mapeados con éxito. Serán de mucha utilidad a mis socios.Lo estamos eperando en:"
-   },
-   "WHYSOMUCHTEXT_2" : {
-      "description" : "",
-      "message" : "Pensé que estaba bien así. ¿Le puedo ofrecer menos?"
-   },
-   "SUCCESSMSG_2" : {
-      "description" : "",
-      "message" : "He recibido los datos ¡gracias! Estoy transfiriendo el dinero ahora."
-   },
-   "ADTEXT_3" : {
-      "description" : "",
-      "message" : "RECON en {system} distante {dist} ly. {cash} ¡Ayúdanos a mantener el sistema ordenado!"
-   },
-   "INTROTEXT1_3" : {
-      "description" : "",
-      "message" : "Saludos. Teniente {name}, {military}. Pagaremos {cash} por datos de < {systembody} > en {system} ({sectorx}, {sectory}, {sectorz}) a {dist} ly."
-   },
-   "INTROTEXT2_3" : {
-      "description" : "",
-      "message" : "¡Congratulaciones! Según parece, la misión ha sido un éxito. Lo esperamos ansiosamente para un mejor análisis en:"
-   },
-   "WHYSOMUCHTEXT_3" : {
-      "description" : "",
-      "message" : "Nosotros no escatimamos esfuerzos en aras del bien común."
-   },
-   "SUCCESSMSG_3" : {
-      "description" : "",
-      "message" : "¡Bien hecho piloto! Su valor ha sido reconocido, dinero transferido."
-   },
-   "ADTEXT_4" : {
-      "description" : "",
-      "message" : "RECON URGENTE en {system} distante {dist} ly. {cash} Necesito datos urgentes sobre el sistema."
-   },
-   "INTROTEXT1_4" : {
-      "description" : "",
-      "message" : "Hola, mi nombre es {name}, soy periodista y estoy escribiendo una historia sobre el sistema  {system} ({sectorx}, {sectory}, {sectorz}) a {dist} ly de aquí. Hay algunos datos que necesito verificar en < {systembody} >. Le pagaré {cash} si usted me consigue esos datos dentro de la fecha límite."
-   },
-   "INTROTEXT2_4" : {
-      "description" : "",
-      "message" : "Hola. Si usted esté viendo esto, los datos recogidos son muy distintos a lo que imaginaba pero serán de mucha utilidad a mi editor.La entrega deberá hacerse en:"
-   },
-   "WHYSOMUCHTEXT_4" : {
-      "description" : "",
-      "message" : "Soy periodista de renombre, no alguien que escribe para pasquines baratos. Tengo dinero suficiente y sé muy bien que la información precisa tiene su precio..."
-   },
-   "SUCCESSMSG_4" : {
-      "description" : "",
-      "message" : "¡Muchas gracias! ¡Lo pactado debería estar yá en su cuenta!"
-   },
-   "ADTEXT_5" : {
-      "description" : "",
-      "message" : "EXPLORACIÓN en {system} distante {dist} ly. {cash}.Solo para un piloto audaz y experimentado."
-   },
-   "INTROTEXT1_5" : {
-      "description" : "",
-      "message" : "Hola. Soy {name}, mi negocio es la compra y venta de información. Le pagaré {cash} por un mapeado de < {systembody} > en {system} ({sectorx}, {sectory}, {sectorz}) a {dist} ly."
-   },
-   "INTROTEXT2_5" : {
-      "description" : "",
-      "message" : "Hola. Si usted está viendo esto es que la mision es exitosa de momento. Los datos obtenidos serán de mucha utilidad. Su recompensa lo espera en:"
-   },
-   "WHYSOMUCHTEXT_5" : {
-      "description" : "",
-      "message" : "Puede parecer extraño pero, sé que hay algo que hacer allí, pero no sé qué. En mi profesión, eso no es bueno. O quizá no sea así. O viceversa..."
-   },
-   "SUCCESSMSG_5" : {
-      "description" : "",
-      "message" : "Su puntualidad y discreción es apreciada. Recibirá lo acordado."
-   },
-   "ADTEXT_6" : {
-      "description" : "",
-      "message" : "EXPLORACIÓN LOCAL. El gobierno de {system} necesita su ayuda para mantener la información al día."
-   },
-   "INTROTEXT1_6" : {
-      "description" : "",
-      "message" : "Encantado de conocerte, soy {name}, de la administración de {system}, y estamos dispuestos a pagar {cash} por datos actuales de < {systembody} >. No hay prisa, simplemente necesitamos  mantener nuestros archivos actualizados."
-   },
-   "INTROTEXT2_6" : {
-      "description" : "",
-      "message" : "Usted está viendo esto porque, seguramente, la primera parte de misión ha sido exitosa. Para completarla debe dirigirse a:"
-   },
-   "WHYSOMUCHTEXT_6" : {
-      "description" : "",
-      "message" : "Este es un trabajo para el gobierno. No es mi dinero."
-   },
-   "SUCCESSMSG_6" : {
-      "description" : "",
-      "message" : "Gracias por ayudarnos. Su recompensa se transfiere ya."
-   },
-   "ADTEXT_7" : {
-      "description" : "",
-      "message" : "RECON LOCAL URGENTE. La {police} del sistema {system} necesita de su ayuda para mantener el orden."
-   },
-   "INTROTEXT1_7" : {
-      "description" : "",
-      "message" : "¡Hola! Capitán {name}, {police} de {system}. Necesitamos urgente un escaneo de < {systembody} >. Pagaremos {cash} por esos datos en tiempo razonable."
-   },
-   "INTROTEXT2_7" : {
-      "description" : "",
-      "message" : "Si usted está viendo esto, la primera parte de misión parece haber sido exitosa. Para completarla  diríjase a:"
-   },
-   "WHYSOMUCHTEXT_7" : {
-      "description" : "",
-      "message" : "Debemos proteger a los ciudadanos de nuestra región. Tenemos que saber lo que está pasando allí; ¡y tenemos que saberlo pronto!"
-   },
-   "SUCCESSMSG_7" : {
-      "description" : "",
-      "message" : "El informe rápido es apreciado. Su dinero ha sido transferido."
-   },
-   "MessageRisk0_1" : {
-      "description" : "",
-      "message" : "Usted no debe preocuparse, es sólo una exploración rutinaria y no confío en los drones. No escuché de ataques en la zona, aunque, siempre hay una primera vez."
-   },
-   "MessageRisk0_2" : {
-      "description" : "",
-      "message" : "No tengo noticias de ataques, parece ser una zona tranquila, pero realmente no le puedo garantizar su seguridad."
-   },
-   "MessageRisk1" : {
-      "description" : "",
-      "message" : "Sospecho que hay alguna actividad extraña. Nada grave probablemente, pero es mejor que esté preparado."
-   },
-   "MessageRisk2" : {
-      "description" : "",
-      "message" : "Tengo información de que una nave ha desaparecido en la zona. Existen fuertes sospechas de actividad pirata."
-   },
-   "MessageRisk3_1" : {
-      "description" : "",
-      "message" : "Varias naves se han perdido en el área, incluyendo a mi anterior explorador, es una pena. Realmente necesito saber qué está pasando, no puedo perder exploradores todos los días."
-   },
-   "MessageRisk3_2" : {
-      "description" : "",
-      "message" : "Seguramente encontrará hostilidad. Tengo informes de naves en tránsito que hablan de violentos ataques piratas. Se han perdido algunas naves ahí. Necesito saber donde tienen su base y que tan fuertes son."
-   },
-   "hostilemessage1" : {
-      "description" : "",
-      "message" : "¡Miren esto! ¡Espía a la vista! ¡Estamos de fiesta!"
-   },
-   "hostilemessage2" : {
-      "description" : "",
-      "message" : "¡Tu nave y tu vida nos pertenece, estúpido entrometido!"
-   },
-   "hostilemessage3" : {
-      "description" : "",
-      "message" : "¿Vas a morir por los malditos datos de tu mapeador?"
-   },
-   "hostilemessage4" : {
-      "description" : "",
-      "message" : "¡No queremos gente extraña aquí! ¡Vuelve a tu cueva maldito imbécil!"
-   },
-   "I_need_the_information_by" : {
-      "description" : "",
-      "message" : "Por razones de seguridad, el programa destruirá todo rastro de esta misión al vencimiento del tiempo límite. Es muy importante que usted entregue el informe antes de esta fecha : "
-   },
-   "Scout" : {
-      "description" : "",
-      "message" : "Scout"
-   },
-   "Excellent_I_await_your_report" : {
-      "description" : "",
-      "message" : "Excelente. Aguardo su reporte."
-   },
-   "Why_so_much_money" : {
-      "description" : "",
-      "message" : "¿Por qué tanto dinero, qué está pagando usted?"
-   },
-   "Have_additional_information" : {
-      "description" : "",
-      "message" : "Necesito información adicional."
-   },
-   "additional_information" : {
-      "description" : "",
-      "message" : "Si usted acepta esta misión, se programará su mapeador con lo que estoy buscando. Este programa tomará las decisiones por mí y se las comunicará a su computadora. Si usted debe volver aquí, o llevar los datos a otro sistema, depende de lo que encuentre. Puede ocurrir que cambie el destino de entrega a otro sistema más conveniente. Debe estar alerta y seguro de contar con suficiente combustible y tiempo.  Esto no se aplica a misiones locales."
-   },
-   "When_do_you_need_the_data" : {
-      "description" : "",
-      "message" : "¿Cuándo necesita los datos?"
-   },
-   "What_is_the_risk" : {
-      "description" : "",
-      "message" : "¿Cual es el riesgo?"
-   },
-   "Repeat_the_original_request" : {
-      "description" : "",
-      "message" : "¿Puede repetir el pedido original?"
-   },
-   "Ok" : {
-      "description" : "",
-      "message" : "Aceptar y marcar la ruta en el mapa galáctico."
-   },
-   "ly" : {
-      "description" : "",
-      "message" : "Años Luz"
-   },
-   "Distance_reached" : {
-      "description" : "",
-      "message" : "DISTANCIA ALCANZADA. MAPEANDO. Mantenga en órbita "
-   },
-   "minutes" : {
-      "description" : "",
-      "message" : " minutos."
-   },
-   "MAPPING" : {
-      "description" : "",
-      "message" : "Mapeando"
-   },
-   "MAPPING_interrupted" : {
-      "description" : "",
-      "message" : "MAPEO INTERRUMPIDO. ¡Muy lejos del objetivo! Corrija órbita"
-   },
-   "SUSPENDED" : {
-      "description" : "",
-      "message" : "Suspendida"
-   },
-   "COMPLETED" : {
-      "description" : "",
-      "message" : "Completa"
-   },
-   "computer" : {
-      "description" : "",
-      "message" : "Computadora"
-   },
-   "You_have_not_installed_RADAR_MAPPER" : {
-      "description" : "",
-      "message" : "Usted debe tener instalado un Radar Mapeador para realizar esta tarea.Por favor, diríjase al Astillero y podrá adquirirlo en la sección Equipamiento."
-   },
-   "You_will_be_paid_on_my_behalf_in_new_destination" : {
-      "description" : "",
-      "message" : "Se le pagará en mi nombre en NUEVO DESTINO"
-   },
-   "Unauthorized_data_here_is_REMOVED" : {
-      "description" : "",
-      "message" : "Datos no autorizados aquí se han ELIMINADO."
-   },
-   "You_have_been_fined" : {
-      "description" : "",
-      "message" : "Usted deberá paga una multa de "
-   },
-   "COMPLETE_MAPPING" : {
-      "description" : "",
-      "message" : "MAPEADO COMPLETO. Datos salvados. Verifique destino de entrega."
-   },
-   "HANG_UP" : {
-      "description" : "",
-      "message" : "Colgar"
-   },
-   "Objective" : {
-      "description" : "",
-      "message" : "Objetivo:"
-   },
-   "System" : {
-      "description" : "",
-      "message" : "En Sistema:"
-   },
-   "Deadline" : {
-      "description" : "",
-      "message" : "Fecha límite:"
-   },
-   "Distance" : {
-      "description" : "",
-      "message" : "Distancia:"
-   },
-   "Station" : {
-      "description" : "",
-      "message" : "Estación espacial:"
-   },
-   "Danger" : {
-      "description" : "",
-      "message" : "Riesgo:"
-   },
-   "You_do_not_have_enough_experience_for_this_mission" : {
-      "description" : "",
-      "message" : "Usted no tiene la suficiente experiencia para esta misión."
-   },
-   "suspended_mission" : {
-      "description" : "",
-      "message" : "El proceso de mapeado se ha interrumpido.Usted se encuentra muy lejos del objetivo. Si desea continuar, debe corregir adecuadamente la órbita para reiniciar el proceso."
-   },
-   "failed_mission" : {
-      "description" : "",
-      "message" : "Esta misión ha fracasado por haber excedido la fecha de caducidad. Lo siento.Ha comenzado y terminará en breve, la limpieza de todos los rastros de este mapeado.Esto nunca ha sucedido, Comandante."
-   }
+"ADTEXT_1":{
+"description":"",
+"message":"NECESITO EXPLORADOR. Sistema {system} distante {dist} ly. {cash}"
+},
+"ADTEXT_2":{
+"description":"",
+"message":"NECESITO EXPLORAR {system} distante {dist} ly. {cash}"
+},
+"ADTEXT_3":{
+"description":"",
+"message":"RECON en {system} distante {dist} ly. {cash} ¡Ayúdanos a mantener el sistema ordenado!"
+},
+"ADTEXT_4":{
+"description":"",
+"message":"RECON URGENTE en {system} distante {dist} ly. {cash} Necesito datos urgentes sobre el sistema."
+},
+"ADTEXT_5":{
+"description":"",
+"message":"EXPLORACIÓN en {system} distante {dist} ly. {cash}.Solo para un piloto audaz y experimentado."
+},
+"ADTEXT_6":{
+"description":"",
+"message":"EXPLORACIÓN LOCAL. El gobierno de {system} necesita su ayuda para mantener la información al día."
+},
+"ADTEXT_7":{
+"description":"",
+"message":"RECON LOCAL URGENTE. La {police} del sistema {system} necesita de su ayuda para mantener el orden."
+},
+"COMPLETED":{
+"description":"",
+"message":"Completa"
+},
+"COMPLETE_MAPPING":{
+"description":"",
+"message":"MAPEADO COMPLETO. Datos salvados. Verifique destino de entrega."
+},
+"Danger":{
+"description":"",
+"message":"Riesgo:"
+},
+"Deadline":{
+"description":"",
+"message":"Fecha límite:"
+},
+"Distance":{
+"description":"",
+"message":"Distancia:"
+},
+"Distance_reached":{
+"description":"",
+"message":"DISTANCIA ALCANZADA. MAPEANDO. Mantenga en órbita "
+},
+"Excellent_I_await_your_report":{
+"description":"",
+"message":"Excelente. Aguardo su reporte."
+},
+"HANG_UP":{
+"description":"",
+"message":"Colgar"
+},
+"Have_additional_information":{
+"description":"",
+"message":"Necesito información adicional."
+},
+"INTROTEXT1_1":{
+"description":"",
+"message":"Hola. Soy {name}, ingeniero en minería exótica. Mis amigos y yo tenemos algunas dudas acerca de< {systembody} > en {system} ({sectorx}, {sectory}, {sectorz}) distante {dist} ly.Pagaremos {cash} por un mapeado de la zona."
+},
+"INTROTEXT1_2":{
+"description":"",
+"message":"Hola. Soy {name}. Dispongo de {cash} para un mapeado de < {systembody} > en {system} ({sectorx}, {sectory}, {sectorz}) a {dist} ly."
+},
+"INTROTEXT1_3":{
+"description":"",
+"message":"Saludos. Teniente {name}, {military}. Pagaremos {cash} por datos de < {systembody} > en {system} ({sectorx}, {sectory}, {sectorz}) a {dist} ly."
+},
+"INTROTEXT1_4":{
+"description":"",
+"message":"Hola, mi nombre es {name}, soy periodista y estoy escribiendo una historia sobre el sistema  {system} ({sectorx}, {sectory}, {sectorz}) a {dist} ly de aquí. Hay algunos datos que necesito verificar en < {systembody} >. Le pagaré {cash} si usted me consigue esos datos dentro de la fecha límite."
+},
+"INTROTEXT1_5":{
+"description":"",
+"message":"Hola. Soy {name}, mi negocio es la compra y venta de información. Le pagaré {cash} por un mapeado de < {systembody} > en {system} ({sectorx}, {sectory}, {sectorz}) a {dist} ly."
+},
+"INTROTEXT1_6":{
+"description":"",
+"message":"Encantado de conocerte, soy {name}, de la administración de {system}, y estamos dispuestos a pagar {cash} por datos actuales de < {systembody} >. No hay prisa, simplemente necesitamos  mantener nuestros archivos actualizados."
+},
+"INTROTEXT1_7":{
+"description":"",
+"message":"¡Hola! Capitán {name}, {police} de {system}. Necesitamos urgente un escaneo de < {systembody} >. Pagaremos {cash} por esos datos en tiempo razonable."
+},
+"INTROTEXT2_1":{
+"description":"",
+"message":"Hola. Si usted está viendo esto es porque los datos fueron obtenidos con éxito y están dentro de lo que sospechabamos.Lo esperamos en:"
+},
+"INTROTEXT2_2":{
+"description":"",
+"message":"Hola. Si usted está viendo esto es porque los datos fueron mapeados con éxito. Serán de mucha utilidad a mis socios.Lo estamos eperando en:"
+},
+"INTROTEXT2_3":{
+"description":"",
+"message":"¡Congratulaciones! Según parece, la misión ha sido un éxito. Lo esperamos ansiosamente para un mejor análisis en:"
+},
+"INTROTEXT2_4":{
+"description":"",
+"message":"Hola. Si usted esté viendo esto, los datos recogidos son muy distintos a lo que imaginaba pero serán de mucha utilidad a mi editor.La entrega deberá hacerse en:"
+},
+"INTROTEXT2_5":{
+"description":"",
+"message":"Hola. Si usted está viendo esto es que la mision es exitosa de momento. Los datos obtenidos serán de mucha utilidad. Su recompensa lo espera en:"
+},
+"INTROTEXT2_6":{
+"description":"",
+"message":"Usted está viendo esto porque, seguramente, la primera parte de misión ha sido exitosa. Para completarla debe dirigirse a:"
+},
+"INTROTEXT2_7":{
+"description":"",
+"message":"Si usted está viendo esto, la primera parte de misión parece haber sido exitosa. Para completarla  diríjase a:"
+},
+"I_need_the_information_by":{
+"description":"",
+"message":"Por razones de seguridad, el programa destruirá todo rastro de esta misión al vencimiento del tiempo límite. Es muy importante que usted entregue el informe antes de esta fecha : "
+},
+"MAPPING":{
+"description":"",
+"message":"Mapeando"
+},
+"MAPPING_interrupted":{
+"description":"",
+"message":"MAPEO INTERRUMPIDO. ¡Muy lejos del objetivo! Corrija órbita"
+},
+"MessageRisk0_1":{
+"description":"",
+"message":"Usted no debe preocuparse, es sólo una exploración rutinaria y no confío en los drones. No escuché de ataques en la zona, aunque, siempre hay una primera vez."
+},
+"MessageRisk0_2":{
+"description":"",
+"message":"No tengo noticias de ataques, parece ser una zona tranquila, pero realmente no le puedo garantizar su seguridad."
+},
+"MessageRisk1":{
+"description":"",
+"message":"Sospecho que hay alguna actividad extraña. Nada grave probablemente, pero es mejor que esté preparado."
+},
+"MessageRisk2":{
+"description":"",
+"message":"Tengo información de que una nave ha desaparecido en la zona. Existen fuertes sospechas de actividad pirata."
+},
+"MessageRisk3_1":{
+"description":"",
+"message":"Varias naves se han perdido en el área, incluyendo a mi anterior explorador, es una pena. Realmente necesito saber qué está pasando, no puedo perder exploradores todos los días."
+},
+"MessageRisk3_2":{
+"description":"",
+"message":"Seguramente encontrará hostilidad. Tengo informes de naves en tránsito que hablan de violentos ataques piratas. Se han perdido algunas naves ahí. Necesito saber donde tienen su base y que tan fuertes son."
+},
+"Objective":{
+"description":"",
+"message":"Objetivo:"
+},
+"Ok":{
+"description":"",
+"message":"Aceptar y marcar la ruta en el mapa galáctico."
+},
+"Repeat_the_original_request":{
+"description":"",
+"message":"¿Puede repetir el pedido original?"
+},
+"SUCCESSMSG_1":{
+"description":"",
+"message":"Gracias por la información. Lo acordado fue transferido a su cuenta"
+},
+"SUCCESSMSG_2":{
+"description":"",
+"message":"He recibido los datos ¡gracias! Estoy transfiriendo el dinero ahora."
+},
+"SUCCESSMSG_3":{
+"description":"",
+"message":"¡Bien hecho piloto! Su valor ha sido reconocido, dinero transferido."
+},
+"SUCCESSMSG_4":{
+"description":"",
+"message":"¡Muchas gracias! ¡Lo pactado debería estar yá en su cuenta!"
+},
+"SUCCESSMSG_5":{
+"description":"",
+"message":"Su puntualidad y discreción es apreciada. Recibirá lo acordado."
+},
+"SUCCESSMSG_6":{
+"description":"",
+"message":"Gracias por ayudarnos. Su recompensa se transfiere ya."
+},
+"SUCCESSMSG_7":{
+"description":"",
+"message":"El informe rápido es apreciado. Su dinero ha sido transferido."
+},
+"SUSPENDED":{
+"description":"",
+"message":"Suspendida"
+},
+"Scout":{
+"description":"",
+"message":"Scout"
+},
+"Station":{
+"description":"",
+"message":"Estación espacial:"
+},
+"System":{
+"description":"",
+"message":"En Sistema:"
+},
+"Unauthorized_data_here_is_REMOVED":{
+"description":"",
+"message":"Datos no autorizados aquí se han ELIMINADO."
+},
+"WHYSOMUCHTEXT_1":{
+"description":"",
+"message":"Es nuestra tarifa estándar, son reguladas por el mercado."
+},
+"WHYSOMUCHTEXT_2":{
+"description":"",
+"message":"Pensé que estaba bien así. ¿Le puedo ofrecer menos?"
+},
+"WHYSOMUCHTEXT_3":{
+"description":"",
+"message":"Nosotros no escatimamos esfuerzos en aras del bien común."
+},
+"WHYSOMUCHTEXT_4":{
+"description":"",
+"message":"Soy periodista de renombre, no alguien que escribe para pasquines baratos. Tengo dinero suficiente y sé muy bien que la información precisa tiene su precio..."
+},
+"WHYSOMUCHTEXT_5":{
+"description":"",
+"message":"Puede parecer extraño pero, sé que hay algo que hacer allí, pero no sé qué. En mi profesión, eso no es bueno. O quizá no sea así. O viceversa..."
+},
+"WHYSOMUCHTEXT_6":{
+"description":"",
+"message":"Este es un trabajo para el gobierno. No es mi dinero."
+},
+"WHYSOMUCHTEXT_7":{
+"description":"",
+"message":"Debemos proteger a los ciudadanos de nuestra región. Tenemos que saber lo que está pasando allí; ¡y tenemos que saberlo pronto!"
+},
+"What_is_the_risk":{
+"description":"",
+"message":"¿Cual es el riesgo?"
+},
+"When_do_you_need_the_data":{
+"description":"",
+"message":"¿Cuándo necesita los datos?"
+},
+"Why_so_much_money":{
+"description":"",
+"message":"¿Por qué tanto dinero, qué está pagando usted?"
+},
+"You_do_not_have_enough_experience_for_this_mission":{
+"description":"",
+"message":"Usted no tiene la suficiente experiencia para esta misión."
+},
+"You_have_been_fined":{
+"description":"",
+"message":"Usted deberá paga una multa de "
+},
+"You_have_not_installed_RADAR_MAPPER":{
+"description":"",
+"message":"Usted debe tener instalado un Radar Mapeador para realizar esta tarea.Por favor, diríjase al Astillero y podrá adquirirlo en la sección Equipamiento."
+},
+"You_will_be_paid_on_my_behalf_in_new_destination":{
+"description":"",
+"message":"Se le pagará en mi nombre en NUEVO DESTINO"
+},
+"additional_information":{
+"description":"",
+"message":"Si usted acepta esta misión, se programará su mapeador con lo que estoy buscando. Este programa tomará las decisiones por mí y se las comunicará a su computadora. Si usted debe volver aquí, o llevar los datos a otro sistema, depende de lo que encuentre. Puede ocurrir que cambie el destino de entrega a otro sistema más conveniente. Debe estar alerta y seguro de contar con suficiente combustible y tiempo.  Esto no se aplica a misiones locales."
+},
+"computer":{
+"description":"",
+"message":"Computadora"
+},
+"failed_mission":{
+"description":"",
+"message":"Esta misión ha fracasado por haber excedido la fecha de caducidad. Lo siento.Ha comenzado y terminará en breve, la limpieza de todos los rastros de este mapeado.Esto nunca ha sucedido, Comandante."
+},
+"hostilemessage1":{
+"description":"",
+"message":"¡Miren esto! ¡Espía a la vista! ¡Estamos de fiesta!"
+},
+"hostilemessage2":{
+"description":"",
+"message":"¡Tu nave y tu vida nos pertenece, estúpido entrometido!"
+},
+"hostilemessage3":{
+"description":"",
+"message":"¿Vas a morir por los malditos datos de tu mapeador?"
+},
+"hostilemessage4":{
+"description":"",
+"message":"¡No queremos gente extraña aquí! ¡Vuelve a tu cueva maldito imbécil!"
+},
+"ly":{
+"description":"",
+"message":"Años Luz"
+},
+"minutes":{
+"description":"",
+"message":" minutos."
+},
+"suspended_mission":{
+"description":"",
+"message":"El proceso de mapeado se ha interrumpido.Usted se encuentra muy lejos del objetivo. Si desea continuar, debe corregir adecuadamente la órbita para reiniciar el proceso."
+}
 }

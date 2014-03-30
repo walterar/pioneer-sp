@@ -221,7 +221,7 @@
    },
    "DISPLAY_HUD_TRAILS" : {
       "description" : "",
-      "message" : "Mostrar estelas del HUD"
+      "message" : "Mostrar estela (trayectoria) de naves"
    },
    "DISPLAY_NAV_TUNNELS" : {
       "description" : "",
@@ -273,11 +273,11 @@
    },
    "EQUIPMENT" : {
       "description" : "",
-      "message" : "Equipo"
+      "message" : "Equipamiento"
    },
    "EQUIPMENT_MARKET" : {
       "description" : "",
-      "message" : "Equipamiento"
+      "message" : "Mercado de Equipamiento"
    },
    "EQUIPPED" : {
       "description" : "",
@@ -425,7 +425,7 @@
    },
    "HYPERSPACE_RANGE" : {
       "description" : "",
-      "message" : "Alcance hiperespacial"
+      "message" : "Autonomía"
    },
    "IM_TIRED_OF_WORKING_FOR_NOTHING_DONT_YOU_KNOW_WHAT_A_CONTRACT_IS" : {
       "description" : "",
@@ -481,7 +481,7 @@
    },
    "LEGAL_STATUS" : {
       "description" : "",
-      "message" : "Legales"
+      "message" : "Estado Legal"
    },
    "LIGHT_CARGO_SHUTTLE" : {
       "description" : "",
@@ -985,11 +985,11 @@
    },
    "WEIGHT_EMPTY" : {
       "description" : "",
-      "message" : "Peso vacío:"
+      "message" : "Peso vacío"
    },
    "WEIGHT_FULLY_LOADED" : {
       "description" : "",
-      "message" : "Peso cargado:"
+      "message" : "Peso cargado"
    },
    "WE_ARE_IN_HYPERSPACE_COMMANDER" : {
       "description" : "",

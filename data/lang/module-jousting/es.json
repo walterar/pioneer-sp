@@ -1,58 +1,58 @@
 {
-   "you_have_been_challenged1" : {
-      "description" : "",
-      "message" : "Caballero, usted ha sido retado a combatir según las reglas."
-   },
-   "the_time_has_come1" : {
-      "description" : "",
-      "message" : "Piloto, el momento ha llegado, ¡que gane el mejor!"
-   },
-   "I_have_taken1" : {
-      "description" : "",
-      "message" : "Caballero, he tomado "
-   },
-   "of_your_money1" : {
-      "description" : "",
-      "message" : " de su dinero, espero no le importe."
-   },
-   "you_have_been_challenged2" : {
-      "description" : "",
-      "message" : "Caballero, usted esta en mis dominios. Para continuar deberá combatir."
-   },
-   "the_time_has_come2" : {
-      "description" : "",
-      "message" : "Que hermosa nave tienes, Piloto. Bonitas armas también. ¿Sabes usarlas?"
-   },
-   "I_have_taken2" : {
-      "description" : "",
-      "message" : "Disculpe, pero necesito "
-   },
-   "of_your_money2" : {
-      "description" : "",
-      "message" : "  para alimentar a mis hijos."
-   },
-   "you_have_been_challenged3" : {
-      "description" : "",
-      "message" : "¡Alto! Estos son mis dominios. Usted debe combatir para continuar."
-   },
-   "the_time_has_come3" : {
-      "description" : "",
-      "message" : "¡Vaya! Digno rival para un viejo pirata. Supongo que sabes usar tus armas."
-   },
-   "I_have_taken3" : {
-      "description" : "",
-      "message" : "Solo tomaré de su dinero "
-   },
-   "of_your_money3" : {
-      "description" : "",
-      "message" : " Por favor, disculpe las molestias."
-   },
-   "the_attacker_money" : {
-      "description" : "",
-      "message" : "Comandante, el dinero de su atacante, "
-   },
-   "is_now_yours" : {
-      "description" : "",
-      "message" : " , es ahora suyo."
-   }
+"I_have_taken1":{
+"description":"",
+"message":"Caballero, he tomado "
+},
+"I_have_taken2":{
+"description":"",
+"message":"Disculpe, pero necesito "
+},
+"I_have_taken3":{
+"description":"",
+"message":"Solo tomaré de su dinero "
+},
+"is_now_yours":{
+"description":"",
+"message":" , es ahora suyo."
+},
+"of_your_money1":{
+"description":"",
+"message":" de su dinero, espero no le importe."
+},
+"of_your_money2":{
+"description":"",
+"message":"  para alimentar a mis hijos."
+},
+"of_your_money3":{
+"description":"",
+"message":" Por favor, disculpe las molestias."
+},
+"the_attacker_money":{
+"description":"",
+"message":"Comandante, el dinero de su atacante, "
+},
+"the_time_has_come1":{
+"description":"",
+"message":"Piloto, el momento ha llegado, ¡que gane el mejor!"
+},
+"the_time_has_come2":{
+"description":"",
+"message":"Que hermosa nave tienes, Piloto. Bonitas armas también. ¿Sabes usarlas?"
+},
+"the_time_has_come3":{
+"description":"",
+"message":"¡Vaya! Digno rival para un viejo pirata. Supongo que sabes usar tus armas."
+},
+"you_have_been_challenged1":{
+"description":"",
+"message":"Caballero, usted ha sido retado a combatir según las reglas."
+},
+"you_have_been_challenged2":{
+"description":"",
+"message":"Caballero, usted esta en mis dominios. Para continuar deberá combatir."
+},
+"you_have_been_challenged3":{
+"description":"",
+"message":"¡Alto! Estos son mis dominios. Usted debe combatir para continuar."
+}
 }

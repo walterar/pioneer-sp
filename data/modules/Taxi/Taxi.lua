@@ -1,6 +1,6 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
--- modified for Pioneer Scout+ (c)2013-2014 by walterar <walterar2@gmail.com>
+-- modified for Pioneer Scout+ (c)2012-2014 by walterar <walterar2@gmail.com>
 -- Work in progress.
 
 local Lang       = import("Lang")
@@ -23,8 +23,8 @@ local InfoFace   = import("ui/InfoFace")
 
 
 -- Get the language resource
-local l   = Lang.GetResource("module-taxi") or Lang.GetResource("module-taxi","en")
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
+local l   = Lang.GetResource("module-taxi") or Lang.GetResource("module-taxi","en");
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en");
 
 
 -- Get the UI class
@@ -303,7 +303,6 @@ local onFrameChanged = function (body)
 			if mission.status == "ACTIVE" and mission.location:IsSameSystem(syspath) then
 				target_distance_from_entry = body:DistanceTo(Space.GetBody(mission.location.bodyIndex))
 				if target_distance_from_entry > AU/1000 then return end
-
 				local risk = taxi_flavours[mission.flavour].risk
 				if risk > 0 and hostilactive == 0 then ship = ship_hostil(risk) end
 

@@ -2,7 +2,6 @@
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- Work in progress.
 
---local Lang       = import("Lang")
 local Engine     = import("Engine")
 local Game       = import("Game")
 local StarSystem = import("StarSystem")
@@ -11,6 +10,9 @@ local utils      = import("utils")
 local EquipDef   = import("EquipDef")
 local ShipDef    = import("ShipDef")
 local Ship       = import("Ship")
+local Lang       = import("Lang")
+
+local l = Lang.GetResource("core");
 
 -- a tariff (reward) calculator
 _G.tariff = function (dist,risk,urgency,locate)
@@ -139,20 +141,23 @@ end
 -- original from sam_lie http://lua-users.org/wiki/FormattingNumbers
 -- modified for Pioneer Scout+ by walterar
 ---===================================================================
--- add comma to separate thousands
 --
-local thousands_separator = "%1,%2"
-local decimal_separator = "."
+local thousands_separator = "%1"..l.NUMBER_GROUP_SEP.."%2"
+local decimal_separator = l.NUMBER_DECIMAL_POINT
 
 local function comma_value(amount)
-  local formatted = amount
-  while true do
-    formatted, k = string.gsub(formatted, "^(-?%d+)(%d%d%d)", thousands_separator)
-    if (k==0) then
-      break
-    end
-  end
-  return formatted
+	local formatted = amount
+	while true do
+		if thousands_separator == "%1".." ".."%2" and amount <= 10000 then-- pl
+			formatted, k = string.gsub(formatted, "^(-?%d%d+)(%d%d%d)", thousands_separator)
+		else
+	formatted, k = string.gsub(formatted, "^(-?%d+)(%d%d%d)", thousands_separator)
+		end
+		if (k==0) then
+			break
+		end
+	end
+	return formatted
 end
 
 ---===================================================================
@@ -164,7 +169,6 @@ end
 --====================================================================
 -- given a numeric value formats output with comma to separate thousands
 -- and rounded to given decimal places
---
 --
 function _G.showCurrency(amount, decimal, prefix, neg_prefix)
 	local str_amount,  formatted, famount, remain
@@ -184,7 +188,7 @@ function _G.showCurrency(amount, decimal, prefix, neg_prefix)
 	if (decimal > 0) then
 		remain = string.sub(tostring(remain),3)
 		formatted = formatted .. decimal_separator .. remain .. string.rep("0", decimal - string.len(remain))
-  end
+	end
 
 -- attach prefix string e.g '$'
 	formatted = (prefix or "") .. formatted

@@ -30,6 +30,6 @@ define_ship {
 	hull_mass = 200,
 	fuel_tank_mass = 200,
 	effective_exhaust_velocity = 51784e3,
-	price = 930000,
+	price = 630000,
 	hyperdrive_class = 4,
 }

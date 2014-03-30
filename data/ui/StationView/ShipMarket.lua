@@ -1,5 +1,7 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
+-- modified for Pioneer Scout+ (c)2012-2014 by walterar <walterar2@gmail.com>
+-- Work in progress.
 
 local Engine       = import("Engine")
 local SpaceStation = import("SpaceStation")
@@ -18,9 +20,9 @@ local MessageBox         = import("ui/MessageBox")
 
 local ui = Engine.ui
 
-local l     = Lang.GetResource("ui-core")
-local lcore = Lang.GetResource("core")
-local myl   = Lang.GetResource("module-myl") or Lang.GetResource("module-myl", "en")
+local l   = Lang.GetResource("ui-core")
+local lc  = Lang.GetResource("core")
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl", "en")
 
 local shipClassString = {
 	light_scout                = myl.LIGHT_SCOUT,
@@ -143,7 +145,7 @@ shipTable.onRowClicked:Connect(function (row)
 				ui:Expand("HORIZONTAL", ui:Align("RIGHT", buyButton)),
 			}),
 			ModelSpinner.New(ui, def.modelName, currentShipOnSale.skin, currentShipOnSale.pattern),
-			ui:Label(l.HYPERDRIVE_FITTED.." "..lcore[def.defaultHyperdrive]):SetFont("SMALL"),
+			ui:Label(l.HYPERDRIVE_FITTED.." "..lc[def.defaultHyperdrive]):SetFont("SMALL"),
 			ui:Margin(10, "TOP",
 				ui:Grid(2,1)
 					:SetFont("SMALL")

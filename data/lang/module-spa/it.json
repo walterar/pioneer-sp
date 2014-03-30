@@ -1,74 +1,74 @@
 {
-   "APPLY_FOR_MEMBERSHIP" : {
-      "description" : "",
-      "message" : "Richiesta di adesione"
-   },
-   "BEGIN_TRADE" : {
-      "description" : "",
-      "message" : "Inizia a commerciare"
-   },
-   "FLAVOUR_CLUBNAME_0" : {
-      "description" : "",
-      "message" : " ** APS ** Associazione Piloti Scout"
-   },
-   "FLAVOUR_MEMBER_INTRO_0" : {
-      "description" : "",
-      "message" : "Qua è possibile acquistare carburante e smaltire {radioactives}."
-   },
-   "FLAVOUR_NONMEMBER_INTRO_0" : {
-      "description" : "",
-      "message" : "Siamo un sindacato indipendente che difende economicamente i propri membri e offre loro favolosi privilegi speciali.\n*\nIscriviti ora, per soli $ 2600, ed avrai:\n* * {hydrogen} a prezzi scontati\n* * {military_fuel} a prezzi scontati\n* * {metal_alloys} a prezzi scontati\n* * {radioactives}, smaltimento gratuito\n* * * Propulsione Ionica ad alta Potenza installata gratuitamente!"
-   },
-   "FLAVOUR_WELCOME_0" : {
-      "description" : "",
-      "message" : "Benvenuto a {clubname}"
-   },
-   "GO_BACK" : {
-      "description" : "",
-      "message" : "Indietro"
-   },
-   "HANG_UP" : {
-      "description" : "",
-      "message" : "Riaggancia"
-   },
-   "HYDROGEN" : {
-      "description" : "",
-      "message" : "Idrogeno"
-   },
-   "MILITARY_FUEL" : {
-      "description" : "",
-      "message" : "Carburante Militare"
-   },
-   "RADIOACTIVES" : {
-      "description" : "",
-      "message" : "Scorie radioattive"
-   },
-   "WATER" : {
-      "description" : "",
-      "message" : "Acqua"
-   },
-   "METAL_ALLOYS" : {
-      "description" : "",
-      "message" : "Leghe metalliche"
-   },
-   "WE_WILL_ONLY_DISPOSE_OF" : {
-      "description" : "",
-      "message" : "Ora installiamo ai membri della APS un nuovo sofisticato e sperimentale sistema di difesa attiva. In caso di attacco (se viene rilevato l'impatto di plasma, e se siete armati di cannoni), il sistema prenderà il controllo dell'astronave e cercherà di distruggere l'astronave ostile o di disabilitare i suoi sistemi elettronici. Questo sistema non è ancora in commercio ed è, per ora, ad uso eslcusivo dei membri della APS.\n*"
-   },
-   "WHAT_CONDITIONS_APPLY" : {
-      "description" : "",
-      "message" : "Quali sono i privilegi speciali?"
-   },
-   "YOUR_MEMBERSHIP_APPLICATION_HAS_BEEN_DECLINED" : {
-      "description" : "",
-      "message" : "La sua richiesta di adesione è stata rifiutata."
-   },
-   "YOU_ARE_NOW_A_MEMBER" : {
-      "description" : "",
-      "message" : "Ora è un iscritto. La sua adesione scadrà al {expiry_date}."
-   },
-   "YOU_MUST_BUY" : {
-      "description" : "",
-      "message" : "Deve comprare il nostro {military_fuel} prima che possiamo prendere le sue {radioactives}"
-   }
+"APPLY_FOR_MEMBERSHIP":{
+"description":"",
+"message":"Richiesta di adesione"
+},
+"BEGIN_TRADE":{
+"description":"",
+"message":"Inizia a commerciare"
+},
+"FLAVOUR_CLUBNAME_0":{
+"description":"",
+"message":" ** APS ** Associazione Piloti Scout"
+},
+"FLAVOUR_MEMBER_INTRO_0":{
+"description":"",
+"message":"Qua è possibile acquistare carburante e smaltire {radioactives}."
+},
+"FLAVOUR_NONMEMBER_INTRO_0":{
+"description":"",
+"message":"Siamo un sindacato indipendente che difende economicamente i propri membri e offre loro favolosi privilegi speciali.\n*\nIscriviti ora, per soli $ 2600, ed avrai:\n* * {hydrogen} a prezzi scontati\n* * {military_fuel} a prezzi scontati\n* * {metal_alloys} a prezzi scontati\n* * {radioactives}, smaltimento gratuito\n* * * Propulsione Ionica ad alta Potenza installata gratuitamente!"
+},
+"FLAVOUR_WELCOME_0":{
+"description":"",
+"message":"Benvenuto a {clubname}"
+},
+"GO_BACK":{
+"description":"",
+"message":"Indietro"
+},
+"HANG_UP":{
+"description":"",
+"message":"Riaggancia"
+},
+"HYDROGEN":{
+"description":"",
+"message":"Idrogeno"
+},
+"METAL_ALLOYS":{
+"description":"",
+"message":"Leghe metalliche"
+},
+"MILITARY_FUEL":{
+"description":"",
+"message":"Carburante Militare"
+},
+"RADIOACTIVES":{
+"description":"",
+"message":"Scorie radioattive"
+},
+"WATER":{
+"description":"",
+"message":"Acqua"
+},
+"WE_WILL_ONLY_DISPOSE_OF":{
+"description":"",
+"message":"Ora installiamo ai membri della APS un nuovo sofisticato e sperimentale sistema di difesa attiva. In caso di attacco (se viene rilevato l'impatto di plasma, e se siete armati di cannoni), il sistema prenderà il controllo dell'astronave e cercherà di distruggere l'astronave ostile o di disabilitare i suoi sistemi elettronici. Questo sistema non è ancora in commercio ed è, per ora, ad uso eslcusivo dei membri della APS.\n*"
+},
+"WHAT_CONDITIONS_APPLY":{
+"description":"",
+"message":"Quali sono i privilegi speciali?"
+},
+"YOUR_MEMBERSHIP_APPLICATION_HAS_BEEN_DECLINED":{
+"description":"",
+"message":"La sua richiesta di adesione è stata rifiutata."
+},
+"YOU_ARE_NOW_A_MEMBER":{
+"description":"",
+"message":"Ora è un iscritto. La sua adesione scadrà al {expiry_date}."
+},
+"YOU_MUST_BUY":{
+"description":"",
+"message":"Deve comprare il nostro {military_fuel} prima che possiamo prendere le sue {radioactives}"
+}
 }

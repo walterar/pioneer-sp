@@ -1,26 +1,58 @@
 {
-   "you_have_been_challenged" : {
-      "description" : "",
-      "message" : "рыцарь, вы были оспорены бороться."
-   },
-   "the_time_has_come" : {
-      "description" : "",
-      "message" : "Пилот, время пришло. Пусть победит сильнейший!"
-   },
-   "I_have_taken" : {
-      "description" : "",
-      "message" : "рыцарь, я взял "
-   },
-   "of_your_money" : {
-      "description" : "",
-      "message" : " из ваших денег, я надеюсь, вы не возражаете."
-   },
-   "the_attacker_money" : {
-      "description" : "",
-      "message" : "Командующего, злоумышленник деньги "
-   },
-   "is_now_yours" : {
-      "description" : "",
-      "message" : " , теперь твоя."
-   }
+"I_have_taken1":{
+"description":"",
+"message":"Рыцарь, я взял "
+},
+"I_have_taken2":{
+"description":"",
+"message":"Извините, но мне нужно  "
+},
+"I_have_taken3":{
+"description":"",
+"message":"Просто возьмите ваши деньги "
+},
+"is_now_yours":{
+"description":"",
+"message":" , теперь твоя."
+},
+"of_your_money1":{
+"description":"",
+"message":" ваших денег, я надеюсь, вы не возражаете."
+},
+"of_your_money2":{
+"description":"",
+"message":"  чтобы прокормить моих детей."
+},
+"of_your_money3":{
+"description":"",
+"message":" Прошу прощения за неудобства."
+},
+"the_attacker_money":{
+"description":"",
+"message":"Командующего, злоумышленник деньги "
+},
+"the_time_has_come1":{
+"description":"",
+"message":"Пилот, пришло время. Май победит сильнейший!"
+},
+"the_time_has_come2":{
+"description":"",
+"message":"Какой красивый корабль вы, пилот. Хорошие пушки тоже. Вы знаете, как их использовать?"
+},
+"the_time_has_come3":{
+"description":"",
+"message":"Вот это да! Достойный соперник для старого пирата.\nЯ думаю, вы знаете, как использовать свое оружие."
+},
+"you_have_been_challenged1":{
+"description":"",
+"message":"Рыцарь , вы были оспорены бороться."
+},
+"you_have_been_challenged2":{
+"description":"",
+"message":"Сэр, вы ступая мой домен. Вы должны бороться, чтобы продолжить."
+},
+"you_have_been_challenged3":{
+"description":"",
+"message":"Стоп! Это мои домены. Вы должны бороться, чтобы продолжить."
+}
 }

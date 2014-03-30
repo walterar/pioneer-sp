@@ -1,15 +1,15 @@
 {
    "FLAVOUR_0_HEADLINE" : {
       "description" : "",
-      "message" : "NEWS {date}: Systemweite Seuche im System {system}. Todesfälle ansteigend."
+      "message" : "NEWS {date}: Systemweite Seuche im System {system}. Todesfälle steigen rasant."
    },
    "FLAVOUR_0_NEWSBODY" : {
       "description" : "Imply high demand for MEDICINE commodity.",
-      "message" : "Plague harvests lives in the {system} system ({sectorx}, {sectory}, {sectorz}). Officials urge for medical aid."
+      "message" : "Eine Plage sucht die Bewohner des {system}-Systems ({sectorx}, {sectory}, {sectorz}) heim. Medizinische Hilfe wird dringend benötigt."
    },
    "FLAVOUR_10_HEADLINE" : {
       "description" : "",
-      "message" : "NEWS {date}: Company threatening continual survival of {system} system."
+      "message" : "NACHRICHTEN {date}: Großunternehmen gefährdet Überleben des {system}-Systems!"
    },
    "FLAVOUR_10_NEWSBODY" : {
       "description" : "Imply high demand of AIR_PROCESSORS commodity. (Prekall as in Rekall, the fictional company from the Schwarzenegger-movie Total Recall (1990)).",
@@ -61,31 +61,31 @@
    },
    "FLAVOUR_16_NEWSBODY" : {
       "description" : "Imply high demand of FARM_MACHINERY.",
-      "message" : "During the Great Steam Fair in the {system} system ({sectorx}, {sectory}, {sectorz}) an attempt for the galactic record in biggest tractor pulling contest ended in mayhem as one of the contestants lost control of his contraption, destroying all other participants' machines. Administration says it could spell doom for the local farmers."
+      "message" : "Während des großen Dampftreffen im {system}-System ({sectorx}, {sectory}, {sectorz}) ist ein Versuch, den Galaktischen Rekord im größten Traktortauziehen zu schlagen, in einer Katastrophe geendet. Ein Teilnehmer verlor die Kontrolle über sein Fahrzeug und zerstörte alle Maschinen der anderen Teilnehmer. Die Verwaltung fürchtet Probleme für lokale Bauern."
    },
    "FLAVOUR_17_HEADLINE" : {
       "description" : "",
-      "message" : "NEWS {date}: New found riches in the {system} system."
+      "message" : "NACHRICHTEN {date}: Neue Reichtümer im {system}-System entdeckt."
    },
    "FLAVOUR_17_NEWSBODY" : {
       "description" : "Imply vast abundance of METAL_ORE.",
-      "message" : "Miners in the {system} system ({sectorx}, {sectory}, {sectorz}) discovered a vast deposit of ore of never before seen proportions."
+      "message" : "Minenarbeiter im {system}-System ({sectorx}, {sectory}, {sectorz}) haben ein Mineralvorkommen von bisher noch nie dagewesener Größe entdeckt."
    },
    "FLAVOUR_18_HEADLINE" : {
       "description" : "",
-      "message" : "NEWS {date}: Economic reform in the {system} system a great success."
+      "message" : "SCHLAGZEILE {date}: Die Wirtschaftsreform in {system} ist ein großer Erfolg."
    },
    "FLAVOUR_18_NEWSBODY" : {
       "description" : "Imply vast demand of CONSUMER_GOODS.",
-      "message" : "The wheels are spinning ever faster in the {system} system ({sectorx}, {sectory}, {sectorz}) as consumers have more money to spend."
+      "message" : "Das {system}-System ({sectorx}, {sectory}, {sectorz})  boomt, da Verbraucher mehr Geld haben."
    },
    "FLAVOUR_19_HEADLINE" : {
       "description" : "",
-      "message" : "NEWS {date}: It is raining gold in the {system} system."
+      "message" : "NACHRICHTEN {date}: Es regnet Gold im {system}-System."
    },
    "FLAVOUR_19_NEWSBODY" : {
       "description" : "Imply vast abundance of PRECIOUS_METALS.",
-      "message" : "A man in the {system} system ({sectorx}, {sectory}, {sectorz}) has inherited an invention from his late uncle, allowing him to transmute any solid into gold and platinum. Economists expect a destabilization of the economy in the system, unless the machine breaks down soon."
+      "message" : "Ein Mann im {system}-System ({sectorx}, {sectory}, {sectorz}) hat mit einer Erfindung seines Uronkels Gold in Platin fusionieren kännen. Wirtschaftswisssenschaftler erwarten eine destabilisation der Wirschaft im System, wenn die Maschine nicht bald einem Defekt erliegt."
    },
    "FLAVOUR_1_HEADLINE" : {
       "description" : "",
@@ -97,35 +97,35 @@
    },
    "FLAVOUR_20_HEADLINE" : {
       "description" : "",
-      "message" : "NEWS {date}: The harvest of the gas giant algae in the {system} system sets new record."
+      "message" : "NACHRICHTEN {date}: Die Ernteerträge der Gasgigant-Algenzucht in {system} haben einen neuen Rekord erzielt."
    },
    "FLAVOUR_20_NEWSBODY" : {
       "description" : "Imply vast abundance of FERTILIZER. Soylent is a reference to the book/movie Soylent Green.",
-      "message" : "As {system} ({sectorx}, {sectory}, {sectorz}) enters a phase favourable to the yellow algae found in the atmosphere of a local gas giant, the harvest has be exceptionally good for the fertilizer company Soylent Yellow Inc."
+      "message" : "Nachdem System {system} ({sectorx}, {sectory}, {sectorz}) in eine Phase eingetreten ist, welche das Wachstum der gelben Alge des lokalen Gasriesen beschleunigt, war die Ernte für die Düngerfirma Soylent Yellow Inc aussergewöhnlich gut."
    },
    "FLAVOUR_21_HEADLINE" : {
       "description" : "",
-      "message" : "NEWS {date}: Treaty signed in the {system} system for more \"humane\" warfare."
+      "message" : "NEWS {date}: Vereinbarung im {system} System unterzeichnet für \"menschlichere\" Kriegsführung."
    },
    "FLAVOUR_21_NEWSBODY" : {
       "description" : "Imply vast abundance of NERVE_GAS.",
-      "message" : "Although the conflicting parties in the {system} system ({sectorx}, {sectory}, {sectorz}) have not signed an official cease fire, they have agreed to stop using chemical weapons."
+      "message" : "Obwohl die Kriegsparteien im {system} System ({sectorx}, {sectory}, {sectorz}) keine Waffenstillstandsvereinbarung unterzeichnet haben, sind sie sich darüber einig keine chemischen Waffen mehr einzusetzen."
    },
    "FLAVOUR_22_HEADLINE" : {
       "description" : "",
-      "message" : "NEWS {date}: Police on strike in the {system} system. Citizens left to fend for themselves."
+      "message" : "NEWS {date}: Polizei streikt im {system} System. Bürger müssen selbst für die EInhaltung des Gesetzes sorgen."
    },
    "FLAVOUR_22_NEWSBODY" : {
       "description" : "Imply high demand of HAND_WEAPONS.",
-      "message" : "In a protest against understaffing the {system} system ({sectorx}, {sectory}, {sectorz}) police refuse to work. Meanwhile, civilians form vigilante groups and arm themselves with pitchforks and firearms as they prepare for the worst."
+      "message" : "In einem Protest gegen aktuelle Budgetkürzungen im {system} System ({sectorx}, {sectory}, {sectorz}) hat die Polizei die Arbeit niedergelegt. Das Schlimmste befürchtend rufen die Bewohner zur Bildung von Bürgerwehren auf und bewaffnen sich mit Heugabeln und Feuerwaffen."
    },
    "FLAVOUR_23_HEADLINE" : {
       "description" : "",
-      "message" : "NEWS {date}: Grand opening of a new factory in the {system} system."
+      "message" : "NEWS {date}: Große Eröffnung einer neuen Fabrik im {system} System."
    },
    "FLAVOUR_23_NEWSBODY" : {
       "description" : "Imply high demand of METAL_ALLOYS. Amissionox is a play on words for Victorinox.",
-      "message" : "The new Amissionox factory in the {system} system ({sectorx}, {sectory}, {sectorz}) is now up and running. It will produce high quality knifes capable of cutting through a space boot; however, due to low supply of resources needed for the blades, they have not yet reached full production potential."
+      "message" : "The new Amissionox Fabrik im {system} System ({sectorx}, {sectory}, {sectorz}) ist nun fertiggestellt und betriebsbereit.S ie wird hochwertige Messer herstellen, die sogar Weltraumstiefel durchschendien können; allerdings rennt die Produktion nicht auf höchsten Niveau, da Materialen zur Messerherstellung fehlen."
    },
    "FLAVOUR_2_HEADLINE" : {
       "description" : "",
@@ -141,7 +141,7 @@
    },
    "FLAVOUR_3_NEWSBODY" : {
       "description" : "Imply high demand of FRUIT_AND_VEG.",
-      "message" : "Administration in the {system} system ({sectorx}, {sectory}, {sectorz}) seek to increase import to meet the surging demand of all things green ."
+      "message" : "Die Verwaltung des {system}-Systems ({sectorx}, {sectory}, {sectorz}) erhöht den Import um die hohe Nachfrage an pflanzlichen Nahrungmitteln zu befriedigen."
    },
    "FLAVOUR_4_HEADLINE" : {
       "description" : "About mob rivals competing for selling drugs",
@@ -165,15 +165,15 @@
    },
    "FLAVOUR_6_NEWSBODY" : {
       "description" : "Stress drunken or intoxicated by alcohol, as this will imply high demand of LIQUOR.",
-      "message" : "The drunken celebrations in the {system} system ({sectorx}, {sectory}, {sectorz}) will be ongoing, as they honour the furry little creature."
+      "message" : "Der alkoholreiche Festakt im {system}-System ({sectorx}, {sectory}, {sectorz}), zur Huldigung der kleinen, pelzigen Kreatur, wird unvermindert fortgesetzt."
    },
    "FLAVOUR_7_HEADLINE" : {
       "description" : "",
-      "message" : "NEWS {date}: Industry screeches to a halt in the {system} system."
+      "message" : "NACHRICHTEN {date}: Die Industrie kommt zu einem Halt im {system}-System."
    },
    "FLAVOUR_7_NEWSBODY" : {
       "description" : "Imply demand of INDUSTRIAL_MACHINERY.",
-      "message" : "Long time neglect of machine maintenance causes industrial standstill in the {system} system ({sectorx}, {sectory}, {sectorz})."
+      "message" : "Maschinenschäden, ausgelöst durch schlechte Wartung, hat einen Ausfall der Industrie im {system}-System ({sectorx}, {sectory}, {sectorz}) ausgelöst."
    },
    "FLAVOUR_8_HEADLINE" : {
       "description" : "",
@@ -193,102 +193,102 @@
    },
    "GRATEFUL_GREETING_0" : {
       "description" : "",
-      "message" : "Welcome trader! We will give you a good price for your {cargo}."
+      "message" : "Willkommen Händler! Wir werden Ihnen einen guten Preis für die Lieferung {cargo} zahlen."
    },
    "GRATEFUL_GREETING_1" : {
       "description" : "",
-      "message" : "Your arrival is most welcome, as is your shipment of {cargo}!"
+      "message" : "Wir sind hocherfreut über eure Ankunft, genauso wie über eure Ladung [cargo}."
    },
    "GRATEFUL_GREETING_2" : {
       "description" : "",
-      "message" : "Greetings and salutations! You should have no trouble selling {cargo} here."
+      "message" : "Seid gegüßt! Ihr solltet keine Schwierigkeiten haben Eure Ladung {cargo} hier zu verkaufen."
    },
    "GRATEFUL_GREETING_3" : {
       "description" : "",
-      "message" : "Welcome! Finally some {cargo}."
+      "message" : "Willkommen! Endlich gibt es wieder [cargo}."
    },
    "GRATEFUL_GREETING_4" : {
       "description" : "",
-      "message" : "How we've longed for some {cargo}."
+      "message" : "Gottseidank! {cargo} haben wir schon dringend benötigt."
    },
    "GRATEFUL_GREETING_5" : {
       "description" : "",
-      "message" : "Welcome! Your shipment of {cargo} will sell out fast here."
+      "message" : "Willkommen! Ihre Ladung {cargo} wird hier rasch ausverkauft sein."
    },
    "NEWSPAPER_CIS" : {
       "description" : "",
-      "message" : "The Confederate Chronicle"
+      "message" : "Confederate Chronicle"
    },
    "NEWSPAPER_FED" : {
       "description" : "",
-      "message" : "The Federal Times"
+      "message" : "Federal Times"
    },
    "NEWSPAPER_IMP" : {
       "description" : "",
-      "message" : "The Imperial Herald"
+      "message" : "Imperial Herald"
    },
    "NEWSPAPER_IND_0" : {
       "description" : "",
-      "message" : "The Pioneer Courier"
+      "message" : "Pioneer Kurier"
    },
    "NEWSPAPER_IND_1" : {
       "description" : "",
-      "message" : "The Independent Tribune"
+      "message" : "Independent Tribune"
    },
    "NEWSPAPER_IND_10" : {
       "description" : "",
-      "message" : "The Orbital Observer"
+      "message" : "Orbital Observer"
    },
    "NEWSPAPER_IND_2" : {
       "description" : "",
-      "message" : "The Galactic Post"
+      "message" : "Galactic Post"
    },
    "NEWSPAPER_IND_3" : {
       "description" : "",
-      "message" : "The Universal Sun"
+      "message" : "Die Universal Sun"
    },
    "NEWSPAPER_IND_4" : {
       "description" : "",
-      "message" : "The Planetary Press"
+      "message" : "Planetary Press"
    },
    "NEWSPAPER_IND_5" : {
       "description" : "",
-      "message" : "The Royal Gazette"
+      "message" : "Royal Gazette"
    },
    "NEWSPAPER_IND_6" : {
       "description" : "",
-      "message" : "The Universal Mail"
+      "message" : "Universal Mail"
    },
    "NEWSPAPER_IND_7" : {
       "description" : "",
-      "message" : "The Daily Express"
+      "message" : "Daily Express"
    },
    "NEWSPAPER_IND_8" : {
       "description" : "",
-      "message" : "The Tellurian Telegraph"
+      "message" : "Tellurian Telegraph"
    },
    "NEWSPAPER_IND_9" : {
       "description" : "",
-      "message" : "The Satellite Journal"
+      "message" : "Satellite Journal"
    },
    "TITLE_0" : {
       "description" : "",
-      "message" : "Fresh report from {newspaper}"
+      "message" : "{newspaper} - Frisch aus der Presse"
    },
    "TITLE_1" : {
       "description" : "",
-      "message" : "News from {newspaper}"
+      "message" : "{newspaper} - Neuigkeiten"
    },
    "TITLE_2" : {
       "description" : "",
-      "message" : "Report from {newspaper}"
+      "message" : "Bericht aus dem Magazin {newspaper}"
    },
    "TITLE_3" : {
       "description" : "",
-      "message" : "The latest from {newspaper}"
+      "message" : "{newspaper} - Letzte Neuigkeiten"
    },
    "TITLE_4" : {
       "description" : "",
-      "message" : "Notes from {newspaper}"
+      "message" : "Kurznachrichten aus dem Magazin {newspaper}"
    }
 }

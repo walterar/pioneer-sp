@@ -1,82 +1,82 @@
 {
-    "HelloCommander1": {
-        "message": "A pleasure to have you here Commander. There are excellent opportunities for you.\n",
-        "description": ""
-    },
-    "HelloCommander2": {
-        "message": "Hello Commander. I received new ships that may interest you.\n",
-        "description": ""
-    },
-    "HelloCommander3": {
-        "message": "Welcome Commander. If you're looking for something special, you're sure to find it here.\n",
-        "description": ""
-    },
-    "HelloCommander4": {
-        "message": "Thanks for visiting, Commander. If you're looking for an opportunity, this is the place.\n",
-        "description": ""
-    },
-    "Sale1": {
-        "message": "Your old ship has value to us..\nShare Prices of the day ",
-        "description": ""
-    },
-    "Sale2": {
-        "message": "For your information.\nOur quote for your ship: ",
-        "description": ""
-    },
-    "Sale3": {
-        "message": "Today we are generous, we offer for your ship ",
-        "description": ""
-    },
-    "Sale4": {
-        "message": "I have a buyer for this ship. We'll pay you ",
-        "description": ""
-    },
-    "His_ship_more": {
-        "message": "Sell your ship, pay more cash ",
-        "description": ""
-    },
-    "His_ship_less": {
-        "message": "Sell your ship and we'll pay, cash ",
-        "description": ""
-    },
-    "in_exchange_for_a1": {
-        "message": "\nand you will leave here on board a beautiful ",
-        "description": ""
-    },
-    "in_exchange_for_a2": {
-        "message": "\nand you will be the happy owner of a precious ",
-        "description": ""
-    },
-    "in_exchange_for_a3": {
-        "message": "\nand gladly leave us on board a beautiful ",
-        "description": ""
-    },
-    "in_exchange_for_a4": {
-        "message": "\nand you will leave here to enjoy a magnificent ",
-        "description": ""
-    },
-    "Exchange": {
-        "message": "Exchange",
-        "description": ""
-    },
-    "passengers": {
-        "message": "Perhaps you intended to make your passengers pay for part of it?",
-        "description": ""
-    },
-    "Not_have_enough_credit": {
-        "message": "You don't have enough credits.",
-        "description": ""
-    },
-    "Hang": {
-        "message": "\nHang up",
-        "description": ""
-    },
-    "Thanks": {
-        "message": "Thank you for your trust, Commander. Come back anytime.",
-        "description": ""
-    },
-    "Ships_Resale": {
-        "message": "Ships Resale",
-        "description": ""
-    }
+"Exchange":{
+"description":"",
+"message":"Exchange"
+},
+"Hang":{
+"description":"",
+"message":"\nHang up"
+},
+"HelloCommander1":{
+"description":"",
+"message":"A pleasure to have you here Commander. There are excellent opportunities for you.\n"
+},
+"HelloCommander2":{
+"description":"",
+"message":"Hello Commander. I received new ships that may interest you.\n"
+},
+"HelloCommander3":{
+"description":"",
+"message":"Welcome Commander. If you're looking for something special, you're sure to find it here.\n"
+},
+"HelloCommander4":{
+"description":"",
+"message":"Thanks for visiting, Commander. If you're looking for an opportunity, this is the place.\n"
+},
+"His_ship_less":{
+"description":"",
+"message":"Sell your ship and we'll pay, cash "
+},
+"His_ship_more":{
+"description":"",
+"message":"Sell your ship, pay more cash "
+},
+"Not_have_enough_credit":{
+"description":"",
+"message":"You don't have enough credits."
+},
+"Sale1":{
+"description":"",
+"message":"Your old ship has value to us..\nShare Prices of the day "
+},
+"Sale2":{
+"description":"",
+"message":"For your information.\nOur quote for your ship: "
+},
+"Sale3":{
+"description":"",
+"message":"Today we are generous, we offer for your ship "
+},
+"Sale4":{
+"description":"",
+"message":"I have a buyer for this ship. We'll pay you "
+},
+"Ships_Resale":{
+"description":"",
+"message":"Ships Resale"
+},
+"Thanks":{
+"description":"",
+"message":"Thank you for your trust, Commander. Come back anytime."
+},
+"in_exchange_for_a1":{
+"description":"",
+"message":"\nand you will leave here on board a beautiful "
+},
+"in_exchange_for_a2":{
+"description":"",
+"message":"\nand you will be the happy owner of a precious "
+},
+"in_exchange_for_a3":{
+"description":"",
+"message":"\nand gladly leave us on board a beautiful "
+},
+"in_exchange_for_a4":{
+"description":"",
+"message":"\nand you will leave here to enjoy a magnificent "
+},
+"passengers":{
+"description":"",
+"message":"Perhaps you intended to make your passengers pay for part of it?"
+}
 }

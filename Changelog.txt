@@ -2,12 +2,14 @@ March 2014
 
    * New features
      * Support for CJK fonts and Simplified Chinese translation
+     * Replace WATER with HYDROGEN as the thruster fuel of choice.
 
    * Minor changes and tweaks
      * Message boxes used for warnings in station screens
      * Textual galaxy dump (#2811)
      * Money format with language specific thousand separator and
        decimal delimiter (#2810) * use limited in Scout
+     * Add button to sector view to toggle auto selection mode
 
    * Fixes
      * Fix volume control layout (#2798)
@@ -16,6 +18,8 @@ March 2014
      * Fix crash with gcc 4.7 compiled binary (#2802)
      * Fix crash when attacked during deliver package mission (#2806) * This error is not in Scout+
      * Try to fix spiky asteroids (#2809)
+     * Billboards not drawn correctly for some distant objects (#2791, #2824)
+     * Division by zero when using unguided missiles (#2421, #2827) * This error is not in Scout+
 
    * Script and UI API changes
      * New `inherits` function in the `utils` module to quickly implement
@@ -29,6 +33,8 @@ March 2014
      * Gas Giant rewrite (#2803)
      * Support C++11 enum features in scan_enums.py (#2782)
      * Mouse and keyboard events now only distributed to the top UI layer
+     * Code cleanup (#2818)
+     * Fix glitch in Job code (#2823)
 
 February 2014
 

@@ -1,30 +1,30 @@
 {
-   "YOUR_SHIP": {
-      "description": "",
-      "message": "Ваш корабль < "
-    },
-    "IS_REGISTERED_IN_OUR_DOMAIN": {
-      "description": "",
-      "message": " > ЗАРЕГИСТРИРОВАН В НАШЕМ ПРОСТРАНСТВЕ"
-    },
-   "You_are_in_space_controlled_by": {
-      "description": "",
-      "message": "Вы в пространство, контролируемое "
-   },
-   "Explored": {
-      "description": "",
-      "message": " - Разведанные"
-   },
-   "Unexplored": {
-      "description": "",
-      "message": " - неисследованный"
-   },
-   "System_uninhabited": {
-      "description": "",
-      "message": "Система необитаемых"
-   },
-   "POLICE_SHIP_LABEL": {
-      "description": "",
-      "message": "Полиция"
-   }
+"Explored":{
+"description":"",
+"message":" - Разведанные"
+},
+"IS_REGISTERED_IN_OUR_DOMAIN":{
+"description":"",
+"message":" > ЗАРЕГИСТРИРОВАН В НАШЕМ ПРОСТРАНСТВЕ"
+},
+"POLICE_SHIP_LABEL":{
+"description":"",
+"message":"Полиция"
+},
+"System_uninhabited":{
+"description":"",
+"message":"Система необитаемых"
+},
+"Unexplored":{
+"description":"",
+"message":" - неисследованный"
+},
+"YOUR_SHIP":{
+"description":"",
+"message":"Ваш корабль < "
+},
+"You_are_in_space_controlled_by":{
+"description":"",
+"message":"Вы в пространство, контролируемое "
+}
 }

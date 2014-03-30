@@ -1,82 +1,82 @@
 {
-    "HelloCommander1": {
-        "message": "Не проходите мимо! Лучшие корабли, на лучших условиях.\n",
-        "description": ""
-    },
-    "HelloCommander2": {
-        "message": "Привет пилот! У нас новые поступления!\n",
-        "description": ""
-    },
-    "HelloCommander3": {
-        "message": "Эй, пилот! Зайди, посмотри на нормальные корабли.\n",
-        "description": ""
-    },
-    "HelloCommander4": {
-        "message": "Ваш визит очень важен для нас. Самые лучшие предложения на самых выгодных условиях.\n",
-        "description": ""
-    },
-    "Sale1": {
-        "message": "Пожалуй, мы приобретем у Вас этот корабль\nОзнакомьтесь с условиями",
-        "description": ""
-    },
-    "Sale2": {
-        "message": "... Плохонький у Вас корабль...\nМного за него не дадим: ",
-        "description": ""
-    },
-    "Sale3": {
-        "message": "Сегодня мы на редкость щедры",
-        "description": ""
-    },
-    "Sale4": {
-        "message": "У меня есть покупатель на этот корабль. Мы договоримся",
-        "description": ""
-    },
-    "His_ship_more": {
-        "message": " Обмен с Вашей доплатой  ",
-        "description": ""
-    },
-    "His_ship_less": {
-        "message": " Обмен с нашей доплатой  ",
-        "description": ""
-    },
-    "in_exchange_for_a1": {
-        "message": "\nэто будет отличное приобретение  ",
-        "description": ""
-    },
-    "in_exchange_for_a2": {
-        "message": "\nэтот бриллиант будет Ваш  ",
-        "description": ""
-    },
-    "in_exchange_for_a3": {
-        "message": "\nВы будете владеть этим красавцем  ",
-        "description": ""
-    },
-    "in_exchange_for_a4": {
-        "message": "\nВы выйдете сюда, чтобы насладиться великолепным  ",
-        "description": ""
-    },
-    "Exchange": {
-        "message": "Обмен",
-        "description": ""
-    },
-    "passengers": {
-        "message": "Возьмите в долг у ваших пассажиров?",
-        "description": ""
-    },
-    "Not_have_enough_credit": {
-        "message": "У Вас не достаточно средств.",
-        "description": ""
-    },
-    "Hang": {
-        "message": "\nвешать трубку",
-        "description": ""
-    },
-    "Thanks": {
-        "message": "Спасибо, пилот. Приходите к нам еще.",
-        "description": ""
-    },
-    "Ships_Resale": {
-        "message": "Корабельный маклер",
-        "description": ""
-    }
+"Exchange":{
+"description":"",
+"message":"Обмен"
+},
+"Hang":{
+"description":"",
+"message":"\nвешать трубку"
+},
+"HelloCommander1":{
+"description":"",
+"message":"Не проходите мимо! Лучшие корабли, на лучших условиях.\n"
+},
+"HelloCommander2":{
+"description":"",
+"message":"Привет пилот! У нас новые поступления!\n"
+},
+"HelloCommander3":{
+"description":"",
+"message":"Эй, пилот! Зайди, посмотри на нормальные корабли.\n"
+},
+"HelloCommander4":{
+"description":"",
+"message":"Ваш визит очень важен для нас. Самые лучшие предложения на самых выгодных условиях.\n"
+},
+"His_ship_less":{
+"description":"",
+"message":" Обмен с нашей доплатой  "
+},
+"His_ship_more":{
+"description":"",
+"message":" Обмен с Вашей доплатой  "
+},
+"Not_have_enough_credit":{
+"description":"",
+"message":"У Вас не достаточно средств."
+},
+"Sale1":{
+"description":"",
+"message":"Пожалуй, мы приобретем у Вас этот корабль\nОзнакомьтесь с условиями"
+},
+"Sale2":{
+"description":"",
+"message":"... Плохонький у Вас корабль...\nМного за него не дадим: "
+},
+"Sale3":{
+"description":"",
+"message":"Сегодня мы на редкость щедры"
+},
+"Sale4":{
+"description":"",
+"message":"У меня есть покупатель на этот корабль. Мы договоримся"
+},
+"Ships_Resale":{
+"description":"",
+"message":"Корабельный маклер"
+},
+"Thanks":{
+"description":"",
+"message":"Спасибо, пилот. Приходите к нам еще."
+},
+"in_exchange_for_a1":{
+"description":"",
+"message":"\nэто будет отличное приобретение  "
+},
+"in_exchange_for_a2":{
+"description":"",
+"message":"\nэтот бриллиант будет Ваш  "
+},
+"in_exchange_for_a3":{
+"description":"",
+"message":"\nВы будете владеть этим красавцем  "
+},
+"in_exchange_for_a4":{
+"description":"",
+"message":"\nВы выйдете сюда, чтобы насладиться великолепным  "
+},
+"passengers":{
+"description":"",
+"message":"Возьмите в долг у ваших пассажиров?"
+}
 }

@@ -1,82 +1,82 @@
 {
-    "HelloCommander1": {
-        "message": "È un piacere averla qua Comandante. Ci sono delle eccellenti opportunità per lei.\n",
-        "description": ""
-    },
-    "HelloCommander2": {
-        "message": "Salve Comandante. Ho ricevuto delle nuove astronavi che potrebbero interessarla.\n",
-        "description": ""
-    },
-    "HelloCommander3": {
-        "message": "Benvenuto Comandante. Se sta cercando qualcosa di speciale, qua lo troverà sicuramente.\n",
-        "description": ""
-    },
-    "HelloCommander4": {
-        "message": "Grazie della visita, Comandante. Se sta cercando delle opportunità, questo è il posto giusto.\n",
-        "description": ""
-    },
-    "Sale1": {
-        "message": "La sua vecchia astronave ha del valore per noi.\nPrezzi del giorno ",
-        "description": ""
-    },
-    "Sale2": {
-        "message": "Per sua informazione.\nPreventivo ",
-        "description": ""
-    },
-    "Sale3": {
-        "message": "Oggi siamo generosi, per la sua astronave offriamo ",
-        "description": ""
-    },
-    "Sale4": {
-        "message": "Abbiamo un acquirente per la nave. La pagheremo ",
-        "description": ""
-    },
-    "His_ship_more": {
-        "message": " Vendi la nave, aggiungendo crediti ",
-        "description": ""
-    },
-    "His_ship_less": {
-        "message": " Vendi la nave e noi pagheremo crediti ",
-        "description": ""
-    },
-    "in_exchange_for_a1": {
-        "message": "\ne lei uscirà di qui a bordo di una meravigliosa ",
-        "description": ""
-    },
-    "in_exchange_for_a2": {
-        "message": "\ne lei sarà il felice proprietario di una ricercata ",
-        "description": ""
-    },
-    "in_exchange_for_a3": {
-        "message": "\ne ci lascerà, felicemente a bordo di una stupenda ",
-        "description": ""
-    },
-    "in_exchange_for_a4": {
-        "message": "\ne se ne andrà godendosi una magnifica ",
-        "description": ""
-    },
-    "Exchange": {
-        "message": "Permuta",
-        "description": ""
-    },
-    "passengers": {
-        "message": "Forse intendeva farne pagare ai suoi passeggeri una parte?",
-        "description": ""
-    },
-    "Not_have_enough_credit": {
-        "message": "Non ha abbastanza crediti.",
-        "description": ""
-    },
-    "Hang": {
-        "message": "\nRiagganciare",
-        "description": ""
-    },
-    "Thanks": {
-        "message": "Grazie per la sua fiducia, Comandante. Torni quando vuole.",
-        "description": ""
-    },
-    "Ships_Resale": {
-        "message": "Astronavi di seconda mano",
-        "description": ""
-    }
+"Exchange":{
+"description":"",
+"message":"Permuta"
+},
+"Hang":{
+"description":"",
+"message":"\nRiagganciare"
+},
+"HelloCommander1":{
+"description":"",
+"message":"È un piacere averla qua Comandante. Ci sono delle eccellenti opportunità per lei.\n"
+},
+"HelloCommander2":{
+"description":"",
+"message":"Salve Comandante. Ho ricevuto delle nuove astronavi che potrebbero interessarla.\n"
+},
+"HelloCommander3":{
+"description":"",
+"message":"Benvenuto Comandante. Se sta cercando qualcosa di speciale, qua lo troverà sicuramente.\n"
+},
+"HelloCommander4":{
+"description":"",
+"message":"Grazie della visita, Comandante. Se sta cercando delle opportunità, questo è il posto giusto.\n"
+},
+"His_ship_less":{
+"description":"",
+"message":" Vendi la nave e noi pagheremo crediti "
+},
+"His_ship_more":{
+"description":"",
+"message":" Vendi la nave, aggiungendo crediti "
+},
+"Not_have_enough_credit":{
+"description":"",
+"message":"Non ha abbastanza crediti."
+},
+"Sale1":{
+"description":"",
+"message":"La sua vecchia astronave ha del valore per noi.\nPrezzi del giorno "
+},
+"Sale2":{
+"description":"",
+"message":"Per sua informazione.\nPreventivo "
+},
+"Sale3":{
+"description":"",
+"message":"Oggi siamo generosi, per la sua astronave offriamo "
+},
+"Sale4":{
+"description":"",
+"message":"Abbiamo un acquirente per la nave. La pagheremo "
+},
+"Ships_Resale":{
+"description":"",
+"message":"Astronavi di seconda mano"
+},
+"Thanks":{
+"description":"",
+"message":"Grazie per la sua fiducia, Comandante. Torni quando vuole."
+},
+"in_exchange_for_a1":{
+"description":"",
+"message":"\ne lei uscirà di qui a bordo di una meravigliosa "
+},
+"in_exchange_for_a2":{
+"description":"",
+"message":"\ne lei sarà il felice proprietario di una ricercata "
+},
+"in_exchange_for_a3":{
+"description":"",
+"message":"\ne ci lascerà, felicemente a bordo di una stupenda "
+},
+"in_exchange_for_a4":{
+"description":"",
+"message":"\ne se ne andrà godendosi una magnifica "
+},
+"passengers":{
+"description":"",
+"message":"Forse intendeva farne pagare ai suoi passeggeri una parte?"
+}
 }

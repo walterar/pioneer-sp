@@ -12,6 +12,8 @@ local ModelSpinner = import("UI.Game.ModelSpinner")
 
 local ui = Engine.ui
 local l = Lang.GetResource("ui-core");
+local lc = Lang.GetResource("core");
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en");
 
 local shipInfo = function (args)
 	local shipDef = ShipDef[Game.player.shipId]
@@ -41,19 +43,16 @@ local shipInfo = function (args)
 		local type = Constants.EquipType[i]
 		local et = EquipDef[type]
 		local slot = et.slot
---		if (slot ~= "CARGO" and slot ~= "MISSILE" and slot ~= "ENGINE" and slot ~= "LASER") then
-		if (slot ~= "CARGO" and slot ~= "ENGINE" and slot ~= "LASER") then
+		if (slot ~= "CARGO" and slot ~= "MISSILE" and slot ~= "ENGINE" and slot ~= "LASER") then
 			local count = Game.player:GetEquipCount(slot, type)
 			if count > 0 then
 				if count > 1 then
 					if type == "SHIELD_GENERATOR" then
 						table.insert(equipItems,
 							ui:Label(string.interp(l.N_SHIELD_GENERATORS, { quantity = string.format("%d", count) })))
---					elseif type == "PASSENGER_CABIN" then
-					elseif type == "MISSILE" then
+					elseif type == "PASSENGER_CABIN" then
 						table.insert(equipItems,
-							ui:Label(string.interp(l.MISSILE, { quantity = string.format("%d", count) })))
---							ui:Label(string.interp(l.N_OCCUPIED_PASSENGER_CABINS, { quantity = string.format("%d", count) })))
+							ui:Label(string.interp(l.N_OCCUPIED_PASSENGER_CABINS, { quantity = string.format("%d", count) })))
 					elseif type == "UNOCCUPIED_CABIN" then
 						table.insert(equipItems,
 							ui:Label(string.interp(l.N_UNOCCUPIED_PASSENGER_CABINS, { quantity = string.format("%d", count) })))
@@ -72,7 +71,7 @@ local shipInfo = function (args)
 			:SetColumn(0, {
 				ui:Table():AddRows({
 					ui:Table():SetColumnSpacing(10):AddRows({
---						"",
+						ui:Label(myl.FEATURES):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
 						{ l.HYPERDRIVE..":", EquipDef[hyperdrive].name },
 						{
 							l.HYPERSPACE_RANGE..":",
@@ -89,26 +88,35 @@ local shipInfo = function (args)
 						{ l.FUEL_WEIGHT..":",   string.format("%dt (%dt "..l.MAX..")", player.fuelMassLeft, ShipDef[Game.player.shipId].fuelTankMass ) },
 						{ l.ALL_UP_WEIGHT..":", string.format("%dt", mass_with_fuel ) },
 						"",
-						{ l.FRONT_WEAPON..":", EquipDef[frontWeapon].name },
-						{ l.REAR_WEAPON..":",  EquipDef[rearWeapon].name },
-						{ l.FUEL..":",         string.format("%d%%", Game.player.fuel)},
-						{ l.DELTA_V..":",      string.format("%d km/s", deltav / 1000)},
+						{ myl.MISSILE_BAYS..":", ShipDef[Game.player.shipId].equipSlotCapacity.MISSILE },
 						"",
 						{ l.FORWARD_ACCEL..":",  string.format("%.2f m/s² (%.1f G)", fwd_acc, fwd_acc / 9.81) },
 						{ l.BACKWARD_ACCEL..":", string.format("%.2f m/s² (%.1f G)", bwd_acc, bwd_acc / 9.81) },
 						{ l.UP_ACCEL..":",       string.format("%.2f m/s² (%.1f G)", up_acc, up_acc / 9.81) },
+						{ l.DELTA_V..":",        string.format("%d km/s", deltav / 1000)},
 						"",
-						{ l.MINIMUM_CREW..":", ShipDef[Game.player.shipId].minCrew },
-						{ l.CREW_CABINS..":",  ShipDef[Game.player.shipId].maxCrew },
+						ui:Label(myl.CREW):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
+						{ myl.CREW_VACANCIES..":", ShipDef[Game.player.shipId].maxCrew-ShipDef[Game.player.shipId].minCrew},
+						"",
+						ui:Label(myl.WEAPONS):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
+						{ l.FRONT_WEAPON..":", EquipDef[frontWeapon].name },
+						{ l.REAR_WEAPON..":",  EquipDef[rearWeapon].name },
+						"",
+						{ lc.MISSILE_UNGUIDED..":", Game.player:GetEquipCount("MISSILE","MISSILE_UNGUIDED")},
+						{ lc.MISSILE_GUIDED..":", Game.player:GetEquipCount("MISSILE","MISSILE_GUIDED")},
+						{ lc.MISSILE_SMART..":", Game.player:GetEquipCount("MISSILE","MISSILE_SMART")},
+						{ lc.MISSILE_NAVAL..":", Game.player:GetEquipCount("MISSILE","MISSILE_NAVAL")},
 					}),
 					"",
-					ui:Label(l.EQUIPMENT):SetFont("HEADING_NORMAL"),
+						ui:Label(l.EQUIPMENT):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
+--						{ l.HYPERDRIVE..":", EquipDef[hyperdrive].name },
+--						"",
 					ui:Table():AddRows(equipItems),
 				})
 			})
 			:SetColumn(2, {
 				ui:VBox(10)
-					:PackEnd(ui:Label(shipDef.name):SetFont("HEADING_LARGE"))
+					:PackEnd(ui:Align("MIDDLE",ui:Label(shipDef.name):SetFont("HEADING_LARGE"):SetColor({ r = 0.8, g = 1.0, b = 0.4 })))
 					:PackEnd(ModelSpinner.New(ui, shipDef.modelName, Game.player:GetSkin()))
 			})
 end

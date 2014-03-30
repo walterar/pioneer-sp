@@ -374,31 +374,26 @@ local mapped = function(body)
 							Comms.ImportantMessage(l.COMPLETE_MAPPING, l.computer)
 -- decide destino de entrega
 							local iflocal = scout_flavours[mission.flavour].localscout
-							if iflocal == 0 and (((mission.faction == faction.name) and Engine.rand:Integer(2) == 1)
-															or Engine.rand:Integer(3) == 1)
+							local newlocation = mission.backstation
+							if iflocal == 0
+								and (((mission.faction == faction.name)
+								and Engine.rand:Integer(2) == 1)
+								or Engine.rand:Integer(3) == 1)
 							then
 								local nearbystations = StarSystem:GetNearbyStationPaths(Engine.rand:Integer(10,20), nil,function (s) return
 		(s.type ~= 'STARPORT_SURFACE') or (s.parent.type ~= 'PLANET_ASTEROID') end)
-								local newlocation = nil
-								newlocation = nearbystations[Engine.rand:Integer(1,#nearbystations)]
-								if newlocation == nil then
-									mission.location = mission.backstation
-									Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
-								else
-									mission.location = newlocation
-									Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
+								if nil ~= nearbystations and #nearbystations > 0 then
+									newlocation = nearbystations[Engine.rand:Integer(1,#nearbystations)]
 									Comms.ImportantMessage(l.You_will_be_paid_on_my_behalf_in_new_destination,
- 												mission.client.name)
+												mission.client.name)
 								end
-							else
-								mission.location = mission.backstation
-								Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
 							end
+							mission.location = newlocation
+							Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
 						end
 					end
 					if mission.status == "COMPLETED" then return 1 end
 				end)
-
 			end
 		end
 	end

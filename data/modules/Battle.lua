@@ -66,7 +66,7 @@ end)
 
 local t = 0
 Event.Register("onShipHit",  function (ship, attacker)
-	if ship:IsPlayer() or attacker:IsPlayer() then return end
+	if ship == nil or ship:IsPlayer() or attacker == nil or attacker:IsPlayer() then return end
 	t = t + 1
 	if t > 2 then
 		t = 0

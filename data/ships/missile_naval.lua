@@ -4,13 +4,13 @@
 define_missile {
 	name = 'MISSILE_NAVAL',
 	model = 'missile',
-	forward_thrust = 6e5,
-	reverse_thrust = 3e5,
-	angular_thrust = 3e4,
+	forward_thrust = 8e5,
+	reverse_thrust = 4e5,
+	angular_thrust = 4e4,
 	up_thrust = 0.1,
 	down_thrust = 0.1,
-	left_thrust = 0.1,
-	right_thrust = 0.1,
+	left_thrust = 0.5,
+	right_thrust = 0.5,
 	hull_mass=1,
 	price=100
 }

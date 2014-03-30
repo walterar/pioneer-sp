@@ -1,6 +1,6 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
--- modified for Pioneer Scout+ (c)2013 by walterar <walterar2@gmail.com>
+-- modified for Pioneer Scout+ (c)2012-2014 by walterar <walterar2@gmail.com>
 
 local Lang       = import("Lang")
 local Engine     = import("Engine")
@@ -32,12 +32,12 @@ local onChat = function (form, ref, option)
 		form:SetFace({ seed = ad.faceseed })
 		form:SetMessage(ad.message)
 
-		form:AddOption("$1,00", 1)
-		form:AddOption("$10,00", 10)
-		form:AddOption("$100,00", 100)
-		form:AddOption("$1.000,00", 1000)
-		form:AddOption("$10.000,00", 10000)
-		form:AddOption("$100.000,00", 100000)
+		form:AddOption("$1.00", 1)
+		form:AddOption("$10.00", 10)
+		form:AddOption("$100.00", 100)
+		form:AddOption("$1,000.00", 1000)
+		form:AddOption("$10,000.00", 10000)
+		form:AddOption("$100,000.00", 100000)
 
 		return
 	end

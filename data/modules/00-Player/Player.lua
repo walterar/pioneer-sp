@@ -31,7 +31,7 @@ _G.OriginFaction     = "no"
 _G.ShipFaction       = "no"
 _G.PrevPos           = "no"
 _G.PrevFac           = "no"
-_G.SpaMember         = 0
+_G.SpaMember         = false
 _G.DangerLevel       = 0
 _G.MissileActive     = 0
 _G.FuelHydrogen      = false
@@ -100,7 +100,7 @@ local onGameStart = function ()
 		_G.ShotsReceived     = shipData.shots_received or 0
 		_G.OriginFaction     = shipData.init_faction or "no"
 		_G.ShipFaction       = shipData.ship_faction or "no"
-		_G.SpaMember         = shipData.spa_member or 0
+		_G.SpaMember         = shipData.spa_member or false
 		_G.PrevPos           = shipData.prev_pos or "no"
 		_G.PrevFac           = shipData.prev_fac or "no"
 		_G.DangerLevel       = shipData.danger_level or 0
@@ -115,7 +115,7 @@ local onGameStart = function ()
 		_G.ShotsReceived     = 0
 		_G.PrevPos           = "no"
 		_G.PrevFac           = "no"
-		_G.SpaMember         = 0
+		_G.SpaMember         = false
 		_G.FuelHydrogen      = false
 
 		_G.ShipFaction       = Game.system.faction.name
@@ -140,7 +140,7 @@ end
 Event.Register("onGameStart", onGameStart)
 
 local onShipAlertChanged = function (ship, alert)
-	if ship:IsPlayer() and SpaMember == 1 then
+	if ship:IsPlayer() and SpaMember == true then
 		if alert == "SHIP_FIRING" then
 			ship:SetInvulnerable(true)
 		else
@@ -156,13 +156,13 @@ local onShipHit = function (ship, attacker)
 		if attacker then ship:SetCombatTarget(attacker) end
 		if attacker and attacker.label == ll.POLICE_SHIP_REGISTRATION then return end
 		if (ship:GetEquipFree("LASER") < ShipDef[ship.shipId].equipSlotCapacity.LASER) and
-			SpaMember == 1 and attacker then
+			SpaMember == true and attacker then
 			ship:CancelAI()
 			ship:AIKill(attacker)
 		end
 		_G.ShotsReceived = (ShotsReceived or 0) + 1
 		trigger = trigger + 1
-		if trigger > 4 and attacker and SpaMember == 1 then
+		if trigger > 4 and attacker and SpaMember == true then
 			if Engine.rand:Integer(1,5) == 5 then
 				_G.TrueJoust = false
 				ship:CancelAI()

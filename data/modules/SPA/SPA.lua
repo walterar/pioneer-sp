@@ -146,7 +146,7 @@ onChat = function (form, ref, option)
 				expiry  = oneyear,
 				milrads = 0,
 			}
-			_G.SpaMember = 1
+			_G.SpaMember = true
 			Game.player:AddMoney(0 - ad.flavour.annual_fee)
 			setMessage(l.YOU_ARE_NOW_A_MEMBER:interp({
 				expiry_date = Format.Date(memberships[ad.flavour.clubname].joined + memberships[ad.flavour.clubname].expiry)
@@ -183,13 +183,13 @@ end
 
 local onShipFuelChanged = function (ship, state)
 	if ship:IsPlayer() and (state == "WARNING" or state == "EMPTY") then
-		if SpaMember > 0 then
+		if SpaMember == true then
 --			MessageBox.Message(t('The propellent cell has been recharged.'))
 			Game.player:SetFuelPercent(50)
 		elseif state == "WARNING" then
-			MessageBox.ImportantMessage(ls.YOUR_FUEL_TANK_IS_ALMOST_EMPTY)
+			MessageBox.Message(ls.YOUR_FUEL_TANK_IS_ALMOST_EMPTY)
 		elseif state == "EMPTY" then
-			MessageBox.ImportantMessage(ls.YOUR_FUEL_TANK_IS_EMPTY)
+			MessageBox.Message(ls.YOUR_FUEL_TANK_IS_EMPTY)
 		end
 	end
 end
@@ -198,9 +198,9 @@ local onShipDocked = function (ship, station)
 	if ship:IsPlayer() then
 		local membership = memberships[flavours[1].clubname]
 		if membership and (membership.joined + membership.expiry > Game.time) then
-			_G.SpaMember = 1
+			_G.SpaMember = true
 		else
-			_G.SpaMember = 0
+			_G.SpaMember = false
 		end
 	end
 end

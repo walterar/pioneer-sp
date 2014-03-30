@@ -1,166 +1,184 @@
 {
-   "START_AT_ACHERNAR" : {
-      "description" : "",
-      "message" : "Новый старт: Achernar"
-   },
-   "START_AT_LAVE" : {
-      "description" : "",
-      "message" : "Новый старт: Lave"
-   },
-   "Hyperspace" : {
-      "description" : "",
-      "message" : "Гиперпространственной"
-   },
-   "light_year" : {
-      "description" : "",
-      "message" : " световых лет"
-   },
-   "Local" : {
-      "description" : "",
-      "message" : "Местное"
-   },
-   "Experience" : {
-      "description" : "",
-      "message" : "опыта"
-   },
-    "Landed_in" : {
-      "description" : "",
-      "message" : "Приземлился в "
-   },
-   "In_space_of" : {
-      "description" : "",
-      "message" : "В пространстве "
-   },
-   "Successful_Missions" : {
-      "description" : "",
-      "message" : "Выполненные миссий:"
-   },
-   "Failed_Missions" : {
-      "description" : "",
-      "message" : "неудачными миссиями:"
-   },
-   "Shots_successful" : {
-      "description" : "",
-      "message" : "удачных выстрелов:"
-   },
-   "Shots_received" : {
-      "description" : "",
-      "message" : "Выстрелов поступила:"
-   },
-   "Origin" : {
-      "description" : "",
-      "message" : "Происхождение:"
-   },
-   "Registration" : {
-      "description" : "",
-      "message" : "регистрации:"
-   },
-   "Previous_Position" : {
-      "description" : "",
-      "message" : "Оно происходит от:"
-   },
-   "Previous_Faction" : {
-      "description" : "",
-      "message" : "Предыдущие фракцией:"
-   },
-   "Current_Position" : {
-      "description" : "",
-      "message" : "Текущее положение:"
-   },
-   "Current_Faction" : {
-      "description" : "",
-      "message" : "Текущий фракцией:"
-   },
-   "You_has_been_fined" : {
-      "description" : "",
-      "message" : "Вы были оштрафованы на "
-   },
-   "for_jettison" : {
-      "description" : "",
-      "message" : " бросая "
-   },
-   "docked" : {
-      "description" : "",
-      "message" : " пристыкован"
-   },
-    "have_enough_experience" : {
-      "message" : "У вас нет достаточного опыта для этой миссии.",
-      "description" : ""
-   },
-   "You_must_install_the_Life_Support_for_Cargo_Bay" : {
-      "message" : "Необходимо установить жизнеобеспечения грузовой отсек",
-      "description" : ""
-   },
-   "UNDOCK_AND_ENTER_LOW_ORBIT" : {
-      "description" : "",
-      "message" : "Запуск и введите низкой орбите, на текущей цели"
-   },
-   "ENTER_LOW_ORBIT_AT_CURRENT_TARGET" : {
-      "description" : "",
-      "message" : "Ввести низкой орбите, на текущей цели"
-   },
-   "ENTER_MEDIUM_ORBIT_AT_CURRENT_TARGET" : {
-      "description" : "",
-      "message" : "Ввести средних орбитах, на текущей цели"
-   },
-   "ENTER_HIGH_ORBIT_AT_CURRENT_TARGET" : {
-      "description" : "",
-      "message" : "Установить высокой орбите"
-   },
-   "ACTIVE" : {
-      "description" : "",
-      "message" : "Активно"
-   },
-   "INACTIVE" : {
-      "description" : "",
-      "message" : "неактивный"
-   },
-   "FAILED" : {
-      "description" : "",
-      "message" : "Не удалось"
-   },
-   "MAPPING" : {
-      "description" : "",
-      "message" : "отображение"
-   },
-   "MAPPING_interrupted" : {
-      "description" : "",
-      "message" : "СКАНИРОВАНИЕ ПРЕРВАНО. Слишком далеко от цели! Корректируйте орбиту."
-   },
-   "SUSPENDED" : {
-      "description" : "",
-      "message" : "Подвесные"
-   },
-   "COMPLETED" : {
-      "description" : "",
-      "message" : "законченный"
-   },
-   "Risk_Area" : {
-      "description" : "",
-      "message" : "Район риска"
-   },
-   "YOU_DESERVE_TO_BE_IMMORTAL" : {
-      "description" : "",
-      "message" : "Вы заслуживаете быть бессмертным!"
-   },
-   "LIGHT_SCOUT" : {
-      "description" : "",
-      "message" : "Свет Проводник"
-   },
-   "MEDIUM_SCOUT" : {
-      "description" : "",
-      "message" : "Средний Проводник"
-   },
-   "HEAVY_SCOUT" : {
-      "description" : "",
-      "message" : "Тяжелая Проводник"
-   },
-   "BUY" : {
-      "description" : "Commodities and equipment prices",
-      "message" : "покупка"
-   },
-   "SELL" : {
-      "description" : "Commodities and equipment prices",
-      "message" : "продажа"
-   }
+"ACTIVE":{
+"description":"",
+"message":"Активно"
+},
+"BUY":{
+"description":"Commodities and equipment prices","message":"покупка"
+},
+"COMPLETED":{
+"description":"",
+"message":"законченный"
+},
+"CREW_VACANCIES":{
+"description":"",
+"message":"Экипаж Вакансия"
+},
+"Current_Faction":{
+"description":"",
+"message":"Текущий фракцией:"
+},
+"Current_Position":{
+"description":"",
+"message":"Текущее положение:"
+},
+"ENTER_HIGH_ORBIT_AT_CURRENT_TARGET":{
+"description":"",
+"message":"Установить высокой орбите"
+},
+"ENTER_LOW_ORBIT_AT_CURRENT_TARGET":{
+"description":"",
+"message":"Ввести низкой орбите, на текущей цели"
+},
+"ENTER_MEDIUM_ORBIT_AT_CURRENT_TARGET":{
+"description":"",
+"message":"Ввести средних орбитах, на текущей цели"
+},
+"Experience":{
+"description":"",
+"message":"опыта"
+},
+"FAILED":{
+"description":"",
+"message":"Не удалось"
+},
+"Failed_Missions":{
+"description":"",
+"message":"неудачными миссиями:"
+},
+"HEAVY_SCOUT":{
+"description":"",
+"message":"Тяжелая Проводник"
+},
+"Hyperspace":{
+"description":"",
+"message":"Гиперпространственной"
+},
+"INACTIVE":{
+"description":"",
+"message":"неактивный"
+},
+"In_space_of":{
+"description":"",
+"message":"В пространстве "
+},
+"LIGHT_SCOUT":{
+"description":"",
+"message":"Свет Проводник"
+},
+"Landed_in":{
+"description":"",
+"message":"Приземлился в "
+},
+"Local":{
+"description":"",
+"message":"Местное"
+},
+"MAPPING":{
+"description":"",
+"message":"отображение"
+},
+"MAPPING_interrupted":{
+"description":"",
+"message":"СКАНИРОВАНИЕ ПРЕРВАНО. Слишком далеко от цели! Корректируйте орбиту."
+},
+"MEDIUM_SCOUT":{
+"description":"",
+"message":"Средний Проводник"
+},
+"Origin":{
+"description":"",
+"message":"Происхождение:"
+},
+"Previous_Faction":{
+"description":"",
+"message":"Предыдущие фракцией:"
+},
+"Previous_Position":{
+"description":"",
+"message":"Оно происходит от:"
+},
+"Registration":{
+"description":"",
+"message":"регистрации:"
+},
+"Risk_Area":{
+"description":"",
+"message":"Район риска"
+},
+"SELL":{
+"description":"Commodities and equipment prices","message":"продажа"
+},
+"START_AT_ACHERNAR":{
+"description":"",
+"message":"Новый старт: Achernar"
+},
+"START_AT_LAVE":{
+"description":"",
+"message":"Новый старт: Lave"
+},
+"SUSPENDED":{
+"description":"",
+"message":"Подвесные"
+},
+"Shots_received":{
+"description":"",
+"message":"Выстрелов поступила:"
+},
+"Shots_successful":{
+"description":"",
+"message":"удачных выстрелов:"
+},
+"Successful_Missions":{
+"description":"",
+"message":"Выполненные миссий:"
+},
+"UNDOCK_AND_ENTER_LOW_ORBIT":{
+"description":"",
+"message":"Запуск и введите низкой орбите, на текущей цели"
+},
+"YOU_DESERVE_TO_BE_IMMORTAL":{
+"description":"",
+"message":"Вы заслуживаете быть бессмертным!"
+},
+"You_has_been_fined":{
+"description":"",
+"message":"Вы были оштрафованы на "
+},
+"You_must_install_the_Life_Support_for_Cargo_Bay":{
+"description":"",
+"message":"Необходимо установить жизнеобеспечения грузовой отсек"
+},
+"docked":{
+"description":"",
+"message":" пристыкован"
+},
+"for_jettison":{
+"description":"",
+"message":" бросая "
+},
+"have_enough_experience":{
+"description":"",
+"message":"У вас нет достаточного опыта для этой миссии."
+},
+"MISSILE_BAYS":{
+"description":"",
+"message":"Ракетных отсеки"
+},
+"FEATURES":{
+"description":"",
+"message":"Особенности"
+},
+"CREW":{
+"description":"",
+"message":"Экипаж"
+},
+"WEAPONS":{
+"description":"",
+"message":"Оружие"
+},
+"light_year":{
+"description":"",
+"message":" световых лет"
+}
 }

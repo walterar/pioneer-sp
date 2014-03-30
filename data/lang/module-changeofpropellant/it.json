@@ -1,30 +1,30 @@
 {
-   "formtittle" : {
-      "description" : "",
-      "message" : "Siamo in grado di convertire il vostro propulsore,\nper usare l'idrogeno al posto dell'acqua "
-   },
-   "formmessage" : {
-      "description" : "",
-      "message" : "\n*\n* Salve Comandante.\n*\n* Convertire il tuo vecchio propulsore per soli "
-   },
-   "Not_have_enough_credit" : {
-      "description" : "",
-      "message" : "Lei non ha abbastanza crediti."
-   },
-   "convert" : {
-      "description" : "",
-      "message" : "Convertire"
-   },
-   "Hang" : {
-      "description" : "",
-      "message" : "Riaggancia"
-   },
-   "convertok" : {
-      "description" : "",
-      "message" : "Conversione l'unità è completa.\nIdrogeno può ora utilizzare al posto dell'acqua."
-   },
-   "adtittle" : {
-      "description" : "",
-      "message" : "Utilizzare idrogeno invece di acqua nella vostra propulsore"
-   }
+"Hang":{
+"description":"",
+"message":"Riaggancia"
+},
+"Not_have_enough_credit":{
+"description":"",
+"message":"Lei non ha abbastanza crediti."
+},
+"adtittle":{
+"description":"",
+"message":"Utilizzare idrogeno invece di acqua nella vostra propulsore"
+},
+"convert":{
+"description":"",
+"message":"Convertire"
+},
+"convertok":{
+"description":"",
+"message":"Conversione l'unità è completa.\nIdrogeno può ora utilizzare al posto dell'acqua."
+},
+"formmessage":{
+"description":"",
+"message":"\n*\n* Salve Comandante.\n*\n* Convertire il tuo vecchio propulsore per soli "
+},
+"formtittle":{
+"description":"",
+"message":"Siamo in grado di convertire il vostro propulsore,\nper usare l'idrogeno al posto dell'acqua "
+}
 }

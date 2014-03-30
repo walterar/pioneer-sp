@@ -1,6 +1,7 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
--- Modified to Pioneer Scout Plus by walterar <walterar2@gmail.com>
+-- modified for Pioneer Scout+ (c)2012-2014 by walterar <walterar2@gmail.com>
+-- Work in progress.
 
 local Engine      = import("Engine")
 local Lang        = import("Lang")
@@ -12,8 +13,8 @@ local ErrorScreen = import("ErrorScreen")
 
 local ui = Engine.ui
 
-local l = Lang.GetResource("ui-core")
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl", "en")
+local l = Lang.GetResource("ui-core");
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl", "en");
 
 local setupPlayer1 = function ()
 	Game.player:SetShipType("eagle_lrf")

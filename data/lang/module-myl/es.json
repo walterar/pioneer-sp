@@ -1,166 +1,184 @@
 {
-   "START_AT_ACHERNAR" : {
-      "description" : "",
-      "message" : "Comenzar en Achernar"
-   },
-   "START_AT_LAVE" : {
-      "description" : "",
-      "message" : "Comenzar en Lave"
-   },
-   "Hyperspace" : {
-      "description" : "",
-      "message" : "Hiperespacio"
-   },
-   "light_year" : {
-      "description" : "",
-      "message" : " años luz"
-   },
-   "Local" : {
-      "description" : "",
-      "message" : "Local"
-   },
-   "Experience" : {
-      "description" : "",
-      "message" : "Experiencia"
-   },
-    "Landed_in" : {
-      "description" : "",
-      "message" : "Posado en "
-   },
-   "In_space_of" : {
-      "description" : "",
-      "message" : "En espacio de "
-   },
-   "Successful_Missions" : {
-      "description" : "",
-      "message" : "Misiones Cumplidas:"
-   },
-   "Failed_Missions" : {
-      "description" : "",
-      "message" : "Misiones Fallidas:"
-   },
-   "Shots_successful" : {
-      "description" : "",
-      "message" : "Disparos Acertados:"
-   },
-   "Shots_received" : {
-      "description" : "",
-      "message" : "Disparos Recibidos:"
-   },
-   "Origin" : {
-      "description" : "",
-      "message" : "Origen:"
-   },
-   "Registration" : {
-      "description" : "",
-      "message" : "Registro:"
-   },
-   "Previous_Position" : {
-      "description" : "",
-      "message" : "Posición previa:"
-   },
-   "Previous_Faction" : {
-      "description" : "",
-      "message" : "Facción previa:"
-   },
-   "Current_Position" : {
-      "description" : "",
-      "message" : "Posición actual:"
-   },
-   "Current_Faction" : {
-      "description" : "",
-      "message" : "Facción actual:"
-   },
-   "You_has_been_fined" : {
-      "description" : "",
-      "message" : "Usted ha sido multado con  "
-   },
-   "for_jettison" : {
-      "description" : "",
-      "message" : " por arrojar "
-   },
-   "docked" : {
-      "description" : "",
-      "message" : " en puerto"
-   },
-    "have_enough_experience" : {
-      "message" : "Usted no tiene suficiente experiencia para esta misión.",
-      "description" : ""
-   },
-   "You_must_install_the_Life_Support_for_Cargo_Bay" : {
-      "message" : "Usted debe instalar el Soporte Vital para Carga",
-      "description" : ""
-   },
-   "UNDOCK_AND_ENTER_LOW_ORBIT" : {
-      "description" : "",
-      "message" : "Despegar y Establecer Órbita Baja"
-   },
-   "ENTER_LOW_ORBIT_AT_CURRENT_TARGET" : {
-      "description" : "",
-      "message" : "Establecer Órbita Baja"
-   },
-   "ENTER_MEDIUM_ORBIT_AT_CURRENT_TARGET" : {
-      "description" : "",
-      "message" : "Establecer Órbita Media"
-   },
-   "ENTER_HIGH_ORBIT_AT_CURRENT_TARGET" : {
-      "description" : "",
-      "message" : "Establecer Órbita Alta"
-   },
-   "ACTIVE" : {
-      "description" : "",
-      "message" : "Activa"
-   },
-   "INACTIVE" : {
-      "description" : "",
-      "message" : "Inactiva"
-   },
-   "FAILED" : {
-      "description" : "",
-      "message" : "Fallida"
-   },
-   "MAPPING" : {
-      "description" : "",
-      "message" : "Mapeando"
-   },
-   "MAPPING_interrupted" : {
-      "description" : "",
-      "message" : "MAPEADO INTERRUMPIDO. ¡Muy lejos del objetivo! Corrija órbita"
-   },
-   "SUSPENDED" : {
-      "description" : "",
-      "message" : "Suspendida"
-   },
-   "COMPLETED" : {
-      "description" : "",
-      "message" : "Completa"
-   },
-   "Risk_Area" : {
-      "description" : "",
-      "message" : "Riesgo Zonal"
-   },
-   "YOU_DESERVE_TO_BE_IMMORTAL" : {
-      "description" : "",
-      "message" : "¡Tú mereces ser inmortal!"
-   },
-   "LIGHT_SCOUT" : {
-      "description" : "",
-      "message" : "Explorador liviano"
-   },
-   "MEDIUM_SCOUT" : {
-      "description" : "",
-      "message" : "Explorador mediano"
-   },
-   "HEAVY_SCOUT" : {
-      "description" : "",
-      "message" : "Explorador pesado"
-   },
-   "BUY" : {
-      "description" : "Commodities and equipment prices",
-      "message" : "COMPRA"
-   },
-   "SELL" : {
-      "description" : "Commodities and equipment prices",
-      "message" : "VENTA"
-   }
+"ACTIVE":{
+"description":"",
+"message":"Activa"
+},
+"BUY":{
+"description":"Commodities and equipment prices","message":"COMPRA"
+},
+"COMPLETED":{
+"description":"",
+"message":"Completa"
+},
+"CREW_VACANCIES":{
+"description":"",
+"message":"Vacantes tripulación"
+},
+"Current_Faction":{
+"description":"",
+"message":"Facción actual:"
+},
+"Current_Position":{
+"description":"",
+"message":"Posición actual:"
+},
+"ENTER_HIGH_ORBIT_AT_CURRENT_TARGET":{
+"description":"",
+"message":"Establecer Órbita Alta"
+},
+"ENTER_LOW_ORBIT_AT_CURRENT_TARGET":{
+"description":"",
+"message":"Establecer Órbita Baja"
+},
+"ENTER_MEDIUM_ORBIT_AT_CURRENT_TARGET":{
+"description":"",
+"message":"Establecer Órbita Media"
+},
+"Experience":{
+"description":"",
+"message":"Experiencia"
+},
+"FAILED":{
+"description":"",
+"message":"Fallida"
+},
+"Failed_Missions":{
+"description":"",
+"message":"Misiones Fallidas:"
+},
+"HEAVY_SCOUT":{
+"description":"",
+"message":"Explorador pesado"
+},
+"Hyperspace":{
+"description":"",
+"message":"Hiperespacio"
+},
+"INACTIVE":{
+"description":"",
+"message":"Inactiva"
+},
+"In_space_of":{
+"description":"",
+"message":"En espacio de "
+},
+"LIGHT_SCOUT":{
+"description":"",
+"message":"Explorador liviano"
+},
+"Landed_in":{
+"description":"",
+"message":"Posado en "
+},
+"Local":{
+"description":"",
+"message":"Local"
+},
+"MAPPING":{
+"description":"",
+"message":"Mapeando"
+},
+"MAPPING_interrupted":{
+"description":"",
+"message":"MAPEADO INTERRUMPIDO. ¡Muy lejos del objetivo! Corrija órbita"
+},
+"MEDIUM_SCOUT":{
+"description":"",
+"message":"Explorador mediano"
+},
+"Origin":{
+"description":"",
+"message":"Origen:"
+},
+"Previous_Faction":{
+"description":"",
+"message":"Facción previa:"
+},
+"Previous_Position":{
+"description":"",
+"message":"Posición previa:"
+},
+"Registration":{
+"description":"",
+"message":"Registro:"
+},
+"Risk_Area":{
+"description":"",
+"message":"Riesgo Zonal"
+},
+"SELL":{
+"description":"Commodities and equipment prices","message":"VENTA"
+},
+"START_AT_ACHERNAR":{
+"description":"",
+"message":"Comenzar en Achernar"
+},
+"START_AT_LAVE":{
+"description":"",
+"message":"Comenzar en Lave"
+},
+"SUSPENDED":{
+"description":"",
+"message":"Suspendida"
+},
+"Shots_received":{
+"description":"",
+"message":"Disparos Recibidos:"
+},
+"Shots_successful":{
+"description":"",
+"message":"Disparos Acertados:"
+},
+"Successful_Missions":{
+"description":"",
+"message":"Misiones Cumplidas:"
+},
+"UNDOCK_AND_ENTER_LOW_ORBIT":{
+"description":"",
+"message":"Despegar y Establecer Órbita Baja"
+},
+"YOU_DESERVE_TO_BE_IMMORTAL":{
+"description":"",
+"message":"¡Tú mereces ser inmortal!"
+},
+"You_has_been_fined":{
+"description":"",
+"message":"Usted ha sido multado con  "
+},
+"You_must_install_the_Life_Support_for_Cargo_Bay":{
+"description":"",
+"message":"Usted debe instalar el Soporte Vital para Carga"
+},
+"docked":{
+"description":"",
+"message":" en puerto"
+},
+"for_jettison":{
+"description":"",
+"message":" por arrojar "
+},
+"have_enough_experience":{
+"description":"",
+"message":"Usted no tiene suficiente experiencia para esta misión."
+},
+"MISSILE_BAYS":{
+"description":"",
+"message":"Bahías de Misiles"
+},
+"FEATURES":{
+"description":"",
+"message":"Características"
+},
+"CREW":{
+"description":"",
+"message":"Tripulación"
+},
+"WEAPONS":{
+"description":"",
+"message":"Armamento"
+},
+"light_year":{
+"description":"",
+"message":" años luz"
+}
 }

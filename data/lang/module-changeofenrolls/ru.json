@@ -1,30 +1,30 @@
 {
-   "You_are_owner_of_the_registration" : {
-      "description" : "",
-      "message" : "Вы владелец регистрации: "
-   },
-   "Work_we_do" : {
-      "description" : "",
-      "message" : "Здравствуйте капитан. Вы можете изменить регистрационный номер его космического корабля всего за $ 100.\n\n"
-   },
-   "Not_have_enough_credit" : {
-      "description" : "",
-      "message" : "Не хватает кредитов."
-   },
-   "Register_in" : {
-      "description" : "",
-      "message" : "Изменение рег.номера на "
-   },
-   "Hang" : {
-      "description" : "",
-      "message" : "вешать трубку"
-   },
-   "Change_of_enrolls_His_new_register_is" : {
-      "description" : "",
-      "message" : "ИЗМЕНЕНИЕ РЕГ. НОМЕРА\n Новая регистрация: "
-   },
-   "Change_of_enrolls" : {
-      "description" : "",
-      "message" : "Изменения регистрации."
-   }
+"Change_of_enrolls":{
+"description":"",
+"message":"Изменения регистрации."
+},
+"Change_of_enrolls_His_new_register_is":{
+"description":"",
+"message":"ИЗМЕНЕНИЕ РЕГ. НОМЕРА\n Новая регистрация: "
+},
+"Hang":{
+"description":"",
+"message":"вешать трубку"
+},
+"Not_have_enough_credit":{
+"description":"",
+"message":"Не хватает кредитов."
+},
+"Register_in":{
+"description":"",
+"message":"Изменение рег.номера на "
+},
+"Work_we_do":{
+"description":"",
+"message":"Здравствуйте капитан. Вы можете изменить регистрационный номер его космического корабля всего за $ 100.\n\n"
+},
+"You_are_owner_of_the_registration":{
+"description":"",
+"message":"Вы владелец регистрации: "
+}
 }

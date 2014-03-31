@@ -35,7 +35,7 @@ local trafic_docked = function (station)
 	end
 end
 
-_G.trafic = function (mission)
+local trafic = function (mission)
 	if active == true then return end
 	trafiship = {}
 	local destination

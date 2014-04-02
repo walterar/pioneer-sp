@@ -100,6 +100,8 @@ local buttonDefs = {
 	{   l.QUIT,              function () Engine.Quit() end },
 }
 
+local anims = {}
+
 local buttonSet = {}
 for i = 1,#buttonDefs do
 	local def = buttonDefs[i]
@@ -108,7 +110,39 @@ for i = 1,#buttonDefs do
 	if i < 10 then button:AddShortcut(i) end
 	if i == 10 then button:AddShortcut("0") end
 	buttonSet[i] = button
+	table.insert(anims, {
+		widget = button,
+		type = "IN",
+		easing = "ZERO",
+		target = "POSITION_X_REV",
+		duration = i * 0.05,
+		next = {
+			widget = button,
+			type = "IN",
+			easing = "LINEAR",
+			target = "POSITION_X_REV",
+			duration = 0.4,
+		}
+	})
 end
+
+local headingLabel = ui:Label("Pioneer Scout+"):SetFont("HEADING_XLARGE")
+table.insert(anims, {
+	widget = headingLabel,
+	type = "IN",
+	easing = "LINEAR",
+	target = "OPACITY",
+	duration = 0.4,
+})
+
+local versionLabel = ui:Label("G17 full version"):SetFont("HEADING_XSMALL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 })
+table.insert(anims, {
+	widget = versionLabel,
+	type = "IN",
+	easing = "LINEAR",
+	target = "OPACITY",
+	duration = 0.4,
+})
 
 local menu =
 	ui:Grid(1, { 0.2, 0.6, 0.2 })
@@ -116,7 +150,7 @@ local menu =
 			ui:Grid({ 0.1, 0.8, 0.1 }, 1)
 				:SetCell(1, 0,
 					ui:Align("LEFT",
-						ui:Label("Pioneer Scout+"):SetFont("HEADING_XLARGE"):SetColor({ r = 0.9, g = 1.0, b = 0.8 })
+						headingLabel
 					)
 				)
 		})
@@ -132,9 +166,12 @@ local menu =
 			ui:Grid({ 0.1, 0.8, 0.1 }, 1)
 				:SetCell(1, 0,
 					ui:Align("RIGHT",
-						ui:Label("G16 full version"):SetFont("HEADING_XSMALL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 })
+						versionLabel
 					)
 				)
 		})
 
-ui.templates.MainMenu = function (args) return menu end
+ui.templates.MainMenu = function (args)
+	for _,anim in ipairs(anims) do ui:Animate(anim) end
+	return menu
+end

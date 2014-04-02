@@ -117,7 +117,9 @@ function Ship:FireMissileAt(missile, target)
 			missile_object:Arm()
 			if ShipDef[missile_object.shipId].name == "MISSILE_NAVAL" then
 				missile_object:Explode()
+				missile_object=nil
 				target:Explode()
+				target=nil
 				_G.MissileActive = MissileActive - 1
 			end
 			return true

@@ -167,6 +167,7 @@ local onShipHit = function (ship, attacker)
 				_G.TrueJoust = false
 				ship:CancelAI()
 				attacker:Explode()
+				attacker = nil
 				Character.persistent.player.killcount = Character.persistent.player.killcount + 1
 			else
 				attacker:CancelAI()

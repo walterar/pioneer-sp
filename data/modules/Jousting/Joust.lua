@@ -58,12 +58,16 @@ local onEnterSystem = function (player)
 	Comms.ImportantMessage(msg, hostil.label)
 	local jousting = Game.system
 	Timer:CallAt(Game.time+20, function ()
-		if hostil and Game.system == jousting then
+		if Game.system == jousting then
 			if (player:GetEquipFree("LASER") < ShipDef[player.shipId].equipSlotCapacity.LASER) then
-				msg = l["the_time_has_come"..Engine.rand:Integer(1,3)]
-				Comms.ImportantMessage(msg, hostil.label)
-				hostil:AIKill(player)
-				_G.TrueJoust = true
+				if not pcall(function ()
+						_G.TrueJoust = true
+						hostil:AIKill(player)
+						msg = l["the_time_has_come"..Engine.rand:Integer(1,3)]
+						Comms.ImportantMessage(msg, hostil.label)
+					end)
+				then
+				end
 			else
 				multiplier = 100 - (100 * Game.system.lawlessness)
 				money = math.floor(player:GetMoney() * (multiplier/1000))

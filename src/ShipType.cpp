@@ -291,3 +291,4 @@ void ShipType::Init()
 	if (ShipType::playable_atmospheric_ships.empty())
 		Error("No ships can fit atmospheric shields! The game cannot run.");
 }
+

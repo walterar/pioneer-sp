@@ -69,14 +69,18 @@ local onEnterSystem = function (player)
 				then
 				end
 			else
-				multiplier = 100 - (100 * Game.system.lawlessness)
-				money = math.floor(player:GetMoney() * (multiplier/1000))
-				player:AddMoney(-money)
-				local nmsg = Engine.rand:Integer(1,3)
-				msg = l["I_have_taken"..nmsg].." $"..money.." "..l["of_your_money"..nmsg]
-				Comms.ImportantMessage(msg, hostil.label)
-				hostil:CancelAI()
-				_G.TrueJoust = false
+				if not pcall(function ()
+					hostil:CancelAI()
+					multiplier = 100 - (100 * Game.system.lawlessness)
+					money = math.floor(player:GetMoney() * (multiplier/1000))
+					player:AddMoney(-money)
+					local nmsg = Engine.rand:Integer(1,3)
+					msg = l["I_have_taken"..nmsg].." $"..money.." "..l["of_your_money"..nmsg]
+					Comms.ImportantMessage(msg, hostil.label)
+					_G.TrueJoust = false
+					end)
+				then
+				end
 			end
 		end
 	end)

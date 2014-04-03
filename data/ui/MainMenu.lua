@@ -126,7 +126,7 @@ for i = 1,#buttonDefs do
 	})
 end
 
-local headingLabel = ui:Label("Pioneer Scout+"):SetFont("HEADING_XLARGE")
+local headingLabel = ui:Label(""Pioneer Scout+""):SetFont("HEADING_XLARGE")
 table.insert(anims, {
 	widget = headingLabel,
 	type = "IN",
@@ -135,7 +135,7 @@ table.insert(anims, {
 	duration = 0.4,
 })
 
-local versionLabel = ui:Label("G17 full version"):SetFont("HEADING_XSMALL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 })
+local versionLabel = ui:Label("G16 version"):SetFont("HEADING_XSMALL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 })
 table.insert(anims, {
 	widget = versionLabel,
 	type = "IN",
@@ -144,7 +144,7 @@ table.insert(anims, {
 	duration = 0.4,
 })
 
-local menu =
+local menu = 
 	ui:Grid(1, { 0.2, 0.6, 0.2 })
 		:SetRow(0, {
 			ui:Grid({ 0.1, 0.8, 0.1 }, 1)

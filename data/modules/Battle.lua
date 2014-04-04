@@ -72,11 +72,12 @@ Event.Register("onShipHit",  function (ship, attacker)
 		t = 0
 		ship:CancelAI()
 		ship:Explode()
-		ship=nil
+		ship = nil
 		Timer:CallAt(Game.time+4, function ()
-			if not pcall(function () return
+			if not pcall(function ()
+				attacker:CancelAI()
 				attacker:Explode()
-				attacker=nil
+				attacker = nil
 				end) then
 			end
 		end)

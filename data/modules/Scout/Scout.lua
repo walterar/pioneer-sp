@@ -276,8 +276,6 @@ local makeAdvert = function (station)
 		systembody = sbody.name,
 	})
 
---	local ref = station:AddAdvert(ad.desc, onChat, onDelete)
---	ads[station:AddAdvert(ad.desc, onChat, onDelete)] = ad
 	local ref = station:AddAdvert({
 		description = ad.desc,
 		icon        = ad.risk > 0 and "scout_danger" or "scout",
@@ -382,7 +380,7 @@ local mapped = function(body)
 							then
 								local nearbystations = StarSystem:GetNearbyStationPaths(Engine.rand:Integer(10,20), nil,function (s) return
 		(s.type ~= 'STARPORT_SURFACE') or (s.parent.type ~= 'PLANET_ASTEROID') end)
-								if nil ~= nearbystations and #nearbystations > 0 then
+								if nearbystations and #nearbystations > 0 then
 									newlocation = nearbystations[Engine.rand:Integer(1,#nearbystations)]
 									Comms.ImportantMessage(l.You_will_be_paid_on_my_behalf_in_new_destination,
 												mission.client.name)

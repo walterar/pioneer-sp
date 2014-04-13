@@ -844,7 +844,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\..\src\win32\pioneer.rc">
+    <ResourceCompile Include="..\..\src\win32\pioneersp.rc">
       <Filter>src\win32</Filter>
     </ResourceCompile>
   </ItemGroup>

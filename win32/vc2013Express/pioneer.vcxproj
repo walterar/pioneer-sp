@@ -456,7 +456,7 @@
     <ClInclude Include="..\..\src\WorldView.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\..\src\win32\pioneer.rc" />
+    <ResourceCompile Include="..\..\src\win32\pioneersp.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

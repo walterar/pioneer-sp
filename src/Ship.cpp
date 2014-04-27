@@ -13,7 +13,7 @@
 #include "Sound.h"
 #include "Sfx.h"
 #include "galaxy/Sector.h"
-#include "galaxy/SectorCache.h"
+#include "galaxy/GalaxyCache.h"
 #include "Frame.h"
 #include "WorldView.h"
 #include "HyperspaceCloud.h"
@@ -126,6 +126,8 @@ void Ship::Load(Serializer::Reader &rd, Space *space)
 
 	m_hyperspace.dest = SystemPath::Unserialize(rd);
 	m_hyperspace.countdown = rd.Float();
+	m_hyperspace.ignoreFuel = false; // XXX maybe should be stored in savegame, but better than not initializing anyway
+	m_hyperspace.duration = 0;
 
 	for (int i=0; i<ShipType::GUNMOUNT_MAX; i++) {
 		m_gun[i].state = rd.Int32();
@@ -1244,8 +1246,9 @@ void Ship::StaticUpdate(const float timeStep)
 
 	//Add smoke trails for missiles on thruster state
 	if (m_type->tag == ShipType::TAG_MISSILE && m_thrusters.z < 0.0 && 0.1*Pi::rng.Double() < timeStep) {
-		vector3d pos = GetOrient() * vector3d(0, 0 , 5);
-		Sfx::AddThrustSmoke(this, Sfx::TYPE_SMOKE, std::min(10.0*GetVelocity().Length()*abs(m_thrusters.z),100.0),pos);
+		const vector3d pos = GetOrient() * vector3d(0, 0 , 5);
+		const float speed = std::min(10.0*GetVelocity().Length()*abs(m_thrusters.z),100.0);
+		Sfx::AddThrustSmoke(this, Sfx::TYPE_SMOKE, speed, pos);
 	}
 }
 
@@ -1359,7 +1362,7 @@ void Ship::EnterHyperspace() {
 	// The second one only checks the bare minimum to insure consistency.
 	if (!m_hyperspace.ignoreFuel) {
 
-		const SystemPath dest = GetHyperspaceDest();
+		const SystemPath &dest = GetHyperspaceDest();
 		int fuel_cost;
 
 		Ship::HyperjumpStatus status = CheckHyperspaceTo(dest, fuel_cost, m_hyperspace.duration);

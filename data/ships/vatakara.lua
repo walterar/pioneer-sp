@@ -17,7 +17,7 @@ define_ship {
 --	max_atmoshield = 0,
 	max_cargo = 500,
 	max_laser = 2,
-	max_missile = 0,
+	max_missile = 8,
 	max_cargoscoop = 1,
 	max_fuelscoop = 1,
 	min_crew = 1,
@@ -26,6 +26,6 @@ define_ship {
 	hull_mass = 350,
 	fuel_tank_mass = 320,
 	thruster_fuel_use = 0.0001,
-	price = 720000,
-	hyperdrive_class = 0,
+	price = 920000,
+	hyperdrive_class = 5,
 }

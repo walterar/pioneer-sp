@@ -93,9 +93,7 @@ local onChat = function (form, ref, option)
 	local ad          = ads[ref]
 	local backstation = Game.player:GetDockedWith().path
 	local faction     = Game.system.faction
-
 	form:Clear()
-
 	if option == -1 then
 		form:Close()
 		return

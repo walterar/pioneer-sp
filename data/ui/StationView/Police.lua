@@ -8,10 +8,10 @@ local Rand       = import("Rand")
 local Character  = import("Character")
 local Format     = import("Format")
 local utils      = import("utils")
-local MessageBox = import("ui/MessageBox")
 
-local InfoFace = import("ui/InfoFace")
+local InfoFace           = import("ui/InfoFace")
 local SmallLabeledButton = import("ui/SmallLabeledButton")
+local MessageBox         = import("ui/MessageBox")
 
 local ui = Engine.ui
 local l = Lang.GetResource("ui-core")

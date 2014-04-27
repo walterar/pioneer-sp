@@ -105,6 +105,7 @@ function Ship:FireMissileAt(missile, target)
 		if target:exists() then
 			missile_object:AIKamikaze(target)
 			_G.MissileActive = MissileActive +1
+			target:CancelAI()
 		end
 		-- Let's keep a safe distance before activating this device, shall we ?
 		Timer:CallEvery(1, function ()
@@ -116,11 +117,7 @@ function Ship:FireMissileAt(missile, target)
 			end
 			missile_object:Arm()
 			if ShipDef[missile_object.shipId].name == "MISSILE_NAVAL" then
-				missile_object:Explode()
-				missile_object=nil
-				target:Explode()
-				target=nil
-				_G.MissileActive = MissileActive - 1
+				target:SetHullPercent(0)
 			end
 			return true
 		end)
@@ -342,6 +339,25 @@ Ship.GenerateCrew = function (self)
 		newCrew:RollNew(true)
 		self:Enroll(newCrew)
 	end
+end
+
+--
+-- Method: CrewNumber
+--
+-- Returns the number of the current crew employed on the ship.
+--
+-- > ship:CrewNumber()
+--
+-- Availability:
+--
+--   20140404
+--
+-- Status:
+--
+--   experimental
+--
+Ship.CrewNumber = function (self)
+	return #CrewRoster[self]
 end
 
 --

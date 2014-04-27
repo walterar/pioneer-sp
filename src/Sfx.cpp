@@ -111,21 +111,7 @@ void Sfx::Render(Renderer *renderer, const matrix4x4d &ftransform)
 	switch (m_type) {
 		case TYPE_NONE: break;
 		case TYPE_EXPLOSION: {
-			/*//Explosion effect: A quick flash of three concentric coloured spheres. A bit retro.
-			const matrix4x4f trans = matrix4x4f::Translation(fpos.x, fpos.y, fpos.z);
-			RefCountedPtr<Material> exmat = Sfx::explosionEffect->GetMaterial();
-			exmat->diffuse = Color(255, 255, 128, 255);
-			renderer->SetTransform(trans * matrix4x4f::ScaleMatrix(500*m_age));
-			Sfx::explosionEffect->Draw(renderer);
-			exmat->diffuse = Color(255, 128, 0, 168);
-			renderer->SetTransform(trans * matrix4x4f::ScaleMatrix(750*m_age));
-			Sfx::explosionEffect->Draw(renderer);
-			exmat->diffuse = Color(255, 0, 0, 84);
-			renderer->SetTransform(trans * matrix4x4f::ScaleMatrix(1000*m_age));
-			Sfx::explosionEffect->Draw(renderer);
-			break;*/
 			renderer->SetTransform(matrix4x4d::Translation(fpos));
-			//explosionParticle->diffuse = Color(255, 255, 0, (1.0f-(m_age/3.5f))*255);
 			float spriteframe=m_age*20+1;
 			std::string fname="textures/explosion/image"+std::to_string(static_cast<int>(spriteframe))+".png";
 			explosionParticle->texture0 = Graphics::TextureBuilder::Billboard(fname).GetOrCreateTexture(renderer, "billboard");

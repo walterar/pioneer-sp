@@ -207,7 +207,7 @@ int SpaceStation::NumShipsDocked() const
 {
 	Sint32 numShipsDocked = 0;
 	for (Uint32 i=0; i<m_shipDocking.size(); i++) {
-		if (NULL != m_shipDocking[i].ship) 
+		if (NULL != m_shipDocking[i].ship)
 			++numShipsDocked;
 	}
 	return numShipsDocked;
@@ -278,7 +278,7 @@ bool SpaceStation::LaunchShip(Ship *ship, int port)
 	m_doorAnimationStep = 0.3; // open door
 
 	const Aabb& aabb = ship->GetAabb();
-	const matrix3x3d mt = ship->GetOrient();
+	const matrix3x3d& mt = ship->GetOrient();
 	const vector3d up = mt.VectorY().Normalized() * aabb.min.y;
 
 	sd.fromPos = (ship->GetPosition() - GetPosition() + up) * GetOrient();	// station space
@@ -489,7 +489,7 @@ void SpaceStation::PositionDockedShip(Ship *ship, int port) const
 
 void SpaceStation::StaticUpdate(const float timeStep)
 {
-	DoLawAndOrder(timeStep);
+	//DoLawAndOrder(timeStep);
 	DockingUpdate(timeStep);
 	m_navLights->Update(timeStep);
 }

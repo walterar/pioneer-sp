@@ -33,8 +33,8 @@ _G.PrevPos           = "no"
 _G.PrevFac           = "no"
 _G.SpaMember         = false
 _G.DangerLevel       = 0
-_G.MissileActive     = 0
 _G.FuelHydrogen      = false
+_G.MissileActive     = 0
 
 local welcome = function ()
 	if (not Game.system) then return end
@@ -80,7 +80,7 @@ local onShipUndocked = function (player, station)
 		_G.PrevFac = faction
 		if station.isGroundStation then
 			player:AIFlyTo(player.frameBody)
-			Timer:CallAt(Game.time + 10, function ()
+			Timer:CallAt(Game.time + 5, function ()
 				player:CancelAI()
 			end)
 		end
@@ -105,8 +105,9 @@ local onGameStart = function ()
 		_G.PrevFac           = shipData.prev_fac or "no"
 		_G.DangerLevel       = shipData.danger_level or 0
 		_G.TrueJoust         = shipData.true_joust or false
-		_G.MissileActive     = shipData.missile_active or 0
 		_G.FuelHydrogen      = shipData.fuel_hydrogen or false
+		_G.MissileActive     = shipData.missile_active or 0
+
 	else
 
 		_G.MissionsSuccesses = 0
@@ -117,6 +118,7 @@ local onGameStart = function ()
 		_G.PrevFac           = "no"
 		_G.SpaMember         = false
 		_G.FuelHydrogen      = false
+		_G.MissileActive     = 0
 
 		_G.ShipFaction       = Game.system.faction.name
 		_G.OriginFaction     = ShipFaction
@@ -176,7 +178,11 @@ local onShipHit = function (ship, attacker)
 		elseif trigger == 1 then ship:SetInvulnerable(false)
 		end
 	elseif attacker and attacker:IsPlayer() then
-		_G.ShotsSuccessful = (ShotsSuccessful or 0) + 1
+		if MissileActive > 0 then
+			_G.MissileActive = MissileActive - 1
+		else
+			_G.ShotsSuccessful = (ShotsSuccessful or 0) + 1
+		end
 	end
 end
 Event.Register("onShipHit", onShipHit)
@@ -201,8 +207,8 @@ local serialize = function ()
 			prev_fac           = PrevFac,
 			danger_level       = DangerLevel,
 			true_joust         = TrueJoust,
-			missile_active     = MissileActive,
 			fuel_hydrogen      = FuelHydrogen,
+			missile_active     = MissileActive,
 			}
 	return {shipData = shipData}
 end
@@ -225,6 +231,7 @@ local onGameEnd = function ()
 	_G.PrevFac           = nil
 	_G.TrueJoust         = nil
 	_G.FuelHydrogen      = nil
+	_G.MissileActive     = nil
 end
 Event.Register("onGameEnd", onGameEnd)
 

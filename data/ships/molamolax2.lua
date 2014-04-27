@@ -1,4 +1,4 @@
--- Copyright © 2008-2013 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of CC-BY-SA 3.0. See licenses/CC-BY-SA-3.0.txt
 -- Balanced for Pioneer Scout+ by walterar <walterar2@gmail.com>
 
@@ -9,7 +9,7 @@ define_ship {
 	model='molamola',
 	forward_thrust = 259e5,
 	reverse_thrust = 118e5,
-	up_thrust = 6e6,
+	up_thrust = 1e7,
 	down_thrust = 6e6,
 	left_thrust = 6e6,
 	right_thrust = 6e6,

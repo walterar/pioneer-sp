@@ -7,7 +7,7 @@ define_surface_station {
 	-- define groups of bays, in this case 1 group with 1 bay.
 	-- params are = {minSize, maxSize, {list,of,bay,numbers}}
 	bay_groups = {
-		{0,  15, {1}},
+		{0, 500, {1}},
 		{0, 500, {2}},
 		{0, 500, {3}},
 		{0, 500, {4}},

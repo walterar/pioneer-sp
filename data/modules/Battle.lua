@@ -24,7 +24,7 @@ Event.Register("onEnterSystem", function (ship)
 					def.tag == 'SHIP'
 					and def.capacity >= 20
 					and def.capacity <= 500
-					and def.defaultHyperdrive ~= "NONE"
+					and def.hyperdriveClass > 0
 			end, pairs(ShipDef)))
 			if (#hostiles * 2) == 0 then return end
 			local hostil = {}
@@ -32,7 +32,7 @@ Event.Register("onEnterSystem", function (ship)
 			if n > max_hostiles then n = max_hostiles end
 			for i = 1, n do
 				hostil[i] = hostiles[Engine.rand:Integer(1,#hostiles)]
-				local default_drive = hostil[i].defaultHyperdrive
+				local default_drive = 'DRIVE_CLASS'..tostring(hostil[i].hyperdriveClass)
 				local max_laser_size = hostil[i].capacity - EquipDef[default_drive].mass
 				local laserdefs = utils.build_array(utils.filter(function (k,def)
 					return

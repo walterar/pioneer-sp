@@ -19,8 +19,8 @@ local Lang      = import("Lang")
 local l = Lang.GetResource("module-jousting") or Lang.GetResource("module-jousting","en")
 
 local multiplier = 0
-local money = 0
-local killcount = 0
+local money      = 0
+local killcount  = 0
 
 local onEnterSystem = function (player)
 	if not player:IsPlayer()
@@ -35,59 +35,52 @@ local onEnterSystem = function (player)
 			def.tag == 'SHIP' and
 			def.capacity >= 20 and
 			def.capacity <= 120 and
-			def.defaultHyperdrive ~= "NONE"
+			def.hyperdriveClass > 0
 		end, pairs(ShipDef)))
 	if #shipdefs == 0 then return end
-
 	local shipdef = shipdefs[Engine.rand:Integer(1,#shipdefs)]
-	local default_drive = shipdef.defaultHyperdrive
+	local default_drive = 'DRIVE_CLASS'..tostring(shipdef.hyperdriveClass)
 	local max_laser_size = shipdef.capacity - EquipDef[default_drive].mass
 	local laserdefs = utils.build_array(utils.filter(function (k, def)
 		return
-			def.slot == 'LASER' and
-			def.mass <= max_laser_size and
-			string.sub(def.id,0,11) == 'PULSECANNON'
+			def.slot == 'LASER'
+			and def.mass <= max_laser_size
+			and string.sub(def.id,0,11) == 'PULSECANNON'
 		end, pairs(EquipDef)))
 	local laserdef = laserdefs[Engine.rand:Integer(1,#laserdefs)]
 	local hostil = Space.SpawnShipNear(shipdef.id, player, 5, 5)
+	if hostil == nil then
+		print("EL HOSTIL DE JOUSTING NO HA SIDO CREADO")
+	return end
 	hostil:SetLabel(Ship.MakeRandomLabel())
 	hostil:AddEquip(default_drive)
 	hostil:AddEquip(laserdef.id)
-
 	local msg = l["you_have_been_challenged" .. Engine.rand:Integer(1,3)]
 	Comms.ImportantMessage(msg, hostil.label)
 	local jousting = Game.system
 	Timer:CallAt(Game.time+20, function ()
-		if Game.system == jousting then
+		if Game.system == jousting and hostil ~= nil then
 			if (player:GetEquipFree("LASER") < ShipDef[player.shipId].equipSlotCapacity.LASER) then
-				if not pcall(function ()
-						_G.TrueJoust = true
-						hostil:AIKill(player)
-						msg = l["the_time_has_come"..Engine.rand:Integer(1,3)]
-						Comms.ImportantMessage(msg, hostil.label)
-					end)
-				then
-				end
+				_G.TrueJoust = true
+				hostil:AIKill(player)
+				msg = l["the_time_has_come"..Engine.rand:Integer(1,3)]
+				Comms.ImportantMessage(msg, hostil.label)
 			else
-				if not pcall(function ()
-					hostil:CancelAI()
-					multiplier = 100 - (100 * Game.system.lawlessness)
-					money = math.floor(player:GetMoney() * (multiplier/1000))
-					player:AddMoney(-money)
-					local nmsg = Engine.rand:Integer(1,3)
-					msg = l["I_have_taken"..nmsg].." $"..money.." "..l["of_your_money"..nmsg]
-					Comms.ImportantMessage(msg, hostil.label)
-					_G.TrueJoust = false
-					end)
-				then
-				end
+				hostil:CancelAI()
+				multiplier = 100 - (100 * Game.system.lawlessness)
+				money = math.floor(player:GetMoney() * (multiplier/1000))
+				player:AddMoney(-money)
+				local nmsg = Engine.rand:Integer(1,3)
+				msg = l["I_have_taken"..nmsg].." $"..money.." "..l["of_your_money"..nmsg]
+				Comms.ImportantMessage(msg, hostil.label)
+				_G.TrueJoust = false
 			end
 		end
 	end)
 end
 
 local onShipHit = function (ship, attacker)
-	if ship:IsPlayer() and TrueJoust == true then
+	if TrueJoust == true and ship:IsPlayer() then
 		killcount = Character.persistent.player.killcount
 		multiplier = 100 - (100 * Game.system.lawlessness)
 		money = math.floor(ship:GetMoney() * (multiplier/1000))
@@ -95,7 +88,7 @@ local onShipHit = function (ship, attacker)
 end
 
 local onShipDestroyed = function (ship, attacker)
-	if attacker == Game.player and TrueJoust == true then
+	if TrueJoust == true and attacker == Game.player then
 		Timer:CallAt(Game.time+4, function ()
 			if killcount < Character.persistent.player.killcount and money > 0  then
 				Comms.ImportantMessage(l.the_attacker_money.." ( " .. showCurrency(money*4) .. " ) "..l.is_now_yours)

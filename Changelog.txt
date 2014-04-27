@@ -2,16 +2,57 @@ April 2014
 
    * New features
      * UI animations (#2830)
+     * Explosions (#2831) * Scout+ uses the original function
+                            of Sadmar, modified.
+     * Support Fake Baked Ambient Occlusion texture (#2872)
+     * New Wave Skins (#2822)
+     * Soft mouse (#2883)
+     * Autosave when docking/undocking/landing/takeoff and on game exit (#2814)
+
+   * Minor changes and tweaks
+     * Add a Return to Game button in the pause/options screen (#2841)
+     * Disable the Save button when in hyperspace.
+     * More specific warning message in ship market if trying to buy
+       equipment that the current ship model doesn't support
+     * More stat on ship in ship market and ship info view (#1733,#2838)
+     * The autopilot now faces toward its destination during
+       the coasting phase (#2846)
+     * A "Refuel full" button added next to the refuel button (#2855,#2853)
+     * Balance - Exhaust velocity increase (#2835) * Not in Scout+
+     * Slightly bigger chat forms (#2856)
 
    * Script and UI API changes
      * Animation object, UI.Context.Animate and AddAnimation methods (#2830)
+     * Improve TradeShips.lua (#2851) * Not used in Scout+
+     * Ship.SetShipType doesn't equip the default hyperdrive anymore
+     * ShipDef.defaultHyperdrive has been removed in favour of
+       ShipDef.hyperdriveClass (#2859)
+     * New attribute SpaceStation.numShipsDocked to get number of occupied ports
+     * Body.FindNearestTo to find bodies near this body
 
    * Internal changes
      * Emit Lua events and timers in hyperspace
      * Output some system info for debugging purposes (#2832)
+     * Add serialization support for LuaRef objects (#2849)
+     * Add facilities to easily call arbitrary Lua methods from C++ (#2854, #2869)
+     * Address some warnings from cppcheck and GCC (#2871)
+     * Add possibility for synchronous jobs (#2879)
+     * Assign factions to systems when first needing it (#2887)
+     * Merge Sector and StarSystem caches in a common template class (#2880)
 
    * Fixes
      * Fix duplication of cargo during cargo scooping (#2644, #2828)
+     * Fix extra crew lingering after sale of ship (#2122, #2837)
+     * Fix taking off with wrong number of crew (#2837)
+     * Fix taking off with unpaid fines (#2359)
+     * Fix zero duration and fuel display in sector view after load (#2847)
+     * Fix water still sold in fuel club (#2852)
+     * Fix duplicated HANG_UP button in crew bulletin boards (#2858)
+     * Fix assertion in system info view when starport on planet with same
+       name was selected (#2848)
+     * Fix crash when Nerodia selected in shipyard (#2865, #2864)
+     * Fix internal bug in multi-threading queue (#2874)
+     * Fix crash due to ships spawning with default hyperdrive 0 (#2875,2877)* This error is not in Scout+
 
 March 2014
 

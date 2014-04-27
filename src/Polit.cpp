@@ -6,7 +6,6 @@
 #include "Polit.h"
 #include "galaxy/StarSystem.h"
 #include "galaxy/Sector.h"
-#include "galaxy/SectorCache.h"
 #include "Factions.h"
 #include "Space.h"
 #include "Ship.h"
@@ -186,7 +185,7 @@ void GetCrime(Sint64 *crimeBitset, Sint64 *fine)
 	}
 }
 
-void GetSysPolitStarSystem(const StarSystem *s, const fixed human_infestedness, SysPolit &outSysPolit)
+void GetSysPolitStarSystem(const StarSystem *s, const fixed &human_infestedness, SysPolit &outSysPolit)
 {
 	SystemPath path = s->GetPath();
 	const Uint32 _init[5] = { Uint32(path.sectorX), Uint32(path.sectorY), Uint32(path.sectorZ), path.systemIndex, POLIT_SEED };
@@ -197,8 +196,8 @@ void GetSysPolitStarSystem(const StarSystem *s, const fixed human_infestedness, 
 	GovType a = GOV_INVALID;
 
 	/* from custom system definition */
-	if (sec->m_systems[path.systemIndex].customSys) {
-		Polit::GovType t = sec->m_systems[path.systemIndex].customSys->govType;
+	if (sec->m_systems[path.systemIndex].GetCustomSystem()) {
+		Polit::GovType t = sec->m_systems[path.systemIndex].GetCustomSystem()->govType;
 		a = t;
 	}
 	if (a == GOV_INVALID) {

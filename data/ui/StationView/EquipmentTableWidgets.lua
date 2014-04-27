@@ -8,12 +8,12 @@ local EquipDef   = import("EquipDef")
 local MessageBox = import("ui/MessageBox")
 local utils      = import("utils")
 
-local l = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
+local l = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en");
 
 -- XXX equipment strings are in core. this sucks
-local lcore = Lang.GetResource("core") or Lang.GetResource("core","en")
+local lcore = Lang.GetResource("core") or Lang.GetResource("core","en");
 
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en");
 
 local ui = Engine.ui
 
@@ -217,6 +217,14 @@ function EquipmentTableWidgets.Pair (config)
 
 		local player = Game.player
 
+		-- if this ship model doesn't support fitting of this equip:
+		if player:GetEquipSlotCapacity(EquipDef[e].slot) < 1 then
+			MessageBox.Message(string.interp(l.NOT_SUPPORTED_ON_THIS_SHIP,
+				 {equipment = EquipDef[e].name,}))
+			return
+		end
+
+		-- if ship maxed out in this slot
 		if player:GetEquipFree(EquipDef[e].slot) < 1 then
 			MessageBox.Message(l.SHIP_IS_FULLY_LADEN)
 			return

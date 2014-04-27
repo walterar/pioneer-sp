@@ -21,6 +21,7 @@ local onEnterSystem = function (player)
 		def.tag == 'SHIP'
 		and def.hullMass >= 100-- Pirates need large ships to collect the booty.
 		and def.hullMass <= 400
+		and def.hyperdriveClass > 0
 		end, pairs(ShipDef)))
 	if #shipdefs == 0 then return end
 
@@ -33,7 +34,7 @@ local onEnterSystem = function (player)
 		max_pirates = max_pirates-1
 
 		local shipdef = shipdefs[Engine.rand:Integer(1,#shipdefs)]
-		local default_drive = shipdef.defaultHyperdrive
+		local default_drive = shipdef.hyperdriveClass
 
 		-- select a laser. this is naive - it simply chooses at random from
 		-- the set of lasers that will fit, but never more than one above the

@@ -57,14 +57,14 @@ _G.ship_hostil = function (risk)
 		return def.tag      == 'SHIP'
 			and  def.capacity >= capacity1
 			and  def.capacity <= capacity2
-			and  def.defaultHyperdrive ~= "NONE"
+			and  def.hyperdriveClass > 0
 	end, pairs(ShipDef)))
 	if #hostiles > 0 then
 		while count_hostiles > 0 do
 			count_hostiles = count_hostiles - 1
 			if Engine.rand:Number(1) <= risk then
 				local hostile = hostiles[Engine.rand:Integer(1,#hostiles)]
-				local default_drive = hostile.defaultHyperdrive
+				local default_drive = 'DRIVE_CLASS'..tostring(hostile.hyperdriveClass)
 				local max_laser_size = hostile.capacity - EquipDef[default_drive].mass
 				local laserdefs = utils.build_array(utils.filter(function (k,def)
 					return def.slot == 'LASER'

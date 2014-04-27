@@ -689,14 +689,17 @@ AICmdFlyTo::AICmdFlyTo(Ship *ship, Body *target) : AICommand(ship, CMD_FLYTO)
 }
 
 // Specified pos, endvel should be > 0
-AICmdFlyTo::AICmdFlyTo(Ship *ship, Frame *targframe, const vector3d &posoff, double endvel, bool tangent)
-	: AICommand(ship, CMD_FLYTO)
+AICmdFlyTo::AICmdFlyTo(Ship *ship, Frame *targframe, const vector3d &posoff, double endvel, bool tangent) :
+	AICommand(ship, CMD_FLYTO),
+	m_target(nullptr),
+	m_targframe(targframe),
+	m_posoff(posoff),
+	m_endvel(endvel),
+	m_tangent(tangent),
+	m_state(-6),
+	m_lockhead(true),
+	m_frame(nullptr)
 {
-	m_targframe = targframe; m_target = 0;
-	m_posoff = posoff;
-	m_endvel = endvel;
-	m_tangent = tangent;
-	m_frame = 0; m_state = -6; m_lockhead = true;
 }
 
 bool AICmdFlyTo::TimeStepUpdate()
@@ -708,7 +711,7 @@ bool AICmdFlyTo::TimeStepUpdate()
 	if (m_ship->GetFlightState() == Ship::FLYING) m_ship->SetWheelState(false);
 	else { LaunchShip(m_ship); return false; }
 
-	// generate base target pos (with vicinity adjustment) & vel 
+	// generate base target pos (with vicinity adjustment) & vel
 	double timestep = Pi::game->GetTimeStep();
 	vector3d targpos, targvel;
 	if (m_target) {
@@ -717,7 +720,7 @@ bool AICmdFlyTo::TimeStepUpdate()
 		targvel = m_target->GetVelocityRelTo(m_ship->GetFrame());
 	} else {
 		targpos = GetPosInFrame(m_ship->GetFrame(), m_targframe, m_posoff);
-		targvel = GetVelInFrame(m_ship->GetFrame(), m_targframe, m_posoff);		
+		targvel = GetVelInFrame(m_ship->GetFrame(), m_targframe, m_posoff);
 	}
 	Frame *targframe = m_target ? m_target->GetFrame() : m_targframe;
 	ParentSafetyAdjust(m_ship, targframe, targpos, targvel);
@@ -819,7 +822,7 @@ Output("Autopilot dist = %.1f, speed = %.1f, zthrust = %.2f, state = %i\n",
 
 	// cap perpspeed according to what's needed now
 	perpspeed = std::min(perpspeed, 2.0*sidefactor*timestep);
-	
+
 	// cap sdiff by thrust...
 	double sdiff = ispeed - curspeed;
 	double linaccel = sdiff < 0 ?
@@ -833,10 +836,12 @@ Output("Autopilot dist = %.1f, speed = %.1f, zthrust = %.2f, state = %i\n",
 	if (decel) m_ship->AIChangeVelBy(vdiff * m_ship->GetOrient());
 	else m_ship->AIChangeVelDir(vdiff * m_ship->GetOrient());
 
-	// work out which way to head 
+	// work out which way to head
 	vector3d head = reldir;
 	if (!m_state && sdiff < -1.2*maxdecel*timestep) m_state = 1;
-	if (m_state && sdiff < maxdecel*timestep*60) head = -head;
+	// if we're not coasting due to fuel constraints, and we're in the deceleration phase
+	// then flip the ship so we can use our main thrusters to decelerate
+	if (m_state && !is_zero_exact(sdiff) && sdiff < maxdecel*timestep*60) head = -head;
 	if (!m_state && decel) sidefactor = -sidefactor;
 	head = head*maxdecel + perpdir*sidefactor;
 
@@ -903,7 +908,7 @@ bool AICmdDock::TimeStepUpdate()
 	// state 0,2: Get docking data
 	if (m_state == eDockGetDataStart
 		|| m_state == eDockGetDataEnd
-		|| m_state == eDockingComplete) 
+		|| m_state == eDockingComplete)
 	{
 		const SpaceStationType *type = m_target->GetStationType();
 		SpaceStationType::positionOrient_t dockpos;
@@ -1094,11 +1099,11 @@ bool AICmdFlyAround::TimeStepUpdate()
 	return false;
 }
 
-AICmdFormation::AICmdFormation(Ship *ship, Ship *target, const vector3d &posoff)
-	: AICommand(ship, CMD_FORMATION)
+AICmdFormation::AICmdFormation(Ship *ship, Ship *target, const vector3d &posoff) :
+	AICommand(ship, CMD_FORMATION),
+	m_target(target),
+	m_posoff(posoff)
 {
-	m_target = target;
-	m_posoff = posoff;
 }
 
 bool AICmdFormation::TimeStepUpdate()

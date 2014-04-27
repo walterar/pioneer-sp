@@ -19,6 +19,19 @@ local saleship = {}
 local my_shipDef,my_ship_name,my_ship_id,my_ship_price,shipdefs,maxsales
 local oksel = 0
 
+local equipping = function ()
+	local drive = ShipDef[Game.player.shipId].hyperdriveClass
+	if drive > 0 then
+		Game.player:AddEquip('DRIVE_CLASS'..drive)
+		Game.player:AddEquip('HYDROGEN',drive ^ 2)
+	end
+	if ShipDef[Game.player.shipId].equipSlotCapacity.ATMOSHIELD > 0 then
+		Game.player:AddEquip('ATMOSPHERIC_SHIELDING')
+	end
+	Game.player:AddEquip('SCANNER')
+	Game.player:AddEquip('AUTOPILOT')
+end
+
 local onChat = function (form, ref, option)
 	my_shipDef = ShipDef[Game.player.shipId]
 	my_ship_name = my_shipDef.name
@@ -63,8 +76,7 @@ local onChat = function (form, ref, option)
 		form:Clear()
 
 		form:SetTitle(ad.title)
---		form:SetFace({female = false, armour = false, seed = ad.faceseed})
-		form:SetMessage(string.interp(l["HelloCommander"..Engine.rand:Integer(1,4)]..l["Sale"..Engine.rand:Integer(1,4)].."[ "..my_ship_name.." ] "..showCurrency(my_ship_price)))
+		form:SetMessage(string.interp(l["HelloCommander"..Engine.rand:Integer(1,4)].."\n*\n"..l["Sale"..Engine.rand:Integer(1,4)].."[ "..my_ship_name.." ] "..showCurrency(my_ship_price).."\n*\n*"))
 
 		for i = 1,maxsales do
 			local difer = (saleship[i].basePrice - my_ship_price)
@@ -93,6 +105,7 @@ local onChat = function (form, ref, option)
 				Game.player:SetShipType(saleship[option].id)
 				saleship[option] = my_shipDef
 				oksel = 0
+				equipping()
 				form:Clear()
 				form:SetMessage(l.Thanks)
 				return
@@ -102,6 +115,7 @@ local onChat = function (form, ref, option)
 			Game.player:AddMoney(difer)
 			Game.player:SetShipType(saleship[option].id)
 			saleship[option] = my_shipDef
+			equipping()
 			form:Clear()
 			form:SetMessage(l.Thanks)
 			return

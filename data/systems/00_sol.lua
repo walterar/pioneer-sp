@@ -11,7 +11,7 @@ local sol = CustomSystemBody:new('Sol', 'STAR_G')
 	:mass(f(1,1))
 	:temp(5700)
 
-local mercury = CustomSystemBody:new('Mercury', 'PLANET_TERRESTRIAL')
+local mercury = CustomSystemBody:new('Mercury', 'PLANET_TERRESTRIAL')-- #1
 	:seed(6)
 	:radius(f(38,100))
 	:mass(f(55,1000))
@@ -29,7 +29,7 @@ local mercury = CustomSystemBody:new('Mercury', 'PLANET_TERRESTRIAL')
 	:ice_cover(f(2,100))
 	:life(f(0,1))
 
-local venus = CustomSystemBody:new('Venus', 'PLANET_TERRESTRIAL')
+local venus = CustomSystemBody:new('Venus', 'PLANET_TERRESTRIAL')-- #2
 	:radius(f(95,100))
 	:mass(f(815,1000))
 	:temp(735)
@@ -46,7 +46,7 @@ local venus = CustomSystemBody:new('Venus', 'PLANET_TERRESTRIAL')
 	:ice_cover(f(0,1))
 	:life(f(0,1))
 
-local earth = CustomSystemBody:new('Earth', 'PLANET_TERRESTRIAL')
+local earth = CustomSystemBody:new('Earth', 'PLANET_TERRESTRIAL')-- #3
 	:radius(f(1,1))
 	:mass(f(1,1))
 	:temp(288)
@@ -65,31 +65,31 @@ local earth = CustomSystemBody:new('Earth', 'PLANET_TERRESTRIAL')
 	:life(f(9,10))
 
 local earth_starports = {
-	CustomSystemBody:new('Shanghai', 'STARPORT_SURFACE')
+	CustomSystemBody:new('Shanghai', 'STARPORT_SURFACE')-- #4
 		:latitude(math.deg2rad(31))
 		:longitude(math.deg2rad(-121)),
-	CustomSystemBody:new('Mexico City', 'STARPORT_SURFACE')
+	CustomSystemBody:new('Mexico City', 'STARPORT_SURFACE')-- #5
 		:latitude(math.deg2rad(19))
 		:longitude(math.deg2rad(99)),
-	CustomSystemBody:new('London', 'STARPORT_SURFACE')
+	CustomSystemBody:new('London', 'STARPORT_SURFACE')-- #6
 		:latitude(math.deg2rad(51))
 		:longitude(0),
-	CustomSystemBody:new('Moscow', 'STARPORT_SURFACE')
+	CustomSystemBody:new('Moscow', 'STARPORT_SURFACE')-- #7
 		:latitude(math.deg2rad(55))
 		:longitude(math.deg2rad(-37.5)),
-	CustomSystemBody:new('Brasilia', 'STARPORT_SURFACE')
+	CustomSystemBody:new('Brasilia', 'STARPORT_SURFACE')-- #8
 		:latitude(math.deg2rad(-15.5))
 		:longitude(math.deg2rad(48)),
-	CustomSystemBody:new('Los Angeles', 'STARPORT_SURFACE')
+	CustomSystemBody:new('Los Angeles', 'STARPORT_SURFACE')-- #9
 		:latitude(math.deg2rad(34))
 		:longitude(math.deg2rad(118)),
-	CustomSystemBody:new('Gates Spaceport', 'STARPORT_ORBITAL')
+	CustomSystemBody:new('Gates Spaceport', 'STARPORT_ORBITAL')-- #10
 		:semi_major_axis(f(100,100000))
 		:rotation_period(f(1,24*60*3)),
 }
 
 local moon = {
-	CustomSystemBody:new('Moon', 'PLANET_TERRESTRIAL')
+	CustomSystemBody:new('Moon', 'PLANET_TERRESTRIAL')-- #11
 		:seed(-5)
 		:radius(f(273,1000))
 		:mass(f(12,1000))
@@ -104,13 +104,13 @@ local moon = {
 		:rotational_phase_at_start(fixed.deg2rad(f(0,1)))
 		:volcanicity(f(0,1)),
 	{
-		CustomSystemBody:new('Tranquility Base', 'STARPORT_SURFACE')
+		CustomSystemBody:new('Tranquility Base', 'STARPORT_SURFACE')-- #12
 			:latitude(math.deg2rad(0.6875))
 			:longitude(math.deg2rad(23.4334))
 	},
 }
 
-local mars = CustomSystemBody:new('Mars', 'PLANET_TERRESTRIAL')
+local mars = CustomSystemBody:new('Mars', 'PLANET_TERRESTRIAL')-- #13
 	:seed(-3)
 	:radius(f(533,1000))
 	:mass(f(107,1000))
@@ -130,19 +130,19 @@ local mars = CustomSystemBody:new('Mars', 'PLANET_TERRESTRIAL')
 	:life(f(15,100))
 
 local mars_starports = {
-	CustomSystemBody:new('Cydonia', 'STARPORT_SURFACE')
+	CustomSystemBody:new('Cydonia', 'STARPORT_SURFACE')-- #14
 		:latitude(math.deg2rad(-29))
 		:longitude(math.deg2rad(124)),
-	CustomSystemBody:new('Olympus Mons', 'STARPORT_SURFACE')
+	CustomSystemBody:new('Olympus Mons', 'STARPORT_SURFACE')-- #15
 		:latitude(math.deg2rad(30))
 		:longitude(math.deg2rad(-37)),
-	CustomSystemBody:new('Mars High', 'STARPORT_ORBITAL')
+	CustomSystemBody:new('Mars High', 'STARPORT_ORBITAL')-- #16
 		:semi_major_axis(f(5068,100000000))
 		:rotation_period(f(11,24)),
 }
 
 local mars_moons = {
-	CustomSystemBody:new('Phobos', 'PLANET_ASTEROID')
+	CustomSystemBody:new('Phobos', 'PLANET_ASTEROID')-- #17
 		:seed(439771126)
 		:radius(f(21,10000))
 		:mass(f(18,100000))
@@ -154,11 +154,11 @@ local mars_moons = {
 		:metallicity(f(4,5))
 		:volcanicity(f(3,4)),
 	{
-		CustomSystemBody:new('Phobos Base', 'STARPORT_SURFACE')
+		CustomSystemBody:new('Phobos Base', 'STARPORT_SURFACE')-- #18
 			:latitude(math.deg2rad(5))
 			:longitude(math.deg2rad(-5)),
 	},
-	CustomSystemBody:new('Deimos', 'PLANET_ASTEROID')
+	CustomSystemBody:new('Deimos', 'PLANET_ASTEROID')-- #19
 		:radius(f(12,10000))
 		:mass(f(25,1000000))
 		:temp(233)
@@ -169,11 +169,11 @@ local mars_moons = {
 		:metallicity(f(2,5))
 		:volcanicity(f(0,1)),
 	{
-		CustomSystemBody:new('Tomm\'s Sanctuary', 'STARPORT_SURFACE'),
+		CustomSystemBody:new('Tomm\'s Sanctuary', 'STARPORT_SURFACE'),-- #20
 	},
 }
 
-local jupiter = CustomSystemBody:new('Jupiter', 'PLANET_GAS_GIANT')
+local jupiter = CustomSystemBody:new('Jupiter', 'PLANET_GAS_GIANT')-- #21
 	:seed(786424627)
 	:radius(f(11,1))
 	:mass(f(3178,10))
@@ -188,7 +188,7 @@ local jupiter = CustomSystemBody:new('Jupiter', 'PLANET_GAS_GIANT')
 	:rings(f(11176,10000), f(11769,10000), {0.61, 0.48, 0.384, 0.8})
 
 local jupiter_moons = {
-	CustomSystemBody:new('Io', 'PLANET_TERRESTRIAL')
+	CustomSystemBody:new('Io', 'PLANET_TERRESTRIAL')-- #22
 		:seed(-4)
 		:radius(f(286,1000))
 		:mass(f(15,1000))
@@ -205,11 +205,11 @@ local jupiter_moons = {
 		:ice_cover(f(0,1))
 		:life(f(0,1)),
 	{
-		CustomSystemBody:new('Dante\'s Base', 'STARPORT_SURFACE')
+		CustomSystemBody:new('Dante\'s Base', 'STARPORT_SURFACE')-- #23
 			:latitude(math.deg2rad(-0.5))
 			:longitude(math.deg2rad(26.2)),
 	},
-	CustomSystemBody:new('Europa', 'PLANET_TERRESTRIAL')
+	CustomSystemBody:new('Europa', 'PLANET_TERRESTRIAL')-- #24
 		:seed(2102431459)
 		:radius(f(245,1000))
 		:mass(f(8,1000))
@@ -224,11 +224,11 @@ local jupiter_moons = {
 		:metallicity(f(3,4))
 		:volcanicity(f(0,1)),
 	{
-		CustomSystemBody:new('Clarke\'s Station', 'STARPORT_ORBITAL')
+		CustomSystemBody:new('Clarke\'s Station', 'STARPORT_ORBITAL')-- #25
 			:semi_major_axis(f(12,500000))
 			:rotation_period(f(1,24*60*3)),
 	},
-	CustomSystemBody:new('Ganymede', 'PLANET_TERRESTRIAL')
+	CustomSystemBody:new('Ganymede', 'PLANET_TERRESTRIAL')-- #26
 		:seed(-1232011660)
 		:radius(f(413,1000))
 		:mass(f(25,1000))
@@ -243,11 +243,11 @@ local jupiter_moons = {
 		:atmos_density(f(83,1000))
 		:rotation_period(f(72,10)),
 	{
-		CustomSystemBody:new('Enki Catena', 'STARPORT_SURFACE')
+		CustomSystemBody:new('Enki Catena', 'STARPORT_SURFACE')-- #27
 			:latitude(math.deg2rad(84))
 			:longitude(math.deg2rad(96)),
 	},
-	CustomSystemBody:new('Callisto', 'PLANET_TERRESTRIAL')
+	CustomSystemBody:new('Callisto', 'PLANET_TERRESTRIAL')-- #28
 		:seed(1272712740)
 		:radius(f(378,1000))
 		:mass(f(18,1000))
@@ -257,12 +257,12 @@ local jupiter_moons = {
 		:eccentricity(f(74,10000))
 		:inclination(math.deg2rad(0.192))
 		:rotation_period(f(167,10)),
-	CustomSystemBody:new('Discovery Base', 'STARPORT_ORBITAL')
+	CustomSystemBody:new('Discovery Base', 'STARPORT_ORBITAL')-- #29
 		:semi_major_axis(f(14,1000))
 		:rotation_period(f(204,10)),
 }
 
-local saturn = CustomSystemBody:new('Saturn', 'PLANET_GAS_GIANT')
+local saturn = CustomSystemBody:new('Saturn', 'PLANET_GAS_GIANT')-- #30
 	:seed(1)
 	:radius(f(9,1))
 	:mass(f(95152,1000))
@@ -275,7 +275,7 @@ local saturn = CustomSystemBody:new('Saturn', 'PLANET_GAS_GIANT')
 	:rings(f(1298,1000), f(2383,1000), {0.435, 0.412, 0.335, 0.9})
 
 local saturn_moons = {
-	CustomSystemBody:new('Dione', 'PLANET_TERRESTRIAL')
+	CustomSystemBody:new('Dione', 'PLANET_TERRESTRIAL')-- #31
 		:seed(-562018355)
 		:radius(f(881,10000))
 		:mass(f(328,1000000))
@@ -285,7 +285,7 @@ local saturn_moons = {
 		:eccentricity(f(22,10000))
 		:inclination(math.deg2rad(0.019))
 		:rotation_period(f(2737,1000)),
-	CustomSystemBody:new('Rhea', 'PLANET_TERRESTRIAL')
+	CustomSystemBody:new('Rhea', 'PLANET_TERRESTRIAL')-- #32
 		:radius(f(12,100))
 		:mass(f(39,10000))
 		:temp(81)
@@ -294,7 +294,7 @@ local saturn_moons = {
 		:inclination(math.deg2rad(0.345))
 		:rotation_period(f(452,100))
 		:atmos_density(f(82,1000)),
-	CustomSystemBody:new('Titan', 'PLANET_TERRESTRIAL')
+	CustomSystemBody:new('Titan', 'PLANET_TERRESTRIAL')-- #33
 		:seed(0)
 		:radius(f(400,1000))
 		:mass(f(225,10000))
@@ -306,18 +306,18 @@ local saturn_moons = {
 		:atmos_oxidizing(f(6,10))
 		:rotation_period(f(15945,1000)),
 	{
-		CustomSystemBody:new('Oasis City', 'STARPORT_SURFACE')
+		CustomSystemBody:new('Oasis City', 'STARPORT_SURFACE')-- #34
 			:latitude(math.deg2rad(18.4))
 			:longitude(math.deg2rad(196)),
-		CustomSystemBody:new('Port Makenzie', 'STARPORT_SURFACE')
+		CustomSystemBody:new('Port Makenzie', 'STARPORT_SURFACE')-- #35
 			:latitude(math.deg2rad(1))
 			:longitude(math.deg2rad(14)),
-		CustomSystemBody:new('Daniel\'s Haven', 'STARPORT_ORBITAL')
+		CustomSystemBody:new('Daniel\'s Haven', 'STARPORT_ORBITAL')-- #36
 			:semi_major_axis(f(12,500000))
 			:eccentricity(f(50,1000))
 			:rotation_period(f(11,9)),
 	},
-	CustomSystemBody:new('Iapetus', 'PLANET_TERRESTRIAL')
+	CustomSystemBody:new('Iapetus', 'PLANET_TERRESTRIAL')-- #37
 		:seed(-644022643)
 		:radius(f(1155,10000))
 		:mass(f(3,10000))
@@ -329,7 +329,7 @@ local saturn_moons = {
 		:rotation_period(f(7932,100)),
 }
 
-local uranus = CustomSystemBody:new('Uranus', 'PLANET_GAS_GIANT')
+local uranus = CustomSystemBody:new('Uranus', 'PLANET_GAS_GIANT')-- #38
 	:seed(4)
 	:radius(f(4,1))
 	:mass(f(145,10))
@@ -342,7 +342,7 @@ local uranus = CustomSystemBody:new('Uranus', 'PLANET_GAS_GIANT')
 	:rings(f(17528,10000), f(2,1), {0.51, 0.48, 0.384, 0.8})
 
 local uranus_moons = {
-	CustomSystemBody:new('Ariel', 'PLANET_TERRESTRIAL')
+	CustomSystemBody:new('Ariel', 'PLANET_TERRESTRIAL')-- #39
 		:radius(f(908,10000))
 		:mass(f(226,1000000))
 		:temp(60)
@@ -350,7 +350,7 @@ local uranus_moons = {
 		:eccentricity(f(12,10000))
 		:inclination(math.deg2rad(0.26))
 		:rotation_period(f(252,100)),
-	CustomSystemBody:new('Umbriel', 'PLANET_TERRESTRIAL')
+	CustomSystemBody:new('Umbriel', 'PLANET_TERRESTRIAL')-- #40
 		:radius(f(92,1000))
 		:mass(f(2,10000))
 		:temp(75)
@@ -358,7 +358,7 @@ local uranus_moons = {
 		:eccentricity(f(39,10000))
 		:inclination(math.deg2rad(0.128))
 		:rotation_period(f(4144,1000)),
-	CustomSystemBody:new('Titania', 'PLANET_TERRESTRIAL')
+	CustomSystemBody:new('Titania', 'PLANET_TERRESTRIAL')-- #41
 		:radius(f(1235,10000))
 		:mass(f(5908,10000000))
 		:temp(70)
@@ -367,7 +367,7 @@ local uranus_moons = {
 		:inclination(math.deg2rad(0.34))
 		:rotation_period(f(87,10))
 		:atmos_density(f(82,1000)),
-	CustomSystemBody:new('Oberon', 'PLANET_TERRESTRIAL')
+	CustomSystemBody:new('Oberon', 'PLANET_TERRESTRIAL')-- #42
 		:radius(f(1194,10000))
 		:mass(f(5046,10000000))
 		:temp(75)
@@ -377,7 +377,7 @@ local uranus_moons = {
 		:rotation_period(f(135,10)),
 }
 
-local neptune = CustomSystemBody:new('Neptune', 'PLANET_GAS_GIANT')
+local neptune = CustomSystemBody:new('Neptune', 'PLANET_GAS_GIANT')-- #43
 	:seed(42)
 	:radius(f(38,10))
 	:mass(f(17147,1000))
@@ -390,7 +390,7 @@ local neptune = CustomSystemBody:new('Neptune', 'PLANET_GAS_GIANT')
 	:rings(f(2195,1000), f(236,100), {0.71, 0.68, 0.684, 0.75})
 
 local neptune_moons = {
-	CustomSystemBody:new('Proteus', 'PLANET_ASTEROID')
+	CustomSystemBody:new('Proteus', 'PLANET_ASTEROID')-- #44
 		:seed(1251043226)
 		:metallicity(f(7,10))
 		:radius(f(310,10000))
@@ -400,7 +400,7 @@ local neptune_moons = {
 		:eccentricity(f(53,100000))
 		:inclination(math.deg2rad(0.524))
 		:rotation_period(f(1122,1000)),
-	CustomSystemBody:new('Triton', 'PLANET_TERRESTRIAL')
+	CustomSystemBody:new('Triton', 'PLANET_TERRESTRIAL')-- #45
 		:radius(f(2122,10000))
 		:mass(f(359,100000))
 		:temp(38)
@@ -412,11 +412,11 @@ local neptune_moons = {
 		:atmos_density(f(100,1225))
 		:atmos_oxidizing(f(1,20)),
 	{
-		CustomSystemBody:new('Poseidon Station', 'STARPORT_ORBITAL')
+		CustomSystemBody:new('Poseidon Station', 'STARPORT_ORBITAL')-- #46
 			:semi_major_axis(f(12,500000))
 			:rotation_period(f(11,7)),
 	},
-	CustomSystemBody:new('Nereid', 'PLANET_ASTEROID')
+	CustomSystemBody:new('Nereid', 'PLANET_ASTEROID')-- #47
 		:radius(f(2668,100000))
 		:mass(f(519,1000))
 		:temp(50)
@@ -426,7 +426,7 @@ local neptune_moons = {
 		:rotation_period(f(115,240)),
 }
 
-local pluto = CustomSystemBody:new('Pluto', 'PLANET_TERRESTRIAL')
+local pluto = CustomSystemBody:new('Pluto', 'PLANET_TERRESTRIAL')-- #48
 	:radius(f(18,100))
 	:mass(f(21,10000))
 	:temp(44)
@@ -438,13 +438,13 @@ local pluto = CustomSystemBody:new('Pluto', 'PLANET_TERRESTRIAL')
 	:axial_tilt(fixed.deg2rad(f(296,10)))
 
 local pluto_starports = {
-	CustomSystemBody:new('Pluto Research Base', 'STARPORT_SURFACE')
+	CustomSystemBody:new('Pluto Research Base', 'STARPORT_SURFACE')-- #49
 		:latitude(math.deg2rad(84))
 		:longitude(math.deg2rad(96)),
 }
 
 local charon = {
-   CustomSystemBody:new('Charon', 'PLANET_TERRESTRIAL')
+   CustomSystemBody:new('Charon', 'PLANET_TERRESTRIAL')-- #50
       :radius(f(9,100))
       :mass(f(2,10000))
       :temp(44)

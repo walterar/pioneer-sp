@@ -15,6 +15,15 @@ local l = Lang.GetResource("ui-core");
 local lc = Lang.GetResource("core");
 local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en");
 
+local yes_no = function (binary)
+	if binary == 1 then
+		return l.YES
+	elseif binary == 0 then
+		return l.NO
+	else error("argument to yes_no not 0 or 1")
+	end
+end
+
 local shipInfo = function (args)
 	local shipDef = ShipDef[Game.player.shipId]
 
@@ -88,12 +97,16 @@ local shipInfo = function (args)
 						{ l.FUEL_WEIGHT..":",   string.format("%dt (%dt "..l.MAX..")", player.fuelMassLeft, ShipDef[Game.player.shipId].fuelTankMass ) },
 						{ l.ALL_UP_WEIGHT..":", string.format("%dt", mass_with_fuel ) },
 						"",
-						{ myl.MISSILE_BAYS..":", ShipDef[Game.player.shipId].equipSlotCapacity.MISSILE },
-						"",
 						{ l.FORWARD_ACCEL..":",  string.format("%.2f m/s² (%.1f G)", fwd_acc, fwd_acc / 9.81) },
 						{ l.BACKWARD_ACCEL..":", string.format("%.2f m/s² (%.1f G)", bwd_acc, bwd_acc / 9.81) },
 						{ l.UP_ACCEL..":",       string.format("%.2f m/s² (%.1f G)", up_acc, up_acc / 9.81) },
 						{ l.DELTA_V..":",        string.format("%d km/s", deltav / 1000)},
+						"",
+						ui:Label("Capacidad"):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
+						{ l.MISSILE_MOUNTS..":", ShipDef[Game.player.shipId].equipSlotCapacity.MISSILE },
+						{ lc.ATMOSPHERIC_SHIELDING..":", yes_no(shipDef.equipSlotCapacity["ATMOSHIELD"])},
+						{ lc.FUEL_SCOOP..":",            yes_no(shipDef.equipSlotCapacity["FUELSCOOP"])},
+						{ lc.CARGO_SCOOP..":",           yes_no(shipDef.equipSlotCapacity["CARGOSCOOP"])},
 						"",
 						ui:Label(myl.CREW):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
 						{ myl.CREW_VACANCIES..":", ShipDef[Game.player.shipId].maxCrew-ShipDef[Game.player.shipId].minCrew},

@@ -747,10 +747,6 @@
       "description" : "",
       "message" : "Внимание! Ваш корабль под атакой!"
    },
-   "LAUNCH_PERMISSION_DENIED_BUSY" : {
-      "description" : "",
-      "message" : "Разрешение на взлёт запрещён: парковочная зона занята."
-   },
    "LIBERAL_DEMOCRACY" : {
       "description" : "",
       "message" : "Либеральная демократия"
@@ -1093,7 +1089,7 @@
    },
    "NUMBER_GROUP_SEP" : {
       "description" : "For large number, separator used when grouping digits. E.g. 1,000 or 1 000 or 1'000.",
-      "message" : " "
+      "message" : "."
    },
    "NUMBER_HOURS" : {
       "description" : "",

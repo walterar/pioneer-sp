@@ -45,10 +45,6 @@ RefCountedPtr<Sector> SectorCache::GetCached(const SystemPath& loc)
 	if (!s) {
 		s.Reset(new Sector(secPath));
 		m_sectorAttic.insert( std::make_pair(secPath, s.Get()));
-		if (Faction::MayAssignFactions())
-			s->AssignFactions();
-		else
-			m_unassignedFactionsSet.insert(s.Get());
 	}
 
 	return s;
@@ -66,7 +62,6 @@ void SectorCache::RemoveFromAttic(const SystemPath& path)
 {
 	auto it = m_sectorAttic.find(path);
 	if (it != m_sectorAttic.end()) {
-		m_unassignedFactionsSet.erase(it->second);
 		m_sectorAttic.erase(it);
 	}
 }
@@ -77,21 +72,12 @@ void SectorCache::ClearCache()
 		(*it)->ClearCache();
 }
 
-void SectorCache::AssignFactions()
-{
-	assert(Faction::MayAssignFactions());
-	for (Sector* s : m_unassignedFactionsSet) {
-		s->AssignFactions();
-	}
-	m_unassignedFactionsSet.clear();
-}
-
 RefCountedPtr<SectorCache::Slave> SectorCache::NewSlaveCache()
 {
 	return RefCountedPtr<Slave>(new Slave);
 }
 
-SectorCache::Slave::Slave() : m_jobs(Pi::Jobs())
+SectorCache::Slave::Slave() : m_jobs(Pi::GetAsyncJobQueue())
 {
 	Sector::cache.m_slaves.insert(this);
 }
@@ -202,17 +188,13 @@ SectorCache::SectorCacheJob::SectorCacheJob(std::unique_ptr<std::vector<SystemPa
 	: Job(), m_paths(std::move(path)), m_slaveCache(slaveCache)
 {
 	m_sectors.reserve(m_paths->size());
-	assert(Faction::MayAssignFactions());
 }
 
 //virtual
 void SectorCache::SectorCacheJob::OnRun()    // RUNS IN ANOTHER THREAD!! MUST BE THREAD SAFE!
 {
-	for (auto it = m_paths->begin(), itEnd = m_paths->end(); it != itEnd; ++it) {
-		RefCountedPtr<Sector> newSec(new Sector(*it));
-		newSec->AssignFactions();
-		m_sectors.push_back( newSec );
-	}
+	for (auto it = m_paths->begin(), itEnd = m_paths->end(); it != itEnd; ++it)
+		m_sectors.push_back(RefCountedPtr<Sector>(new Sector(*it)));
 }
 
 //virtual

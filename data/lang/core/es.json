@@ -69,7 +69,7 @@
    },
    "AUTOPILOT_DESCRIPTION" : {
       "description" : "",
-      "message" : "Un ordenador de vuelo de a bordo."
+      "message" : "Computadora de a bordo de uso civil."
    },
    "AUTOPILOT_DOCK_WITH_STATION" : {
       "description" : "",
@@ -605,7 +605,7 @@
    },
    "HYDROGEN_DESCRIPTION" : {
       "description" : "",
-      "message" : "El Hidrógeno se usa principalmente como combustible de fusión."
+      "message" : "El Hidrógeno se usa como propelente y combustible de fusión."
    },
    "HYPERCLOUD_ANALYZER" : {
       "description" : "",
@@ -747,10 +747,6 @@
       "description" : "",
       "message" : "Disparo de pulso detectado."
    },
-   "LAUNCH_PERMISSION_DENIED_BUSY" : {
-      "description" : "",
-      "message" : "Permiso para despegar denegado: Bahía de atraque ocupada."
-   },
    "LIBERAL_DEMOCRACY" : {
       "description" : "",
       "message" : "Democracia liberal"
@@ -804,56 +800,56 @@
        "message" : "Selecciona siguiente vista"
    },
    "MAP_VIEW_ROTATE_DOWN" : {
-       "description" : "",
-       "message" : "Rotate View Down"
+      "description" : "",
+      "message" : "Rotar Vista abajo"
    },
    "MAP_VIEW_ROTATE_LEFT" : {
-       "description" : "",
-       "message" : "Rotate View Left"
+      "description" : "",
+      "message" : "Rotar Vista izquierda"
    },
    "MAP_VIEW_ROTATE_RIGHT" : {
-       "description" : "",
-       "message" : "Rotate View Right"
+      "description" : "",
+      "message" : "Rotar Vista derecha"
    },
    "MAP_VIEW_ROTATE_UP" : {
-       "description" : "",
-       "message" : "Rotate View Up"
+      "description" : "",
+      "message" : "Rotar Vista arriba"
    },
    "MAP_VIEW_SHIFT_BACKWARD" : {
-       "description" : "",
-       "message" : "Shift View Backwards"
+      "description" : "",
+      "message" : "Desplazar la Vista hacia atrás"
    },
    "MAP_VIEW_SHIFT_DOWN" : {
-       "description" : "",
-       "message" : "Shift View Down"
+      "description" : "",
+      "message" : "Desplazar la Vista hacia abajo"
    },
    "MAP_VIEW_SHIFT_FORWARD" : {
-       "description" : "",
-       "message" : "Shift View Forwards"
+      "description" : "",
+      "message" : "Desplazar la Vista hacia adelante"
    },
    "MAP_VIEW_SHIFT_LEFT" : {
-       "description" : "",
-       "message" : "Shift View Left"
+      "description" : "",
+      "message" : "Desplazar la Vista hacia la izquierda"
    },
    "MAP_VIEW_SHIFT_RIGHT" : {
-       "description" : "",
-       "message" : "Shift View Right"
+      "description" : "",
+      "message" : "Desplazar la vista hacia la derecha"
    },
    "MAP_VIEW_SHIFT_UP" : {
-       "description" : "",
-       "message" : "Shift View Up"
+      "description" : "",
+      "message" : "Desplazar la Vista arriba"
    },
    "MAP_WARP_TO_CURRENT_SYSTEM" : {
-       "description" : "",
-       "message" : "Warp to Current System"
+      "description" : "",
+      "message" : "Saltar al sistema actual"
    },
    "MAP_WARP_TO_HYPERSPACE_TARGET" : {
-       "description" : "",
-       "message" : "Warp to Hyperspace Target"
+      "description" : "",
+      "message" : "Saltar al objetivo hiperespacial"
    },
    "MAP_WARP_TO_SELECTED_SYSTEM" : {
-       "description" : "",
-       "message" : "Warp to Selected System"
+      "description" : "",
+      "message" : "Saltar al sistema seleccionado"
    },
    "MASS" : {
       "description" : "",
@@ -1409,7 +1405,7 @@
    },
    "SEARCH_MAP" : {
       "description" : "",
-      "message" : "Search Map"
+      "message" : "Mapa de Búsqueda"
    },
    "SECTOR_COORDINATES" : {
       "description" : "",
@@ -1417,7 +1413,7 @@
    },
    "SECTOR_MAP_VIEW" : {
       "description" : "",
-      "message": "Sector Map View"
+      "message" : "Vista Mapa de Sector"
    },
    "SECTOR_X_Y_Z" : {
       "description" : "",

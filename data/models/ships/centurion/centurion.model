@@ -4,20 +4,20 @@ specular 0.9 0.9 0.9
 shininess 69
 use_patterns
 tex_diff centurion_diff.png
-tex_glow police_glow.png
-tex_spec police_spec.png
+tex_glow centurion_glow.png
+tex_spec centurion_spec.png
 
 
 lod 300
-mesh police_hi.dae
-mesh police_shield.dae
+mesh centurion_hi.dae
+mesh centurion_shield.dae
 
 lod 50
-mesh police_med.dae
+mesh centurion_med.dae
 
 lod 10
-mesh police_low.dae
+mesh centurion_low.dae
 
-collision police_col.dae
+collision centurion_col.dae
 
 anim gear_down 0 108

@@ -11,7 +11,6 @@ Material::Material() :
 	texture2(0),
 	texture3(0),
 	texture4(0),
-	texture5(0),
 	heatGradient(0),
 	diffuse(Color::WHITE),
 	specular(Color::BLACK),
@@ -25,7 +24,6 @@ MaterialDescriptor::MaterialDescriptor()
 : effect(EFFECT_DEFAULT)
 , alphaTest(false)
 , glowMap(false)
-, ambientMap(false)
 , lighting(false)
 , specularMap(false)
 , usePatterns(false)
@@ -42,7 +40,6 @@ bool operator==(const MaterialDescriptor &a, const MaterialDescriptor &b)
 		a.effect == b.effect &&
 		a.alphaTest == b.alphaTest &&
 		a.glowMap == b.glowMap &&
-		a.ambientMap == b.ambientMap &&
 		a.lighting == b.lighting &&
 		a.specularMap == b.specularMap &&
 		a.usePatterns == b.usePatterns &&

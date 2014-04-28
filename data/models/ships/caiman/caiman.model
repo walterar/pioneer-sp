@@ -32,7 +32,7 @@ shininess 100
 material pilot-material
 diffuse 1.0 1.0 1.0
 specular 0.5 0.5 0.5
-shininess 30
+shininess 50
 tex_diff cai_skin.png
 
 material visor-material
@@ -55,4 +55,3 @@ mesh caiman_shield.dae
 
 mesh gear.x
 anim gear_down 1 31
-

@@ -48,7 +48,7 @@ tex_glow glow.png
 material wins-material
 diffuse 1.0 1.0 1.0
 specular 0.9 0.9 1.0
-opacity 98
+opacity 50
 shininess 100
 tex_diff adder.png
 tex_spec spec.png

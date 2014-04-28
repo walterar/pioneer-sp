@@ -2,7 +2,7 @@ material trans
 diffuse 2.0 2.0 2.0
 specular 2.0 2.0 2.0
 shininess 100
-opacity 98
+opacity 40
 tex_diff skin.png
 tex_spec spec.png
 tex_glow glow.png

@@ -102,7 +102,7 @@ local shipInfo = function (args)
 						{ l.UP_ACCEL..":",       string.format("%.2f m/s² (%.1f G)", up_acc, up_acc / 9.81) },
 						{ l.DELTA_V..":",        string.format("%d km/s", deltav / 1000)},
 						"",
-						ui:Label("Capacidad"):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
+						ui:Label(myl.CAPACITY):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
 						{ l.MISSILE_MOUNTS..":", ShipDef[Game.player.shipId].equipSlotCapacity.MISSILE },
 						{ lc.ATMOSPHERIC_SHIELDING..":", yes_no(shipDef.equipSlotCapacity["ATMOSHIELD"])},
 						{ lc.FUEL_SCOOP..":",            yes_no(shipDef.equipSlotCapacity["FUELSCOOP"])},

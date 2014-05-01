@@ -11,8 +11,8 @@ local InfoFace           = import("ui/InfoFace")
 local SmallLabeledButton = import("ui/SmallLabeledButton")
 
 local ui = Engine.ui
-local l   = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
+local l   = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en");
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en");
 
 local personalInfo = function ()
 

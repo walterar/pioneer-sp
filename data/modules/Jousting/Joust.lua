@@ -33,8 +33,8 @@ local onEnterSystem = function (player)
 	local shipdefs = utils.build_array(utils.filter(function (k,def)
 		return
 			def.tag == 'SHIP' and
-			def.capacity >= 20 and
-			def.capacity <= 120 and
+			def.capacity > 19 and
+			def.capacity < 121 and
 			def.hyperdriveClass > 0
 		end, pairs(ShipDef)))
 	if #shipdefs == 0 then return end

@@ -5,22 +5,16 @@
 
 local Game  = import("Game")
 local Event = import("Event")
-local Timer = import("Timer")
 
 local function Saver(savename)
 	return function (ship)
-		if ship ~= nil and ship:IsPlayer() then
-			Timer:CallAt(Game.time+4, function ()--XXX
+		if ship:IsPlayer() then
 			Game.SaveGame(savename)
-			end)
 		end
 	end
 end
 
 local SaveDocked   = Saver('_docked')
-local SaveUndocked = Saver('_undocked')
 
 Event.Register('onShipDocked', SaveDocked)
 Event.Register('onShipLanded', SaveDocked)
-Event.Register('onShipUndocked', SaveUndocked)
-Event.Register('onShipTakeOff', SaveUndocked)

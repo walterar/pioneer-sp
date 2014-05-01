@@ -3,12 +3,25 @@
 "description":"",
 "message":"Attiva"
 },
+"Attention_This_can_prove_costly_Your_life_is_not_worth":{
+"description":"",
+"message":"Attenzione! Questo può rivelarsi costoso. La tua vita non vale "
+},
 "BUY":{
-"description":"Commodities and equipment prices","message":"Acquisto"
+"description":"Commodities and equipment prices",
+"message":"Acquisto"
+},
+"CAPACITY":{
+"description":"",
+"message":"Capacità"
 },
 "COMPLETED":{
 "description":"",
 "message":"Completata"
+},
+"Check_with_the_police":{
+"description":"",
+"message":"Verificare con la polizia"
 },
 "CREW_VACANCIES":{
 "description":"",
@@ -107,7 +120,8 @@
 "message":"Area a Rischio"
 },
 "SELL":{
-"description":"Commodities and equipment prices","message":"Vendita"
+"description":"Commodities and equipment prices",
+"message":"Vendita"
 },
 "START_AT_ACHERNAR":{
 "description":"",
@@ -145,6 +159,10 @@
 "description":"",
 "message":"Lei è stato multato di "
 },
+"You_have_committed_a_crime_and_must_pay":{
+"description":"",
+"message":"Tu aver commesso un delitto e deve pagare "
+},
 "You_must_install_the_Life_Support_for_Cargo_Bay":{
 "description":"",
 "message":"Deve installare i Supporti vitali per la stiva"
@@ -172,6 +190,10 @@
 "CREW":{
 "description":"",
 "message":"Equipaggio"
+},
+"Warning_You_must_go_back_to_the_Station_now_or_you_will_die_soon":{
+"description":"",
+"message":"Attenzione! Devi tornare alla stazione di adesso o morirai presto."
 },
 "WEAPONS":{
 "description":"",

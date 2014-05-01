@@ -1,17 +1,18 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-local Game = import("Game")
-local Format = import("Format")
-local Engine = import("Engine")
+local Game    = import("Game")
+local Format  = import("Format")
+local Engine  = import("Engine")
 local ShipDef = import("ShipDef")
-local Lang = import("Lang")
-local Event = import("Event")
+local Lang    = import("Lang")
+local Event   = import("Event")
 
-local TabView = import("ui/TabView")
+local TabView   = import("ui/TabView")
 local InfoGauge = import("ui/InfoGauge")
 
-local l = Lang.GetResource("ui-core")
+local l = Lang.GetResource("ui-core");
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en");
 
 local lobby           = import("StationView/Lobby")
 local bulletinBoard   = import("StationView/BulletinBoard")
@@ -75,7 +76,7 @@ ui.templates.StationView = function (args)
 					),
 					ui:Margin(10, "HORIZONTAL",
 						ui:Align("RIGHT",
-							l.LEGAL_STATUS..": "..l.CLEAN
+							l.LEGAL_STATUS..": "..myl.Check_with_the_police
 						)
 					),
 				})

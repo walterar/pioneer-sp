@@ -5,7 +5,7 @@ diffuse 0.9 0.9 0.9
 specular 0.05 0.05 0.05
 shininess 100
 tex_diff wave.png
-tex_spec wave.png
+tex_spec wave_spec.png
 use_patterns
 material glow-material
 diffuse 0.9 0.9 0.9

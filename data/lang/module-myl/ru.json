@@ -3,12 +3,25 @@
 "description":"",
 "message":"Активно"
 },
+"Attention_This_can_prove_costly_Your_life_is_not_worth":{
+"description":"",
+"message":"Внимание! Это будет стоить вам дорого. Ваша жизнь не стоит "
+},
 "BUY":{
-"description":"Commodities and equipment prices","message":"покупка"
+"description":"Commodities and equipment prices",
+"message":"покупка"
+},
+"CAPACITY":{
+"description":"",
+"message":"Емкость"
 },
 "COMPLETED":{
 "description":"",
 "message":"законченный"
+},
+"Check_with_the_police":{
+"description":"",
+"message":"Проверьте с Охрана"
 },
 "CREW_VACANCIES":{
 "description":"",
@@ -107,7 +120,8 @@
 "message":"Район риска"
 },
 "SELL":{
-"description":"Commodities and equipment prices","message":"продажа"
+"description":"Commodities and equipment prices",
+"message":"продажа"
 },
 "START_AT_ACHERNAR":{
 "description":"",
@@ -145,6 +159,10 @@
 "description":"",
 "message":"Вы были оштрафованы на "
 },
+"You_have_committed_a_crime_and_must_pay":{
+"description":"",
+"message":"Вы совершили преступление и должны платить "
+},
 "You_must_install_the_Life_Support_for_Cargo_Bay":{
 "description":"",
 "message":"Необходимо установить жизнеобеспечения грузовой отсек"
@@ -172,6 +190,10 @@
 "CREW":{
 "description":"",
 "message":"Экипаж"
+},
+"Warning_You_must_go_back_to_the_Station_now_or_you_will_die_soon":{
+"description":"",
+"message":"Предупреждение! Вы должны вернуть на станцию ​​сейчас или умереть."
 },
 "WEAPONS":{
 "description":"",

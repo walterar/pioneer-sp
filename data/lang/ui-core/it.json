@@ -157,7 +157,7 @@
    },
    "CONTINUE_GAME" : {
       "description" : "",
-      "message" : "Continue game"
+      "message" : "Continua partita"
    },
    "CONTROLS" : {
       "description" : "",
@@ -845,7 +845,7 @@
    },
    "RETURN_TO_GAME" : {
       "description" : "",
-      "message" : "Torna la gioco"
+      "message" : "Torna al gioco"
    },
    "RETURN_TO_MENU" : {
       "description" : "",

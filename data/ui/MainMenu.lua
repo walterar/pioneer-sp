@@ -97,7 +97,7 @@ end
 
 local buttonDefs = {
 	{   l.START_AT_EARTH,    function () Game.StartGame(SystemPath.New(0,0,0,0,Engine.rand:Integer(4,9)))   setupPlayer1() end },
-	{   l.START_AT_NEW_HOPE, function () Game.StartGame(SystemPath.New(1,-1,-1,0,Engine.rand:Integer(4,8))) setupPlayer2() end },
+	{   l.START_AT_NEW_HOPE, function () Game.StartGame(SystemPath.New(1,-1,-1,0,Engine.rand:Integer(4,7))) setupPlayer2() end },
 	{ myl.START_AT_ACHERNAR, function () Game.StartGame(SystemPath.New(4,-9,-16,0,Engine.rand:Integer(16,20))) setupPlayer3() end },
 	{ myl.START_AT_LAVE,     function () Game.StartGame(SystemPath.New(-2,1,90,0,2)) setupPlayer4() end },
 	{   l.LOAD_GAME,         doLoadDialog },

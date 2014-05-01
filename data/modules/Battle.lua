@@ -16,8 +16,8 @@ local EquipDef   = import("EquipDef")
 local max_hostiles = 5
 
 Event.Register("onEnterSystem", function (ship)
-	if Game.system.population == 0 then return end
-	if ship:IsPlayer() and Engine.rand:Integer(3) > 2 then
+	if not ship:IsPlayer() or Game.system.population == 0 then return end
+	if Engine.rand:Integer(3) > 2 then
 		Timer:CallAt(Game.time+Engine.rand:Integer(2,5), function ()
 			local hostiles = utils.build_array(utils.filter(function (k,def)
 				return

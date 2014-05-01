@@ -13,6 +13,9 @@ local Ship       = import("Ship")
 local Timer      = import("Timer")
 local Event      = import("Event")
 local Serializer = import("Serializer")
+local Lang       = import("Lang")
+
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en");
 
 local TraffiShip  = {}
 local HyperShip   = {}
@@ -28,7 +31,6 @@ local StationBase = nil
 local loaded_data = nil
 local collided    = {}
 local coll_count  = 0
-local tsAlert     = false
 
 local reinitialize = function ()
 	TraffiShip  = {}
@@ -106,13 +108,14 @@ local replace_and_spawn = function (n)
 end
 
 local activate = function (i)
+		if not StationBase:exists() then return end
 		local min = 60--XXX
 		if StationBase.isGroundStation then min = 20 end
 		local xtime = Game.time+Engine.rand:Integer(min,60*5)
 		local truestation = StationBase
 		Timer:CallAt(xtime, function ()
 			local state = Game.player.flightState
-			if truestation ~= StationBase or state == "HYPERSPACE" or state == "DOCKING" then return end--XXX
+			if StationBase == nil or truestation ~= StationBase or state == "HYPERSPACE" or state == "DOCKING" then return end--XXX
 			local sbody = StationBase.path:GetSystemBody()
 			local body = Space.GetBody(sbody.parent.index)
 			if body == nil or TraffiShip[i] == nil then return end
@@ -156,7 +159,7 @@ local activate = function (i)
 						HyperCount = HyperCount - 1
 					end
 					Timer:CallAt(Game.time+(60*5), function ()--XXX
-						replace_and_spawn(i)
+						if StationBase ~= nil and StationBase:exists() then replace_and_spawn(i) end
 					end)
 				end)
 			end
@@ -259,8 +262,10 @@ local onShipDocked = function (ship, station)
 	end
 --
 	Timer:CallAt(Game.time+(60*30), function ()
-		StationBase = station
-		return activate(n)
+		if station ~= nil or station:exists() then
+			StationBase = station
+			return activate(n)
+		end
 	end)
 end
 
@@ -270,9 +275,9 @@ local onAICompleted = function (ship, ai_error)
 	if ship:IsPlayer() then
 		if IsStation == true then
 --
-			if Active == false then
+			if Active == false and Target == Game.player:FindNearestTo("SPACESTATION") then
 				StationBase = Target
-				active_ships()
+				return active_ships()
 			end
 		else
 			if Target ~= nil then
@@ -383,7 +388,7 @@ local policeAction = function (station)
 	local target
 	fine = showCurrency(fine)
 	local police = Game.system.faction.policeName.." "..station.label
-	Comms.ImportantMessage("You_have_committed_a_crime_and_must_pay "..fine, police)
+	Comms.ImportantMessage(myl.You_have_committed_a_crime_and_must_pay..fine, police)
 --
 --
 --
@@ -391,14 +396,14 @@ local policeAction = function (station)
 		if Police and StationBase then
 			Police:Undock()
 			Police:AIKill(ship)
-			Comms.ImportantMessage("Attention!_This_can_prove_costly_Your_life_is_not_worth "..fine, police)
+			Comms.ImportantMessage(myl.Attention_This_can_prove_costly_Your_life_is_not_worth..fine, police)
 --
 --
 		end
 	end)
 	Timer:CallEvery(20, function ()--XXX
 		if Police and StationBase then
-			Comms.ImportantMessage("Warning!_You_must_go_back_to_the_Station_now_or_you_will_die_soon.", police)
+			Comms.ImportantMessage(myl.Warning_You_must_go_back_to_the_Station_now_or_you_will_die_soon, police)
 --
 --
 			target = Game.player:GetNavTarget()
@@ -423,14 +428,6 @@ local policeAction = function (station)
 		end
 	end)
 end
---"You are trying to avoid a fine of $ 7.85"
---"You have committed a crime and must pay $ 7.85"
---"His escape attempts will be useless You pay $ 7.85"
---"Attention! This can prove costly Your life is not worth $ 7.85!"
---"Usted intenta evadir una multa de "
---"Usted ha cometido un delito y debe pagar "
---"Sus intentos de fuga serán inútiles. Debe pagar "
---"¡Atención! Esto puede costarle caro. Su vida no vale "
 
 local onShipUndocked = function (ship, station)
 	if not ship:IsPlayer() then return end

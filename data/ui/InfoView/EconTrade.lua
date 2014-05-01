@@ -101,12 +101,16 @@ local econTrade = function ()
 
 	-- Define the refuel button
 	local refuelButton = SmallLabeledButton.New(l.REFUEL)
+	local refuelMaxButton = SmallLabeledButton.New(l.REFUEL_FULL)
 
 	local xfuel = 'WATER'
 	if FuelHydrogen == true then xfuel = 'HYDROGEN' end
 
 	local refuelButtonRefresh = function ()
-		if Game.player.fuel == 100 or Game.player:GetEquipCount('CARGO', xfuel) == 0 then refuelButton.widget:Disable() end
+		if Game.player.fuel == 100 or Game.player:GetEquipCount('CARGO', xfuel) == 0 then
+		refuelButton.widget:Disable()
+		refuelMaxButton.widget:Disable()
+		end
 		local fuel_percent = Game.player.fuel/100
 		fuelGauge.gauge:SetValue(fuel_percent)
 		fuelGauge.label:SetValue(fuel_percent)
@@ -121,8 +125,17 @@ local econTrade = function ()
 
 		refuelButtonRefresh()
 	end
+	local refuelMax = function ()
+		repeat
+			Game.player:Refuel(1)
+		until Game.player.fuel == 100 or Game.player:GetEquipCount('CARGO', xfuel) == 0
+		cargoListWidget:SetInnerWidget(updateCargoListWidget())
+
+		refuelButtonRefresh()
+	end
 
 	refuelButton.button.onClick:Connect(refuel)
+	refuelMaxButton.button.onClick:Connect(refuelMax)
 
 	return ui:Expand():SetInnerWidget(
 		ui:Grid({48,4,48},1)
@@ -133,7 +146,7 @@ local econTrade = function ()
 							:SetColumn(0, {
 								ui:VBox():PackEnd({
 									"",
-									ui:Label(l.CASH..": "..showCurrency(cash,3)):SetFont('HEADING_NORMAL'),
+									ui:Label(l.CASH..": "..showCurrency(cash,2)):SetFont('HEADING_NORMAL'),
 --										:SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
 									ui:Margin(10),
 									ui:Label(l.CARGO_SPACE..":"),
@@ -171,7 +184,10 @@ local econTrade = function ()
 									fuelGauge,
 								}),
 								nil,
-								refuelButton.widget,
+								ui:VBox(5):PackEnd({
+									refuelButton.widget,
+									refuelMaxButton.widget,
+								}),
 							})
 					})
 				)

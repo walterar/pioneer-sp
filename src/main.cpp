@@ -132,7 +132,7 @@ start:
 					Output("pioneersp: could not open \"%s\" for writing: %s\n", filename.c_str(), strerror(errno));
 					break;
 				}
-				Galaxy::Dump(file, sx, sy, sz, radius);
+				Pi::GetGalaxy()->Dump(file, sx, sy, sz, radius);
 				if (filename != "-" && fclose(file) != 0) {
 					Output("pioneersp: writing to \"%s\" failed: %s\n", filename.c_str(), strerror(errno));
 				}

@@ -260,7 +260,7 @@ void PlayerShipController::PollControls(const float timeStep, const bool force_r
 				else
 					changeVec[axis] = changeVec[axis] * 2.0;
 		}
-		
+
 		wantAngVel += changeVec;
 
 		if (wantAngVel.Length() >= 0.001 || force_rotation_damping || m_rotationDamping) {

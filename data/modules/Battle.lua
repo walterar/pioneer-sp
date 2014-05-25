@@ -13,21 +13,23 @@ local Ship       = import("Ship")
 local Timer      = import("Timer")
 local EquipDef   = import("EquipDef")
 
+local battle_active = false
 local max_hostiles = 5
+local hostil = {}
 
 Event.Register("onEnterSystem", function (ship)
 	if not ship:IsPlayer() or Game.system.population == 0 then return end
-	if Engine.rand:Integer(3) > 2 then
+	if Engine.rand:Integer(3) < 1 then--XXX
+		battle_active = true
 		Timer:CallAt(Game.time+Engine.rand:Integer(2,5), function ()
 			local hostiles = utils.build_array(utils.filter(function (k,def)
 				return
 					def.tag == 'SHIP'
-					and def.capacity >= 20
-					and def.capacity <= 500
+					and def.capacity > 19
+					and def.capacity < 501
 					and def.hyperdriveClass > 0
 			end, pairs(ShipDef)))
 			if (#hostiles * 2) == 0 then return end
-			local hostil = {}
 			local n = Engine.rand:Integer(2,#hostiles)
 			if n > max_hostiles then n = max_hostiles end
 			for i = 1, n do
@@ -49,15 +51,11 @@ Event.Register("onEnterSystem", function (ship)
 			for i = 1, n-1 do
 				hostil[i]:AIKill(hostil[i+1])
 			end
-			if DangerLevel > 1 then hostil[n]:AIFlyTo(ship) end
 			if (ship:GetEquipFree("LASER") < ShipDef[ship.shipId].equipSlotCapacity.LASER)
-				and Engine.rand:Integer(3) > 2 then
+				and DangerLevel > 1 and Engine.rand:Integer(2) > 1 then--XXX
 				Timer:CallAt(Game.time+Engine.rand:Integer(10,20), function ()
-					if not pcall(function ()
-						hostil[1]:AIKill(ship)
-						hostil[n]:AIKill(ship)
-						end) then
-					end
+					if hostil[1] and hostil[1]:exists() then hostil[1]:AIKill(ship) end
+					if hostil[n] and hostil[n]:exists() then hostil[n]:AIKill(ship) end
 				end)
 			end
 		end)
@@ -66,7 +64,13 @@ end)
 
 local t = 0
 Event.Register("onShipHit",  function (ship, attacker)
-	if ship == nil or ship:IsPlayer() or attacker == nil or attacker:IsPlayer() then return end
+	if battle_active == false
+		or not ship
+		or not attacker
+		or ship:IsPlayer()
+		or attacker:IsPlayer() then
+		return
+	end
 	t = t + 1
 	if t > 2 then
 		t = 0
@@ -74,12 +78,27 @@ Event.Register("onShipHit",  function (ship, attacker)
 		ship:Explode()
 		ship = nil
 		Timer:CallAt(Game.time+4, function ()
-			if not pcall(function ()
-				attacker:CancelAI()
-				attacker:Explode()
-				attacker = nil
-				end) then
-			end
+			if not attacker or not attacker:exists() then return end
+			attacker:CancelAI()
+			attacker:Explode()
+			attacker = nil
 		end)
+	end
+end)
+
+Event.Register("onFrameChanged", function (body)
+	if body:isa("Ship")
+		and body:IsPlayer()
+		and battle_active
+	then
+		battle_active = false
+		for i = 1, max_hostiles do
+			if hostil[i] and hostil[i]:exists() then
+				print(hostil[i].label.." (RESTO DE BATTLE) ELIMINADA")
+				hostil[i]:Explode()
+				hostil[i] = nil
+			end
+		end
+		hostil = {}
 	end
 end)

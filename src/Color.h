@@ -63,7 +63,7 @@ struct Color4ub {
 	static const Color4ub YELLOW;
 	static const Color4ub GRAY;
 	static const Color4ub LINES;
-	static const Color4ub HUD1;
+	static const Color4ub TRAIL;
 };
 
 struct Color3ub {

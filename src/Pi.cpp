@@ -373,9 +373,9 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	if (strlen(PIONEERSP_EXTRAVERSION)) version += " (" PIONEERSP_EXTRAVERSION ")";
 	const char* platformName = SDL_GetPlatform();
 	if(platformName)
-		Output("Pioneer Scout Plus G17f %s on: %s\n\n", version.c_str(), platformName);
+		Output("Pioneer Scout Plus G18f %s on: %s\n\n", version.c_str(), platformName);
 	else
-		Output("Pioneer Scout Plus G17f %s but could not detect platform name.\n\n", version.c_str());
+		Output("Pioneer Scout Plus G18f %s but could not detect platform name.\n\n", version.c_str());
 
 	Output("%s\n", OS::GetOSInfoString().c_str());
 
@@ -826,11 +826,11 @@ void Pi::HandleEvents()
 										if (port != -1) {
 											Output("Putting ship into station\n");
 											// Make police ship intent on killing the player
-											ship->AIKill(Pi::player);
+/*											ship->AIKill(Pi::player);
 											ship->SetFrame(Pi::player->GetFrame());
 											ship->SetDockedWith(s, port);
 											game->GetSpace()->AddBody(ship);
-										} else {
+*/										} else {
 											delete ship;
 											Output("No docking ports free dude\n");
 										}

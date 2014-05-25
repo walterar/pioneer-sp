@@ -16,8 +16,8 @@ local Serializer = import("Serializer")
 local Character  = import("Character")
 local InfoFace   = import("ui/InfoFace")
 
-local l   = Lang.GetResource("module-deliverpackage")
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
+local l   = Lang.GetResource("module-deliverpackage");
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en");
 
 -- Get the UI class
 local ui = Engine.ui
@@ -256,7 +256,7 @@ local onFrameChanged = function (body)
 		for ref,mission in pairs(missions) do
 			if mission.status == "ACTIVE" and mission.location:IsSameSystem(syspath) then
 				local target_distance_from_entry = body:DistanceTo(Space.GetBody(mission.location.bodyIndex))
-				if target_distance_from_entry > AU/1000 then return end
+				if target_distance_from_entry > 100000e3 then return end
 				local risk = flavours[mission.flavour].risk
 				if risk > 0 and hostilactive == 0 then ship = ship_hostil(risk) end
 				if ship and hostilactive == 0 then

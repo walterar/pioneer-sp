@@ -1,4 +1,8 @@
 {
+   "AUTO_COMBAT" : {
+      "description":"",
+      "message":"Auto Combate Sí/No"
+   },
    "AIR_PROCESSORS" : {
       "description" : "",
       "message" : "Procesadores de aire"

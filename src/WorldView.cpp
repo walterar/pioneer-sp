@@ -4,6 +4,7 @@
 #include "WorldView.h"
 #include "Pi.h"
 #include "Frame.h"
+#include "HudTrail.h"
 #include "Player.h"
 #include "Planet.h"
 #include "galaxy/Galaxy.h"
@@ -727,7 +728,7 @@ void WorldView::RefreshButtonStateAndVisibility()
 	}
 
 	float hull = Pi::player->GetPercentHull();
-	if (hull < 100.0f) {
+	if (hull <= 99.9f) { //visible when hull integrity <= 99.9%
 		m_hudHullIntegrity->SetColor(get_color_for_warning_meter_bar(hull));
 		m_hudHullIntegrity->SetValue(hull*0.01f);
 		m_hudHullIntegrity->Show();

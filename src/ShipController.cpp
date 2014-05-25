@@ -11,6 +11,7 @@
 #include "Space.h"
 #include "WorldView.h"
 #include "OS.h"
+#include "LuaEvent.h"
 
 void ShipController::StaticUpdate(float timeStep)
 {
@@ -33,7 +34,8 @@ PlayerShipController::PlayerShipController() :
 	m_setSpeed(0.0),
 	m_flightControlState(CONTROL_MANUAL),
 	m_lowThrustPower(0.25), // note: overridden by the default value in GameConfig.cpp (DefaultLowThrustPower setting)
-	m_mouseDir(0.0)
+	m_mouseDir(0.0),
+	m_AutoCombatActivated(false)
 {
 	float deadzone = Pi::config->Float("JoystickDeadzone");
 	m_joystickDeadzone = deadzone * deadzone;
@@ -46,12 +48,16 @@ PlayerShipController::PlayerShipController() :
 	m_fireMissileKey = KeyBindings::fireMissile.onPress.connect(
 			sigc::mem_fun(this, &PlayerShipController::FireMissile));
 
+	m_AutoCombat = KeyBindings::AutoCombat.onPress.connect(
+		sigc::mem_fun(this, &PlayerShipController::AutoCombat));
+
 }
 
 PlayerShipController::~PlayerShipController()
 {
 	m_connRotationDampingToggleKey.disconnect();
 	m_fireMissileKey.disconnect();
+	m_AutoCombat.disconnect();
 }
 
 void PlayerShipController::Save(Serializer::Writer &wr, Space *space)
@@ -381,4 +387,23 @@ void PlayerShipController::SetNavTarget(Body* const target, bool setSpeedTo)
 	else if (m_setSpeedTarget == m_navTarget)
 		m_setSpeedTarget = 0;
 	m_navTarget = target;
+}
+
+void PlayerShipController::AutoCombat()
+{
+	switch (m_AutoCombatActivated)
+		{
+		case true:
+		{
+			LuaEvent::Queue("onAutoCombatOFF", Pi::player);
+			m_AutoCombatActivated = false;
+			break;
+		}
+		case false:
+		{
+			LuaEvent::Queue("onAutoCombatON", Pi::player);
+			m_AutoCombatActivated = true;
+			break;
+		}
+	}
 }

@@ -35,6 +35,7 @@ _G.SpaMember         = false
 _G.DangerLevel       = 0
 _G.FuelHydrogen      = false
 _G.MissileActive     = 0
+_G.autoCombat        = false
 
 local welcome = function ()
 	if (not Game.system) then return end
@@ -104,10 +105,9 @@ local onGameStart = function ()
 		_G.PrevPos           = shipData.prev_pos or "no"
 		_G.PrevFac           = shipData.prev_fac or "no"
 		_G.DangerLevel       = shipData.danger_level or 0
-		_G.TrueJoust         = shipData.true_joust or false
 		_G.FuelHydrogen      = shipData.fuel_hydrogen or false
 		_G.MissileActive     = shipData.missile_active or 0
-
+		_G.autoCombat        = shipData.auto_combat or false
 	else
 
 		_G.MissionsSuccesses = 0
@@ -119,7 +119,7 @@ local onGameStart = function ()
 		_G.SpaMember         = false
 		_G.FuelHydrogen      = false
 		_G.MissileActive     = 0
-
+		_G.autoCombat        = false
 		_G.ShipFaction       = Game.system.faction.name
 		_G.OriginFaction     = ShipFaction
 
@@ -143,8 +143,11 @@ Event.Register("onGameStart", onGameStart)
 
 local onShipAlertChanged = function (ship, alert)
 	if ship:IsPlayer() and SpaMember == true then
-		if alert == "SHIP_FIRING" then
+		if alert == "SHIP_FIRING" and autoCombat then
 			ship:SetInvulnerable(true)
+			if not autoCombat then
+				Comms.Message("Presione BloqMayusc para activar/desactivar AutoCombate")
+			end
 		else
 			ship:SetInvulnerable(false)
 		end
@@ -154,26 +157,19 @@ Event.Register("onShipAlertChanged", onShipAlertChanged)
 
 local trigger = 0
 local onShipHit = function (ship, attacker)
-	if ship:IsPlayer() then
+	if ship:IsPlayer() and autoCombat == true then
 		if attacker then ship:SetCombatTarget(attacker) end
 		if attacker and attacker.label == ll.POLICE_SHIP_REGISTRATION then return end
-		if (ship:GetEquipFree("LASER") < ShipDef[ship.shipId].equipSlotCapacity.LASER) and
-			SpaMember == true and attacker then
+		if (ship:GetEquipFree("LASER") < ShipDef[ship.shipId].equipSlotCapacity.LASER)
+			and SpaMember == true
+			and attacker then
 			ship:CancelAI()
 			ship:AIKill(attacker)
 		end
 		_G.ShotsReceived = (ShotsReceived or 0) + 1
 		trigger = trigger + 1
 		if trigger > 4 and attacker and SpaMember == true then
-			if Engine.rand:Integer(1,5) == 5 then
-				_G.TrueJoust = false
-				ship:CancelAI()
-				attacker:Explode()
-				attacker = nil
-				Character.persistent.player.killcount = Character.persistent.player.killcount + 1
-			else
-				attacker:CancelAI()
-			end
+			attacker:CancelAI()
 			trigger = 0
 		elseif trigger == 1 then ship:SetInvulnerable(false)
 		end
@@ -187,12 +183,29 @@ local onShipHit = function (ship, attacker)
 end
 Event.Register("onShipHit", onShipHit)
 
-local onShipCollided = function (ship, other)
-	if other:isa('Ship') or other:isa('CargoBody') then return end
+local onShipFiring = function (ship)
+	if not ship or not ship:exists() then return end
+	if ship ~= Police and ship:DistanceTo(Game.player) > 100e3 then ship:Explode() return end
 	if ship:IsPlayer() then
-		ship:AIFlyTo(player.frameBody)
+--		if not Game.player:GetCombatTarget() then
+--			print("PLAYER ESTA DISPARANDO SUS CAÑONES")
+--		end
+	else
+		if ship ~= Game.player:GetCombatTarget() then
+--			print(ship.label.." ESTA DISPARANDO SUS CAÑONES A "..Format.Distance(ship:DistanceTo(Game.player)))
+			if Game.player:GetDockedWith() then return end
+			if autoCombat and Game.player:DistanceTo(ship) < 5001 then
+				Game.player:SetCombatTarget(ship)
+				if Game.player:GetEquipFree("LASER") < ShipDef[Game.player.shipId].equipSlotCapacity.LASER then
+					Game.player:AIKill(ship)
+				end
+--			elseif not autoCombat then
+--				print("AutoCombate está desactivado")
+			end
+		end
 	end
 end
+Event.Register("onShipFiring", onShipFiring)
 
 local serialize = function ()
 	shipData = {
@@ -206,7 +219,6 @@ local serialize = function ()
 			prev_pos           = PrevPos,
 			prev_fac           = PrevFac,
 			danger_level       = DangerLevel,
-			true_joust         = TrueJoust,
 			fuel_hydrogen      = FuelHydrogen,
 			missile_active     = MissileActive,
 			}
@@ -229,10 +241,19 @@ local onGameEnd = function ()
 	_G.SpaMember         = nil
 	_G.PrevPos           = nil
 	_G.PrevFac           = nil
-	_G.TrueJoust         = nil
 	_G.FuelHydrogen      = nil
 	_G.MissileActive     = nil
+	_G.autoCombat        = nil
 end
 Event.Register("onGameEnd", onGameEnd)
+
+
+Event.Register("onAutoCombatON",function()
+	Comms.Message("AutoCombate ACTIVADO")
+	_G.autoCombat = true end)
+
+Event.Register("onAutoCombatOFF",function()
+	Comms.Message("AutoCombate DESACTIVADO")
+	_G.autoCombat = false end)
 
 Serializer:Register("ShipID", serialize, unserialize)

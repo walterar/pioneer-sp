@@ -302,7 +302,7 @@ local onFrameChanged = function (body)
 		for ref,mission in pairs(missions) do
 			if mission.status == "ACTIVE" and mission.location:IsSameSystem(syspath) then
 				target_distance_from_entry = body:DistanceTo(Space.GetBody(mission.location.bodyIndex))
-				if target_distance_from_entry > AU/1000 then return end
+				if target_distance_from_entry > 100000e3 then return end
 				local risk = taxi_flavours[mission.flavour].risk
 				if risk > 0 and hostilactive == 0 then ship = ship_hostil(risk) end
 

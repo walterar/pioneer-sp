@@ -69,6 +69,7 @@ public:
 	void SetRotationDamping(bool enabled);
 	void ToggleRotationDamping();
 	void FireMissile();
+	void AutoCombat();
 
 	//targeting
 	//XXX AI should utilize one or more of these
@@ -92,6 +93,7 @@ private:
 	bool m_invertMouse; // used for rear view, *not* for invert Y-axis option (which is Pi::IsMouseYInvert)
 	bool m_mouseActive;
 	bool m_rotationDamping;
+	bool m_AutoCombatActivated;
 	double m_mouseX;
 	double m_mouseY;
 	double m_setSpeed;
@@ -106,6 +108,7 @@ private:
 
 	sigc::connection m_connRotationDampingToggleKey;
 	sigc::connection m_fireMissileKey;
+	sigc::connection m_AutoCombat;
 };
 
 #endif

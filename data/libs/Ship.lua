@@ -102,7 +102,7 @@ function Ship:FireMissileAt(missile, target)
 	end
 
 	if missile_object then
-		if target:exists() then
+		if target and target:exists() then
 			missile_object:AIKamikaze(target)
 			_G.MissileActive = MissileActive +1
 			target:CancelAI()

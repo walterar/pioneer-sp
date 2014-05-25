@@ -22,6 +22,7 @@ local lobby = function (tab)
 
 	local launchButton = ui:Button(l.REQUEST_LAUNCH):SetFont("HEADING_NORMAL")
 	launchButton.onClick:Connect(function ()
+		Game.SaveGame("_last-undock")
 		local crimes, fine = Game.player:GetCrime()
 
 		if not Game.player:HasCorrectCrew() then
@@ -31,7 +32,7 @@ local lobby = function (tab)
 		elseif not Game.player:Undock() then
 			Comms.ImportantMessage(l.LAUNCH_PERMISSION_DENIED_BUSY, station.label)
 		else
-			Game.SwitchToWorldView()
+			Game.SwitchView()
 		end
 	end)
 

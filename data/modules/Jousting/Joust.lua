@@ -21,15 +21,31 @@ local l = Lang.GetResource("module-jousting") or Lang.GetResource("module-jousti
 local multiplier = 0
 local money      = 0
 local killcount  = 0
+local TrueJoust = false
 
-local onEnterSystem = function (player)
-	if not player:IsPlayer()
-		or Game.system.population > 0
-		or Engine.rand:Integer(3) > 0 then
-		return
+local onShipHit = function (ship, attacker)
+	if TrueJoust == true and ship:IsPlayer() then
+		killcount = Character.persistent.player.killcount
+		multiplier = 100 - (100 * Game.system.lawlessness)
+		money = math.floor(ship:GetMoney() * (multiplier/1000))
 	end
-	_G.TrueJoust = false
+end
 
+local onShipDestroyed = function (ship, attacker)
+	if TrueJoust == true and attacker == Game.player then
+		Timer:CallAt(Game.time+4, function ()
+			if killcount < Character.persistent.player.killcount and money > 0  then
+				Comms.ImportantMessage(l.the_attacker_money.." ( " .. showCurrency(money*4) .. " ) "..l.is_now_yours)
+				Game.player:AddMoney(money*4)
+				money = 0
+			end
+		end)
+		TrueJoust = false
+	end
+end
+
+local joust = function (player)
+	TrueJoust = false
 	local shipdefs = utils.build_array(utils.filter(function (k,def)
 		return
 			def.tag == 'SHIP' and
@@ -61,11 +77,12 @@ local onEnterSystem = function (player)
 	Timer:CallAt(Game.time+20, function ()
 		if Game.system == jousting and hostil ~= nil then
 			if (player:GetEquipFree("LASER") < ShipDef[player.shipId].equipSlotCapacity.LASER) then
-				_G.TrueJoust = true
+				TrueJoust = true
 				hostil:AIKill(player)
 				msg = l["the_time_has_come"..Engine.rand:Integer(1,3)]
 				Comms.ImportantMessage(msg, hostil.label)
 			else
+				TrueJoust = false
 				hostil:CancelAI()
 				multiplier = 100 - (100 * Game.system.lawlessness)
 				money = math.floor(player:GetMoney() * (multiplier/1000))
@@ -73,33 +90,24 @@ local onEnterSystem = function (player)
 				local nmsg = Engine.rand:Integer(1,3)
 				msg = l["I_have_taken"..nmsg].." $"..money.." "..l["of_your_money"..nmsg]
 				Comms.ImportantMessage(msg, hostil.label)
-				_G.TrueJoust = false
 			end
 		end
 	end)
 end
 
-local onShipHit = function (ship, attacker)
-	if TrueJoust == true and ship:IsPlayer() then
-		killcount = Character.persistent.player.killcount
-		multiplier = 100 - (100 * Game.system.lawlessness)
-		money = math.floor(ship:GetMoney() * (multiplier/1000))
+local onEnterSystem = function (player)
+	if player:IsPlayer()
+		and Game.system.population == 0
+		and Engine.rand:Integer(2) < 1 then--XXX
+		Event.Register("onShipHit", onShipHit)
+		Event.Register("onShipDestroyed", onShipDestroyed)
+		return joust(player)
+	else
+		Event.Deregister("onShipHit", onShipHit)
+		Event.Deregister("onShipDestroyed", onShipDestroyed)
 	end
 end
 
-local onShipDestroyed = function (ship, attacker)
-	if TrueJoust == true and attacker == Game.player then
-		Timer:CallAt(Game.time+4, function ()
-			if killcount < Character.persistent.player.killcount and money > 0  then
-				Comms.ImportantMessage(l.the_attacker_money.." ( " .. showCurrency(money*4) .. " ) "..l.is_now_yours)
-				Game.player:AddMoney(money*4)
-				money = 0
-			end
-		end)
-		_G.TrueJoust = false
-	end
-end
-
-Event.Register("onShipHit", onShipHit)
-Event.Register("onShipDestroyed", onShipDestroyed)
+--Event.Register("onShipHit", onShipHit)
+--Event.Register("onShipDestroyed", onShipDestroyed)
 Event.Register("onEnterSystem", onEnterSystem)

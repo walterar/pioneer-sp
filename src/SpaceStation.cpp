@@ -629,7 +629,7 @@ void SpaceStation::DoLawAndOrder(const double timeStep)
 {
 	Sint64 fine, crimeBitset;
 	Polit::GetCrime(&crimeBitset, &fine);
-	if (Pi::player->GetFlightState() != Ship::DOCKED
+/*	if (Pi::player->GetFlightState() != Ship::DOCKED
 			&& m_numPoliceDocked
 			&& (fine > 1000)
 			&& (GetPositionRelTo(Pi::player).Length() < 100000.0)) {
@@ -655,7 +655,7 @@ void SpaceStation::DoLawAndOrder(const double timeStep)
 		} else {
 			delete ship;
 		}
-	}
+	}*/
 }
 
 bool SpaceStation::IsPortLocked(const int bay) const

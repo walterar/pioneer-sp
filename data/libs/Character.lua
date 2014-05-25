@@ -1192,7 +1192,6 @@ end
 --
 -- Group: Notes
 --
-
 --
 -- Note: ChatForm.SetFace()
 --

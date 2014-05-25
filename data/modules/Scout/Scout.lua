@@ -27,7 +27,6 @@ local scan_time = 600
 
 -- CallEvery(xTimeUp,....
 local xTimeUp = 10
-
 local radius_min = 1.5
 local radius_max = 1.6
 
@@ -309,7 +308,7 @@ end
 
 local mapped = function(body)
 	local CurBody = Game.player.frameBody or body
-	if CurBody == nil then return end
+	if not CurBody then return end
 	local faction = Game.system.faction
 	local mission
 	for ref,mission in pairs(missions) do
@@ -333,10 +332,7 @@ local mapped = function(body)
 				local outhostiles = 0
 
 				Timer:CallEvery(xTimeUp, function ()
-					if mission.status == "COMPLETED" then return 1 end
-					if not pcall(function () return CurBody:DistanceTo(Game.player) end) then
-						return 1
-					end
+					if not CurBody or not CurBody:exists() or mission.status == "COMPLETED" then return 1 end
 					local Dist = CurBody:DistanceTo(Game.player)
 					if Dist < PhysBody.radius * radius_min
 						and (mission.status == 'ACTIVE'
@@ -396,10 +392,16 @@ local mapped = function(body)
 end
 
 local onFrameChanged = function (body)
-	if body:isa("Ship") and body:IsPlayer() then
-		if body.frameBody == nil then return end
-		mapped(body)
-	end
+	if not body:isa("Ship") or not body:IsPlayer() then return end
+	if body.frameBody == nil then return end
+	local target = Game.player:GetNavTarget()
+	if target == nil then return end
+	local closestPlanet = Game.player:FindNearestTo("PLANET")
+	if closestPlanet ~= target then return end
+	local dist
+	dist = Format.Distance(Game.player:DistanceTo(target))
+	print("LA DISTANCIA AL PLANETA ("..target.label..") es de "..dist)
+	mapped(body)
 end
 
 local onShipDocked = function (player, station)

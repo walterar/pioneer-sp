@@ -1,4 +1,8 @@
 {
+   "AUTO_COMBAT" : {
+      "description":"",
+      "message":"Auto Combattere Sì/No"
+   },
    "AIR_PROCESSORS" : {
       "description" : "",
       "message" : "Purificatori d'aria"

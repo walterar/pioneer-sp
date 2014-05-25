@@ -6,8 +6,6 @@ local Lang       = import("Lang")
 local Game       = import("Game")
 local Comms      = import("Comms")
 local Event      = import("Event")
-local Format     = import("Format")
-local Serializer = import("Serializer")
 local EquipDef   = import("EquipDef")
 
 local l = Lang.GetResource("module-radioactives") or Lang.GetResource("module-radioactives","en");
@@ -28,7 +26,7 @@ local onShipDocked = function (ship)
 		local discharge = ship:GetEquipCount('CARGO', 'RADIOACTIVES')
 		if charge > discharge then
 			local engine = ship:GetEquip('ENGINE',1)
-			if Game.system.population >= 1 and engine ~= 'NONE' then
+			if engine ~= 'NONE' then
 				local engine_mass = EquipDef[engine].mass
 				ship:RemoveEquip(engine)
 				ship:AddEquip('RUBBISH',engine_mass)

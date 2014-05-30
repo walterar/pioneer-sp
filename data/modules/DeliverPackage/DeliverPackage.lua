@@ -77,8 +77,8 @@ local flavours = {
 for i = 1,#flavours do
 	local f = flavours[i]
 	f.adtext        = l["FLAVOUR_" .. i-1 .. "_ADTEXT"]
-	f.introtext     = l["FLAVOUR_" .. i-1 .. "_INTROTEXT"]
-	f.whysomuchtext = l["FLAVOUR_" .. i-1 .. "_WHYSOMUCHTEXT"]
+	f.introtext     = l["FLAVOUR_" .. i-1 .. "_INTROTEXT"].."\n*\n*"
+	f.whysomuchtext = l["FLAVOUR_" .. i-1 .. "_WHYSOMUCHTEXT"].."\n*\n*"
 	f.successmsg    = l["FLAVOUR_" .. i-1 .. "_SUCCESSMSG"]
 	f.failuremsg    = l["FLAVOUR_" .. i-1 .. "_FAILUREMSG"]
 end
@@ -119,21 +119,21 @@ local onChat = function (form, ref, option)
 		form:SetMessage(flavours[ad.flavour].whysomuchtext)
 
 	elseif option == 2 then
-		form:SetMessage(l.IT_MUST_BE_DELIVERED_BY..Format.Date(ad.due))
+		form:SetMessage(l.IT_MUST_BE_DELIVERED_BY..Format.Date(ad.due).."\n*\n*")
 
 	elseif option == 4 then
 
 		if ad.risk == 0 and Engine.rand:Integer(1) == 0 then
-			form:SetMessage(l.I_HIGHLY_DOUBT_IT)
+			form:SetMessage(l.I_HIGHLY_DOUBT_IT.."\n*\n*")
 		elseif ad.risk == 0 then
-			form:SetMessage(l.NOT_ANY_MORE_THAN_USUAL)
+			form:SetMessage(l.NOT_ANY_MORE_THAN_USUAL.."\n*\n*")
 		end
 		if ad.risk == 1 then
-			form:SetMessage(l.THIS_IS_A_VALUABLE_PACKAGE_YOU_SHOULD_KEEP_YOUR_EYES_OPEN)
+			form:SetMessage(l.THIS_IS_A_VALUABLE_PACKAGE_YOU_SHOULD_KEEP_YOUR_EYES_OPEN.."\n*\n*")
 		elseif ad.risk == 2 then
-			form:SetMessage(l.IT_COULD_BE_DANGEROUS_YOU_SHOULD_MAKE_SURE_YOURE_ADEQUATELY_PREPARED)
+			form:SetMessage(l.IT_COULD_BE_DANGEROUS_YOU_SHOULD_MAKE_SURE_YOURE_ADEQUATELY_PREPARED.."\n*\n*")
 		elseif ad.risk == 3 then
-			form:SetMessage(l.THIS_IS_VERY_RISKY_YOU_WILL_ALMOST_CERTAINLY_RUN_INTO_RESISTANCE)
+			form:SetMessage(l.THIS_IS_VERY_RISKY_YOU_WILL_ALMOST_CERTAINLY_RUN_INTO_RESISTANCE.."\n*\n*")
 		end
 
 	elseif option == 3 then

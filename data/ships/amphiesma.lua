@@ -21,6 +21,7 @@ define_ship {
 	max_fuelscoop = 1,
 	min_crew = 1,
 	max_crew = 2,
+	max_cabin = 2,
 	capacity = 38,
 	hull_mass = 18,
 	fuel_tank_mass = 10,
@@ -28,6 +29,6 @@ define_ship {
 	-- Smaller ships built for speed often mount engines with higher Vc. Another way to make faster ship is to increase fuel_tank_mass.
 --	effective_exhaust_velocity = 68e5,
 	thruster_fuel_use = 0.00015,
-	price = 382000,
+	price = 38200,
 	hyperdrive_class = 1,
 }

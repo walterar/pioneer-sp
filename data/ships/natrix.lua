@@ -21,6 +21,7 @@ define_ship {
 	max_fuelscoop = 0,
 	min_crew = 1,
 	max_crew = 1,
+	max_cabin = 4,
 	capacity = 40,
 	hull_mass = 15,
 	fuel_tank_mass = 36,

@@ -72,6 +72,7 @@ end
 
 Event.Register("onAdvertAdded", updateRowRefs)
 Event.Register("onAdvertRemoved", updateRowRefs) -- XXX close form if open
+Event.Register("onAdvertChanged", updateTable)
 
 local bulletinBoard = function (args, tg)
 	tabGroup = tg

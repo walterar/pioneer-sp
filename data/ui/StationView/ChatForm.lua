@@ -145,8 +145,8 @@ end
 local tradeFuncKeys = { "canTrade", "getStock", "getBuyPrice", "getSellPrice", "onClickBuy", "onClickSell", "bought", "sold" }
 function ChatForm:AddGoodsTrader (funcs)
 	self.equipWidgetConfig = {
-		stationColumns = { "name", "buy", "sell", "stock" },
-		shipColumns = { "name", "amount" },
+		stationColumns = { "icon", "name", "buy", "sell", "stock" },
+		shipColumns = { "icon", "name", "amount" },
 	}
 
 	for i = 1,#tradeFuncKeys do

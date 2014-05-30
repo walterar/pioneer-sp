@@ -16,7 +16,7 @@ local crank_flavours = {}
 for i = 0,5 do
 	table.insert(crank_flavours, {
 		title     = l["FLAVOUR_" .. i .. "_TITLE"],
-		message   = l["FLAVOUR_" .. i .. "_MESSAGE"],
+		message   = "\n* "..l["FLAVOUR_" .. i .. "_MESSAGE"].."\n*\n*",
 	})
 end
 

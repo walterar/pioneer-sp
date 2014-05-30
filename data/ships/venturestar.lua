@@ -26,6 +26,7 @@ define_ship {
 	min_atmoshield = 1,
 	min_crew = 3,
 	max_crew = 5,
+	max_cabin = 10,
 	capacity = 500,
 	hull_mass = 200,
 	fuel_tank_mass = 200,

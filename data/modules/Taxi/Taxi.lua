@@ -101,10 +101,10 @@ local taxi_flavours = {
 for i = 1,#taxi_flavours do
 	local f = taxi_flavours[i]
 	f.adtext     = l["FLAVOUR_" .. i-1 .. "_ADTEXT"]
-	f.introtext  = l["FLAVOUR_" .. i-1 .. "_INTROTEXT"]
-	f.whysomuch  = l["FLAVOUR_" .. i-1 .. "_WHYSOMUCH"]
-	f.howmany    = l["FLAVOUR_" .. i-1 .. "_HOWMANY"]
-	f.danger     = l["FLAVOUR_" .. i-1 .. "_DANGER"]
+	f.introtext  = l["FLAVOUR_" .. i-1 .. "_INTROTEXT"].."\n*\n*"
+	f.whysomuch  = l["FLAVOUR_" .. i-1 .. "_WHYSOMUCH"].."\n*\n*"
+	f.howmany    = l["FLAVOUR_" .. i-1 .. "_HOWMANY"].."\n*\n*"
+	f.danger     = l["FLAVOUR_" .. i-1 .. "_DANGER"].."\n*\n*"
 	f.successmsg = l["FLAVOUR_" .. i-1 .. "_SUCCESSMSG"]
 	f.failuremsg = l["FLAVOUR_" .. i-1 .. "_FAILUREMSG"]
 	f.wherearewe = l["FLAVOUR_" .. i-1 .. "_WHEREAREWE"]
@@ -204,9 +204,9 @@ local onChat = function (form, ref, option)
 	elseif option == 4 then
 		if taxi_flavours[ad.flavour].single == true then
 
-			form:SetMessage(l.I_MUST_BE_THERE_BEFORE..Format.Date(ad.due))
+			form:SetMessage(l.I_MUST_BE_THERE_BEFORE..Format.Date(ad.due).."\n*\n*")
 		else
-			form:SetMessage(l.WE_WANT_TO_BE_THERE_BEFORE..Format.Date(ad.due))
+			form:SetMessage(l.WE_WANT_TO_BE_THERE_BEFORE..Format.Date(ad.due).."\n*\n*")
 		end
 
 	elseif option == 5 then
@@ -375,7 +375,7 @@ end
 
 
 local onClick = function (mission)
-	local dist = Game.system and string.format("%.2f", Game.system:DistanceTo(mission.location)) or "hiper "
+	local dist = Game.system and string.format("%.2f", Game.system:DistanceTo(mission.location)) or "hyper "
 	return ui:Grid(2,1)
 		:SetColumn(0,{ui:VBox(10):PackEnd({ui:MultiLineText((taxi_flavours[mission.flavour].introtext):interp({
 														name     = mission.client.name,

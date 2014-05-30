@@ -14,7 +14,6 @@ local ShipDef    = import("ShipDef")
 local Music      = import("Music")
 local Space      = import("Space")
 local Timer      = import("Timer")
---local FlightLog  = import("FlightLog")
 
 local l = Lang.GetResource("module-00-player") or Lang.GetResource("module-00-player","en")
 local ll = Lang.GetResource("core") or Lang.GetResource("core","en")
@@ -145,9 +144,6 @@ local onShipAlertChanged = function (ship, alert)
 	if ship:IsPlayer() and SpaMember == true then
 		if alert == "SHIP_FIRING" and autoCombat then
 			ship:SetInvulnerable(true)
-			if not autoCombat then
-				Comms.Message("Presione BloqMayusc para activar/desactivar AutoCombate")
-			end
 		else
 			ship:SetInvulnerable(false)
 		end
@@ -187,20 +183,20 @@ local onShipFiring = function (ship)
 	if not ship or not ship:exists() then return end
 	if ship ~= Police and ship:DistanceTo(Game.player) > 100e3 then ship:Explode() return end
 	if ship:IsPlayer() then
---		if not Game.player:GetCombatTarget() then
---			print("PLAYER ESTA DISPARANDO SUS CAÑONES")
---		end
+--
+--
+--
 	else
 		if ship ~= Game.player:GetCombatTarget() then
---			print(ship.label.." ESTA DISPARANDO SUS CAÑONES A "..Format.Distance(ship:DistanceTo(Game.player)))
+--
 			if Game.player:GetDockedWith() then return end
 			if autoCombat and Game.player:DistanceTo(ship) < 5001 then
 				Game.player:SetCombatTarget(ship)
 				if Game.player:GetEquipFree("LASER") < ShipDef[Game.player.shipId].equipSlotCapacity.LASER then
 					Game.player:AIKill(ship)
 				end
---			elseif not autoCombat then
---				print("AutoCombate está desactivado")
+--
+--
 			end
 		end
 	end
@@ -249,11 +245,11 @@ Event.Register("onGameEnd", onGameEnd)
 
 
 Event.Register("onAutoCombatON",function()
-	Comms.Message("AutoCombate ACTIVADO")
+	Comms.Message(l.AutoCombatON)
 	_G.autoCombat = true end)
 
 Event.Register("onAutoCombatOFF",function()
-	Comms.Message("AutoCombate DESACTIVADO")
+	Comms.Message(l.AutoCombatOFF)
 	_G.autoCombat = false end)
 
 Serializer:Register("ShipID", serialize, unserialize)

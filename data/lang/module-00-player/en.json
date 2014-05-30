@@ -3,6 +3,14 @@
 "description":"",
 "message":" - explored"
 },
+"AutoCombatON":{
+"description":"",
+"message":"Auto Combat: ACTIVATED"
+},
+"AutoCombatOFF":{
+"description":"",
+"message":"Auto Combat: DEACTIVATED"
+},
 "IS_REGISTERED_IN_OUR_DOMAIN":{
 "description":"",
 "message":" is registered in our domain."

@@ -22,11 +22,12 @@ define_ship {
 	max_fuelscoop = 1,
 	min_crew = 2,
 	max_crew = 3,
+	max_cabin = 10,
 	capacity = 235,
 	hull_mass = 100,
 	fuel_tank_mass = 100,
 	--thruster_fuel_use = 0.0001,
 	effective_exhaust_velocity = 51784e3,
-	price = 430000,
+	price = 250000,
 	hyperdrive_class = 3,
 }

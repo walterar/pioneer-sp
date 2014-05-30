@@ -27,6 +27,7 @@ define_ship {
 	max_cargoscoop = 0,
 	min_crew = 1,
 	max_crew = 2,
+	max_cabin = 1,
 	capacity = 20,
 	hull_mass = 10,
 	fuel_tank_mass = 5,

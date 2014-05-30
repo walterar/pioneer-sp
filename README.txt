@@ -1,7 +1,8 @@
 Pioneer Scout Plus
 ~~~~~~~~~~~~~~~~~~
 
-This is a game of missions, which runs on the engine of Pioneer Space Sim
+A game of missions, trade and space combat in the 31st century using the
+Pioneer Space Sim engine with many additions and improvements.
 
 For more information or join the community, see:
 

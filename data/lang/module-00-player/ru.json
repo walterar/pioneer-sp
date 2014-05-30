@@ -3,6 +3,14 @@
 "description":"",
 "message":" - Разведанные"
 },
+"AutoCombatON":{
+"description":"",
+"message":"Авто Боевой АКТИВНО"
+},
+"AutoCombatOFF":{
+"description":"",
+"message":"Авто Боевой НЕ АКТИВНО"
+},
 "IS_REGISTERED_IN_OUR_DOMAIN":{
 "description":"",
 "message":" > ЗАРЕГИСТРИРОВАН В НАШЕМ ПРОСТРАНСТВЕ"

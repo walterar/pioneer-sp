@@ -72,9 +72,9 @@ local scout_flavours = {
 for i = 1,#scout_flavours do
 	local f = scout_flavours[i]
 	f.adtext        = l["ADTEXT_"..i]
-	f.introtext1    = l["INTROTEXT1_"..i]
-	f.introtext2    = l["INTROTEXT2_"..i]
-	f.whysomuchtext = l["WHYSOMUCHTEXT_"..i]
+	f.introtext1    = l["INTROTEXT1_"..i].."\n*\n*"
+	f.introtext2    = l["INTROTEXT2_"..i].."\n*\n*"
+	f.whysomuchtext = l["WHYSOMUCHTEXT_"..i].."\n*\n*"
 	f.successmsg    = l["SUCCESSMSG_"..i]
 end
 
@@ -136,28 +136,28 @@ local onChat = function (form, ref, option)
 		form:SetMessage(scout_flavours[ad.flavour].whysomuchtext)
 
 	elseif option == 2 then
-		form:SetMessage(l.I_need_the_information_by .. Format.Date(ad.due))
+		form:SetMessage(l.I_need_the_information_by .. Format.Date(ad.due).."\n*\n*")
 
 	elseif option == 4 then
 		if ad.risk == 0 then
-			form:SetMessage(l["MessageRisk0_" .. Engine.rand:Integer(1,2)])
+			form:SetMessage(l["MessageRisk0_" .. Engine.rand:Integer(1,2)].."\n*\n*")
 		elseif ad.risk == 1 then
-			form:SetMessage(l.MessageRisk1)--" .. Engine.rand:Integer(1,x)))
+			form:SetMessage(l.MessageRisk1.."\n*\n*")--" .. Engine.rand:Integer(1,x)))
 		elseif ad.risk == 2 then
-			form:SetMessage(l.MessageRisk2)--" .. Engine.rand:Integer(1,x)))
+			form:SetMessage(l.MessageRisk2.."\n*\n*")--" .. Engine.rand:Integer(1,x)))
 		elseif ad.risk == 3 then
-			form:SetMessage(l["MessageRisk3_" .. Engine.rand:Integer(1,2)])
+			form:SetMessage(l["MessageRisk3_" .. Engine.rand:Integer(1,2)].."\n*\n*")
 		end
 	elseif option == 5 then
-			form:SetMessage(l.additional_information)
+			form:SetMessage(l.additional_information.."\n*\n*")
 
 	elseif option == 3 then
 		if (MissionsSuccesses - MissionsFailures) < 5 and ad.risk > 0 then
-			form:SetMessage(l.You_do_not_have_enough_experience_for_this_mission)
+			form:SetMessage(l.You_do_not_have_enough_experience_for_this_mission.."\n*\n*")
 			return
 		end
 		if Game.player:GetEquip('RADARMAPPER',1) == "NONE" then
-			form:SetMessage(l.You_have_not_installed_RADAR_MAPPER)
+			form:SetMessage(l.You_have_not_installed_RADAR_MAPPER.."\n*\n*")
 			return
 		end
 		form:RemoveAdvertOnClose()

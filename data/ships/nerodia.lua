@@ -15,7 +15,7 @@ define_ship {
 	left_thrust = 50e6,
 	right_thrust = 50e6,
 	angular_thrust = 80e6,
-	
+
 	max_cargo = 500,
 	max_laser = 2,
 	max_missile = 4,
@@ -23,6 +23,7 @@ define_ship {
 	max_fuelscoop = 1,
 	min_crew = 1,
 	max_crew = 8,
+	max_cabin = 10,
 
 	capacity = 500,
 	hull_mass = 300,

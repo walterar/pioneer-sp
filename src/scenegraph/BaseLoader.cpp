@@ -60,7 +60,7 @@ void BaseLoader::ConvertMaterialDefinition(const MaterialDefinition &mdef)
 		mat->texture2 = Graphics::TextureBuilder::Model(glowTex).GetOrCreateTexture(m_renderer, "model");
 	if (!ambiTex.empty())
 		mat->texture3 = Graphics::TextureBuilder::Model(ambiTex).GetOrCreateTexture(m_renderer, "model");
-	
+
 	//texture4 is reserved for pattern
 	//texture5 is reserved for color gradient
 
@@ -89,8 +89,10 @@ void BaseLoader::FindPatterns(PatternContainer &output)
 		const FileSystem::FileInfo &info = files.Current();
 		if (info.IsFile()) {
 			const std::string &name = info.GetName();
-			if (ends_with_ci(name, ".png") && starts_with(name, "pattern"))
-				output.push_back(Pattern(name, m_curPath, m_renderer));
+			if (starts_with(name, "pattern")) {
+				if (ends_with_ci(name, ".png") || ends_with_ci(name, ".dds"))
+					output.push_back(Pattern(name, m_curPath, m_renderer));
+			}
 		}
 	}
 }

@@ -329,7 +329,7 @@
    },
    "DOWNGRADING_ALERT_STATUS" : {
       "description" : "",
-      "message" : "Per 60 sekundžių nebuvo šaudoma. Įspėjimo kategorija sumažinta."
+      "message" : "Per 30 sekundžių nebuvo šaudoma. Įspėjimo kategorija sumažinta."
    },
    "DRAW_OUT_RANGE_LABELS" : {
       "description" : "",

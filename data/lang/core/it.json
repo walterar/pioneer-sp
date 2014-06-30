@@ -333,7 +333,7 @@
    },
    "DOWNGRADING_ALERT_STATUS" : {
       "description" : "",
-      "message" : "Nessuna attività ostile rilevata per 60s, livello di allarme ridotto."
+      "message" : "Nessuna attività ostile rilevata per 30s, livello di allarme ridotto."
    },
    "DRAW_OUT_RANGE_LABELS" : {
       "description" : "",

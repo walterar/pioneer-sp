@@ -55,21 +55,27 @@ Renderer* Init(Settings vs)
 		vs.height = modes.front().height;
 	}
 
-	WindowSDL *window = new WindowSDL(vs, "Pioneer");
+	WindowSDL *window = new WindowSDL(vs, "Pioneersp");
 	width = window->GetWidth();
 	height = window->GetHeight();
 
 	glewInit();
 
-	if (!glewIsSupported("GL_ARB_vertex_buffer_object"))
-		Error("OpenGL extension ARB_vertex_buffer_object not supported. Pioneer can not run on your graphics card.");
-
-	Renderer *renderer = 0;
-
 	if (!glewIsSupported("GL_VERSION_2_0") )
-		Error("OpenGL Version 2.0 is not supported. Pioneer cannot run on your graphics card.");
-	
-	renderer = new RendererGL2(window, vs);
+		Error("OpenGL Version 2.0 is not supported. Pioneersp cannot run on your graphics card.");
+
+	if (!glewIsSupported("GL_ARB_vertex_buffer_object"))
+		Error("OpenGL extension ARB_vertex_buffer_object not supported. Pioneersp can not run on your graphics card.");
+
+	if (!glewIsSupported("GL_EXT_texture_compression_s3tc"))
+		Error("OpenGL extension GL_EXT_texture_compression_s3tc not supported.\nPioneersp can not run on your graphics card as it does not support compressed (DXTn/S3TC) format textures.");
+
+	GLint intv[4];
+	glGetIntegerv(GL_NUM_COMPRESSED_TEXTURE_FORMATS, &intv[0]);
+	if( intv[0] == 0 )
+		Error("GL_NUM_COMPRESSED_TEXTURE_FORMATS is zero.\nPioneersp can not run on your graphics card as it does not support compressed (DXTn/S3TC) format textures.");
+
+	Renderer *renderer = new RendererGL2(window, vs);
 
 	Output("Initialized %s\n", renderer->GetName());
 

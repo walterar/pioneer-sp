@@ -12,8 +12,6 @@ local Serializer = import("Serializer")
 --local Character  = import("Character")
 
 local l  = Lang.GetResource("module-spa") or Lang.GetResource("module-spa","en")
-local ls = Lang.GetResource("module-system") or Lang.GetResource("module-system","en")
-
 
 -- Default numeric values --
 ----------------------------
@@ -34,8 +32,8 @@ local flavours = {
 	{
 		clubname        = l.FLAVOUR_CLUBNAME_0,
 		welcome         = l.FLAVOUR_WELCOME_0,
-		nonmember_intro = l.FLAVOUR_NONMEMBER_INTRO_0,
-		member_intro    = l.FLAVOUR_MEMBER_INTRO_0,
+		nonmember_intro = l.FLAVOUR_NONMEMBER_INTRO_0.."\n*\n*",
+		member_intro    = l.FLAVOUR_MEMBER_INTRO_0.."\n*\n*",
 		annual_fee      = 2600,
 	}
 }
@@ -61,13 +59,13 @@ onChat = function (form, ref, option)
 	end
 
 	form:Clear()
-	form:SetTitle(ad.flavour.clubname)
+	form:SetTitle(ad.flavour.clubname.."\n*")
 	local membership = memberships[ad.flavour.clubname]
 
 	if membership and (membership.joined + membership.expiry > Game.time) then
 		Game.player:SetFuelPercent()
 
-		setMessage(ad.flavour.member_intro)
+		setMessage(ad.flavour.member_intro.."\n*")
 
 		form:AddGoodsTrader({
 			canTrade = function (ref, commodity)
@@ -135,7 +133,7 @@ onChat = function (form, ref, option)
 		form:Close()
 
 	elseif option == 1 then
-		setMessage(l.WE_WILL_ONLY_DISPOSE_OF)
+		setMessage(l.WE_WILL_ONLY_DISPOSE_OF.."\n*\n*")
 		form:AddOption(l.APPLY_FOR_MEMBERSHIP,2)
 		form:AddOption(l.GO_BACK,0)
 
@@ -154,7 +152,7 @@ onChat = function (form, ref, option)
 			form:AddOption(l.BEGIN_TRADE,0)
 
 		else
-			setMessage(l.YOUR_MEMBERSHIP_APPLICATION_HAS_BEEN_DECLINED)
+			setMessage(l.YOUR_MEMBERSHIP_APPLICATION_HAS_BEEN_DECLINED.."\n*\n*")
 		end
 
 	else
@@ -179,19 +177,6 @@ local onCreateBB = function (station)
 		icon        = licon,
 		onChat      = onChat,
 		onDelete    = onDelete})] = ad
-end
-
-local onShipFuelChanged = function (ship, state)
-	if ship:IsPlayer() and (state == "WARNING" or state == "EMPTY") then
-		if SpaMember == true then
---			MessageBox.Message(t('The propellent cell has been recharged.'))
-			Game.player:SetFuelPercent(50)
-		elseif state == "WARNING" then
-			MessageBox.Message(ls.YOUR_FUEL_TANK_IS_ALMOST_EMPTY)
-		elseif state == "EMPTY" then
-			MessageBox.Message(ls.YOUR_FUEL_TANK_IS_EMPTY)
-		end
-	end
 end
 
 local onShipDocked = function (ship, station)
@@ -231,7 +216,6 @@ end
 
 Event.Register("onGameStart", onGameStart)
 Event.Register("onCreateBB", onCreateBB)
-Event.Register("onShipFuelChanged", onShipFuelChanged)
 Event.Register("onShipDocked", onShipDocked)
 
 Serializer:Register("SPA", serialize, unserialize)

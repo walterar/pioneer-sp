@@ -152,7 +152,9 @@ local activate = function (i)
 		local sbody = basePort.path:GetSystemBody()
 		local body = Space.GetBody(sbody.parent.index)
 		if not body or not TraffiShip[i] then return end
-		if TraffiShip[i].flightState ~= "DOCKED" or npshipAlert ~= "NONE" then return end--XXX
+		if TraffiShip[i].flightState ~= "DOCKED"
+				or (npshipAlert ~= "NONE" and TraffiShip[i]:DistanceTo(Game.player) < 5000)
+		then return end--XXX
 		TraffiShip[i]:AIEnterLowOrbit(body)
 		if Engine.rand:Integer(1) > 0 then
 			local timeundock = Game.time + 30--XXX orbitales - mas tiempo para salto = mas lejos
@@ -197,7 +199,7 @@ local spawnShipsDocked = function ()
 --
 	spawnDocked = true
 	local free_police = 1
-	local posib = 1
+	local posib = 5
 	if Game.time < 10 then posib = 6 end
 	if Engine.rand:Integer(5) < posib then--XXX
 		Police = Space.SpawnShipDocked("police", basePort)
@@ -265,22 +267,18 @@ local onShipDocked = function (ship, station)
 	if ship == Police then pol_ai_compl = false end
 	for i=1, ShipsCount do
 		if ship == TraffiShip[i] then
+			basePort = station
+			activate(i)
 		break end
 	end
 --
-	Timer:CallAt(Game.time+(60*30), function ()
-		if station and station:exists() then
-			basePort = station
-			return activate(i)
-		end
-	end)
 end
 
 local policeStopFire = function ()--XXX la única forma de que deje de disparar.
-	if Police:GetEquipFree("LASER") < ShipDef[Police.shipId].equipSlotCapacity.LASER then
+	Police:CancelAI()
+	if Police:GetEquipFree("LASER") < 1 then
 		Police:RemoveEquip('PULSECANNON_DUAL_1MW')
 		Police:RemoveEquip('LASER_COOLING_BOOSTER')
-		return true
 	end
 end
 
@@ -396,30 +394,32 @@ end
 
 local actionPolice = function ()
 	if warning == true or not Police then return end
-	local crime,fine = Game.player:GetCrime()
-	local police = Game.system.faction.policeName.." "..basePort.label
-	Comms.ImportantMessage(myl.Warning_You_must_go_back_to_the_Station_now_or_you_will_die_soon, police)
+	local system = Game.system
+	local player = Game.player
+	player:SetNavTarget(player:FindNearestTo("STAR"))
+	local crime,fine = player:GetCrime()
+	local police = system.faction.policeName.." "..basePort.label
 	warning = true
---	local targetPlayer = Game.player:GetNavTarget()
+--	local targetPlayer = player:GetNavTarget()
 --	if targetPlayer then
 --
 --	else
 --
 --	end
-	local system = Game.system
-	if fine > 0 and warning then
+	if fine > 0 and #crime > 0 then
 --
-		if not (Police:GetEquipFree("LASER") < ShipDef[Police.shipId].equipSlotCapacity.LASER) then
+		Comms.ImportantMessage(myl.Warning_You_must_go_back_to_the_Station_now_or_you_will_die_soon, police)
+		if Police:GetEquipFree("LASER") > 0 then
 			Police:AddEquip('PULSECANNON_DUAL_1MW')--XXX
 			Police:AddEquip('LASER_COOLING_BOOSTER')
 		end
 		pol_ai_compl = false
-		Police:AIKill(Game.player)
+		Police:AIKill(player)
 	end
 	Timer:CallEvery(4, function ()--XXX
-		if Game.system ~= system then return true end-- sensa no salto hiperespacial aquí
+		if Game.system ~= system then return true end-- chequea no salto hiperespacial aquí
 		if not basePort or not Police or not Police:exists() then return true end
-		if fine == 0 or Game.player:GetNavTarget() == basePort then
+		if fine == 0 or player:GetNavTarget() == basePort then
 			policeStopFire()
 			shipX = nil
 			pol_ai_compl = false
@@ -432,14 +432,14 @@ local actionPolice = function ()
 	end)
 end
 
+local distance
 local sensorDistance = function (every)
 --
 	local every = every or 5
 	local player = Game.player
 	if not basePort then return end
 --
-	local spport = basePort
-	local distance
+	distance = nil
 	local spawnErased = false
 	local distancia_alcanzada = false
 	local system = Game.system
@@ -447,7 +447,7 @@ local sensorDistance = function (every)
 		if Game.system ~= system then return true end-- verifica no salto hiperespacial aquí
 		if not basePort then return false end
 		distance = player:DistanceTo(basePort) or 0
-		if distance > 500 and playerStatus == "outbound" and distancia_alcanzada == false then--XXX
+		if distance > 300 and playerStatus == "outbound" and distancia_alcanzada == false then--XXX
 			distancia_alcanzada = true
 			if fineDetect then
 --
@@ -481,7 +481,7 @@ local onFrameChanged = function (body)
 		Target = Game.player:GetNavTarget()
 		if not Target or Target == lastPort then return end
 		local closestStation = Game.player:FindNearestTo("SPACESTATION")
-		local closestPlanet = Game.player:FindNearestTo("PLANET")
+--		local closestPlanet = Game.player:FindNearestTo("PLANET")
 		if Target.type == 'STARPORT_ORBITAL'
 			or Target.type == 'STARPORT_SURFACE' then
 			nextPort = Target
@@ -503,10 +503,25 @@ local onFrameChanged = function (body)
 end
 
 Event.Register("onShipFiring", function (ship)
-	if ship:IsPlayer() or ship == Police then return end
-	if shipX and shipX == ship then return end
-	if Police and Police:DistanceTo(ship) < 100e3 then
-		if not (Police:GetEquipFree("LASER") < ShipDef[Police.shipId].equipSlotCapacity.LASER) then
+	if ship
+		and ship:exists()
+		and Game.player:DistanceTo(ship) > 100e3 then
+		ship:Explode()
+		ship = nil
+	return end
+	if not ship
+		or not ship:exists()
+		or ship:IsPlayer()
+		or ship == Police
+	then return end
+	if shipX and shipX:exists() and shipX == ship then return end
+	if ship
+		and ship:exists()
+		and Police
+		and Police:DistanceTo(ship) < 100e3
+		and (Police:DistanceTo(Game.player) > 5000 or Game.player:GetDockedWith())
+	then
+		if Police:GetEquipFree("LASER") > 0 then
 			Police:AddEquip('PULSECANNON_DUAL_1MW')--XXX
 			Police:AddEquip('LASER_COOLING_BOOSTER')
 		end
@@ -535,7 +550,7 @@ Event.Register("onShipAlertChanged", function (ship, alert)
 			Police:AIFlyTo(basePort)
 --
 		end
-	elseif ship and not basePort.isGroundStation then
+	elseif ship and basePort and not basePort.isGroundStation then
 --
 		npshipAlert = alert
 	end
@@ -557,6 +572,12 @@ end
 
 local onLeaveSystem = function (ship)
 	if ship:IsPlayer() then
+		if distance and distance < 2500 then
+			local money = math.floor(Game.player:GetMoney()*30/100)
+			Game.player:AddCrime("WEAPON_DISCHARGE", money)
+			Comms.ImportantMessage(myl.ILLEGAL_JUMP .."  ".. myl.You_has_been_fined .. showCurrency(money), Game.system.faction.policeName)
+			distance = nil
+		end
 --
 		reinitialize()
 	end
@@ -575,6 +596,7 @@ local onGameStart = function ()
 			and def.id ~= ('cobra_mk1_a')
 			and def.id ~= ('cobra_mk1_b')
 			and def.id ~= ('cobra_mk1_c')
+			and def.id ~= ('malabar')
 			and def.id ~= ('molamola')
 			and def.id ~= ('viper_hw')
 			and def.id ~= ('viper_lz')
@@ -670,6 +692,7 @@ local onGameEnd = function ()
 	basePort     = nil
 	lastPort     = nil
 	nextPort     = nil
+	distance     = nil
 end
 
 Event.Register("onShipUndocked", onShipUndocked)

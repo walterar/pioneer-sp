@@ -329,7 +329,7 @@
    },
    "DOWNGRADING_ALERT_STATUS" : {
       "description" : "",
-      "message" : "Für 60 Sekunden kein Waffenfeuer detektiert; Alarmstufe wird gesenkt."
+      "message" : "Für 30 Sekunden kein Waffenfeuer detektiert; Alarmstufe wird gesenkt."
    },
    "DRAW_OUT_RANGE_LABELS" : {
       "description" : "",

@@ -329,7 +329,7 @@
    },
    "DOWNGRADING_ALERT_STATUS" : {
       "description" : "",
-      "message" : "Não foi detectado nenhum disparos nos últimos 60 segundo, diminuído o estado de alerta."
+      "message" : "Não foi detectado nenhum disparos nos últimos 30 segundo, diminuído o estado de alerta."
    },
    "DRAW_OUT_RANGE_LABELS" : {
       "description" : "",

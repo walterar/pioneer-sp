@@ -22,7 +22,7 @@ std::vector<ShipType::Id> ShipType::missile_ships;
 
 std::vector<ShipType::Id> ShipType::playable_atmospheric_ships;
 
-std::string ShipType::POLICE						= "police";
+//std::string ShipType::POLICE						= "police";
 std::string ShipType::MISSILE_GUIDED		= "missile_guided";
 std::string ShipType::MISSILE_NAVAL			= "missile_naval";
 std::string ShipType::MISSILE_SMART			= "missile_smart";
@@ -283,4 +283,3 @@ void ShipType::Init()
 	if (ShipType::playable_atmospheric_ships.empty())
 		Error("No ships can fit atmospheric shields! The game cannot run.");
 }
-

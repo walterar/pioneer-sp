@@ -23,22 +23,26 @@ _G.tariff = function (dist,risk,urgency,locate)
 
 	local multiplier = 1 + ((math.abs(locate.sectorX) + math.abs(locate.sectorY) + sectorz)/100)
 	if string.sub(Game.player.label,1,2) == string.upper(string.sub(Game.system.faction.name,1,2)) then
-		multiplier = multiplier * 1.3
+		multiplier = multiplier * Engine.rand:Number(1.2,1.3)
 	end
 
+	local lawlessness = Game.system.lawlessness
 	local population = Game.system.population
-	if population > 1 then population = 1 end
-	return math.ceil(((dist * typ)
-		* (1 + (risk/3))
+	if population > 1 then population = 1+population/100
+	else
+		population = 1+population
+	end
+	return math.ceil(dist * (typ
+		* (1 + (risk/10)*3)
 		* (1 + urgency)
-		* (1 + Game.system.lawlessness)
-		/ (1 + (population/2)))
-		* multiplier)
+		* (1 + lawlessness))
+		/ (1 + population))
+		* multiplier * Engine.rand:Number(1,1.3)
 end
 
 -- a time limit (due) calculator
 _G.term = function (dist,urgency)
-	return Game.time + ((dist * (1.5 - urgency)) * 86400)
+	return Game.time + ((dist * 86400)/(1 + urgency))
 end
 
 -- a attackers (hostile - pirates) generator
@@ -72,7 +76,7 @@ _G.ship_hostil = function (risk)
 						and  string.sub(def.id,0,11) == 'PULSECANNON'
 					end, pairs(EquipDef)))
 				local laserdef = laserdefs[Engine.rand:Integer(1,#laserdefs)]
-				hostil = Space.SpawnShipNear(hostile.id, Game.player,5,5)
+				hostil = Space.SpawnShipNear(hostile.id, Game.player,2,2)
 				hostil:AddEquip(default_drive)
 				hostil:AddEquip(laserdef.id)
 				hostil:SetLabel(Ship.MakeRandomLabel())

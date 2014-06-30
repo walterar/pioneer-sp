@@ -28,7 +28,7 @@ local function updateEquipmentStock (station)
 	for e,def in pairs(EquipDef) do
 		if def.slot == "CARGO" then
 			equipmentStock[station][e] = Engine.rand:Integer(0,100) * Engine.rand:Integer(1,100)
-        else
+		else
 			equipmentStock[station][e] = Engine.rand:Integer(0,100)
 		end
 	end

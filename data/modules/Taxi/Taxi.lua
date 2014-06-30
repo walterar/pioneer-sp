@@ -31,14 +31,13 @@ local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en"
 local ui = Engine.ui
 
 -- don't produce missions for further than this many light years away
-local max_taxi_dist = 40
+local max_taxi_dist = 30
 -- max number of passengers per trip
 local max_group = 10
 
 local num_corporations = 12
 local num_pirate_taunts = 4
 
-local AU = 149600000000
 local target_distance_from_entry = 0
 
 local taxi_flavours = {
@@ -245,8 +244,8 @@ local makeAdvert = function (station)
 	if location == nil then return end
 
 	local dist = location:DistanceTo(Game.system)
-	local taxiplus = 1.3
-	if group > 1 then taxiplus = group end
+	local taxiplus = 1.8
+	if group > 1 then taxiplus = (taxiplus*group)-1 end
 	reward = tariff (dist,risk,urgency,location) * taxiplus
 	due    = term (dist,urgency)
 
@@ -295,7 +294,7 @@ local onUpdateBB = function (station)
 	end
 end
 
-local hostilactive = 0
+local hostilactive = false
 local onFrameChanged = function (body)
 	if body:isa("Ship") and body:IsPlayer() and body.frameBody ~= nil then
 		local syspath = Game.system.path
@@ -304,10 +303,10 @@ local onFrameChanged = function (body)
 				target_distance_from_entry = body:DistanceTo(Space.GetBody(mission.location.bodyIndex))
 				if target_distance_from_entry > 100000e3 then return end
 				local risk = taxi_flavours[mission.flavour].risk
-				if risk > 0 and hostilactive == 0 then ship = ship_hostil(risk) end
+				if risk > 0 and not hostilactive then ship = ship_hostil(risk) end
 
-				if ship and hostilactive == 0 then
-					hostilactive = 1
+				if ship and not hostilactive then
+					hostilactive = true
 					local pirate_greeting = string.interp(l['PIRATE_TAUNTS_'..Engine.rand:Integer(1,num_pirate_taunts)-1], { client = mission.client.name,})
 						Comms.ImportantMessage(pirate_greeting, ship.label)
 				end

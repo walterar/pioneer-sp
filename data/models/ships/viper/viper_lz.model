@@ -3,9 +3,9 @@ diffuse 1.6 1.7 1.8
 specular 1.0 1.2 1.3
 shininess 30
 #opacity 99
-tex_diff lizard.png
-tex_spec medwear_spec.png
-tex_glow glow.png
+tex_diff lizard.dds
+tex_spec medwear_spec.dds
+tex_glow glow.dds
 
 mesh viper.x
 anim gear_down 0 31840

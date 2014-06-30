@@ -11,6 +11,18 @@
 "description":"",
 "message":"Авто Боевой НЕ АКТИВНО"
 },
+"Damage_Control_Propellant":{
+"description":"",
+"message":"Контроль из повреждения: Внимание!\nПотерял 50% пропеллента!"
+},
+"Damage_Control_Autopilot":{
+"description":"",
+"message":"Контроль из повреждения: Внимание!\nАвтопилот уничтожены!"
+},
+"Damage_Control_Radar":{
+"description":"",
+"message":"Контроль из повреждения: Внимание!\nРадар был разрушен!"
+},
 "IS_REGISTERED_IN_OUR_DOMAIN":{
 "description":"",
 "message":" > ЗАРЕГИСТРИРОВАН В НАШЕМ ПРОСТРАНСТВЕ"

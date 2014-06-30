@@ -20,6 +20,7 @@ local my_shipDef,my_ship_name,my_ship_id,my_ship_price,shipdefs,maxsales
 local oksel = 0
 
 local equipping = function ()
+	if Engine.rand:Integer(3) > 2 then return end
 	local drive = ShipDef[Game.player.shipId].hyperdriveClass
 	if drive > 0 then
 		Game.player:AddEquip('DRIVE_CLASS'..drive)
@@ -42,7 +43,7 @@ local onChat = function (form, ref, option)
 				def.tag == 'SHIP'
 				and def.basePrice > 0
 				and def.name ~= my_ship_name
-				and def.basePrice <= (Game.player:GetMoney() + my_ship_price)
+				and def.basePrice < (Game.player:GetMoney() + my_ship_price)
 			end, pairs(ShipDef)))
 		if #shipdefs == 0 then return end
 		maxsales = 6
@@ -75,7 +76,7 @@ local onChat = function (form, ref, option)
 	if option == 0 then
 		form:Clear()
 
-		form:SetTitle(ad.title)
+		form:SetTitle(ad.title.."\n*\n*")
 		form:SetMessage(string.interp(l["HelloCommander"..Engine.rand:Integer(1,4)].."\n*\n"..l["Sale"..Engine.rand:Integer(1,4)].."[ "..my_ship_name.." ] "..showCurrency(my_ship_price).."\n*\n*"))
 
 		for i = 1,maxsales do

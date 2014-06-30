@@ -1,34 +1,34 @@
 material concrete-material
 diffuse 0.9 0.9 0.8
-specular 0.5 0.5 0.5 
+specular 0.5 0.5 0.5
 shininess 10
-tex_diff city3k_skin.png
-tex_spec city3k_spec.png
+tex_diff city3k_skin.dds
+tex_spec city3k_spec.dds
 
 
 material red-material
 diffuse 1.0 0.8 0.8
 specular 0.7 0.7 0.7
 shininess 30
-tex_diff city3k_skin.png
-tex_spec city3k_spec.png
+tex_diff city3k_skin.dds
+tex_spec city3k_spec.dds
 
 
 material green-material
 diffuse 0.8 1.0 0.8
 specular 0.7 0.7 0.7
 shininess 30
-tex_diff city3k_skin.png
-tex_spec city3k_spec.png
+tex_diff city3k_skin.dds
+tex_spec city3k_spec.dds
 
 
 material blue-material
 diffuse 0.8 0.8 1.0
 specular 0.7 0.7 0.7
 shininess 30
-tex_diff city3k_skin.png
-tex_spec city3k_spec.png
-tex_glow city3k_glow.png
+tex_diff city3k_skin.dds
+tex_spec city3k_spec.dds
+tex_glow city3k_glow.dds
 
 
 material fence-material
@@ -37,8 +37,8 @@ specular 0.0 0.0 0.0
 emissive 1.0 1.0 1.0
 shininess 10
 opacity 98
-tex_diff city3k_skin.png
-tex_spec city3k_spec.png
+tex_diff city3k_skin.dds
+tex_spec city3k_spec.dds
 
 
 material wins_on-material
@@ -47,8 +47,8 @@ specular 1.0 1.0 1.0
 emissive 1.0 1.0 1.0
 shininess 100
 opacity 98
-tex_diff city3k_skin.png
-tex_spec city3k_spec.png
+tex_diff city3k_skin.dds
+tex_spec city3k_spec.dds
 
 
 material wins_off-material
@@ -56,8 +56,8 @@ diffuse 0.5 0.55 0.6
 specular 1.0 1.0 1.0
 shininess 100
 opacity 98
-tex_diff city3k_skin.png
-tex_spec city3k_spec.png
+tex_diff city3k_skin.dds
+tex_spec city3k_spec.dds
 
 
 material cutout-material
@@ -65,8 +65,8 @@ diffuse 0.7 0.75 0.8
 specular 0.7 0.7 0.7
 shininess 30
 opacity 98
-tex_diff city3k_skin.png
-tex_spec city3k_spec.png
+tex_diff city3k_skin.dds
+tex_spec city3k_spec.dds
 
 
 material dome-material
@@ -87,4 +87,3 @@ mesh combo1_lod2.dae
 
 lod 500
 mesh combo1_lod3.dae
-

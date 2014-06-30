@@ -35,5 +35,5 @@ define_ship {
 	effective_exhaust_velocity = 80000e3,
 	price = 40000,
 	hyperdrive_class = 0,
-	max_engines = 0,
+	max_engine = 0,
 }

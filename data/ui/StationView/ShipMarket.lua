@@ -10,6 +10,7 @@ local Event        = import("Event")
 local Format       = import("Format")
 local Lang         = import("Lang")
 local ShipDef      = import("ShipDef")
+local Space        = import("Space")
 
 local Model        = import("SceneGraph.Model")
 local ModelSkin    = import("SceneGraph.ModelSkin")
@@ -20,8 +21,8 @@ local MessageBox         = import("ui/MessageBox")
 
 local ui = Engine.ui
 
-local l   = Lang.GetResource("ui-core")
-local lc  = Lang.GetResource("core")
+local l   = Lang.GetResource("ui-core");
+local lc  = Lang.GetResource("core");
 local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl", "en")
 
 local shipClassString = {
@@ -59,8 +60,7 @@ local shipTable =
 		:SetRowAlignment("CENTER")
 		:SetMouseEnabled(true)
 
-local shipInfo =
-	ui:Expand("VERTICAL")
+local shipInfo = ui:Expand("VERTICAL")
 
 local function shipClassIcon (shipClass)
 	return shipClass ~= "unknown"
@@ -75,7 +75,7 @@ local function manufacturerIcon (manufacturer)
 end
 
 local function tradeInValue (def)
-	return def.basePrice * 0.5
+	return math.ceil(def.basePrice * 0.5)
 end
 
 local function buyShip (sos)
@@ -123,7 +123,7 @@ local yes_no = function (binary)
 		return l.YES
 	elseif binary == 0 then
 		return l.NO
-	else error("argument to yes_no not 0 or 1")
+	else error("argument to yes_no NOT 0 or 1 OR nil")
 	end
 end
 
@@ -214,9 +214,7 @@ local function updateStation (station, shipsOnSale)
 	if currentShipOnSale then
 		if not seen then
 			currentShipOnSale = nil
-			shipInfo:SetInnerWidget(
-				ui:MultiLineText(l.SHIP_VIEWING_WAS_SOLD)
-			)
+			shipInfo:SetInnerWidget(ui:MultiLineText(l.SHIP_VIEWING_WAS_SOLD))
 		end
 	else
 		shipInfo:RemoveInnerWidget()
@@ -229,11 +227,18 @@ local shipMarket = function (args)
 	local station = Game.player:GetDockedWith()
 	currentShipOnSale = nil
 	updateStation(station, station:GetShipsOnSale())
-
-	return
-		ui:Grid({38,4,58},1)
-			:SetColumn(0, {shipTable})
-			:SetColumn(2, {shipInfo})
+	if #Space.GetBodies(function (body) return body.superType == 'STARPORT' end) < 5 then
+		MessageBox.Message(myl.New_Ships_without_stock..Game.system.name)
+		return
+			ui:Grid({38,4,58},1)
+				:SetColumn(0, {})
+				:SetColumn(2, {})
+	else
+		return
+			ui:Grid({38,4,58},1)
+				:SetColumn(0, {shipTable})
+				:SetColumn(2, {shipInfo})
+	end
 end
 
 return shipMarket

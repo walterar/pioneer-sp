@@ -329,7 +329,7 @@
    },
    "DOWNGRADING_ALERT_STATUS" : {
       "description" : "",
-      "message" : "Pas d'attaque depuis 60 secondes, niveau d'alerte réduit."
+      "message" : "Pas d'attaque depuis 30 secondes, niveau d'alerte réduit."
    },
    "DRAW_OUT_RANGE_LABELS" : {
       "description" : "",

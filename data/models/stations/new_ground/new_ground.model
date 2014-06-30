@@ -11,36 +11,36 @@
 material m0c_b_metall1
 diffuse 1.0 1.0 1.0
 specular 0.5 0.5 0.5
-tex_diff Steelplt.PNG
+tex_diff Steelplt.png
 
 material m1c_b_metall1a
 diffuse 1.0 1.0 1.0
 specular 0.5 0.5 0.5
-tex_diff LiftColumn.PNG
-tex_glow LiftColumn_illum.PNG
+tex_diff LiftColumn.png
+tex_glow LiftColumn_illum.png
 
 material m2palt_glow
 diffuse 1.0 1.0 1.0
 specular 0.5 0.5 0.5
-tex_diff LiftColumn.PNG
-tex_glow LiftColumn_illum.PNG
+tex_diff LiftColumn.png
+tex_glow LiftColumn_illum.png
 
 material m3plat_ground_meta
 diffuse 1.0 1.0 1.0
 specular 0.5 0.5 0.5
-tex_diff c_metall.PNG
+tex_diff c_metall.png
 
 material m4plat_lift_column
 diffuse 1.0 1.0 1.0
 specular 0.5 0.5 0.5
-tex_diff LiftColumn.PNG
-tex_glow LiftColumn_illum.PNG
+tex_diff LiftColumn.png
+tex_glow LiftColumn_illum.png
 
 lod 300
-mesh landPad6_mesh_lores.DAE
+mesh landPad6_mesh_lores.dae
 
 lod 1000
-mesh landPad6_docking.DAE
-mesh landPad6_mesh.DAE
+mesh landPad6_docking.dae
+mesh landPad6_mesh.dae
 
-collision landPad6_collision.DAE
+collision landPad6_collision.dae

@@ -333,7 +333,7 @@
    },
    "DOWNGRADING_ALERT_STATUS" : {
       "description" : "",
-      "message" : "No fire detected for 60 seconds, downgrading alert status."
+      "message" : "No fire detected for 30 seconds, downgrading alert status."
    },
    "DRAW_OUT_RANGE_LABELS" : {
       "description" : "",

@@ -333,7 +333,7 @@
    },
    "DOWNGRADING_ALERT_STATUS" : {
       "description" : "",
-      "message" : "Выстрелы не фиксировались более 60 секунд, снижение уровня угрозы."
+      "message" : "Выстрелы не фиксировались более 30 секунд, снижение уровня угрозы."
    },
    "DRAW_OUT_RANGE_LABELS" : {
       "description" : "",

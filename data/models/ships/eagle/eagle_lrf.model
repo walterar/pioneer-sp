@@ -3,60 +3,60 @@ material inside
 diffuse 0.6 0.65 0.7
 specular 0.4 0.45 0.45
 shininess 30
-tex_diff skin_lrf.png
-tex_spec spec_lrf.png
-tex_glow glow.png
+tex_diff skin_lrf.dds
+tex_spec spec_lrf.dds
+tex_glow glow.dds
 
 material black
 diffuse 0.3 0.3 0.3
 specular 0.3 0.3 0.3
 shininess 10
-tex_diff skin_lrf.png
-tex_spec spec_lrf.png
+tex_diff skin_lrf.dds
+tex_spec spec_lrf.dds
 
 material chrome
 diffuse 0.85 0.95 1.0
 specular 0.9 0.9 1.0
 shininess 30
-tex_diff skin_lrf.png
-tex_spec spec_lrf.png
+tex_diff skin_lrf.dds
+tex_spec spec_lrf.dds
 
 material matvar
 diffuse 1.0 1.0 1.0
 specular 0.9 0.9 1.0
 shininess 100
-tex_diff skin_lrf.png
-tex_spec spec_lrf.png
+tex_diff skin_lrf.dds
+tex_spec spec_lrf.dds
 use_patterns
 
 material steel
 diffuse 0.6 0.65 0.7
 specular 0.4 0.45 0.45
 shininess 30
-tex_diff skin_lrf.png
-tex_spec spec_lrf.png
+tex_diff skin_lrf.dds
+tex_spec spec_lrf.dds
 
 material wins
 diffuse 0.9 0.95 1.0
 specular 0.9 0.9 1.0
 opacity 70
 shininess 100
-tex_diff skin_lrf.png
-tex_spec spec_lrf.png
+tex_diff skin_lrf.dds
+tex_spec spec_lrf.dds
 
 material pilot
 diffuse 1.0 1.0 1.0
 specular 0.5 0.5 0.5
 shininess 30
-tex_diff pilot_skin.png
-tex_spec pilot_spec.png
+tex_diff pilot_skin.dds
+tex_spec pilot_spec.dds
 
 material pilot_cv
 diffuse 1.0 1.0 1.0
 specular 0.5 0.5 0.5
 shininess 30
-tex_diff pilot_skin.png
-tex_spec pilot_spec.png
+tex_diff pilot_skin.dds
+tex_spec pilot_spec.dds
 use_patterns
 
 material visor
@@ -83,4 +83,3 @@ mesh lod3_body.dae
 
 mesh gear.x
 anim gear_down 0 29
-

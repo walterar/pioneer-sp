@@ -329,7 +329,7 @@
    },
    "DOWNGRADING_ALERT_STATUS" : {
       "description" : "",
-      "message" : "Geen schoten gedetecteerd gedurende 60 seconden. Alarm-status wordt verlaagd."
+      "message" : "Geen schoten gedetecteerd gedurende 30 seconden. Alarm-status wordt verlaagd."
    },
    "DRAW_OUT_RANGE_LABELS" : {
       "description" : "",

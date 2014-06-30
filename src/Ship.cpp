@@ -1068,7 +1068,7 @@ void Ship::UpdateAlertState()
 			else if (ship_is_firing) {
 				m_lastFiringAlert = Pi::game->GetTime();
 			}
-			else if (m_lastFiringAlert + 60.0 <= Pi::game->GetTime()) {
+			else if (m_lastFiringAlert + 30.0 <= Pi::game->GetTime()) {
 				SetAlertState(ALERT_SHIP_NEARBY);
 				changed = true;
 			}

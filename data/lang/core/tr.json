@@ -329,7 +329,7 @@
    },
    "DOWNGRADING_ALERT_STATUS" : {
       "description" : "",
-      "message" : "60 saniye boyunca atış algılanmadı, alarm seviyesi düşürülüyor."
+      "message" : "30 saniye boyunca atış algılanmadı, alarm seviyesi düşürülüyor."
    },
    "DRAW_OUT_RANGE_LABELS" : {
       "description" : "",

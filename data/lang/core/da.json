@@ -329,7 +329,7 @@
    },
    "DOWNGRADING_ALERT_STATUS" : {
       "description" : "",
-      "message" : "Ingen affyrede skud registreret i 60s, nedgraderer advarselsniveau."
+      "message" : "Ingen affyrede skud registreret i 30s, nedgraderer advarselsniveau."
    },
    "DRAW_OUT_RANGE_LABELS" : {
       "description" : "",

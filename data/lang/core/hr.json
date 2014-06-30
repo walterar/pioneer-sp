@@ -329,7 +329,7 @@
    },
    "DOWNGRADING_ALERT_STATUS" : {
       "description" : "",
-      "message" : "Bez paljbe već 60 sekunda, smanjujem status uzbune."
+      "message" : "Bez paljbe već 30 sekunda, smanjujem status uzbune."
    },
    "DRAW_OUT_RANGE_LABELS" : {
       "description" : "",

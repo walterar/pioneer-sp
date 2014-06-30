@@ -11,6 +11,18 @@
 "description":"",
 "message":"Combate Automático: DESACTIVADO"
 },
+"Damage_Control_Propellant":{
+"description":"",
+"message":"Control de daños: Atención!\nSe ha perdido el 50% de Propelente!"
+},
+"Damage_Control_Autopilot":{
+"description":"",
+"message":"Control de daños: Atención!\nPiloto Automático destruído!"
+},
+"Damage_Control_Radar":{
+"description":"",
+"message":"Control de daños: Atención!\nEl Radar ha sido inutilizado!"
+},
 "IS_REGISTERED_IN_OUR_DOMAIN":{
 "description":"",
 "message":" está registrada en nuestros dominios."

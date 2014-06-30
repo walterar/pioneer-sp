@@ -94,7 +94,7 @@ Event.Register("onFrameChanged", function (body)
 		battle_active = false
 		for i = 1, max_hostiles do
 			if hostil[i] and hostil[i]:exists() then
-				print(hostil[i].label.." (RESTO DE BATTLE) ELIMINADA")
+--				print(hostil[i].label.." (RESTO DE BATTLE) ELIMINADA")
 				hostil[i]:Explode()
 				hostil[i] = nil
 			end

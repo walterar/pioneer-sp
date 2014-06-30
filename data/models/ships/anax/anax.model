@@ -5,9 +5,9 @@
 
 #Define all used materials first
 material Hull-material
-tex_spec s-texture.png
-tex_diff diff-texture.png
-tex_glow glow-texture.png
+tex_spec s-texture.dds
+tex_diff diff-texture.dds
+tex_glow glow-texture.dds
 diffuse 1 1 1
 specular 1 1 1
 shininess 80

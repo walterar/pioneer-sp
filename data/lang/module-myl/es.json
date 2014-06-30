@@ -67,6 +67,10 @@
 "description":"",
 "message":"Hiperespacio"
 },
+"ILLEGAL_JUMP":{
+"description":"",
+"message":"Salto ilegal"
+},
 "INACTIVE":{
 "description":"",
 "message":"Inactiva"
@@ -98,6 +102,10 @@
 "MEDIUM_SCOUT":{
 "description":"",
 "message":"Explorador mediano"
+},
+"New_Ships_without_stock":{
+"description":"",
+"message":"Mercado de Naves Nuevas sin stock\nen todo el sistema: "
 },
 "Origin":{
 "description":"",

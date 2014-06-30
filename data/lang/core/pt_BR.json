@@ -329,7 +329,7 @@
    },
    "DOWNGRADING_ALERT_STATUS" : {
       "description" : "",
-      "message" : "Nenhum fogo foi detectado por 60 segundos, retirando o status de alerta."
+      "message" : "Nenhum fogo foi detectado por 30 segundos, retirando o status de alerta."
    },
    "DRAW_OUT_RANGE_LABELS" : {
       "description" : "",

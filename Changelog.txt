@@ -1,3 +1,30 @@
+June 2014
+
+   * Minor changes and tweaks
+     * Don't allow fuel scoop on Kanara civ (#2929) * Not used in Scout+
+     * Faction update to match wiki (#2930)
+     * Proper rocketship icon by Evarchart (#2942)
+     * DDS for all models (#2945)
+     * Support SGM files, disable texture options, new modelcompiler tool (#2962)
+
+   * Script and UI API changes
+     * Added scripts to parse ship stats to wiki
+
+   * Fixes
+     * Fix bug/typo that let player fit hyperdrive on lunarshuttle
+     * Fixing (#2656) landing meshes (#2943)
+     * Fix money format overflow (#2939)
+     * New ground cleanup (#2950)
+     * Fix problem with multiple assassination missions not being cleared * Not used in Scout+
+       properly (#2952)
+     * Always at least ONE starport (#2968)
+     * Enable different sell/buy for ship equipment (#2955)
+     * Fix bad scaling of space stations (exposed since assimp 3.1.1) (#2923)
+
+   * Internal Changes
+     * Compress default (#2940) * Not in Scout+
+     * Added lua attribute to get faction->idx as an faction id (#2949)
+
 May 2014
 
    * Minor changes and tweaks
@@ -5,6 +32,7 @@ May 2014
        "%.1f", cap it at 99.9% instead of 100% (#2901)
      * Fix Wave texture problems & missing ModelViewer pointer (#2903)
      * Hoop station door collision (#2916)
+     * New cursor and mouse flight indicator (#2922)
 
    * Script and UI API changes
      * Added onShipFiring

@@ -1,50 +1,50 @@
 material concrete-material
 diffuse 0.9 0.9 0.8
-specular 0.5 0.5 0.5 
+specular 0.5 0.5 0.5
 shininess 10
-tex_diff arco_skin.png
-tex_spec arco_spec.png
+tex_diff arco_skin.dds
+tex_spec arco_spec.dds
 
 
 material grass-material
 diffuse 0.6 0.7 0.4
 specular 0.5 0.5 0.5
 shininess 10
-tex_diff arco_skin.png
-tex_spec arco_spec.png
+tex_diff arco_skin.dds
+tex_spec arco_spec.dds
 
 
 material panel-material
 diffuse 0.7 0.75 0.8
 specular 0.7 0.7 0.7
 shininess 30
-tex_diff arco_skin.png
-tex_spec arco_spec.png
+tex_diff arco_skin.dds
+tex_spec arco_spec.dds
 
 
 material lake-material
 diffuse 0.4 0.7 0.8
 specular 0.4 0.6 0.6
 shininess 100
-tex_diff arco_skin.png
-tex_spec arco_spec.png
+tex_diff arco_skin.dds
+tex_spec arco_spec.dds
 
 
 material church-material
 diffuse 0.9 0.9 0.9
-specular 0.5 0.5 0.5 
+specular 0.5 0.5 0.5
 shininess 10
-tex_diff city3k_skin.png
-tex_spec city3k_spec.png
-tex_glow city3k_glow.png
+tex_diff city3k_skin.dds
+tex_spec city3k_spec.dds
+tex_glow city3k_glow.dds
 
 
 material combo-material
 diffuse 0.8 0.75 0.6
-specular 0.5 0.5 0.5 
+specular 0.5 0.5 0.5
 shininess 10
-tex_diff city3k_skin.png
-tex_spec city3k_spec.png
+tex_diff city3k_skin.dds
+tex_spec city3k_spec.dds
 
 
 material wins_on-material
@@ -53,8 +53,8 @@ specular 1.0 1.0 1.0
 emissive 0.7 0.7 0.7
 shininess 100
 opacity 98
-tex_diff city3k_skin.png
-tex_spec city3k_spec.png
+tex_diff city3k_skin.dds
+tex_spec city3k_spec.dds
 
 
 material wins_off-material
@@ -62,8 +62,8 @@ diffuse 0.5 0.55 0.6
 specular 1.0 1.0 1.0
 shininess 100
 opacity 98
-tex_diff city3k_skin.png
-tex_spec city3k_spec.png
+tex_diff city3k_skin.dds
+tex_spec city3k_spec.dds
 
 
 material cutout-material
@@ -71,8 +71,8 @@ diffuse 0.7 0.75 0.8
 specular 0.7 0.7 0.7
 shininess 30
 opacity 98
-tex_diff city3k_skin.png
-tex_spec city3k_spec.png
+tex_diff city3k_skin.dds
+tex_spec city3k_spec.dds
 
 
 material dome-material
@@ -96,4 +96,3 @@ mesh arco2_lod3.dae
 
 lod 500
 mesh arco2_lod4.dae
-

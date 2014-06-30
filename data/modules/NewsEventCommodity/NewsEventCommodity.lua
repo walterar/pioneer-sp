@@ -38,11 +38,11 @@ local l = Lang.GetResource("module-newseventcommodity")
 -- Get the UI class
 local ui = Engine.ui
 
-local maxDist  = 50         -- for spawning news (ly)
-local minTime = 31536000    -- no news the first year of a new game (sec)
+local maxDist = 30          -- for spawning news (ly)
+local minTime = 15768000    -- no news the first 5 months of a new game (sec)
 
 -- to spawn a new event per hyperjump, provided no other news.
-local eventProbability = 1/30
+local eventProbability = 1/15
 
 -- max index of flavoured variants
 local maxIndexOfIndNewspapers = 10
@@ -150,7 +150,7 @@ local onChat = function (form, ref, option)
 	local newspaper
 	if faction == "Federation" then
 		newspaper = l.NEWSPAPER_FED
-	elseif faction == "Confederation of Independent Systems" then
+	elseif faction == "Confederation" then
 		newspaper = l.NEWSPAPER_CIS
 	elseif faction == "Empire" then
 		newspaper = l.NEWSPAPER_IMP

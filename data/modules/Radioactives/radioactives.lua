@@ -2,11 +2,11 @@
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- Work in progress.
 
-local Lang       = import("Lang")
-local Game       = import("Game")
-local Comms      = import("Comms")
-local Event      = import("Event")
-local EquipDef   = import("EquipDef")
+local Lang     = import("Lang")
+local Game     = import("Game")
+local Comms    = import("Comms")
+local Event    = import("Event")
+local EquipDef = import("EquipDef")
 
 local l = Lang.GetResource("module-radioactives") or Lang.GetResource("module-radioactives","en");
 

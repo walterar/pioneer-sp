@@ -1,9 +1,9 @@
 # Comments can be written like this
 # Define all used materials first
 material SKIN-material
-tex_diff shadowbc.png
-tex_glow shadowbc_glow.png
-tex_spec shadowbc_spec.png
+tex_diff shadowbc.dds
+tex_glow shadowbc_glow.dds
+tex_spec shadowbc_spec.dds
 collision shadowbc.obj
 
 # LOD
@@ -15,4 +15,3 @@ mesh shadowbc_med.dae
 
 lod 70
 mesh shadowbc_low.dae
-

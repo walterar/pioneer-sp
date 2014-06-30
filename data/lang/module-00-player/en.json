@@ -11,6 +11,18 @@
 "description":"",
 "message":"Auto Combat: DEACTIVATED"
 },
+"Damage_Control_Propellant":{
+"description":"",
+"message":"Damage Control: Attention!\nIt has lost 50% propellant!"
+},
+"Damage_Control_Autopilot":{
+"description":"",
+"message":"Damage Control: Attention!\nAutopilot destroyed!"
+},
+"Damage_Control_Radar":{
+"description":"",
+"message":"Damage Control: Attention!\nThe Radar has been destroyed!"
+},
 "IS_REGISTERED_IN_OUR_DOMAIN":{
 "description":"",
 "message":" is registered in our domain."

@@ -11,6 +11,18 @@
 "description":"",
 "message":"Auto Combattente NON ATTIVO"
 },
+"Damage_Control_Propellant":{
+"description":"",
+"message":"Controllo di danno: Attenzione!\nHa perso il 50% di Propellente!"
+},
+"Damage_Control_Autopilot":{
+"description":"",
+"message":"Controllo di danno: Attenzione!\nPilota Automatico distrutta!"
+},
+"Damage_Control_Radar":{
+"description":"",
+"message":"Controllo di danno: Attenzione!\nIl Radar è stata distrutta!"
+},
 "IS_REGISTERED_IN_OUR_DOMAIN":{
 "description":"",
 "message":"  è registrata nel nostro dominio."

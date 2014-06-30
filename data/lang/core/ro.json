@@ -329,7 +329,7 @@
    },
    "DOWNGRADING_ALERT_STATUS" : {
       "description" : "",
-      "message" : "Nici un foc detectat timp de 60 de secunde, se retrogradează nivelul alertei."
+      "message" : "Nici un foc detectat timp de 30 de secunde, se retrogradează nivelul alertei."
    },
    "DRAW_OUT_RANGE_LABELS" : {
       "description" : "",

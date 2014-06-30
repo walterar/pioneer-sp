@@ -240,7 +240,7 @@ public:
 		FUEL_WARNING,
 		FUEL_EMPTY,
 	};
-	FuelState GetFuelState() { return m_thrusterFuel > 0.05f ? FUEL_OK : m_thrusterFuel > 0.0f ? FUEL_WARNING : FUEL_EMPTY; }
+	FuelState GetFuelState() { return m_thrusterFuel > 0.15f ? FUEL_OK : m_thrusterFuel > 0.0f ? FUEL_WARNING : FUEL_EMPTY; }
 
 	// fuel left, 0.0-1.0
 	double GetFuel() const { return m_thrusterFuel;	}
@@ -369,5 +369,3 @@ private:
 
 
 #endif /* _SHIP_H */
-
-

@@ -68,7 +68,7 @@ struct ShipType {
 	// percentage (ie, 0--100) of tank used per second at full thrust
 	float GetFuelUseRate() const;
 
-	static std::string POLICE;
+//	static std::string POLICE;
 	static std::string MISSILE_GUIDED;
 	static std::string MISSILE_NAVAL;
 	static std::string MISSILE_SMART;

@@ -353,6 +353,9 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	Profiler::reset();
 #endif
 
+	Profiler::Timer timer;
+	timer.Start();
+
 	OS::NotifyLoadBegin();
 
 	FileSystem::Init();
@@ -373,9 +376,9 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	if (strlen(PIONEERSP_EXTRAVERSION)) version += " (" PIONEERSP_EXTRAVERSION ")";
 	const char* platformName = SDL_GetPlatform();
 	if(platformName)
-		Output("Pioneer Scout Plus G18f %s on: %s\n\n", version.c_str(), platformName);
+		Output("Pioneer Scout Plus G19f %s on: %s\n\n", version.c_str(), platformName);
 	else
-		Output("Pioneer Scout Plus G18f %s but could not detect platform name.\n\n", version.c_str());
+		Output("Pioneer Scout Plus G19f %s but could not detect platform name.\n\n", version.c_str());
 
 	Output("%s\n", OS::GetOSInfoString().c_str());
 
@@ -648,6 +651,9 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 
 	luaConsole = new LuaConsole();
 	KeyBindings::toggleLuaConsole.onPress.connect(sigc::mem_fun(Pi::luaConsole, &LuaConsole::Toggle));
+
+	timer.Stop();
+	Output("\n\nLoading took: %lf milliseconds\n", timer.millicycles());
 }
 
 bool Pi::IsConsoleActive()
@@ -818,7 +824,7 @@ void Pi::HandleEvents()
 									missile->SetVelocity(Pi::player->GetVelocity());
 									game->GetSpace()->AddBody(missile);
 									missile->AIKamikaze(Pi::player->GetCombatTarget());
-								} else if (KeyState(SDLK_LSHIFT)) {
+								}/* else if (KeyState(SDLK_LSHIFT)) {
 									SpaceStation *s = static_cast<SpaceStation*>(Pi::player->GetNavTarget());
 									if (s) {
 										Ship *ship = new Ship(ShipType::POLICE);
@@ -826,11 +832,11 @@ void Pi::HandleEvents()
 										if (port != -1) {
 											Output("Putting ship into station\n");
 											// Make police ship intent on killing the player
-/*											ship->AIKill(Pi::player);
+											ship->AIKill(Pi::player);
 											ship->SetFrame(Pi::player->GetFrame());
 											ship->SetDockedWith(s, port);
 											game->GetSpace()->AddBody(ship);
-*/										} else {
+										} else {
 											delete ship;
 											Output("No docking ports free dude\n");
 										}
@@ -851,7 +857,7 @@ void Pi::HandleEvents()
 									ship->SetVelocity(Pi::player->GetVelocity());
 									ship->UpdateStats();
 									game->GetSpace()->AddBody(ship);
-								}
+								}*/
 							}
 							break;
 						}
@@ -875,7 +881,7 @@ void Pi::HandleEvents()
 									Pi::cpan->MsgLog()->Message("", Lang::CANT_SAVE_IN_HYPERSPACE);
 
 								else {
-									const std::string name = "_quicksave";
+									const std::string name = "QuickSave";
 									const std::string path = FileSystem::JoinPath(GetSaveDir(), name);
 									try {
 										Game::SaveGame(name, Pi::game);

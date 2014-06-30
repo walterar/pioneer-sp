@@ -1,4 +1,4 @@
--- Joust.lua for Pioneer Scout+ (c)2013-2014 by walterar <walterar2@gmail.com>
+-- Joust.lua for Pioneer Scout+ (c)2012-2014 by walterar <walterar2@gmail.com>
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- Work in progress.
 
@@ -65,9 +65,7 @@ local joust = function (player)
 		end, pairs(EquipDef)))
 	local laserdef = laserdefs[Engine.rand:Integer(1,#laserdefs)]
 	local hostil = Space.SpawnShipNear(shipdef.id, player, 5, 5)
-	if hostil == nil then
-		print("EL HOSTIL DE JOUSTING NO HA SIDO CREADO")
-	return end
+	if hostil == nil then return end
 	hostil:SetLabel(Ship.MakeRandomLabel())
 	hostil:AddEquip(default_drive)
 	hostil:AddEquip(laserdef.id)
@@ -76,7 +74,7 @@ local joust = function (player)
 	local jousting = Game.system
 	Timer:CallAt(Game.time+20, function ()
 		if Game.system == jousting and hostil ~= nil then
-			if (player:GetEquipFree("LASER") < ShipDef[player.shipId].equipSlotCapacity.LASER) then
+			if player:GetEquipFree("LASER") < ShipDef[player.shipId].equipSlotCapacity.LASER then
 				TrueJoust = true
 				hostil:AIKill(player)
 				msg = l["the_time_has_come"..Engine.rand:Integer(1,3)]
@@ -101,13 +99,11 @@ local onEnterSystem = function (player)
 		and Engine.rand:Integer(2) < 1 then--XXX
 		Event.Register("onShipHit", onShipHit)
 		Event.Register("onShipDestroyed", onShipDestroyed)
-		return joust(player)
+		joust(player)
 	else
 		Event.Deregister("onShipHit", onShipHit)
 		Event.Deregister("onShipDestroyed", onShipDestroyed)
 	end
 end
 
---Event.Register("onShipHit", onShipHit)
---Event.Register("onShipDestroyed", onShipDestroyed)
 Event.Register("onEnterSystem", onEnterSystem)

@@ -67,6 +67,10 @@
 "description":"",
 "message":"Гиперпространственной"
 },
+"ILLEGAL_JUMP":{
+"description":"",
+"message":"Незаконное прыжок"
+},
 "INACTIVE":{
 "description":"",
 "message":"неактивный"
@@ -98,6 +102,10 @@
 "MEDIUM_SCOUT":{
 "description":"",
 "message":"Средний Проводник"
+},
+"New_Ships_without_stock":{
+"description":"",
+"message":"Рынок новых судов без складе\nво всей системе: "
 },
 "Origin":{
 "description":"",

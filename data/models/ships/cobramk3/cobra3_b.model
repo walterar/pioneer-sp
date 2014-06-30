@@ -2,47 +2,47 @@ material body-material
 diffuse 1.0 1.0 1.0
 specular 0.9 0.95 1.0
 shininess 50
-tex_diff skin_b.png
-tex_spec spec_b.png
+tex_diff skin_b.dds
+tex_spec spec_b.dds
 
 material mat-material
 diffuse 0.6 0.58 0.51
 specular 0.3 0.3 0.3
 shininess 10
-tex_diff skin_b.png
-tex_spec spec_b.png
+tex_diff skin_b.dds
+tex_spec spec_b.dds
 
 material cockpit-material
 diffuse 1.0 1.0 1.0
 specular 0.5 0.5 0.5
 shininess 30
-tex_diff skin_b.png
-tex_spec spec_b.png
-tex_glow glow.png
+tex_diff skin_b.dds
+tex_spec spec_b.dds
+tex_glow glow.dds
 
 material e_glow-material
 diffuse 1.0 1.0 1.0
 specular 0.0 0.0 0.0
 shininess 1
 opacity 98
-tex_diff skin_b.png
-tex_spec spec_b.png
-tex_glow glow.png
+tex_diff skin_b.dds
+tex_spec spec_b.dds
+tex_glow glow.dds
 
 material wins-material
 diffuse 0.5 0.5 0.5
 specular 1.0 1.0 1.0
 shininess 100
 opacity 70
-tex_diff skin_b.png
+tex_diff skin_b.dds
 
 material semitrans-material
 diffuse 1.0 1.0 1.0
 specular 0.9 0.95 1.0
 shininess 10
 opacity 60
-tex_diff skin_b2.png
-tex_spec spec_b.png
+tex_diff skin_b2.dds
+tex_spec spec_b.dds
 use_patterns
 
 

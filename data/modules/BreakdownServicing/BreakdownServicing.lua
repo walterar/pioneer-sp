@@ -1,5 +1,7 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
+-- modified for Pioneer Scout+ (c)2012-2014 by walterar <walterar2@gmail.com>
+-- Work in progress.
 
 local Engine     = import("Engine")
 local Lang       = import("Lang")
@@ -11,19 +13,22 @@ local NameGen    = import("NameGen")
 local Format     = import("Format")
 local Serializer = import("Serializer")
 local EquipDef   = import("EquipDef")
+local MessageBox = import("ui/MessageBox")
 
 local l = Lang.GetResource("module-breakdownservicing")
 
 -- Default numeric values --
 ----------------------------
 local oneyear = 31557600 -- One standard Julian year
+local onemonth = 2593775 -- One standard Julian month
+
 -- 10, guaranteed random by D16 dice roll.
 -- This is to make the BBS name different from the station welcome character.
 local seedbump = 10
 -- How many jumps might you get after your service_period is finished?
 -- Failure is increasingly likely with each jump, this being the limit
 -- where probability = 1
-local max_jumps_unserviced = 255
+local max_jumps_unserviced = 10
 
 local flavours = {
 	{
@@ -51,16 +56,16 @@ local flavours = {
 for i = 1,#flavours do
 	local f = flavours[i]
 	f.title     = l["FLAVOUR_" .. i-1 .. "_TITLE"]
-	f.intro     = l["FLAVOUR_" .. i-1 .. "_INTRO"]
+	f.intro     = l["FLAVOUR_" .. i-1 .. "_INTRO"].."\n*"
 	f.yesplease = l["FLAVOUR_" .. i-1 .. "_YESPLEASE"]
-	f.response  = l["FLAVOUR_" .. i-1 .. "_RESPONSE"]
+	f.response  = l["FLAVOUR_" .. i-1 .. "_RESPONSE"].."\n*"
 end
 
 local ads = {}
 local service_history = {
 	lastdate = 0, -- Default will be overwritten on game start
 	company = nil, -- Name of company that did the last service
-	service_period = oneyear, -- default
+	service_period = onemonth, -- default
 	jumpcount = 0, -- Number of jumps made after the service_period
 }
 
@@ -68,11 +73,11 @@ local lastServiceMessage = function (hyperdrive)
 	-- Fill in the blanks tokens on the {lasttime} string from service_history
 	local message
 	if hyperdrive == 'NONE' then
-		message = l.YOU_DO_NOT_HAVE_A_DRIVE_TO_SERVICE
+		return
 	elseif not service_history.company then
 		message = l.YOUR_DRIVE_HAS_NOT_BEEN_SERVICED
 	else
-		message = l.YOUR_DRIVE_WAS_LAST_SERVICED_ON
+		message = l.YOUR_DRIVE_WAS_LAST_SERVICED_ON.."\n*"
 	end
 	return string.interp(message, {date = Format.Date(service_history.lastdate), company = service_history.company})
 end
@@ -83,7 +88,14 @@ local onChat = function (form, ref, option)
 	local hyperdrive = Game.player:GetEquip('ENGINE',1)
 
 	-- Tariff!  ad.baseprice is from 2 to 10
-	local price = ad.baseprice
+	local price
+	if hyperdrive ~="NONE" then
+		price = (ad.baseprice*2.5)
+			* (Game.player:GetDockedWith():GetEquipmentPrice(hyperdrive) / 100)
+	else
+		price = 0
+	end
+--[[
 	price = price * (({
 		NONE = 0,
 		DRIVE_CLASS1 = 1.0,
@@ -102,8 +114,8 @@ local onChat = function (form, ref, option)
 	})[hyperdrive] or 10)
 
 	-- Now make it bigger (-:
-	price = price * 10
-
+	price = price * 100
+--]]
 	-- Replace those tokens into ad's intro text that can change during play
 	message = string.interp(ad.intro, {
 		drive = EquipDef[hyperdrive].name,
@@ -118,18 +130,18 @@ local onChat = function (form, ref, option)
 
 	if option == 0 then
 		-- Initial proposal
+		form:SetTitle(ad.title)
 		form:SetFace({ female = ad.isfemale, seed = ad.faceseed, name = ad.name })
 		-- Replace token with details of last service (which might have
 		-- been seconds ago)
-		form:SetMessage(string.interp(message, {
-			lasttime = lastServiceMessage(hyperdrive),
-		}))
-		if hyperdrive == 'NONE' then
-			-- er, do nothing, I suppose.
-		elseif Game.player:GetMoney() < price then
-			form:AddOption(l.I_DONT_HAVE_ENOUGH_MONEY, -1)
-		else
+		if lastServiceMessage(hyperdrive) then
+			form:SetMessage(string.interp(message, {
+				lasttime = lastServiceMessage(hyperdrive).."\n*",
+			}))
 			form:AddOption(ad.yesplease, 1)
+		else
+			message = l.YOU_DO_NOT_HAVE_A_DRIVE_TO_SERVICE
+			form:SetMessage(message)
 		end
 		print(('DEBUG: %.2f years / %.2f price = %.2f'):format(ad.strength, ad.baseprice, ad.strength/ad.baseprice))
 	end
@@ -137,6 +149,7 @@ local onChat = function (form, ref, option)
 	if option == 1 then
 		-- Yes please, service my engine
 		form:Clear()
+		form:SetTitle(ad.title)
 		form:SetFace({ female = ad.isfemale, seed = ad.faceseed, name = ad.name })
 		if Game.player:GetMoney() >= price then -- We did check earlier, but...
 			-- Say thanks
@@ -146,6 +159,8 @@ local onChat = function (form, ref, option)
 			service_history.service_period = ad.strength * oneyear
 			service_history.company = ad.title
 			service_history.jumpcount = 0
+		else
+			form:SetMessage("\n"..l.I_DONT_HAVE_ENOUGH_MONEY.."\n*")
 		end
 	end
 end
@@ -158,6 +173,8 @@ local onShipTypeChanged = function (ship)
 	if ship:IsPlayer() then
 		service_history.company = nil
 		service_history.lastdate = Game.time
+		service_history.service_period = onemonth
+		service_history.jumpcount = 0
 	end
 end
 
@@ -165,7 +182,7 @@ local onShipEquipmentChanged = function (ship, equipment)
 	if ship:IsPlayer() and (EquipDef[equipment].slot == 'ENGINE') then
 		service_history.company = nil
 		service_history.lastdate = Game.time
-		service_history.service_period = oneyear
+		service_history.service_period = onemonth
 		service_history.jumpcount = 0
 	end
 end
@@ -208,11 +225,12 @@ local loaded_data
 
 local onGameStart = function ()
 	ads = {}
+
 	if not loaded_data then
 		service_history = {
 			lastdate = 0, -- Default will be overwritten on game start
 			company = nil, -- Name of company that did the last service
-			service_period = oneyear, -- default
+			service_period = onemonth, -- default
 			jumpcount = 0, -- Number of jumps made after the service_period
 		}
 	else
@@ -237,19 +255,20 @@ end
 
 local onEnterSystem = function (ship)
 	if ship:IsPlayer() then
-		print(('DEBUG: Jumps since warranty: %d, chance of failure (if > 0): 1/%d\nWarranty expires: %s'):format(service_history.jumpcount,max_jumps_unserviced-service_history.jumpcount,Format.Date(service_history.lastdate + service_history.service_period)))
+		print(('DEBUG: Jumps since warranty: %d, if > 0 the chance of failure is: 1/%d\nWarranty expires: %s'):format(service_history.jumpcount,max_jumps_unserviced-service_history.jumpcount,Format.Date(service_history.lastdate + service_history.service_period)))
 	else
 		return -- Don't care about NPC ships
 	end
 	local saved_by_this_guy = savedByCrew(ship)
 	if (service_history.lastdate + service_history.service_period < Game.time) and not saved_by_this_guy then
 		service_history.jumpcount = service_history.jumpcount + 1
-		if (service_history.jumpcount > max_jumps_unserviced) or (Engine.rand:Integer(max_jumps_unserviced - service_history.jumpcount) == 0) then
+		if Game.system.population > 0 and ((service_history.jumpcount > max_jumps_unserviced)
+			or (Engine.rand:Integer(max_jumps_unserviced - service_history.jumpcount) < 1)) then
 			-- Destroy the engine
 			local engine = ship:GetEquip('ENGINE',1)
 			ship:RemoveEquip(engine)
 			ship:AddEquip('RUBBISH',EquipDef[engine].mass)
-			Comms.Message(l.THE_SHIPS_HYPERDRIVE_HAS_BEEN_DESTROYED_BY_A_MALFUNCTION)
+			MessageBox.Message(l.THE_SHIPS_HYPERDRIVE_HAS_BEEN_DESTROYED_BY_A_MALFUNCTION)
 		end
 	end
 	if saved_by_this_guy then

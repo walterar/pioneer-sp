@@ -333,7 +333,7 @@
    },
    "DOWNGRADING_ALERT_STATUS" : {
       "description" : "",
-      "message" : "Sin detección de disparos durante 60 segundos. Bajando el nivel de alerta."
+      "message" : "Sin detección de disparos durante 30 segundos. Bajando el nivel de alerta."
    },
    "DRAW_OUT_RANGE_LABELS" : {
       "description" : "Mostrar sistemas fuera de rango",

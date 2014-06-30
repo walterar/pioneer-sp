@@ -1,4 +1,4 @@
--- ChangeOfEnrolls.lua for Pioneer Scout+ (c)2013-2014 by walterar <walterar2@gmail.com>
+-- ChangeOfEnrolls.lua for Pioneer Scout+ (c)2012-2014 by walterar <walterar2@gmail.com>
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- Work in progress.
 --
@@ -25,7 +25,7 @@ local onChat = function (form, ref, option)
 
 		form:SetTitle(l.You_are_owner_of_the_registration..Game.player.label.."\n")
 		form:SetFace({seed = ad.faceseed+1})
-		form:SetMessage(l.Work_we_do)
+		form:SetMessage(l.Work_we_do.."\n*\n*")
 
 		if Game.system.faction == nil then
 			location = "XX"

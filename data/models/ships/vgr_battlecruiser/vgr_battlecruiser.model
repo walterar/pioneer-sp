@@ -4,43 +4,43 @@
 material m0badge
 diffuse 0.6 0.6 0.6
 specular 0.4 0.4 0.4
-tex_diff V_bc_badge_export[1].DDS
-tex_spec V_bc_badge_export[2].DDS
+tex_diff V_bc_badge_export[1].dds
+tex_spec V_bc_badge_export[2].dds
 
 material m1V_BC_Badge_EXPORT
 diffuse 0.6 0.6 0.6
 specular 0.4 0.4 0.4
-tex_diff V_bc_nose_export[1].DDS
-tex_spec V_bc_nose_export[1]SPEC.DDS
-tex_glow V_bc_nose_export[2]LUM.DDS
+tex_diff V_bc_nose_export[1].dds
+tex_spec V_bc_nose_export[1]spec.dds
+tex_glow V_bc_nose_export[2]lum.dds
 
 material m2V_BC_Engine_EXPORT
 diffuse 0.6 0.6 0.6
 specular 1 1 1
-tex_diff V_bc_engine_export[1].DDS
-tex_spec V_bc_engine_export[2].DDS
-tex_glow V_bc_engine_export[3].DDS
+tex_diff V_bc_engine_export[1].dds
+tex_spec V_bc_engine_export[2].dds
+tex_glow V_bc_engine_export[3].dds
 
 material m3V_BC_Jaw_EXPORT
 diffuse 0.6 0.6 0.6
 specular 0.4 0.4 0.4
-tex_diff V_bc_body_export[1].DDS
-tex_spec V_bc_body_export[1]SPEC.DDS
-tex_glow V_bc_body_export[2]LUM.DDS
+tex_diff V_bc_body_export[1].dds
+tex_spec V_bc_body_export[1]spec.dds
+tex_glow V_bc_body_export[2]lum.dds
 
 material m4V_BC_Nose_EXPORT
 diffuse 0.6 0.6 0.6
 specular 0.4 0.4 0.4
-tex_diff V_bc_jaw_export[1].DDS
-tex_spec V_bc_jaw_export[1]SPEC.DDS
-tex_glow V_bc_jaw_export[2]LUM.DDS
+tex_diff V_bc_jaw_export[1].dds
+tex_spec V_bc_jaw_export[1]spec.dds
+tex_glow V_bc_jaw_export[2]lum.dds
 
 material m5Vgr_BC_LOD2_EXPORT
 diffuse 0.6 0.6 0.6
 specular 0.4 0.4 0.4
-tex_diff V_bc_engine_export[1].DDS
-tex_spec V_bc_engine_export[2].DDS
-tex_glow V_bc_engine_export[3].DDS
+tex_diff V_bc_engine_export[1].dds
+tex_spec V_bc_engine_export[2].dds
+tex_glow V_bc_engine_export[3].dds
 
 mesh vgr_battlecruiser.dae
 

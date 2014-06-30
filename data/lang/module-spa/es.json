@@ -13,7 +13,7 @@
 },
 "FLAVOUR_MEMBER_INTRO_0":{
 "description":"",
-"message":"Puede comprar combustible, aleación de metales, o deponer {radioactives} aquí."
+"message":"Puede comprar combustible, aleación de metales, o deponer {radioactives}."
 },
 "FLAVOUR_NONMEMBER_INTRO_0":{
 "description":"",
@@ -53,7 +53,7 @@
 },
 "WE_WILL_ONLY_DISPOSE_OF":{
 "description":"",
-"message":"Ahora, a las naves miembros de SPA, se les instalará un nuevo\ny sofisticado sistema de defensa activa experimental. En caso\nde ataque (impacto de plasma detectado, y sólo si tu nave está\narmada con cañones) el sistema  tomará  el control y tratará de:\n1) Destruir la nave hostil con disparos de plasma.\n2) Dejarla a la deriva destruyendo sus sistemas electrónicos.\n\nEste sistema aún no ha salido a la venta  en el mercado y es,\npor el momento, para el uso exclusivo de los miembros de SPA.\n - "
+"message":"Ahora, a las naves miembros de SPA, se les instalará un nuevo\ny sofisticado sistema de defensa activa experimental. En caso\nde ataque (impacto de plasma detectado, y sólo si tu nave está\narmada con cañones) el sistema  tomará  el control y tratará de:\n*\n1) Destruir la nave hostil con disparos de plasma.\n2) Dejarla a la deriva destruyendo sus sistemas electrónicos.\n\nEste sistema aún no ha salido a la venta  en el mercado y es,\npor el momento, para el uso exclusivo de los miembros de SPA."
 },
 "WHAT_CONDITIONS_APPLY":{
 "description":"",

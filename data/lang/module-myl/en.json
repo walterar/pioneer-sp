@@ -67,6 +67,10 @@
 "description":"",
 "message":"Hyperspace"
 },
+"ILLEGAL_JUMP":{
+"description":"",
+"message":"Illegal jump"
+},
 "INACTIVE":{
 "description":"",
 "message":"Inactive"
@@ -98,6 +102,10 @@
 "MEDIUM_SCOUT":{
 "description":"",
 "message":"Medium Scout"
+},
+"New_Ships_without_stock":{
+"description":"",
+"message":"Market of New Ships without stock\nin the entire system: "
 },
 "Origin":{
 "description":"",

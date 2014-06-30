@@ -2,21 +2,21 @@ material Hull-material
 diffuse 1.0 1.0 1.0
 specular 1.0 1.0 1.0
 shininess 80
-tex_diff shipHullMap2.png
-tex_spec shipHullMap2.png
-tex_glow shipHullMapglow2.png
+tex_diff shipHullMap2.dds
+tex_spec shipHullMap2.dds
+tex_glow shipHullMapglow2.dds
 
 material Cockpit-material
 diffuse 1.0 1.0 1.0
 specular 1.0 1.0 1.0
-tex_diff win2.png
-tex_glow win2.png
+tex_diff win2.dds
+tex_glow win2.dds
 shininess 8
 
 material Thrusters-material
 diffuse 1.0 1.0 1.0
 specular 1.0 1.0 1.0
-tex_diff thrus2.png
+tex_diff thrus2.dds
 shininess 128
 
 lod 1000

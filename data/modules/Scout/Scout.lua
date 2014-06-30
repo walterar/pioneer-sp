@@ -10,6 +10,7 @@ local Space      = import("Space")
 local Comms      = import("Comms")
 local Event      = import("Event")
 local Mission    = import("Mission")
+local Music      = import("Music")
 local NameGen    = import("NameGen")
 local Format     = import("Format")
 local Serializer = import("Serializer")
@@ -218,7 +219,7 @@ local makeAdvert = function (station)
 		end
 		local dist = station:DistanceTo(Space.GetBody(location.bodyIndex))
 		if dist < 1000 then return end
-		reward = local_reward + (math.sqrt(dist) / 15000) * (1.5+urgency) * (1+nearbysystem.lawlessness)
+		reward = local_reward + (math.sqrt(dist) / 15000) * (1.5+urgency) * (1+Game.system.lawlessness)
 		due = Game.time + ((4*24*60*60) * (Engine.rand:Number(1.5,3.5) - urgency))
 	else
 -- remote system
@@ -240,9 +241,11 @@ local makeAdvert = function (station)
 			HasPop = HasPop + 1
 		end
 
-		local scoutplus = 1
-		if nearbysystem.explored == 0 then scoutplus = 1.+ Engine.rand:Number(1) end
-		reward = tariff(dist,risk,urgency,location) * 4 * scoutplus
+		local multiplier = Engine.rand:Number(1.5,1.6)
+		if Game.system.faction ~= location:GetStarSystem().faction then
+			multiplier = multiplier * Engine.rand:Number(1.3,1.5)
+		end
+		reward = tariff(dist,risk,urgency,location)*2*multiplier
 		due = term(dist*2,urgency)
 
 	end
@@ -339,8 +342,10 @@ local mapped = function(body)
 						or mission.status == "SUSPENDED") then
 						local lapse = scan_time / 60
 						Comms.ImportantMessage(l.Distance_reached .. lapse .. l.minutes, l.computer)
+						Music.Play("music/core/radar-mapping/mapping-on")
 						mission.status = "MAPPING"
 					elseif Dist > PhysBody.radius * radius_max and mission.status == "MAPPING" then
+						Music.Play("music/core/radar-mapping/mapping-off",false)
 						Comms.ImportantMessage(l.MAPPING_interrupted, l.computer)
 						mission.status = "SUSPENDED"
 						TimeUp = 0
@@ -363,14 +368,15 @@ local mapped = function(body)
 						if outhostiles == 0 then count = count + 1 end
 						if TimeUp >= scan_time then
 							mission.status = "COMPLETED"
+							Music.Play("music/core/radar-mapping/mapping-off",false)
 							Comms.ImportantMessage(l.COMPLETE_MAPPING, l.computer)
 -- decide destino de entrega
 							local iflocal = scout_flavours[mission.flavour].localscout
 							local newlocation = mission.backstation
 							if iflocal == 0
 								and (((mission.faction == faction.name)
-								and Engine.rand:Integer(2) == 1)
-								or Engine.rand:Integer(3) == 1)
+								and Engine.rand:Integer(2) > 1)
+								or Engine.rand:Integer(2) > 1)
 							then
 								local nearbystations = StarSystem:GetNearbyStationPaths(Engine.rand:Integer(10,20), nil,function (s) return
 		(s.type ~= 'STARPORT_SURFACE') or (s.parent.type ~= 'PLANET_ASTEROID') end)
@@ -400,7 +406,6 @@ local onFrameChanged = function (body)
 	if closestPlanet ~= target then return end
 	local dist
 	dist = Format.Distance(Game.player:DistanceTo(target))
-	print("LA DISTANCIA AL PLANETA ("..target.label..") es de "..dist)
 	mapped(body)
 end
 
@@ -428,9 +433,8 @@ local onShipDocked = function (player, station)
 					missions[ref] = nil
 				end
 			else
-				local multiplier = Game.system.lawlessness
-				if multiplier < .02 then multiplier = 1 + multiplier end -- si son muy chantas te dejan seco
-				local money = math.floor(Game.player:GetMoney() * multiplier)
+				local multiplier = 1 + Game.system.lawlessness
+				local money = math.floor((Game.player:GetMoney()/2) * multiplier)
 				Game.player:AddCrime("TRADING_ILLEGAL_GOODS", money)
 				Comms.ImportantMessage(l.Unauthorized_data_here_is_REMOVED, faction.militaryName)
 				Comms.ImportantMessage(l.You_have_been_fined .. showCurrency(money), faction.policeName)

@@ -3,17 +3,17 @@ diffuse 2.0 2.0 2.0
 specular 2.0 2.0 2.0
 shininess 100
 opacity 40
-tex_diff skin.png
-tex_spec spec.png
-tex_glow glow.png
+tex_diff skin.dds
+tex_spec spec.dds
+tex_glow glow.dds
 
 material default
 diffuse 2.0 2.0 2.0
 specular 1.0 1.0 1.0
 shininess 30
-tex_diff skin.png
-tex_spec spec.png
-tex_glow glow.png
+tex_diff skin.dds
+tex_spec spec.dds
+tex_glow glow.dds
 use_patterns
 
 collision collision.x

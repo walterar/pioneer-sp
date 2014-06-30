@@ -124,7 +124,7 @@ const EquipType Equip::types[Equip::TYPE_MAX] = {
 	},{
 	  Lang::MILITARY_FUEL,0,
 	  Equip::SLOT_CARGO, -1, { Equip::HYDROGEN },
-	  6000, 1, 0, ECON_INDUSTRY, true, 0
+	  60000, 1, 0, ECON_INDUSTRY, true, 0
 	},{
 	  Lang::RUBBISH,0,
 	  Equip::SLOT_CARGO, -1, { },
@@ -148,7 +148,7 @@ const EquipType Equip::types[Equip::TYPE_MAX] = {
 	},{
 	  Lang::MISSILE_NAVAL,0,
 	  Equip::SLOT_MISSILE, -1, {},
-	  16000, 1, 0, 0, true, 0
+	  48000, 1, 0, 0, true, 0
 	},{
 	  Lang::ATMOSPHERIC_SHIELDING,
 	  Lang::ATMOSPHERIC_SHIELDING_DESCRIPTION,
@@ -267,19 +267,19 @@ const EquipType Equip::types[Equip::TYPE_MAX] = {
 	},{
 	  Lang::DRIVE_MIL1,0,
 	  Equip::SLOT_ENGINE, -1, {Equip::MILITARY_FUEL},
-	  2300000, 3, 1, 0, true, 0
+	  9200000, 2, 2, 0, true, 0
 	},{
 	  Lang::DRIVE_MIL2,0,
 	  Equip::SLOT_ENGINE, -1, {Equip::MILITARY_FUEL},
-	  4700000, 8, 2, 0, true, 0
+	  18800000, 6, 3, 0, true, 0
 	},{
 	  Lang::DRIVE_MIL3,0,
 	  Equip::SLOT_ENGINE, -1, {Equip::MILITARY_FUEL},
-	  8500000, 16, 3, 0, true, 0
+	  34000000, 9, 4, 0, true, 0
 	},{
 	  Lang::DRIVE_MIL4,0,
 	  Equip::SLOT_ENGINE, -1, {Equip::MILITARY_FUEL},
-	  21400000, 30, 4, 0, true, 0
+	  85600000, 12, 5, 0, true, 0
 	},{
 	  Lang::PULSECANNON_1MW,0,
 	  Equip::SLOT_LASER, 1, {},

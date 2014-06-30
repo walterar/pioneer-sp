@@ -3,9 +3,9 @@
 
 define_ship {
 	name='Venturestar',
+	model='venturestar',
 	ship_class='medium_freighter',
 	manufacturer='albr',
-	model='venturestar',
 	forward_thrust = 35e6,
 	reverse_thrust = 10e6,
 	up_thrust = 15e6,
@@ -13,18 +13,13 @@ define_ship {
 	left_thrust = 8e6,
 	right_thrust = 8e6,
 	angular_thrust = 50e6,
-	camera_offset = v(0,0,-18),
-	gun_mounts =
-	{
-		{ v(0,-0.5,-10.7), v(0,0,-1), 5, 'HORIZONTAL' },
-	},
+
 	max_cargo = 500,
 	max_laser = 1,
-	max_missile = 16,
+	max_missile = 12,
 	max_cargoscoop = 1,
 	max_fuelscoop = 1,
-	min_atmoshield = 1,
-	min_crew = 3,
+	min_crew = 1,
 	max_crew = 5,
 	max_cabin = 10,
 	capacity = 500,

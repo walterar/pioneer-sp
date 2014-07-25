@@ -9,8 +9,10 @@ local Game       = import("Game")
 local Rand       = import("Rand")
 local Comms      = import("Comms")
 local Event      = import("Event")
+local MessageBox = import("ui/MessageBox")
 local NameGen    = import("NameGen")
 local Serializer = import("Serializer")
+local Eq         = import("Equipment")
 
 local l   = Lang.GetResource("module-goodstrader")
 local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
@@ -37,10 +39,8 @@ local onChat = function (form, ref, option)
 			return true
 		end
 
-		local multiplier = 100 - (100 * Game.system.lawlessness)
-		local money = math.floor(Game.player:GetMoney() * (multiplier/1000))
-
-		Game.player:AddCrime("TRADING_ILLEGAL_GOODS", money)
+		local lawlessness = Game.system.lawlessness
+		Game.player:AddCrime("TRADING_ILLEGAL_GOODS", 400*(2-lawlessness))
 		form:GotoPolice()
 		return false
 	end
@@ -65,8 +65,8 @@ local onChat = function (form, ref, option)
 
 		-- do something when a "buy" button is clicked
 		onClickBuy = function (ref, commodity)
-			if commodity == 'SLAVES' or commodity == 'LIVE_ANIMALS' then
-				Comms.ImportantMessage(myl.You_must_install_the_Life_Support_for_Cargo_Bay)
+			if commodity == Eq.cargo.slaves or commodity == Eq.cargo.live_animals then
+				MessageBox.Message(myl.You_must_install_the_Life_Support_for_Cargo_Bay)
 				return false
 			else
 				return onClick(ref)
@@ -88,6 +88,7 @@ local onChat = function (form, ref, option)
 			ads[ref].stock[commodity] = ads[ref].stock[commodity] - 1
 		end,
 	})
+
 end
 
 local onDelete = function (ref)
@@ -98,26 +99,30 @@ end
 local licon = "goods_trader"
 local onCreateBB = function (station)
 	local has_illegal_goods = false
-	for i,e in pairs(Constants.EquipType) do
+	for i,e in pairs(Eq.cargo) do
 		if not Game.system:IsCommodityLegal(e) then
 			has_illegal_goods = true
 		end
 	end
 	if not has_illegal_goods then return end
+
 	local rand = Rand.New(station.seed)
 	local num = rand:Integer(1,3)
 	for i = 1,num do
-		local ispolice = rand:Integer(1) == 1
+		local ispolice = rand:Integer(2) < 1
+
 		local flavour = string.interp(l["GOODS_TRADER_"..rand:Integer(1, num_names)-1], {name = NameGen.Surname(rand)})
+
 		local ad = {
 			station  = station,
 			flavour  = flavour,
 			ispolice = ispolice,
 			faceseed = rand:Integer(),
 		}
+
 		ad.stock = {}
 		ad.price = {}
-		for i,e in pairs(Constants.EquipType) do
+		for _,e in pairs(Eq.cargo) do
 			if not Game.system:IsCommodityLegal(e) then
 				ad.stock[e] = Engine.rand:Integer(1,50)
 				-- going rate on the black market will be twice normal

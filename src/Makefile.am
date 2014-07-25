@@ -34,8 +34,6 @@ noinst_HEADERS = \
 	DynamicBody.h \
 	Easing.h \
 	EnumStrings.h \
-	EquipSet.h \
-	EquipType.h \
 	FaceGenManager.h \
 	Factions.h \
 	FileSystem.h \
@@ -63,7 +61,6 @@ noinst_HEADERS = \
 	LuaConstants.h \
 	LuaDev.h \
 	LuaEngine.h \
-	LuaEquipDef.h \
 	LuaEvent.h \
 	LuaFileSystem.h \
 	LuaFormat.h \
@@ -165,7 +162,6 @@ pioneersp_SOURCES	= \
 	DeathView.cpp \
 	DynamicBody.cpp \
 	EnumStrings.cpp \
-	EquipType.cpp \
 	FaceGenManager.cpp \
 	Factions.cpp \
 	FileSourceZip.cpp \
@@ -197,7 +193,6 @@ pioneersp_SOURCES	= \
 	LuaConstants.cpp \
 	LuaDev.cpp \
 	LuaEngine.cpp \
-	LuaEquipDef.cpp \
 	LuaEvent.cpp \
 	LuaFaction.cpp \
 	LuaFileSystem.cpp \
@@ -424,7 +419,6 @@ modelcompiler_SOURCES = \
 	DeathView.cpp \
 	DynamicBody.cpp \
 	EnumStrings.cpp \
-	EquipType.cpp \
 	FaceGenManager.cpp \
 	Factions.cpp \
 	FileSourceZip.cpp \
@@ -456,7 +450,6 @@ modelcompiler_SOURCES = \
 	LuaConstants.cpp \
 	LuaDev.cpp \
 	LuaEngine.cpp \
-	LuaEquipDef.cpp \
 	LuaEvent.cpp \
 	LuaFaction.cpp \
 	LuaFileSystem.cpp \

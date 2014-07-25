@@ -14,22 +14,37 @@ define_ship {
 	left_thrust = 80e5,
 	right_thrust = 80e5,
 	angular_thrust = 1170e5,
+
 	camera_offset = v(0,3,-28.5),
-	gun_mounts =
-	{
+
+	gun_mounts = {
 		{ v(0,-1.9,-38), v(0,0,-1), 5, 'HORIZONTAL' },
 		{ v(0,1,38), v(0,0,1), 5, 'HORIZONTAL' },
 	},
-	max_cargo = 190,
-	max_laser = 2,
-	max_missile = 4,
-	max_cargoscoop = 0,
+
+	slots = {
+		cargo = 190,
+		atmo_shield = 1,
+		cabin = 10,
+		laser_front = 1,
+		laser_rear = 0,
+		missile = 4,
+		cargo_scoop = 1,
+		fuel_scoop = 1,
+		cargo_life_support = 1,
+		hull_autorepair = 1,
+	},
+
 	min_crew = 1,
 	max_crew = 2,
+
 	capacity = 190,
-	hull_mass = 130,
-	fuel_tank_mass = 60,
+	hull_mass = 95,
+
+	fuel_tank_mass = 40,
 	thruster_fuel_use = 0.00015,
-	price = 280000,
 	hyperdrive_class = 4,
+
+	price = 280000,
+
 }

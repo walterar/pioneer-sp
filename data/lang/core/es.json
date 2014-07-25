@@ -129,7 +129,7 @@
    },
    "BUTTON" : {
       "description" : "",
-      "message" : "\" Button \""
+      "message" : "\" Botón \""
    },
    "CAMERA_BOTTOM_VIEW" : {
       "description" : "",
@@ -158,6 +158,10 @@
    "CANT_SAVE_IN_HYPERSPACE" : {
       "description" : "",
       "message" : "No es posible salvar estando en hiperespacio"
+   },
+   "CANT_SAVE_DEAD_PLAYER" : {
+      "description" : "",
+      "message" : "No se puede guardar el juego después de que el jugador ha muerto"
    },
    "CAPITALIST" : {
       "description" : "",
@@ -198,6 +202,10 @@
    "CARGO_SCOOP_ACTIVE_1_TONNE_X_COLLECTED" : {
       "description" : "",
       "message" : "Recolector activo. 1 ton de %item recogida"
+   },
+   "CARGO_SCOOP_ATTEMPTED" : {
+      "description" : "",
+      "message" : "No hay suficiente espacio en la bodega de carga."
    },
    "CARGO_SCOOP_DESCRIPTION" : {
       "description" : "",
@@ -241,11 +249,11 @@
    },
    "COMPUTER_HEADING_CONTROL" : {
       "description" : "",
-      "message" : "Asistencia direccional"
+      "message" : "Rumbo controlado"
    },
    "COMPUTER_SPEED_CONTROL" : {
       "description" : "",
-      "message" : "Navegación asistida"
+      "message" : "Velocidad controlada"
    },
    "CONSUMER_GOODS" : {
       "description" : "",
@@ -325,7 +333,7 @@
    },
    "DOCKING" : {
       "description" : "",
-      "message" : "Maniobra de puerto"
+      "message" : "Maniobra portuaria"
    },
    "DOCKING_CLEARANCE_EXPIRED" : {
       "description" : "",
@@ -563,13 +571,33 @@
       "description" : "",
       "message" : "\" Hat\""
    },
-   "HEADING_LOCK_BACKWARD" : {
-      "description" : "",
-      "message" : "Bloqueo direcc. (retro)"
-   },
    "HEADING_LOCK_FORWARD" : {
       "description" : "",
-      "message" : "Bloqueo direcc. (pro)"
+      "message" : "Mant. progrado"
+   },
+   "HEADING_LOCK_BACKWARD" : {
+      "description" : "",
+      "message" : "Mant. retrogrado"
+   },
+   "HEADING_LOCK_NORMAL" : {
+      "description" : "",
+      "message" : "Mant. normal"
+   },
+   "HEADING_LOCK_ANTINORMAL" : {
+      "description" : "",
+      "message" : "Mant. anti-normal"
+   },
+   "HEADING_LOCK_RADIALLY_INWARD" : {
+      "description" : "",
+      "message" : "Mant. proa rad."
+   },
+   "HEADING_LOCK_RADIALLY_OUTWARD" : {
+      "description" : "",
+      "message" : "Mant. popa rad."
+   },
+   "HEADING_LOCK_KILLROT" : {
+      "description" : "",
+      "message" : "Mata rotación"
    },
    "HEAVY_INDUSTRY" : {
       "description" : "",
@@ -1076,12 +1104,16 @@
       "message" : "%days{f.0} días"
    },
    "NUMBER_DECIMAL_POINT" : {
-      "description" : "Decimal delimiter used when displaying monetary values.",
+      "description" : "Separador decimal.",
       "message" : ","
    },
    "NUMBER_G" : {
       "description" : "",
       "message" : "%acceleration{f.1} G"
+   },
+   "NUMBER_GROUP_SEP" : {
+      "description" : "Para cifras largas, separador usado por grupo de digitos. Ej. 1,000 or 1 000 or 1.000",
+      "message" : ","
    },
    "NUMBER_GROUP_MIN" : {
       "description" : "Smallest number to start grouping of digits for. (E.g. if \"10000\" start grouping thousands with 10,000, and not 1,000).",
@@ -1090,10 +1122,6 @@
    "NUMBER_GROUP_NUM" : {
       "description" : "For large number, group digits by this many. European languages use 3 (group thousands). 0 means no grouping.",
       "message" : "3"
-   },
-   "NUMBER_GROUP_SEP" : {
-      "description" : "For large number, separator used when grouping digits. E.g. 1,000 or 1 000 or 1'000.",
-      "message" : "."
    },
    "NUMBER_HOURS" : {
       "description" : "",
@@ -1153,7 +1181,7 @@
    },
    "ORBITAL_PERIOD" : {
       "description" : "",
-      "message" : "Periodo orbital"
+      "message" : "Período orbital"
    },
    "ORBITAL_STARPORT" : {
       "description" : "",
@@ -1301,7 +1329,7 @@
    },
    "RADIOACTIVES" : {
       "description" : "",
-      "message" : "Basura Radioactiva"
+      "message" : "Resíduo Radioactivo"
    },
    "RADIUS" : {
       "description" : "",

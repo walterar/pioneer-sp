@@ -159,6 +159,10 @@
       "description" : "",
       "message" : "Non è possibile salvare mentre si è in iperspazio"
    },
+   "CANT_SAVE_DEAD_PLAYER" : {
+      "description" : "",
+      "message" : "Impossibile salvare il gioco dopo che il giocatore è morto"
+   },
    "CAPITALIST" : {
       "description" : "",
       "message" : "Capitalismo"

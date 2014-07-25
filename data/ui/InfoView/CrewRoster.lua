@@ -8,6 +8,7 @@ local Format             = import("Format")
 local ShipDef            = import("ShipDef")
 local Comms              = import("Comms")
 local Space              = import("Space")
+local Equipment = import("Equipment")
 
 local InfoFace           = import("ui/InfoFace")
 local SmallLabeledButton = import("ui/SmallLabeledButton")
@@ -66,7 +67,7 @@ local crewRoster = function ()
 				local hullMassLeft = Game.player.hullMassLeft
 				local hullDamage = hullMass - hullMassLeft
 				if hullDamage > 0 then
-					if Game.player:GetEquipCount('CARGO','METAL_ALLOYS') <= 0 then
+					if Game.player:CountEquip(Equipment.cargo.metal_alloys, cargo) <= 0 then
 						feedback:SetText(l.NOT_ENOUGH_ALLOY_TO_ATTEMPT_A_REPAIR:interp({alloy = l.METAL_ALLOYS}))
 						return
 					end
@@ -75,9 +76,9 @@ local crewRoster = function ()
 						local repair = math.min(
 							-- Need metal alloys for repair. Check amount.
 							math.ceil(hullDamage/(64 - result)), -- 65 > result > 3
-							Game.player:GetEquipCount('CARGO','METAL_ALLOYS')
+							Game.player:CountEquip(Equipment.cargo.metal_alloys, cargo)
 						)
-						Game.player:RemoveEquip('METAL_ALLOYS',repair) -- These will now be part of the hull.
+						Game.player:RemoveEquip(Equipment.cargo.metal_alloys, repair) -- These will now be part of the hull.
 						repairPercent = math.min(math.ceil(100 * (repair + hullMassLeft) / hullMass), 100) -- Get new hull percentage...
 						Game.player:SetHullPercent(repairPercent)   -- ...and set it.
 						feedback:SetText(l.HULL_REPAIRED_BY_NAME_NOW_AT_N_PERCENT:interp({name = crewMember.name,repairPercent = repairPercent}))

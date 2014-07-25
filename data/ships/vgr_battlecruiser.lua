@@ -14,8 +14,12 @@ define_static_ship {
 	left_thrust = 800e5,
 	right_thrust = 800e5,
 	angular_thrust = 25000e5,
-	max_cargo = 16000,
-	max_cargoscoop = 0,
+
+	slots = {
+		cargo = 16000,
+		cargoscoop = 0,
+	},
+
 	capacity = 16000,
 	hull_mass = 4000,
 	fuel_tank_mass = 6000,
@@ -23,5 +27,5 @@ define_static_ship {
 	-- Smaller ships built for speed often mount engines with higher Vc. Another way to make faster ship is to increase fuel_tank_mass.
 	effective_exhaust_velocity = 55123e3,
 	price = 0,
-	hyperdrive_class = 9,
+	hyperdrive_class = 0,
 }

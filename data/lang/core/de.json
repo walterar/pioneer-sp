@@ -151,6 +151,10 @@
       "description" : "",
       "message" : "Vogelperspektive"
    },
+   "CANT_SAVE_DEAD_PLAYER" : {
+      "description" : "",
+      "message" : "Can't save game after the player has died"
+   },
    "CANT_SAVE_IN_HYPERSPACE" : {
       "description" : "",
       "message" : "Spiel kann nicht im Hyperraum gespeichert werden"
@@ -194,6 +198,10 @@
    "CARGO_SCOOP_ACTIVE_1_TONNE_X_COLLECTED" : {
       "description" : "",
       "message" : "Frachtschaufel aktiv. Sie haben jetzt 1t von %item."
+   },
+   "CARGO_SCOOP_ATTEMPTED" : {
+      "description" : "",
+      "message" : "Frachtaufnahme gescheitert. Nicht genug Platz im Frachtraum."
    },
    "CARGO_SCOOP_DESCRIPTION" : {
       "description" : "",
@@ -559,13 +567,33 @@
       "description" : "",
       "message" : "-Hut"
    },
+   "HEADING_LOCK_ANTINORMAL" : {
+      "description" : "",
+      "message" : "Hold anti-normal"
+   },
    "HEADING_LOCK_BACKWARD" : {
       "description" : "",
-      "message" : "Kurs eingerastet (rückwärts)"
+      "message" : "Hold retrograde"
    },
    "HEADING_LOCK_FORWARD" : {
       "description" : "",
-      "message" : "Kurs eingerastet (vorwärts)"
+      "message" : "Hold prograde"
+   },
+   "HEADING_LOCK_KILLROT" : {
+      "description" : "",
+      "message" : "Rotation stoppen"
+   },
+   "HEADING_LOCK_NORMAL" : {
+      "description" : "",
+      "message" : "Hold normal"
+   },
+   "HEADING_LOCK_RADIALLY_INWARD" : {
+      "description" : "",
+      "message" : "Hold radially in"
+   },
+   "HEADING_LOCK_RADIALLY_OUTWARD" : {
+      "description" : "",
+      "message" : "Hold radially out"
    },
    "HEAVY_INDUSTRY" : {
       "description" : "",

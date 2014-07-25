@@ -1,0 +1,23 @@
+material Material-material
+diffuse 1.0 1.0 1.0
+specular 0.3 0.3 0.3
+shininess 69
+use_patterns
+tex_diff police_diff.dds
+tex_spec police_spec.dds
+tex_glow police_glow.dds
+
+lod 300
+mesh police_hi.dae
+mesh police_shield.dae
+
+
+#lod 150
+#mesh police_med.dae
+
+lod 125
+mesh police_lo.dae
+
+#collision police_col.dae
+
+anim gear_down 0 50

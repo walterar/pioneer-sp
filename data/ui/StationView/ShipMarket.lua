@@ -11,6 +11,7 @@ local Format       = import("Format")
 local Lang         = import("Lang")
 local ShipDef      = import("ShipDef")
 local Space        = import("Space")
+local equipment    = import("Equipment")
 
 local Model        = import("SceneGraph.Model")
 local ModelSkin    = import("SceneGraph.ModelSkin")
@@ -92,7 +93,7 @@ local function buyShip (sos)
 	if player:CrewNumber() > def.maxCrew then
 		MessageBox.Message(l.TOO_SMALL_FOR_CURRENT_CREW)
 		return
-    end
+	end
 
 	player:AddMoney(-cost)
 
@@ -108,7 +109,7 @@ local function buyShip (sos)
 	if sos.pattern then player.model:SetPattern(sos.pattern) end
 	player:SetLabel(sos.label)
 	if def.hyperdriveClass > 0 then
-		player:AddEquip('DRIVE_CLASS'..tostring(def.hyperdriveClass))
+		player:AddEquip(equipment.hyperspace['hyperdrive_'..tostring(def.hyperdriveClass)])
 	end
 	player:SetFuelPercent(100)
 
@@ -180,15 +181,15 @@ shipTable.onRowClicked:Connect(function (row)
 							:SetColumnSpacing(5)
 							:AddRow({l.WEIGHT_EMPTY,        Format.MassTonnes(def.hullMass)})
 							:AddRow({l.CAPACITY,            Format.MassTonnes(def.capacity)})
-							:AddRow({lc.UNOCCUPIED_CABIN,   def.equipSlotCapacity["CABIN"]})
+							:AddRow({lc.UNOCCUPIED_CABIN,   def.equipSlotCapacity["cabin"]})
 							:AddRow({l.MINIMUM_CREW,        def.minCrew})
 							:AddRow({l.MAXIMUM_CREW,        def.maxCrew})
 							:AddRow({l.WEIGHT_FULLY_LOADED, Format.MassTonnes(def.hullMass+def.capacity+def.fuelTankMass)})
 							:AddRow({l.FUEL_WEIGHT,         Format.MassTonnes(def.fuelTankMass)})
-							:AddRow({l.MISSILE_MOUNTS,      def.equipSlotCapacity["MISSILE"]})
-							:AddRow({lc.ATMOSPHERIC_SHIELDING, yes_no(def.equipSlotCapacity["ATMOSHIELD"])})
-							:AddRow({lc.FUEL_SCOOP,            yes_no(def.equipSlotCapacity["FUELSCOOP"])})
-							:AddRow({lc.CARGO_SCOOP,           yes_no(def.equipSlotCapacity["CARGOSCOOP"])})
+							:AddRow({l.MISSILE_MOUNTS,      def.equipSlotCapacity["missile"]})
+							:AddRow({lc.ATMOSPHERIC_SHIELDING, yes_no(def.equipSlotCapacity["atmo_shield"])})
+							:AddRow({lc.FUEL_SCOOP,            yes_no(def.equipSlotCapacity["fuel_scoop"])})
+							:AddRow({lc.CARGO_SCOOP,           yes_no(def.equipSlotCapacity["cargo_scoop"])})
 					})
 			),
 		})

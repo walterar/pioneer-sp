@@ -47,6 +47,10 @@
       "description" : "",
       "message" : "Ogłoszenia"
    },
+   "BUY" : {
+      "description" : "Commodities and equipment prices",
+      "message" : "Kupno"
+   },
    "BUY_SHIP" : {
       "description" : "",
       "message" : "Kup statek"
@@ -882,6 +886,10 @@
    "SELECT_GAME_TO_LOAD" : {
       "description" : "",
       "message" : "Wybierz zapis do wczytania..."
+   },
+   "SELL" : {
+      "description" : "Commodities and equipment prices",
+      "message" : "Sprzedaż"
    },
    "SENSORS" : {
       "description" : "",

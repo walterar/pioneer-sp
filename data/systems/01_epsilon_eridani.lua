@@ -18,7 +18,7 @@ local epserid = CustomSystemBody:new('Epsilon Eridani', 'STAR_K')
 	:mass(f(61,110))
 	:temp(4584)
 
-local icarus = CustomSystemBody:new('Icarus', 'PLANET_TERRESTRIAL')
+local icarus = CustomSystemBody:new('Icarus', 'PLANET_TERRESTRIAL')--#1
 	:seed(13)
 	:radius(f(42,100))
 	:mass(f(41,100))
@@ -36,7 +36,7 @@ local icarus = CustomSystemBody:new('Icarus', 'PLANET_TERRESTRIAL')
 	:ice_cover(f(0,100))
 	:life(f(0,1))
 
-local atlantica = CustomSystemBody:new('Atlantica', 'PLANET_TERRESTRIAL')
+local atlantica = CustomSystemBody:new('Atlantica', 'PLANET_TERRESTRIAL')--#2
 	:seed(-6)
 	:radius(f(245,100))
 	:mass(f(315,100))
@@ -55,7 +55,7 @@ local atlantica = CustomSystemBody:new('Atlantica', 'PLANET_TERRESTRIAL')
 	:life(f(11,100))
 
 
-local newhope = CustomSystemBody:new('New Hope', 'PLANET_TERRESTRIAL')
+local newhope = CustomSystemBody:new('New Hope', 'PLANET_TERRESTRIAL')--#3
 	:seed(0)
 	:radius(f(4,3))
 	:mass(f(5,4))
@@ -73,25 +73,25 @@ local newhope = CustomSystemBody:new('New Hope', 'PLANET_TERRESTRIAL')
 	:life(f(9,10))
 
 	local newhope_starports = {
-	CustomSystemBody:new('Itzalean', 'STARPORT_SURFACE')
+	CustomSystemBody:new('Itzalean', 'STARPORT_SURFACE')--#4
 		:latitude(math.deg2rad(0.0))
 		:longitude(math.deg2rad(35.864)),
-	CustomSystemBody:new('New Hope', 'STARPORT_SURFACE')
+	CustomSystemBody:new('New Hope', 'STARPORT_SURFACE')--#5
 		:latitude(math.deg2rad(-43.427))
 		:longitude(math.deg2rad(175.864)),
-	CustomSystemBody:new("Gandhi's Revenge", 'STARPORT_SURFACE')
+	CustomSystemBody:new("Gandhi's Revenge", 'STARPORT_SURFACE')--#6
 		:latitude(math.deg2rad(19))
 		:longitude(math.deg2rad(99)),
-	CustomSystemBody:new('Epsilon Cove', 'STARPORT_SURFACE')
+	CustomSystemBody:new('Epsilon Cove', 'STARPORT_SURFACE')--#7
 		:latitude(math.deg2rad(51))
 		:longitude(0),
-	CustomSystemBody:new('Eridani Commercial Center', 'STARPORT_ORBITAL')
+	CustomSystemBody:new('Eridani Commercial Center', 'STARPORT_ORBITAL')--#8
 		:semi_major_axis(f(9068,100000000))
 		:rotation_period(f(11,24)),
 	}
 
 	local hades = {
-	CustomSystemBody:new('Hades', 'PLANET_TERRESTRIAL')
+	CustomSystemBody:new('Hades', 'PLANET_TERRESTRIAL')--#9
 		:seed(191082)
 		:radius(f(484,1000))
 		:mass(f(121,1000))
@@ -104,13 +104,13 @@ local newhope = CustomSystemBody:new('New Hope', 'PLANET_TERRESTRIAL')
 		:volcanicity(f(9,10))
 		:atmos_density(f(1,10)),
 	{
-		CustomSystemBody:new('Eagles Nest', 'STARPORT_ORBITAL')
+		CustomSystemBody:new('Eagles Nest', 'STARPORT_ORBITAL')--#10
 		:semi_major_axis(f(5068,100000000))
 		:rotation_period(f(11,24)),
 	},
 	}
 
-local hercules = CustomSystemBody:new('Hercules', 'PLANET_GAS_GIANT')
+local hercules = CustomSystemBody:new('Hercules', 'PLANET_GAS_GIANT')--#11
 	:radius(f(14,1))
 	:mass(f(8115,10))
 	:temp(134)
@@ -121,7 +121,7 @@ local hercules = CustomSystemBody:new('Hercules', 'PLANET_GAS_GIANT')
 	:axial_tilt(fixed.deg2rad(f(313,100)))
 
 	local hale = {
-	CustomSystemBody:new('Halee', 'PLANET_TERRESTRIAL')
+	CustomSystemBody:new('Halee', 'PLANET_TERRESTRIAL')--#12
 		:seed(14782)
 		:radius(f(317,1000))
 		:mass(f(117,1000))

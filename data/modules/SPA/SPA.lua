@@ -9,6 +9,7 @@ local MessageBox = import("ui/MessageBox")
 local Event      = import("Event")
 local Format     = import("Format")
 local Serializer = import("Serializer")
+local Eq         = import("Equipment")
 --local Character  = import("Character")
 
 local l  = Lang.GetResource("module-spa") or Lang.GetResource("module-spa","en")
@@ -70,27 +71,27 @@ onChat = function (form, ref, option)
 		form:AddGoodsTrader({
 			canTrade = function (ref, commodity)
 				return ({
-					['HYDROGEN']      = true,
-					['MILITARY_FUEL'] = true,
-					['RADIOACTIVES']  = true,
-					['METAL_ALLOYS']  = true,
+					[Eq.cargo.hydrogen] = true,
+					[Eq.cargo.military_fuel] = true,
+					[Eq.cargo.metal_alloys] = true,
+					[Eq.cargo.radioactives] = true,
 				})[commodity]
 			end,
 			getStock = function (ref, commodity)
 				ad.stock[commodity] = ({
-					['HYDROGEN']      = ad.stock.HYDROGEN or (Engine.rand:Integer(2,50) + Engine.rand:Integer(3,25)),
-					['MILITARY_FUEL'] = ad.stock.MILITARY_FUEL or (Engine.rand:Integer(2,25) + Engine.rand:Integer(3,25)),
-					['METAL_ALLOYS']  = ad.stock.METAL_ALLOYS or (Engine.rand:Integer(2,25) + Engine.rand:Integer(3,25)),
-					['RADIOACTIVES']  = 0,
+					[Eq.cargo.hydrogen]      = ad.stock.HYDROGEN or (Engine.rand:Integer(2,50) + Engine.rand:Integer(3,25)),
+					[Eq.cargo.military_fuel] = ad.stock.MILITARY_FUEL or (Engine.rand:Integer(2,25) + Engine.rand:Integer(3,25)),
+					[Eq.cargo.metal_alloys]  = ad.stock.METAL_ALLOYS or (Engine.rand:Integer(2,25) + Engine.rand:Integer(3,25)),
+					[Eq.cargo.radioactives]  = 0,
 				})[commodity]
 				return ad.stock[commodity]
 			end,
 			getBuyPrice = function (ref, commodity)
 				return ad.station:GetEquipmentPrice(commodity) * ({
-					['HYDROGEN']      = 0.5, -- half price Hydrogen
-					['MILITARY_FUEL'] = 0.6, -- 40% off Milfuel
-					['METAL_ALLOYS']  = 0.6, -- 40% off Metal_Alloys
-					['RADIOACTIVES']  = 0, -- Radioactives go free
+					[Eq.cargo.hydrogen]      = 0.5, -- half price Hydrogen
+					[Eq.cargo.military_fuel] = 0.6, -- 40% off Milfuel
+					[Eq.cargo.metal_alloys]  = 0.6, -- 40% off Metal_Alloys
+					[Eq.cargo.radioactives]  = 0, -- Radioactives go free
 				})[commodity]
 			end,
 			onClickBuy = function (ref, commodity)
@@ -98,14 +99,14 @@ onChat = function (form, ref, option)
 			end,
 			getSellPrice = function (ref, commodity)
 				return ad.station:GetEquipmentPrice(commodity) * ({
-					['HYDROGEN']      = 0.45,
-					['MILITARY_FUEL'] = 0.55,
-					['METAL_ALLOYS']  = 0.55,
-					['RADIOACTIVES']  = 0,
+					[Eq.cargo.hydrogen]      = 0.5,
+					[Eq.cargo.military_fuel] = 0.6,
+					[Eq.cargo.metal_alloys]  = 0.6,
+					[Eq.cargo.radioactives]  = 0,
 				})[commodity]
 			end,
 			onClickSell = function (ref, commodity)
-				if (commodity == 'RADIOACTIVES' and membership.milrads < 1) then
+				if (commodity == Eq.cargo.radioactives and membership.milrads < 1) then
 					MessageBox.Message(l.YOU_MUST_BUY:interp({
 						military_fuel = l.MILITARY_FUEL,
 						radioactives  = l.RADIOACTIVES,
@@ -117,13 +118,13 @@ onChat = function (form, ref, option)
 			end,
 			bought = function (ref, commodity)
 				ad.stock[commodity] = ad.stock[commodity] + 1
-				if commodity == 'MILITARY_FUEL' or commodity == 'RADIOACTIVES' then
+				if commodity == Eq.cargo.military_fuel or commodity == Eq.cargo.radioactives then
 					membership.milrads = membership.milrads -1
 				end
 			end,
 			sold = function (ref, commodity)
 				ad.stock[commodity] = ad.stock[commodity] - 1
-				if commodity == 'MILITARY_FUEL' or commodity == 'RADIOACTIVES' then
+				if commodity == Eq.cargo.military_fuel or commodity == Eq.cargo.radioactives then
 					membership.milrads = membership.milrads +1
 				end
 			end,

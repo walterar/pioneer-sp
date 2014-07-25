@@ -1,4 +1,47 @@
+July 2014
+
+   * New features
+     * New ship AC33 (Military version of venturestar), and updated meshes for
+       other ALBR ships, Deneb and Venturestar, and updated textures (#3008)
+     * Attitude-hold flight modes, accessed from the in-flight F4 menu (#3014)
+
+   * Minor changes and tweaks
+     * Include the Lua stack top in the debug overlay.
+     * Don't list lasers under "Equipment" in InfoView, since already listed
+       under forward/read mounts (#3010)
+
+   * Fixes
+     * Fix potential Lua stack overflows when calling Lua methods (#3003)
+     * Fix Lua stack leaks when triggering Lua UI templates from C++
+       (#3004, #2996, #2997, #2999, #3000, #3001)
+     * Fix crash on game start on Mac OS X builds (#2995, #2993)
+     * Fix hyperrange bug (#3007, #3017)
+     * Fix invalid orbital plane for lone orbital stations (#3022, #3018, #3026)
+     * Fix use of fuel when hyperjumping (#3024, #3019, #3028)
+     * Fix directory enumeration on POSIX systems when built with a
+       PIONEER_DATA_DIR value that contains a trailing slash (#3031, #2545)
+     * Fix hyperspace details shown in the Sector View (#3037, #3033)
+     * Fix crash when the player collides with floating cargo (#3043, #3041)
+     * Fix incorrect usedCargo values (#3036, #3035, #3020, #3044)
+     * Fix incorrect cargo/free space values on game load (#3052, #3049)
+     * Fix empty cargo lists (#3044, #3039, #3040)
+     * Fix crash and skipped updates when firing missiles (#3044, #3038)
+     * Fix internal tank refuelling from cargo (#3044, #3046)
+     * Fix cargo scooping so it only works if you have the equipment (#3053, #3045)
+     * Fix equipment remaining available after buying a new ship (#3052, #3027)
+     * Fix missing ship total mass limit when adding equipment/cargo (#3052)
+     * Fix Lua error in some circumstances when using Ship:SetEquip (#3052)
+     * Fix warning about missing icons/goods/missile_*.png (#3059, #3057)
+     * Don't attempt to autosave after the player has died (#3060, #3056, #2895)
+     * Bring back the facility to install a rear laser (#3067, #3064)
+
+   * Internal Changes
+     * Internal clean-up to remove unnecessary equipment code (#3058)
+
 June 2014
+
+   * New features
+     * New light and fast shuttle "Varada" (#2975)
 
    * Minor changes and tweaks
      * Don't allow fuel scoop on Kanara civ (#2929) * Not used in Scout+
@@ -6,9 +49,18 @@ June 2014
      * Proper rocketship icon by Evarchart (#2942)
      * DDS for all models (#2945)
      * Support SGM files, disable texture options, new modelcompiler tool (#2962)
+     * Change the default orbit of space station, allowing for more around a
+       single planet (#2973)
+     * Savefile version bump (#1719, #2969, #2973)
+     * Grow the Lua stack as needed when saving to avoid stack overflows (#2978)
+     * Add retro velocity indicator to worldview (#2974)
+     * Mouselook for external cameras (#2976)
+     * Remove domainname printout when under Mac OS
+     * Add the modelcompiler exec to the gitignore file (#2994)
 
    * Script and UI API changes
      * Added scripts to parse ship stats to wiki
+     * Rewrite the equipment handling in Lua. See the PR for details. (#1719)
 
    * Fixes
      * Fix bug/typo that let player fit hyperdrive on lunarshuttle
@@ -20,6 +72,12 @@ June 2014
      * Always at least ONE starport (#2968)
      * Enable different sell/buy for ship equipment (#2955)
      * Fix bad scaling of space stations (exposed since assimp 3.1.1) (#2923)
+     * Fix a Lua stack leak when saving a LuaRef (#2977, 2978)
+     * Fix crash (#2979)
+     * Fix pirate ships with default drive 0 causing crash
+     * Extend the stack when unpickling (#2989)
+     * Fix crash from spawned enemy ships Pirates, Taxi, Delivery (#2998)
+     * Fix crash from spawned Assassination mission ship
 
    * Internal Changes
      * Compress default (#2940) * Not in Scout+

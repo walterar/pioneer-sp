@@ -7,12 +7,12 @@
 #include "galaxy/Galaxy.h"
 #include "galaxy/StarSystem.h"
 #include "galaxy/Sector.h"
+#include "galaxy/Economy.h"
 #include "Factions.h"
 #include "Space.h"
 #include "Ship.h"
 #include "ShipCpanel.h"
 #include "SpaceStation.h"
-#include "EquipType.h"
 #include "PersistSystemData.h"
 #include "Lang.h"
 #include "StringF.h"
@@ -60,23 +60,23 @@ struct politDesc_t {
 	fixed baseLawlessness;
 };
 static politDesc_t s_govDesc[GOV_MAX] = {
-	{ "<invalid turd>",											0,	ECON_NONE,						fixed(1,1) },
-	{ Lang::NO_CENTRAL_GOVERNANCE,					0,	ECON_NONE,						fixed(1,1) },
-	{ Lang::EARTH_FEDERATION_COLONIAL_RULE,	2,	ECON_CAPITALIST,			fixed(3,10) },
-	{ Lang::EARTH_FEDERATION_DEMOCRACY,			3,	ECON_CAPITALIST,			fixed(15,100) },
-	{ Lang::IMPERIAL_RULE,									3,	ECON_PLANNED,					fixed(15,100) },
-	{ Lang::LIBERAL_DEMOCRACY,							2,	ECON_CAPITALIST,			fixed(25,100) },
-	{ Lang::SOCIAL_DEMOCRACY,								2,	ECON_MIXED,						fixed(20,100) },
-	{ Lang::LIBERAL_DEMOCRACY,							2,	ECON_CAPITALIST,			fixed(25,100) },
-	{ Lang::CORPORATE_SYSTEM,								2,	ECON_CAPITALIST,			fixed(40,100) },
-	{ Lang::SOCIAL_DEMOCRACY,								2,	ECON_MIXED,						fixed(25,100) },
-	{ Lang::MILITARY_DICTATORSHIP,					5,	ECON_CAPITALIST,			fixed(40,100) },
-	{ Lang::MILITARY_DICTATORSHIP,					6,	ECON_CAPITALIST,			fixed(25,100) },
-	{ Lang::MILITARY_DICTATORSHIP,					6,	ECON_MIXED,						fixed(25,100) },
-	{ Lang::MILITARY_DICTATORSHIP,					5,	ECON_MIXED,						fixed(40,100) },
-	{ Lang::COMMUNIST,											10,	ECON_PLANNED,					fixed(25,100) },
-	{ Lang::PLUTOCRATIC_DICTATORSHIP,				4,	ECON_VERY_CAPITALIST,	fixed(45,100) },
-	{ Lang::VIOLENT_ANARCHY,								2,	ECON_NONE,						fixed(90,100) },
+	{ "<invalid turd>",							0,		ECON_NONE,				fixed(1,1) },
+	{ Lang::NO_CENTRAL_GOVERNANCE,				0,		ECON_NONE,				fixed(1,1) },
+	{ Lang::EARTH_FEDERATION_COLONIAL_RULE,		2,		ECON_CAPITALIST,		fixed(3,10) },
+	{ Lang::EARTH_FEDERATION_DEMOCRACY,			3,		ECON_CAPITALIST,		fixed(15,100) },
+	{ Lang::IMPERIAL_RULE,						3,		ECON_PLANNED,			fixed(15,100) },
+	{ Lang::LIBERAL_DEMOCRACY,					2,		ECON_CAPITALIST,		fixed(25,100) },
+	{ Lang::SOCIAL_DEMOCRACY,					2,		ECON_MIXED,				fixed(20,100) },
+	{ Lang::LIBERAL_DEMOCRACY,					2,		ECON_CAPITALIST,		fixed(25,100) },
+	{ Lang::CORPORATE_SYSTEM,					2,		ECON_CAPITALIST,		fixed(40,100) },
+	{ Lang::SOCIAL_DEMOCRACY,					2,		ECON_MIXED,				fixed(25,100) },
+	{ Lang::MILITARY_DICTATORSHIP,				5,		ECON_CAPITALIST,		fixed(40,100) },
+	{ Lang::MILITARY_DICTATORSHIP,				6,		ECON_CAPITALIST,		fixed(25,100) },
+	{ Lang::MILITARY_DICTATORSHIP,				6,		ECON_MIXED,				fixed(25,100) },
+	{ Lang::MILITARY_DICTATORSHIP,				5,		ECON_MIXED,				fixed(40,100) },
+	{ Lang::COMMUNIST,							10,		ECON_PLANNED,			fixed(25,100) },
+	{ Lang::PLUTOCRATIC_DICTATORSHIP,			4,		ECON_VERY_CAPITALIST,	fixed(45,100) },
+	{ Lang::VIOLENT_ANARCHY,					2,		ECON_NONE,				fixed(90,100) },
 };
 
 void Init()
@@ -221,7 +221,7 @@ void GetSysPolitStarSystem(const StarSystem *s, const fixed &human_infestedness,
 	outSysPolit.lawlessness = s_govDesc[a].baseLawlessness * rand.Fixed();
 }
 
-bool IsCommodityLegal(const StarSystem *s, const Equip::Type t)
+bool IsCommodityLegal(const StarSystem *s, const GalacticEconomy::Commodity t)
 {
 	SystemPath path = s->GetPath();
 	const Uint32 _init[5] = { Uint32(path.sectorX), Uint32(path.sectorY), Uint32(path.sectorZ), path.systemIndex, POLIT_SALT };
@@ -231,8 +231,8 @@ bool IsCommodityLegal(const StarSystem *s, const Equip::Type t)
 	if (a == GOV_NONE) return true;
 
 	if(s->GetFaction()->idx != Faction::BAD_FACTION_IDX ) {
-		Faction::EquipProbMap::const_iterator iter = s->GetFaction()->equip_legality.find(t);
-		if( iter != s->GetFaction()->equip_legality.end() ) {
+		Faction::CommodityProbMap::const_iterator iter = s->GetFaction()->commodity_legality.find(t);
+		if( iter != s->GetFaction()->commodity_legality.end() ) {
 			const Uint32 per = (*iter).second;
 			return (rand.Int32(100) >= per);
 		}
@@ -241,15 +241,15 @@ bool IsCommodityLegal(const StarSystem *s, const Equip::Type t)
 	{
 		// this is a non-faction system - do some hardcoded test
 		switch (t) {
-			case Equip::HAND_WEAPONS:
+			case GalacticEconomy::Commodity::HAND_WEAPONS:
 				return rand.Int32(2) == 0;
-			case Equip::BATTLE_WEAPONS:
+			case GalacticEconomy::Commodity::BATTLE_WEAPONS:
 				return rand.Int32(3) == 0;
-			case Equip::NERVE_GAS:
+			case GalacticEconomy::Commodity::NERVE_GAS:
 				return rand.Int32(10) == 0;
-			case Equip::NARCOTICS:
+			case GalacticEconomy::Commodity::NARCOTICS:
 				return rand.Int32(2) == 0;
-			case Equip::SLAVES:
+			case GalacticEconomy::Commodity::SLAVES:
 				return rand.Int32(16) == 0;
 			default: return true;
 		}

@@ -3,16 +3,19 @@
 -- modified for Pioneer Scout+ (c)2012-2014 by walterar <walterar2@gmail.com>
 -- Work in progress.
 
-local Lang               = import("Lang")
-local Engine             = import("Engine")
-local Game               = import("Game")
-local EquipDef           = import("EquipDef")
+local Engine    = import("Engine")
+local Lang      = import("Lang")
+local Game      = import("Game")
+local Equipment = import("Equipment")
+local Comms     = import("Comms")
+
 local SmallLabeledButton = import("ui/SmallLabeledButton")
 local InfoGauge          = import("ui/InfoGauge")
 
 local ui = Engine.ui
 
 local l = Lang.GetResource("ui-core");
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
 
 local function trim(s) return s:find'^%s*$' and '' or s:match'^%s*(.*%S)' end
 
@@ -22,8 +25,8 @@ local econTrade = function ()
 
 	local player = Game.player
 
---	local usedCabins = Game.player:GetEquipCount("CABIN", "PASSENGER_CABIN")
---	local totalCabins = Game.player:GetEquipCount("CABIN", "UNOCCUPIED_CABIN") + usedCabins
+	local totalCabins = Game.player:GetEquipCountOccupied("cabin")
+	local usedCabins = totalCabins - (Game.player.cabin_cap or 0)
 
 	-- Using econTrade as an enclosure for the functions attached to the
 	-- buttons in the UI object that it returns. Seems like the most sane
@@ -39,27 +42,29 @@ local econTrade = function ()
 		local cargoQuantityColumn = {}
 		local cargoJettisonColumn = {}
 
-		for i = 1,#Constants.EquipType do
-			local type = Constants.EquipType[i]
-			if type ~= "NONE" then
-				local et = EquipDef[type]
-				local slot = et.slot
-				if slot == "CARGO" then
-					local count = Game.player:GetEquipCount(slot, type)
-					if count > 0 then
-						table.insert(cargoNameColumn, ui:Label(et.name))
-						table.insert(cargoQuantityColumn, ui:Label(count.."t"))
+		local count = {}
+		for k,et in pairs(Game.player:GetEquip("cargo")) do
+			if not count[et] then count[et] = 0 end
+			count[et] = count[et]+1
+		end
+		for et,nb in pairs(count) do
+			table.insert(cargoNameColumn, ui:Label(et:GetName()))
+			table.insert(cargoQuantityColumn, ui:Label(nb.."t"))
 
-						local jettisonButton = SmallLabeledButton.New(l.JETTISON)
-						jettisonButton.button.onClick:Connect(function ()
-							Game.player:Jettison(type)
-							updateCargoListWidget()
-							cargoListWidget:SetInnerWidget(updateCargoListWidget())
-						end)
-						table.insert(cargoJettisonColumn, jettisonButton.widget)
-					end
+			local jettisonButton = SmallLabeledButton.New(l.JETTISON)
+			jettisonButton.button.onClick:Connect(function ()
+
+				if player.flightState == "HYPERSPACE" then return end
+				if player:DistanceTo(player:FindNearestTo("SPACESTATION")) < 100e3 then
+					local money = player:GetMoney() * Game.system.lawlessness
+					Comms.ImportantMessage(myl.You_has_been_fined .. showCurrency(money) .. myl.for_jettison .. et:GetName() .. myl.port_or_vecinity, Game.system.faction.policeName)
+					player:AddCrime("TRADING_ILLEGAL_GOODS", money)
 				end
-			end
+				Game.player:Jettison(et)
+				updateCargoListWidget()
+				cargoListWidget:SetInnerWidget(updateCargoListWidget())
+			end)
+			table.insert(cargoJettisonColumn, jettisonButton.widget)
 		end
 
 		-- Function returns a UI with which to populate the cargo list widget
@@ -103,14 +108,7 @@ local econTrade = function ()
 	local refuelButton = SmallLabeledButton.New(l.REFUEL)
 	local refuelMaxButton = SmallLabeledButton.New(l.REFUEL_FULL)
 
-	local xfuel = 'WATER'
-	if FuelHydrogen == true then xfuel = 'HYDROGEN' end
-
 	local refuelButtonRefresh = function ()
-		if Game.player.fuel == 100 or Game.player:GetEquipCount('CARGO', xfuel) == 0 then
-		refuelButton.widget:Disable()
-		refuelMaxButton.widget:Disable()
-		end
 		local fuel_percent = Game.player.fuel/100
 		fuelGauge.gauge:SetValue(fuel_percent)
 		fuelGauge.label:SetValue(fuel_percent)
@@ -126,10 +124,12 @@ local econTrade = function ()
 		refuelButtonRefresh()
 	end
 	local refuelMax = function ()
-		repeat
-			Game.player:Refuel(1)
-		until Game.player.fuel == 100 or Game.player:GetEquipCount('CARGO', xfuel) == 0
-		cargoListWidget:SetInnerWidget(updateCargoListWidget())
+		while Game.player.fuel < 100 do
+			local removed = Game.player:Refuel(1)
+			if removed == 0 then
+				break
+			end
+		end
 
 		refuelButtonRefresh()
 	end

@@ -1,4 +1,4 @@
--- Player.lua for Pioneer Scout+ (c)2013-2014 by walterar <walterar2@gmail.com>
+-- Player.lua for Pioneer Scout+ (c)2012-2014 by walterar <walterar2@gmail.com>
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- Work in progress.
 
@@ -14,7 +14,7 @@ local ShipDef    = import("ShipDef")
 local Music      = import("Music")
 local Space      = import("Space")
 local Timer      = import("Timer")
-local MessageBox = import("ui/MessageBox")
+local Eq         = import("Equipment")
 
 local l = Lang.GetResource("module-00-player") or Lang.GetResource("module-00-player","en");
 --local ll = Lang.GetResource("core") or Lang.GetResource("core","en");
@@ -23,6 +23,7 @@ local ls = Lang.GetResource("module-system") or Lang.GetResource("module-system"
 local shipData = {}
 local loaded_data
 local damaged = false
+local shipNeutralized = false
 
 -- globales
 _G.MissionsSuccesses = 0
@@ -64,6 +65,7 @@ end
 
 local onEnterSystem = function (player)
 	if player:IsPlayer() then
+		shipNeutralized = false
 		welcome()
 	end
 end
@@ -140,6 +142,13 @@ local onGameStart = function ()
 end
 Event.Register("onGameStart", onGameStart)
 
+local shipWithCannon = function (ship)
+		if (ship:GetEquipFree("laser_front") < ship:GetEquipSlotCapacity("laser_front"))
+			or (ship:GetEquipFree("laser_rear") < ship:GetEquipSlotCapacity("laser_rear")) then
+			return true
+	end
+end
+
 local onShipAlertChanged = function (ship, alert)
 --	if Music.IsPlaying() and alert=="NONE" then Music.FadeIn(song, 0.5, false) end
 	if ship:IsPlayer() and SpaMember == true then
@@ -158,17 +167,15 @@ local onShipHit = function (ship, attacker)
 		_G.ShotsReceived = (ShotsReceived or 0) + 1
 		trigger = trigger + 1
 		if attacker
---			and attacker.label == ll.POLICE_SHIP_REGISTRATION
 			and trigger > 4
 			and SpaMember == true
 		then
+			shipNeutralized = true
 			attacker:CancelAI()
 			trigger = 0
 		end
 		if trigger == 1 then ship:SetInvulnerable(false) end
-
 		local hullIntegrity = math.ceil(ship.hullMassLeft/ShipDef[ship.shipId].hullMass*100)
---		local hullIntegrity = ShipDef[ship.shipId].hullMass - ship.hullMassLeft
 		if hullIntegrity == 100 then damaged = false
 		elseif hullIntegrity < 90 and not damaged then
 			damaged = true
@@ -177,23 +184,22 @@ local onShipHit = function (ship, attacker)
 				ship:SetFuelPercent(ship.fuel/2)
 				Comms.ImportantMessage(l.Damage_Control_Propellant)
 			elseif chance == 1 then
-				ship:RemoveEquip('SCANNER')
-				ship:AddEquip('RUBBISH',1)
+				ship:RemoveEquip(Eq.misc.scanner)
+				ship:AddEquip(Eq.cargo.rubbish,1)
 				Comms.ImportantMessage(l.Damage_Control_Radar)
 			elseif chance == 2 and hullIntegrity < 30 then
-				ship:RemoveEquip('AUTOPILOT')
-				ship:AddEquip('RUBBISH',1)
+				ship:RemoveEquip(Eq.misc.autopilot)
+				ship:AddEquip(Eq.cargo.rubbish,1)
 				Comms.ImportantMessage(l.Damage_Control_Autopilot)
 			end
 		end
-		if not autoCombat then return end
-		if not (ship:GetEquipFree("LASER") < ShipDef[ship.shipId].equipSlotCapacity.LASER) then return end
---		if attacker and attacker.label == ll.POLICE_SHIP_REGISTRATION then return end
-		local target = Game.player:GetCombatTarget()
-		if attacker and (not target and Game.player:DistanceTo(attacker) < 5000)
+		if autoCombat == false or shipWithCannon(ship) == false then return end
+		local target = ship:GetCombatTarget()
+		if attacker and (not target and ship:DistanceTo(attacker) < 4000)
 			or (target and target ~= attacker and
-					Game.player:DistanceTo(attacker) < Game.player:DistanceTo(target)) then
+					ship:DistanceTo(attacker) < ship:DistanceTo(target)) then
 			if attacker then
+				shipNeutralized = false
 				ship:CancelAI()
 				ship:SetCombatTarget(attacker)
 				ship:AIKill(attacker)
@@ -205,6 +211,8 @@ local onShipHit = function (ship, attacker)
 		else
 			_G.ShotsSuccessful = (ShotsSuccessful or 0) + 1
 		end
+	elseif ship and ship:exists() and attacker and attacker:exists() and attacker:IsPlayer() then
+		if not shipNeutralized then ship:AIKill(attacker) end
 	end
 end
 Event.Register("onShipHit", onShipHit)
@@ -222,7 +230,7 @@ local onShipFiring = function (ship)
 			or (target and target ~= ship
 					and player:DistanceTo(ship) < player:DistanceTo(target)) then
 		player:SetCombatTarget(ship)
-		if player:GetEquipFree("LASER") < ShipDef[player.shipId].equipSlotCapacity.LASER then
+		if shipWithCannon(player) then
 			player:CancelAI()
 			player:AIKill(ship)
 		end
@@ -233,12 +241,12 @@ Event.Register("onShipFiring", onShipFiring)
 local onShipFuelChanged = function (ship, state)
 	if ship:IsPlayer() and (state == "WARNING" or state == "EMPTY") then
 		if SpaMember == true then
---			MessageBox.Message(t('The propellent cell has been recharged.'))
+--			Comms.ImportantMessage(t('The propellent cell has been recharged.'))
 			Game.player:SetFuelPercent(50)
 		elseif state == "WARNING" then
-			MessageBox.Message(ls.YOUR_FUEL_TANK_IS_ALMOST_EMPTY)
+			Comms.ImportantMessage(ls.YOUR_FUEL_TANK_IS_ALMOST_EMPTY)
 		elseif state == "EMPTY" then
-			MessageBox.Message(ls.YOUR_FUEL_TANK_IS_EMPTY)
+			Comms.ImportantMessage(ls.YOUR_FUEL_TANK_IS_EMPTY)
 		end
 	end
 end
@@ -284,6 +292,12 @@ local onGameEnd = function ()
 end
 Event.Register("onGameEnd", onGameEnd)
 
+local playerAlert = "NONE"
+Event.Register("onShipAlertChanged", function (ship, alert)
+	if ship:IsPlayer() then
+		playerAlert = alert
+	end
+end)
 
 Event.Register("onAutoCombatON",function()
 	Comms.Message(l.AutoCombatON)
@@ -291,6 +305,9 @@ Event.Register("onAutoCombatON",function()
 
 Event.Register("onAutoCombatOFF",function()
 	Comms.Message(l.AutoCombatOFF)
+	if playerAlert == "SHIP_FIRING" then
+		Game.player:CancelAI()
+	end
 	_G.autoCombat = false end)
 
 Serializer:Register("ShipID", serialize, unserialize)

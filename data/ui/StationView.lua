@@ -16,6 +16,7 @@ local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en"
 
 local lobby           = import("StationView/Lobby")
 local bulletinBoard   = import("StationView/BulletinBoard")
+--local privateMessages = import("StationView/PrivateMessages")
 local commodityMarket = import("StationView/CommodityMarket")
 local shipMarket      = import("StationView/ShipMarket")
 local equipmentMarket = import("StationView/EquipmentMarket")
@@ -85,6 +86,7 @@ ui.templates.StationView = function (args)
 
 	tabGroup:AddTab({ id = "lobby",           title = l.LOBBY,            icon = "Info",      template = lobby           })
 	tabGroup:AddTab({ id = "bulletinBoard",   title = l.BULLETIN_BOARD,   icon = "Clipboard", template = bulletinBoard   })
+--	tabGroup:AddTab({ id = "privateMessages",   title = l.BULLETIN_BOARD,   icon = "Clipboard", template = privateMessages   })
 	tabGroup:AddTab({ id = "commodityMarket", title = l.COMMODITY_MARKET, icon = "Cart",      template = commodityMarket })
 	tabGroup:AddTab({ id = "shipMarket",      title = l.SHIP_MARKET,      icon = "Rocketship", template = shipMarket      })
 	tabGroup:AddTab({ id = "equipmentMarket", title = l.EQUIPMENT_MARKET, icon = "Radio",     template = equipmentMarket })

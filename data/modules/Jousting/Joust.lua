@@ -11,17 +11,17 @@ local Timer     = import("Timer")
 local Event     = import("Event")
 local Format    = import("Format")
 local utils     = import("utils")
-local EquipDef  = import("EquipDef")
 local Ship      = import("Ship")
 local ShipDef   = import("ShipDef")
 local Lang      = import("Lang")
+local Eq        = import("Equipment")
 
 local l = Lang.GetResource("module-jousting") or Lang.GetResource("module-jousting","en")
 
 local multiplier = 0
 local money      = 0
 local killcount  = 0
-local TrueJoust = false
+local TrueJoust  = false
 
 local onShipHit = function (ship, attacker)
 	if TrueJoust == true and ship:IsPlayer() then
@@ -55,26 +55,26 @@ local joust = function (player)
 		end, pairs(ShipDef)))
 	if #shipdefs == 0 then return end
 	local shipdef = shipdefs[Engine.rand:Integer(1,#shipdefs)]
-	local default_drive = 'DRIVE_CLASS'..tostring(shipdef.hyperdriveClass)
-	local max_laser_size = shipdef.capacity - EquipDef[default_drive].mass
-	local laserdefs = utils.build_array(utils.filter(function (k, def)
-		return
-			def.slot == 'LASER'
-			and def.mass <= max_laser_size
-			and string.sub(def.id,0,11) == 'PULSECANNON'
-		end, pairs(EquipDef)))
+	local default_drive = Eq.hyperspace['hyperdrive_'..tostring(shipdef.hyperdriveClass)]
+	local max_laser_size = shipdef.capacity - default_drive.capabilities.mass
+	local laserdefs = utils.build_array(utils.filter(function (k,l)
+		return l:IsValidSlot('laser_front')
+			and l.capabilities.mass <= max_laser_size
+			and l.l10n_key:find("PULSECANNON")
+	end, pairs(Eq.laser)))
 	local laserdef = laserdefs[Engine.rand:Integer(1,#laserdefs)]
 	local hostil = Space.SpawnShipNear(shipdef.id, player, 5, 5)
 	if hostil == nil then return end
 	hostil:SetLabel(Ship.MakeRandomLabel())
 	hostil:AddEquip(default_drive)
-	hostil:AddEquip(laserdef.id)
+	hostil:AddEquip(laserdef)
 	local msg = l["you_have_been_challenged" .. Engine.rand:Integer(1,3)]
 	Comms.ImportantMessage(msg, hostil.label)
 	local jousting = Game.system
 	Timer:CallAt(Game.time+20, function ()
 		if Game.system == jousting and hostil ~= nil then
-			if player:GetEquipFree("LASER") < ShipDef[player.shipId].equipSlotCapacity.LASER then
+			if (player:GetEquipFree("laser_front") < player:GetEquipSlotCapacity("laser_front"))
+				or (player:GetEquipFree("laser_rear") < player:GetEquipSlotCapacity("laser_rear")) then
 				TrueJoust = true
 				hostil:AIKill(player)
 				msg = l["the_time_has_come"..Engine.rand:Integer(1,3)]
@@ -96,7 +96,7 @@ end
 local onEnterSystem = function (player)
 	if player:IsPlayer()
 		and Game.system.population == 0
-		and Engine.rand:Integer(2) < 1 then--XXX
+		and Engine.rand:Integer(3) < 1 then--XXX
 		Event.Register("onShipHit", onShipHit)
 		Event.Register("onShipDestroyed", onShipDestroyed)
 		joust(player)

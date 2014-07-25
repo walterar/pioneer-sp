@@ -6,7 +6,6 @@
 #include "LuaUtils.h"
 #include "EnumStrings.h"
 #include "ShipType.h"
-#include "EquipType.h"
 
 /*
  * Class: ShipDef
@@ -120,7 +119,7 @@
  * Attribute: hyperdriveClass
  *
  * An integer representing the power of the hyperdrive usually installed on
- * those ships. If null, it means the ship usually isn't equipped with one,
+ * those ships. If zero, it means the ship usually isn't equipped with one,
  * although this does not necessarily mean one cannot be installed.
  *
  * Availability:
@@ -230,9 +229,20 @@ void LuaShipDef::Register()
 		lua_pop(l, 1);
 
 		lua_newtable(l);
-		for (int slot = Equip::SLOT_CARGO; slot < Equip::SLOT_MAX; slot++)
-			pi_lua_settable(l, EnumStrings::GetString("EquipSlot", slot), st.equipSlotCapacity[slot]);
+		for (auto it = st.slots.cbegin(); it != st.slots.cend(); ++it) {
+			pi_lua_settable(l, it->first.c_str(), it->second);
+		}
 		pi_lua_readonly_table_proxy(l, -1);
+		luaL_getmetafield(l, -1, "__index");
+		if (!lua_getmetatable(l, -1)) {
+			lua_newtable(l);
+		}
+		pi_lua_import(l, "EquipSet");
+		luaL_getsubtable(l, -1, "default");
+		lua_setfield(l, -3, "__index");
+		lua_pop(l, 1);
+		lua_setmetatable(l, -2);
+		lua_pop(l, 1);
 		lua_setfield(l, -3, "equipSlotCapacity");
 		lua_pop(l, 1);
 

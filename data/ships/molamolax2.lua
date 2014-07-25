@@ -14,19 +14,30 @@ define_ship {
 	left_thrust = 6e6,
 	right_thrust = 6e6,
 	angular_thrust = 12e7,
-	max_cargo = 90,
-	max_laser = 2,
-	max_missile = 2,
-	max_cabin = 10,
-	max_fuelscoop = 1,
-	max_cargoscoop = 1,
+
+	slots = {
+		cargo = 90,
+		atmo_shield = 1,
+		cabin = 10,
+		laser_front = 1,
+		laser_rear = 0,
+		missile = 2,
+		cargo_scoop = 1,
+		fuel_scoop = 1,
+		cargo_life_support = 0,
+		hull_autorepair = 0,
+	},
+
 	min_crew = 1,
 	max_crew = 3,
-	max_cabin = 10,
+
 	capacity = 90,
 	hull_mass = 60,
 	fuel_tank_mass = 30,
+
 	thruster_fuel_use = 0.00015,
-	price = 125000,
+
 	hyperdrive_class = 3,
+
+	price = 125000,
 }

@@ -8,14 +8,20 @@ local Game       = import("Game")
 local Space      = import("Space")
 local utils      = import("utils")
 local ShipDef    = import("ShipDef")
-local EquipDef   = import("EquipDef")
 local Ship       = import("Ship")
 local Timer      = import("Timer")
 local Event      = import("Event")
 local Serializer = import("Serializer")
 local Lang       = import("Lang")
 local Format     = import("Format")
+local Eq         = import("Equipment")
 
+local misc       = Eq.misc
+local laser      = Eq.laser
+local hyperspace = Eq.hyperspace
+local cargo      = Eq.cargo
+
+local l = Lang.GetResource("core") or Lang.GetResource("core","en")
 local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en");
 
 local TraffiShip   = {}
@@ -120,15 +126,21 @@ local replace_and_spawn = function (n)
 		else
 			ships_traffic = SpaceShips
 		end
+		local drive
 		local nship = {}
-		nship[n] = ships_traffic[Engine.rand:Integer(1,#ships_traffic)]
+		repeat
+			nship[n] = ships_traffic[Engine.rand:Integer(1,#ships_traffic)]
+			drive = hyperspace["hyperdrive_"..tostring(nship[n].hyperdriveClass)]
+		until drive
 		TraffiShip[n] = Space.SpawnShipNear(nship[n].id,Game.player,110, 110)
-		local drive = ShipDef[nship[n].id].hyperdriveClass
-		TraffiShip[n]:AddEquip("DRIVE_CLASS"..drive)
-		TraffiShip[n]:AddEquip("HYDROGEN",drive ^ 2)
-		if not basePort.isGroundStation then TraffiShip[n]:AddEquip("SCANNER") end
-		if ShipDef[nship[n].id].equipSlotCapacity.ATMOSHIELD > 0 then
-			TraffiShip[n]:AddEquip('ATMOSPHERIC_SHIELDING')
+		if drive then
+			TraffiShip[n]:AddEquip(drive)
+			TraffiShip[n]:AddEquip(cargo.hydrogen,drive.capabilities.hyperclass ^ 2)
+		end
+		nship = nil
+		if not basePort.isGroundStation then TraffiShip[n]:AddEquip(misc.scanner) end
+		if TraffiShip[n]:CountEquip(misc.shield_generator) > 0 then
+			TraffiShip[n]:AddEquip(misc.atmospheric_shielding)
 		end
 		if Engine.rand:Integer(1) > 0 then
 			TraffiShip[n]:SetLabel(Ship.MakeRandomLabel(Game.system.faction.name))
@@ -136,13 +148,13 @@ local replace_and_spawn = function (n)
 			TraffiShip[n]:SetLabel(Ship.MakeRandomLabel())
 		end
 --
-		nship = nil
 		TraffiShip[n]:AIDockWith(basePort)
 	end)
 end
 
 local activate = function (i)
 	if not basePort or not basePort:exists() then return end
+	local drive
 	local min = 40--XXX
 	if basePort.isGroundStation then min = 20 end
 	local xtime = Game.time+Engine.rand:Integer(min,60*5)
@@ -164,10 +176,10 @@ local activate = function (i)
 				local range = TraffiShip[i].hyperspaceRange
 				if range > 30 then range = 30 end
 				local systems = Game.system:GetNearbySystems(range)
-				if not systems then return end
-				system_target = systems[Engine.rand:Integer(1,#systems)]
+				if #systems < 1 then return end
+				local system_target = systems[Engine.rand:Integer(1,#systems)]
 				local JumpShip = TraffiShip[i]
-				local status = JumpShip:HyperspaceTo(system_target.path)
+				local status = JumpShip:HyperjumpTo(system_target.path)
 				if status == "OK" then
 					TraffiShip[i] = nil
 --
@@ -200,14 +212,25 @@ local spawnShipsDocked = function ()
 	spawnDocked = true
 	local free_police = 1
 	local posib = 5
+	local starports = #Space.GetBodies(function (body) return body.superType == 'STARPORT' end)
 	if Game.time < 10 then posib = 6 end
 	if Engine.rand:Integer(5) < posib then--XXX
-		Police = Space.SpawnShipDocked("police", basePort)
+		if starports < 3 then
+			Police = Space.SpawnShipDocked("police_viper", basePort)
+		elseif starports > 2 and starports < 5 then
+			Police = Space.SpawnShipDocked("police_pacifier", basePort)
+		else
+			Police = Space.SpawnShipDocked("police_mecha", basePort)
+		end
 	end
 	if Police then
-		Police:AddEquip('ATMOSPHERIC_SHIELDING')
-		Police:AddEquip("SCANNER")
-		Police:SetLabel("POLICE")
+		if Police:GetEquipFree("laser_front") > 0 then
+			Police:AddEquip(laser.pulsecannon_dual_1mw)--XXX
+			Police:AddEquip(misc.laser_cooling_booster)
+		end
+		Police:AddEquip(misc.atmospheric_shielding)
+		Police:AddEquip(misc.scanner)
+		Police:SetLabel(l.POLICE_SHIP_REGISTRATION)
 		free_police = 0
 --
 	else
@@ -223,18 +246,20 @@ local spawnShipsDocked = function ()
 	if Game.time > 10 then ShipsCount = Engine.rand:Integer(1,ShipsCount) end
 	if not ships_traffic or ShipsCount == 0 then return end
 	ShipsCount = ShipsCount + free_police
-	local ship1
 	local ships_traffic_count = #ships_traffic
 --
 	local n=0
+	local ship1
 	local drive
+	local drivenum
 	for i = 1, ShipsCount do
 		repeat
 			ship1 = ships_traffic[Engine.rand:Integer(1,ships_traffic_count)]
-			drive = ship1.hyperdriveClass
-			n = (n or 0) + 1
+			drivenum = ship1.hyperdriveClass
+			drive = hyperspace["hyperdrive_"..tostring(drivenum)]
 			TraffiShip[i] = Space.SpawnShipDocked(ship1.id, basePort)
 --
+			n = (n or 0) + 1
 			if n > 10 then break end
 		until TraffiShip[i]
 		n=0
@@ -242,13 +267,15 @@ local spawnShipsDocked = function ()
 			ShipsCount = i-1
 --
 		break end
-		TraffiShip[i]:AddEquip("DRIVE_CLASS"..drive)
-		TraffiShip[i]:AddEquip("HYDROGEN",drive ^ 2)
+		if drive then
+			TraffiShip[i]:AddEquip(drive)
+			TraffiShip[i]:AddEquip(cargo.hydrogen,drivenum ^ 2)
+		end
 		if basePort.isGroundStation
-			and ShipDef[TraffiShip[i].shipId].equipSlotCapacity.ATMOSHIELD > 0 then
-			TraffiShip[i]:AddEquip('ATMOSPHERIC_SHIELDING')
+			and ShipDef[TraffiShip[i].shipId].equipSlotCapacity.atmo_shield > 0 then
+			TraffiShip[i]:AddEquip(misc.atmospheric_shielding)
 		else
-			TraffiShip[i]:AddEquip("SCANNER")
+			TraffiShip[i]:AddEquip(misc.scanner)
 		end
 		if Engine.rand:Integer(1,2) > 1 then
 			TraffiShip[i]:SetLabel(Ship.MakeRandomLabel(Game.system.faction.name))
@@ -276,9 +303,9 @@ end
 
 local policeStopFire = function ()--XXX la única forma de que deje de disparar.
 	Police:CancelAI()
-	if Police:GetEquipFree("LASER") < 1 then
-		Police:RemoveEquip('PULSECANNON_DUAL_1MW')
-		Police:RemoveEquip('LASER_COOLING_BOOSTER')
+	if Police:GetEquipFree("laser_front") < 1 then
+		Police:RemoveEquip(laser.pulsecannon_dual_1mw)
+		Police:RemoveEquip(misc.laser_cooling_booster)
 	end
 end
 
@@ -328,7 +355,7 @@ end
 
 local spawnShipsStatics = function ()
 	if Game.time < 10 then basePort = Game.player:GetDockedWith() end
-	if basePort.isGroundStation then return end
+	if not basePort or (basePort and basePort.isGroundStation) then return end
 	local population = Game.system.population
 	if population == 0 then return end
 	local shipdefs = utils.build_array(utils.filter(function (k,def)
@@ -409,9 +436,9 @@ local actionPolice = function ()
 	if fine > 0 and #crime > 0 then
 --
 		Comms.ImportantMessage(myl.Warning_You_must_go_back_to_the_Station_now_or_you_will_die_soon, police)
-		if Police:GetEquipFree("LASER") > 0 then
-			Police:AddEquip('PULSECANNON_DUAL_1MW')--XXX
-			Police:AddEquip('LASER_COOLING_BOOSTER')
+		if Police:GetEquipFree("laser_front") > 0 then
+			Police:AddEquip(laser.pulsecannon_dual_1mw)--XXX
+			Police:AddEquip(misc.laser_cooling_booster)
 		end
 		pol_ai_compl = false
 		Police:AIKill(player)
@@ -503,17 +530,17 @@ local onFrameChanged = function (body)
 end
 
 Event.Register("onShipFiring", function (ship)
+	if not ship
+		or not ship:exists()
+		or ship:IsPlayer()
+		or ship == Police
+	then return end
 	if ship
 		and ship:exists()
 		and Game.player:DistanceTo(ship) > 100e3 then
 		ship:Explode()
 		ship = nil
 	return end
-	if not ship
-		or not ship:exists()
-		or ship:IsPlayer()
-		or ship == Police
-	then return end
 	if shipX and shipX:exists() and shipX == ship then return end
 	if ship
 		and ship:exists()
@@ -521,9 +548,9 @@ Event.Register("onShipFiring", function (ship)
 		and Police:DistanceTo(ship) < 100e3
 		and (Police:DistanceTo(Game.player) > 5000 or Game.player:GetDockedWith())
 	then
-		if Police:GetEquipFree("LASER") > 0 then
-			Police:AddEquip('PULSECANNON_DUAL_1MW')--XXX
-			Police:AddEquip('LASER_COOLING_BOOSTER')
+		if Police:GetEquipFree("laser_front") > 0 then
+			Police:AddEquip(laser.pulsecannon_dual_1mw)--XXX
+			Police:AddEquip(misc.laser_cooling_booster)
 		end
 		shipX = ship
 --
@@ -589,7 +616,7 @@ local onGameStart = function ()
 			and def.capacity > 19
 			and def.capacity < 501
 			and def.hyperdriveClass > 0
-			and def.equipSlotCapacity.ATMOSHIELD > 0
+			and def.equipSlotCapacity.atmo_shield > 0
 			and def.id ~= ('amphiesma')
 			and def.id ~= ('constrictor_a')
 			and def.id ~= ('constrictor_b')

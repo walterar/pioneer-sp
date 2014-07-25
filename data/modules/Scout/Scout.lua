@@ -17,6 +17,7 @@ local Serializer = import("Serializer")
 local Character  = import("Character")
 local InfoFace   = import("ui/InfoFace")
 local Timer      = import("Timer")
+local Eq         = import("Equipment")
 
 local l = Lang.GetResource("module-scout") or Lang.GetResource("module-scout","en")
 
@@ -157,7 +158,11 @@ local onChat = function (form, ref, option)
 			form:SetMessage(l.You_do_not_have_enough_experience_for_this_mission.."\n*\n*")
 			return
 		end
-		if Game.player:GetEquip('RADARMAPPER',1) == "NONE" then
+
+		if Game.player:CountEquip(Eq.misc.radar_mapper) == 0 then
+
+
+--		if Game.player:GetEquip('RADARMAPPER',1) == "NONE" then
 			form:SetMessage(l.You_have_not_installed_RADAR_MAPPER.."\n*\n*")
 			return
 		end

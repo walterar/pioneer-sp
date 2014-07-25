@@ -7,6 +7,7 @@
 #include "Lua.h"
 #include "LuaRef.h"
 #include "LuaPushPull.h"
+#include "LuaUtils.h"
 #include "LuaWrappable.h"
 #include "RefCounted.h"
 #include "DeleteEmitter.h"
@@ -146,6 +147,9 @@ private:
 
 	// lua method to set a property on a propertied object
 	static int l_setprop(lua_State *l);
+
+	// lua method to unset a property on a propertied object
+	static int l_unsetprop(lua_State *l);
 
 	// lua method to check the existence of a specific property on an object
 	static int l_hasprop(lua_State *l);
@@ -315,17 +319,20 @@ template <typename T>
 template <typename Ret, typename Key, typename ...Args>
 inline Ret LuaObject<T>::CallMethod(T* o, const Key &key, const Args &...args) {
 	lua_State *l = Lua::manager->GetLuaState();
+	LUA_DEBUG_START(l);
 	Ret return_value;
 
+	lua_checkstack(l, sizeof...(args)+5);
 	PushToLua(o);
 	pi_lua_generic_push(l, key);
 	lua_gettable(l, -2);
 	lua_pushvalue(l, -2);
 	lua_remove(l, -3);
 	pi_lua_multiple_push(l, args...);
-	lua_call(l, sizeof...(args)+1, 1);
+	pi_lua_protected_call(l, sizeof...(args)+1, 1);
 	pi_lua_generic_pull(l, -1, return_value);
 	lua_pop(l, 1);
+	LUA_DEBUG_END(l, 0);
 	return return_value;
 }
 
@@ -334,15 +341,18 @@ template <typename Ret1, typename Ret2, typename ...Ret, typename Key, typename 
 inline std::tuple<Ret1, Ret2, Ret...> LuaObject<T>::CallMethod(T* o, const Key &key, const Args &...args) {
 	lua_State *l = Lua::manager->GetLuaState();
 
+	LUA_DEBUG_START(l);
+	lua_checkstack(l, sizeof...(args)+5);
 	PushToLua(o);
 	pi_lua_generic_push(l, key);
 	lua_gettable(l, -2);
 	lua_pushvalue(l, -2);
 	lua_remove(l, -3);
 	pi_lua_multiple_push(l, args...);
-	lua_call(l, sizeof...(args)+1, 2+sizeof...(Ret));
+	pi_lua_protected_call(l, sizeof...(args)+1, 2+sizeof...(Ret));
 	auto ret_values = pi_lua_multiple_pull<Ret1, Ret2, Ret...>(l, -2-static_cast<int>(sizeof...(Ret)));
 	lua_pop(l, 2+static_cast<int>(sizeof...(Ret)));
+	LUA_DEBUG_END(l, 0);
 	return ret_values;
 }
 

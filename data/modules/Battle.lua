@@ -11,11 +11,20 @@ local SystemPath = import("SystemPath")
 local Engine     = import("Engine")
 local Ship       = import("Ship")
 local Timer      = import("Timer")
-local EquipDef   = import("EquipDef")
+local Eq         = import("Equipment")
 
 local battle_active = false
 local max_hostiles = 5
 local hostil = {}
+
+local shipWithCannon = function (ship)
+	if ship:IsPlayer() then
+		if (ship:GetEquipFree("laser_front") < ship:GetEquipSlotCapacity("laser_front"))
+			or (ship:GetEquipFree("laser_rear") < ship:GetEquipSlotCapacity("laser_rear")) then
+			return true
+		end
+	end
+end
 
 Event.Register("onEnterSystem", function (ship)
 	if not ship:IsPlayer() or Game.system.population == 0 then return end
@@ -34,24 +43,23 @@ Event.Register("onEnterSystem", function (ship)
 			if n > max_hostiles then n = max_hostiles end
 			for i = 1, n do
 				hostil[i] = hostiles[Engine.rand:Integer(1,#hostiles)]
-				local default_drive = 'DRIVE_CLASS'..tostring(hostil[i].hyperdriveClass)
-				local max_laser_size = hostil[i].capacity - EquipDef[default_drive].mass
-				local laserdefs = utils.build_array(utils.filter(function (k,def)
-					return
-						def.slot == 'LASER'
-						and def.mass <= max_laser_size
-						and string.sub(def.id,0,11) == 'PULSECANNON'
-					end, pairs(EquipDef)))
+				local default_drive = Eq.hyperspace['hyperdrive_'..tostring(hostil[i].hyperdriveClass)]
+				local max_laser_size = hostil[i].capacity - default_drive.capabilities.mass
+				local laserdefs = utils.build_array(utils.filter(function (k,l)
+					return l:IsValidSlot('laser_front')
+						and l.capabilities.mass <= max_laser_size
+						and l.l10n_key:find("PULSECANNON")
+				end, pairs(Eq.laser)))
 				local laserdef = laserdefs[Engine.rand:Integer(1,#laserdefs)]
 				hostil[i] = Space.SpawnShipNear(hostil[i].id, ship,2,3)
-				hostil[i]:AddEquip(default_drive)
-				hostil[i]:AddEquip(laserdef.id)
+--				hostil[i]:AddEquip(default_drive)
+				hostil[i]:AddEquip(laserdef)
 				hostil[i]:SetLabel(Ship.MakeRandomLabel())
 			end
 			for i = 1, n-1 do
 				hostil[i]:AIKill(hostil[i+1])
 			end
-			if (ship:GetEquipFree("LASER") < ShipDef[ship.shipId].equipSlotCapacity.LASER)
+			if shipWithCannon(ship)
 				and DangerLevel > 1 and Engine.rand:Integer(2) > 1 then--XXX
 				Timer:CallAt(Game.time+Engine.rand:Integer(10,20), function ()
 					if hostil[1] and hostil[1]:exists() then hostil[1]:AIKill(ship) end

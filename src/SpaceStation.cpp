@@ -14,7 +14,6 @@
 #include "Planet.h"
 #include "Player.h"
 #include "Polit.h"
-#include "Polit.h"
 #include "Serializer.h"
 #include "Ship.h"
 #include "Space.h"
@@ -38,7 +37,7 @@ void SpaceStation::Uninit()
 void SpaceStation::Save(Serializer::Writer &wr, Space *space)
 {
 	ModelBody::Save(wr, space);
-	wr.Int32(Equip::TYPE_MAX);
+	wr.Int32(0); // SAVEBUMP used to write Equip::TYPE_MAX here so we could detect newly added equipment/commodities on load
 	wr.Int32(m_shipDocking.size());
 	for (Uint32 i=0; i<m_shipDocking.size(); i++) {
 		wr.Int32(space->GetIndexForBody(m_shipDocking[i].ship));
@@ -74,8 +73,8 @@ void SpaceStation::Load(Serializer::Reader &rd, Space *space)
 
 	m_oldAngDisplacement = 0.0;
 
-	int num = rd.Int32();
-	if (num > Equip::TYPE_MAX) throw SavedGameCorruptException();
+	rd.Int32(); // SAVEBUMP used to read this and compare it against Equip::TYPE_MAX to detect changes to the equipment enum
+
 	const Uint32 numShipDocking = rd.Int32();
 	m_shipDocking.reserve(numShipDocking);
 	for (Uint32 i=0; i<numShipDocking; i++) {
@@ -648,10 +647,17 @@ void SpaceStation::DoLawAndOrder(const double timeStep)
 			ship->SetDockedWith(this, port);
 			Pi::game->GetSpace()->AddBody(ship);
 			ship->SetLabel(Lang::POLICE_SHIP_REGISTRATION);
-			ship->m_equipment.Set(Equip::SLOT_LASER, 0, Equip::PULSECANNON_DUAL_1MW);
-			ship->m_equipment.Add(Equip::LASER_COOLING_BOOSTER);
-			ship->m_equipment.Add(Equip::ATMOSPHERIC_SHIELDING);
-			ship->UpdateStats();
+			lua_State *l = Lua::manager->GetLuaState();
+			LUA_DEBUG_START(l);
+			pi_lua_import(l, "Equipment");
+			LuaTable equip(l, -1);
+			LuaTable misc = equip.Sub("misc");
+			LuaObject<Ship>::CallMethod(ship, "AddEquip", equip.Sub("laser").Sub("pulsecannon_dual_1mw"));
+			LuaObject<Ship>::CallMethod(ship, "AddEquip", misc.Sub("laser_cooling_booster"));
+			LuaObject<Ship>::CallMethod(ship, "AddEquip", misc.Sub("atmospheric_shielding"));
+			lua_pop(l, 6);
+			LUA_DEBUG_END(l, 0);
+			ship->UpdateEquipStats();
 		} else {
 			delete ship;
 		}

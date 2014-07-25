@@ -47,6 +47,10 @@
 "description":"",
 "message":"Ввести средних орбитах, на текущей цели"
 },
+"ENVIRONMENTAL_DAMAGE":{
+"description":"",
+"message":"экологического ущерба"
+},
 "Experience":{
 "description":"",
 "message":"опыта"
@@ -175,9 +179,9 @@
 "description":"",
 "message":"Необходимо установить жизнеобеспечения грузовой отсек"
 },
-"docked":{
+"port_or_vecinity":{
 "description":"",
-"message":" пристыкован"
+"message":" в порту или вблизи."
 },
 "for_jettison":{
 "description":"",

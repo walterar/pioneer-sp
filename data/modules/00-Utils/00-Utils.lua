@@ -7,10 +7,10 @@ local Game       = import("Game")
 local StarSystem = import("StarSystem")
 local Space      = import("Space")
 local utils      = import("utils")
-local EquipDef   = import("EquipDef")
 local ShipDef    = import("ShipDef")
 local Ship       = import("Ship")
 local Lang       = import("Lang")
+local Eq         = import("Equipment")
 
 local l = Lang.GetResource("core");
 
@@ -63,22 +63,23 @@ _G.ship_hostil = function (risk)
 			and  def.capacity <= capacity2
 			and  def.hyperdriveClass > 0
 	end, pairs(ShipDef)))
+
 	if #hostiles > 0 then
 		while count_hostiles > 0 do
 			count_hostiles = count_hostiles - 1
 			if Engine.rand:Number(1) <= risk then
 				local hostile = hostiles[Engine.rand:Integer(1,#hostiles)]
-				local default_drive = 'DRIVE_CLASS'..tostring(hostile.hyperdriveClass)
-				local max_laser_size = hostile.capacity - EquipDef[default_drive].mass
-				local laserdefs = utils.build_array(utils.filter(function (k,def)
-					return def.slot == 'LASER'
-						and  def.mass <= max_laser_size
-						and  string.sub(def.id,0,11) == 'PULSECANNON'
-					end, pairs(EquipDef)))
+				local default_drive = Eq.hyperspace['hyperdrive_'..tostring(hostile.hyperdriveClass)]
+				local max_laser_size = hostile.capacity - default_drive.capabilities.mass
+				local laserdefs = utils.build_array(utils.filter(function (k,l)
+					return l:IsValidSlot('laser_front')
+						and l.capabilities.mass <= max_laser_size
+						and l.l10n_key:find("PULSECANNON")
+				end, pairs(Eq.laser)))
 				local laserdef = laserdefs[Engine.rand:Integer(1,#laserdefs)]
 				hostil = Space.SpawnShipNear(hostile.id, Game.player,2,2)
 				hostil:AddEquip(default_drive)
-				hostil:AddEquip(laserdef.id)
+				hostil:AddEquip(laserdef)
 				hostil:SetLabel(Ship.MakeRandomLabel())
 				hostil:AIKill(Game.player)
 			end
@@ -176,7 +177,8 @@ end
 --
 function _G.showCurrency(amount, decimal, prefix, neg_prefix)
 	local str_amount,  formatted, famount, remain
-	decimal    = decimal    or  2  -- default 2 decimal places
+	amount     = amount     or 0
+	decimal    = decimal    or 2  -- default 2 decimal places
 	prefix     = prefix     or "$" -- default dollar
 	neg_prefix = neg_prefix or "-" -- default negative sign
 

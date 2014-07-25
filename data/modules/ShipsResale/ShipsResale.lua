@@ -10,6 +10,7 @@ local Serializer = import("Serializer")
 local utils      = import("utils")
 local ShipDef    = import("ShipDef")
 local Lang       = import("Lang")
+local Eq         = import("Equipment")
 
 local l = Lang.GetResource("module-shipsresale") or Lang.GetResource("module-shipsresale","en")
 
@@ -20,17 +21,17 @@ local my_shipDef,my_ship_name,my_ship_id,my_ship_price,shipdefs,maxsales
 local oksel = 0
 
 local equipping = function ()
-	if Engine.rand:Integer(3) > 2 then return end
-	local drive = ShipDef[Game.player.shipId].hyperdriveClass
-	if drive > 0 then
-		Game.player:AddEquip('DRIVE_CLASS'..drive)
-		Game.player:AddEquip('HYDROGEN',drive ^ 2)
+	if Engine.rand:Integer(3) < 1 then return end
+	local drive = Eq.hyperspace["hyperdrive_"..tostring(ShipDef[Game.player.shipId].hyperdriveClass)]
+	if drive then
+		Game.player:AddEquip(drive)
+		Game.player:AddEquip(Eq.cargo.hydrogen,drive.capabilities.hyperclass ^ 2)
 	end
-	if ShipDef[Game.player.shipId].equipSlotCapacity.ATMOSHIELD > 0 then
-		Game.player:AddEquip('ATMOSPHERIC_SHIELDING')
+	if ShipDef[Game.player.shipId].equipSlotCapacity.atmo_shield > 0 then
+		Game.player:AddEquip(Eq.misc.atmospheric_shielding)
 	end
-	Game.player:AddEquip('SCANNER')
-	Game.player:AddEquip('AUTOPILOT')
+	Game.player:AddEquip(Eq.misc.scanner)
+	Game.player:AddEquip(Eq.misc.autopilot)
 end
 
 local onChat = function (form, ref, option)
@@ -91,8 +92,9 @@ local onChat = function (form, ref, option)
 		return
 	end
 	if option >= 1 and option <= maxsales then
-		if Game.player:GetEquipCount('CABIN','PASSENGER_CABIN') > 0 then
-			form:SetMessage(l.passengers)
+		if Game.player:CountEquip(Eq.misc.cabin_occupied) > 0 then
+			form:Clear()
+			form:SetMessage("\n*\n*"..l.passengers.."\n*\n*")
 			return
 		end
 		local credit = Game.player:GetMoney()

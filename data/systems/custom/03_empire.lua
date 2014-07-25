@@ -22,7 +22,7 @@ local Achernar = CustomSystemBody:new("Achernar",'STAR_B')
 -- Orbital period: 146 days (0.4 years)
 -- Orbital radius: 1.514AU
 -- Orbit Ecc. and Incl.: 0.000, 357.5 deg C
-local Achernar1 = CustomSystemBody:new('Achernar1', 'PLANET_TERRESTRIAL')
+local Achernar1 = CustomSystemBody:new('Achernar1', 'PLANET_TERRESTRIAL')--#1
    :seed(9872)
    :radius(f(10,10))
    :mass(f(15,100))
@@ -45,7 +45,7 @@ local Achernar1 = CustomSystemBody:new('Achernar1', 'PLANET_TERRESTRIAL')
 -- Orbital period: 316 days (0.8657 years)
 -- Orbital radius: 2.528AU
 -- Orbit Ecc. and Incl.: 0.000, 348.9 deg C
-local Achernar2 = CustomSystemBody:new('Achernar2', 'PLANET_TERRESTRIAL')
+local Achernar2 = CustomSystemBody:new('Achernar2', 'PLANET_TERRESTRIAL')--#2
    :seed(1862)
    :radius(f(84,10))
    :mass(f(122,100))
@@ -68,7 +68,7 @@ local Achernar2 = CustomSystemBody:new('Achernar2', 'PLANET_TERRESTRIAL')
 -- Orbital period: 1.8 years
 -- Orbital radius: 4.218AU
 -- Orbit Ecc. and Incl.: 0.000, 0.2 deg C
-local Achernar3 = CustomSystemBody:new('Achernar3', 'PLANET_GAS_GIANT')
+local Achernar3 = CustomSystemBody:new('Achernar3', 'PLANET_GAS_GIANT')--#3
    :seed(89372)
    :radius(f(142,100))
    :mass(f(4112,100))
@@ -84,7 +84,7 @@ local Achernar3 = CustomSystemBody:new('Achernar3', 'PLANET_GAS_GIANT')
 -- Orbital period: 8.6 years
 -- Orbital radius: 11.686AU
 -- Orbit Ecc. and Incl.: 0.000, 7.4 deg C
-local Achernar4 = CustomSystemBody:new('Achernar4', 'PLANET_GAS_GIANT')
+local Achernar4 = CustomSystemBody:new('Achernar4', 'PLANET_GAS_GIANT')--#4
    :seed(92174645)
    :radius(f(400,100))
    :mass(f(11565,100))
@@ -100,7 +100,7 @@ local Achernar4 = CustomSystemBody:new('Achernar4', 'PLANET_GAS_GIANT')
 	-- Orbital period: 9 days (0.02465 years)
 	-- Orbital radius: 0.006AU
 	-- Orbit Ecc. and Incl.: 0.000, 0.2 deg C
-	local Achernar4a = CustomSystemBody:new('Achernar4a', 'PLANET_TERRESTRIAL')
+	local Achernar4a = CustomSystemBody:new('Achernar4a', 'PLANET_TERRESTRIAL')--#5
 	   :seed(23567)
 	   :radius(f(10,100))
 	   :mass(f(2,100))
@@ -123,7 +123,7 @@ local Achernar4 = CustomSystemBody:new('Achernar4', 'PLANET_GAS_GIANT')
 -- Orbital period: 37.5 years
 -- Orbital radius: 31.162AU
 -- Orbit Ecc. and Incl.: 0.000, 0.0 deg C
-local Achernar5 = CustomSystemBody:new('Achernar5', 'PLANET_TERRESTRIAL')
+local Achernar5 = CustomSystemBody:new('Achernar5', 'PLANET_TERRESTRIAL')--#6
    :seed(9364522)
    :radius(f(43,10))
    :mass(f(69,100))
@@ -146,7 +146,7 @@ local Achernar5 = CustomSystemBody:new('Achernar5', 'PLANET_TERRESTRIAL')
 -- Orbital period: 77.8 years
 -- Orbital radius: 50.654AU
 -- Orbit Ecc. and Incl.: 0.000, 2.4 deg C
-local Achernar6 = CustomSystemBody:new('Achernar6', 'PLANET_GAS_GIANT')
+local Achernar6 = CustomSystemBody:new('Achernar6', 'PLANET_GAS_GIANT')--#7
    :seed(08265528)
    :radius(f(7525,100))
    :mass(f(217391,100))
@@ -163,7 +163,7 @@ local Achernar6_moons = {
 	-- Orbital period: 20 days
 	-- Orbital radius: 0.027AU
 	-- Orbit Ecc. and Incl.: 0.000, 2.0 deg C
-	CustomSystemBody:new('Yamaha\'s Grave', 'PLANET_TERRESTRIAL')
+	CustomSystemBody:new('Yamaha\'s Grave', 'PLANET_TERRESTRIAL')--#8
 	   :seed(8977544)
 	   :radius(f(10,100))
 	   :mass(f(2,100))
@@ -181,7 +181,7 @@ local Achernar6_moons = {
 	   :life(f(0,1)),
 	{
 		-- Major Starport: Schmidt
-		CustomSystemBody:new('Schmidt', 'STARPORT_SURFACE')
+		CustomSystemBody:new('Schmidt', 'STARPORT_SURFACE')--#9
 			:latitude(math.deg2rad(-0.5))
 			:longitude(math.deg2rad(26.2)),
 
@@ -190,7 +190,7 @@ local Achernar6_moons = {
 		-- Orbital period: 20 days
 		-- Orbital radius: 0.000AU
 		-- Orbit Ecc. and Incl.: 0.000, 0.0 deg C
-		CustomSystemBody:new('Baker Terminal', 'STARPORT_ORBITAL')
+		CustomSystemBody:new('Baker Terminal', 'STARPORT_ORBITAL')--#10
 			:semi_major_axis(f(12,500000))
 			:eccentricity(f(0,1))
 			:rotation_period(f(547,10000)),
@@ -204,7 +204,7 @@ local Achernar6_moons = {
 	-- Orbital period: 70 days
 	-- Orbital radius: 0.062AU
 	-- Orbit Ecc. and Incl.: 0.000, 7.3 deg C
-	CustomSystemBody:new('New World', 'PLANET_TERRESTRIAL')
+	CustomSystemBody:new('New World', 'PLANET_TERRESTRIAL')--#11
 	   :seed(348872)
 	   :radius(f(13,10))
 	   :mass(f(2,10))
@@ -222,12 +222,12 @@ local Achernar6_moons = {
 	   :life(f(75,100)),
 	{
 		-- Major Starport: Hoopertown
-		CustomSystemBody:new('Hoopertown', 'STARPORT_SURFACE')
+		CustomSystemBody:new('Hoopertown', 'STARPORT_SURFACE')--#12
 			:latitude(math.deg2rad(-0.5))
 			:longitude(math.deg2rad(26.2)),
 
 		-- Major Starport: Swallow Landing
-		CustomSystemBody:new('Swallow Landing', 'STARPORT_SURFACE')
+		CustomSystemBody:new('Swallow Landing', 'STARPORT_SURFACE')--#13
 			:latitude(math.deg2rad(187.3))
 			:longitude(math.deg2rad(17.0)),
 
@@ -235,7 +235,7 @@ local Achernar6_moons = {
 		-- Orbital period: 13 hours
 		-- Orbital radius: 0.000AU
 		-- Orbit Ecc. and Incl.: 0.000, 0.0 deg C
-		CustomSystemBody:new('Bell Terminal', 'STARPORT_ORBITAL')
+		CustomSystemBody:new('Bell Terminal', 'STARPORT_ORBITAL')--#14
 			:semi_major_axis(f(14,50000))
 			:eccentricity(f(0,1))
 			:rotation_period(f(13,10000)),
@@ -248,7 +248,7 @@ local Achernar6_moons = {
 	-- Orbital period: 236 days
 	-- Orbital radius: 0.139AU
 	-- Orbit Ecc. and Incl.: 0.000, 358.9 deg C
-	CustomSystemBody:new('Conversion', 'PLANET_TERRESTRIAL')
+	CustomSystemBody:new('Conversion', 'PLANET_TERRESTRIAL')--#15
 	   :seed(343212)
 	   :radius(f(345,100))
 	   :mass(f(69,100))
@@ -266,22 +266,22 @@ local Achernar6_moons = {
 	   :life(f(9,10)),
 	{
 		-- Major Starport: Shepherd City
-		CustomSystemBody:new('Shepherd City', 'STARPORT_SURFACE')
+		CustomSystemBody:new('Shepherd City', 'STARPORT_SURFACE')--#16
 			:latitude(math.deg2rad(-0.5))
 			:longitude(math.deg2rad(21.2)),
 
 		-- Major Starport: Newtown
-		CustomSystemBody:new('Newtown', 'STARPORT_SURFACE')
+		CustomSystemBody:new('Newtown', 'STARPORT_SURFACE')--#17
 			:latitude(math.deg2rad(155.5))
 			:longitude(math.deg2rad(11.0)),
 
 		-- Major Starport: Morris base
-		CustomSystemBody:new('Morris base', 'STARPORT_SURFACE')
+		CustomSystemBody:new('Morris base', 'STARPORT_SURFACE')--#18
 			:latitude(math.deg2rad(45.3))
 			:longitude(math.deg2rad(-37.0)),
 
 		-- Major Starport: Chekovport
-		CustomSystemBody:new('Chekovport', 'STARPORT_SURFACE')
+		CustomSystemBody:new('Chekovport', 'STARPORT_SURFACE')--#19
 			:latitude(math.deg2rad(-7.3))
 			:longitude(math.deg2rad(81.0)),
 
@@ -289,7 +289,7 @@ local Achernar6_moons = {
 		-- Orbital period: 7 hours
 		-- Orbital radius: 0.000AU
 		-- Orbit Ecc. and Incl.: 0.000, 0.0 deg C
-		CustomSystemBody:new('Macmillan Terminal', 'STARPORT_ORBITAL')
+		CustomSystemBody:new('Macmillan Terminal', 'STARPORT_ORBITAL')--#20
 			:semi_major_axis(f(24,50000))
 			:eccentricity(f(0,1))
 			:rotation_period(f(7,10000)),
@@ -302,7 +302,7 @@ local Achernar6_moons = {
 	-- Orbital period: 823 days
 	-- Orbital radius: 0.320AU
 	-- Orbit Ecc. and Incl.: 0.000, 5.2 deg C
-	CustomSystemBody:new('Capitol', 'PLANET_TERRESTRIAL')
+	CustomSystemBody:new('Capitol', 'PLANET_TERRESTRIAL')--#21
 	   :seed(-1420311881)
 	   :radius(f(285,100))
 	   :mass(f(55,100))
@@ -320,22 +320,22 @@ local Achernar6_moons = {
 	   :life(f(1,1)),
 	{
 		-- Major Starport: Duval City
-		CustomSystemBody:new('Duval City', 'STARPORT_SURFACE')
+		CustomSystemBody:new('Duval City', 'STARPORT_SURFACE')--#22
 			:latitude(math.deg2rad(-0.5))
 			:longitude(math.deg2rad(21.2)),
 
 		-- Major Starport: Fortress Cambridge
-		CustomSystemBody:new('Fortress Cambridge', 'STARPORT_SURFACE')
+		CustomSystemBody:new('Fortress Cambridge', 'STARPORT_SURFACE')--#23
 			:latitude(math.deg2rad(155.5))
 			:longitude(math.deg2rad(11.0)),
 
 		-- Major Starport: Camp Denver
-		CustomSystemBody:new('Camp Denver', 'STARPORT_SURFACE')
+		CustomSystemBody:new('Camp Denver', 'STARPORT_SURFACE')--#24
 			:latitude(math.deg2rad(45.3))
 			:longitude(math.deg2rad(-37.0)),
 
 		-- Major Starport: Maxwell's Camp
-		CustomSystemBody:new('Maxwell\'s Camp', 'STARPORT_SURFACE')
+		CustomSystemBody:new('Maxwell\'s Camp', 'STARPORT_SURFACE')--#25
 			:latitude(math.deg2rad(-7.3))
 			:longitude(math.deg2rad(81.0)),
 
@@ -344,7 +344,7 @@ local Achernar6_moons = {
 		-- Orbital period: 8 hours
 		-- Orbital radius: 0.000AU
 		-- Orbit Ecc. and Incl.: 0.000, 0.0 deg C
-		CustomSystemBody:new('Fort Donalds', 'STARPORT_ORBITAL')
+		CustomSystemBody:new('Fort Donalds', 'STARPORT_ORBITAL')--#26
 			:semi_major_axis(f(24,50000))
 			:eccentricity(f(0,1))
 			:rotation_period(f(8,10000)),
@@ -358,7 +358,7 @@ local Achernar6_moons = {
 -- Orbital period: 168.9 years
 -- Orbital radius: 84.904AU
 -- Orbit Ecc. and Incl.: 0.000, 6.3 deg C
-local Achernar7 = CustomSystemBody:new('Achernar7', 'PLANET_GAS_GIANT')
+local Achernar7 = CustomSystemBody:new('Achernar7', 'PLANET_GAS_GIANT')--#27
    :seed(185266)
    :radius(f(242,100))
    :mass(f(7110,100))
@@ -374,7 +374,7 @@ local Achernar7 = CustomSystemBody:new('Achernar7', 'PLANET_GAS_GIANT')
 -- Orbital period: 797.8 years
 -- Orbital radius: 238.984AU
 -- Orbit Ecc. and Incl.: 0.000, 351.2 deg C
-local Achernar8 = CustomSystemBody:new('Achernar8', 'PLANET_GAS_GIANT')
+local Achernar8 = CustomSystemBody:new('Achernar8', 'PLANET_GAS_GIANT')--#28
    :seed(567987)
    :radius(f(329,100))
    :mass(f(9509,100))
@@ -390,7 +390,7 @@ local Achernar8 = CustomSystemBody:new('Achernar8', 'PLANET_GAS_GIANT')
 -- Orbital period: 1768.2 years
 -- Orbital radius: 406.368AU
 -- Orbit Ecc. and Incl.: 0.000, 354.5 deg C
-local Achernar9 = CustomSystemBody:new('Achernar9', 'BROWN_DWARF')
+local Achernar9 = CustomSystemBody:new('Achernar9', 'BROWN_DWARF')--#29
    :seed(23492)
    :radius(f(7526,10000))
    :mass(f(6537,100000))
@@ -405,7 +405,7 @@ local Achernar9 = CustomSystemBody:new('Achernar9', 'BROWN_DWARF')
 -- Orbital period: 3932.0 years
 -- Orbital radius: 692.000AU
 -- Orbit Ecc. and Incl.: 0.000, 5.2 deg C
-local Achernar10 = CustomSystemBody:new('Achernar10', 'PLANET_GAS_GIANT')
+local Achernar10 = CustomSystemBody:new('Achernar10', 'PLANET_GAS_GIANT')--#30
    :seed(567987)
    :radius(f(7939,100))
    :mass(f(229386,100))

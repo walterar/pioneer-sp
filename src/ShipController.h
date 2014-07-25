@@ -18,6 +18,11 @@ enum FlightControlState {
 	CONTROL_FIXSPEED,
 	CONTROL_FIXHEADING_FORWARD,
 	CONTROL_FIXHEADING_BACKWARD,
+	CONTROL_FIXHEADING_NORMAL,
+	CONTROL_FIXHEADING_ANTINORMAL,
+	CONTROL_FIXHEADING_RADIALLY_INWARD,
+	CONTROL_FIXHEADING_RADIALLY_OUTWARD,
+	CONTROL_FIXHEADING_KILLROT,
 	CONTROL_AUTOPILOT,
 
 	CONTROL_STATE_COUNT
@@ -55,7 +60,7 @@ public:
 	void PostLoadFixup(Space *s);
 	void StaticUpdate(float timeStep);
 	// Poll controls, set thruster states, gun states and target velocity
-	void PollControls(float timeStep, const bool force_rotation_damping);
+	void PollControls(float timeStep, const bool force_rotation_damping, int *mouseMotion);
 	bool IsMouseActive() const { return m_mouseActive; }
 	double GetSetSpeed() const { return m_setSpeed; }
 	FlightControlState GetFlightControlState() const { return m_flightControlState; }

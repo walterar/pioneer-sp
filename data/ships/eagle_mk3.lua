@@ -7,6 +7,7 @@ define_ship {
 	ship_class='light_scout',
 	manufacturer='p66',
 	model = 'eagle_mk3',
+
 	forward_thrust = 36e5,
 	reverse_thrust = 25e5,
 	up_thrust = 8e5,
@@ -14,23 +15,36 @@ define_ship {
 	left_thrust = 8e5,
 	right_thrust = 8e5,
 	angular_thrust = 64e5,
+
 	camera_offset = v(0,1,-12.8),
+
 	gun_mounts =
 	{
 		{ v(0,-.7,-40), v(0,0,-1), 5, 'HORIZONTAL' },
 		{ v(0,-.7,25), v(0,0,1), 5, 'HORIZONTAL' },
 	},
-	max_cargo = 22,
-	max_missile = 2,
-	max_fuelscoop = 0,
-	max_cargoscoop = 0,
-	max_cabin = 0,
+
+	slots = {
+		cargo = 22,
+		atmo_shield = 1,
+		cabin = 0,
+		laser_front = 1,
+		laser_rear = 0,
+		missile = 2,
+		cargo_scoop = 0,
+		cargo_life_support = 0,
+		hull_autorepair = 0,
+		fuel_scoop = 0,
+	},
+
 	min_crew = 1,
 	max_crew = 1,
+
 	capacity = 22,
 	hull_mass = 10,
 	fuel_tank_mass = 5,
+
 	thruster_fuel_use = 0.00015,
-	price = 43000,
+	price = 33000,
 	hyperdrive_class = 1,
 }

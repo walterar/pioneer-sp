@@ -151,6 +151,10 @@
       "description" : "",
       "message" : "Vue de dessus"
    },
+   "CANT_SAVE_DEAD_PLAYER" : {
+      "description" : "",
+      "message" : "Can't save game after the player has died"
+   },
    "CANT_SAVE_IN_HYPERSPACE" : {
       "description" : "",
       "message" : "Impossible de sauvegarder en hyperspace"
@@ -194,6 +198,10 @@
    "CARGO_SCOOP_ACTIVE_1_TONNE_X_COLLECTED" : {
       "description" : "",
       "message" : "Récupérateur de cargaison actif: 1t de %item récupérée"
+   },
+   "CARGO_SCOOP_ATTEMPTED" : {
+      "description" : "",
+      "message" : "Cargo scoop attempted. Not enough room in cargo hold."
    },
    "CARGO_SCOOP_DESCRIPTION" : {
       "description" : "",
@@ -559,6 +567,10 @@
       "description" : "",
       "message" : "\"Couv\""
    },
+   "HEADING_LOCK_ANTINORMAL" : {
+      "description" : "",
+      "message" : "Hold anti-normal"
+   },
    "HEADING_LOCK_BACKWARD" : {
       "description" : "",
       "message" : "Trajectoire vérouillée (AV)"
@@ -566,6 +578,22 @@
    "HEADING_LOCK_FORWARD" : {
       "description" : "",
       "message" : "Trajectoire vérouillée (AR)"
+   },
+   "HEADING_LOCK_KILLROT" : {
+      "description" : "",
+      "message" : "Kill rotation"
+   },
+   "HEADING_LOCK_NORMAL" : {
+      "description" : "",
+      "message" : "Hold normal"
+   },
+   "HEADING_LOCK_RADIALLY_INWARD" : {
+      "description" : "",
+      "message" : "Hold radially in"
+   },
+   "HEADING_LOCK_RADIALLY_OUTWARD" : {
+      "description" : "",
+      "message" : "Hold radially out"
    },
    "HEAVY_INDUSTRY" : {
       "description" : "",

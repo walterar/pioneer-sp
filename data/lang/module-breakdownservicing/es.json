@@ -17,7 +17,7 @@
    },
    "FLAVOUR_1_INTRO" : {
       "description" : "",
-      "message" : "Hola, soy {proprietor}.\nPuedo revisar su {drive}, con garantía por un año.\nEl costo de la revisión será {price}\n{lasttime}"
+      "message" : "Hola, soy {proprietor}.\nPuedo revisar su {drive}, con garantía por un año.\nEl costo de la revisión será de: {price}\n{lasttime}"
    },
    "FLAVOUR_1_RESPONSE" : {
       "description" : "",
@@ -33,7 +33,7 @@
    },
    "FLAVOUR_2_INTRO" : {
       "description" : "",
-      "message" : "Saludos.  En {proprietor} & Co ponemos nuestra reputación en el trabajo.\n\n{lasttime}\nPodemos afinar el {drive} de su nave, garantía por 12 meses, por la suma de {price}.  Estaré supervisando el trabajo yo mismo, por lo tanto puedo asegurarle un trabajo bien hecho."
+      "message" : "Saludos.  En {proprietor} & Co ponemos nuestra reputación en el trabajo.\n\n{lasttime}\nPodemos afinar el {drive} de su nave, garantía por 12 meses, por la suma de {price}.\nEstaré supervisando el trabajo yo mismo, por lo que puedo asegurarle un trabajo bien hecho."
    },
    "FLAVOUR_2_RESPONSE" : {
       "description" : "",
@@ -109,15 +109,15 @@
    },
    "THE_SHIPS_HYPERDRIVE_HAS_BEEN_DESTROYED_BY_A_MALFUNCTION" : {
       "description" : "",
-      "message" : "El hipermotor de la nave se ha\ndestruído por falta de revisión"
+      "message" : "El hipermotor de la nave se ha destruído por falta de revisión"
    },
    "YOUR_DRIVE_HAS_NOT_BEEN_SERVICED" : {
       "description" : "",
-      "message" : "Su hipermotor no ha tenido ninguna revisión desde {date}"
+      "message" : "Hipermotor no revisado desde: {date}"
    },
    "YOUR_DRIVE_WAS_LAST_SERVICED_ON" : {
       "description" : "",
-      "message" : "La última revisión de su hipermotor fue el {date} por {company}"
+      "message" : "Ultima revisión de su hipermotor: {date}\nPor: {company}"
    },
    "YOU_DO_NOT_HAVE_A_DRIVE_TO_SERVICE" : {
       "description" : "",

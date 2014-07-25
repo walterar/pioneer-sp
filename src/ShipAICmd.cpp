@@ -638,6 +638,10 @@ static bool ParentSafetyAdjust(Ship *ship, Frame *targframe, vector3d &targpos, 
 		double sdist = ship->GetPositionRelTo(frame).Length();
 		if (sdist < frame->GetRadius()) break;					// ship inside frame, stop
 
+		// we should always be inside the root frame, so if we're not inside 'frame'
+		// then it must not be the root frame (ie, it must have a parent)
+		assert(frame->GetParent());
+
 		frame = frame->GetParent()->GetNonRotFrame();			// check next frame down
 	}
 	if (!body) return false;
@@ -711,7 +715,7 @@ bool AICmdFlyTo::TimeStepUpdate()
 	if (m_ship->GetFlightState() == Ship::FLYING) m_ship->SetWheelState(false);
 	else { LaunchShip(m_ship); return false; }
 
-	// generate base target pos (with vicinity adjustment) & vel
+	// generate base target pos (with vicinity adjustment) & vel 
 	double timestep = Pi::game->GetTimeStep();
 	vector3d targpos, targvel;
 	if (m_target) {
@@ -720,7 +724,7 @@ bool AICmdFlyTo::TimeStepUpdate()
 		targvel = m_target->GetVelocityRelTo(m_ship->GetFrame());
 	} else {
 		targpos = GetPosInFrame(m_ship->GetFrame(), m_targframe, m_posoff);
-		targvel = GetVelInFrame(m_ship->GetFrame(), m_targframe, m_posoff);
+		targvel = GetVelInFrame(m_ship->GetFrame(), m_targframe, m_posoff);		
 	}
 	Frame *targframe = m_target ? m_target->GetFrame() : m_targframe;
 	ParentSafetyAdjust(m_ship, targframe, targpos, targvel);
@@ -822,7 +826,7 @@ Output("Autopilot dist = %.1f, speed = %.1f, zthrust = %.2f, state = %i\n",
 
 	// cap perpspeed according to what's needed now
 	perpspeed = std::min(perpspeed, 2.0*sidefactor*timestep);
-
+	
 	// cap sdiff by thrust...
 	double sdiff = ispeed - curspeed;
 	double linaccel = sdiff < 0 ?
@@ -836,7 +840,7 @@ Output("Autopilot dist = %.1f, speed = %.1f, zthrust = %.2f, state = %i\n",
 	if (decel) m_ship->AIChangeVelBy(vdiff * m_ship->GetOrient());
 	else m_ship->AIChangeVelDir(vdiff * m_ship->GetOrient());
 
-	// work out which way to head
+	// work out which way to head 
 	vector3d head = reldir;
 	if (!m_state && sdiff < -1.2*maxdecel*timestep) m_state = 1;
 	// if we're not coasting due to fuel constraints, and we're in the deceleration phase
@@ -908,7 +912,7 @@ bool AICmdDock::TimeStepUpdate()
 	// state 0,2: Get docking data
 	if (m_state == eDockGetDataStart
 		|| m_state == eDockGetDataEnd
-		|| m_state == eDockingComplete)
+		|| m_state == eDockingComplete) 
 	{
 		const SpaceStationType *type = m_target->GetStationType();
 		SpaceStationType::positionOrient_t dockpos;

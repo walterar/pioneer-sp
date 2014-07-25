@@ -47,6 +47,10 @@
 "description":"",
 "message":"Enter Medium Orbit at Current Target"
 },
+"ENVIRONMENTAL_DAMAGE":{
+"description":"",
+"message":"Environmental Damage"
+},
 "Experience":{
 "description":"",
 "message":"Experience"
@@ -175,9 +179,9 @@
 "description":"",
 "message":"You must install the Life Support for Cargo Bay"
 },
-"docked":{
+"port_or_vecinity":{
 "description":"",
-"message":" docked"
+"message":" in port or vicinity."
 },
 "for_jettison":{
 "description":"",

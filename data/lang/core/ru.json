@@ -159,6 +159,10 @@
       "description" : "",
       "message" : "Невозможно сохранить игру в гиперпространстве "
    },
+   "CANT_SAVE_DEAD_PLAYER" : {
+      "description" : "",
+      "message" : "Невозможно сохранить игру после того, как игрок умер"
+   },
    "CAPITALIST" : {
       "description" : "",
       "message" : "Капитализм"

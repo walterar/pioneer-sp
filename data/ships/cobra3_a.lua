@@ -17,14 +17,21 @@ define_ship {
 	camera_offset = v(0,3.1,-4.1),
 	gun_mounts =
 	{
-		{ v(0,0.4,-15), v(0,0,-1), 0.5, 'HORIZONTAL' }, -- * scale
-		{ v(0,3.1,15), v(0,0,1), 0.5, 'HORIZONTAL' }, -- * scale
+		{ v(0,0.4,-15), v(0,0,-1), 0.5, 'HORIZONTAL' },
+		{ v(0,3.1,15), v(0,0,1), 0.5, 'HORIZONTAL' },
 	},
-	max_cargo = 80,
-	max_laser = 2,
-	max_missile = 4,
-	max_cabin = 8,
-	max_cargoscoop = 0,
+
+	slots = {
+		cargo = 80,
+		cabin = 8,
+		missile = 4,
+		laser_front = 1,
+		laser_rear = 0,
+		cargo_scoop = 1,
+		cargo_life_support = 1,
+		fuel_scoop = 1,
+	},
+
 	min_crew = 1,
 	max_crew = 3,
 	capacity = 80,

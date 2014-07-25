@@ -31,7 +31,7 @@ local onShipDocked = function (ship, station)
 	end
 	local fee = calculateFee()
 	if ship:GetMoney() < fee then
-		Comms.Message(l.THIS_IS_STATION_YOU_DO_NOT_HAVE_ENOUGH:interp({station = station.label,fee = showCurrency(fee),}))
+		Comms.Message(l.THIS_IS_STATION_YOU_DO_NOT_HAVE_ENOUGH:interp({station = station.label,fee = showCurrency(fee)}))
 		ship:SetMoney(0)
 	else
 		Comms.Message(l.WELCOME_ABOARD_STATION_FEE_DEDUCTED:interp({station = station.label,fee = showCurrency(fee)}))

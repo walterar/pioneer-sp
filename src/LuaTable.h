@@ -10,6 +10,7 @@
 #include "lua/lua.hpp"
 #include "LuaRef.h"
 #include "LuaPushPull.h"
+#include "LuaUtils.h"
 
 /*
  * The LuaTable class is a wrapper around a table present on the stack. There
@@ -136,6 +137,8 @@ public:
 	template <class PairIterator> LuaTable LoadMap(PairIterator beg, PairIterator end) const;
 	template <class ValueIterator> LuaTable LoadVector(ValueIterator beg, ValueIterator end) const;
 
+	template <class Key, class Value> std::map<Key, Value> GetMap() const;
+
 	lua_State * GetLua() const { return m_lua; }
 	int GetIndex() const { return m_index; }
 	int Size() const {return lua_rawlen(m_lua, m_index);}
@@ -244,6 +247,23 @@ template <class Value, class Key> LuaTable LuaTable::Set(const Key & key, const 
 	return *this;
 }
 
+template <class Key, class Value> std::map<Key, Value> LuaTable::GetMap() const {
+	LUA_DEBUG_START(m_lua);
+	std::map<Key, Value> ret;
+	lua_pushnil(m_lua);
+	while(lua_next(m_lua, m_index)) {
+		Key k;
+		Value v;
+		if (pi_lua_strict_pull(m_lua, -2, k)) {
+			pi_lua_strict_pull(m_lua, -1, v);
+			ret[k] = v;
+		}
+		lua_pop(m_lua, 1);
+	}
+	LUA_DEBUG_END(m_lua, 0);
+	return ret;
+}
+
 template <class PairIterator> LuaTable LuaTable::LoadMap(PairIterator beg, PairIterator end) const {
 	for (PairIterator it = beg; it != end ; ++it)
 		Set(it->first, it->second);
@@ -261,23 +281,29 @@ template <class ValueIterator> LuaTable LuaTable::LoadVector(ValueIterator beg, 
 
 template <class Ret, class Key, class ...Args>
 Ret LuaTable::Call(const Key & key, const Args &... args) const {
+	LUA_DEBUG_START(m_lua);
 	Ret return_value;
 
+	lua_checkstack(m_lua, sizeof...(args)+3);
 	PushValueToStack(key);
 	pi_lua_multiple_push(m_lua, args...);
-	lua_call(m_lua, sizeof...(args), 1);
+	pi_lua_protected_call(m_lua, sizeof...(args), 1);
 	pi_lua_generic_pull(m_lua, -1, return_value);
 	lua_pop(m_lua, 1);
+	LUA_DEBUG_END(m_lua, 0);
 	return return_value;
 }
 
 template <class Ret1, class Ret2, class ...Ret, class Key, class ...Args>
 std::tuple<Ret1, Ret2, Ret...> LuaTable::Call(const Key & key, const Args &... args) const {
+	LUA_DEBUG_START(m_lua);
+	lua_checkstack(m_lua, sizeof...(args)+3);
 	PushValueToStack(key);
 	pi_lua_multiple_push(m_lua, args...);
-	lua_call(m_lua, sizeof...(args), sizeof...(Ret)+2);
+	pi_lua_protected_call(m_lua, sizeof...(args), sizeof...(Ret)+2);
 	auto return_values = pi_lua_multiple_pull<Ret1, Ret2, Ret...>(m_lua, -static_cast<int>(sizeof...(Ret))-2);
 	lua_pop(m_lua, static_cast<int>(sizeof...(Ret))+2);
+	LUA_DEBUG_END(m_lua, 0);
 	return return_values;
 }
 
@@ -292,5 +318,9 @@ template <> inline void LuaTable::VecIter<LuaTable>::CleanCache() {
 		lua_remove(m_cache.GetLua(), m_cache.GetIndex());
 	}
 	m_dirtyCache = true;
+}
+
+inline void pi_lua_generic_push(lua_State* l, const LuaTable & value) {
+	lua_pushvalue(l, value.GetIndex());
 }
 #endif

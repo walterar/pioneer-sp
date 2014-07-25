@@ -19,10 +19,35 @@
 static Sound::Event s_soundUndercarriage;
 static Sound::Event s_soundHyperdrive;
 
+static int onEquipChangeListener(lua_State *l) {
+	Player *p = LuaObject<Player>::GetFromLua(lua_upvalueindex(1));
+	p->onChangeEquipment.emit();
+	return 0;
+}
+
+static void registerEquipChangeListener(Player *player) {
+	lua_State *l = Lua::manager->GetLuaState();
+	LUA_DEBUG_START(l);
+
+	LuaObject<Player>::PushToLua(player);
+	lua_pushcclosure(l, onEquipChangeListener, 1);
+	LuaRef lr(Lua::manager->GetLuaState(), -1);
+	ScopedTable(player->GetEquipSet()).CallMethod("AddListener", lr);
+	lua_pop(l, 1);
+
+	LUA_DEBUG_END(l, 0);
+}
+
 Player::Player(ShipType::Id shipId): Ship(shipId)
 {
 	SetController(new PlayerShipController());
 	InitCockpit();
+	registerEquipChangeListener(this);
+}
+
+void Player::SetShipType(const ShipType::Id &shipId) {
+	Ship::SetShipType(shipId);
+	registerEquipChangeListener(this);
 }
 
 void Player::Save(Serializer::Writer &wr, Space *space)
@@ -35,6 +60,7 @@ void Player::Load(Serializer::Reader &rd, Space *space)
 	Pi::player = this;
 	Ship::Load(rd, space);
 	InitCockpit();
+	registerEquipChangeListener(this);
 }
 
 void Player::InitCockpit()
@@ -206,26 +232,10 @@ Ship::HyperjumpStatus Player::InitiateHyperjumpTo(const SystemPath &dest, int wa
 	return status;
 }
 
-Ship::HyperjumpStatus Player::StartHyperspaceCountdown(const SystemPath &dest)
-{
-	HyperjumpStatus status = Ship::StartHyperspaceCountdown(dest);
-
-	if (status == HYPERJUMP_OK)
-		s_soundHyperdrive.Play("Hyperdrive_Charge");
-
-	return status;
-}
-
 void Player::AbortHyperjump()
 {
 	s_soundHyperdrive.Play("Hyperdrive_Abort");
 	Ship::AbortHyperjump();
-}
-
-void Player::ResetHyperspaceCountdown()
-{
-	s_soundHyperdrive.Play("Hyperdrive_Abort");
-	Ship::ResetHyperspaceCountdown();
 }
 
 void Player::OnCockpitActivated()

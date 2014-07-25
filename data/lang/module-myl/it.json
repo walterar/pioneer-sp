@@ -47,6 +47,10 @@
 "description":"",
 "message":"Stabilire Orbita Media"
 },
+"ENVIRONMENTAL_DAMAGE":{
+"description":"",
+"message":"Danno Ambientale"
+},
 "Experience":{
 "description":"",
 "message":"Esperienza"
@@ -175,9 +179,9 @@
 "description":"",
 "message":"Deve installare i Supporti vitali per la stiva"
 },
-"docked":{
+"port_or_vecinity":{
 "description":"",
-"message":" attraccato"
+"message":" in porto o nelle vicinanze."
 },
 "for_jettison":{
 "description":"",

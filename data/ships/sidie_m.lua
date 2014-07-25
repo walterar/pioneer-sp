@@ -1,6 +1,6 @@
 -- Adapted from Pioneer GSM system 2013 by Gernot.
--- Balanced for Pioneer Scout+ by walterar <walterar2@gmail.com>
 -- Licensed under the terms of CC-BY-SA 3.0. See licenses/CC-BY-SA-3.0.txt
+-- Balanced for Pioneer Scout+ by walterar <walterar2@gmail.com>
 
 define_ship {
 	name='Sidewinder',
@@ -14,24 +14,35 @@ define_ship {
 	left_thrust = 15e5,
 	right_thrust = 15e5,
 	angular_thrust = 2e7,
-	gun_mounts =
-	{
+
+	gun_mounts = {
 		{ v(0,0,-16), v(0,0,-1),9, 'HORIZONTAL' },
 		{ v(0,0,15), v(0,0,1),9, 'HORIZONTAL' },
 	},
-	max_cargo = 30,
-	max_laser = 2,
-	max_missile = 1,
-	max_fuelscoop = 1,
-	max_cargoscoop = 1,
-	max_cargolifesupport = 0,
-	max_cabin = 1,
+
+	slots = {
+		cargo = 30,
+		atmo_shield = 1,
+		cabin = 0,
+		laser_front = 1,
+		laser_rear = 0,
+		missile = 1,
+		cargo_scoop = 1,
+		fuel_scoop = 0,
+		cargo_life_support = 0,
+		hull_autorepair = 0,
+	},
+
 	min_crew = 1,
 	max_crew = 2,
+
 	capacity = 30,
 	hull_mass = 10,
 	fuel_tank_mass = 10,
+
 	thruster_fuel_use = 0.0001,
-	price = 44000,
+
 	hyperdrive_class = 2,
+
+	price = 44000,
 }

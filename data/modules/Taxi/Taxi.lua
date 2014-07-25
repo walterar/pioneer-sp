@@ -15,9 +15,10 @@ local NameGen    = import("NameGen")
 local Format     = import("Format")
 local Serializer = import("Serializer")
 local Character  = import("Character")
-local EquipDef   = import("EquipDef")
 local ShipDef    = import("ShipDef")
 local Ship       = import("Ship")
+local eq         = import("Equipment")
+local utils      = import("utils")
 
 local InfoFace   = import("ui/InfoFace")
 
@@ -114,14 +115,14 @@ local missions = {}
 local passengers = 0
 
 local add_passengers = function (group)
-	Game.player:RemoveEquip('UNOCCUPIED_CABIN', group)
-	Game.player:AddEquip('PASSENGER_CABIN', group)
+	Game.player:RemoveEquip(eq.misc.cabin,  group)
+	Game.player:AddEquip(eq.misc.cabin_occupied, group)
 	passengers = passengers + group
 end
 
 local remove_passengers = function (group)
-	Game.player:RemoveEquip('PASSENGER_CABIN', group)
-	Game.player:AddEquip('UNOCCUPIED_CABIN', group)
+	Game.player:RemoveEquip(eq.misc.cabin_occupied,  group)
+	Game.player:AddEquip(eq.misc.cabin, group)
 	passengers = passengers - group
 end
 
@@ -171,8 +172,7 @@ local onChat = function (form, ref, option)
 			form:SetMessage(myl.have_enough_experience)
 			return
 		end
-		local capacity = ShipDef[Game.player.shipId].equipSlotCapacity.CABIN
-		if capacity < ad.group or Game.player:GetEquipCount('CABIN', 'UNOCCUPIED_CABIN') < ad.group then
+		if not Game.player.cabin_cap or Game.player.cabin_cap < ad.group then
 			form:SetMessage(l.YOU_DO_NOT_HAVE_ENOUGH_CABIN_SPACE_ON_YOUR_SHIP)
 			return
 		end
@@ -341,7 +341,7 @@ end
 
 local onShipUndocked = function (player, station)
 	if not player:IsPlayer() then return end
-	local current_passengers = Game.player:GetEquipCount('CABIN', 'PASSENGER_CABIN')
+	local current_passengers = Game.player:CountEquip(eq.misc.cabin_occupied)
 	if current_passengers >= passengers then return end
 
 	for ref,mission in pairs(missions) do

@@ -15,10 +15,11 @@ local MessageBox         = import("ui/MessageBox")
 
 local ui = Engine.ui
 local l = Lang.GetResource("ui-core")
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
 
 local crimeStrings = {
 	TRADING_ILLEGAL_GOODS = l.TRADING_ILLEGAL_GOODS,
-	WEAPON_DISCHARGE      = l.UNLAWFUL_WEAPONS_DISCHARGE,
+	WEAPON_DISCHARGE      = myl.ENVIRONMENTAL_DAMAGE,
 	PIRACY                = l.PIRACY,
 	MURDER                = l.MURDER,
 }

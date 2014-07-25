@@ -6,6 +6,7 @@ define_ship {
 	ship_class='light_freighter',
 	manufacturer='kaluri',
 	model='molamola',
+
 	forward_thrust = 5e6,
 	reverse_thrust = 22e5,
 	up_thrust = 19e5,
@@ -13,20 +14,30 @@ define_ship {
 	left_thrust = 6e5,
 	right_thrust = 6e5,
 	angular_thrust = 20e5,
-	max_cargo = 80,
-	max_laser = 1,
-	max_missile = 0,
-	max_cargoscoop = 1,
-	max_fuelscoop = 1,
+
+	slots = {
+		cargo = 80,
+		atmo_shield = 1,
+		cabin = 8,
+		laser_front = 1,
+		laser_rear = 0,
+		missile = 2,
+		cargo_scoop = 1,
+		fuel_scoop = 1,
+		cargo_life_support = 0,
+		hull_autorepair = 0,
+	},
+
 	min_crew = 1,
 	max_crew = 3,
-	max_cabin = 8,
+
 	capacity = 80,
 	hull_mass = 35,
-	fuel_tank_mass = 40,
-	-- Exhaust velocity Vc [m/s] is equivalent of engine efficiency and depend on used technology. Higher Vc means lower fuel consumption.
-	-- Smaller ships built for speed often mount engines with higher Vc. Another way to make faster ship is to increase fuel_tank_mass.
+
+	fuel_tank_mass = 20,
 	effective_exhaust_velocity = 65e6,
+
+	hyperdrive_class = 2,
+
 	price = 122000,
-	hyperdrive_class = 1,
 }

@@ -151,6 +151,10 @@
       "description" : "",
       "message" : "Pohled shora"
    },
+   "CANT_SAVE_DEAD_PLAYER" : {
+      "description" : "",
+      "message" : "Can't save game after the player has died"
+   },
    "CANT_SAVE_IN_HYPERSPACE" : {
       "description" : "",
       "message" : "V hyperprostoru nelze hru ukládat"
@@ -194,6 +198,10 @@
    "CARGO_SCOOP_ACTIVE_1_TONNE_X_COLLECTED" : {
       "description" : "",
       "message" : "Sběrač nákladu aktivní. Naložena 1 t %item."
+   },
+   "CARGO_SCOOP_ATTEMPTED" : {
+      "description" : "",
+      "message" : "Cargo scoop attempted. Not enough room in cargo hold."
    },
    "CARGO_SCOOP_DESCRIPTION" : {
       "description" : "",
@@ -329,7 +337,7 @@
    },
    "DOWNGRADING_ALERT_STATUS" : {
       "description" : "",
-      "message" : "Žádná střelba po dobu 1 minuty, snižuji pohotovost."
+      "message" : "Žádná střelba po dobu 30 sekund, snižuji pohotovost."
    },
    "DRAW_OUT_RANGE_LABELS" : {
       "description" : "",
@@ -559,13 +567,33 @@
       "description" : "",
       "message" : "\" klobouk\""
    },
+   "HEADING_LOCK_ANTINORMAL" : {
+      "description" : "",
+      "message" : "Hold anti-normal"
+   },
    "HEADING_LOCK_BACKWARD" : {
       "description" : "",
-      "message" : "Kurs zamknut (vzad)"
+      "message" : "Hold retrograde"
    },
    "HEADING_LOCK_FORWARD" : {
       "description" : "",
-      "message" : "Kurs zamknut (vpřed)"
+      "message" : "Hold prograde"
+   },
+   "HEADING_LOCK_KILLROT" : {
+      "description" : "",
+      "message" : "Kill rotation"
+   },
+   "HEADING_LOCK_NORMAL" : {
+      "description" : "",
+      "message" : "Hold normal"
+   },
+   "HEADING_LOCK_RADIALLY_INWARD" : {
+      "description" : "",
+      "message" : "Hold radially in"
+   },
+   "HEADING_LOCK_RADIALLY_OUTWARD" : {
+      "description" : "",
+      "message" : "Hold radially out"
    },
    "HEAVY_INDUSTRY" : {
       "description" : "",

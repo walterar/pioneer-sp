@@ -11,7 +11,6 @@
 #include "Serializer.h"
 #include "SpeedLines.h"
 #include "Background.h"
-#include "EquipType.h"
 #include "Camera.h"
 #include "CameraController.h"
 
@@ -94,7 +93,7 @@ private:
 	void DrawImageIndicator(const Indicator &marker, Gui::TexturedQuad *quad, const Color &c);
 	void DrawEdgeMarker(const Indicator &marker, const Color &c);
 
-	Gui::Button *AddCommsOption(const std::string &msg, int ypos, int optnum);
+	Gui::Button *AddCommsOption(const std::string &msg, int ypos, int xoffset, int optnum);
 	void AddCommsNavOption(const std::string &msg, Body *target);
 	void OnClickCommsNavOption(Body *target);
 	void BuildCommsNavOptions();
@@ -162,6 +161,7 @@ private:
 
 	Indicator m_velIndicator;
 	Indicator m_navVelIndicator;
+	Indicator m_retroVelIndicator;
 	Indicator m_navTargetIndicator;
 	Indicator m_combatTargetIndicator;
 	Indicator m_targetLeadIndicator;

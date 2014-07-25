@@ -47,6 +47,10 @@
 "description":"",
 "message":"Establecer Órbita Media"
 },
+"ENVIRONMENTAL_DAMAGE":{
+"description":"",
+"message":"Daño ambiental"
+},
 "Experience":{
 "description":"",
 "message":"Experiencia"
@@ -175,9 +179,9 @@
 "description":"",
 "message":"Usted debe instalar el Soporte Vital para Carga"
 },
-"docked":{
+"port_or_vecinity":{
 "description":"",
-"message":" en puerto"
+"message":" en puerto o cercanías."
 },
 "for_jettison":{
 "description":"",

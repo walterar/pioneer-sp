@@ -11,59 +11,65 @@ local ShipDef     = import("ShipDef")
 local Player      = import("Player")
 local SystemPath  = import("SystemPath")
 local ErrorScreen = import("ErrorScreen")
+local equipment   = import("Equipment")
+
+local cargo      = equipment.cargo
+local misc       = equipment.misc
+local laser      = equipment.laser
+local hyperspace = equipment.hyperspace
 
 local ui = Engine.ui
 
-local l = Lang.GetResource("ui-core");
+local l   = Lang.GetResource("ui-core");
 local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl", "en");
 
 local setupPlayer1 = function ()
-	Game.player:SetShipType("eagle_lrf")
+	Game.player:SetShipType('eagle_lrf')
 	Game.player:SetLabel(Ship.MakeRandomLabel())
-	Game.player:AddEquip("DRIVE_CLASS"..ShipDef[Game.player.shipId].hyperdriveClass)
-	Game.player:AddEquip("PULSECANNON_1MW")
-	Game.player:AddEquip("ATMOSPHERIC_SHIELDING")
-	Game.player:AddEquip("AUTOPILOT")
-	Game.player:AddEquip("SCANNER")
-	Game.player:AddEquip("MISSILE_GUIDED", 2)
-	Game.player:AddEquip("HYDROGEN", 1)
+	Game.player:AddEquip(hyperspace['hyperdrive_1'])
+	Game.player:AddEquip(laser.pulsecannon_1mw)
+	Game.player:AddEquip(misc.atmospheric_shielding)
+	Game.player:AddEquip(misc.autopilot)
+	Game.player:AddEquip(misc.scanner)
+	Game.player:AddEquip(misc.missile_guided, 2)
+	Game.player:AddEquip(cargo.hydrogen, 1)
 	Game.player:SetMoney(100)
 end
 
 local setupPlayer2 = function ()
 	Game.player:SetShipType("centurion")
 	Game.player:SetLabel(Ship.MakeRandomLabel())
-	Game.player:AddEquip("DRIVE_CLASS"..ShipDef[Game.player.shipId].hyperdriveClass)
-	Game.player:AddEquip("PULSECANNON_1MW")
-	Game.player:AddEquip("ATMOSPHERIC_SHIELDING")
-	Game.player:AddEquip("AUTOPILOT")
-	Game.player:AddEquip("SCANNER")
-	Game.player:AddEquip("MISSILE_GUIDED", 2)
-	Game.player:AddEquip("HYDROGEN", 4)
+	Game.player:AddEquip(hyperspace["hyperdrive_1"])
+	Game.player:AddEquip(laser.pulsecannon_1mw)
+	Game.player:AddEquip(misc.atmospheric_shielding)
+	Game.player:AddEquip(misc.autopilot)
+	Game.player:AddEquip(misc.scanner)
+	Game.player:AddEquip(cargo.hydrogen, 1)
 	Game.player:SetMoney(100)
 end
 
 local setupPlayer3 = function ()
 	Game.player:SetShipType("anax")
 	Game.player:SetLabel(Ship.MakeRandomLabel())
-	Game.player:AddEquip("DRIVE_CLASS"..ShipDef[Game.player.shipId].hyperdriveClass)
-	Game.player:AddEquip("ATMOSPHERIC_SHIELDING")
-	Game.player:AddEquip("AUTOPILOT")
-	Game.player:AddEquip("SCANNER")
-	Game.player:AddEquip("HYDROGEN", 2)
+	--Game.player:AddEquip(equipment.laser.pulsecannon_1mw)
+	Game.player:AddEquip(misc.atmospheric_shielding)
+	Game.player:AddEquip(misc.autopilot)
+	Game.player:AddEquip(misc.scanner)
+--	Game.player:AddEquip(cargo.hydrogen, 2)
 	Game.player:SetMoney(100)
 end
 
 local setupPlayer4 = function ()
 	Game.player:SetShipType("sidie_m")
 	Game.player:SetLabel(Ship.MakeRandomLabel())
-	Game.player:AddEquip("DRIVE_CLASS"..ShipDef[Game.player.shipId].hyperdriveClass)
-	Game.player:AddEquip("ATMOSPHERIC_SHIELDING")
-	Game.player:AddEquip("AUTOPILOT")
-	Game.player:AddEquip("SCANNER")
-	Game.player:AddEquip("HYDROGEN", 4)
+	Game.player:AddEquip(hyperspace["hyperdrive_2"])
+	Game.player:AddEquip(misc.atmospheric_shielding)
+	Game.player:AddEquip(misc.autopilot)
+	Game.player:AddEquip(misc.scanner)
+	Game.player:AddEquip(cargo.hydrogen, 4)
 	Game.player:SetMoney(100)
 end
+
 
 local loadGame = function (path)
 	local ok, err = pcall(Game.LoadGame, path)
@@ -131,7 +137,7 @@ for i = 1,#buttonDefs do
 	})
 end
 
-local headingLabel = ui:Label("Pioneer Scout+"):SetFont("HEADING_XLARGE"):SetColor({ r = 0.8, g = 1.0, b = 0.4 })
+local headingLabel = ui:Label("Pioneer Scout Plus"):SetFont("HEADING_XLARGE"):SetColor({ r = 0.8, g = 1.0, b = 0.4 })
 table.insert(anims, {
 	widget = headingLabel,
 	type = "IN",
@@ -140,7 +146,7 @@ table.insert(anims, {
 	duration = 0.4,
 })
 
-local versionLabel = ui:Label("G19 full version"):SetFont("HEADING_XSMALL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 })
+local versionLabel = ui:Label("G20 full version"):SetFont("HEADING_XSMALL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 })
 table.insert(anims, {
 	widget = versionLabel,
 	type = "IN",

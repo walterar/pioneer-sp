@@ -361,6 +361,10 @@ ui.templates.Settings = function (args)
 	return ui:VBox():PackEnd({setTabs, ui:Margin(10, "ALL", close_buttons)})
 end
 
+local last_exit_game = function ()
+	if Game.player.flightState ~= "HYPERSPACE" then Game.SaveGame("_last-exit-game") end
+end
+
 ui.templates.SettingsInGame = function ()
 	return ui.templates.Settings({
 		closeButtons = {
@@ -390,7 +394,7 @@ ui.templates.SettingsInGame = function ()
 				end
 			},
 			{ text = l.RETURN_TO_GAME, onClick = Game.SwitchView },
-			{ text = l.EXIT_THIS_GAME, onClick = Game.EndGame, Game.SaveGame("_last-exit-game") }
+			{ text = l.EXIT_THIS_GAME, onClick = Game.EndGame, last_exit_game() }
 		}
 	})
 end

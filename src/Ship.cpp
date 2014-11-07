@@ -74,6 +74,8 @@ void Ship::Save(Serializer::Writer &wr, Space *space)
 	m_controller->Save(wr, space);
 
 	m_navLights->Save(wr);
+
+	wr.String(m_shipName);
 }
 
 void Ship::Load(Serializer::Reader &rd, Space *space)
@@ -141,6 +143,8 @@ void Ship::Load(Serializer::Reader &rd, Space *space)
 
 	m_navLights->Load(rd);
 
+	m_shipName = rd.String();
+	Properties().Set("shipName", m_shipName);
 }
 
 void Ship::InitEquipSet() {
@@ -212,6 +216,8 @@ void Ship::Init()
 	p.Set("hullPercent", 100.0f * (m_stats.hull_mass_left / float(m_type->hullMass)));
 	p.Set("shieldMassLeft", m_stats.shield_mass_left);
 	p.Set("fuelMassLeft", m_stats.fuel_tank_mass_left);
+
+	p.Set("shipName", m_shipName);
 
 	m_hyperspace.now = false;			// TODO: move this on next savegame change, maybe
 	m_hyperspaceCloud = 0;
@@ -413,13 +419,13 @@ bool Ship::OnCollision(Object *b, Uint32 flags, double relVel)
 		if (LuaObject<Ship>::CallMethod<int>(this, "AddEquip", item) > 0) { // try to add it to the ship cargo.
 			Pi::game->GetSpace()->KillBody(dynamic_cast<Body*>(b));
 			if (this->IsType(Object::PLAYER))
-				Pi::Message(stringf(Lang::CARGO_SCOOP_ACTIVE_1_TONNE_X_COLLECTED, formatarg("item", ScopedTable(item).CallMethod<std::string>("GetName"))));
+				Pi::game->log->Add(stringf(Lang::CARGO_SCOOP_ACTIVE_1_TONNE_X_COLLECTED, formatarg("item", ScopedTable(item).CallMethod<std::string>("GetName"))));
 			// XXX Sfx::Add(this, Sfx::TYPE_SCOOP);
 			UpdateEquipStats();
 			return true;
 		}
 		if (this->IsType(Object::PLAYER))
-			Pi::Message(Lang::CARGO_SCOOP_ATTEMPTED);
+			Pi::game->log->Add(Lang::CARGO_SCOOP_ATTEMPTED);
 	}
 
 	if (b->IsType(Object::PLANET)) {
@@ -540,7 +546,7 @@ void Ship::UpdateLuaStats() {
 	UpdateEquipStats();
 	PropertyMap& p = Properties();
 	m_stats.hyperspace_range = m_stats.hyperspace_range_max = 0;
-	int hyperclass;
+	int hyperclass = 0;
 	p.Get<int>("hyperclass_cap", hyperclass);
 	if (hyperclass) {
 		auto ranges = LuaObject<Ship>::CallMethod<double, double>(this, "GetHyperspaceRange");
@@ -599,11 +605,11 @@ float Ship::GetECMRechargeTime()
 	return ecm_recharge_cap;
 }
 
-void Ship::UseECM()
+Ship::ECMResult Ship::UseECM()
 {
 	int ecm_power_cap = 0;
 	Properties().Get("ecm_power_cap", ecm_power_cap);
-	if (m_ecmRecharge > 0.0f) return;
+	if (m_ecmRecharge > 0.0f) return ECM_RECHARGING;
 
 	if (ecm_power_cap > 0) {
 		Sound::BodyMakeNoise(this, "ECM", 1.0f);
@@ -626,7 +632,9 @@ void Ship::UseECM()
 				}
 			}
 		}
+		return ECM_ACTIVATED;
 	}
+	else return ECM_NOT_INSTALLED;
 }
 
 Missile * Ship::SpawnMissile(ShipType::Id missile_type, int power) {
@@ -758,7 +766,7 @@ void Ship::TimeStepUpdate(const float timeStep)
 
 	if (m_landingGearAnimation)
 		m_landingGearAnimation->SetProgress(m_wheelState);
-
+	m_dragCoeff = DynamicBody::DEFAULT_DRAG_COEFF * (1.0 + 0.25 * m_wheelState);
 	DynamicBody::TimeStepUpdate(timeStep);
 
 	// fuel use decreases mass, so do this as the last thing in the frame
@@ -776,7 +784,7 @@ void Ship::DoThrusterSounds() const
 
 	// XXX sound logic could be part of a bigger class (ship internal sounds)
 	/* Ship engine noise. less loud inside */
-	float v_env = (Pi::worldView->GetCameraController()->IsExternal() ? 1.0f : 0.5f) * Sound::GetSfxVolume();
+	float v_env = (Pi::game->GetWorldView()->GetCameraController()->IsExternal() ? 1.0f : 0.5f) * Sound::GetSfxVolume();
 	static Sound::Event sndev;
 	float volBoth = 0.0f;
 	volBoth += 0.5f*fabs(GetThrusterState().y);
@@ -864,12 +872,19 @@ void Ship::FireWeapon(int num)
 	LuaEvent::Queue("onShipFiring", this);
 }
 
+double Ship::ExtrapolateHullTemperature() const
+{
+	const double dragCoeff = DynamicBody::DEFAULT_DRAG_COEFF * 1.25;
+	const double dragGs = CalcAtmosphericForce(dragCoeff) / (GetMass() * 9.81);
+	return dragGs / 5.0;
+}
+
 double Ship::GetHullTemperature() const
 {
 	double dragGs = GetAtmosForce().Length() / (GetMass() * 9.81);
 	int atmo_shield_cap = 0;
 	const_cast<Ship *>(this)->Properties().Get("atmo_shield_cap", atmo_shield_cap);
-	if (atmo_shield_cap) {
+	if (atmo_shield_cap && GetWheelState() < 1.0) {
 		return dragGs / 300.0;
 	} else {
 		return dragGs / 5.0;
@@ -1026,7 +1041,7 @@ void Ship::StaticUpdate(const float timeStep)
 						LuaObject<Ship>::CallMethod(this, "AddEquip", hydrogen);
 						UpdateEquipStats();
 						if (this->IsType(Object::PLAYER)) {
-							Pi::Message(stringf(Lang::FUEL_SCOOP_ACTIVE_N_TONNES_H_COLLECTED,
+							Pi::game->log->Add(stringf(Lang::FUEL_SCOOP_ACTIVE_N_TONNES_H_COLLECTED,
 									formatarg("quantity", LuaObject<Ship>::CallMethod<int>(this, "CountEquip", hydrogen))));
 						}
 						lua_pop(l, 3);
@@ -1053,7 +1068,7 @@ void Ship::StaticUpdate(const float timeStep)
 			if (LuaObject<Ship>::CallMethod<int>(this, "RemoveEquip", cargo.Sub(t))) {
 				LuaObject<Ship>::CallMethod<int>(this, "AddEquip", cargo.Sub("fertilizer"));
 				if (this->IsType(Object::PLAYER)) {
-					Pi::Message(Lang::CARGO_BAY_LIFE_SUPPORT_LOST);
+					Pi::game->log->Add(Lang::CARGO_BAY_LIFE_SUPPORT_LOST);
 				}
 				lua_pop(l, 4);
 			}
@@ -1233,10 +1248,7 @@ void Ship::Render(Graphics::Renderer *renderer, const Camera *camera, const vect
 			const double r1 = Pi::rng.Double()-0.5;
 			const double r2 = Pi::rng.Double()-0.5;
 			const double r3 = Pi::rng.Double()-0.5;
-			v[i] = vector3f(viewTransform * (
-				GetPosition() + GetPhysRadius() *
-				vector3d(r1, r2, r3).Normalized()
-			));
+			v[i] = vector3f(GetPhysRadius()*vector3d(r1, r2, r3).NormalizedSafe());
 		}
 		Color c(128,128,255,255);
 		float totalRechargeTime = GetECMRechargeTime();
@@ -1245,6 +1257,15 @@ void Ship::Render(Graphics::Renderer *renderer, const Camera *camera, const vect
 		}
 
 		Sfx::ecmParticle->diffuse = c;
+
+		matrix4x4f t;
+		for (int i=0; i<12; i++) t[i] = float(viewTransform[i]);
+		t[12] = viewCoords.x;
+		t[13] = viewCoords.y;
+		t[14] = viewCoords.z;
+		t[15] = 1.0f;
+
+		renderer->SetTransform(t);
 		renderer->DrawPointSprites(100, v, Sfx::additiveAlphaState, Sfx::ecmParticle, 50.f);
 	}
 }
@@ -1325,7 +1346,7 @@ void Ship::SetShipType(const ShipType::Id &shipId)
 	Init();
 	onFlavourChanged.emit();
 	if (IsType(Object::PLAYER))
-		Pi::worldView->SetCamType(Pi::worldView->GetCamType());
+		Pi::game->GetWorldView()->SetCamType(Pi::game->GetWorldView()->GetCamType());
 	InitEquipSet();
 
 	LuaEvent::Queue("onShipTypeChanged", this);
@@ -1336,6 +1357,12 @@ void Ship::SetLabel(const std::string &label)
 	DynamicBody::SetLabel(label);
 	m_skin.SetLabel(label);
 	m_skin.Apply(GetModel());
+}
+
+void Ship::SetShipName(const std::string &shipName)
+{
+	m_shipName = shipName;
+	Properties().Set("shipName", shipName);
 }
 
 void Ship::SetSkin(const SceneGraph::ModelSkin &skin)

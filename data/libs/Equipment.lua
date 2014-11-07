@@ -268,6 +268,7 @@ end
 -- laser_cooler - laser cooling booster
 -- cargo_life_support - cargo bay life support
 -- autopilot - autopilot
+-- trade_analyzer - commodity trade analyzer computer module
 
 local cargo = {
 	hydrogen = EquipType.New({
@@ -520,7 +521,11 @@ misc.autopilot = EquipType.New({
 })
 misc.radar_mapper = EquipType.New({
 	l10n_key="RADAR_MAPPER", slots="radar", price=900,
-	capabilities={mass=1, radar_mapper=1}, purchasable=true
+	capabilities={mass=1, radar_mapper_level=1}, purchasable=true
+})
+misc.advanced_radar_mapper = EquipType.New({
+	l10n_key="ADVANCED_RADAR_MAPPER", slots="radar", price=1200,
+	capabilities={mass=1, radar_mapper_level=2}, purchasable=true
 })
 misc.fuel_scoop = EquipType.New({
 	l10n_key="FUEL_SCOOP", slots="fuel_scoop", price=3500,
@@ -541,6 +546,10 @@ misc.shield_energy_booster = EquipType.New({
 misc.hull_autorepair = EquipType.New({
 	l10n_key="HULL_AUTOREPAIR", slots="hull_autorepair", price=16000,
 	capabilities={mass=40, hull_autorepair=1}, purchasable=true
+})
+misc.trade_analyzer = EquipType.New({
+	l10n_key="TRADE_ANALYZER", slots="trade_analyzer", price=400,
+	capabilities={mass=0, trade_analyzer=1}, purchasable=true
 })
 
 local hyperspace = {}

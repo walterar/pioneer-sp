@@ -9,13 +9,14 @@
 #include "UIView.h"
 #include <vector>
 
+class Game;
 class StarSystem;
 class SystemBody;
 namespace Graphics { class Renderer; }
 
 class SystemInfoView: public UIView {
 public:
-	SystemInfoView();
+	SystemInfoView(Game* game);
 	virtual void Update();
 	virtual void Draw3D();
 	void NextPage();
@@ -40,7 +41,7 @@ private:
 
 	enum RefreshType {
 		REFRESH_NONE,
-		REFRESH_SELECTED,
+		REFRESH_SELECTED_BODY,
 		REFRESH_ALL
 	};
 
@@ -52,18 +53,26 @@ private:
 	void OnClickBackground(Gui::MouseButtonEvent *e);
 	void PutBodies(SystemBody *body, Gui::Fixed *container, int dir, float pos[2], int &majorBodies, int &starports, int &onSurface, float &prevSize);
 	void UpdateIconSelections();
+
+	Game* m_game;
+
 	Gui::VBox *m_infoBox;
-	Gui::Label *m_econInfo;
-	Gui::Label *m_econMajImport, *m_econMinImport;
-	Gui::Label *m_econMajExport, *m_econMinExport;
-	Gui::Label *m_econIllegal;
+	Gui::Fixed *m_econInfo;
+	Gui::Fixed *m_econMajImport, *m_econMinImport;
+	Gui::Fixed *m_econMajExport, *m_econMinExport;
+	Gui::Fixed *m_econIllegal;
 	Gui::Fixed *m_sbodyInfoTab, *m_econInfoTab;
+
+	Gui::Label *m_commodityTradeLabel;
 	Gui::Tabbed *m_tabs;
 	RefCountedPtr<StarSystem> m_system;
 	SystemPath m_selectedBodyPath;
 	RefreshType m_refresh;
 	//map is not enough to associate icons as each tab has their own. First element is the body index of SystemPath (names are not unique)
 	std::vector<std::pair<Uint32, BodyIcon*> > m_bodyIcons;
+	bool m_unexplored;
+	bool m_hasTradeAnalyzer;
+
 	Graphics::RenderState *m_solidState;
 };
 

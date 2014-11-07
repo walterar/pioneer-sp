@@ -81,7 +81,7 @@ local onShipUndocked = function (player, station)
 			(station.path.sectorZ)..")")
 		_G.PrevFac = faction
 		if station.isGroundStation then
-			player:AIEnterHighOrbit(player:FindNearestTo("STAR"))
+			player:AIEnterHighOrbit(player:FindNearestTo("PLANET"))
 			Timer:CallAt(Game.time + 5, function ()
 				player:CancelAI()
 			end)
@@ -205,13 +205,12 @@ local onShipHit = function (ship, attacker)
 				ship:AIKill(attacker)
 			end
 		end
-	elseif attacker and attacker:IsPlayer() then
+	elseif ship and ship:exists() and attacker and attacker:exists() and attacker:IsPlayer() then
 		if MissileActive > 0 then
 			_G.MissileActive = MissileActive - 1
 		else
 			_G.ShotsSuccessful = (ShotsSuccessful or 0) + 1
 		end
-	elseif ship and ship:exists() and attacker and attacker:exists() and attacker:IsPlayer() then
 		if not shipNeutralized then ship:AIKill(attacker) end
 	end
 end

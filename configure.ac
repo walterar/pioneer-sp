@@ -20,7 +20,7 @@ AC_DEFUN([MXE_SETUP], [
 			AC_MSG_ERROR([Cannot specify --host with --with-mxe])
 		fi
 		AC_MSG_CHECKING([for MXE])
-		MXE_CMAKE_TOOLCHAIN_FILE="$MXE_BASE/usr/i686-pc-mingw32/share/cmake/mxe-conf.cmake"
+		MXE_CMAKE_TOOLCHAIN_FILE="$MXE_BASE/usr/i686-w64-mingw32.static/share/cmake/mxe-conf.cmake"
 		if ! test -f "$MXE_CMAKE_TOOLCHAIN_FILE" ; then
 			AC_MSG_RESULT([no])
 			AC_MSG_ERROR([MXE not found in $MXE_BASE])
@@ -29,7 +29,7 @@ AC_DEFUN([MXE_SETUP], [
 		MXE_CROSS=yes
 		MXE_PATH="$MXE_BASE/usr/bin"
 		PATH="$MXE_PATH:$PATH"
-		host_alias=i686-pc-mingw32
+		host_alias=i686-w64-mingw32.static
 		ac_tool_prefix=$host_alias-
 		cross_compiling=yes
 		HAVE_WINDRES=yes
@@ -114,7 +114,7 @@ AC_DEFUN([PIONEERSP_WARN_C_CXX_FLAG],
 dnl Early check for C++11
 dnl     -std=c++11 defines __STRICT_ANSI__, which causes MinGW some problems so use gnu++11 on it instead
 case "$host" in
-  i686-pc-mingw32|x86_64-pc-mingw64)
+  i686-w64-mingw32.static)
 	_PIONEERSP_COMPILER_FLAG([C++], [STD], [CXX], [-std=gnu++11], [$CXX], [], [AC_MSG_ERROR([No compiler support for C++11. Unable to build])])
 	;;
   *)
@@ -163,7 +163,10 @@ AC_ARG_WITH([extra-version], AS_HELP_STRING([--with-extra-version], [Additional 
 
 EXTRA_CPPFLAGS="$EXTRA_CPPFLAGS -DPIONEERSP_VERSION=\\\"$PIONEERSP_VERSION\\\" -DPIONEERSP_EXTRAVERSION=\\\"$PIONEERSP_EXTRAVERSION\\\""
 
-EXTRA_CPPFLAGS="$EXTRA_CPPFLAGS -DGLEW_STATIC"
+dnl GLEW_STATIC is defined so that the GLEW header provides declarations with the correct linkage
+dnl __STDC_LIMIT_MACROS is defined so that GCC 4.7 will provide limit macros (eg, INT64_MAX) as part of cstdint
+dnl (note, __STDC_LIMIT_MACROS is not needed in GCC 4.8 or later; those macros are part of the C++11 standard)
+EXTRA_CPPFLAGS="$EXTRA_CPPFLAGS -DGLEW_STATIC -D__STDC_LIMIT_MACROS"
 
 
 dnl Compiler warning options
@@ -238,8 +241,8 @@ AC_DEFUN([PIONEERSP_CHECK_LIB],
 AC_ARG_WITH([thirdparty], AS_HELP_STRING([--with-thirdparty], [Location of pioneer-thirdparty repository]), [
 	AC_MSG_NOTICE([using pioneer-thirdparty repository in $withval])
     if test "x$MXE_CROSS" = "xyes" ; then
-	    PKG_CONFIG_PATH_i686_pc_mingw32="$withval/usr/lib/pkgconfig:$PKG_CONFIG_PATH"
-	    export PKG_CONFIG_PATH_i686_pc_mingw32
+	    PKG_CONFIG_PATH_i686-w64-mingw32.static="$withval/usr/lib/pkgconfig:$PKG_CONFIG_PATH"
+	    export PKG_CONFIG_PATH_i686-w64-mingw32.static
     else
 	    PKG_CONFIG_PATH="$withval/usr/lib/pkgconfig:$PKG_CONFIG_PATH"
 	    export PKG_CONFIG_PATH
@@ -311,11 +314,15 @@ if test "$with_external_liblua" = yes; then
   fi
 fi
 AM_CONDITIONAL([HAVE_LUA], [test "$HAVE_LUA" = yes])
+
+LUA_CFLAGS="$LUA_CFLAGS -DLUA_USE_APICHECK"
 case "$host" in
-  i686-pc-mingw32|x86_64-pc-mingw64)
+  i686-w64-mingw32.static)
+	LUA_CFLAGS="$LUA_CFLAGS -DLUA_USE_WIN"
 	;;
   *)
-	LUA_CFLAGS="$LUA_CFLAGS -DLUA_USE_POSIX -DLUA_USE_APICHECK"
+	LUA_CFLAGS="$LUA_CFLAGS -DLUA_USE_POSIX"
+	;;
 esac
 
 dnl Check for OpenGL libs
@@ -332,7 +339,7 @@ dnl ###########################################################################
 
 AC_MSG_CHECKING([platform type])
 case "$host" in
-  i686-pc-mingw32|x86_64-pc-mingw64)
+  i686-w64-mingw32.static)
 	PLATFORM=win32
 	;;
   *)
@@ -350,7 +357,7 @@ dnl System-specific stuff not covered above
 dnl ###########################################################################
 
 case "$host" in
-  i686-pc-mingw32|x86_64-pc-mingw64)
+  i686-w64-mingw32.static)
 	MINGW_LIBS="-lshlwapi"
 	SDL_LIBS="$SDL_LIBS -ltiff -lpng -ljpeg -lz"
 	;;

@@ -65,7 +65,7 @@ static sigc::connection onChangeCamTypeConnection;
 
 void AmbientSounds::Init()
 {
-	onChangeCamTypeConnection = Pi::worldView->onChangeCamType.connect(sigc::ptr_fun(&AmbientSounds::UpdateForCamType));
+	onChangeCamTypeConnection = Pi::game->GetWorldView()->onChangeCamType.connect(sigc::ptr_fun(&AmbientSounds::UpdateForCamType));
 }
 
 void AmbientSounds::Uninit()
@@ -75,7 +75,7 @@ void AmbientSounds::Uninit()
 
 void AmbientSounds::Update()
 {
-	const float v_env = (Pi::worldView->GetCameraController()->IsExternal() ? 1.0f : 0.5f) * Sound::GetSfxVolume();
+	const float v_env = (Pi::game->GetWorldView()->GetCameraController()->IsExternal() ? 1.0f : 0.5f) * Sound::GetSfxVolume();
 
 	if (Pi::player->GetFlightState() == Ship::DOCKED) {
 		if (s_starNoise.IsPlaying()) {
@@ -134,13 +134,13 @@ void AmbientSounds::Update()
 			assert(sbody);
 			const char *sample = 0;
 
-			if (sbody->GetLife() > fixed(1,5)) {
+			if (sbody->GetLifeAsFixed() > fixed(1,5)) {
 				sample = s_surfaceLifeSounds[sbody->GetSeed() % NUM_SURFACE_LIFE_SOUNDS];
 			}
-			else if (sbody->GetVolatileGas() > fixed(1,2)) {
+			else if (sbody->GetVolatileGasAsFixed() > fixed(1,2)) {
 				sample = s_surfaceSounds[sbody->GetSeed() % NUM_SURFACE_DEAD_SOUNDS];
 			}
-			else if (sbody->GetVolatileGas() > fixed(1,10)) {
+			else if (sbody->GetVolatileGasAsFixed() > fixed(1,10)) {
 				sample = "Wind";
 			}
 
@@ -264,7 +264,7 @@ void AmbientSounds::Update()
 
 void AmbientSounds::UpdateForCamType()
 {
-	const WorldView::CamType cam = Pi::worldView->GetCamType();
+	const WorldView::CamType cam = Pi::game->GetWorldView()->GetCamType();
 	float v_env = (cam == WorldView::CAM_EXTERNAL ? 1.0f : 0.5f) * Sound::GetSfxVolume();
 
 	if (s_stationNoise.IsPlaying())

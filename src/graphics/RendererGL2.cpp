@@ -338,105 +338,80 @@ bool RendererGL2::SetScissor(bool enabled, const vector2f &pos, const vector2f &
 	return true;
 }
 
-bool RendererGL2::DrawLines(int count, const vector3f *v, const Color *c, RenderState* state, LineType t)
+bool RendererGL2::DrawLines(int count, const vector3f *v, const Color *c, RenderState* state, PrimitiveType t)
 {
 	PROFILE_SCOPED()
-	if (count < 2 || !v) return false;
-
-	SetRenderState(state);
-
-	vtxColorProg->Use();
-	vtxColorProg->invLogZfarPlus1.Set(m_invLogZfarPlus1);
-
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_COLOR_ARRAY);
-	glVertexPointer(3, GL_FLOAT, sizeof(vector3f), v);
-	glColorPointer(4, GL_UNSIGNED_BYTE, sizeof(Color), c);
-	glDrawArrays(t, 0, count);
-	glDisableClientState(GL_VERTEX_ARRAY);
-	glDisableClientState(GL_COLOR_ARRAY);
-
+	Drawables::Lines lines;
+	lines.SetData(count, v, c);
+	lines.Draw(this, state, t);
 	return true;
 }
 
-bool RendererGL2::DrawLines(int count, const vector3f *v, const Color &c, RenderState *state, LineType t)
+bool RendererGL2::DrawLines(int count, const vector3f *v, const Color &c, RenderState *state, PrimitiveType t)
 {
 	PROFILE_SCOPED()
-	if (count < 2 || !v) return false;
-
-	SetRenderState(state);
-
-	flatColorProg->Use();
-	flatColorProg->diffuse.Set(c);
-	flatColorProg->invLogZfarPlus1.Set(m_invLogZfarPlus1);
-
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glVertexPointer(3, GL_FLOAT, sizeof(vector3f), v);
-	glDrawArrays(t, 0, count);
-	glDisableClientState(GL_VERTEX_ARRAY);
-
-	return true;
-}
-
-bool RendererGL2::DrawLines2D(int count, const vector2f *v, const Color &c, Graphics::RenderState* state, LineType t)
-{
-	if (count < 2 || !v) return false;
-
-	SetRenderState(state);
-
-	flatColorProg->Use();
-	flatColorProg->diffuse.Set(c);
-	flatColorProg->invLogZfarPlus1.Set(m_invLogZfarPlus1);
-
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glVertexPointer(2, GL_FLOAT, sizeof(vector2f), v);
-	glDrawArrays(t, 0, count);
-	glDisableClientState(GL_VERTEX_ARRAY);
-
+	Drawables::Lines lines;
+	lines.SetData(count, v, c);
+	lines.Draw(this, state, t);
 	return true;
 }
 
 bool RendererGL2::DrawPoints(int count, const vector3f *points, const Color *colors, Graphics::RenderState *state, float size)
 {
-	if (count < 1 || !points || !colors) return false;
+	struct TPos {
+		vector3f pos;
+		Color4ub col;
+	};
 
-	vtxColorProg->Use();
-	vtxColorProg->invLogZfarPlus1.Set(m_invLogZfarPlus1);
+	MaterialDescriptor md;
+	md.vertexColors = true;
+	static std::unique_ptr<Material> mat(CreateMaterial(md));
+	
+	// Create vtx & index buffers and copy data
+	VertexBufferDesc vbd;
+	vbd.attrib[0].semantic	= ATTRIB_POSITION;
+	vbd.attrib[0].format	= ATTRIB_FORMAT_FLOAT3;
+	vbd.attrib[1].semantic	= ATTRIB_DIFFUSE;
+	vbd.attrib[1].format	= ATTRIB_FORMAT_UBYTE4;
+	vbd.numVertices = count;
+	vbd.usage = BUFFER_USAGE_STATIC;
+	
+	// VertexBuffer
+	std::unique_ptr<VertexBuffer> vb;
+	vb.reset(CreateVertexBuffer(vbd));
+	TPos* vtxPtr = vb->Map<TPos>(BUFFER_MAP_WRITE);
+	assert(vb->GetDesc().stride == sizeof(TPos));
+	for(Sint32 i=0 ; i<count ; i++)
+	{
+		vtxPtr[i].pos = points[i];
+		vtxPtr[i].col = colors[i];
+	}
+	vb->Unmap();
 
-	SetRenderState(state);
-
-	glPointSize(size);
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_COLOR_ARRAY);
-	glVertexPointer(3, GL_FLOAT, 0, points);
-	glColorPointer(4, GL_UNSIGNED_BYTE, 0, colors);
-	glDrawArrays(GL_POINTS, 0, count);
-	glDisableClientState(GL_VERTEX_ARRAY);
-	glDisableClientState(GL_COLOR_ARRAY);
-	glPointSize(1.f); // XXX wont't be necessary
-
-	return true;
+	return DrawBuffer(vb.get(), state, mat.get(), POINTS);
 }
 
 bool RendererGL2::DrawTriangles(const VertexArray *v, RenderState *rs, Material *m, PrimitiveType t)
 {
+	PROFILE_SCOPED()
 	if (!v || v->position.size() < 3) return false;
 
 	SetRenderState(rs);
 
 	m->Apply();
-	EnableClientStates(v);
+	EnableVertexAttributes(v);
 
 	glDrawArrays(t, 0, v->GetNumVerts());
 
 	m->Unapply();
-	DisableClientStates();
+	DisableVertexAttributes();
 
 	return true;
 }
 
 bool RendererGL2::DrawPointSprites(int count, const vector3f *positions, RenderState *rs, Material *material, float size)
 {
+	PROFILE_SCOPED()
 	if (count < 1 || !material || !material->texture0) return false;
 
 	VertexArray va(ATTRIB_POSITION | ATTRIB_UV0, count * 6);
@@ -473,53 +448,86 @@ bool RendererGL2::DrawPointSprites(int count, const vector3f *positions, RenderS
 
 bool RendererGL2::DrawBuffer(VertexBuffer* vb, RenderState* state, Material* mat, PrimitiveType pt)
 {
+	PROFILE_SCOPED()
 	SetRenderState(state);
 	mat->Apply();
 
 	auto gvb = static_cast<GL2::VertexBuffer*>(vb);
 
-	glBindBuffer(GL_ARRAY_BUFFER, gvb->GetBuffer());
-
-	gvb->SetAttribPointers();
-	EnableClientStates(gvb);
+	gvb->Bind();
+	EnableVertexAttributes(gvb);
 
 	glDrawArrays(pt, 0, gvb->GetVertexCount());
 
-	gvb->UnsetAttribPointers();
-	DisableClientStates();
-
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	DisableVertexAttributes(gvb);
+	gvb->Release();
 
 	return true;
 }
 
 bool RendererGL2::DrawBufferIndexed(VertexBuffer *vb, IndexBuffer *ib, RenderState *state, Material *mat, PrimitiveType pt)
 {
+	PROFILE_SCOPED()
 	SetRenderState(state);
 	mat->Apply();
 
 	auto gvb = static_cast<GL2::VertexBuffer*>(vb);
 	auto gib = static_cast<GL2::IndexBuffer*>(ib);
 
-	glBindBuffer(GL_ARRAY_BUFFER, gvb->GetBuffer());
+	gvb->Bind();
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, gib->GetBuffer());
-
-	gvb->SetAttribPointers();
-	EnableClientStates(gvb);
+	EnableVertexAttributes(gvb);
 
 	glDrawElements(pt, ib->GetIndexCount(), GL_UNSIGNED_SHORT, 0);
 
-	gvb->UnsetAttribPointers();
-	DisableClientStates();
-
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	DisableVertexAttributes(gvb);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	gvb->Release();
+	
 
 	return true;
 }
 
+void RendererGL2::EnableVertexAttributes(const VertexBuffer* gvb)
+{
+	PROFILE_SCOPED()
+	const auto &desc = gvb->GetDesc();
+	// Enable the Vertex attributes
+	for (Uint8 i = 0; i < MAX_ATTRIBS; i++) {
+		const auto& attr = desc.attrib[i];
+		switch (attr.semantic) {
+		case ATTRIB_POSITION:		glEnableVertexAttribArray(0);		break;
+		case ATTRIB_NORMAL:			glEnableVertexAttribArray(1);		break;
+		case ATTRIB_DIFFUSE:		glEnableVertexAttribArray(2);		break;
+		case ATTRIB_UV0:			glEnableVertexAttribArray(3);		break;
+		case ATTRIB_NONE:
+		default:
+			return;
+		}
+	}
+}
 
-void RendererGL2::EnableClientStates(const VertexArray *v)
+void RendererGL2::DisableVertexAttributes(const VertexBuffer* gvb)
+{
+	PROFILE_SCOPED()
+	const auto &desc = gvb->GetDesc();
+	// Enable the Vertex attributes
+	for (Uint8 i = 0; i < MAX_ATTRIBS; i++) {
+		const auto& attr = desc.attrib[i];
+		switch (attr.semantic) {
+		case ATTRIB_POSITION:		glDisableVertexAttribArray(0);			break;
+		case ATTRIB_NORMAL:			glDisableVertexAttribArray(1);			break;
+		case ATTRIB_DIFFUSE:		glDisableVertexAttribArray(2);			break;
+		case ATTRIB_UV0:			glDisableVertexAttribArray(3);			break;
+		case ATTRIB_NONE:
+		default:
+			return;
+		}
+	}
+}
+
+
+void RendererGL2::EnableVertexAttributes(const VertexArray *v)
 {
 	PROFILE_SCOPED();
 
@@ -527,65 +535,39 @@ void RendererGL2::EnableClientStates(const VertexArray *v)
 	assert(v->position.size() > 0); //would be strange
 
 	// XXX could be 3D or 2D
-	m_clientStates.push_back(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glVertexPointer(3, GL_FLOAT, 0, reinterpret_cast<const GLvoid *>(&v->position[0]));
+	m_vertexAttribsSet.push_back(0);
+	glEnableVertexAttribArray(0);	// Enable the attribute at that location
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<const GLvoid *>(&v->position[0]));
 
-	if (v->HasAttrib(ATTRIB_DIFFUSE)) {
-		assert(! v->diffuse.empty());
-		m_clientStates.push_back(GL_COLOR_ARRAY);
-		glEnableClientState(GL_COLOR_ARRAY);
-		glColorPointer(4, GL_UNSIGNED_BYTE, 0, reinterpret_cast<const GLvoid *>(&v->diffuse[0]));
-	}
 	if (v->HasAttrib(ATTRIB_NORMAL)) {
 		assert(! v->normal.empty());
-		m_clientStates.push_back(GL_NORMAL_ARRAY);
-		glEnableClientState(GL_NORMAL_ARRAY);
+		m_vertexAttribsSet.push_back(1);
 		glNormalPointer(GL_FLOAT, 0, reinterpret_cast<const GLvoid *>(&v->normal[0]));
+		glEnableVertexAttribArray(1);	// Enable the attribute at that location
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<const GLvoid *>(&v->normal[0]));
+	}
+	if (v->HasAttrib(ATTRIB_DIFFUSE)) {
+		assert(! v->diffuse.empty());
+		m_vertexAttribsSet.push_back(2);
+		glEnableVertexAttribArray(2);	// Enable the attribute at that location
+		glVertexAttribPointer(2, 4, GL_UNSIGNED_BYTE, GL_TRUE, 0, reinterpret_cast<const GLvoid *>(&v->diffuse[0]));	// only normalise the colours
 	}
 	if (v->HasAttrib(ATTRIB_UV0)) {
 		assert(! v->uv0.empty());
-		m_clientStates.push_back(GL_TEXTURE_COORD_ARRAY);
-		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-		glTexCoordPointer(2, GL_FLOAT, 0, reinterpret_cast<const GLvoid *>(&v->uv0[0]));
+		m_vertexAttribsSet.push_back(3);
+		glEnableVertexAttribArray(3);	// Enable the attribute at that location
+		glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<const GLvoid *>(&v->uv0[0]));
 	}
 }
 
-void RendererGL2::EnableClientStates(const VertexBuffer *vb)
-{
-	if (!vb) return;
-	const auto& vbd = vb->GetDesc();
-
-	for (Uint32 i = 0; i < MAX_ATTRIBS; i++) {
-		switch (vbd.attrib[i].semantic) {
-		case ATTRIB_POSITION:
-			m_clientStates.push_back(GL_VERTEX_ARRAY);
-			break;
-		case ATTRIB_DIFFUSE:
-			m_clientStates.push_back(GL_COLOR_ARRAY);
-			break;
-		case ATTRIB_NORMAL:
-			m_clientStates.push_back(GL_NORMAL_ARRAY);
-			break;
-		case ATTRIB_UV0:
-			m_clientStates.push_back(GL_TEXTURE_COORD_ARRAY);
-			break;
-		default:
-			break;
-		}
-	}
-
-	for (auto it : m_clientStates)
-		glEnableClientState(it);
-}
-
-void RendererGL2::DisableClientStates()
+void RendererGL2::DisableVertexAttributes()
 {
 	PROFILE_SCOPED();
 
-	for (std::vector<GLenum>::const_iterator i = m_clientStates.begin(); i != m_clientStates.end(); ++i)
-		glDisableClientState(*i);
-	m_clientStates.clear();
+	for (auto i : m_vertexAttribsSet) {
+		glDisableVertexAttribArray(i);
+	}
+	m_vertexAttribsSet.clear();
 }
 
 Material *RendererGL2::CreateMaterial(const MaterialDescriptor &d)
@@ -766,112 +748,6 @@ void RendererGL2::PopState()
 	PopMatrix();
 	SetMatrixMode(MatrixMode::MODELVIEW);
 	PopMatrix();
-}
-
-static void dump_opengl_value(std::ostream &out, const char *name, GLenum id, int num_elems)
-{
-	assert(num_elems > 0 && num_elems <= 4);
-	assert(name);
-
-	GLdouble e[4];
-	glGetDoublev(id, e);
-
-	GLenum err = glGetError();
-	if (err == GL_NO_ERROR) {
-		out << name << " = " << e[0];
-		for (int i = 1; i < num_elems; ++i)
-			out << ", " << e[i];
-		out << "\n";
-	} else {
-		while (err != GL_NO_ERROR) {
-			if (err == GL_INVALID_ENUM) { out << name << " -- not supported\n"; }
-			else { out << name << " -- unexpected error (" << err << ") retrieving value\n"; }
-			err = glGetError();
-		}
-	}
-}
-
-bool RendererGL2::PrintDebugInfo(std::ostream &out)
-{
-	out << "OpenGL version " << glGetString(GL_VERSION);
-	out << ", running on " << glGetString(GL_VENDOR);
-	out << " " << glGetString(GL_RENDERER) << "\n";
-
-	out << "GLEW version " << glewGetString(GLEW_VERSION) << "\n";
-
-	if (glewIsSupported("GL_VERSION_2_0"))
-		out << "Shading language version: " <<  glGetString(GL_SHADING_LANGUAGE_VERSION_ARB) << "\n";
-
-	out << "Available extensions:" << "\n";
-	GLint numext = 0;
-	glGetIntegerv(GL_NUM_EXTENSIONS, &numext);
-	if (glewIsSupported("GL_VERSION_3_0")) {
-		for (int i = 0; i < numext; ++i) {
-			out << "  " << glGetStringi(GL_EXTENSIONS, i) << "\n";
-		}
-	}
-	else {
-		out << "  ";
-		std::istringstream ext(reinterpret_cast<const char *>(glGetString(GL_EXTENSIONS)));
-		std::copy(
-			std::istream_iterator<std::string>(ext),
-			std::istream_iterator<std::string>(),
-			std::ostream_iterator<std::string>(out, "\n  "));
-	}
-
-	out << "\nImplementation Limits:\n";
-
-	// first, clear all OpenGL error flags
-	while (glGetError() != GL_NO_ERROR) {}
-
-#define DUMP_GL_VALUE(name) dump_opengl_value(out, #name, name, 1)
-#define DUMP_GL_VALUE2(name) dump_opengl_value(out, #name, name, 2)
-
-	DUMP_GL_VALUE(GL_MAX_3D_TEXTURE_SIZE);
-	DUMP_GL_VALUE(GL_MAX_ATTRIB_STACK_DEPTH);
-	DUMP_GL_VALUE(GL_MAX_CLIENT_ATTRIB_STACK_DEPTH);
-	DUMP_GL_VALUE(GL_MAX_CLIP_PLANES);
-	DUMP_GL_VALUE(GL_MAX_COLOR_ATTACHMENTS_EXT);
-	DUMP_GL_VALUE(GL_MAX_COLOR_MATRIX_STACK_DEPTH);
-	DUMP_GL_VALUE(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS);
-	DUMP_GL_VALUE(GL_MAX_CUBE_MAP_TEXTURE_SIZE);
-	DUMP_GL_VALUE(GL_MAX_DRAW_BUFFERS);
-	DUMP_GL_VALUE(GL_MAX_ELEMENTS_INDICES);
-	DUMP_GL_VALUE(GL_MAX_ELEMENTS_VERTICES);
-	DUMP_GL_VALUE(GL_MAX_EVAL_ORDER);
-	DUMP_GL_VALUE(GL_MAX_FRAGMENT_UNIFORM_COMPONENTS);
-	DUMP_GL_VALUE(GL_MAX_LIGHTS);
-	DUMP_GL_VALUE(GL_MAX_LIST_NESTING);
-	DUMP_GL_VALUE(GL_MAX_MODELVIEW_STACK_DEPTH);
-	DUMP_GL_VALUE(GL_MAX_NAME_STACK_DEPTH);
-	DUMP_GL_VALUE(GL_MAX_PIXEL_MAP_TABLE);
-	DUMP_GL_VALUE(GL_MAX_PROJECTION_STACK_DEPTH);
-	DUMP_GL_VALUE(GL_MAX_RENDERBUFFER_SIZE_EXT);
-	DUMP_GL_VALUE(GL_MAX_SAMPLES_EXT);
-	DUMP_GL_VALUE(GL_MAX_TEXTURE_COORDS);
-	DUMP_GL_VALUE(GL_MAX_TEXTURE_IMAGE_UNITS);
-	DUMP_GL_VALUE(GL_MAX_TEXTURE_LOD_BIAS);
-	DUMP_GL_VALUE(GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT);
-	DUMP_GL_VALUE(GL_MAX_TEXTURE_SIZE);
-	DUMP_GL_VALUE(GL_MAX_TEXTURE_STACK_DEPTH);
-	DUMP_GL_VALUE(GL_MAX_TEXTURE_UNITS);
-	DUMP_GL_VALUE(GL_MAX_VARYING_FLOATS);
-	DUMP_GL_VALUE(GL_MAX_VERTEX_ATTRIBS);
-	DUMP_GL_VALUE(GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS);
-	DUMP_GL_VALUE(GL_MAX_VERTEX_UNIFORM_COMPONENTS);
-	DUMP_GL_VALUE(GL_NUM_COMPRESSED_TEXTURE_FORMATS);
-	DUMP_GL_VALUE(GL_SAMPLE_BUFFERS);
-	DUMP_GL_VALUE(GL_SAMPLES);
-	DUMP_GL_VALUE2(GL_ALIASED_LINE_WIDTH_RANGE);
-	DUMP_GL_VALUE2(GL_ALIASED_POINT_SIZE_RANGE);
-	DUMP_GL_VALUE2(GL_MAX_VIEWPORT_DIMS);
-	DUMP_GL_VALUE2(GL_SMOOTH_LINE_WIDTH_RANGE);
-	DUMP_GL_VALUE2(GL_SMOOTH_POINT_SIZE_RANGE);
-
-#undef DUMP_GL_VALUE
-#undef DUMP_GL_VALUE2
-
-	return true;
 }
 
 void RendererGL2::SetMatrixMode(MatrixMode mm)

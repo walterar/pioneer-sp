@@ -131,6 +131,7 @@ public:
 	void SetHyperspaceDest(const SystemPath &dest) { m_hyperspace.dest = dest; }
 	const SystemPath &GetHyperspaceDest() const { return m_hyperspace.dest; }
 	double GetHyperspaceDuration() const { return m_hyperspace.duration; }
+	double GetECMRechargeRemain() const { return m_ecmRecharge; }
 
 	enum HyperjumpStatus { // <enum scope='Ship' name=ShipJumpStatus prefix=HYPERJUMP_ public>
 		HYPERJUMP_OK,
@@ -151,7 +152,17 @@ public:
 
 	// 0 to 1.0 is alive, > 1.0 = death
 	double GetHullTemperature() const;
-	void UseECM();
+	// Calculate temperature we would have with wheels down
+	double ExtrapolateHullTemperature() const;
+
+	enum ECMResult {
+		ECM_NOT_INSTALLED,
+		ECM_ACTIVATED,
+		ECM_RECHARGING,
+	};
+
+	ECMResult UseECM();
+
 	virtual Missile * SpawnMissile(ShipType::Id missile_type, int power=-1);
 
 	enum AlertState { // <enum scope='Ship' name=ShipAlertStatus prefix=ALERT_ public>
@@ -206,6 +217,7 @@ public:
 	void SetSkin(const SceneGraph::ModelSkin &skin);
 
 	void SetLabel(const std::string &label);
+	void SetShipName(const std::string &shipName);
 
 	float GetPercentShields() const;
 	float GetPercentHull() const;
@@ -342,10 +354,10 @@ private:
 
 	std::unique_ptr<Sensors> m_sensors;
 	std::unordered_map<Body*, Uint8> m_relationsMap;
+
+	std::string m_shipName;
 };
 
 
 
 #endif /* _SHIP_H */
-
-

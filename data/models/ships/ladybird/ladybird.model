@@ -1,0 +1,58 @@
+#Ladybird
+
+material black-material
+diffuse 0.1 0.1 0.1
+specular 0.3 0.3 0.3
+shininess 10
+tex_diff ladybird.png
+tex_spec spec.png
+
+material matt-material
+diffuse 0.6 0.6 0.6
+specular 0.3 0.3 0.3
+shininess 10
+tex_diff ladybird.png
+tex_spec spec.png
+tex_glow glow.png
+use_patterns yes
+
+material wins1-material
+diffuse 1.0 1.0 1.0 
+specular 1.0 1.0 2.0
+shininess 200
+opacity 99
+tex_diff semi.png
+
+material wins2-material
+diffuse .4 .45 .5 
+specular 1.0 1.0 2.0
+shininess 200
+opacity 40
+
+material body-material
+diffuse 0.7 0.72 0.75
+specular 1.0 1.2 1.5
+shininess 50
+tex_diff ladybird.png
+tex_spec spec.png
+tex_glow glow.png
+use_patterns yes
+
+
+lod 300
+mesh lod3.dae
+mesh ladybird_shield.dae
+mesh gear.x
+
+lod 150
+mesh lod2.dae
+mesh gear.x
+
+#if lo-res gear lod 50
+lod 20
+mesh lod1.dae
+
+collision collision.dae
+
+anim gear_down 0 30
+

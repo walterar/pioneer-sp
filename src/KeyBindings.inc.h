@@ -58,9 +58,18 @@ KEY_BINDING(toggleLuaConsole, "BindToggleLuaConsole", Lang::TOGGLE_LUA_CONSOLE, 
 KEY_BINDING(toggleRotationDamping, "BindToggleRotationDamping", Lang::TOGGLE_ROTATION_DAMPING, SDLK_z, 0)
 
 BINDING_GROUP(Lang::JOYSTICK_INPUT)
-AXIS_BINDING(pitchAxis, "BindAxisPitch", Lang::PITCH, "-Joy0Axis1")
-AXIS_BINDING(rollAxis, "BindAxisRoll", Lang::ROLL, "Joy0Axis2")
-AXIS_BINDING(yawAxis, "BindAxisYaw", Lang::YAW, "Joy0Axis0")
+AXIS_BINDING(pitchAxis, "BindAxisPitch", Lang::PITCH, "")
+AXIS_BINDING(rollAxis, "BindAxisRoll", Lang::ROLL, "")
+AXIS_BINDING(yawAxis, "BindAxisYaw", Lang::YAW, "")
+AXIS_BINDING(pitchAxisUp, "BindPitchAxisUp", Lang::PITCH_UP, "")
+AXIS_BINDING(pitchAxisDown, "BindPitchAxisDown", Lang::PITCH_DOWN, "")
+AXIS_BINDING(yawAxisLeft, "BindYawAxisLeft", Lang::YAW_LEFT, "")
+AXIS_BINDING(yawAxisRight, "BindYawAxisRight", Lang::YAW_RIGHT, "")
+AXIS_BINDING(rollAxisLeft, "BindRollAxisLeft", Lang::ROLL_LEFT, "")
+AXIS_BINDING(rollAxisRight, "BindRollAxisRight", Lang::ROLL_RIGHT, "")
+AXIS_BINDING(thrustForwardAxis, "BindThrustForwardAxis", Lang::THRUSTER_MAIN, "")
+AXIS_BINDING(thrustUpAxis, "BindThrustUpAxis", Lang::THRUSTER_VENTRAL, "")
+AXIS_BINDING(thrustRightAxis, "BindThrustRightAxis", Lang::THRUSTER_STARBOARD, "")
 
 BINDING_PAGE_END()
 

@@ -155,13 +155,13 @@
       "description" : "",
       "message" : "Верхний экран"
    },
+   "CANT_SAVE_DEAD_PLAYER" : {
+      "description" : "",
+      "message" : "Нельзя сохранить игру после того, как игрок умер"
+   },
    "CANT_SAVE_IN_HYPERSPACE" : {
       "description" : "",
       "message" : "Невозможно сохранить игру в гиперпространстве "
-   },
-   "CANT_SAVE_DEAD_PLAYER" : {
-      "description" : "",
-      "message" : "Невозможно сохранить игру после того, как игрок умер"
    },
    "CAPITALIST" : {
       "description" : "",
@@ -203,6 +203,10 @@
       "description" : "",
       "message" : "Грузосборник сработал. Поймана 1 тонна %item."
    },
+   "CARGO_SCOOP_ATTEMPTED" : {
+      "description" : "",
+      "message" : "Cargo scoop attempted. Not enough room in cargo hold."
+   },
    "CARGO_SCOOP_DESCRIPTION" : {
       "description" : "",
       "message" : "Предназначен для сбора грузовых контейнеров в космическом пространстве."
@@ -230,6 +234,18 @@
    "COMMA_HIGHLY_VOLCANIC" : {
       "description" : "",
       "message" : ", с высокой вулканической активностью"
+   },
+   "COMMODITY_NONE" : {
+      "description" : "When no commodities exist",
+      "message" : "<отсутствует>"
+   },
+   "COMMODITY_TRADE_ANALYSIS_COMPARE" : {
+      "description" : "",
+      "message" : "Анализ торговли товарами системы #ff0%selected_system#fff (выбрана) в соотношении с системой #ff0%current_system#fff (текущая):"
+   },
+   "COMMODITY_TRADE_ANALYSIS_SELF" : {
+      "description" : "",
+      "message" : "Анализ торговли товарами системы #fff%system#fff"
    },
    "COMMS" : {
       "description" : "",
@@ -567,13 +583,33 @@
       "description" : "",
       "message" : "\" Hat\""
    },
+   "HEADING_LOCK_ANTINORMAL" : {
+      "description" : "",
+      "message" : "Hold anti-normal"
+   },
    "HEADING_LOCK_BACKWARD" : {
       "description" : "",
-      "message" : "Держать позицию (сзади)"
+      "message" : "Hold retrograde"
    },
    "HEADING_LOCK_FORWARD" : {
       "description" : "",
-      "message" : "Держать позицию (спереди)"
+      "message" : "Hold prograde"
+   },
+   "HEADING_LOCK_KILLROT" : {
+      "description" : "",
+      "message" : "Kill rotation"
+   },
+   "HEADING_LOCK_NORMAL" : {
+      "description" : "",
+      "message" : "Hold normal"
+   },
+   "HEADING_LOCK_RADIALLY_INWARD" : {
+      "description" : "",
+      "message" : "Hold radially in"
+   },
+   "HEADING_LOCK_RADIALLY_OUTWARD" : {
+      "description" : "",
+      "message" : "Hold radially out"
    },
    "HEAVY_INDUSTRY" : {
       "description" : "",
@@ -662,6 +698,10 @@
    "ICE_WORLD" : {
       "description" : "",
       "message" : "\" с ледяным миром\""
+   },
+   "ILLEGAL_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of commodity (singular) status in the system the player is currently in",
+      "message" : "Нелегальный товар (текущая система):"
    },
    "ILLEGAL_GOODS" : {
       "description" : "",
@@ -755,6 +795,10 @@
       "description" : "",
       "message" : "Внимание! Ваш корабль под атакой!"
    },
+   "LEGAL_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of commodity (singular) status in the system the player is currently in",
+      "message" : "Легальный товар (текущая система):"
+   },
    "LIBERAL_DEMOCRACY" : {
       "description" : "",
       "message" : "Либеральная демократия"
@@ -783,9 +827,17 @@
       "description" : "",
       "message" : "Основной экспорт:"
    },
+   "MAJOR_EXPORT_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+      "message" : "Основной экспорт (текущая система)"
+   },
    "MAJOR_IMPORTS" : {
       "description" : "",
       "message" : "Основной импорт:"
+   },
+   "MAJOR_IMPORT_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+      "message" : "Основной импорт (текущая система)"
    },
    "MANUAL_CONTROL" : {
       "description" : "",
@@ -923,9 +975,17 @@
       "description" : "",
       "message" : "Вторичный экспорт:"
    },
+   "MINOR_EXPORT_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+      "message" : "Вторичный экспорт (текущая система)"
+   },
    "MINOR_IMPORTS" : {
       "description" : "",
       "message" : "Вторичный импорт:"
+   },
+   "MINOR_IMPORT_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+      "message" : "Вторичный импорт (текущая система)"
    },
    "MISCELLANEOUS" : {
       "description" : "",
@@ -1036,7 +1096,7 @@
       "message" : "Парализующий газ"
    },
    "NONE" : {
-      "description" : "",
+      "description" : "used for no allegiance, and no rank, and no missions",
       "message" : "<отсутствует>"
    },
    "NORMA_ARM" : {
@@ -1234,6 +1294,22 @@
    "PLANNED_ECONOMY" : {
       "description" : "",
       "message" : "Централизованная плановая экономика"
+   },
+   "PLANNER_RESET_FACTOR" : {
+      "description" : "",
+      "message" : "Rate of increase of delta-v values. Click to reset to default."
+   },
+   "PLANNER_RESET_NORMAL" : {
+      "description" : "",
+      "message" : "Normal delta-v. Click to reset to zero."
+   },
+   "PLANNER_RESET_PROGRADE" : {
+      "description" : "",
+      "message" : "Prograde delta-v. Click to reset to zero."
+   },
+   "PLANNER_RESET_RADIAL" : {
+      "description" : "",
+      "message" : "Radial delta-v. Click to reset to zero."
    },
    "PLASTICS" : {
       "description" : "",

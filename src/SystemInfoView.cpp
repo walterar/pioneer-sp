@@ -17,22 +17,27 @@
 #include "graphics/Renderer.h"
 #include "graphics/Drawables.h"
 #include "Factions.h"
+#include <functional>
 
-SystemInfoView::SystemInfoView() : UIView()
+SystemInfoView::SystemInfoView(Game* game) : UIView(), m_game(game)
 {
 	SetTransparency(true);
 	m_refresh = REFRESH_NONE;
+	m_unexplored = true;
+	int trade_analyzer = 0;
+	Pi::player->Properties().Get("trade_analyzer_cap", trade_analyzer);
+	m_hasTradeAnalyzer = bool(trade_analyzer);
 }
 
 void SystemInfoView::OnBodySelected(SystemBody *b)
 {
 	{
 		Output("\n");
-		Output("Gas, liquid, ice: %f, %f, %f\n", b->GetVolatileGas().ToFloat(), b->GetVolatileLiquid().ToFloat(), b->GetVolatileIces().ToFloat());
+		Output("Gas, liquid, ice: %f, %f, %f\n", b->GetVolatileGas(), b->GetVolatileLiquid(), b->GetVolatileIces());
 	}
 
 	SystemPath path = m_system->GetPathOf(b);
-	RefCountedPtr<StarSystem> currentSys = Pi::game->GetSpace()->GetStarSystem();
+	RefCountedPtr<StarSystem> currentSys = m_game->GetSpace()->GetStarSystem();
 	bool isCurrentSystem = (currentSys && currentSys->GetPath() == m_system->GetPath());
 
 	if (path == m_selectedBodyPath) {
@@ -41,11 +46,11 @@ void SystemInfoView::OnBodySelected(SystemBody *b)
 		}
 	} else {
 		if (isCurrentSystem) {
-			Body* body = Pi::game->GetSpace()->FindBodyForPath(&path);
+			Body* body = m_game->GetSpace()->FindBodyForPath(&path);
 			if(body != 0)
 				Pi::player->SetNavTarget(body);
 		} else if (b->GetSuperType() == SystemBody::SUPERTYPE_STAR) { // We allow hyperjump to any star of the system
-			Pi::sectorView->SetSelected(path);
+			m_game->GetSectorView()->SetSelected(path);
 		}
 	}
 
@@ -144,63 +149,132 @@ void SystemInfoView::OnBodyViewed(SystemBody *b)
 void SystemInfoView::UpdateEconomyTab()
 {
 	/* Economy info page */
-	StarSystem *s = m_system.Get();
-	std::string data;
+	StarSystem *s = m_system.Get();             // selected system
 
 	/* imports and exports */
-	std::vector<std::string> crud;
-	data = std::string("#ff0")+std::string(Lang::MAJOR_IMPORTS)+std::string("\n");
-	for (int i = 1; i < GalacticEconomy::COMMODITY_COUNT; ++i) {
-		const int mod = s->GetCommodityBasePriceModPercent(GalacticEconomy::Commodity(i));
-		if (mod > 10)
-			crud.push_back(std::string("#fff")+GalacticEconomy::COMMODITY_DATA[i].name);
-	}
-	if (crud.size()) data += string_join(crud, "\n")+"\n";
-	else data += std::string("#777")+std::string(Lang::NONE)+std::string("\n");
-	m_econMajImport->SetText(data);
+	const RefCountedPtr<StarSystem> hs = m_game->GetSpace()->GetStarSystem();
 
-	crud.clear();
-	data = std::string("#ff0")+std::string(Lang::MINOR_IMPORTS)+std::string("\n");
-	for (int i = 1; i < GalacticEconomy::COMMODITY_COUNT; ++i) {
-		const int mod = s->GetCommodityBasePriceModPercent(GalacticEconomy::Commodity(i));
-		if ((mod > 2) && (mod <= 10))
-			crud.push_back(std::string("#777")+GalacticEconomy::COMMODITY_DATA[i].name);
-	}
-	if (crud.size()) data += string_join(crud, "\n")+"\n";
-	else data += std::string("#777")+std::string(Lang::NONE)+std::string("\n");
-	m_econMinImport->SetText(data);
+	// check if trade analyzer is installed
+	int trade_analyzer = 0;
+	Pi::player->Properties().Get("trade_analyzer_cap", trade_analyzer);
 
-	crud.clear();
-	data = std::string("#ff0")+std::string(Lang::MAJOR_EXPORTS)+std::string("\n");
-	for (int i = 1; i < GalacticEconomy::COMMODITY_COUNT; ++i) {
-		const int mod = s->GetCommodityBasePriceModPercent(GalacticEconomy::Commodity(i));
-		if (mod < -10)
-			crud.push_back(std::string("#fff")+GalacticEconomy::COMMODITY_DATA[i].name);
-	}
-	if (crud.size()) data += string_join(crud, "\n")+"\n";
-	else data += std::string("#777")+std::string(Lang::NONE)+std::string("\n");
-	m_econMajExport->SetText(data);
+	// we might be here because we changed equipment, update that as well:
+	m_hasTradeAnalyzer = bool (trade_analyzer);
 
-	crud.clear();
-	data = std::string("#ff0")+std::string(Lang::MINOR_EXPORTS)+std::string("\n");
-	for (int i = 1; i < GalacticEconomy::COMMODITY_COUNT; ++i) {
-		const int mod = s->GetCommodityBasePriceModPercent(GalacticEconomy::Commodity(i));
-		if ((mod < -2) && (mod >= -10))
-			crud.push_back(std::string("#777")+GalacticEconomy::COMMODITY_DATA[i].name);
-	}
-	if (crud.size()) data += string_join(crud, "\n")+"\n";
-	else data += std::string("#777")+std::string(Lang::NONE)+std::string("\n");
-	m_econMinExport->SetText(data);
+	// If current system is defined and not equal to selected we will compare them
+	const bool compareSelectedWithCurrent =
+		(hs && !m_system->GetPath().IsSameSystem(hs->GetPath()) && trade_analyzer > 0);
 
-	crud.clear();
-	data = std::string("#ff0")+std::string(Lang::ILLEGAL_GOODS)+std::string("\n");
-	for (int i = 1; i < GalacticEconomy::COMMODITY_COUNT; ++i) {
-		if (!Polit::IsCommodityLegal(s, GalacticEconomy::Commodity(i)))
-			crud.push_back(std::string("#777")+GalacticEconomy::COMMODITY_DATA[i].name);
+	const std::string meh       = "#999";
+	const std::string ok        = "#fff";
+	const std::string good      = "#7c7";
+	const std::string awesome   = "#7f7";
+	const std::string illegal   = "#744";
+
+	if (compareSelectedWithCurrent){
+		// different system selected
+
+		const std::string COMM_COMP = stringf(Lang::COMMODITY_TRADE_ANALYSIS_COMPARE,
+				formatarg("selected_system", m_system->GetName().c_str()),
+				formatarg("current_system", hs->GetName().c_str()));
+
+		m_commodityTradeLabel->SetText(COMM_COMP.c_str());
+	} else {
+		// same system as current selected
+
+		const std::string COMM_SELF = stringf(Lang::COMMODITY_TRADE_ANALYSIS_SELF,
+				formatarg("system", m_system->GetName().c_str()));
+
+		m_commodityTradeLabel->SetText(COMM_SELF.c_str());
 	}
-	if (crud.size()) data += string_join(crud, "\n")+"\n";
-	else data += std::string("#777")+std::string(Lang::NONE)+std::string("\n");
-	m_econIllegal->SetText(data);
+
+	const int rowsep = 18;
+
+	// lambda function to build each colum for MAJOR/MINOR IMPORT/EXPORT
+	auto f = [&](std::function<bool (int)> isInList,
+					 std::function<bool (int)> isInInterval, std::string colorInInterval, std::string toolTipInInterval,
+					 std::function<bool (int)> isOther,      std::string colorOther,      std::string toolTipOther,
+					 Gui::Fixed *m_econMType, std::string tradeType){
+		int num = 0;
+		m_econMType->DeleteAllChildren();
+		m_econMType->Add(new Gui::Label(std::string("#ff0")+tradeType),
+			0, num++ * rowsep);
+
+		for (int i=1; i< GalacticEconomy::COMMODITY_COUNT; i++){
+			if (isInList(s->GetCommodityBasePriceModPercent(GalacticEconomy::Commodity(i)))
+				 && s->IsCommodityLegal(GalacticEconomy::Commodity(i))) {
+				std::string extra = meh;              // default color
+				std::string tooltip = "";             // no tooltip for default
+				if (compareSelectedWithCurrent) {
+					if (isInInterval(hs->GetCommodityBasePriceModPercent(GalacticEconomy::Commodity(i)))) {
+						extra = colorInInterval;     // change color
+						tooltip = toolTipInInterval; // describe trade status in current system
+					} else if (isOther(hs->GetCommodityBasePriceModPercent(GalacticEconomy::Commodity(i)))) {
+						extra = colorOther;
+						tooltip = toolTipOther;
+					}
+					if (!hs->IsCommodityLegal(GalacticEconomy::Commodity(i))) {
+						extra = illegal;
+						tooltip = std::string(Lang::ILLEGAL_CURRENT_SYSTEM);
+					}
+				}
+				Gui::Label *label = new Gui::Label(extra+GalacticEconomy::COMMODITY_DATA[i].name);
+				label->SetToolTip(tooltip);
+				m_econMType->Add(label, 5, num++ * rowsep);
+			}
+		}
+		m_econMType->SetSize(500, num * rowsep);
+		m_econMType->ShowAll();
+		if (num < 2)
+			m_econMType->Add(new Gui::Label(meh + Lang::COMMODITY_NONE), 5, num++ * rowsep);
+	};
+
+	// sm = selected system price modifier, csp = current system price modifier
+	f([](int sm) {return sm > 10;},
+	  [](int cm) {return -10 <= cm && cm < -2;}, good, Lang::MINOR_EXPORT_CURRENT_SYSTEM,
+	  [](int cm) {return cm < -10;}, awesome, Lang::MAJOR_EXPORT_CURRENT_SYSTEM,
+	  m_econMajImport, Lang::MAJOR_IMPORTS);
+
+	f([](int sm) {return 2 < sm && sm <= 10;},
+	  [](int cm) {return -10 <= cm && cm < -2;}, ok, Lang::MINOR_EXPORT_CURRENT_SYSTEM,
+	  [](int cm) {return cm < -10;}, good, Lang::MAJOR_EXPORT_CURRENT_SYSTEM,
+	  m_econMinImport, Lang::MINOR_IMPORTS);
+
+	f([](int sm) {return sm < -10;},
+	  [](int cm) {return 2 < cm && cm <= 10;}, good, Lang::MINOR_IMPORT_CURRENT_SYSTEM,
+	  [](int cm) {return 10 < cm;}, awesome, Lang::MAJOR_IMPORT_CURRENT_SYSTEM,
+	  m_econMajExport, Lang::MAJOR_EXPORTS);
+
+	f([](int sm) {return -10 <= sm && sm < -2;},
+	  [](int cm) {return 2 < cm && cm <= 10;}, ok, Lang::MINOR_IMPORT_CURRENT_SYSTEM,
+	  [](int cm) {return 10 < cm;}, good, Lang::MAJOR_IMPORT_CURRENT_SYSTEM,
+	  m_econMinExport, Lang::MINOR_EXPORTS);
+
+	// ILLEGAL GOODS
+	int num = 0;
+	m_econIllegal->DeleteAllChildren();
+	m_econIllegal->Add(new Gui::Label(
+		std::string("#f55")+std::string(Lang::ILLEGAL_GOODS)),
+		0, num++ * rowsep);
+	for (int i=1; i<GalacticEconomy::COMMODITY_COUNT; i++) {
+		if (!s->IsCommodityLegal(GalacticEconomy::Commodity(i))) {
+			std::string extra = illegal;
+			std::string tooltip = "";
+			if (compareSelectedWithCurrent)
+				if (hs->IsCommodityLegal(GalacticEconomy::Commodity(i))) {
+					extra = meh;
+					tooltip = std::string(Lang::LEGAL_CURRENT_SYSTEM);
+				}
+			Gui::Label *label = new Gui::Label(extra+GalacticEconomy::COMMODITY_DATA[i].name);
+			label->SetToolTip(tooltip);
+			m_econIllegal->Add(label, 5, num++ * rowsep);
+		}
+	}
+	if (num < 2) {
+		m_econIllegal->Add(new Gui::Label(illegal + Lang::COMMODITY_NONE), 5, num++ * rowsep);
+	}
+	m_econIllegal->SetSize(500, num * rowsep);
+	m_econIllegal->ShowAll();
 
 	m_econInfoTab->ResizeRequest();
 }
@@ -270,8 +344,8 @@ void SystemInfoView::SystemChanged(const SystemPath &path)
 	if (!path.HasValidSystem())
 		return;
 
-	m_system = Pi::GetGalaxy()->GetStarSystem(path);
-
+	m_system = m_game->GetGalaxy()->GetStarSystem(path);
+	m_unexplored = m_system->GetUnexplored();
 	m_sbodyInfoTab = new Gui::Fixed(float(Gui::Screen::GetWidth()), float(Gui::Screen::GetHeight()-100));
 
 	if (m_system->GetUnexplored()) {
@@ -349,29 +423,31 @@ void SystemInfoView::SystemChanged(const SystemPath &path)
 
 	{
 		// economy tab
+		Gui::VBox *econbox = new Gui::VBox();
+		econbox->SetSpacing(5);
+
 		Gui::HBox *scrollBox2 = new Gui::HBox();
 		scrollBox2->SetSpacing(5);
-		m_econInfoTab->Add(scrollBox2, 35, 300);
+		m_econInfoTab->Add(econbox, 35, 300);
 		Gui::VScrollBar *scroll2 = new Gui::VScrollBar();
 		Gui::VScrollPortal *portal2 = new Gui::VScrollPortal(730);
 		scroll2->SetAdjustment(&portal2->vscrollAdjust);
 		scrollBox2->PackStart(scroll2);
 		scrollBox2->PackStart(portal2);
 
-		m_econInfo = new Gui::Label("");
+		m_commodityTradeLabel = new Gui::Label("");
+		econbox->PackEnd(m_commodityTradeLabel);
+		econbox->PackEnd(scrollBox2);
+
+		m_econInfo = new Gui::Fixed();
 		m_econInfoTab->Add(m_econInfo, 35, 250);
 
 		Gui::Fixed *f = new Gui::Fixed();
-		m_econMajImport = new Gui::Label("");
-		m_econMinImport = new Gui::Label("");
-		m_econMajExport = new Gui::Label("");
-		m_econMinExport = new Gui::Label("");
-		m_econIllegal = new Gui::Label("");
-		m_econMajImport->Color(255,255,0);
-		m_econMinImport->Color(255,255,0);
-		m_econMajExport->Color(255,255,0);
-		m_econMinExport->Color(255,255,0);
-		m_econIllegal->Color(255,255,0);
+		m_econMajImport = new Gui::Fixed();
+		m_econMinImport = new Gui::Fixed();
+		m_econMajExport = new Gui::Fixed();
+		m_econMinExport = new Gui::Fixed();
+		m_econIllegal = new Gui::Fixed();
 		f->Add(m_econMajImport, 0, 0);
 		f->Add(m_econMinImport, 150, 0);
 		f->Add(m_econMajExport, 300, 0);
@@ -430,29 +506,54 @@ void SystemInfoView::Draw3D()
 	UIView::Draw3D();
 }
 
+static bool IsShownInInfoView(const SystemBody* sb)
+{
+	SystemBody::BodySuperType superType = sb->GetSuperType();
+	return superType == SystemBody::SUPERTYPE_STAR || superType == SystemBody::SUPERTYPE_GAS_GIANT ||
+		superType == SystemBody::SUPERTYPE_ROCKY_PLANET ||
+		sb->GetType() == SystemBody::TYPE_STARPORT_ORBITAL;
+}
+
 SystemInfoView::RefreshType SystemInfoView::NeedsRefresh()
 {
-	if (!m_system || !Pi::sectorView->GetSelected().IsSameSystem(m_system->GetPath()))
+	if (!m_system || !m_game->GetSectorView()->GetSelected().IsSameSystem(m_system->GetPath()))
+		return REFRESH_ALL;
+
+	if (m_system->GetUnexplored() != m_unexplored)
+		return REFRESH_ALL;
+
+	// If we changed equipment since last refresh
+	int trade_analyzer = 0;
+	Pi::player->Properties().Get("trade_analyzer_cap", trade_analyzer);
+	if (m_hasTradeAnalyzer != (trade_analyzer!=0))
 		return REFRESH_ALL;
 
 	if (m_system->GetUnexplored())
 		return REFRESH_NONE; // Nothing can be selected and we reset in SystemChanged
 
-	RefCountedPtr<StarSystem> currentSys = Pi::game->GetSpace()->GetStarSystem();
+	RefCountedPtr<StarSystem> currentSys = m_game->GetSpace()->GetStarSystem();
 	if (!currentSys || currentSys->GetPath() != m_system->GetPath()) {
 		// We are not currently in the selected system
-		if (Pi::sectorView->GetSelected() != m_selectedBodyPath)
-			return REFRESH_SELECTED;
+		if (m_selectedBodyPath.IsBodyPath()) {
+			// Some body was selected
+			if (m_game->GetSectorView()->GetSelected() != m_selectedBodyPath)
+				return REFRESH_SELECTED_BODY; // but now we want a different body (or none at all)
+		} else {
+			// No body was selected
+			if (m_game->GetSectorView()->GetSelected().IsBodyPath())
+				return REFRESH_SELECTED_BODY; // but now we want one, this can only be a star,
+										  // so no check for IsShownInInfoView() needed
+		}
 	} else {
 		Body *navTarget = Pi::player->GetNavTarget();
-		if (navTarget && navTarget->GetSystemBody()->GetType() != SystemBody::TYPE_STARPORT_SURFACE) {
+		if (navTarget && IsShownInInfoView(navTarget->GetSystemBody())) {
 			// Navigation target is something we show in the info view
 			if (navTarget->GetSystemBody()->GetPath() != m_selectedBodyPath)
-				return REFRESH_SELECTED; // and wasn't selected, yet
+				return REFRESH_SELECTED_BODY; // and wasn't selected, yet
 		} else {
 			// nothing to be selected
 			if (m_selectedBodyPath.IsBodyPath())
-				return REFRESH_SELECTED; // but there was something selected
+				return REFRESH_SELECTED_BODY; // but there was something selected
 		}
 	}
 
@@ -463,12 +564,13 @@ void SystemInfoView::Update()
 {
 	switch (m_refresh) {
 		case REFRESH_ALL:
-			SystemChanged(Pi::sectorView->GetSelected());
+			SystemChanged(m_game->GetSectorView()->GetSelected());
 			m_refresh = REFRESH_NONE;
 			assert(NeedsRefresh() == REFRESH_NONE);
 			break;
-		case REFRESH_SELECTED:
+		case REFRESH_SELECTED_BODY:
 			UpdateIconSelections();
+			UpdateEconomyTab();     //update price analysis after hyper jump
 			m_refresh = REFRESH_NONE;
 			assert(NeedsRefresh() == REFRESH_NONE);
 			break;
@@ -502,7 +604,7 @@ void SystemInfoView::UpdateIconSelections()
 
 		bodyIcon.second->SetSelected(false);
 
-		RefCountedPtr<StarSystem> currentSys = Pi::game->GetSpace()->GetStarSystem();
+		RefCountedPtr<StarSystem> currentSys = m_game->GetSpace()->GetStarSystem();
 		if (currentSys && currentSys->GetPath() == m_system->GetPath()) {
 			//navtarget can be only set in current system
 			if (Body* navtarget = Pi::player->GetNavTarget()) {
@@ -514,7 +616,7 @@ void SystemInfoView::UpdateIconSelections()
 				}
 			}
 		} else {
-			SystemPath selected = Pi::sectorView->GetSelected();
+			SystemPath selected = m_game->GetSectorView()->GetSelected();
 			if (selected.IsSameSystem(m_system->GetPath()) && !selected.IsSystemPath()) {
 				if (bodyIcon.first == selected.bodyIndex) {
 					bodyIcon.second->SetSelectColor(Color(64, 96, 255, 255));
@@ -548,18 +650,18 @@ void SystemInfoView::BodyIcon::Draw()
 	    // The -0.1f offset seems to be the best compromise to make the circles closed (e.g. around Mars), symmetric, fitting with selection
 	    // and not overlapping to much with asteroids
 	    Graphics::Drawables::Circle circle =
-			Graphics::Drawables::Circle(size[0]*0.5f, size[0]*0.5f-0.1f, size[1]*0.5f, 0.f,
+			Graphics::Drawables::Circle(m_renderer, size[0]*0.5f, size[0]*0.5f-0.1f, size[1]*0.5f, 0.f,
 			portColor, m_renderState);
 	    circle.Draw(m_renderer);
 	}
 	if (GetSelected()) {
-	    const vector2f vts[] = {
-		    vector2f(0.f, 0.f),
-		    vector2f(size[0], 0.f),
-		    vector2f(size[0], size[1]),
-		    vector2f(0.f, size[1]),
+	    const vector3f vts[] = {
+		    vector3f(0.f, 0.f, 0.f),
+		    vector3f(size[0], 0.f, 0.f),
+		    vector3f(size[0], size[1], 0.f),
+		    vector3f(0.f, size[1], 0.f),
 	    };
-	    m_renderer->DrawLines2D(COUNTOF(vts), vts, m_selectColor, m_renderState, Graphics::LINE_LOOP);
+	    m_renderer->DrawLines(COUNTOF(vts), vts, m_selectColor, m_renderState, Graphics::LINE_LOOP);
 	}
 }
 

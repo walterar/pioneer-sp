@@ -27,14 +27,16 @@ noinst_HEADERS = \
 	CargoBody.h \
 	CityOnPlanet.h \
 	Color.h \
+	Colors.h \
 	Cutscene.h \
 	CRC32.h \
+	DateTime.h \
 	DeathView.h \
 	DeleteEmitter.h \
 	DynamicBody.h \
 	Easing.h \
 	EnumStrings.h \
-	FaceGenManager.h \
+	FaceParts.h \
 	Factions.h \
 	FileSystem.h \
 	FontCache.h \
@@ -43,6 +45,7 @@ noinst_HEADERS = \
 	Frame.h \
 	GalacticView.h \
 	Game.h \
+	GameLog.h \
 	GasGiant.h \
 	GeoSphere.h \
 	HudTrail.h \
@@ -96,6 +99,7 @@ noinst_HEADERS = \
 	OS.h \
 	PersistSystemData.h \
 	Pi.h \
+	Plane.h \
 	Planet.h \
 	Player.h \
 	PngWriter.h \
@@ -127,6 +131,7 @@ noinst_HEADERS = \
 	SpaceStation.h \
 	SpaceStationType.h \
 	SpeedLines.h \
+	Sphere.h \
 	Star.h \
 	SystemInfoView.h \
 	SystemView.h \
@@ -157,12 +162,14 @@ pioneersp_SOURCES	= \
 	CameraController.cpp \
 	CargoBody.cpp \
 	Color.cpp \
+	Colors.cpp \
 	CityOnPlanet.cpp \
 	CRC32.cpp \
+	DateTime.cpp \
 	DeathView.cpp \
 	DynamicBody.cpp \
 	EnumStrings.cpp \
-	FaceGenManager.cpp \
+	FaceParts.cpp \
 	Factions.cpp \
 	FileSourceZip.cpp \
 	FileSystem.cpp \
@@ -171,6 +178,7 @@ pioneersp_SOURCES	= \
 	Frame.cpp \
 	GalacticView.cpp \
 	Game.cpp \
+	GameLog.cpp \
 	GasGiant.cpp \
 	GeoPatch.cpp \
 	GeoPatchContext.cpp \
@@ -234,6 +242,7 @@ pioneersp_SOURCES	= \
 	ObjectViewerView.cpp \
 	Orbit.cpp \
 	Pi.cpp \
+	Plane.cpp \
 	Planet.cpp \
 	Player.cpp \
 	PngWriter.cpp \
@@ -261,6 +270,7 @@ pioneersp_SOURCES	= \
 	SpaceStation.cpp \
 	SpaceStationType.cpp \
 	SpeedLines.cpp \
+	Sphere.cpp \
 	Star.cpp \
 	SystemInfoView.cpp \
 	SystemView.cpp \
@@ -317,13 +327,12 @@ endif
 check_PROGRAMS = tests uitest textstress
 tests_SOURCES = \
 	StringF.cpp \
+	DateTime.cpp \
 	tests.cpp \
 	test_Frame.cpp \
 	test_StringF.cpp \
-	FileSystem.cpp \
-	FileSourceZip.cpp \
-	test_FileSystem.cpp \
-	test_Random.cpp
+	test_Random.cpp \
+	test_DateTime.cpp
 TESTS = tests
 tests_LDADD = \
 	collider/libcollider.a \
@@ -414,12 +423,14 @@ modelcompiler_SOURCES = \
 	CameraController.cpp \
 	CargoBody.cpp \
 	Color.cpp \
+	Colors.cpp \
 	CityOnPlanet.cpp \
 	CRC32.cpp \
+	DateTime.cpp \
 	DeathView.cpp \
 	DynamicBody.cpp \
 	EnumStrings.cpp \
-	FaceGenManager.cpp \
+	FaceParts.cpp \
 	Factions.cpp \
 	FileSourceZip.cpp \
 	FileSystem.cpp \
@@ -428,6 +439,7 @@ modelcompiler_SOURCES = \
 	Frame.cpp \
 	GalacticView.cpp \
 	Game.cpp \
+	GameLog.cpp \
 	GasGiant.cpp \
 	GeoPatch.cpp \
 	GeoPatchContext.cpp \
@@ -491,6 +503,7 @@ modelcompiler_SOURCES = \
 	ObjectViewerView.cpp \
 	Orbit.cpp \
 	Pi.cpp \
+	Plane.cpp \
 	Planet.cpp \
 	Player.cpp \
 	PngWriter.cpp \
@@ -518,6 +531,7 @@ modelcompiler_SOURCES = \
 	SpaceStation.cpp \
 	SpaceStationType.cpp \
 	SpeedLines.cpp \
+	Sphere.cpp \
 	Star.cpp \
 	SystemInfoView.cpp \
 	SystemView.cpp \

@@ -2,6 +2,8 @@
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "graphics/gl2/GL2VertexBuffer.h"
+#include "graphics/VertexArray.h"
+#include "utils.h"
 
 namespace Graphics { namespace GL2 {
 
@@ -60,6 +62,9 @@ VertexBuffer::VertexBuffer(const VertexBufferDesc &desc)
 
 	SetVertexCount(m_desc.numVertices);
 
+	glGenVertexArrays(1, &m_vao);
+	glBindVertexArray(m_vao);
+
 	glGenBuffers(1, &m_buffer);
 
 	//Allocate initial data store
@@ -70,7 +75,40 @@ VertexBuffer::VertexBuffer(const VertexBufferDesc &desc)
 	memset(m_data, 0, dataSize);
 	const GLenum usage = (m_desc.usage == BUFFER_USAGE_STATIC) ? GL_STATIC_DRAW : GL_DYNAMIC_DRAW;
 	glBufferData(GL_ARRAY_BUFFER, dataSize, m_data, usage);
+
+	//Setup the VAO pointers
+	for (Uint8 i = 0; i < MAX_ATTRIBS; i++) {
+		const auto& attr  = m_desc.attrib[i];
+		if (attr.semantic == ATTRIB_NONE)
+			break;
+
+		// Tell OpenGL what the array contains
+		const auto offset = reinterpret_cast<const GLvoid*>(attr.offset);
+		switch (attr.semantic) {
+		case ATTRIB_POSITION:
+			glEnableVertexAttribArray(0);	// Enable the attribute at that location
+			glVertexAttribPointer(0, get_num_components(attr.format), get_component_type(attr.format), GL_FALSE, m_desc.stride, offset);	
+			break;
+		case ATTRIB_NORMAL:
+			glEnableVertexAttribArray(1);	// Enable the attribute at that location
+			glVertexAttribPointer(1, get_num_components(attr.format), get_component_type(attr.format), GL_FALSE, m_desc.stride, offset);
+			break;
+		case ATTRIB_DIFFUSE:
+			glEnableVertexAttribArray(2);	// Enable the attribute at that location
+			glVertexAttribPointer(2, get_num_components(attr.format), get_component_type(attr.format), GL_TRUE, m_desc.stride, offset);	// only normalise the colours
+			break;
+		case ATTRIB_UV0:
+			glEnableVertexAttribArray(3);	// Enable the attribute at that location
+			glVertexAttribPointer(3, get_num_components(attr.format), get_component_type(attr.format), GL_FALSE, m_desc.stride, offset);
+			break;
+		case ATTRIB_NONE:
+		default:
+			break;
+		}
+	}
+
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
 
 	//Don't keep client data around for static buffers
 	if (GetDesc().usage == BUFFER_USAGE_STATIC) {
@@ -84,6 +122,7 @@ VertexBuffer::VertexBuffer(const VertexBufferDesc &desc)
 VertexBuffer::~VertexBuffer()
 {
 	glDeleteBuffers(1, &m_buffer);
+	glDeleteVertexArrays(1, &m_vao);
 	delete[] m_data;
 }
 
@@ -93,6 +132,7 @@ Uint8 *VertexBuffer::MapInternal(BufferMapMode mode)
 	assert(m_mapMode == BUFFER_MAP_NONE); //must not be currently mapped
 	m_mapMode = mode;
 	if (GetDesc().usage == BUFFER_USAGE_STATIC) {
+		glBindVertexArray(m_vao);
 		glBindBuffer(GL_ARRAY_BUFFER, m_buffer);
 		if (mode == BUFFER_MAP_READ)
 			return reinterpret_cast<Uint8*>(glMapBuffer(GL_ARRAY_BUFFER, GL_READ_ONLY));
@@ -118,37 +158,122 @@ void VertexBuffer::Unmap()
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 		}
 	}
+	glBindVertexArray(0);
 
 	m_mapMode = BUFFER_MAP_NONE;
 }
 
-void VertexBuffer::SetAttribPointers()
+#pragma pack(push, 4)
+struct PosUVVert {
+	vector3f pos;
+	vector2f uv;
+};
+
+struct PosColVert {
+	vector3f pos;
+	Color4ub col;
+};
+
+struct PosVert {
+	vector3f pos;
+};
+
+struct PosColUVVert {
+	vector3f pos;
+	Color4ub col;
+	vector2f uv;
+};
+
+struct PosNormUVVert {
+	vector3f pos;
+	vector3f norm;
+	vector2f uv;
+};
+#pragma pack(pop)
+
+void CopyPosUV0(Graphics::VertexBuffer *vb, const Graphics::VertexArray &va)
 {
-	for (Uint8 i = 0; i < MAX_ATTRIBS; i++) {
-		const auto& attr  = m_desc.attrib[i];
-		const auto offset = reinterpret_cast<const GLvoid*>(m_desc.attrib[i].offset);
-		switch (attr.semantic) {
-		case ATTRIB_POSITION:
-			glVertexPointer(get_num_components(attr.format), get_component_type(attr.format), m_desc.stride, offset);
-			break;
-		case ATTRIB_NORMAL:
-			glNormalPointer(get_component_type(attr.format), m_desc.stride, offset);
-			break;
-		case ATTRIB_DIFFUSE:
-			glColorPointer(get_num_components(attr.format), get_component_type(attr.format), m_desc.stride, offset);
-			break;
-		case ATTRIB_UV0:
-			glTexCoordPointer(get_num_components(attr.format), get_component_type(attr.format), m_desc.stride, offset);
-			break;
-		case ATTRIB_NONE:
-		default:
-			return;
-		}
+	PosUVVert* vtxPtr = vb->Map<PosUVVert>(Graphics::BUFFER_MAP_WRITE);
+	assert(vb->GetDesc().stride == sizeof(PosUVVert));
+	for(Uint32 i=0 ; i<va.GetNumVerts() ; i++)
+	{
+		vtxPtr[i].pos	= va.position[i];
+		vtxPtr[i].uv	= va.uv0[i];
 	}
+	vb->Unmap();
 }
 
-void VertexBuffer::UnsetAttribPointers()
+void CopyPosCol(Graphics::VertexBuffer *vb, const Graphics::VertexArray &va)
 {
+	PosColVert* vtxPtr = vb->Map<PosColVert>(Graphics::BUFFER_MAP_WRITE);
+	assert(vb->GetDesc().stride == sizeof(PosColVert));
+	for(Uint32 i=0 ; i<va.GetNumVerts() ; i++)
+	{
+		vtxPtr[i].pos	= va.position[i];
+		vtxPtr[i].col	= va.diffuse[i];
+	}
+	vb->Unmap();
+}
+
+void CopyPos(Graphics::VertexBuffer *vb, const Graphics::VertexArray &va)
+{
+	PosVert* vtxPtr = vb->Map<PosVert>(Graphics::BUFFER_MAP_WRITE);
+	assert(vb->GetDesc().stride == sizeof(PosVert));
+	for(Uint32 i=0 ; i<va.GetNumVerts() ; i++)
+	{
+		vtxPtr[i].pos	= va.position[i];
+	}
+	vb->Unmap();
+}
+
+void CopyPosColUV0(Graphics::VertexBuffer *vb, const Graphics::VertexArray &va)
+{
+	PosColUVVert* vtxPtr = vb->Map<PosColUVVert>(Graphics::BUFFER_MAP_WRITE);
+	assert(vb->GetDesc().stride == sizeof(PosColUVVert));
+	for(Uint32 i=0 ; i<va.GetNumVerts() ; i++)
+	{
+		vtxPtr[i].pos	= va.position[i];
+		vtxPtr[i].col	= va.diffuse[i];
+		vtxPtr[i].uv	= va.uv0[i];
+	}
+	vb->Unmap();
+}
+
+void CopyPosNormUV0(Graphics::VertexBuffer *vb, const Graphics::VertexArray &va)
+{
+	PosNormUVVert* vtxPtr = vb->Map<PosNormUVVert>(Graphics::BUFFER_MAP_WRITE);
+	assert(vb->GetDesc().stride == sizeof(PosNormUVVert));
+	for(Uint32 i=0 ; i<va.GetNumVerts() ; i++)
+	{
+		vtxPtr[i].pos	= va.position[i];
+		vtxPtr[i].norm	= va.normal[i];
+		vtxPtr[i].uv	= va.uv0[i];
+	}
+	vb->Unmap();
+}
+
+// copies the contents of the VertexArray into the buffer
+bool VertexBuffer::Populate(const VertexArray &va)
+{
+	assert(va.GetNumVerts()>0);
+	bool result = false;
+	const Graphics::AttributeSet as = va.GetAttributeSet();
+	switch( as ) {
+	case Graphics::ATTRIB_POSITION:														CopyPos(this, va);			result = true;	break;
+	case Graphics::ATTRIB_POSITION | Graphics::ATTRIB_DIFFUSE:							CopyPosCol(this, va);		result = true;	break;
+	case Graphics::ATTRIB_POSITION | Graphics::ATTRIB_UV0:								CopyPosUV0(this, va);		result = true;	break;
+	case Graphics::ATTRIB_POSITION | Graphics::ATTRIB_DIFFUSE | Graphics::ATTRIB_UV0:	CopyPosColUV0(this, va);	result = true;	break;
+	case Graphics::ATTRIB_POSITION | Graphics::ATTRIB_NORMAL | Graphics::ATTRIB_UV0:	CopyPosNormUV0(this, va);	result = true;	break;
+	}
+	return result;
+}
+
+void VertexBuffer::Bind() {
+	glBindVertexArray(m_vao);
+}
+
+void VertexBuffer::Release() {
+	glBindVertexArray(0);
 }
 
 IndexBuffer::IndexBuffer(Uint32 size, BufferUsage hint)
@@ -211,5 +336,5 @@ void IndexBuffer::Unmap()
 	m_mapMode = BUFFER_MAP_NONE;
 }
 
-
-} }
+} //namespace GL2
+} //namespace Graphics

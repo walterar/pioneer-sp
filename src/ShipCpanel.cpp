@@ -19,14 +19,15 @@
 // XXX duplicated in WorldView. should probably be a theme variable
 static const Color s_hudTextColor(0,255,0,204);
 
-ShipCpanel::ShipCpanel(Graphics::Renderer *r): Gui::Fixed(float(Gui::Screen::GetWidth()), 80)
+ShipCpanel::ShipCpanel(Graphics::Renderer *r, Game* game): Gui::Fixed(float(Gui::Screen::GetWidth()), 80), m_game(game)
 {
 	m_scanner = new ScannerWidget(r);
 
 	InitObject();
 }
 
-ShipCpanel::ShipCpanel(Serializer::Reader &rd, Graphics::Renderer *r): Gui::Fixed(float(Gui::Screen::GetWidth()), 80)
+ShipCpanel::ShipCpanel(Serializer::Reader &rd, Graphics::Renderer *r, Game* game): Gui::Fixed(float(Gui::Screen::GetWidth()), 80),
+	m_game(game)
 {
 	m_scanner = new ScannerWidget(r, rd);
 
@@ -45,17 +46,14 @@ void ShipCpanel::InitObject()
 
 	m_currentMapView = MAP_SECTOR;
 	m_useEquipWidget = new UseEquipWidget();
-	m_msglog = new MsgLogWidget();
 
 	m_userSelectedMfuncWidget = MFUNC_SCANNER;
 
 	m_scanner->onGrabFocus.connect(sigc::bind(sigc::mem_fun(this, &ShipCpanel::OnMultiFuncGrabFocus), MFUNC_SCANNER));
 	m_useEquipWidget->onGrabFocus.connect(sigc::bind(sigc::mem_fun(this, &ShipCpanel::OnMultiFuncGrabFocus), MFUNC_EQUIPMENT));
-	m_msglog->onGrabFocus.connect(sigc::bind(sigc::mem_fun(this, &ShipCpanel::OnMultiFuncGrabFocus), MFUNC_MSGLOG));
 
 	m_scanner->onUngrabFocus.connect(sigc::bind(sigc::mem_fun(this, &ShipCpanel::OnMultiFuncUngrabFocus), MFUNC_SCANNER));
 	m_useEquipWidget->onUngrabFocus.connect(sigc::bind(sigc::mem_fun(this, &ShipCpanel::OnMultiFuncUngrabFocus), MFUNC_EQUIPMENT));
-	m_msglog->onUngrabFocus.connect(sigc::bind(sigc::mem_fun(this, &ShipCpanel::OnMultiFuncUngrabFocus), MFUNC_MSGLOG));
 
 	// where the scanner is
 	m_mfsel = new MultiFuncSelectorWidget();
@@ -114,7 +112,7 @@ void ShipCpanel::InitObject()
 	m_camButton->AddState(WorldView::CAM_INTERNAL, "icons/cam_internal.png", "icons/cam_internal_on.png", Lang::INTERNAL_VIEW);
 	m_camButton->AddState(WorldView::CAM_EXTERNAL, "icons/cam_external.png", "icons/cam_external_on.png", Lang::EXTERNAL_VIEW);
 	m_camButton->AddState(WorldView::CAM_SIDEREAL, "icons/cam_sidereal.png", "icons/cam_sidereal_on.png", Lang::SIDEREAL_VIEW);
-	m_camButton->SetShortcut(SDLK_KP_1, KMOD_NONE);
+	m_camButton->SetShortcut(SDLK_KP_5, KMOD_NONE); //SetShortcut(SDLK_F1, KMOD_NONE) // modified by walterar
 	m_camButton->onClick.connect(sigc::mem_fun(this, &ShipCpanel::OnChangeCamView));
 	m_camButton->SetRenderDimensions(30, 22);
 	Add(m_camButton, 2, 56);
@@ -215,19 +213,20 @@ void ShipCpanel::InitObject()
 	Add(m_overlay[OVERLAY_TOP_RIGHT],    500.0f, 2.0f);
 	Add(m_overlay[OVERLAY_BOTTOM_LEFT],  150.0f, 62.0f);
 	Add(m_overlay[OVERLAY_BOTTOM_RIGHT], 520.0f, 62.0f);
+
+	View::SetCpanel(this);
 }
 
 ShipCpanel::~ShipCpanel()
 {
+	View::SetCpanel(nullptr);
 	delete m_leftButtonGroup;
 	delete m_rightButtonGroup;
 	Remove(m_scanner);
 	Remove(m_useEquipWidget);
-	Remove(m_msglog);
 	Remove(m_mfsel);
 	delete m_scanner;
 	delete m_useEquipWidget;
-	delete m_msglog;
 	delete m_mfsel;
 	m_connOnRotationDampingChanged.disconnect();
 }
@@ -243,11 +242,9 @@ void ShipCpanel::ChangeMultiFunctionDisplay(multifuncfunc_t f)
 	Gui::Widget *selected = 0;
 	if (f == MFUNC_SCANNER) selected = m_scanner;
 	if (f == MFUNC_EQUIPMENT) selected = m_useEquipWidget;
-	if (f == MFUNC_MSGLOG) selected = m_msglog;
 
 	Remove(m_scanner);
 	Remove(m_useEquipWidget);
-	Remove(m_msglog);
 	if (selected) {
 		m_mfsel->SetSelected(f);
 		Add(selected, 200, 18);
@@ -268,8 +265,8 @@ void ShipCpanel::OnMultiFuncUngrabFocus(multifuncfunc_t f)
 void ShipCpanel::Update()
 {
 	PROFILE_SCOPED()
-	int timeAccel = Pi::game->GetTimeAccel();
-	int requested = Pi::game->GetRequestedTimeAccel();
+	int timeAccel = m_game->GetTimeAccel();
+	int requested = m_game->GetRequestedTimeAccel();
 
 	for (int i=0; i<6; i++) {
 		m_timeAccelButtons[i]->SetSelected(timeAccel == i);
@@ -281,19 +278,18 @@ void ShipCpanel::Update()
 
 	m_scanner->Update();
 	m_useEquipWidget->Update();
-	m_msglog->Update();
+
+	View *cur = Pi::GetView();
+	if ((cur != m_game->GetSectorView()) && (cur != m_game->GetSystemView()) &&
+	    (cur != m_game->GetSystemInfoView()) && (cur != m_game->GetGalacticView())) {
+		HideMapviewButtons();
+	}
 }
 
 void ShipCpanel::Draw()
 {
-	std::string time = format_date(Pi::game->GetTime());
+	std::string time = format_date(m_game->GetTime());
 	m_clock->SetText(time);
-
-	View *cur = Pi::GetView();
-	if ((cur != Pi::sectorView) && (cur != Pi::systemView) &&
-	    (cur != Pi::systemInfoView) && (cur != Pi::galacticView)) {
-		HideMapviewButtons();
-	}
 
 	Gui::Fixed::Draw();
 }
@@ -303,15 +299,15 @@ void ShipCpanel::OnChangeCamView(Gui::MultiStateImageButton *b)
 	Pi::BoinkNoise();
 	const int newState = b->GetState();
 	b->SetActiveState(newState);
-	Pi::worldView->SetCamType(WorldView::CamType(newState));
-	Pi::SetView(Pi::worldView);
+	m_game->GetWorldView()->SetCamType(WorldView::CamType(newState));
+	Pi::SetView(m_game->GetWorldView());
 }
 
 void ShipCpanel::OnChangeInfoView(Gui::MultiStateImageButton *b)
 {
 	Pi::BoinkNoise();
-	if (Pi::GetView() != Pi::infoView)
-		Pi::SetView(Pi::infoView);
+	if (Pi::GetView() != m_game->GetInfoView())
+		Pi::SetView(m_game->GetInfoView());
 }
 
 void ShipCpanel::OnChangeToMapView(Gui::MultiStateImageButton *b)
@@ -324,16 +320,16 @@ void ShipCpanel::OnChangeMapView(enum MapView view)
 {
 	m_currentMapView = view;
 	switch (m_currentMapView) {
-		case MAP_SECTOR: Pi::SetView(Pi::sectorView); break;
-		case MAP_SYSTEM: Pi::SetView(Pi::systemView); break;
+		case MAP_SECTOR: Pi::SetView(m_game->GetSectorView()); break;
+		case MAP_SYSTEM: Pi::SetView(m_game->GetSystemView()); break;
 		case MAP_INFO:
-			if (Pi::GetView() == Pi::systemInfoView) {
-				Pi::systemInfoView->NextPage();
+			if (Pi::GetView() == m_game->GetSystemInfoView()) {
+				m_game->GetSystemInfoView()->NextPage();
 			} else {
-				Pi::SetView(Pi::systemInfoView);
+				Pi::SetView(m_game->GetSystemInfoView());
 			}
 			break;
-		case MAP_GALACTIC: Pi::SetView(Pi::galacticView); break;
+		case MAP_GALACTIC: Pi::SetView(m_game->GetGalacticView()); break;
 	}
 	for (int i=0; i<4; i++) m_mapViewButtons[i]->Show();
 }
@@ -346,26 +342,26 @@ void ShipCpanel::HideMapviewButtons()
 void ShipCpanel::OnClickTimeaccel(Game::TimeAccel val)
 {
 	Pi::BoinkNoise();
-	if ((Pi::game->GetTimeAccel() == val) && (val == Game::TIMEACCEL_PAUSED)) {
-		if (Pi::GetView() != Pi::settingsView)
-			Pi::SetView(Pi::settingsView);
+	if ((m_game->GetTimeAccel() == val) && (val == Game::TIMEACCEL_PAUSED)) {
+		if (Pi::GetView() != m_game->GetSettingsView())
+			Pi::SetView(m_game->GetSettingsView());
 		else
-			Pi::SetView(Pi::worldView);
+			Pi::SetView(m_game->GetWorldView());
 	}
 	else {
-		if (Pi::GetView() == Pi::settingsView)
-			Pi::SetView(Pi::worldView);
-		Pi::game->RequestTimeAccel(val, Pi::KeyState(SDLK_LCTRL) || Pi::KeyState(SDLK_RCTRL));
+		if (Pi::GetView() == m_game->GetSettingsView())
+			Pi::SetView(m_game->GetWorldView());
+		m_game->RequestTimeAccel(val, Pi::KeyState(SDLK_LCTRL) || Pi::KeyState(SDLK_RCTRL));
 	}
 }
 
 void ShipCpanel::OnClickComms(Gui::MultiStateImageButton *b)
 {
 	Pi::BoinkNoise();
-	if (Pi::player->GetFlightState() == Ship::DOCKED) Pi::SetView(Pi::spaceStationView);
+	if (Pi::player->GetFlightState() == Ship::DOCKED) Pi::SetView(m_game->GetSpaceStationView());
 	else {
-		Pi::SetView(Pi::worldView);
-		Pi::worldView->ToggleTargetActions();
+		Pi::SetView(m_game->GetWorldView());
+		m_game->GetWorldView()->ToggleTargetActions();
 	}
 }
 

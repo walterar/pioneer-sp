@@ -137,7 +137,7 @@
    },
    "CAMERA_LEFT_VIEW" : {
       "description" : "",
-      "message" : "Left camera"
+      "message" : "Linker camera"
    },
    "CAMERA_REAR_VIEW" : {
       "description" : "",
@@ -145,15 +145,19 @@
    },
    "CAMERA_RIGHT_VIEW" : {
       "description" : "",
-      "message" : "Right camera"
+      "message" : "Rechter camera"
    },
    "CAMERA_TOP_VIEW" : {
       "description" : "",
       "message" : "Bovenaanzicht"
    },
+   "CANT_SAVE_DEAD_PLAYER" : {
+      "description" : "",
+      "message" : "Can't save game after the player has died"
+   },
    "CANT_SAVE_IN_HYPERSPACE" : {
       "description" : "",
-      "message" : "Can't save game while in hyperspace"
+      "message" : "Kan niet opslaan tijdens hyperspace"
    },
    "CAPITALIST" : {
       "description" : "",
@@ -195,6 +199,10 @@
       "description" : "",
       "message" : "Cargo scoop active. Collected 1 tonne of %item."
    },
+   "CARGO_SCOOP_ATTEMPTED" : {
+      "description" : "",
+      "message" : "Cargo scoop attempted. Not enough room in cargo hold."
+   },
    "CARGO_SCOOP_DESCRIPTION" : {
       "description" : "",
       "message" : "Laat toe om vrachtmodules op te scheppen uit de ruimte."
@@ -222,6 +230,18 @@
    "COMMA_HIGHLY_VOLCANIC" : {
       "description" : "",
       "message" : ", hoog vulcanisch"
+   },
+   "COMMODITY_NONE" : {
+      "description" : "When no commodities exist",
+      "message" : "Geen"
+   },
+   "COMMODITY_TRADE_ANALYSIS_COMPARE" : {
+      "description" : "",
+      "message" : "Commodity trade analysis of #ff0%selected_system#fff (selected) against #ff0%current_system#fff (current):"
+   },
+   "COMMODITY_TRADE_ANALYSIS_SELF" : {
+      "description" : "",
+      "message" : "Commodity trade analysis of #fff%system#fff"
    },
    "COMMS" : {
       "description" : "",
@@ -289,7 +309,7 @@
    },
    "DECREASE_SCAN_RANGE" : {
       "description" : "",
-      "message" : "Decrease scanner range"
+      "message" : "Verklein scanner bereik"
    },
    "DECREASE_SET_SPEED" : {
       "description" : "",
@@ -337,11 +357,11 @@
    },
    "DRAW_UNINHABITED_LABELS" : {
       "description" : "",
-      "message" : "Label uninhabited systems"
+      "message" : "Markeer onbewoonde systemen"
    },
    "DRAW_VERTICAL_LINES" : {
       "description" : "",
-      "message" : "Draw vertical lines"
+      "message" : "Teken verticale lijnen"
    },
    "DRIVE_CLASS1" : {
       "description" : "",
@@ -559,13 +579,33 @@
       "description" : "",
       "message" : "\" Hoed\""
    },
+   "HEADING_LOCK_ANTINORMAL" : {
+      "description" : "",
+      "message" : "Hold anti-normal"
+   },
    "HEADING_LOCK_BACKWARD" : {
       "description" : "",
-      "message" : "Richtingslot (achter)"
+      "message" : "Hold retrograde"
    },
    "HEADING_LOCK_FORWARD" : {
       "description" : "",
-      "message" : "Heading Lock (fore)"
+      "message" : "Hold prograde"
+   },
+   "HEADING_LOCK_KILLROT" : {
+      "description" : "",
+      "message" : "Kill rotation"
+   },
+   "HEADING_LOCK_NORMAL" : {
+      "description" : "",
+      "message" : "Hold normal"
+   },
+   "HEADING_LOCK_RADIALLY_INWARD" : {
+      "description" : "",
+      "message" : "Hold radially in"
+   },
+   "HEADING_LOCK_RADIALLY_OUTWARD" : {
+      "description" : "",
+      "message" : "Hold radially out"
    },
    "HEAVY_INDUSTRY" : {
       "description" : "",
@@ -655,6 +695,10 @@
       "description" : "",
       "message" : "\" ijswereld\""
    },
+   "ILLEGAL_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of commodity (singular) status in the system the player is currently in",
+      "message" : "Illegal (current system):"
+   },
    "ILLEGAL_GOODS" : {
       "description" : "",
       "message" : "Illegale Goederen:"
@@ -665,7 +709,7 @@
    },
    "INCREASE_SCAN_RANGE" : {
       "description" : "",
-      "message" : "Increase scanner range"
+      "message" : "Vergroot scanner bereik"
    },
    "INCREASE_SET_SPEED" : {
       "description" : "",
@@ -693,7 +737,7 @@
    },
    "IN_TRANSIT" : {
       "description" : "",
-      "message" : "In transit"
+      "message" : "Onderweg"
    },
    "IN_TRANSIT_TO_N_X_X_X" : {
       "description" : "",
@@ -747,6 +791,10 @@
       "description" : "",
       "message" : "Laser-schoten gedetecteerd."
    },
+   "LEGAL_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of commodity (singular) status in the system the player is currently in",
+      "message" : "Legal (current system):"
+   },
    "LIBERAL_DEMOCRACY" : {
       "description" : "",
       "message" : "Liberale democratie"
@@ -775,9 +823,17 @@
       "description" : "",
       "message" : "Voornaamste export:"
    },
+   "MAJOR_EXPORT_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+      "message" : "Major export (current system)"
+   },
    "MAJOR_IMPORTS" : {
       "description" : "",
       "message" : "Voornaamste import:"
+   },
+   "MAJOR_IMPORT_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+      "message" : "Major import (current system)"
    },
    "MANUAL_CONTROL" : {
       "description" : "",
@@ -841,7 +897,7 @@
    },
    "MAP_WARP_TO_CURRENT_SYSTEM" : {
       "description" : "",
-      "message" : "Warp to Current System"
+      "message" : "Warp naar huidig systeem"
    },
    "MAP_WARP_TO_HYPERSPACE_TARGET" : {
       "description" : "",
@@ -915,13 +971,21 @@
       "description" : "",
       "message" : "Secundaire export:"
    },
+   "MINOR_EXPORT_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+      "message" : "Minor export (current system)"
+   },
    "MINOR_IMPORTS" : {
       "description" : "",
       "message" : "Secundaire import:"
    },
+   "MINOR_IMPORT_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+      "message" : "Minor import (current system)"
+   },
    "MISCELLANEOUS" : {
       "description" : "",
-      "message" : "Miscellaneous"
+      "message" : "Diversen"
    },
    "MISSILE" : {
       "description" : "",
@@ -1028,7 +1092,7 @@
       "message" : "Zenuwgas"
    },
    "NONE" : {
-      "description" : "",
+      "description" : "used for no allegiance, and no rank, and no missions",
       "message" : "Geen"
    },
    "NORMA_ARM" : {
@@ -1073,7 +1137,7 @@
    },
    "NUMBER_DECIMAL_POINT" : {
       "description" : "Decimal delimiter used in numbers.",
-      "message" : "."
+      "message" : ","
    },
    "NUMBER_G" : {
       "description" : "",
@@ -1089,7 +1153,7 @@
    },
    "NUMBER_GROUP_SEP" : {
       "description" : "For large number, separator used when grouping digits. E.g. 1,000 or 1 000 or 1'000.",
-      "message" : ","
+      "message" : "."
    },
    "NUMBER_HOURS" : {
       "description" : "",
@@ -1109,7 +1173,7 @@
    },
    "N_CELSIUS" : {
       "description" : "",
-      "message" : "%temperature C"
+      "message" : "Temperatuur graden Celcius"
    },
    "N_DAYS" : {
       "description" : "",
@@ -1177,7 +1241,7 @@
    },
    "PAUSED" : {
       "description" : "",
-      "message" : "PAUSED"
+      "message" : "GEPAUSEERD"
    },
    "PAY_FINE_REMOTELY" : {
       "description" : "",
@@ -1226,6 +1290,22 @@
    "PLANNED_ECONOMY" : {
       "description" : "",
       "message" : "Centraal geplande economie"
+   },
+   "PLANNER_RESET_FACTOR" : {
+      "description" : "",
+      "message" : "Rate of increase of delta-v values. Click to reset to default."
+   },
+   "PLANNER_RESET_NORMAL" : {
+      "description" : "",
+      "message" : "Normal delta-v. Click to reset to zero."
+   },
+   "PLANNER_RESET_PROGRADE" : {
+      "description" : "",
+      "message" : "Prograde delta-v. Click to reset to zero."
+   },
+   "PLANNER_RESET_RADIAL" : {
+      "description" : "",
+      "message" : "Radial delta-v. Click to reset to zero."
    },
    "PLASTICS" : {
       "description" : "",
@@ -1345,7 +1425,7 @@
    },
    "ROTATE_DOWN" : {
       "description" : "",
-      "message" : "Rotate Down"
+      "message" : "Roteer neerwaards"
    },
    "ROTATE_LEFT" : {
       "description" : "",
@@ -1405,7 +1485,7 @@
    },
    "SEARCH_MAP" : {
       "description" : "",
-      "message" : "Search Map"
+      "message" : "Zoek op kaart"
    },
    "SECTOR_COORDINATES" : {
       "description" : "",
@@ -1801,7 +1881,7 @@
    },
    "TOGGLE_HUD_MODE" : {
       "description" : "",
-      "message" : "Toggle HUD mode"
+      "message" : "Schakel tussen HUD modes"
    },
    "TOGGLE_LUA_CONSOLE" : {
       "description" : "",
@@ -1813,7 +1893,7 @@
    },
    "TOGGLE_SCAN_MODE" : {
       "description" : "",
-      "message" : "Toggle scanner mode"
+      "message" : "Schakel tussen scanner modus"
    },
    "TOMBSTONE_EPITAPH" : {
       "description" : "",
@@ -1857,7 +1937,7 @@
    },
    "USE_LOW_THRUST" : {
       "description" : "",
-      "message" : "Use low thrust"
+      "message" : "Gebruik kleine stoten"
    },
    "VAST_STRIP_MINE" : {
       "description" : "",

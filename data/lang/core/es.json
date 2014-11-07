@@ -1,4 +1,12 @@
 {
+   "ADVANCED_RADAR_MAPPER" : {
+      "description" : "",
+      "message" : "Trazador avanzado de radar"
+   },
+   "ADVANCED_RADAR_MAPPER_DESCRIPTION" : {
+      "description" : "",
+      "message" : "Trazador de radar de largo alcance con cobertura completa del sistema."
+   },
    "AUTO_COMBAT" : {
       "description":"",
       "message":"Auto Combate Sí/No"
@@ -155,13 +163,13 @@
       "description" : "",
       "message" : "Vista superior"
    },
+   "CANT_SAVE_DEAD_PLAYER" : {
+      "description" : "",
+      "message" : "No es posible salvar el juego tras la muerte del jugador"
+   },
    "CANT_SAVE_IN_HYPERSPACE" : {
       "description" : "",
       "message" : "No es posible salvar estando en hiperespacio"
-   },
-   "CANT_SAVE_DEAD_PLAYER" : {
-      "description" : "",
-      "message" : "No se puede guardar el juego después de que el jugador ha muerto"
    },
    "CAPITALIST" : {
       "description" : "",
@@ -235,6 +243,18 @@
       "description" : "",
       "message" : ", altamente volcánico"
    },
+   "COMMODITY_NONE" : {
+      "description" : "When no commodities exist",
+      "message" : "None"
+   },
+   "COMMODITY_TRADE_ANALYSIS_COMPARE" : {
+      "description" : "",
+      "message" : "Análisis de productos comercializados en  #ff0%selected_system#fff  comparados con  #ff0%current_system#fff"
+   },
+   "COMMODITY_TRADE_ANALYSIS_SELF" : {
+      "description" : "",
+      "message" : "Análisis de productos comercializados en  #fff%system#fff"
+   },
    "COMMS" : {
       "description" : "",
       "message" : "Comms"
@@ -293,7 +313,7 @@
    },
    "DATE_DUE_N" : {
       "description" : "",
-      "message" : "Fecha de vencimiento: %date"
+      "message" : "Fecha de llegada: %date"
    },
    "DAY_LENGTH" : {
       "description" : "",
@@ -333,7 +353,7 @@
    },
    "DOCKING" : {
       "description" : "",
-      "message" : "Maniobra portuaria"
+      "message" : "Maniobrando"
    },
    "DOCKING_CLEARANCE_EXPIRED" : {
       "description" : "",
@@ -505,7 +525,7 @@
    },
    "FUEL" : {
       "description" : "",
-      "message" : "      Propelente"
+      "message" : "        Propelente"
    },
    "FUEL_SCOOP" : {
       "description" : "",
@@ -571,21 +591,25 @@
       "description" : "",
       "message" : "\" Hat\""
    },
-   "HEADING_LOCK_FORWARD" : {
+   "HEADING_LOCK_ANTINORMAL" : {
       "description" : "",
-      "message" : "Mant. progrado"
+      "message" : "Mant. anti-normal"
    },
    "HEADING_LOCK_BACKWARD" : {
       "description" : "",
       "message" : "Mant. retrogrado"
    },
+   "HEADING_LOCK_FORWARD" : {
+      "description" : "",
+      "message" : "Mant. progrado"
+   },
+   "HEADING_LOCK_KILLROT" : {
+      "description" : "",
+      "message" : "No rotación"
+   },
    "HEADING_LOCK_NORMAL" : {
       "description" : "",
       "message" : "Mant. normal"
-   },
-   "HEADING_LOCK_ANTINORMAL" : {
-      "description" : "",
-      "message" : "Mant. anti-normal"
    },
    "HEADING_LOCK_RADIALLY_INWARD" : {
       "description" : "",
@@ -594,10 +618,6 @@
    "HEADING_LOCK_RADIALLY_OUTWARD" : {
       "description" : "",
       "message" : "Mant. popa rad."
-   },
-   "HEADING_LOCK_KILLROT" : {
-      "description" : "",
-      "message" : "Mata rotación"
    },
    "HEAVY_INDUSTRY" : {
       "description" : "",
@@ -686,6 +706,10 @@
    "ICE_WORLD" : {
       "description" : "",
       "message" : "\" Mundo helado\""
+   },
+   "ILLEGAL_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of commodity (singular) status in the system the player is currently in",
+      "message" : "Ilegal (en éste sistema):"
    },
    "ILLEGAL_GOODS" : {
       "description" : "",
@@ -779,6 +803,10 @@
       "description" : "",
       "message" : "Disparo de pulso detectado."
    },
+   "LEGAL_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of commodity (singular) status in the system the player is currently in",
+      "message" : "Legal (en éste sistema):"
+   },
    "LIBERAL_DEMOCRACY" : {
       "description" : "",
       "message" : "Democracia liberal"
@@ -799,17 +827,29 @@
       "description" : "",
       "message" : "Animales vivos"
    },
+   "LOCAL_ARM" : {
+      "description" : "Arm of the Milky Way galaxy",
+      "message" : "Brazo local"
+   },
    "LOCKED" : {
       "description" : "",
       "message" : "Fijado"
    },
    "MAJOR_EXPORTS" : {
       "description" : "",
-      "message" : "Exportaciones principales:"
+      "message" : "Exportaciones principales"
+   },
+   "MAJOR_EXPORT_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+      "message" : "Export. principal (en éste sistema)"
    },
    "MAJOR_IMPORTS" : {
       "description" : "",
-      "message" : "Importaciones principales:"
+      "message" : "Importaciones principales"
+   },
+   "MAJOR_IMPORT_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+      "message" : "Import. principal (en éste sistema)"
    },
    "MANUAL_CONTROL" : {
       "description" : "",
@@ -917,7 +957,7 @@
    },
    "METAL_ORE" : {
       "description" : "",
-      "message" : "Metales (mena)"
+      "message" : "Metales (mineral)"
    },
    "MILITARY_DICTATORSHIP" : {
       "description" : "",
@@ -945,11 +985,19 @@
    },
    "MINOR_EXPORTS" : {
       "description" : "",
-      "message" : "Exportaciones secundarias:"
+      "message" : "Exportaciones secundarias"
+   },
+   "MINOR_EXPORT_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+      "message" : "Export. secundarias"
    },
    "MINOR_IMPORTS" : {
       "description" : "",
-      "message" : "Importaciones secundarias:"
+      "message" : "Importaciones secundarias"
+   },
+   "MINOR_IMPORT_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+      "message" : "Import. secundarias"
    },
    "MISCELLANEOUS" : {
       "description" : "",
@@ -1123,6 +1171,10 @@
       "description" : "For large number, group digits by this many. European languages use 3 (group thousands). 0 means no grouping.",
       "message" : "3"
    },
+   "NUMBER_GROUP_SEP" : {
+      "description" : "Para cifras largas, separador usado por grupo de digitos. Ej. 1,000 or 1 000 or 1.000",
+      "message" : "."
+   },
    "NUMBER_HOURS" : {
       "description" : "",
       "message" : "%hours{f.1} hrs"
@@ -1259,6 +1311,22 @@
       "description" : "",
       "message" : "Economía centralizada"
    },
+   "PLANNER_RESET_FACTOR" : {
+      "description" : "",
+      "message" : "Rate of increase of delta-v values. Click to reset to default."
+   },
+   "PLANNER_RESET_NORMAL" : {
+      "description" : "",
+      "message" : "Normal delta-v. Click to reset to zero."
+   },
+   "PLANNER_RESET_PROGRADE" : {
+      "description" : "",
+      "message" : "Prograde delta-v. Click to reset to zero."
+   },
+   "PLANNER_RESET_RADIAL" : {
+      "description" : "",
+      "message" : "Radial delta-v. Click to reset to zero."
+   },
    "PLASTICS" : {
       "description" : "",
       "message" : "Plásticos"
@@ -1338,6 +1406,10 @@
    "REAR" : {
       "description" : "",
       "message" : "Popa"
+   },
+   "RECENTLY_EXPLORED_SYSTEM" : {
+      "description" : "",
+      "message" : "Este sistema se exploró el %date."
    },
    "REQUEST_DOCKING_CLEARANCE" : {
       "description" : "",
@@ -1473,11 +1545,15 @@
    },
    "SET_HYPERSPACE_TARGET_TO_FOLLOW_THIS_DEPARTURE" : {
       "description" : "",
-      "message" : "Analizador de nube hiperespacial: Fijar objetivo hiperespacial del viaje"
+      "message" : "Fijar destino hiperespacial en persecución"
    },
    "SET_LOW_THRUST_POWER_LEVEL_TO_X_PERCENT" : {
       "description" : "",
       "message" : "Nivel de impulso de baja potencia al %power%%"
+   },
+   "SET_NAVTARGET_TO" : {
+      "description" : "",
+      "message" : "Establecer objetivo de navegación a:"
    },
    "SET_SPEED_KM_S" : {
       "description" : "",
@@ -1518,6 +1594,10 @@
    "SHIP" : {
       "description" : "",
       "message" : "Nave"
+   },
+   "SHIPS_DISPLAY_MODE_TOGGLE" : {
+      "description" : "Either show no ships, show ships, or show ships + their orbits",
+      "message" : "Cambiar entre modos de pantalla."
    },
    "SHIP_ALTITUDE_ABOVE_TERRAIN" : {
       "description" : "",
@@ -1751,6 +1831,14 @@
       "description" : "",
       "message" : "Temperatura en superficie"
    },
+   "SWITCHED_TO_PARENT" : {
+      "description" : "Show ship's heading, coordinates are on the celestial sphere (defined by the ecliptic).",
+      "message" : "Conmutada la dirección a las coordenadas de todo el sistema."
+   },
+   "SWITCHED_TO_ROTATIONAL" : {
+      "description" : "Show ship's heading in planetary coordinates. heading 0 = north, 90 = east, 180 = south, 270 = west.",
+      "message" : "Conmutada la dirección a las coordenadas planetarias."
+   },
    "SYSTEM" : {
       "description" : "",
       "message" : "Sistema"
@@ -1794,6 +1882,10 @@
    "THIN" : {
       "description" : "",
       "message" : "delgada"
+   },
+   "THREE_KPC_ARM" : {
+      "description" : "Arm of the Milky Way galaxy",
+      "message" : "Brazo 3kpc "
    },
    "THRIVING_OUTDOOR_WORLD" : {
       "description" : "",
@@ -1851,6 +1943,14 @@
       "description" : "",
       "message" : "R.I.P."
    },
+   "TRADE_ANALYZER" : {
+      "description" : "Ship equipment computing profitable commodities to trade between two systems",
+      "message" : "Analizador de comercio"
+   },
+   "TRADE_ANALYZER_DESCRIPTION" : {
+      "description" : "",
+      "message" : "Muestra las mercancías rentables con las que comerciar entre el sistema seleccionado y el actual"
+   },
    "TRADING_ILLEGAL_GOODS" : {
       "description" : "",
       "message" : "Comerciar con productos ilegales"
@@ -1886,6 +1986,10 @@
    "UNOCCUPIED_CABIN_DESCRIPTION" : {
       "description" : "",
       "message" : "Para el transporte de pasajeros.\nUna Cabina por pasajero."
+   },
+   "UNSET_NAVTARGET" : {
+      "description" : "",
+      "message" : "Deseleccionar objetivo de navegación."
    },
    "USE_LOW_THRUST" : {
       "description" : "",

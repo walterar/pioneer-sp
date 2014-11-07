@@ -65,6 +65,7 @@ public:
 
 class CustomSystem {
 public:
+	static const int CUSTOM_ONLY_RADIUS = 4;
 	CustomSystem();
 	~CustomSystem();
 
@@ -77,8 +78,10 @@ public:
 	Uint32                 seed;
 	bool                   want_rand_explored;
 	bool                   explored;
-	Faction*               faction;
+	const Faction*         faction;
 	Polit::GovType         govType;
+	bool                   want_rand_lawlessness;
+	fixed                  lawlessness; // 0.0 = lawful, 1.0 = totally lawless
 	std::string            shortDesc;
 	std::string            longDesc;
 
@@ -87,12 +90,12 @@ public:
 
 class CustomSystemsDatabase {
 public:
-	CustomSystemsDatabase(Galaxy* galaxy) : m_galaxy(galaxy) { }
+	CustomSystemsDatabase(Galaxy* galaxy, const std::string& customSysDir) : m_galaxy(galaxy), m_customSysDirectory(customSysDir) { }
 	~CustomSystemsDatabase();
 
 	void Init();
 
-	typedef std::vector<CustomSystem*> SystemList;
+	typedef std::vector<const CustomSystem*> SystemList;
 	// XXX this is not as const-safe as it should be
 	const SystemList &GetCustomSystemsForSector(int sectorX, int sectorY, int sectorZ) const;
 	void AddCustomSystem(const SystemPath& path, CustomSystem* csys);
@@ -102,6 +105,7 @@ private:
 	typedef std::map<SystemPath, CustomSystemsDatabase::SystemList> SectorMap;
 
 	Galaxy* const m_galaxy;
+	const std::string m_customSysDirectory;
 	SectorMap m_sectorMap;
 	static const CustomSystemsDatabase::SystemList s_emptySystemList; // see: Null Object pattern
 };

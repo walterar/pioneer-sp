@@ -48,7 +48,7 @@
       "message" : "Avisos locales"
    },
    "BUY" : {
-      "description" : "Commodities and equipment prices",
+      "description" : "",
       "message" : "Compra"
    },
    "BUY_SHIP" : {
@@ -142,6 +142,10 @@
    "COMMODITY_MARKET" : {
       "description" : "",
       "message" : "Mercado de Productos"
+   },
+   "COMPACT_SCANNER" : {
+      "description" : "",
+      "message" : "Radar compacto"
    },
    "COMPETENT" : {
       "description" : "",

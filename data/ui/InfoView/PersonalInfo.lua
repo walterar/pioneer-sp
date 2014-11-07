@@ -67,7 +67,7 @@ local personalInfo = function ()
 	local nameEntry = ui:TextEntry(player.name):SetFont("HEADING_LARGE")
 	nameEntry.onChange:Connect(function (newName)
 		player.name = newName
-        faceWidget:UpdateInfo(player)
+		faceWidget:UpdateInfo(player)
 	end )
 
 	local genderToggle = SmallLabeledButton.New(l.TOGGLE_MALE_FEMALE)

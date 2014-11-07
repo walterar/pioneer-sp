@@ -27,9 +27,6 @@
     <ClCompile Include="..\..\src\DynamicBody.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\EquipType.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\Frame.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -387,10 +384,16 @@
     <ClCompile Include="..\..\contrib\PicoDDS\PicoDDS.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\FaceGenManager.cpp">
+    <ClCompile Include="..\..\src\FaceParts.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\SpeedLines.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\GameLog.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Colors.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Shields.cpp">
@@ -412,6 +415,15 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\BaseSphere.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\DateTime.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Sphere.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Plane.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -444,9 +456,6 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\DynamicBody.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\EquipType.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\fixed.h">
@@ -809,16 +818,19 @@
     <ClInclude Include="..\..\contrib\PicoDDS\PicoDDS.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\FaceGenManager.h">
+    <ClInclude Include="..\..\src\FaceParts.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Shields.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\EquipSet.h">
+    <ClInclude Include="..\..\src\SpeedLines.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\SpeedLines.h">
+    <ClInclude Include="..\..\src\GameLog.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Colors.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\ShipCockpit.h">
@@ -837,6 +849,15 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\matrix3x3.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\DateTime.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Sphere.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Plane.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

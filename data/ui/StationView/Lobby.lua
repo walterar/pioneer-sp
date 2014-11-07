@@ -1,14 +1,14 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-local Engine    = import("Engine")
-local Game      = import("Game")
-local Rand      = import("Rand")
-local Character = import("Character")
-local Lang      = import("Lang")
-local Comms     = import("Comms")
+local Engine     = import("Engine")
+local Game       = import("Game")
+local Rand       = import("Rand")
+local Character  = import("Character")
+local Lang       = import("Lang")
 
-local InfoFace = import("ui/InfoFace")
+local MessageBox = import("ui/MessageBox")
+local InfoFace   = import("ui/InfoFace")
 
 local l = Lang.GetResource("ui-core")
 
@@ -26,11 +26,11 @@ local lobby = function (tab)
 		local crimes, fine = Game.player:GetCrime()
 
 		if not Game.player:HasCorrectCrew() then
-			Comms.ImportantMessage(l.LAUNCH_PERMISSION_DENIED_CREW, station.label)
+			MessageBox.Message(l.LAUNCH_PERMISSION_DENIED_CREW)
 		elseif fine > 0 then
-			Comms.ImportantMessage(l.LAUNCH_PERMISSION_DENIED_FINED, station.label)
+			MessageBox.Message(l.LAUNCH_PERMISSION_DENIED_FINED)
 		elseif not Game.player:Undock() then
-			Comms.ImportantMessage(l.LAUNCH_PERMISSION_DENIED_BUSY, station.label)
+			MessageBox.Message(l.LAUNCH_PERMISSION_DENIED_BUSY)
 		else
 			Game.SwitchView()
 		end

@@ -98,10 +98,10 @@ std::string KeyBinding::Description() const {
 		if (u.keyboard.mod & KMOD_GUI) oss << Lang::META << " + ";
 		oss << SDL_GetKeyName(u.keyboard.key);
 	} else if (type == JOYSTICK_BUTTON) {
-		oss << Lang::JOY << int(u.joystickButton.joystick);
+		oss << Pi::JoystickName(u.joystickButton.joystick);
 		oss << Lang::BUTTON << int(u.joystickButton.button);
 	} else if (type == JOYSTICK_HAT) {
-		oss << Lang::JOY << int(u.joystickHat.joystick);
+		oss << Pi::JoystickName(u.joystickHat.joystick);
 		oss << Lang::HAT << int(u.joystickHat.hat);
 		oss << Lang::DIRECTION << int(u.joystickHat.direction);
 	} else
@@ -110,18 +110,52 @@ std::string KeyBinding::Description() const {
 	return oss.str();
 }
 
+
 /**
- * Exampe strings:
+ * In a C string pointed to by the string pointer pointed to by p, scan for
+ * the character token tok, copying the bytes on the way to bufOut which is at most buflen long.
+ *
+ * returns true on success, returns false if the end of the input string was reached,
+ *   or the buffer would be overfilled without encountering the token.
+ *
+ * upon return, the pointer pointed to by p will refer to the character AFTER the tok.
+ */
+static bool ReadToTok(char tok, const char **p, char *bufOut, size_t buflen) {
+	unsigned int idx;
+	for (idx = 0; idx < buflen; idx++) {
+		if (**p == '\0' || **p == tok) {
+			break;
+		}
+		bufOut[idx] = *((*p)++);
+	}
+	// if, after that, we're not pointing at the tok, we must have hit 
+	// the terminal or run out of buffer.
+	if (**p != tok) {
+		return false;
+	}
+	// otherwise, skip over the tok.
+	(*p)++;
+	// if there is sufficient space in the buffer, NUL terminate.
+	if (idx < buflen) {
+		bufOut[idx] = '\0';
+	}
+	return true;
+}
+
+/**
+ * Example strings:
  *   Key55
- *   Joy0Button2
- *   Joy0Hat0Dir3
+ *   Joy{uuid}/Button2
+ *   Joy{uuid}/Hat0Dir3
  */
 bool KeyBinding::FromString(const char *str, KeyBinding &kb)
 {
 	const char *digits = "1234567890";
 	const char *p = str;
 
-	if (strncmp(p, "Key", 3) == 0) {
+	if (strcmp(p, "disabled") == 0) {
+		kb.Clear();
+	} else if (strncmp(p, "Key", 3) == 0) {
 		kb.type = KEYBOARD_KEY;
 		p += 3;
 
@@ -137,9 +171,20 @@ bool KeyBinding::FromString(const char *str, KeyBinding &kb)
 	} else if (strncmp(p, "Joy", 3) == 0) {
 		p += 3;
 
-		int joy = atoi(p);
-		p += strspn(p, digits);
+		const int JoyUUIDLength = 33;
+		char joyUUIDBuf[JoyUUIDLength];
 
+		// read the UUID
+		if (!ReadToTok('/', &p, joyUUIDBuf, JoyUUIDLength)) {
+			return false;
+		}
+		// force terminate
+		joyUUIDBuf[JoyUUIDLength-1] = '\0';
+		// now, locate the internal ID.		
+		int joy = Pi::JoystickFromGUIDString(joyUUIDBuf);
+		if (joy == -1) {
+			return false;
+		}
 		if (strncmp(p, "Button", 6) == 0) {
 			p += 6;
 			kb.type = JOYSTICK_BUTTON;
@@ -174,18 +219,18 @@ KeyBinding KeyBinding::FromString(const char *str) {
 std::ostream &operator<<(std::ostream &oss, const KeyBinding &kb)
 {
 	if (kb.type == BINDING_DISABLED) {
-		// blank
+		oss << "disabled";
 	} else if (kb.type == KEYBOARD_KEY) {
 		oss << "Key" << int(kb.u.keyboard.key);
 		if (kb.u.keyboard.mod != 0) {
 			oss << "Mod" << int(kb.u.keyboard.mod);
 		}
 	} else if (kb.type == JOYSTICK_BUTTON) {
-		oss << "Joy" << int(kb.u.joystickButton.joystick);
-		oss << "Button" << int(kb.u.joystickButton.button);
+		oss << "Joy" << Pi::JoystickGUIDString(kb.u.joystickButton.joystick);
+		oss << "/Button" << int(kb.u.joystickButton.button);
 	} else if (kb.type == JOYSTICK_HAT) {
-		oss << "Joy" << int(kb.u.joystickHat.joystick);
-		oss << "Hat" << int(kb.u.joystickHat.hat);
+		oss << "Joy" << Pi::JoystickGUIDString(kb.u.joystickButton.joystick); 
+		oss << "/Hat" << int(kb.u.joystickHat.hat);
 		oss << "Dir" << int(kb.u.joystickHat.direction);
 	} else {
 		assert(0 && "KeyBinding type field is invalid");
@@ -270,7 +315,7 @@ std::string KeyAction::ToString() const
 	} else if (binding2.Enabled()) {
 		oss << binding2;
 	} else {
-		// blank
+		oss << "disabled";
 	}
 	return oss.str();
 }
@@ -321,7 +366,7 @@ void KeyAction::CheckSDLEventAndDispatch(const SDL_Event *event) {
 }
 
 AxisBinding::AxisBinding() {
-	this->joystick = 0;
+	this->joystick = JOYSTICK_DISABLED;
 	this->axis = 0;
 	this->direction = POSITIVE;
 }
@@ -333,6 +378,8 @@ AxisBinding::AxisBinding(Uint8 joystick_, Uint8 axis_, AxisDirection direction_)
 }
 
 float AxisBinding::GetValue() {
+	if (!Enabled()) return 0.0f;
+
 	float value = Pi::JoystickAxisState(joystick, axis);
 
 	if (direction == POSITIVE)
@@ -342,6 +389,8 @@ float AxisBinding::GetValue() {
 }
 
 std::string AxisBinding::Description() const {
+	if (!Enabled()) return std::string();
+
 	const char *axis_names[] = {Lang::X, Lang::Y, Lang::Z};
 	std::ostringstream ossaxisnum;
 	ossaxisnum << int(axis);
@@ -350,12 +399,17 @@ std::string AxisBinding::Description() const {
 		formatarg("sign", direction == KeyBindings::NEGATIVE ? "-" : ""), // no + sign if positive
 		formatarg("signp", direction == KeyBindings::NEGATIVE ? "-" : "+"), // optional with + sign
 		formatarg("joynum", joystick),
+		formatarg("joyname", Pi::JoystickName(joystick)),
 		formatarg("axis", axis >= 0 && axis < 3 ? axis_names[axis] : ossaxisnum.str())
 	);
 }
 
 bool AxisBinding::FromString(const char *str, AxisBinding &ab) {
-	const char *digits = "1234567890";
+	if (strcmp(str, "disabled") == 0) {
+		ab.Clear();
+		return true;
+	}
+
 	const char *p = str;
 
 	if (p[0] == '-') {
@@ -367,10 +421,22 @@ bool AxisBinding::FromString(const char *str, AxisBinding &ab) {
 
 	if (strncmp(p, "Joy", 3) != 0)
 		return false;
-
 	p += 3;
-	ab.joystick = atoi(p);
-	p += strspn(p, digits);
+
+	const int JoyUUIDLength = 33;
+	char joyUUIDBuf[JoyUUIDLength];
+
+	// read the UUID
+	if (!ReadToTok('/', &p, joyUUIDBuf, JoyUUIDLength)) {
+		return false;
+	}
+	// force terminate
+	joyUUIDBuf[JoyUUIDLength-1] = '\0';
+	// now, map the GUID to a joystick number
+	ab.joystick = Pi::JoystickFromGUIDString(joyUUIDBuf);
+	if (ab.joystick == -1) {
+		return false;
+	}
 
 	if (strncmp(p, "Axis", 4) != 0)
 		return false;
@@ -390,15 +456,17 @@ AxisBinding AxisBinding::FromString(const char *str) {
 
 std::string AxisBinding::ToString() const {
 	std::ostringstream oss;
+	if (Enabled()) {
+		if (direction == NEGATIVE)
+			oss << '-';
 
-	if (direction == NEGATIVE)
-		oss << '-';
-
-	oss << "Joy";
-	oss << int(joystick);
-	oss << "Axis";
-	oss << int(axis);
-
+		oss << "Joy";
+		oss << Pi::JoystickGUIDString(joystick);
+		oss << "/Axis";
+		oss << int(axis);
+	} else {
+		oss << "disabled";
+	}
 	return oss.str();
 }
 

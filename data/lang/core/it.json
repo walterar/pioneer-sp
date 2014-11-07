@@ -155,13 +155,13 @@
       "description" : "",
       "message" : "Camera superiore"
    },
+   "CANT_SAVE_DEAD_PLAYER" : {
+      "description" : "",
+      "message" : "Can't save game after the player has died"
+   },
    "CANT_SAVE_IN_HYPERSPACE" : {
       "description" : "",
       "message" : "Non è possibile salvare mentre si è in iperspazio"
-   },
-   "CANT_SAVE_DEAD_PLAYER" : {
-      "description" : "",
-      "message" : "Impossibile salvare il gioco dopo che il giocatore è morto"
    },
    "CAPITALIST" : {
       "description" : "",
@@ -203,6 +203,10 @@
       "description" : "",
       "message" : "Raccoglitore di cargo attivato. Raccolta 1t di %item."
    },
+   "CARGO_SCOOP_ATTEMPTED" : {
+      "description" : "",
+      "message" : "Raccolta di cargo non riuscita. La stiva è piena."
+   },
    "CARGO_SCOOP_DESCRIPTION" : {
       "description" : "",
       "message" : "Permette la raccolta di container di cargo vaganti nello spazio."
@@ -230,6 +234,18 @@
    "COMMA_HIGHLY_VOLCANIC" : {
       "description" : "",
       "message" : ", altamente vulcanico"
+   },
+   "COMMODITY_NONE" : {
+      "description" : "When no commodities exist",
+      "message" : "Vuoto"
+   },
+   "COMMODITY_TRADE_ANALYSIS_COMPARE" : {
+      "description" : "",
+      "message" : "Commodity trade analysis of #ff0%selected_system#fff (selected) against #ff0%current_system#fff (current):"
+   },
+   "COMMODITY_TRADE_ANALYSIS_SELF" : {
+      "description" : "",
+      "message" : "Commodity trade analysis of #fff%system#fff"
    },
    "COMMS" : {
       "description" : "",
@@ -567,13 +583,33 @@
       "description" : "",
       "message" : "\" Hat\""
    },
+   "HEADING_LOCK_ANTINORMAL" : {
+      "description" : "",
+      "message" : "Mantieni direzione anti-normale"
+   },
    "HEADING_LOCK_BACKWARD" : {
       "description" : "",
-      "message" : "Orient. (post)"
+      "message" : "Mantieni direzione retrograda"
    },
    "HEADING_LOCK_FORWARD" : {
       "description" : "",
-      "message" : "Orient. (ant)"
+      "message" : "Mantieni direzione prograda"
+   },
+   "HEADING_LOCK_KILLROT" : {
+      "description" : "",
+      "message" : "Interrompi rotazione"
+   },
+   "HEADING_LOCK_NORMAL" : {
+      "description" : "",
+      "message" : "Mantieni direzione normale"
+   },
+   "HEADING_LOCK_RADIALLY_INWARD" : {
+      "description" : "",
+      "message" : "Mantieni direzione radiale interna"
+   },
+   "HEADING_LOCK_RADIALLY_OUTWARD" : {
+      "description" : "",
+      "message" : "Mantieni direzione radiale esterna"
    },
    "HEAVY_INDUSTRY" : {
       "description" : "",
@@ -662,6 +698,10 @@
    "ICE_WORLD" : {
       "description" : "",
       "message" : "\" pianeta ghiacciato\""
+   },
+   "ILLEGAL_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of commodity (singular) status in the system the player is currently in",
+      "message" : "Illegal (current system):"
    },
    "ILLEGAL_GOODS" : {
       "description" : "",
@@ -755,6 +795,10 @@
       "description" : "",
       "message" : "Rilevata attività ostile."
    },
+   "LEGAL_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of commodity (singular) status in the system the player is currently in",
+      "message" : "Legal (current system):"
+   },
    "LIBERAL_DEMOCRACY" : {
       "description" : "",
       "message" : "Liberal-Democrazia"
@@ -783,9 +827,17 @@
       "description" : "",
       "message" : "Esportazioni principali:"
    },
+   "MAJOR_EXPORT_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+      "message" : "Major export (current system)"
+   },
    "MAJOR_IMPORTS" : {
       "description" : "",
       "message" : "Importazioni principali:"
+   },
+   "MAJOR_IMPORT_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+      "message" : "Major import (current system)"
    },
    "MANUAL_CONTROL" : {
       "description" : "",
@@ -923,9 +975,17 @@
       "description" : "",
       "message" : "Esportazioni secondarie:"
    },
+   "MINOR_EXPORT_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+      "message" : "Minor export (current system)"
+   },
    "MINOR_IMPORTS" : {
       "description" : "",
       "message" : "Importazioni secondarie:"
+   },
+   "MINOR_IMPORT_CURRENT_SYSTEM" : {
+      "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+      "message" : "Minor import (current system)"
    },
    "MISCELLANEOUS" : {
       "description" : "",
@@ -1036,7 +1096,7 @@
       "message" : "Gas nervini"
    },
    "NONE" : {
-      "description" : "",
+      "description" : "used for no allegiance, and no rank, and no missions",
       "message" : "Vuoto"
    },
    "NORMA_ARM" : {
@@ -1234,6 +1294,22 @@
    "PLANNED_ECONOMY" : {
       "description" : "",
       "message" : "Economia a pianificazione statale"
+   },
+   "PLANNER_RESET_FACTOR" : {
+      "description" : "",
+      "message" : "Rate of increase of delta-v values. Click to reset to default."
+   },
+   "PLANNER_RESET_NORMAL" : {
+      "description" : "",
+      "message" : "Normal delta-v. Click to reset to zero."
+   },
+   "PLANNER_RESET_PROGRADE" : {
+      "description" : "",
+      "message" : "Prograde delta-v. Click to reset to zero."
+   },
+   "PLANNER_RESET_RADIAL" : {
+      "description" : "",
+      "message" : "Radial delta-v. Click to reset to zero."
    },
    "PLASTICS" : {
       "description" : "",

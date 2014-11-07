@@ -210,14 +210,19 @@ void Camera::Draw(const Body *excludeBody, ShipCockpit* cockpit)
 			if (pressure >= 0.001)
 			{
 				//go through all lights to calculate something resembling light intensity
-				float angle = 0.f;
-				for(std::vector<LightSource>::const_iterator it = m_lightSources.begin();
-					it != m_lightSources.end(); ++it) {
-					const vector3f lightDir(it->GetLight().GetPosition().Normalized());
-					angle += std::max(0.f, lightDir.Dot(-relpos.Normalized())) * (it->GetLight().GetDiffuse().GetLuminance() / 255.0f);
+				float intensity = 0.f;
+				const Player* pBody = Pi::game->GetPlayer();
+				for( Uint32 i=0; i<m_lightSources.size() ; i++ ) 
+				{
+					// Set up data for eclipses. All bodies are assumed to be spheres.
+					const LightSource &it = m_lightSources[i];
+					const vector3f lightDir(it.GetLight().GetPosition().Normalized());
+					intensity += ShadowedIntensity(i, pBody) * std::max(0.f, lightDir.Dot(-relpos.Normalized())) * (it.GetLight().GetDiffuse().GetLuminance() / 255.0f);
 				}
+				intensity = Clamp(intensity, 0.0f, 1.0f);
+
 				//calculate background intensity with some hand-tweaked fuzz applied
-				bgIntensity = Clamp(1.f - std::min(1.f, powf(density, 0.25f)) * (0.3f + powf(angle, 0.25f)), 0.f, 1.f);
+				bgIntensity = Clamp(1.f - std::min(1.f, powf(density, 0.25f)) * (0.3f + powf(intensity, 0.25f)), 0.f, 1.f);
 			}
 		}
 	}

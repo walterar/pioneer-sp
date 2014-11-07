@@ -4,77 +4,74 @@
 #include "libs.h"
 #include "utils.h"
 #include "Galaxy.h"
+#include "GalaxyGenerator.h"
 #include "Sector.h"
 #include "Pi.h"
 #include "FileSystem.h"
 
-Galaxy::Galaxy() : GALAXY_RADIUS(50000.0), SOL_OFFSET_X(25000.0), SOL_OFFSET_Y(0.0), m_galaxybmp(nullptr), m_factions(this), m_customSystems(this)
+Galaxy::Galaxy(RefCountedPtr<GalaxyGenerator> galaxyGenerator, float radius, float sol_offset_x, float sol_offset_y,
+	const std::string& factionsDir, const std::string& customSysDir)
+	: GALAXY_RADIUS(radius), SOL_OFFSET_X(sol_offset_x), SOL_OFFSET_Y(sol_offset_y),
+	m_initialized(false), m_galaxyGenerator(galaxyGenerator), m_sectorCache(this),
+	m_starSystemCache(this), m_factions(this, factionsDir), m_customSystems(this, customSysDir)
 {
-	static const std::string filename("galaxy.bmp");
+}
 
-	RefCountedPtr<FileSystem::FileData> filedata = FileSystem::gameDataFiles.ReadFile(filename);
-	if (!filedata) {
-		Output("Galaxy: couldn't load '%s'\n", filename.c_str());
-		Pi::Quit();
-	}
+//static
+RefCountedPtr<Galaxy> Galaxy::Load(Serializer::Reader &rd)
+{
+	RefCountedPtr<Galaxy> galaxy = GalaxyGenerator::Create(rd);
+	galaxy->m_galaxyGenerator->Unserialize(rd, galaxy);
+	return galaxy;
+}
 
-	SDL_RWops *datastream = SDL_RWFromConstMem(filedata->GetData(), filedata->GetSize());
-	m_galaxybmp = SDL_LoadBMP_RW(datastream, 1);
-	if (!m_galaxybmp) {
-		Output("Galaxy: couldn't load: %s (%s)\n", filename.c_str(), SDL_GetError());
-		Pi::Quit();
-	}
+void Galaxy::Serialize(Serializer::Writer &wr)
+{
+	m_galaxyGenerator->Serialize(wr, RefCountedPtr<Galaxy>(this));
+}
 
-	m_starSystemCache = m_starSystemAttic.NewSlaveCache();
+void Galaxy::SetGalaxyGenerator(RefCountedPtr<GalaxyGenerator> galaxyGenerator)
+{
+	m_galaxyGenerator = galaxyGenerator;
 }
 
 Galaxy::~Galaxy()
 {
-	if(m_galaxybmp) SDL_FreeSurface(m_galaxybmp);
 }
 
 void Galaxy::Init()
 {
 	m_customSystems.Init();
 	m_factions.Init();
-}
-
-SDL_Surface* Galaxy::GetGalaxyBitmap()
-{
-	return m_galaxybmp;
-}
-
-Uint8 Galaxy::GetSectorDensity(int sx, int sy, int sz)
-{
-	// -1.0 to 1.0
-	float offset_x = (sx*Sector::SIZE + SOL_OFFSET_X)/GALAXY_RADIUS;
-	float offset_y = (-sy*Sector::SIZE + SOL_OFFSET_Y)/GALAXY_RADIUS;
-	// 0.0 to 1.0
-	offset_x = Clamp((offset_x + 1.0)*0.5, 0.0, 1.0);
-	offset_y = Clamp((offset_y + 1.0)*0.5, 0.0, 1.0);
-
-	int x = int(floor(offset_x * (m_galaxybmp->w - 1)));
-	int y = int(floor(offset_y * (m_galaxybmp->h - 1)));
-
-	SDL_LockSurface(m_galaxybmp);
-	int val = static_cast<unsigned char*>(m_galaxybmp->pixels)[x + y*m_galaxybmp->pitch];
-	SDL_UnlockSurface(m_galaxybmp);
-	// crappy unrealistic but currently adequate density dropoff with sector z
-	val = val * (256 - std::min(abs(sz),256)) / 256;
-	// reduce density somewhat to match real (gliese) density
-	val /= 2;
-	return Uint8(val);
+	m_initialized = true;
+	m_factions.PostInit(); // So, cached home sectors take persisted state into account
+#if 0
+	{
+		Profiler::Timer timer;
+		timer.Start();
+		Uint32 totalVal = 0;
+		const static int s_count = 64;
+		for( int sx=-s_count; sx<s_count; sx++ ) {
+			for( int sy=-s_count; sy<s_count; sy++ ) {
+				for( int sz=-s_count; sz<s_count; sz++ ) {
+					totalVal += GetSectorDensity( sx, sy, sz );
+				}
+			}
+		}
+		timer.Stop();
+		Output("\nGalaxy test took: %lf milliseconds, totalVal (%u)\n", timer.millicycles(), totalVal);
+	}
+#endif
 }
 
 void Galaxy::FlushCaches()
 {
-	m_starSystemAttic.OutputCacheStatistics();
-	m_starSystemCache = m_starSystemAttic.NewSlaveCache();
-	m_starSystemAttic.ClearCache();
+	m_factions.ClearCache();
+	m_starSystemCache.OutputCacheStatistics();
+	m_starSystemCache.ClearCache();
 	m_sectorCache.OutputCacheStatistics();
 	m_sectorCache.ClearCache();
-	// XXX Ideally the cache would now be empty, but we still have Faction::m_homesector :(
-	// assert(m_sectorCache.IsEmpty());
+	assert(m_sectorCache.IsEmpty());
 }
 
 void Galaxy::Dump(FILE* file, Sint32 centerX, Sint32 centerY, Sint32 centerZ, Sint32 radius)
@@ -82,10 +79,85 @@ void Galaxy::Dump(FILE* file, Sint32 centerX, Sint32 centerY, Sint32 centerZ, Si
 	for (Sint32 sx = centerX - radius; sx <= centerX + radius; ++sx) {
 		for (Sint32 sy = centerY - radius; sy <= centerY + radius; ++sy) {
 			for (Sint32 sz = centerZ - radius; sz <= centerZ + radius; ++sz) {
-				RefCountedPtr<const Sector> sector = Pi::GetGalaxy()->GetSector(SystemPath(sx, sy, sz));
+				RefCountedPtr<const Sector> sector = GetSector(SystemPath(sx, sy, sz));
 				sector->Dump(file);
 			}
-			m_starSystemAttic.ClearCache();
+			m_starSystemCache.ClearCache();
 		}
 	}
+}
+
+RefCountedPtr<GalaxyGenerator> Galaxy::GetGenerator() const
+{
+	return m_galaxyGenerator;
+}
+
+const std::string& Galaxy::GetGeneratorName() const
+{
+	return m_galaxyGenerator->GetName();
+}
+
+int Galaxy::GetGeneratorVersion() const
+{
+	return m_galaxyGenerator->GetVersion();
+}
+
+DensityMapGalaxy::DensityMapGalaxy(RefCountedPtr<GalaxyGenerator> galaxyGenerator, const std::string& mapfile,
+	float radius, float sol_offset_x, float sol_offset_y, const std::string& factionsDir, const std::string& customSysDir)
+	: Galaxy(galaxyGenerator, radius, sol_offset_x, sol_offset_y, factionsDir, customSysDir),
+	  m_mapWidth(0), m_mapHeight(0)
+{
+	RefCountedPtr<FileSystem::FileData> filedata = FileSystem::gameDataFiles.ReadFile(mapfile);
+	if (!filedata) {
+		Output("Galaxy: couldn't load '%s'\n", mapfile.c_str());
+		Pi::Quit();
+	}
+
+	SDL_RWops *datastream = SDL_RWFromConstMem(filedata->GetData(), filedata->GetSize());
+	SDL_Surface *galaxyImg = SDL_LoadBMP_RW(datastream, 1);
+	if (!galaxyImg) {
+		Output("Galaxy: couldn't load: %s (%s)\n", mapfile.c_str(), SDL_GetError());
+		Pi::Quit();
+	}
+
+	// now that we have our raw image loaded
+	// allocate the space for our processed representation
+	m_galaxyMap.reset( new float[(galaxyImg->w * galaxyImg->h)] );
+	// lock the image once so we can read from it
+	SDL_LockSurface(galaxyImg);
+	// setup our map dimensions for later
+	m_mapWidth = galaxyImg->w;
+	m_mapHeight = galaxyImg->h;
+	// copy every pixel value from the red channel (image is greyscale, channel is irrelevant)
+	for( int x=0; x<galaxyImg->w; x++ ) {
+		for( int y=0; y<galaxyImg->h; y++ ) {
+			const float val = float(static_cast<unsigned char*>(galaxyImg->pixels)[x + y*galaxyImg->pitch]);
+			m_galaxyMap.get()[x + y*m_mapWidth] = val;
+		}
+	}
+	// unlock the surface and then release it
+	SDL_UnlockSurface(galaxyImg);
+	if(galaxyImg)
+		SDL_FreeSurface(galaxyImg);
+}
+
+static const float one_over_256(1.0f / 256.0f);
+Uint8 DensityMapGalaxy::GetSectorDensity(const int sx, const int sy, const int sz) const
+{
+	// -1.0 to 1.0 then limited to 0.0 to 1.0
+	const float offset_x = (((sx*Sector::SIZE + SOL_OFFSET_X)/GALAXY_RADIUS) + 1.0f)*0.5f;
+	const float offset_y = (((-sy*Sector::SIZE + SOL_OFFSET_Y)/GALAXY_RADIUS) + 1.0f)*0.5f;
+
+	const int x = int(floor(offset_x * (m_mapWidth - 1)));
+	const int y = int(floor(offset_y * (m_mapHeight - 1)));
+
+	float val = m_galaxyMap.get()[x + y*m_mapWidth];
+
+	// crappy unrealistic but currently adequate density dropoff with sector z
+	val = val * (256.0f - std::min(float(abs(sz)),256.0f)) * one_over_256;
+
+	// reduce density somewhat to match real (gliese) density
+	val *= 0.5f;
+
+	return Uint8(val);
 }

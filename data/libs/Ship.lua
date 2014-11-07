@@ -1,6 +1,6 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
--- Ship.lua modified to Pioneer Scout + (c)2013-2014 by walterar <walterar2@gmail.com>
+-- Ship.lua modified to Pioneer Scout + (c)2012-2014 by walterar <walterar2@gmail.com>
 
 local Ship       = import_core("Ship")
 local Game       = import_core("Game")
@@ -569,17 +569,17 @@ end
 --   experimental
 --
 Ship.Refuel = function (self,amount)
-	local currentFuel = self.fuel
+	local removed, currentFuel = self.fuel
 	if currentFuel == 100 then
 		Comms.Message(l.FUEL_TANK_FULL) -- XXX don't translate in libs
 		return 0
 	end
 	local fuelTankMass = ShipDef[self.shipId].fuelTankMass
 	local needed = math.clamp(math.ceil(fuelTankMass - self.fuelMassLeft), 0, amount)
-	if FuelHydrogen == true then
-		local removed = self:RemoveEquip(Equipment.cargo.hydrogen, needed)
+	if FuelHydrogen then
+		removed = self:RemoveEquip(Equipment.cargo.hydrogen, needed)
 	else
-		local removed = self:RemoveEquip(Equipment.cargo.water, needed)
+		removed = self:RemoveEquip(Equipment.cargo.water, needed)
 	end
 	self:SetFuelPercent(math.clamp(self.fuel + removed * 100 / fuelTankMass, 0, 100))
 	return removed

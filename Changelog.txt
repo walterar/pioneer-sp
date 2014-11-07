@@ -1,14 +1,139 @@
+October 2014
+   * Art
+     * Lunar Shuttle facelift (#3230)
+     * Apsis icon and crosshair polish (#3223)
+
+   * Minor changes and tweaks
+     * More variation in city size / dimension (#3227)
+
+   * New Features
+     * We now have a build script for NixOS Linux (#3208)
+     * Flying with gears down increases drag (#2509, #3207)
+     * New Trade Analyzer ship component (#3200)
+     * Added Horizon Culling for planets (#3216)
+     * Second Hand ship equipment advert for BBS (#3220)
+     * Google Breakpad (MSVC only) (#3211)
+
+   * Fixes
+     * Remove detail changes (#3213)
+     * Replace #pragma once by traditional include guards. (#3215)
+     * Fix #3224 (#3225)
+     * Re-init the cockpit when we buy a new ship (#3226)
+     * Fix ObjectViewer crash for non-planets (#3228)
+     * Fix alpha blending and render to texture (#3229)
+     * Fix the crosshair rendering (#3232)
+     * Match the BeginFrame with an EndFrame (#3235)
+     * Deadzone (#3236)
+
+September 2014
+   * New Features
+     * System exploration (#3201)
+
+   * Fixes
+     * Fix wrong reinitialization of random generator (#3156)
+     * Fix crash at Daniel's Haven (#3157)
+     * Cargo body needs to save/load its self destruct timer (#3170)
+     * Fix mismatch between saving/loading code (#3172)
+     * Fix behaviour of autosave system (#3163, #3101)
+     * Fix possible crash when accepting mission in paused (#2732, #3169)
+     * Fix compilation errors on Mac OS X (#3182,#3183)
+     * Fix the Line3D rendering issue (#3190)
+     * Fix the construction of the Circle drawables. (#3192)
+     * Fix orientation of galaxy density map (#3197)
+     * Remove invalid asserts (#3206)
+     * Attributes for uv coords should be vec4 not vec2 (#3205)
+
+   * Minor changes and tweaks
+     * Show buy and sell prices in commodity market (#3153)
+     * Add new author's names to name generator (#3155)
+     * Commodity sell price too low (#3161)
+     * Make Stars visible during eclipse (#3100)
+     * Cap maximum number of police GoodsTraders (#3165)
+     * Better background intensity calculation for Eclipse (#3171)
+     * Randomize planet phase angle (#3135)
+     * Terrain detail / depth changes (#3184)
+     * Output SDL version on start (#3196)
+     * Player defined Ship names (#3176)
+     * Update galaxy colour image (#3197)
+
+   * Script and UI API changes
+     * Allow to set lawlessness in custom systems (#3166)
+     * FileSystem.ReadDirectory now includes timestamps for files (#3163)
+     * Expose pause/unpause events to Lua (#3169)
+
+   * Internal Changes
+     * Improve galaxy image handling (#3154)
+     * Refactor galaxy generation code (#2773, #3167)
+     * Recreate folder structure for sgm batch export (#3162)
+     * Cargo body improvement (#3168)
+     * Easier to model docking - Part 1 (#3075)
+     * Const-correctness in CustomSystems and Factions (#3174)
+     * Restrict FreeType to a single translation unit (#3175, #1203)
+     * Game views refactoring (#3181)
+     * More drawable classes, minor fixes (#3187)
+     * More cache unification (#3193)
+     * Refactor face generator code to support some future changes (#3180)
+     * Shader Attributes and required refactoring (#3194)
+     * Refactoring: Get rid of global Galaxy object (#3198)
+     * Galaxy density map, factions, custom systems controlled by GalaxyGenerator (#3199)
+
+August 2014
+
+   * New features
+     * Bring Luomu's game msg log over from the SSP fork (#2527)
+     * Display ships in system view (#3115)
+     * Display ship heading and pitch (#3108)
+     * Advanced radar mapper works in system orbital view (#3122)
+     * Draw periapsis/apoapsis as icons on system view orbits (#3133)
+     * Improved Joystick Binding (#3141)
+
+   * Minor changes and tweaks
+     * Consistent set nav target on click in SystemView (#3125)
+     * Write opengl.txt earlier to help debugging (#3138, #3137, #3132)
+     * Bigger font for msg log (3143)
+     * Add support for patterns to space stations (#3151)
+
+   * Script and UI API changes
+     * Ship:UseECM() returns recharge time and success state.
+     * Update COMPILING.txt, and add Doxygen support (#3136)
+
+   * Fixes
+     * Fix trade ship without atmoshield causing crash in system with only
+       stations on worlds with atmosphere (#3107)
+     * Fix crash when clicking a view change button (F1-F4) while a new-ui
+       message box is being displayed (#3111, #3110)
+     * Zoom out button before zoom in in system,sector,galactic view (#3112)
+     * Fix an Exit Game widget crash. (#3106)
+     * Fix bad faction colour only being applied to uninhabited (#3116)
+     * Destroy Hyperspace clouds after 2 days of ingame time (#3118)
+     * Fix system view ship crash (#3119)
+     * Fix refreshing assertion in SystemInfoView (#3120)
+     * Fix unnecessary limit on ship base price (#3129, #3130)
+     * Fix crash from TradeShips trying to serialize dead ships (#3126, #3123)
+     * Fix Fuel club discount not being applied (#3140)
+     * Fix system information updating during hyperjump (#3150)
+
 July 2014
 
    * New features
      * New ship AC33 (Military version of venturestar), and updated meshes for
        other ALBR ships, Deneb and Venturestar, and updated textures (#3008)
-     * Attitude-hold flight modes, accessed from the in-flight F4 menu (#3014)
+     * Attitude-hold flight modes, accessed from the in-flight F4 menu (#3014) * Not applied in Scout+
+     * NewUI graphics for the cpanel (#3084) * Not applied in Scout+
+     * Economy screen improvements (#3081)
+     * Add orbital transfer planner to system view (#3079)
+     * Bring Luomu's game msg log over from the SSP fork (#2527)
 
    * Minor changes and tweaks
      * Include the Lua stack top in the debug overlay.
      * Don't list lasers under "Equipment" in InfoView, since already listed
        under forward/read mounts (#3010)
+     * Minor cpanel widget spacing adjustment (#3094) * Not applied in Scout+
+     * General cleanup (#3086)
+     * added ship:UseECM() (#3092)
+     * Life Emergence Respects Stellar Lifespans (#3015)
+     * Resize scanner (#3093)
+     * Add hud icons (#3096) * Not applied in Scout+
 
    * Fixes
      * Fix potential Lua stack overflows when calling Lua methods (#3003)
@@ -34,6 +159,10 @@ July 2014
      * Fix warning about missing icons/goods/missile_*.png (#3059, #3057)
      * Don't attempt to autosave after the player has died (#3060, #3056, #2895)
      * Bring back the facility to install a rear laser (#3067, #3064)
+     * Fix misplaced ECM blast effect (#3087, #3082)
+     * Fix misplaced text on HUD gauges for fuel, hull temp, etc (#3090, #3088)
+     * Fix bugs when you completely clear a key binding (#3085, #3083)
+     * Fix for faulty temperature calculation for multiple systems (#2984)
 
    * Internal Changes
      * Internal clean-up to remove unnecessary equipment code (#3058)
@@ -74,10 +203,10 @@ June 2014
      * Fix bad scaling of space stations (exposed since assimp 3.1.1) (#2923)
      * Fix a Lua stack leak when saving a LuaRef (#2977, 2978)
      * Fix crash (#2979)
-     * Fix pirate ships with default drive 0 causing crash
+     * Fix pirate ships with default drive 0 causing crash * Not applied in Scout+
      * Extend the stack when unpickling (#2989)
-     * Fix crash from spawned enemy ships Pirates, Taxi, Delivery (#2998)
-     * Fix crash from spawned Assassination mission ship
+     * Fix crash from spawned enemy ships Pirates, Taxi, Delivery (#2998) * Not applied in Scout+
+     * Fix crash from spawned Assassination mission ship * Not applied in Scout+
 
    * Internal Changes
      * Compress default (#2940) * Not in Scout+

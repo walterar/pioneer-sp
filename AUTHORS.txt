@@ -19,6 +19,7 @@ The Pioneer Developers are:
 * Brian Ronald
 * C de Craen
 * Chip Richards
+* Chris Collins
 * Chris Dennett
 * Connor Findlay
 * Craig Thomson
@@ -27,6 +28,7 @@ The Pioneer Developers are:
 * Denis Volk
 * DerpyHooves
 * Dionisis Kontominas
+* Emery Hemingway
 * Enric Morales
 * Florian Schmidt
 * Fran Morton
@@ -62,6 +64,7 @@ The Pioneer Developers are:
 * Piotr Gredka
 * Radek Valášek aka vaLin
 * Rémi Boutemy
+* Rob Williamson
 * Robert Norris
 * Robert Pallier
 * Roland Mas
@@ -75,11 +78,13 @@ The Pioneer Developers are:
 * Taiki Kim
 * Thierry Dupré
 * Tim Jones
+* Timothy Hills
 * Tom Morton
 * Torham2234
 * Ulf Pettersson
 * Uncle Bob
 * Vincent Teerling
+* Vladimir Rutsky
 * Wayne Ashworth
 
 Licensing
@@ -163,6 +168,12 @@ Pioneer includes the following third-party software:
   Copyright (c) 2010 David Ferreira
   Licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported
     License (see licenses/CC-BY-SA-3.0.txt)
+
+  Galaxy colour image
+  Modified version (rotated/converted to PNG)
+  http://www.spitzer.caltech.edu/images/2353-sig05-010a-Milky-Way-Bar
+  Credit: NASA/JPL-Caltech/R. Hurt (SSC)
+  See licenses/Image Use Policy - NASA Spitzer Space Telescope.html
 
 Acknowledgements
 ================

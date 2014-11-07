@@ -3,11 +3,12 @@
 -- modified for Pioneer Scout+ (c)2012-2014 by walterar <walterar2@gmail.com>
 -- Work in progress.
 
-local Engine    = import("Engine")
-local Lang      = import("Lang")
-local Game      = import("Game")
-local Equipment = import("Equipment")
-local Comms     = import("Comms")
+local Engine     = import("Engine")
+local Lang       = import("Lang")
+local Game       = import("Game")
+local Eq         = import("Equipment")
+local Comms      = import("Comms")
+local MessageBox = import("ui/MessageBox")
 
 local SmallLabeledButton = import("ui/SmallLabeledButton")
 local InfoGauge          = import("ui/InfoGauge")
@@ -57,7 +58,13 @@ local econTrade = function ()
 				if player.flightState == "HYPERSPACE" then return end
 				if player:DistanceTo(player:FindNearestTo("SPACESTATION")) < 100e3 then
 					local money = player:GetMoney() * Game.system.lawlessness
-					Comms.ImportantMessage(myl.You_has_been_fined .. showCurrency(money) .. myl.for_jettison .. et:GetName() .. myl.port_or_vecinity, Game.system.faction.policeName)
+					if et == Eq.cargo.radioactives then money = money * 10 end
+--					if player:GetDockedWith() then
+						MessageBox.Message(myl.You_has_been_fined .. showCurrency(money) .. myl.for_jettison .. et:GetName() .. myl.port_or_vecinity)
+--					else
+--						Comms.ImportantMessage(myl.You_has_been_fined .. showCurrency(money) .. myl.for_jettison .. et:GetName() .. myl.port_or_vecinity, Game.system.faction.policeName)
+--					end
+
 					player:AddCrime("TRADING_ILLEGAL_GOODS", money)
 				end
 				Game.player:Jettison(et)

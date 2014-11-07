@@ -650,13 +650,16 @@ static int set_key_binding(lua_State *l, const char *config_id, KeyBindings::Key
 }
 
 static int set_axis_binding(lua_State *l, const char *config_id, KeyBindings::AxisBinding *binding) {
-	const char *binding_config = luaL_checkstring(l, 2);
+	const char *binding_config = lua_tostring(l, 2);
 	KeyBindings::AxisBinding ab;
-	if (!KeyBindings::AxisBinding::FromString(binding_config, ab))
-		return luaL_error(l, "invalid axis binding given to Engine.SetKeyBinding");
+	if (binding_config) {
+		if (!KeyBindings::AxisBinding::FromString(binding_config, ab))
+			return luaL_error(l, "invalid axis binding given to Engine.SetKeyBinding");
+	} else
+		ab.Clear();
+	*binding = ab;
 	Pi::config->SetString(config_id, ab.ToString());
 	Pi::config->Save();
-	*binding = ab;
 	return 0;
 }
 
@@ -688,6 +691,23 @@ static int l_engine_set_mouse_y_inverted(lua_State *l)
 	Pi::config->SetInt("InvertMouseY", (inverted ? 1 : 0));
 	Pi::config->Save();
 	Pi::SetMouseYInvert(inverted);
+	return 0;
+}
+
+static int l_engine_get_compact_scanner(lua_State *l)
+{
+	lua_pushboolean(l, Pi::config->Int("CompactScanner") != 0);
+	return 1;
+}
+
+static int l_engine_set_compact_scanner(lua_State *l)
+{
+	if (lua_isnone(l, 1))
+		return luaL_error(l, "SetCompactScanner takes one boolean argument");
+	const bool shrunk = lua_toboolean(l, 1);
+	Pi::config->SetInt("CompactScanner", (shrunk ? 1 : 0));
+	Pi::config->Save();
+	Pi::SetCompactScanner(shrunk);
 	return 0;
 }
 
@@ -757,6 +777,9 @@ void LuaEngine::Register()
 
 		{ "GetDisplayHudTrails", l_engine_get_display_hud_trails },
 		{ "SetDisplayHudTrails", l_engine_set_display_hud_trails },
+
+		{ "GetCompactScanner", l_engine_get_compact_scanner },
+		{ "SetCompactScanner", l_engine_set_compact_scanner },
 
 		{ "GetMasterMuted", l_engine_get_master_muted },
 		{ "SetMasterMuted", l_engine_set_master_muted },

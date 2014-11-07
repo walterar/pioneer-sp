@@ -95,6 +95,10 @@ ui.templates.Settings = function (args)
 			Engine.GetDisplayNavTunnels, Engine.SetDisplayNavTunnels,
 			l.DISPLAY_NAV_TUNNELS)
 
+		local compactScannerCheckBox = optionCheckBox(
+			Engine.GetCompactScanner, Engine.SetCompactScanner,
+			l.COMPACT_SCANNER)
+
 		local speedLinesCheckBox = optionCheckBox(
 			Engine.GetDisplaySpeedLines, Engine.SetDisplaySpeedLines,
 			l.DISPLAY_SPEED_LINES)
@@ -110,9 +114,6 @@ ui.templates.Settings = function (args)
 		local fullScreenCheckBox = optionCheckBox(
 			Engine.GetFullscreen, Engine.SetFullscreen,
 			l.FULL_SCREEN)
-		local compressionCheckBox = optionCheckBox(
-			Engine.GetTextureCompressionEnabled, Engine.SetTextureCompressionEnabled,
-			l.COMPRESS_TEXTURES)
 
 		return ui:Grid({1,1}, 1)
 			:SetCell(0,0, ui:Margin(5, 'ALL', ui:VBox(5):PackEnd({
@@ -120,7 +121,6 @@ ui.templates.Settings = function (args)
 				modeDropDown,
 				aaDropDown,
 				fullScreenCheckBox,
-				compressionCheckBox,
 			})))
 			:SetCell(1,0, ui:Margin(5, 'ALL', ui:VBox(5):PackEnd({
 				planetDetailDropDown,
@@ -131,6 +131,7 @@ ui.templates.Settings = function (args)
 				speedLinesCheckBox,
 				hudTrailsCheckBox,
 				cockpitCheckBox,
+				compactScannerCheckBox,
 			})))
 	end
 
@@ -284,7 +285,7 @@ ui.templates.Settings = function (args)
 		button.button.onClick:Connect(function ()
 			local dialog = captureAxisDialog(info.label, function (new_binding, new_binding_description)
 				Engine.SetKeyBinding(info.id, new_binding)
-				button.label:SetText(new_binding_description)
+				button.label:SetText(new_binding_description or '')
 			end)
 			ui:NewLayer(dialog)
 		end)
@@ -380,7 +381,10 @@ ui.templates.SettingsInGame = function ()
 							allowNewFile = true,
 							selectLabel  = l.SAVE,
 							onSelect     = function (filename)
-								Game.SaveGame(filename)
+								local ok, err = pcall(Game.SaveGame, filename)
+								if not ok then
+									ErrorScreen.ShowError(err)
+								end
 								ui:DropLayer()
 							end,
 							onCancel    = function ()

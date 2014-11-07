@@ -15,6 +15,7 @@ local Serializer = import("Serializer")
 local Lang       = import("Lang")
 local Format     = import("Format")
 local Eq         = import("Equipment")
+local StarSystem = import("StarSystem")--XXX
 
 local misc       = Eq.misc
 local laser      = Eq.laser
@@ -86,13 +87,9 @@ local erase_old_spawn = function ()
 	if ShipsCount == 0 then return end
 	if Game.time > 10 then
 		for i = 1, ShipsCount do
-			if TraffiShip[i] then
-				local state = TraffiShip[i].flightState
-				if state ~= "HYPERSPACE" then
---
-					TraffiShip[i]:Explode()
-					TraffiShip[i]=nil
-				end
+			if TraffiShip[i] and TraffiShip[i].flightState ~= "HYPERSPACE" then
+				TraffiShip[i]:Explode()
+				TraffiShip[i]=nil
 			end
 		end
 	end
@@ -175,11 +172,17 @@ local activate = function (i)
 				if not TraffiShip[i] or TraffiShip[i].flightState == "DOCKING" then return end
 				local range = TraffiShip[i].hyperspaceRange
 				if range > 30 then range = 30 end
-				local systems = Game.system:GetNearbySystems(range)
-				if #systems < 1 then return end
-				local system_target = systems[Engine.rand:Integer(1,#systems)]
+				local nearbystations = StarSystem:GetNearbyStationPaths(range, nil,function (s) return
+					(s.type ~= 'STARPORT_SURFACE') or (s.parent.type ~= 'PLANET_ASTEROID') end)
+				local system_target = nearbystations[Engine.rand:Integer(1,#nearbystations)]
+				if system_target == nil then return end
+--				local systems = Game.system:GetNearbySystems(range)
+--				if #systems < 1 then return end
+--				local system_target = systems[Engine.rand:Integer(1,#systems)]
 				local JumpShip = TraffiShip[i]
-				local status = JumpShip:HyperjumpTo(system_target.path)
+				local status = JumpShip:HyperjumpTo(system_target)
+--				local status = JumpShip:HyperjumpTo(system_target.path)
+
 				if status == "OK" then
 					TraffiShip[i] = nil
 --
@@ -217,7 +220,7 @@ local spawnShipsDocked = function ()
 	if Engine.rand:Integer(5) < posib then--XXX
 		if starports < 3 then
 			Police = Space.SpawnShipDocked("police_viper", basePort)
-		elseif starports > 2 and starports < 5 then
+		elseif starports > 2 and starports < 6 then
 			Police = Space.SpawnShipDocked("police_pacifier", basePort)
 		else
 			Police = Space.SpawnShipDocked("police_mecha", basePort)

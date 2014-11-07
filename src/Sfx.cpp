@@ -108,9 +108,11 @@ void Sfx::Render(Renderer *renderer, const matrix4x4d &ftransform)
 	vector3d fpos = ftransform * GetPosition();
 	vector3f pos(&fpos.x);
 
-	switch (m_type) {
+	switch (m_type) 
+	{
 		case TYPE_NONE: break;
-		case TYPE_EXPLOSION: {
+		case TYPE_EXPLOSION: 
+		{
 			renderer->SetTransform(matrix4x4d::Translation(fpos));
 			float spriteframe=m_age*20+1;
 			std::string fname="textures/explosion/image"+std::to_string(static_cast<int>(spriteframe))+".png";
@@ -122,12 +124,16 @@ void Sfx::Render(Renderer *renderer, const matrix4x4d &ftransform)
 
 			renderer->DrawPointSprites(1, &pos, additiveAlphaState, explosionParticle, m_speed);
 			break;
-		} case TYPE_DAMAGE: {
+		} 
+		case TYPE_DAMAGE: 
+		{
 			renderer->SetTransform(matrix4x4d::Translation(fpos));
 			damageParticle->diffuse = Color(255, 255, 0, (1.0f-(m_age/2.0f))*255);
 			renderer->DrawPointSprites(1, &pos, additiveAlphaState, damageParticle, 20.f);
 			break;
-		} case TYPE_SMOKE: {
+		} 
+		case TYPE_SMOKE: 
+		{
 			float var = Pi::rng.Double()*0.05f; //slightly variation to trail color
 			if (m_age < 0.5)
 				//start trail

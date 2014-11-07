@@ -146,7 +146,7 @@ table.insert(anims, {
 	duration = 0.4,
 })
 
-local versionLabel = ui:Label("G20 full version"):SetFont("HEADING_XSMALL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 })
+local versionLabel = ui:Label("G21 full version"):SetFont("HEADING_XSMALL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 })
 table.insert(anims, {
 	widget = versionLabel,
 	type = "IN",

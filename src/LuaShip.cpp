@@ -274,19 +274,59 @@ static int l_ship_set_label(lua_State *l)
 }
 
 /*
+ * Method: SetShipName
+ *
+ * Changes the ship's name text. 
+ * This is the name text that appears beside the ship in the HUD.
+ *
+ * > ship:SetShipName(newShipName)
+ *
+ * Parameters:
+ *
+ *   newShipName - the new name of the ship
+ *
+ * Example:
+ *
+ * > ship:SetShipName("Boris")
+ *
+ * Availability:
+ *
+ *  September 2014
+ *
+ * Status:
+ *
+ *  stable
+ */
+static int l_ship_set_ship_name(lua_State *l)
+{
+	Ship *s = LuaObject<Ship>::CheckFromLua(1);
+	const std::string shipname(luaL_checkstring(l, 2));
+	s->SetShipName(shipname);
+	return 0;
+}
+
+/*
  * Method: SpawnCargo
  *
  * Spawns a container right next to the ship.
  *
- * > success = ship:SpawnCargo(item)
+ * > success = ship:SpawnCargo(item, lifeTime)
  *
  * Parameters:
  *
  *  item - the item to put in the container.
  *
+ *  lifeTime - optional. time in seconds until self destruct. Setting
+ *             to 0 sec means no self destruct while player is in system.
+ *
  * Result:
  *
  *   success: true if the container was spawned, false otherwise.
+ *
+ * Example:
+ *
+ * > Game.player:SpawnCargo(Equipment.cargo.hydrogen, 0)
+ * > Game.player:SpawnCargo(Equipment.cargo.hydrogen)
  *
  * Availability:
  *
@@ -300,10 +340,19 @@ static int l_ship_spawn_cargo(lua_State *l) {
 	Ship *s = LuaObject<Ship>::CheckFromLua(1);
 	if (!lua_istable(l, 2)) {
 		lua_pushboolean(l, false);
-	} else {
-		CargoBody * c_body = new CargoBody(LuaRef(l, 2));
-		lua_pushboolean(l, s->SpawnCargo(c_body));
 	}
+
+	CargoBody * c_body;
+
+	if (lua_gettop(l) >= 3){
+		float lifeTime = lua_tonumber(l, 3);
+		c_body = new CargoBody(LuaRef(l, 2), lifeTime);
+	}
+	else
+		c_body = new CargoBody(LuaRef(l, 2));
+
+	lua_pushboolean(l, s->SpawnCargo(c_body));
+
 	return 1;
 }
 
@@ -372,7 +421,7 @@ static int l_ship_undock(lua_State *l)
  * Spawn a missile near the ship.
  *
  * > missile = ship:SpawnMissile(type, target, power)
- * 
+ *
  * Parameters:
  *
  *   shiptype - a string for the missile type. specifying an
@@ -414,6 +463,57 @@ static int l_ship_spawn_missile(lua_State *l)
 	else
 		lua_pushnil(l);
 	return 1;
+}
+
+/* Method: UseECM
+ *
+ * Activates ECM of ship, destroying nearby missile with probability
+ * proportional to proximity.
+ *
+ * > success, recharge_wait = Ship:UseECM()
+ *
+ * Return:
+ *
+ *   success - is true or false depending on if the ECM was activated
+ *             or not. False indicating wither it is not fully
+ *             recharged, or there is no ECM to activate.
+ *
+ *   recharge_wait - time left to recharge.
+ *
+ * Availability:
+ *
+ *   2014 July
+ *
+ * Status:
+ *
+ *   experimental
+ */
+static int l_ship_use_ecm(lua_State *l)
+{
+	Ship *s = LuaObject<Ship>::CheckFromLua(1);
+	if (s->GetFlightState() == Ship::HYPERSPACE)
+		return luaL_error(l, "Ship:UseECM() cannot be called on a ship in hyperspace");
+
+	Ship::ECMResult result = s->UseECM();
+
+	float recharge;
+
+	if(result == Ship::ECMResult::ECM_ACTIVATED) {
+		recharge = s->GetECMRechargeRemain();
+		lua_pushboolean(l, true);
+		lua_pushnumber(l, recharge);
+	}
+	else if(result == Ship::ECMResult::ECM_RECHARGING) {
+		recharge = s->GetECMRechargeRemain();
+		lua_pushboolean(l, false);
+		lua_pushnumber(l, recharge);
+	}
+	else if(result == Ship::ECMResult::ECM_NOT_INSTALLED) {
+		lua_pushboolean(l, false);
+		lua_pushnil(l);
+	}
+
+	return 2;
 }
 
 /*
@@ -833,10 +933,13 @@ template <> void LuaObject<Ship>::RegisterClass()
 		{ "GetSkin",    l_ship_get_skin    },
 		{ "SetSkin",    l_ship_set_skin    },
 		{ "SetLabel",   l_ship_set_label   },
+		{ "SetShipName",	l_ship_set_ship_name   },
 
 		{ "SpawnCargo", l_ship_spawn_cargo },
 
 		{ "SpawnMissile", l_ship_spawn_missile },
+
+		{ "UseECM", l_ship_use_ecm },
 
 		{ "GetDockedWith", l_ship_get_docked_with },
 		{ "Undock",        l_ship_undock          },

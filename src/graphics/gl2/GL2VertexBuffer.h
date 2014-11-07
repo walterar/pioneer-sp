@@ -21,13 +21,18 @@ public:
 	~VertexBuffer();
 
 	virtual void Unmap() override;
-	void SetAttribPointers();
-	void UnsetAttribPointers();
+
+	// copies the contents of the VertexArray into the buffer
+	virtual bool Populate(const VertexArray &) override;
+	
+	virtual void Bind();
+	virtual void Release();
 
 protected:
 	virtual Uint8 *MapInternal(BufferMapMode) override;
 
 private:
+	GLuint m_vao;
 	Uint8 *m_data;
 };
 

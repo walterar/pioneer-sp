@@ -1,3 +1,16 @@
+November 2014
+   * Script and UI API changes
+     * Added random number from Poisson distribution (#3242)
+
+   * Minor changes and tweaks
+     * Introduce special footer when player is in equipment market,
+       fixes #3117 (#3238)
+     * A smarter ShipMarket in SpaceStation (#3243)
+     * Fix Anti-Aliasing (#3246)
+
+   * Fixes
+     * Update deprecated gun tag on Lunar shuttle (#3245)
+
 October 2014
    * Art
      * Lunar Shuttle facelift (#3230)
@@ -118,7 +131,7 @@ July 2014
    * New features
      * New ship AC33 (Military version of venturestar), and updated meshes for
        other ALBR ships, Deneb and Venturestar, and updated textures (#3008)
-     * Attitude-hold flight modes, accessed from the in-flight F4 menu (#3014) * Not applied in Scout+
+     * Attitude-hold flight modes, accessed from the in-flight F4 menu (#3014)
      * NewUI graphics for the cpanel (#3084) * Not applied in Scout+
      * Economy screen improvements (#3081)
      * Add orbital transfer planner to system view (#3079)

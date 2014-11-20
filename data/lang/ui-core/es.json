@@ -85,7 +85,11 @@
    },
    "CARGO_SPACE" : {
       "description" : "",
-      "message" : "Espacio de carga"
+      "message" : "Capacidad de carga"
+   },
+   "CARGO_SPACE_USED" : {
+      "description" : "",
+      "message" : "Capacidad de carga usada"
    },
    "CARGO_T_FREE" : {
       "description" : "",

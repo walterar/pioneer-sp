@@ -1,4 +1,12 @@
 {
+   "ADVANCED_RADAR_MAPPER" : {
+      "description" : "",
+      "message" : "Verbesserter Radarscanner"
+   },
+   "ADVANCED_RADAR_MAPPER_DESCRIPTION" : {
+      "description" : "",
+      "message" : "Langstrecken-Radarscanner mit systemweiter Abdeckung"
+   },
    "AIR_PROCESSORS" : {
       "description" : "",
       "message" : "Luftaufbereiter"
@@ -153,7 +161,7 @@
    },
    "CANT_SAVE_DEAD_PLAYER" : {
       "description" : "",
-      "message" : "Can't save game after the player has died"
+      "message" : "Speichern nach dem Tod des Spielers ist nicht möglich"
    },
    "CANT_SAVE_IN_HYPERSPACE" : {
       "description" : "",
@@ -237,11 +245,11 @@
    },
    "COMMODITY_TRADE_ANALYSIS_COMPARE" : {
       "description" : "",
-      "message" : "Commodity trade analysis of #ff0%selected_system#fff (selected) against #ff0%current_system#fff (current):"
+      "message" : "Handelsanalyse von #ff0%selected_system#fff (selektiert) im Vergleich zu #ff0%current_system#fff (aktuell):"
    },
    "COMMODITY_TRADE_ANALYSIS_SELF" : {
       "description" : "",
-      "message" : "Commodity trade analysis of #fff%system#fff"
+      "message" : "Handelsanalyse von #fff%system#fff"
    },
    "COMMS" : {
       "description" : "",
@@ -349,7 +357,7 @@
    },
    "DOWNGRADING_ALERT_STATUS" : {
       "description" : "",
-      "message" : "Für 30 Sekunden kein Waffenfeuer detektiert; Alarmstufe wird gesenkt."
+      "message" : "Für 60 Sekunden kein Waffenfeuer detektiert; Alarmstufe wird gesenkt."
    },
    "DRAW_OUT_RANGE_LABELS" : {
       "description" : "",
@@ -581,15 +589,15 @@
    },
    "HEADING_LOCK_ANTINORMAL" : {
       "description" : "",
-      "message" : "Hold anti-normal"
+      "message" : "Anti-Normal halten."
    },
    "HEADING_LOCK_BACKWARD" : {
       "description" : "",
-      "message" : "Hold retrograde"
+      "message" : "Rückläufig halten."
    },
    "HEADING_LOCK_FORWARD" : {
       "description" : "",
-      "message" : "Hold prograde"
+      "message" : "Rechtläufig halten."
    },
    "HEADING_LOCK_KILLROT" : {
       "description" : "",
@@ -597,15 +605,15 @@
    },
    "HEADING_LOCK_NORMAL" : {
       "description" : "",
-      "message" : "Hold normal"
+      "message" : "Normal halten."
    },
    "HEADING_LOCK_RADIALLY_INWARD" : {
       "description" : "",
-      "message" : "Hold radially in"
+      "message" : "Radial nach innen halten."
    },
    "HEADING_LOCK_RADIALLY_OUTWARD" : {
       "description" : "",
-      "message" : "Hold radially out"
+      "message" : "Radial nach außen halten."
    },
    "HEAVY_INDUSTRY" : {
       "description" : "",
@@ -697,7 +705,7 @@
    },
    "ILLEGAL_CURRENT_SYSTEM" : {
       "description" : "Short (tooltip) description of commodity (singular) status in the system the player is currently in",
-      "message" : "Illegal (current system):"
+      "message" : "Illegal (aktuelles System):"
    },
    "ILLEGAL_GOODS" : {
       "description" : "",
@@ -753,7 +761,7 @@
    },
    "JOY_AXIS" : {
       "description" : "",
-      "message" : "%{sign}Joy%joynum %axis Achse"
+      "message" : "%{sign}%joyname %axis Achse"
    },
    "KM_S_RELATIVE_TO" : {
       "description" : "",
@@ -793,7 +801,7 @@
    },
    "LEGAL_CURRENT_SYSTEM" : {
       "description" : "Short (tooltip) description of commodity (singular) status in the system the player is currently in",
-      "message" : "Legal (current system):"
+      "message" : "Legal (aktuelles System):"
    },
    "LIBERAL_DEMOCRACY" : {
       "description" : "",
@@ -815,6 +823,10 @@
       "description" : "",
       "message" : "Lebendige Tiere"
    },
+   "LOCAL_ARM" : {
+      "description" : "Arm of the Milky Way galaxy",
+      "message" : "Lokaler Arm"
+   },
    "LOCKED" : {
       "description" : "",
       "message" : "Eingerastet"
@@ -825,7 +837,7 @@
    },
    "MAJOR_EXPORT_CURRENT_SYSTEM" : {
       "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
-      "message" : "Major export (current system)"
+      "message" : "Hauptexport (aktuelles System)"
    },
    "MAJOR_IMPORTS" : {
       "description" : "",
@@ -833,7 +845,7 @@
    },
    "MAJOR_IMPORT_CURRENT_SYSTEM" : {
       "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
-      "message" : "Major import (current system)"
+      "message" : "Hauptimport (aktuelles System)"
    },
    "MANUAL_CONTROL" : {
       "description" : "",
@@ -973,7 +985,7 @@
    },
    "MINOR_EXPORT_CURRENT_SYSTEM" : {
       "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
-      "message" : "Minor export (current system)"
+      "message" : "Geringfügiger Exportartikel (aktuelles System)"
    },
    "MINOR_IMPORTS" : {
       "description" : "",
@@ -981,7 +993,7 @@
    },
    "MINOR_IMPORT_CURRENT_SYSTEM" : {
       "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
-      "message" : "Minor import (current system)"
+      "message" : "Geringfügiger Importartikel (aktuelles System)"
    },
    "MISCELLANEOUS" : {
       "description" : "",
@@ -1096,7 +1108,7 @@
       "message" : "Nichts"
    },
    "NORMA_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Norma-Arm"
    },
    "NOT_FOUND" : {
@@ -1224,7 +1236,7 @@
       "message" : "Planet mit Agrarwirtschaft unter freiem Himmel."
    },
    "OUTER_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Cygnus-Arm"
    },
    "OVER_N_BILLION" : {
@@ -1252,7 +1264,7 @@
       "message" : "Periapsisdistanz"
    },
    "PERSEUS_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Perseus-Arm"
    },
    "PIONEER" : {
@@ -1293,19 +1305,19 @@
    },
    "PLANNER_RESET_FACTOR" : {
       "description" : "",
-      "message" : "Rate of increase of delta-v values. Click to reset to default."
+      "message" : "Wachstumsrate der delta-v-Werte. Klicken um auf Null zurückzusetzen."
    },
    "PLANNER_RESET_NORMAL" : {
       "description" : "",
-      "message" : "Normal delta-v. Click to reset to zero."
+      "message" : "Normales delta-v. Klicken um auf Null zurückzusetzen."
    },
    "PLANNER_RESET_PROGRADE" : {
       "description" : "",
-      "message" : "Prograde delta-v. Click to reset to zero."
+      "message" : "Rechtläufiges delta-v. Klicken um auf Null zurückzusetzen."
    },
    "PLANNER_RESET_RADIAL" : {
       "description" : "",
-      "message" : "Radial delta-v. Click to reset to zero."
+      "message" : "Radiales delta-v. Klicken um auf Null zurückzusetzen."
    },
    "PLASTICS" : {
       "description" : "",
@@ -1387,6 +1399,10 @@
       "description" : "",
       "message" : "Heck"
    },
+   "RECENTLY_EXPLORED_SYSTEM" : {
+      "description" : "",
+      "message" : "Dieses System wurde am %date erkundet."
+   },
    "REQUEST_DOCKING_CLEARANCE" : {
       "description" : "",
       "message" : "Andockerlaubnis anfordern"
@@ -1456,7 +1472,7 @@
       "message" : "Abfälle"
    },
    "SAGITTARIUS_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Sagittarius-Arm"
    },
    "SCANNER" : {
@@ -1476,7 +1492,7 @@
       "message" : "Pioneer-Screenshot%index{d08}.png"
    },
    "SCUTUM_CENTAURUS_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Scutum-Crux-Arm"
    },
    "SEARCH" : {
@@ -1527,6 +1543,10 @@
       "description" : "",
       "message" : "Niedrigschub-Energielevel auf %power%% setzen"
    },
+   "SET_NAVTARGET_TO" : {
+      "description" : "",
+      "message" : "Navigationsziel setzen auf:"
+   },
    "SET_SPEED_KM_S" : {
       "description" : "",
       "message" : "Geschwindigkeit gesetzt: %speed{f.2} km/s"
@@ -1566,6 +1586,10 @@
    "SHIP" : {
       "description" : "",
       "message" : "Schiff"
+   },
+   "SHIPS_DISPLAY_MODE_TOGGLE" : {
+      "description" : "Either show no ships, show ships, or show ships + their orbits",
+      "message" : "Zwischen Anzeigemodi des Schiffes umschalten."
    },
    "SHIP_ALTITUDE_ABOVE_TERRAIN" : {
       "description" : "",
@@ -1799,6 +1823,14 @@
       "description" : "",
       "message" : "Oberflächentemperatur"
    },
+   "SWITCHED_TO_PARENT" : {
+      "description" : "Show ship's heading, coordinates are on the celestial sphere (defined by the ecliptic).",
+      "message" : "Schalte Kursanzeige auf Systemkoordinaten um."
+   },
+   "SWITCHED_TO_ROTATIONAL" : {
+      "description" : "Show ship's heading in planetary coordinates. heading 0 = north, 90 = east, 180 = south, 270 = west.",
+      "message" : "Schalte Kursanzeige auf Planetenkoordinaten um."
+   },
    "SYSTEM" : {
       "description" : "",
       "message" : "System"
@@ -1842,6 +1874,10 @@
    "THIN" : {
       "description" : "",
       "message" : "dünnen"
+   },
+   "THREE_KPC_ARM" : {
+      "description" : "Arm of the Milky Way galaxy",
+      "message" : "3kpc Arm"
    },
    "THRIVING_OUTDOOR_WORLD" : {
       "description" : "",
@@ -1899,6 +1935,14 @@
       "description" : "",
       "message" : "Ruhe in Frieden, Kumpel"
    },
+   "TRADE_ANALYZER" : {
+      "description" : "Ship equipment computing profitable commodities to trade between two systems",
+      "message" : "Handels-Analyseeinheit"
+   },
+   "TRADE_ANALYZER_DESCRIPTION" : {
+      "description" : "",
+      "message" : "Zeigt Handelsgüter an, die zwischen dem ausgewählten und dem momentanen System profitabel gehandelt werden können."
+   },
    "TRADING_ILLEGAL_GOODS" : {
       "description" : "",
       "message" : "Handel mit illegalen Waren"
@@ -1934,6 +1978,10 @@
    "UNOCCUPIED_CABIN_DESCRIPTION" : {
       "description" : "",
       "message" : "Benötigt für den Transport von einem Passagier"
+   },
+   "UNSET_NAVTARGET" : {
+      "description" : "",
+      "message" : "Navigationsziel zurücksetzen."
    },
    "USE_LOW_THRUST" : {
       "description" : "",

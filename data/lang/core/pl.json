@@ -1,4 +1,12 @@
 {
+   "ADVANCED_RADAR_MAPPER" : {
+      "description" : "",
+      "message" : "Zaawansowany maper radarowy"
+   },
+   "ADVANCED_RADAR_MAPPER_DESCRIPTION" : {
+      "description" : "",
+      "message" : "Maper radarowy dalekiego zasięgu z pokryciem na cały system."
+   },
    "AIR_PROCESSORS" : {
       "description" : "",
       "message" : "Klimatyzacja"
@@ -349,7 +357,7 @@
    },
    "DOWNGRADING_ALERT_STATUS" : {
       "description" : "",
-      "message" : "Brak zagrożenia przez 30 sekund, odwołuję alarm."
+      "message" : "Brak zagrożenia przez 60 sekund, odwołuję alarm."
    },
    "DRAW_OUT_RANGE_LABELS" : {
       "description" : "",
@@ -581,7 +589,7 @@
    },
    "HEADING_LOCK_ANTINORMAL" : {
       "description" : "",
-      "message" : "Pozycja anormalnie"
+      "message" : "Pozycja anormalna"
    },
    "HEADING_LOCK_BACKWARD" : {
       "description" : "",
@@ -597,7 +605,7 @@
    },
    "HEADING_LOCK_NORMAL" : {
       "description" : "",
-      "message" : "Pozycja normalnie"
+      "message" : "Pozycja normalna"
    },
    "HEADING_LOCK_RADIALLY_INWARD" : {
       "description" : "",
@@ -753,7 +761,7 @@
    },
    "JOY_AXIS" : {
       "description" : "",
-      "message" : "Joystick(%joynum)  Oś(%{sign}%axis)"
+      "message" : "%joyname oś %{sign}%axis"
    },
    "KM_S_RELATIVE_TO" : {
       "description" : "",
@@ -814,6 +822,10 @@
    "LIVE_ANIMALS" : {
       "description" : "",
       "message" : "Żywe zwierzęta"
+   },
+   "LOCAL_ARM" : {
+      "description" : "Arm of the Milky Way galaxy",
+      "message" : "Ramię Lokalne"
    },
    "LOCKED" : {
       "description" : "",
@@ -1096,7 +1108,7 @@
       "message" : "Brak"
    },
    "NORMA_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Ramię Normy"
    },
    "NOT_FOUND" : {
@@ -1224,8 +1236,8 @@
       "message" : "Zewnętrzny rolniczy świat."
    },
    "OUTER_ARM" : {
-      "description" : "",
-      "message" : "Zewnętrzne ramię"
+      "description" : "Arm of the Milky Way galaxy",
+      "message" : "Ramię Zewnętrzne"
    },
    "OVER_N_BILLION" : {
       "description" : "",
@@ -1252,7 +1264,7 @@
       "message" : "Perycentrum"
    },
    "PERSEUS_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Ramię Perseusza"
    },
    "PIONEER" : {
@@ -1293,19 +1305,19 @@
    },
    "PLANNER_RESET_FACTOR" : {
       "description" : "",
-      "message" : "Rate of increase of delta-v values. Click to reset to default."
+      "message" : "Tempo wzrostu wartości delta-v. Kliknij, aby przywrócić domyślne."
    },
    "PLANNER_RESET_NORMAL" : {
       "description" : "",
-      "message" : "Normal delta-v. Click to reset to zero."
+      "message" : "Delta-v dla pozycji normalnej. Kliknij, aby wyzerować."
    },
    "PLANNER_RESET_PROGRADE" : {
       "description" : "",
-      "message" : "Prograde delta-v. Click to reset to zero."
+      "message" : "Delta-v dla pozycji przodem. Kliknij, aby wyzerować."
    },
    "PLANNER_RESET_RADIAL" : {
       "description" : "",
-      "message" : "Radial delta-v. Click to reset to zero."
+      "message" : "Delta-v dla pozycji radialnej. Kliknij, aby wyzerować."
    },
    "PLASTICS" : {
       "description" : "",
@@ -1387,6 +1399,10 @@
       "description" : "",
       "message" : "Tył"
    },
+   "RECENTLY_EXPLORED_SYSTEM" : {
+      "description" : "",
+      "message" : "Ten system został zbadany %date."
+   },
    "REQUEST_DOCKING_CLEARANCE" : {
       "description" : "",
       "message" : "Pozwolenie na lądowanie"
@@ -1456,7 +1472,7 @@
       "message" : "Odpady"
    },
    "SAGITTARIUS_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Ramię Strzelca"
    },
    "SCANNER" : {
@@ -1476,8 +1492,8 @@
       "message" : "screenshot%index{d08}.png"
    },
    "SCUTUM_CENTAURUS_ARM" : {
-      "description" : "",
-      "message" : "Ramię Tarczy Centaura"
+      "description" : "Arm of the Milky Way galaxy",
+      "message" : "Ramię Centaura"
    },
    "SEARCH" : {
       "description" : "",
@@ -1527,6 +1543,10 @@
       "description" : "",
       "message" : "Siła ciągu w trybie precyzyjnym %power%%"
    },
+   "SET_NAVTARGET_TO" : {
+      "description" : "",
+      "message" : "Ustawiono cel nawigacyjny na:"
+   },
    "SET_SPEED_KM_S" : {
       "description" : "",
       "message" : "Prędkość: %speed{f.2} km/s"
@@ -1566,6 +1586,10 @@
    "SHIP" : {
       "description" : "",
       "message" : "Statek"
+   },
+   "SHIPS_DISPLAY_MODE_TOGGLE" : {
+      "description" : "Either show no ships, show ships, or show ships + their orbits",
+      "message" : "Przełącz pomiędzy trybami wyświetlania statków."
    },
    "SHIP_ALTITUDE_ABOVE_TERRAIN" : {
       "description" : "",
@@ -1799,6 +1823,14 @@
       "description" : "",
       "message" : "Średnia temperatura"
    },
+   "SWITCHED_TO_PARENT" : {
+      "description" : "Show ship's heading, coordinates are on the celestial sphere (defined by the ecliptic).",
+      "message" : "Wyświetlanie pozycji przełączono na koordynaty całego systemu."
+   },
+   "SWITCHED_TO_ROTATIONAL" : {
+      "description" : "Show ship's heading in planetary coordinates. heading 0 = north, 90 = east, 180 = south, 270 = west.",
+      "message" : "Wyświetlanie pozycji przełączono na koordynaty planetarne."
+   },
    "SYSTEM" : {
       "description" : "",
       "message" : "System"
@@ -1842,6 +1874,10 @@
    "THIN" : {
       "description" : "",
       "message" : "rozrzedzona"
+   },
+   "THREE_KPC_ARM" : {
+      "description" : "Arm of the Milky Way galaxy",
+      "message" : "Ramię Trzech Kiloparseków"
    },
    "THRIVING_OUTDOOR_WORLD" : {
       "description" : "",
@@ -1899,6 +1935,14 @@
       "description" : "",
       "message" : "SPOCZYWAJ W POKOJU STARY PIERNIKU"
    },
+   "TRADE_ANALYZER" : {
+      "description" : "Ship equipment computing profitable commodities to trade between two systems",
+      "message" : "Analizator handlu"
+   },
+   "TRADE_ANALYZER_DESCRIPTION" : {
+      "description" : "",
+      "message" : "Pokazuje zysk w handlu towarami pomiędzy wskazanym a obecnym systemem"
+   },
    "TRADING_ILLEGAL_GOODS" : {
       "description" : "",
       "message" : "Obrót nielegalnymi towarami"
@@ -1934,6 +1978,10 @@
    "UNOCCUPIED_CABIN_DESCRIPTION" : {
       "description" : "",
       "message" : "Umożliwia przewiezienie jednego pasażera"
+   },
+   "UNSET_NAVTARGET" : {
+      "description" : "",
+      "message" : "Usunięto cel nawigacyjny."
    },
    "USE_LOW_THRUST" : {
       "description" : "",

@@ -1112,7 +1112,7 @@
       "message" : "None"
    },
    "NORMA_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Norma arm"
    },
    "NOT_FOUND" : {
@@ -1240,7 +1240,7 @@
       "message" : "Outdoor agricultural world."
    },
    "OUTER_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Outer arm"
    },
    "OVER_N_BILLION" : {
@@ -1268,7 +1268,7 @@
       "message" : "Periapsis distance"
    },
    "PERSEUS_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Perseus arm"
    },
    "PIONEER" : {
@@ -1456,7 +1456,7 @@
       "message" : "Rubbish"
    },
    "SAGITTARIUS_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Sagittarius arm"
    },
    "SCANNER" : {
@@ -1476,7 +1476,7 @@
       "message" : "screenshot%index{d08}.png"
    },
    "SCUTUM_CENTAURUS_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Scutum-Centaurus arm"
    },
    "SEARCH" : {
@@ -1842,6 +1842,10 @@
    "THIN" : {
       "description" : "",
       "message" : "thin"
+   },
+   "THREE_KPC_ARM" : {
+      "description" : "Arm of the Milky Way galaxy",
+      "message" : "3kpc arm"
    },
    "THRIVING_OUTDOOR_WORLD" : {
       "description" : "",

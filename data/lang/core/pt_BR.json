@@ -1,4 +1,12 @@
 {
+   "ADVANCED_RADAR_MAPPER" : {
+      "description" : "",
+      "message" : "Advanced Radar Mapper"
+   },
+   "ADVANCED_RADAR_MAPPER_DESCRIPTION" : {
+      "description" : "",
+      "message" : "Long range radar mapper with system wide coverage."
+   },
    "AIR_PROCESSORS" : {
       "description" : "",
       "message" : "Processadores aéreos"
@@ -153,7 +161,7 @@
    },
    "CANT_SAVE_DEAD_PLAYER" : {
       "description" : "",
-      "message" : "Can't save game after the player has died"
+      "message" : "Não é possível salvar o jogo após o jogador morrer"
    },
    "CANT_SAVE_IN_HYPERSPACE" : {
       "description" : "",
@@ -201,7 +209,7 @@
    },
    "CARGO_SCOOP_ATTEMPTED" : {
       "description" : "",
-      "message" : "Cargo scoop attempted. Not enough room in cargo hold."
+      "message" : "Colhimento de carga tentado. Sem espaço suficiente no compartimento de carga."
    },
    "CARGO_SCOOP_DESCRIPTION" : {
       "description" : "",
@@ -349,7 +357,7 @@
    },
    "DOWNGRADING_ALERT_STATUS" : {
       "description" : "",
-      "message" : "Nenhum fogo foi detectado por 30 segundos, retirando o status de alerta."
+      "message" : "Nenhum fogo foi detectado por 60 segundos, retirando o status de alerta."
    },
    "DRAW_OUT_RANGE_LABELS" : {
       "description" : "",
@@ -593,7 +601,7 @@
    },
    "HEADING_LOCK_KILLROT" : {
       "description" : "",
-      "message" : "Kill rotation"
+      "message" : "Matar rotação"
    },
    "HEADING_LOCK_NORMAL" : {
       "description" : "",
@@ -697,7 +705,7 @@
    },
    "ILLEGAL_CURRENT_SYSTEM" : {
       "description" : "Short (tooltip) description of commodity (singular) status in the system the player is currently in",
-      "message" : "Illegal (current system):"
+      "message" : "Ilegal (sistema atual):"
    },
    "ILLEGAL_GOODS" : {
       "description" : "",
@@ -753,7 +761,7 @@
    },
    "JOY_AXIS" : {
       "description" : "",
-      "message" : "%{símbolo}Alegria%númerodaalegria%eixo Eixo"
+      "message" : "%{sign}%joyname %axis Axis"
    },
    "KM_S_RELATIVE_TO" : {
       "description" : "",
@@ -793,7 +801,7 @@
    },
    "LEGAL_CURRENT_SYSTEM" : {
       "description" : "Short (tooltip) description of commodity (singular) status in the system the player is currently in",
-      "message" : "Legal (current system):"
+      "message" : "Legal (sistema atual):"
    },
    "LIBERAL_DEMOCRACY" : {
       "description" : "",
@@ -814,6 +822,10 @@
    "LIVE_ANIMALS" : {
       "description" : "",
       "message" : "Animais Vivos"
+   },
+   "LOCAL_ARM" : {
+      "description" : "Arm of the Milky Way galaxy",
+      "message" : "Local arm"
    },
    "LOCKED" : {
       "description" : "",
@@ -1096,7 +1108,7 @@
       "message" : "Nenhum"
    },
    "NORMA_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Braço de norma"
    },
    "NOT_FOUND" : {
@@ -1224,7 +1236,7 @@
       "message" : "Mundo externo agricultor"
    },
    "OUTER_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Braço de outer"
    },
    "OVER_N_BILLION" : {
@@ -1252,7 +1264,7 @@
       "message" : "Distância do Periastro"
    },
    "PERSEUS_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Braço de Perseu"
    },
    "PIONEER" : {
@@ -1293,7 +1305,7 @@
    },
    "PLANNER_RESET_FACTOR" : {
       "description" : "",
-      "message" : "Rate of increase of delta-v values. Click to reset to default."
+      "message" : "Taxa de aumento de valores delta-v. Clique para resetar para padrão."
    },
    "PLANNER_RESET_NORMAL" : {
       "description" : "",
@@ -1387,6 +1399,10 @@
       "description" : "",
       "message" : "Traseira"
    },
+   "RECENTLY_EXPLORED_SYSTEM" : {
+      "description" : "",
+      "message" : "Este sistema foi explorado em %date."
+   },
    "REQUEST_DOCKING_CLEARANCE" : {
       "description" : "",
       "message" : "Requisitando permissão para atracar"
@@ -1456,7 +1472,7 @@
       "message" : "Besteira"
    },
    "SAGITTARIUS_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Braço de sagitário"
    },
    "SCANNER" : {
@@ -1476,7 +1492,7 @@
       "message" : "imagemdatela%índice{d08}.png"
    },
    "SCUTUM_CENTAURUS_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Braço de Scutum-Centaurus"
    },
    "SEARCH" : {
@@ -1527,6 +1543,10 @@
       "description" : "",
       "message" : "Estabelecer nível de energia de baixo impulso para %energia%%"
    },
+   "SET_NAVTARGET_TO" : {
+      "description" : "",
+      "message" : "Set navigation target to: "
+   },
    "SET_SPEED_KM_S" : {
       "description" : "",
       "message" : "Estabelecer velocidade: %velocidade {f.2} km/s"
@@ -1566,6 +1586,10 @@
    "SHIP" : {
       "description" : "",
       "message" : "Nave"
+   },
+   "SHIPS_DISPLAY_MODE_TOGGLE" : {
+      "description" : "Either show no ships, show ships, or show ships + their orbits",
+      "message" : "Switch between ship display modes."
    },
    "SHIP_ALTITUDE_ABOVE_TERRAIN" : {
       "description" : "",
@@ -1799,6 +1823,14 @@
       "description" : "",
       "message" : "Temperatura na superfície"
    },
+   "SWITCHED_TO_PARENT" : {
+      "description" : "Show ship's heading, coordinates are on the celestial sphere (defined by the ecliptic).",
+      "message" : "Switched heading display to system-wide coordinates."
+   },
+   "SWITCHED_TO_ROTATIONAL" : {
+      "description" : "Show ship's heading in planetary coordinates. heading 0 = north, 90 = east, 180 = south, 270 = west.",
+      "message" : "Switched heading display to planetary coordinates."
+   },
    "SYSTEM" : {
       "description" : "",
       "message" : "Sistema"
@@ -1842,6 +1874,10 @@
    "THIN" : {
       "description" : "",
       "message" : "fino"
+   },
+   "THREE_KPC_ARM" : {
+      "description" : "Arm of the Milky Way galaxy",
+      "message" : "3kpc arm"
    },
    "THRIVING_OUTDOOR_WORLD" : {
       "description" : "",
@@ -1899,6 +1935,14 @@
       "description" : "",
       "message" : "RIP VELHO AMIGO"
    },
+   "TRADE_ANALYZER" : {
+      "description" : "Ship equipment computing profitable commodities to trade between two systems",
+      "message" : "Trade analyzer"
+   },
+   "TRADE_ANALYZER_DESCRIPTION" : {
+      "description" : "",
+      "message" : "Shows profitable commodities to trade between selected and current system"
+   },
    "TRADING_ILLEGAL_GOODS" : {
       "description" : "",
       "message" : "Comercializando bens ilegais"
@@ -1934,6 +1978,10 @@
    "UNOCCUPIED_CABIN_DESCRIPTION" : {
       "description" : "",
       "message" : "Solicitou transporte de um único passageiro"
+   },
+   "UNSET_NAVTARGET" : {
+      "description" : "",
+      "message" : "Unset navigation target."
    },
    "USE_LOW_THRUST" : {
       "description" : "",

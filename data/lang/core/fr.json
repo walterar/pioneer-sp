@@ -1,4 +1,12 @@
 {
+   "ADVANCED_RADAR_MAPPER" : {
+      "description" : "",
+      "message" : "Advanced Radar Mapper"
+   },
+   "ADVANCED_RADAR_MAPPER_DESCRIPTION" : {
+      "description" : "",
+      "message" : "Long range radar mapper with system wide coverage."
+   },
    "AIR_PROCESSORS" : {
       "description" : "",
       "message" : "Processeurs d'air"
@@ -61,7 +69,7 @@
    },
    "AUTOMATIC_SYSTEM_SELECTION" : {
       "description" : "",
-      "message" : "Automatic system selection"
+      "message" : "Sélection automatique de système"
    },
    "AUTOPILOT" : {
       "description" : "",
@@ -153,7 +161,7 @@
    },
    "CANT_SAVE_DEAD_PLAYER" : {
       "description" : "",
-      "message" : "Can't save game after the player has died"
+      "message" : "Impossible de sauvegarder une fois que le joueur est mort."
    },
    "CANT_SAVE_IN_HYPERSPACE" : {
       "description" : "",
@@ -237,11 +245,11 @@
    },
    "COMMODITY_TRADE_ANALYSIS_COMPARE" : {
       "description" : "",
-      "message" : "Commodity trade analysis of #ff0%selected_system#fff (selected) against #ff0%current_system#fff (current):"
+      "message" : "Comparaison des marchés des systèmes #ff0%selected_system#fff (sélectionné) et #ff0%current_system#fff (actuel):"
    },
    "COMMODITY_TRADE_ANALYSIS_SELF" : {
       "description" : "",
-      "message" : "Commodity trade analysis of #fff%system#fff"
+      "message" : "Analyse du marché du système #fff%system#fff"
    },
    "COMMS" : {
       "description" : "",
@@ -349,7 +357,7 @@
    },
    "DOWNGRADING_ALERT_STATUS" : {
       "description" : "",
-      "message" : "Pas d'attaque depuis 30 secondes, niveau d'alerte réduit."
+      "message" : "Pas d'attaque depuis 60 secondes, niveau d'alerte réduit."
    },
    "DRAW_OUT_RANGE_LABELS" : {
       "description" : "",
@@ -753,7 +761,7 @@
    },
    "JOY_AXIS" : {
       "description" : "",
-      "message" : "%{sign}Joy%joynum %axis Axe"
+      "message" : "%{sign}%joyname %axis Axis"
    },
    "KM_S_RELATIVE_TO" : {
       "description" : "",
@@ -814,6 +822,10 @@
    "LIVE_ANIMALS" : {
       "description" : "",
       "message" : "Animaux vivants"
+   },
+   "LOCAL_ARM" : {
+      "description" : "Arm of the Milky Way galaxy",
+      "message" : "Local arm"
    },
    "LOCKED" : {
       "description" : "",
@@ -1096,7 +1108,7 @@
       "message" : "Aucun"
    },
    "NORMA_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Bras de la Règle"
    },
    "NOT_FOUND" : {
@@ -1224,7 +1236,7 @@
       "message" : "Monde agricole à l'air libre."
    },
    "OUTER_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Bras externe"
    },
    "OVER_N_BILLION" : {
@@ -1252,7 +1264,7 @@
       "message" : "Distance de périhélie"
    },
    "PERSEUS_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Bras de Persée"
    },
    "PIONEER" : {
@@ -1387,6 +1399,10 @@
       "description" : "",
       "message" : "Arrière"
    },
+   "RECENTLY_EXPLORED_SYSTEM" : {
+      "description" : "",
+      "message" : "This system was explored on %date."
+   },
    "REQUEST_DOCKING_CLEARANCE" : {
       "description" : "",
       "message" : "Demander une autorisation d'atterrissage"
@@ -1456,7 +1472,7 @@
       "message" : "Détritus"
    },
    "SAGITTARIUS_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Bras du Sagittaire"
    },
    "SCANNER" : {
@@ -1476,7 +1492,7 @@
       "message" : "capture_d_ecran%index{d08}.png"
    },
    "SCUTUM_CENTAURUS_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Bras Écu-Croix"
    },
    "SEARCH" : {
@@ -1527,6 +1543,10 @@
       "description" : "",
       "message" : "Regl. vitesse mini sur  %power%%"
    },
+   "SET_NAVTARGET_TO" : {
+      "description" : "",
+      "message" : "Régler la destination sur : "
+   },
    "SET_SPEED_KM_S" : {
       "description" : "",
       "message" : "Vit. ét.: %speed{f.2} km/s"
@@ -1566,6 +1586,10 @@
    "SHIP" : {
       "description" : "",
       "message" : "Vaisseau"
+   },
+   "SHIPS_DISPLAY_MODE_TOGGLE" : {
+      "description" : "Either show no ships, show ships, or show ships + their orbits",
+      "message" : "Switch between ship display modes."
    },
    "SHIP_ALTITUDE_ABOVE_TERRAIN" : {
       "description" : "",
@@ -1799,6 +1823,14 @@
       "description" : "",
       "message" : "Température de surface"
    },
+   "SWITCHED_TO_PARENT" : {
+      "description" : "Show ship's heading, coordinates are on the celestial sphere (defined by the ecliptic).",
+      "message" : "Switched heading display to system-wide coordinates."
+   },
+   "SWITCHED_TO_ROTATIONAL" : {
+      "description" : "Show ship's heading in planetary coordinates. heading 0 = north, 90 = east, 180 = south, 270 = west.",
+      "message" : "Switched heading display to planetary coordinates."
+   },
    "SYSTEM" : {
       "description" : "",
       "message" : "Système"
@@ -1842,6 +1874,10 @@
    "THIN" : {
       "description" : "",
       "message" : "fine"
+   },
+   "THREE_KPC_ARM" : {
+      "description" : "Arm of the Milky Way galaxy",
+      "message" : "3kpc arm"
    },
    "THRIVING_OUTDOOR_WORLD" : {
       "description" : "",
@@ -1897,7 +1933,15 @@
    },
    "TOMBSTONE_EPITAPH" : {
       "description" : "",
-      "message" : "Paix à ton âme!"
+      "message" : "Reposes en paix"
+   },
+   "TRADE_ANALYZER" : {
+      "description" : "Ship equipment computing profitable commodities to trade between two systems",
+      "message" : "Trade analyzer"
+   },
+   "TRADE_ANALYZER_DESCRIPTION" : {
+      "description" : "",
+      "message" : "Shows profitable commodities to trade between selected and current system"
    },
    "TRADING_ILLEGAL_GOODS" : {
       "description" : "",
@@ -1934,6 +1978,10 @@
    "UNOCCUPIED_CABIN_DESCRIPTION" : {
       "description" : "",
       "message" : "Requis pour le transport d'un passager."
+   },
+   "UNSET_NAVTARGET" : {
+      "description" : "",
+      "message" : "Aucune destination définie."
    },
    "USE_LOW_THRUST" : {
       "description" : "",

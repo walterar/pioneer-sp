@@ -1,4 +1,12 @@
 {
+   "ADVANCED_RADAR_MAPPER" : {
+      "description" : "",
+      "message" : "Identificatore Radar Avanzato"
+   },
+   "ADVANCED_RADAR_MAPPER_DESCRIPTION" : {
+      "description" : "",
+      "message" : "Identificatore radar a lungo raggio che copre l'intero sistema."
+   },
    "AUTO_COMBAT" : {
       "description":"",
       "message":"Auto Combattere Sì/No"
@@ -157,7 +165,7 @@
    },
    "CANT_SAVE_DEAD_PLAYER" : {
       "description" : "",
-      "message" : "Can't save game after the player has died"
+      "message" : "Non è possibile salvare la partita dopo la morte del giocatore"
    },
    "CANT_SAVE_IN_HYPERSPACE" : {
       "description" : "",
@@ -241,11 +249,11 @@
    },
    "COMMODITY_TRADE_ANALYSIS_COMPARE" : {
       "description" : "",
-      "message" : "Commodity trade analysis of #ff0%selected_system#fff (selected) against #ff0%current_system#fff (current):"
+      "message" : "Analisi dello scambio merci di #ff0%selected_system#fff (selezionato) confrontato con #ff0%current_system#fff (corrente):"
    },
    "COMMODITY_TRADE_ANALYSIS_SELF" : {
       "description" : "",
-      "message" : "Commodity trade analysis of #fff%system#fff"
+      "message" : "Analisi dello scambio merci di #fff%system#fff"
    },
    "COMMS" : {
       "description" : "",
@@ -353,7 +361,7 @@
    },
    "DOWNGRADING_ALERT_STATUS" : {
       "description" : "",
-      "message" : "Nessuna attività ostile rilevata per 30s, livello di allarme ridotto."
+      "message" : "Nessuna attività ostile rilevata per 60s, livello di allarme ridotto."
    },
    "DRAW_OUT_RANGE_LABELS" : {
       "description" : "",
@@ -701,7 +709,7 @@
    },
    "ILLEGAL_CURRENT_SYSTEM" : {
       "description" : "Short (tooltip) description of commodity (singular) status in the system the player is currently in",
-      "message" : "Illegal (current system):"
+      "message" : "Illegali (sistema corrente):"
    },
    "ILLEGAL_GOODS" : {
       "description" : "",
@@ -757,7 +765,7 @@
    },
    "JOY_AXIS" : {
       "description" : "",
-      "message" : "Asse %{sign}Joy%joynum %axis"
+      "message" : "%{sign}%joyname Asse %axis"
    },
    "KM_S_RELATIVE_TO" : {
       "description" : "",
@@ -797,7 +805,7 @@
    },
    "LEGAL_CURRENT_SYSTEM" : {
       "description" : "Short (tooltip) description of commodity (singular) status in the system the player is currently in",
-      "message" : "Legal (current system):"
+      "message" : "Legali (sistema corrente):"
    },
    "LIBERAL_DEMOCRACY" : {
       "description" : "",
@@ -819,6 +827,10 @@
       "description" : "",
       "message" : "Animali vivi"
    },
+   "LOCAL_ARM" : {
+      "description" : "Arm of the Milky Way galaxy",
+      "message" : "Braccio locale"
+   },
    "LOCKED" : {
       "description" : "",
       "message" : "acquisito"
@@ -829,7 +841,7 @@
    },
    "MAJOR_EXPORT_CURRENT_SYSTEM" : {
       "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
-      "message" : "Major export (current system)"
+      "message" : "Esportazioni principali (sistema corrente)"
    },
    "MAJOR_IMPORTS" : {
       "description" : "",
@@ -837,7 +849,7 @@
    },
    "MAJOR_IMPORT_CURRENT_SYSTEM" : {
       "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
-      "message" : "Major import (current system)"
+      "message" : "Importazioni principali (sistema corrente)"
    },
    "MANUAL_CONTROL" : {
       "description" : "",
@@ -977,7 +989,7 @@
    },
    "MINOR_EXPORT_CURRENT_SYSTEM" : {
       "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
-      "message" : "Minor export (current system)"
+      "message" : "Esportazioni secondarie (sistema corrente)"
    },
    "MINOR_IMPORTS" : {
       "description" : "",
@@ -985,7 +997,7 @@
    },
    "MINOR_IMPORT_CURRENT_SYSTEM" : {
       "description" : "Short (tooltip) description of how much one commodity trades in the system the player is currently in",
-      "message" : "Minor import (current system)"
+      "message" : "Importazioni secondarie (sistema corrente)"
    },
    "MISCELLANEOUS" : {
       "description" : "",
@@ -1100,8 +1112,8 @@
       "message" : "Vuoto"
    },
    "NORMA_ARM" : {
-      "description" : "",
-      "message" : "Braccio della Norma"
+      "description" : "Arm of the Milky Way galaxy",
+      "message" : "Braccio Regolo-Cigno"
    },
    "NOT_FOUND" : {
       "description" : "",
@@ -1228,7 +1240,7 @@
       "message" : "Mondo esterno agricolo."
    },
    "OUTER_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Braccio Esterno"
    },
    "OVER_N_BILLION" : {
@@ -1256,8 +1268,8 @@
       "message" : "Distanza dal periapside"
    },
    "PERSEUS_ARM" : {
-      "description" : "",
-      "message" : "Braccio del Perseo"
+      "description" : "Arm of the Milky Way galaxy",
+      "message" : "Braccio di Perseo"
    },
    "PIONEER" : {
       "description" : "",
@@ -1297,19 +1309,19 @@
    },
    "PLANNER_RESET_FACTOR" : {
       "description" : "",
-      "message" : "Rate of increase of delta-v values. Click to reset to default."
+      "message" : "Tasso d'incremento dei valori di delta-v. Click per impostazioni predefinite."
    },
    "PLANNER_RESET_NORMAL" : {
       "description" : "",
-      "message" : "Normal delta-v. Click to reset to zero."
+      "message" : "Delta-v normale. Clic per azzerare."
    },
    "PLANNER_RESET_PROGRADE" : {
       "description" : "",
-      "message" : "Prograde delta-v. Click to reset to zero."
+      "message" : "Delta-v progrado. Click per azzerare."
    },
    "PLANNER_RESET_RADIAL" : {
       "description" : "",
-      "message" : "Radial delta-v. Click to reset to zero."
+      "message" : "Delta-v radiale. Click per azzerare."
    },
    "PLASTICS" : {
       "description" : "",
@@ -1391,6 +1403,10 @@
       "description" : "",
       "message" : "Retro"
    },
+   "RECENTLY_EXPLORED_SYSTEM" : {
+      "description" : "",
+      "message" : "Questo sistema fu esplorato il %date."
+   },
    "REQUEST_DOCKING_CLEARANCE" : {
       "description" : "",
       "message" : "Richiedo autorizzazione all'attracco"
@@ -1460,8 +1476,8 @@
       "message" : "Rifiuti"
    },
    "SAGITTARIUS_ARM" : {
-      "description" : "",
-      "message" : "Braccio del Sagittario"
+      "description" : "Arm of the Milky Way galaxy",
+      "message" : "Braccio Carena-Sagittario"
    },
    "SCANNER" : {
       "description" : "",
@@ -1480,7 +1496,7 @@
       "message" : "schermata%index{d08}.png"
    },
    "SCUTUM_CENTAURUS_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Braccio Scudo-Croce"
    },
    "SEARCH" : {
@@ -1531,6 +1547,10 @@
       "description" : "",
       "message" : "Imposta livello di spinta ridotta a %power%%"
    },
+   "SET_NAVTARGET_TO" : {
+      "description" : "",
+      "message" : "Impostata destinazione di navigazione verso: "
+   },
    "SET_SPEED_KM_S" : {
       "description" : "",
       "message" : "V: %speed{f.2} km/s"
@@ -1570,6 +1590,10 @@
    "SHIP" : {
       "description" : "",
       "message" : "Astronave"
+   },
+   "SHIPS_DISPLAY_MODE_TOGGLE" : {
+      "description" : "Either show no ships, show ships, or show ships + their orbits",
+      "message" : "Commuta fra i modi di visualizzazione delle astronavi."
    },
    "SHIP_ALTITUDE_ABOVE_TERRAIN" : {
       "description" : "",
@@ -1803,6 +1827,14 @@
       "description" : "",
       "message" : "Temperatura alla superficie"
    },
+   "SWITCHED_TO_PARENT" : {
+      "description" : "Show ship's heading, coordinates are on the celestial sphere (defined by the ecliptic).",
+      "message" : "Orientamento commutato sulle coordinate di sistema."
+   },
+   "SWITCHED_TO_ROTATIONAL" : {
+      "description" : "Show ship's heading in planetary coordinates. heading 0 = north, 90 = east, 180 = south, 270 = west.",
+      "message" : "Orientamento commutato sulle coordinate planetarie."
+   },
    "SYSTEM" : {
       "description" : "",
       "message" : "Sistema"
@@ -1846,6 +1878,10 @@
    "THIN" : {
       "description" : "",
       "message" : "sottile"
+   },
+   "THREE_KPC_ARM" : {
+      "description" : "Arm of the Milky Way galaxy",
+      "message" : "Braccio dei 3-kpc"
    },
    "THRIVING_OUTDOOR_WORLD" : {
       "description" : "",
@@ -1903,6 +1939,14 @@
       "description" : "",
       "message" : "R.I.P. Amico mio"
    },
+   "TRADE_ANALYZER" : {
+      "description" : "Ship equipment computing profitable commodities to trade between two systems",
+      "message" : "Analizzatore commerciale"
+   },
+   "TRADE_ANALYZER_DESCRIPTION" : {
+      "description" : "",
+      "message" : "Evidenzia gli scambi commerciali redditizi tra il sistema selezionato e quello corrente."
+   },
    "TRADING_ILLEGAL_GOODS" : {
       "description" : "",
       "message" : "Commercio di merci Illegali"
@@ -1938,6 +1982,10 @@
    "UNOCCUPIED_CABIN_DESCRIPTION" : {
       "description" : "",
       "message" : "Richiesta per il trasporto di un singolo passeggero"
+   },
+   "UNSET_NAVTARGET" : {
+      "description" : "",
+      "message" : "Rimossa destinazione di navigazione."
    },
    "USE_LOW_THRUST" : {
       "description" : "",

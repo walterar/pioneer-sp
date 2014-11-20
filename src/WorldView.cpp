@@ -339,8 +339,8 @@ void WorldView::SetCamType(enum CamType c)
 
 	// don't allow external cameras when docked inside space stations.
 	// they would clip through the station model
-	if (Pi::player->GetFlightState() == Ship::DOCKED && !Pi::player->GetDockedWith()->IsGroundStation())
-		c = CAM_INTERNAL;
+	//if (Pi::player->GetFlightState() == Ship::DOCKED && !Pi::player->GetDockedWith()->IsGroundStation())
+	//	c = CAM_INTERNAL;
 
 	m_camType = c;
 
@@ -1854,14 +1854,14 @@ void WorldView::Draw()
 	// don't draw crosshairs etc in hyperspace
 	if (Pi::player->GetFlightState() == Ship::HYPERSPACE) return;
 
-	glLineWidth(2.0f);
+	// glLineWidth(2.0f);
 
 	const Color retroIconColor( (Pi::player->GetNavTarget()) ? green : white );
 
 	// nav target square
 	DrawTargetSquare(m_navTargetIndicator, green);
 
-	glLineWidth(1.0f);
+	// glLineWidth(1.0f);
 
 	// velocity indicators
 	DrawVelocityIndicator(m_velIndicator, V_PROGRADE, white);
@@ -1869,14 +1869,15 @@ void WorldView::Draw()
 	DrawVelocityIndicator(m_navVelIndicator, V_PROGRADE, green);
 	DrawVelocityIndicator(m_burnIndicator, V_BURN, Color::STEELBLUE);
 
-	glLineWidth(2.0f);
+	// glLineWidth(2.0f);
 
 	DrawImageIndicator(m_mouseDirIndicator, m_indicatorMousedir.get(), yellow);
 
 	// combat target indicator
 	DrawCombatTargetIndicator(m_combatTargetIndicator, m_targetLeadIndicator, red);
 
-	glLineWidth(1.0f);
+	// glLineWidth(1.0f);
+	Graphics::CheckRenderErrors();
 
 	// normal crosshairs
 	if (GetCamType() == CAM_INTERNAL) {

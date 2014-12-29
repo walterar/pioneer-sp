@@ -21,9 +21,8 @@ define_ship {
 		missile = 4,
 		laser_front = 1,
 		laser_rear = 0,
-		cargo_scoop = 1,
+		scoop = 2,
 		cargo_life_support = 1,
-		fuel_scoop = 1,
 	},
 
 	min_crew = 1,

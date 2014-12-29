@@ -1,5 +1,6 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of CC-BY-SA 3.0. See licenses/CC-BY-SA-3.0.txt
+-- Balanced for Pioneer Scout+ by walterar <walterar2@gmail.com>
 
 define_ship {
 	name='Mola Mola',
@@ -22,8 +23,7 @@ define_ship {
 		laser_front = 1,
 		laser_rear = 0,
 		missile = 2,
-		cargo_scoop = 1,
-		fuel_scoop = 1,
+		scoop = 2,
 		cargo_life_support = 0,
 		hull_autorepair = 0,
 	},
@@ -39,5 +39,5 @@ define_ship {
 
 	hyperdrive_class = 2,
 
-	price = 122000,
+	price = 90000,
 }

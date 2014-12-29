@@ -43,6 +43,7 @@ public:
 	static Graphics::Material *explosionParticle;
 	static Graphics::RenderState *alphaState;
 	static Graphics::RenderState *additiveAlphaState;
+	static Graphics::RenderState *alphaOneState;
 
 private:
 	static Sfx *AllocSfxInFrame(Frame *f);

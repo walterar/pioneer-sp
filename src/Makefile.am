@@ -27,7 +27,6 @@ noinst_HEADERS = \
 	CargoBody.h \
 	CityOnPlanet.h \
 	Color.h \
-	Colors.h \
 	Cutscene.h \
 	CRC32.h \
 	DateTime.h \
@@ -162,7 +161,6 @@ pioneersp_SOURCES	= \
 	CameraController.cpp \
 	CargoBody.cpp \
 	Color.cpp \
-	Colors.cpp \
 	CityOnPlanet.cpp \
 	CRC32.cpp \
 	DateTime.cpp \
@@ -423,7 +421,6 @@ modelcompiler_SOURCES = \
 	CameraController.cpp \
 	CargoBody.cpp \
 	Color.cpp \
-	Colors.cpp \
 	CityOnPlanet.cpp \
 	CRC32.cpp \
 	DateTime.cpp \

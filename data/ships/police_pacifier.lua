@@ -20,18 +20,22 @@ define_ship {
 		laser_front = 1,
 		missile = 2,
 		cabin = 0,
-		fuel_scoop = 0,
 		cargo_life_support = 0,
-		cargo_scoop = 0,
+		scoop = 0,
 	},
 
 	min_crew = 1,
 	max_crew = 1,
+
 	capacity = 15,
 	hull_mass = 10,
+
 	fuel_tank_mass = 5,
 	thruster_fuel_use = 0.0001,
+
 --	effective_exhaust_velocity = xxex,
-	price = 0,
+
 	hyperdrive_class = 0,
+
+	price = 0,
 }

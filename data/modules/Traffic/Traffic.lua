@@ -13,9 +13,10 @@ local Timer      = import("Timer")
 local Event      = import("Event")
 local Serializer = import("Serializer")
 local Lang       = import("Lang")
-local Format     = import("Format")
+--local Format     = import("Format")
 local Eq         = import("Equipment")
 local StarSystem = import("StarSystem")--XXX
+local Constant   = import("Constant")
 
 local misc       = Eq.misc
 local laser      = Eq.laser
@@ -436,13 +437,15 @@ local actionPolice = function ()
 --	else
 --
 --	end
-	if fine > 0 and #crime > 0 then
+	if fine > 0 then
 --
 		Comms.ImportantMessage(myl.Warning_You_must_go_back_to_the_Station_now_or_you_will_die_soon, police)
 		if Police:GetEquipFree("laser_front") > 0 then
 			Police:AddEquip(laser.pulsecannon_dual_1mw)--XXX
 			Police:AddEquip(misc.laser_cooling_booster)
 		end
+		local crime = "ESCAPE"
+		player:AddCrime(crime, crime_fine(crime))
 		pol_ai_compl = false
 		Police:AIKill(player)
 	end
@@ -603,8 +606,10 @@ end
 local onLeaveSystem = function (ship)
 	if ship:IsPlayer() then
 		if distance and distance < 2500 then
-			local money = math.floor(Game.player:GetMoney()*30/100)
-			Game.player:AddCrime("WEAPON_DISCHARGE", money)
+
+--			local money = math.floor(Game.player:GetMoney()*30/100) --XXX
+			local money = crime_fine("ILLEGAL_JUMP")
+			Game.player:AddCrime("ILLEGAL_JUMP", money)
 			Comms.ImportantMessage(myl.ILLEGAL_JUMP .."  ".. myl.You_has_been_fined .. showCurrency(money), Game.system.faction.policeName)
 			distance = nil
 		end
@@ -673,11 +678,11 @@ end
 
 local serialize = function ()
 	return {
-	TraffiShip   = TraffiShip,
+	TraffiShip   = TraffiShip or nil,
 	ShipsCount   = ShipsCount,
 	spawnDocked  = spawnDocked,
 	Target       = Target,
-	Police       = Police,
+	Police       = Police or nil,
 	basePort     = basePort,
 	lastPort     = lastPort,
 	nextPort     = nextPort,
@@ -688,7 +693,7 @@ local serialize = function ()
 	pol_ai_compl = pol_ai_compl,
 	warning      = warning,
 	fineDetect   = fineDetect,
-	shipX        = shipX
+	shipX        = shipX or nil
 		}
 end
 

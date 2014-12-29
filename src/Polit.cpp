@@ -13,14 +13,14 @@
 #include "Ship.h"
 #include "ShipCpanel.h"
 #include "SpaceStation.h"
-#include "PersistSystemData.h"
+//#include "PersistSystemData.h"
 #include "Lang.h"
 #include "StringF.h"
 #include "Game.h"
 
 namespace Polit {
 
-
+/*
 static PersistSystemData<Sint64> s_criminalRecord;
 static PersistSystemData<Sint64> s_outstandingFine;
 struct crime_t {
@@ -42,7 +42,7 @@ static const Sint64 crimeBaseFine[64] = {
 	100000,
 	1000000,
 	1500000,
-};
+};*/
 const char *s_econDesc[ECON_MAX] = {
 	Lang::NO_ESTABLISHED_ORDER,
 	Lang::HARD_CAPITALIST,
@@ -77,7 +77,7 @@ static politDesc_t s_govDesc[GOV_MAX] = {
 	{ Lang::VIOLENT_ANARCHY,					2,		ECON_NONE,				fixed(90,100) },
 };
 
-void Init(RefCountedPtr<Galaxy> galaxy)
+/*void Init(RefCountedPtr<Galaxy> galaxy)
 {
 	s_criminalRecord.Clear();
 	s_outstandingFine.Clear();
@@ -110,13 +110,13 @@ void Unserialize(Serializer::Reader &rd, RefCountedPtr<Galaxy> galaxy)
 		s_playerPerBlocCrimeRecord[i].record = rd.Int64();
 		s_playerPerBlocCrimeRecord[i].fine = rd.Int64();
 	}
-}
+}*/
 
 fixed GetBaseLawlessness(GovType gov) {
 	return s_govDesc[gov].baseLawlessness;
 }
 
-/* The drawbacks of stuffing stuff into integers */
+/* The drawbacks of stuffing stuff into integers
 static int GetCrimeIdxFromEnum(enum Crime crime)
 {
 	assert(crime);
@@ -138,8 +138,8 @@ void NotifyOfCrime(Ship *s, enum Crime crime)
 		// too far away for crime to be noticed :)
 		if (dist > 100000.0) return;
 		const int crimeIdx = GetCrimeIdxFromEnum(crime);
-//		Pi::cpan->MsgLog()->ImportantMessage(station->GetLabel(),
-//				stringf(Lang::X_CANNOT_BE_TOLERATED_HERE, formatarg("crime", crimeNames[crimeIdx])));
+		Pi::game->log->Add(station->GetLabel(),
+				stringf(Lang::X_CANNOT_BE_TOLERATED_HERE, formatarg("crime", crimeNames[crimeIdx])));
 
 		float lawlessness = Pi::game->GetSpace()->GetStarSystem()->GetSysPolit().lawlessness.ToFloat();
 		Sint64 oldCrimes, oldFine;
@@ -186,7 +186,7 @@ void GetCrime(Sint64 *crimeBitset, Sint64 *fine)
 		*crimeBitset = s_criminalRecord.Get(path, 0);
 		*fine = s_outstandingFine.Get(path, 0);
 	}
-}
+}*/
 
 }
 

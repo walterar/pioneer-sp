@@ -25,6 +25,7 @@ Graphics::Material *Sfx::smokeParticle = 0;
 Graphics::Material *Sfx::explosionParticle = 0;
 Graphics::RenderState *Sfx::alphaState = nullptr;
 Graphics::RenderState *Sfx::additiveAlphaState = nullptr;
+Graphics::RenderState *Sfx::alphaOneState = nullptr;
 
 Sfx::Sfx()
 {
@@ -108,10 +109,10 @@ void Sfx::Render(Renderer *renderer, const matrix4x4d &ftransform)
 	vector3d fpos = ftransform * GetPosition();
 	vector3f pos(&fpos.x);
 
-	switch (m_type) 
+	switch (m_type)
 	{
 		case TYPE_NONE: break;
-		case TYPE_EXPLOSION: 
+		case TYPE_EXPLOSION:
 		{
 			renderer->SetTransform(matrix4x4d::Translation(fpos));
 			float spriteframe=m_age*20+1;
@@ -121,18 +122,17 @@ void Sfx::Render(Renderer *renderer, const matrix4x4d &ftransform)
 			//face camera
 			matrix4x4f trans = trans.Identity();
 			renderer->SetTransform(trans);
-
-			renderer->DrawPointSprites(1, &pos, additiveAlphaState, explosionParticle, m_speed);
+			renderer->DrawPointSprites(1, &pos, alphaOneState, explosionParticle, m_speed);
 			break;
-		} 
-		case TYPE_DAMAGE: 
+		}
+		case TYPE_DAMAGE:
 		{
 			renderer->SetTransform(matrix4x4d::Translation(fpos));
 			damageParticle->diffuse = Color(255, 255, 0, (1.0f-(m_age/2.0f))*255);
 			renderer->DrawPointSprites(1, &pos, additiveAlphaState, damageParticle, 20.f);
 			break;
-		} 
-		case TYPE_SMOKE: 
+		}
+		case TYPE_SMOKE:
 		{
 			float var = Pi::rng.Double()*0.05f; //slightly variation to trail color
 			if (m_age < 0.5)
@@ -253,6 +253,8 @@ void Sfx::Init(Graphics::Renderer *r)
 	alphaState = r->CreateRenderState(rsd);
 	rsd.blendMode = Graphics::BLEND_ALPHA_ONE;
 	additiveAlphaState = r->CreateRenderState(rsd);
+	rsd.depthWrite = true;
+	alphaOneState = r->CreateRenderState(rsd);
 
 	Graphics::MaterialDescriptor desc;
 	RefCountedPtr<Graphics::Material> explosionMat(r->CreateMaterial(desc));

@@ -63,7 +63,7 @@ Game::Game(const SystemPath &path, double time) :
 	Body *b = m_space->FindBodyForPath(&path);
 	assert(b);
 
-	m_player.reset(new Player("police"));
+	m_player.reset(new Player("police_mecha"));
 
 	m_space->AddBody(m_player.get());
 
@@ -76,7 +76,7 @@ Game::Game(const SystemPath &path, double time) :
 		m_player->SetPosition(vector3d(0, 1.5*sbody->GetRadius(), 0));
 		m_player->SetVelocity(vector3d(0,0,0));
 	}
-	Polit::Init(m_galaxy);
+//	Polit::Init(m_galaxy);
 
 	CreateViews();
 
@@ -161,10 +161,10 @@ Game::Game(Serializer::Reader &rd) :
 	for (Uint32 i = 0; i < nclouds; i++)
 		m_hyperspaceClouds.push_back(static_cast<HyperspaceCloud*>(Body::Unserialize(section, 0)));
 
-	// system political stuff
+	/* system political stuff
 	section = rd.RdSection("Polit");
 	Polit::Unserialize(section, m_galaxy);
-
+*/
 
 	// views
 	LoadViews(rd);
@@ -230,11 +230,11 @@ void Game::Serialize(Serializer::Writer &wr)
 
 	wr.WrSection("HyperspaceClouds", section.GetData());
 
-	// system political data (crime etc)
+	/* system political data (crime etc)
 	section = Serializer::Writer();
 	Polit::Serialize(section);
 	wr.WrSection("Polit", section.GetData());
-
+*/
 
 	// views. must be saved in init order
 	section = Serializer::Writer();

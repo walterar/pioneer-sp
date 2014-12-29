@@ -4,27 +4,27 @@ material black-material
 diffuse 0.1 0.1 0.1
 specular 0.3 0.3 0.3
 shininess 10
-tex_diff ladybird.png
-tex_spec spec.png
+tex_diff ladybird.dds
+tex_spec spec.dds
 
 material matt-material
 diffuse 0.6 0.6 0.6
 specular 0.3 0.3 0.3
 shininess 10
-tex_diff ladybird.png
-tex_spec spec.png
-tex_glow glow.png
+tex_diff ladybird.dds
+tex_spec spec.dds
+tex_glow glow.dds
 use_patterns yes
 
 material wins1-material
-diffuse 1.0 1.0 1.0 
+diffuse 1.0 1.0 1.0
 specular 1.0 1.0 2.0
 shininess 200
 opacity 99
-tex_diff semi.png
+tex_diff semi.dds
 
 material wins2-material
-diffuse .4 .45 .5 
+diffuse .4 .45 .5
 specular 1.0 1.0 2.0
 shininess 200
 opacity 40
@@ -33,9 +33,9 @@ material body-material
 diffuse 0.7 0.72 0.75
 specular 1.0 1.2 1.5
 shininess 50
-tex_diff ladybird.png
-tex_spec spec.png
-tex_glow glow.png
+tex_diff ladybird.dds
+tex_spec spec.dds
+tex_glow glow.dds
 use_patterns yes
 
 
@@ -55,4 +55,3 @@ mesh lod1.dae
 collision collision.dae
 
 anim gear_down 0 30
-

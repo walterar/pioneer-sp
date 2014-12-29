@@ -7,6 +7,7 @@ define_ship {
 	ship_class='light_scout',
 	manufacturer='kaluri',
 	model='pumpkinseed',
+
 	forward_thrust = 5e6,
 	reverse_thrust = 3e6,
 	up_thrust = 5e5,
@@ -22,20 +23,9 @@ define_ship {
 		laser_front = 1,
 		laser_rear = 0,
 		missile = 4,
-		cargo_scoop = 0,
-		fuel_scoop = 0,
+		scoop = 0,
 		cargo_life_support = 0,
 		hull_autorepair = 0,
-	},
-
-	slots = {
-		cargo = 20,
-		cabin = 1,
-		missile = 4,
-		laser_front = 1,
-		laser_rear = 0,
-		cargoscoop = 0,
-		fuelscoop = 0,
 	},
 
 	min_crew = 1,
@@ -43,6 +33,7 @@ define_ship {
 
 	capacity = 20,
 	hull_mass = 10,
+
 	fuel_tank_mass = 5,
 	thruster_fuel_use = 0.0001,
 

@@ -58,7 +58,7 @@ void SpaceStation::Save(Serializer::Writer &wr, Space *space)
 	}
 
 	wr.Int32(space->GetIndexForSystemBody(m_sbody));
-	wr.Int32(m_numPoliceDocked);
+//	wr.Int32(m_numPoliceDocked);
 
 	wr.Double(m_doorAnimationStep);
 	wr.Double(m_doorAnimationState);
@@ -101,7 +101,7 @@ void SpaceStation::Load(Serializer::Reader &rd, Space *space)
 	}
 
 	m_sbody = space->GetSystemBodyByIndex(rd.Int32());
-	m_numPoliceDocked = rd.Int32();
+//	m_numPoliceDocked = rd.Int32();
 
 	m_doorAnimationStep = rd.Double();
 	m_doorAnimationState = rd.Double();
@@ -122,7 +122,7 @@ void SpaceStation::PostLoadFixup(Space *space)
 SpaceStation::SpaceStation(const SystemBody *sbody): ModelBody()
 {
 	m_sbody = sbody;
-	m_numPoliceDocked = Pi::rng.Int32(3,10);
+//	m_numPoliceDocked = Pi::rng.Int32(3,10);
 
 	m_oldAngDisplacement = 0.0;
 
@@ -629,11 +629,11 @@ vector3d SpaceStation::GetTargetIndicatorPosition(const Frame *relTo) const
 }
 
 // XXX this whole thing should be done by Lua
-void SpaceStation::DoLawAndOrder(const double timeStep)
+/*void SpaceStation::DoLawAndOrder(const double timeStep)
 {
 	Sint64 fine, crimeBitset;
 	Polit::GetCrime(&crimeBitset, &fine);
-/*	if (Pi::player->GetFlightState() != Ship::DOCKED
+	if (Pi::player->GetFlightState() != Ship::DOCKED
 			&& m_numPoliceDocked
 			&& (fine > 1000)
 			&& (GetPositionRelTo(Pi::player).Length() < 100000.0)) {
@@ -666,8 +666,8 @@ void SpaceStation::DoLawAndOrder(const double timeStep)
 		} else {
 			delete ship;
 		}
-	}*/
-}
+	}
+}*/
 
 bool SpaceStation::IsPortLocked(const int bay) const
 {

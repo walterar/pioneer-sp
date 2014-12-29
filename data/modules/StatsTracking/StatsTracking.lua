@@ -1,12 +1,16 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-local Event = import("Event")
+local Game      = import("Game")
+local Event     = import("Event")
 local Character = import("Character")
-local Comms = import("Comms")
+local Comms     = import("Comms")
+local Constant  = import("Constant")
+
 local Lang = import("Lang")
 
 local l = Lang.GetResource("module-statstracking")
+local lc    = Lang.GetResource("ui-core")
 
 -- Stats-gathering module. Initially, gathers kill statistics for the player.
 -- Can (and should) be expanded in the future to gather other information.
@@ -38,8 +42,16 @@ local onShipDestroyed = function (ship, attacker)
 			or Character.persistent.player.killcount == 1024-- level 7 DEADLY
 			or Character.persistent.player.killcount == 2048-- level 8 ELITE
 			or Character.persistent.player.killcount == 4096-- level 9 GOD OF DEATH :)
-			then
-			Comms.Message(l.WELL_DONE_COMMANDER_YOUR_COMBAT_RATING_HAS_IMPROVED,l.PIONEERING_PILOTS_GUILD)
+		then
+			local station = attacker:FindNearestTo("SPACESTATION") or nil-- quiero estar seguro :)
+			if station and station:DistanceTo(attacker) < 100000 then
+				Comms.Message(l.WELL_DONE_COMMANDER_YOUR_COMBAT_RATING_HAS_IMPROVED,l.PIONEERING_PILOTS_GUILD)
+			else
+				local crime = "MURDER"
+				Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE, {crime=Constant.CrimeType[crime].name}), Game.system.faction.policeName)
+				local fine = math.max(1, 1+math.floor(Constant.CrimeType[crime].basefine * (1.0-Game.system.lawlessness)))
+				Game.player:AddCrime(crime, fine)
+			end
 		end
 	elseif PlayerDamagedShips[ship] then
 		Character.persistent.player.assistcount = Character.persistent.player.assistcount + 1
@@ -51,6 +63,13 @@ local onShipHit = function (ship, attacker)
 	if attacker and attacker:IsPlayer() then
 		if ship then
 			PlayerDamagedShips[ship]=true
+			local station = attacker:FindNearestTo("SPACESTATION") or nil-- quiero estar seguro :)
+			if station and station:DistanceTo(attacker) < 100000 then
+				local crime = "PIRACY"
+				Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE, {crime=Constant.CrimeType[crime].name}), Game.system.faction.policeName)
+				local fine = math.max(1, 1+math.floor(Constant.CrimeType[crime].basefine * (1.0-Game.system.lawlessness)))
+				Game.player:AddCrime(crime, fine)
+			end
 		end
 	end
 end

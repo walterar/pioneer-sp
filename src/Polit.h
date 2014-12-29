@@ -5,7 +5,7 @@
 #define _POLIT_H
 
 #include "galaxy/Economy.h"
-#include "Serializer.h"
+//#include "Serializer.h"
 
 class Galaxy;
 class StarSystem;
@@ -52,15 +52,15 @@ namespace Polit {
 		GOV_RAND_MAX = GOV_MAX-1, // <enum skip>
 	};
 
-	void NotifyOfCrime(Ship *s, enum Crime c);
+/*	void NotifyOfCrime(Ship *s, enum Crime c);
 	void Init(RefCountedPtr<Galaxy> galaxy);
 	void Serialize(Serializer::Writer &wr);
 	void Unserialize(Serializer::Reader &rd, RefCountedPtr<Galaxy> galaxy);
 	void AddCrime(Sint64 crimeBitset, Sint64 addFine);
-	void GetCrime(Sint64 *crimeBitset, Sint64 *fine);
+	void GetCrime(Sint64 *crimeBitset, Sint64 *fine);*/
 	fixed GetBaseLawlessness(GovType gov);
 
-	extern const char *crimeNames[64];
+//	extern const char *crimeNames[64];
 }
 
 class SysPolit {

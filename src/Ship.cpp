@@ -369,7 +369,7 @@ bool Ship::OnDamage(Object *attacker, float kgDamage, const CollisionContact& co
 		// transform the collision location into the models local space (from world space) and add it as a hit.
 		matrix4x4d mtx = GetOrient();
 		mtx.SetTranslate( GetPosition() );
-		const matrix4x4d invmtx = mtx.Inverse();
+		const matrix4x4d invmtx = mtx.InverseOf();
 		const vector3d localPos = invmtx * contactData.pos;
 		GetShields()->AddHit(localPos);
 
@@ -381,14 +381,14 @@ bool Ship::OnDamage(Object *attacker, float kgDamage, const CollisionContact& co
 				if (attacker->IsType(Object::BODY))
 					LuaEvent::Queue("onShipDestroyed", this, dynamic_cast<Body*>(attacker));
 
-				if (attacker->IsType(Object::SHIP))
-					Polit::NotifyOfCrime(static_cast<Ship*>(attacker), Polit::CRIME_MURDER);
+//				if (attacker->IsType(Object::SHIP))
+//					Polit::NotifyOfCrime(static_cast<Ship*>(attacker), Polit::CRIME_MURDER);
 			}
 
 			Explode();
 		} else {
-			if (attacker && attacker->IsType(Object::SHIP))
-				Polit::NotifyOfCrime(static_cast<Ship*>(attacker), Polit::CRIME_PIRACY);
+//			if (attacker && attacker->IsType(Object::SHIP))
+//				Polit::NotifyOfCrime(static_cast<Ship*>(attacker), Polit::CRIME_PIRACY);
 
 			if (Pi::rng.Double() < kgDamage)
 				Sfx::Add(this, Sfx::TYPE_DAMAGE);
@@ -866,7 +866,7 @@ void Ship::FireWeapon(int num)
 	else
 		Projectile::Add(this, lifespan, damage, length, width, mining, c, pos, baseVel, dirVel);
 
-	Polit::NotifyOfCrime(this, Polit::CRIME_WEAPON_DISCHARGE);
+//	Polit::NotifyOfCrime(this, Polit::CRIME_WEAPON_DISCHARGE);
 	Sound::BodyMakeNoise(this, "Pulse_Laser", 1.0f);
 	lua_pop(prop.GetLua(), 1);
 	LuaEvent::Queue("onShipFiring", this);
@@ -1033,7 +1033,7 @@ void Ship::StaticUpdate(const float timeStep)
 				vector3d pdir = -GetOrient().VectorZ();
 				double dot = vdir.Dot(pdir);
 				if ((m_stats.free_capacity) && (dot > 0.95) && (speed > 2000.0) && (density > 1.0)) {
-					double rate = speed*density*0.00001f;
+					double rate = speed*density*0.00000333f*double(capacity);//#3267
 					if (Pi::rng.Double() < rate) {
 						lua_State *l = Lua::manager->GetLuaState();
 						pi_lua_import(l, "Equipment");
@@ -1228,7 +1228,7 @@ void Ship::Render(Graphics::Renderer *renderer, const Camera *camera, const vect
 	GetModel()->SetThrust(vector3f(m_thrusters), -vector3f(m_angThrusters));
 
 	matrix3x3f mt;
-	matrix3x3dtof(viewTransform.Inverse().GetOrient(), mt);
+	matrix3x3dtof(viewTransform.InverseOf().GetOrient(), mt);
 	s_heatGradientParams.heatingMatrix = mt;
 	s_heatGradientParams.heatingNormal = vector3f(GetVelocity().Normalized());
 	s_heatGradientParams.heatingAmount = Clamp(GetHullTemperature(),0.0,1.0);

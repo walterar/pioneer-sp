@@ -17,8 +17,7 @@ define_ship {
 	angular_thrust = 64e5,
 
 	camera_offset = v(0,1,-12.8),
-	gun_mounts =
-	{
+	gun_mounts = {
 		{ v(0,-.7,-40), v(0,0,-1), 5, 'HORIZONTAL' },
 		{ v(0,-.7,25), v(0,0,1), 5, 'HORIZONTAL' },
 	},
@@ -30,10 +29,9 @@ define_ship {
 		laser_front = 1,
 		laser_rear = 0,
 		missile = 2,
-		cargo_scoop = 0,
+		scoop = 0,
 		cargo_life_support = 0,
 		hull_autorepair = 0,
-		fuel_scoop = 0,
 	},
 
 	min_crew = 1,
@@ -42,8 +40,9 @@ define_ship {
 	capacity = 22,
 	hull_mass = 10,
 	fuel_tank_mass = 5,
-
 	thruster_fuel_use = 0.0001,
-	price = 31000,
+
 	hyperdrive_class = 1,
+
+	price = 31000,
 }

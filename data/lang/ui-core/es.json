@@ -255,6 +255,10 @@
       "description" : "",
       "message" : "Vencimiento"
    },
+   "DUMPING" : {
+      "description" : "The illegal act of dumping waste",
+      "message" : "Vertido ilegal"
+   },
    "D_DAYS_LEFT" : {
       "description" : "",
       "message" : "Restan: %d días"
@@ -1090,5 +1094,10 @@
    "YOU_NOT_ENOUGH_MONEY" : {
       "description" : "",
       "message" : "Usted no tiene crédito suficiente."
+   },
+
+   "X_CANNOT_BE_TOLERATED_HERE" : {
+      "description" : "Message to be sent over comms by police when crime is committed by player",
+      "message" : "{crime} no es tolerado aquí!"
    }
 }

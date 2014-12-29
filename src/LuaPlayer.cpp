@@ -5,7 +5,7 @@
 #include "LuaUtils.h"
 #include "LuaConstants.h"
 #include "Player.h"
-#include "Polit.h"
+//#include "Polit.h"
 #include "Pi.h"
 #include "Game.h"
 #include "SectorView.h"
@@ -44,7 +44,7 @@ static int l_player_is_player(lua_State *l)
  * Status:
  *
  *   stable
- */
+
 static int l_player_add_crime(lua_State *l)
 {
 	LuaObject<Player>::CheckFromLua(1); // check that the method is being called on a Player object
@@ -84,7 +84,6 @@ static int l_player_clear_crime_fine(lua_State *l)
 	return 0;
 }
 
-/*
  * Method: GetNavTarget
  *
  * Get the player's navigation target
@@ -102,7 +101,7 @@ static int l_player_clear_crime_fine(lua_State *l)
  * Status:
  *
  *   experimental
- */
+ * */
 
 static int l_get_nav_target(lua_State *l)
 {
@@ -278,10 +277,10 @@ template <> void LuaObject<Player>::RegisterClass()
 	static const luaL_Reg l_methods[] = {
 		{ "IsPlayer", l_player_is_player },
 
-		{ "AddCrime",       l_player_add_crime },
+/*		{ "AddCrime",       l_player_add_crime },
 		{ "GetCrime",       l_player_get_crime },
 		{ "ClearCrimeFine", l_player_clear_crime_fine },
-
+*/
 		{ "GetNavTarget",    l_get_nav_target    },
 		{ "SetNavTarget",    l_set_nav_target    },
 		{ "GetCombatTarget", l_get_combat_target },

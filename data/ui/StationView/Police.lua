@@ -8,6 +8,7 @@ local Rand       = import("Rand")
 local Character  = import("Character")
 local Format     = import("Format")
 local utils      = import("utils")
+local Constant   = import("Constant")
 
 local InfoFace           = import("ui/InfoFace")
 local SmallLabeledButton = import("ui/SmallLabeledButton")
@@ -17,12 +18,12 @@ local ui = Engine.ui
 local l = Lang.GetResource("ui-core")
 local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
 
-local crimeStrings = {
-	TRADING_ILLEGAL_GOODS = l.TRADING_ILLEGAL_GOODS,
-	WEAPON_DISCHARGE      = myl.ENVIRONMENTAL_DAMAGE,
-	PIRACY                = l.PIRACY,
-	MURDER                = l.MURDER,
-}
+--local crimeStrings = {
+--	TRADING_ILLEGAL_GOODS = l.TRADING_ILLEGAL_GOODS,
+--	WEAPON_DISCHARGE      = myl.ENVIRONMENTAL_DAMAGE,
+--	PIRACY                = l.PIRACY,
+--	MURDER                = l.MURDER,
+--}
 
 local police = function (tab)
 	local station = Game.player:GetDockedWith()
@@ -35,12 +36,25 @@ local police = function (tab)
 
 	local crimes, fine = Game.player:GetCrime()
 
+	local tmp_table = {}
+	for k,v in pairs(crimes) do
+		table.insert(tmp_table,k)
+	end
+
+	local crimeStat = function (k,v)
+--		local s = Format.Date(crimes[v].date).."\t - "..crimes[v].count.."\t"..Constant.CrimeType[v].name.."\t"..showCurrency(crimes[v].fine)
+		local s = Format.Date(crimes[v].date).."\t - "..crimes[v].count.."\t"..Constant.CrimeType[v].name.."\t"..showCurrency(crimes[v].fine)
+		return k, s
+	end
+
 	local infoBox = ui:VBox(10)
-	if #crimes > 0 then
+--	if #crimes > 0 then
+	if #utils.build_array(pairs(crimes)) > 0 then
 		infoBox:PackEnd({
 			ui:Label(l.CRIMINAL_RECORD):SetFont("HEADING_LARGE"),
 			ui:VBox():PackEnd(
-				utils.build_table(utils.map(function (k,v) return k,crimeStrings[v] end, pairs(crimes)))
+--				utils.build_table(utils.map(function (k,v) return k,crimeStrings[v] end, pairs(crimes)))
+				utils.build_table(utils.map(crimeStat, pairs(tmp_table)))
 			),
 		})
 	end

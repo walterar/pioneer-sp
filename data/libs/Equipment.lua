@@ -263,8 +263,7 @@ end
 -- atmo_shield - atmospheric shielding
 -- cabin - cabin
 -- shield - shield
--- fuel_scoop - fuel scoop
--- cargo_scoop - cargo scoop
+-- scoop - scoop used for scooping things (cargo, fuel/hydrogen)
 -- laser_cooler - laser cooling booster
 -- cargo_life_support - cargo bay life support
 -- autopilot - autopilot
@@ -528,13 +527,17 @@ misc.advanced_radar_mapper = EquipType.New({
 	capabilities={mass=1, radar_mapper_level=2}, purchasable=true
 })
 misc.fuel_scoop = EquipType.New({
-	l10n_key="FUEL_SCOOP", slots="fuel_scoop", price=3500,
+	l10n_key="FUEL_SCOOP", slots="scoop", price=3500,
 	capabilities={mass=6, fuel_scoop=1}, purchasable=true
 })
 misc.cargo_scoop = EquipType.New({
-	l10n_key="CARGO_SCOOP", slots="cargo_scoop", price=3900,
+	l10n_key="CARGO_SCOOP", slots="scoop", price=3900,
 	capabilities={mass=7, cargo_scoop=1}, purchasable=true
 })
+--misc.multi_scoop = EquipType.New({
+--	l10n_key="MULTI_SCOOP", slots="scoop", price=7000,
+--	capabilities={mass=9, cargo_scoop=1, fuel_scoop=2}, purchasable=true
+--})
 misc.hypercloud_analyzer = EquipType.New({
 	l10n_key="HYPERCLOUD_ANALYZER", slots="hypercloud", price=1500,
 	capabilities={mass=1, hypercloud_analyzer=1}, purchasable=true

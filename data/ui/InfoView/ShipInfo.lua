@@ -38,6 +38,11 @@ local shipInfo = function (args)
 
 	local player = Game.player
 
+	local shipNameEntry = ui:TextEntry(player.shipName):SetFont("HEADING_NORMAL")
+	shipNameEntry.onChange:Connect(function (newName)
+		player:SetShipName(newName)
+	end )
+
 	local mass_with_fuel = player.totalMass + player.fuelMassLeft
 	local mass_with_fuel_kg = 1000 * mass_with_fuel
 
@@ -108,8 +113,7 @@ local shipInfo = function (args)
 						ui:Label(myl.CAPACITY):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
 						{ l.MISSILE_MOUNTS..":",         shipDef.equipSlotCapacity.missile},
 						{ lc.ATMOSPHERIC_SHIELDING..":", yes_no(shipDef.equipSlotCapacity.atmo_shield)},
-						{ lc.FUEL_SCOOP..":",            yes_no(shipDef.equipSlotCapacity.fuel_scoop)},
-						{ lc.CARGO_SCOOP..":",           yes_no(shipDef.equipSlotCapacity.cargo_scoop)},
+						{ lc.SCOOP..":",                 shipDef.equipSlotCapacity.scoop},
 						{ lc.UNOCCUPIED_CABIN..":",      shipDef.equipSlotCapacity.cabin},
 						"",
 						ui:Label(myl.CREW):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
@@ -131,7 +135,14 @@ local shipInfo = function (args)
 			})
 			:SetColumn(2, {
 				ui:VBox(10)
-					:PackEnd(ui:Align("MIDDLE",ui:Label(shipDef.name):SetFont("HEADING_LARGE"):SetColor({ r = 0.8, g = 1.0, b = 0.4 })))
+					:PackEnd(ui:HBox(10):PackEnd({
+						ui:VBox(5):PackEnd({
+							ui:Label(shipDef.name):SetFont("HEADING_LARGE"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
+						}),
+						ui:VBox(5):PackEnd({
+							ui:Expand("HORIZONTAL", shipNameEntry),
+						})
+					}))
 					:PackEnd(ModelSpinner.New(ui, shipDef.modelName, Game.player:GetSkin()))
 			})
 end

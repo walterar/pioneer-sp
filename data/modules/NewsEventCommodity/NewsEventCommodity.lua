@@ -43,7 +43,7 @@ local maxDist = 50          -- for spawning news (ly)
 local minTime = 15768000    -- no news the first 5 months of a new game (sec)
 
 -- to spawn a new event per hyperjump, provided no other news.
-local eventProbability = 1/30
+local eventProbability = 1/20
 
 -- max index of flavoured variants
 local maxIndexOfIndNewspapers = 10
@@ -357,7 +357,7 @@ local onShipDocked = function (ship, station)
 			if ship:CountEquip(n.cargo, cargo) > 0 and n.demand > 0 then
 				local greeting = string.interp(l["GRATEFUL_GREETING_"..Engine.rand:Integer(0,maxIndexOfGreetings)],
 					{cargo = n.cargo:GetName()})
-				Comms.Message(greeting, ship.label)
+				Comms.Message(greeting)
 			end
 
 			local price = station:GetEquipmentPrice(n.cargo)

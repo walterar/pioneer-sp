@@ -23,8 +23,7 @@ define_ship {
 		laser_front = 1,
 		laser_rear = 0,
 		missile = 4,
-		cargo_scoop = 1,
-		fuel_scoop = 1,
+		scoop = 2,
 		cargo_life_support = 1,
 		hull_autorepair = 1,
 	},
@@ -34,10 +33,11 @@ define_ship {
 
 	capacity = 500,
 	hull_mass = 300,
+
 	fuel_tank_mass = 150,
 	thruster_fuel_use = 0.0001,
 
 	hyperdrive_class = 7,
 
-	price = 500000,
+	price = 600000,
 }

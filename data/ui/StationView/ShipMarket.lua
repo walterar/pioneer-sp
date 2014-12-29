@@ -15,8 +15,8 @@ local equipment    = import("Equipment")
 
 local Model        = import("SceneGraph.Model")
 local ModelSkin    = import("SceneGraph.ModelSkin")
+local ModelSpinner = import("UI.Game.ModelSpinner")
 
-local ModelSpinner       = import("UI.Game.ModelSpinner")
 local SmallLabeledButton = import("ui/SmallLabeledButton")
 local MessageBox         = import("ui/MessageBox")
 
@@ -188,8 +188,7 @@ shipTable.onRowClicked:Connect(function (row)
 							:AddRow({l.FUEL_WEIGHT,         Format.MassTonnes(def.fuelTankMass)})
 							:AddRow({l.MISSILE_MOUNTS,      def.equipSlotCapacity["missile"]})
 							:AddRow({lc.ATMOSPHERIC_SHIELDING, yes_no(def.equipSlotCapacity["atmo_shield"])})
-							:AddRow({lc.FUEL_SCOOP,            yes_no(def.equipSlotCapacity["fuel_scoop"])})
-							:AddRow({lc.CARGO_SCOOP,           yes_no(def.equipSlotCapacity["cargo_scoop"])})
+							:AddRow({lc.SCOOP,           def.equipSlotCapacity["scoop"]})
 					})
 			),
 		})

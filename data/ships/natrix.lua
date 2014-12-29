@@ -6,6 +6,7 @@ define_ship {
 	ship_class='light_freighter',
 	manufacturer='opli',
 	model='natrix',
+
 	forward_thrust = 124e5,
 	reverse_thrust = 21e5,
 	up_thrust = 21e5,
@@ -21,17 +22,17 @@ define_ship {
 		laser_front = 1,
 		laser_rear = 0,
 		missile = 2,
-		cargo_scoop = 0,
-		fuel_scoop = 0,
+		scoop = 0,
 		cargo_life_support = 0,
 		hull_autorepair = 0,
 	},
 
 	min_crew = 1,
-	max_crew = 1,
+	max_crew = 2,
 
 	capacity = 40,
 	hull_mass = 20,
+
 	fuel_tank_mass = 20,
 	effective_exhaust_velocity = 62143e3,
 

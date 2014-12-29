@@ -438,9 +438,8 @@ local onShipDocked = function (player, station)
 					missions[ref] = nil
 				end
 			else
-				local multiplier = 1 + Game.system.lawlessness
-				local money = math.floor((Game.player:GetMoney()/2) * multiplier)
-				Game.player:AddCrime("TRADING_ILLEGAL_GOODS", money)
+				local crime = "ESPIONAGE"
+				Game.player:AddCrime(crime, crime_fine(crime))
 				Comms.ImportantMessage(l.Unauthorized_data_here_is_REMOVED, faction.militaryName)
 				Comms.ImportantMessage(l.You_have_been_fined .. showCurrency(money), faction.policeName)
 --				_G.MissionsFailures = MissionsFailures + 1

@@ -89,7 +89,7 @@ void TerrainBody::Render(Graphics::Renderer *renderer, const Camera *camera, con
 
 	vector3d campos = fpos;
 	ftran.ClearToRotOnly();
-	campos = ftran.Inverse() * campos;
+	campos = ftran.InverseOf() * campos;
 
 	campos = campos * (1.0/rad);		// position of camera relative to planet "model"
 

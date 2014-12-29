@@ -51,6 +51,26 @@
 "description":"",
 "message":"Daño ambiental"
 },
+"ABDUCTION":{
+"description":"",
+"message":"Secuestro"
+},
+"FRAUD":{
+"description":"",
+"message":"Estafa"
+},
+"ESPIONAGE":{
+"description":"",
+"message":"Espionaje"
+},
+"ESCAPE":{
+"description":"",
+"message":"Fuga"
+},
+"ILLEGAL_JUMP":{
+"description":"",
+"message":"Daño ambiental"
+},
 "Experience":{
 "description":"",
 "message":"Experiencia"

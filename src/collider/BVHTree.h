@@ -20,19 +20,19 @@ struct BVHNode {
 
 	BVHNode *kids[2];
 
-	BVHNode() : numTris(0), triIndicesStart(nullptr) {
-		kids[0] = nullptr;
-		kids[1] = nullptr;
+	BVHNode() {
+		kids[0] = 0;
+		triIndicesStart = 0;
 	}
 	bool IsLeaf() const {
-		return triIndicesStart != nullptr;
+		return triIndicesStart != 0;
 	}
 };
 
 class BVHTree {
 public:
 	typedef int objPtr_t;
-	BVHTree(const int numObjs, const objPtr_t *objPtrs, const Aabb *objAabbs);
+	BVHTree(int numObjs, const objPtr_t *objPtrs, const Aabb *objAabbs);
 	~BVHTree() {
 		delete [] m_objPtrAlloc;
 		delete [] m_bvhNodes;

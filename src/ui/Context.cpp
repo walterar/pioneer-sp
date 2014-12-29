@@ -145,15 +145,11 @@ void Context::Draw()
 {
 	Graphics::Renderer *r = GetRenderer();
 
-	// Ticket for the viewport mostly
-	Graphics::Renderer::StateTicket ticket(r);
-	r->SetViewport(0, 0, m_width, m_height);
-
 	// reset renderer for each layer
 	for (std::vector<Layer*>::iterator i = m_layers.begin(); i != m_layers.end(); ++i) {
 		r->SetOrthographicProjection(0, m_width, m_height, 0, -1, 1);
 		r->SetTransform(matrix4x4f::Identity());
-		r->SetClearColor(Color4f::BLACK);
+		r->SetClearColor(Color::BLACK);
 
 		DrawWidget(*i);
 
@@ -163,7 +159,7 @@ void Context::Draw()
 	if (m_mousePointer && m_mousePointerEnabled) {
 		r->SetOrthographicProjection(0, m_width, m_height, 0, -1, 1);
 		r->SetTransform(matrix4x4f::Identity());
-		r->SetClearColor(Color4f::BLACK);
+		r->SetClearColor(Color::BLACK);
 		DrawWidget(m_mousePointer);
 		r->SetScissor(false);
 	}

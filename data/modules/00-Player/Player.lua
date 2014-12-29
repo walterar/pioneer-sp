@@ -15,10 +15,12 @@ local Music      = import("Music")
 local Space      = import("Space")
 local Timer      = import("Timer")
 local Eq         = import("Equipment")
+local Constant   = import("Constant")
 
 local l = Lang.GetResource("module-00-player") or Lang.GetResource("module-00-player","en");
 --local ll = Lang.GetResource("core") or Lang.GetResource("core","en");
 local ls = Lang.GetResource("module-system") or Lang.GetResource("module-system","en");
+local lc    = Lang.GetResource("ui-core")
 
 local shipData = {}
 local loaded_data
@@ -217,6 +219,15 @@ end
 Event.Register("onShipHit", onShipHit)
 
 local onShipFiring = function (ship)
+	if ship and ship:IsPlayer() then
+		local station = ship:FindNearestTo("SPACESTATION")
+		if station and station:DistanceTo(ship) < 100000 then
+			local crime = "UNLAWFUL_WEAPONS_DISCHARGE"
+			Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE,
+				{crime=Constant.CrimeType[crime].name}), Game.system.faction.policeName)
+			ship:AddCrime(crime, crime_fine(crime))
+		end
+	end
 	if not autoCombat
 		or not ship
 		or not ship:exists()

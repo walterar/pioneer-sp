@@ -15,7 +15,7 @@ namespace Graphics {
 
 namespace Drawables {
 
-// A thing that can draw itself using renderer
+// A things that can draw themselves using renderer
 // (circles, disks, polylines etc)
 //------------------------------------------------------------
 

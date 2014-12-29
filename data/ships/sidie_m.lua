@@ -23,12 +23,11 @@ define_ship {
 	slots = {
 		cargo = 30,
 		atmo_shield = 1,
-		cabin = 0,
+		cabin = 1,
 		laser_front = 1,
 		laser_rear = 0,
 		missile = 1,
-		cargo_scoop = 1,
-		fuel_scoop = 0,
+		scoop = 1,
 		cargo_life_support = 0,
 		hull_autorepair = 0,
 	},
@@ -44,5 +43,5 @@ define_ship {
 
 	hyperdrive_class = 2,
 
-	price = 44000,
+	price = 34000,
 }

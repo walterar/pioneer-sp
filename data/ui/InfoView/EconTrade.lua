@@ -9,6 +9,7 @@ local Game       = import("Game")
 local Eq         = import("Equipment")
 local Comms      = import("Comms")
 local MessageBox = import("ui/MessageBox")
+local Constant   = import("Constant")
 
 local SmallLabeledButton = import("ui/SmallLabeledButton")
 local InfoGauge          = import("ui/InfoGauge")
@@ -56,16 +57,19 @@ local econTrade = function ()
 			jettisonButton.button.onClick:Connect(function ()
 
 				if player.flightState == "HYPERSPACE" then return end
-				if player:DistanceTo(player:FindNearestTo("SPACESTATION")) < 100e3 then
-					local money = player:GetMoney() * Game.system.lawlessness
-					if et == Eq.cargo.radioactives then money = money * 10 end
---					if player:GetDockedWith() then
-						MessageBox.Message(myl.You_has_been_fined .. showCurrency(money) .. myl.for_jettison .. et:GetName() .. myl.port_or_vecinity)
---					else
---						Comms.ImportantMessage(myl.You_has_been_fined .. showCurrency(money) .. myl.for_jettison .. et:GetName() .. myl.port_or_vecinity, Game.system.faction.policeName)
---					end
-
-					player:AddCrime("TRADING_ILLEGAL_GOODS", money)
+				if player:DistanceTo(player:FindNearestTo("SPACESTATION")) < 100e3
+					or (et == Eq.cargo.radioactives and Game.system.population > 0) then
+					local crime, fine
+					if et == Eq.cargo.radioactives then
+						crime = "ENVIRONMENTAL_DAMAGE"
+						fine = crime_fine(crime)
+						MessageBox.Message(myl.You_has_been_fined .. showCurrency(fine) .. myl.for_jettison .. et:GetName())
+					else
+						crime = "DUMPING"
+						fine = crime_fine(crime)
+						MessageBox.Message(myl.You_has_been_fined .. showCurrency(fine) .. myl.for_jettison .. et:GetName() .. myl.port_or_vecinity)
+					end
+					player:AddCrime(crime, fine)
 				end
 				Game.player:Jettison(et)
 				updateCargoListWidget()

@@ -11,8 +11,36 @@ local ShipDef    = import("ShipDef")
 local Ship       = import("Ship")
 local Lang       = import("Lang")
 local Eq         = import("Equipment")
+local Constant   = import("Constant")
 
-local l = Lang.GetResource("core");
+local l = Lang.GetResource("core")
+
+local factor_x = function ()
+	local locate = Game.system.path
+	local sectorz = math.abs(locate.sectorZ)
+	if sectorz > 50 then sectorz = 50 end
+	local multiplier = 1 + ((math.abs(locate.sectorX) + math.abs(locate.sectorY) + sectorz)/100)
+	if string.sub(Game.player.label,1,2) ~= string.upper(string.sub(Game.system.faction.name,1,2)) then
+		multiplier = multiplier * 1.5
+	end
+	local lawlessness = Game.system.lawlessness
+	local population = Game.system.population
+	if population > 1 then population = 1+population/100
+	else
+		population = 1+population
+	end
+	return math.ceil(1
+		* (1 + lawlessness)
+		/ (1 + population))
+		* multiplier
+end
+
+_G.crime_fine = function (crime)
+	local lawlessness = Game.system.lawlessness
+	return math.max(1, 1+math.floor(
+		Constant.CrimeType[crime].basefine
+		* factor_x()))
+end
 
 -- a tariff (reward) calculator
 _G.tariff = function (dist,risk,urgency,locate)

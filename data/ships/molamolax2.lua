@@ -7,6 +7,7 @@ define_ship {
 	ship_class='medium_scout',
 	manufacturer='kaluri',
 	model='molamola',
+
 	forward_thrust = 259e5,
 	reverse_thrust = 118e5,
 	up_thrust = 1e7,
@@ -22,8 +23,7 @@ define_ship {
 		laser_front = 1,
 		laser_rear = 0,
 		missile = 2,
-		cargo_scoop = 1,
-		fuel_scoop = 1,
+		scoop = 2,
 		cargo_life_support = 0,
 		hull_autorepair = 0,
 	},
@@ -33,8 +33,8 @@ define_ship {
 
 	capacity = 90,
 	hull_mass = 60,
-	fuel_tank_mass = 30,
 
+	fuel_tank_mass = 30,
 	thruster_fuel_use = 0.00015,
 
 	hyperdrive_class = 3,

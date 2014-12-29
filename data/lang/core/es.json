@@ -1161,7 +1161,7 @@
    },
    "NUMBER_GROUP_SEP" : {
       "description" : "Para cifras largas, separador usado por grupo de digitos. Ej. 1,000 or 1 000 or 1.000",
-      "message" : ","
+      "message" : "."
    },
    "NUMBER_GROUP_MIN" : {
       "description" : "Smallest number to start grouping of digits for. (E.g. if \"10000\" start grouping thousands with 10,000, and not 1,000).",
@@ -1170,10 +1170,6 @@
    "NUMBER_GROUP_NUM" : {
       "description" : "For large number, group digits by this many. European languages use 3 (group thousands). 0 means no grouping.",
       "message" : "3"
-   },
-   "NUMBER_GROUP_SEP" : {
-      "description" : "Para cifras largas, separador usado por grupo de digitos. Ej. 1,000 or 1 000 or 1.000",
-      "message" : "."
    },
    "NUMBER_HOURS" : {
       "description" : "",
@@ -1498,6 +1494,10 @@
    "SCREENSHOT_FILENAME_TEMPLATE" : {
       "description" : "",
       "message" : "screenshot%index{d08}.png"
+   },
+   "SCOOP" : {
+      "description" : "A general word for cargo scoop or fuel scoop; used to scoop up cargo or fuel",
+      "message" : "Dispositivos recolectores"
    },
    "SCUTUM_CENTAURUS_ARM" : {
       "description" : "",

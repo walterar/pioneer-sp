@@ -1,5 +1,6 @@
 -- Copyright © 2008-2013 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of CC-BY-SA 3.0. See licenses/CC-BY-SA-3.0.txt
+
 local thrust = function(grav,mass)
 	return math.floor(grav * 9806.65 * mass)
 end
@@ -33,17 +34,19 @@ define_ship {
 		missile = 4,
 		laser_front = 1,
 		laser_rear = 1,
-		cargo_scoop = 0,
-		fuel_scoop = 0,
+		scoop = 0,
 		engine = 1,
-		cabin = 5,
+		cabin = 3,
 		--shield = 5,
 	},
 
 	min_crew = 1,
-	max_crew = 1,
+	max_crew = 2,
 
-	effective_exhaust_velocity = 5e6,
-	price = 160000,
+--	effective_exhaust_velocity = 5e6,
+	thruster_fuel_use = 0.0001,
+
 	hyperdrive_class = 2,
+
+	price = 48000,
 }

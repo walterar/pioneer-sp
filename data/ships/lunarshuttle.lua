@@ -1,11 +1,13 @@
 -- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of CC-BY-SA 3.0. See licenses/CC-BY-SA-3.0.txt
+-- Balanced for Pioneer Scout+ by walterar <walterar2@gmail.com>
 
 define_ship {
 	name='Lunar Shuttle',
 	ship_class='light_passenger_shuttle',
 	manufacturer='haber',
 	model='lunarshuttle',
+
 	forward_thrust = 25e5,
 	reverse_thrust = 11e5,
 	up_thrust = 11e5,
@@ -21,9 +23,9 @@ define_ship {
 		cargo = 30,
 		laser_front = 1,
 		missile = 0,
-		cargo_scoop = 1,
-		fuel_scoop = 0,
+		scoop = 0,
 		engine = 0,
+
 	},
 
 	min_crew = 1,

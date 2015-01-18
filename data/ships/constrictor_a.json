@@ -1,0 +1,32 @@
+{
+   "angular_thrust" : 120000000.0,
+   "capacity" : 90,
+   "cockpit" : "",
+   "down_thrust" : 6000000.0,
+   "effective_exhaust_velocity" : -1.0,
+   "forward_thrust" : 25900000.0,
+   "fuel_tank_mass" : 30,
+   "hull_mass" : 60,
+   "hyperdrive_class" : 3,
+   "left_thrust" : 6000000.0,
+   "manufacturer" : "p66",
+   "max_crew" : 3,
+   "min_crew" : 1,
+   "model" : "constrictor_a",
+   "name" : "Constrictor",
+   "price" : 143000.0,
+   "reverse_thrust" : 11800000.0,
+   "right_thrust" : 6000000.0,
+   "ship_class" : "heavy_scout",
+   "slots" : {
+      "cabin" : 10,
+      "cargo" : 90,
+      "cargo_life_support" : 1,
+      "laser_front" : 1,
+      "laser_rear" : 0,
+      "missile" : 2,
+      "scoop" : 2
+   },
+   "thruster_fuel_use" : 0.0001500000071246177,
+   "up_thrust" : 10000000.0
+}

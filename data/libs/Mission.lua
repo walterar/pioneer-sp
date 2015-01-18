@@ -1,11 +1,12 @@
--- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 local Serializer = import("Serializer")
-local Character = import("Character")
-local Lang = import("Lang")
+local Character  = import("Character")
+local Game       = import("Game")
 
-local l = Lang.GetResource("ui-core")
+local Lang = import("Lang")
+local l    = Lang.GetResource("ui-core")
 
 --
 -- Class: Mission
@@ -88,7 +89,7 @@ Mission = {
 	reward = 0,
 
 --
--- Attribute:Location 
+-- Attribute:Location
 --
 -- A [SystemPath] for the destination space station
 --
@@ -241,7 +242,7 @@ Mission = {
 		for k,v in pairs(template) do
 			newMission[k] = v
 		end
-		setmetatable(newMission,Mission.meta)		
+		setmetatable(newMission,Mission.meta)
 		if not newMission:GetTypeDescription() then -- An invalid typeid was given
 			error(('Mission.New: type "{typeid}" has not been registered with Mission.RegisterType()')
 					:interp({typeid=newMission.type}))

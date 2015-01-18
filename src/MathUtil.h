@@ -1,4 +1,4 @@
-// Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #ifndef _MATHUTIL_H
@@ -22,6 +22,7 @@ namespace MathUtil {
 		return t*v2 + (F(1.0)-t)*v1;
 	}
 
+	inline float Dot(const vector3f &a, const vector3f &b) { return a.x*b.x + a.y*b.y + a.z*b.z; }
 }
 
 #endif

@@ -1,4 +1,4 @@
-// Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "Game.h"
@@ -63,7 +63,7 @@ Game::Game(const SystemPath &path, double time) :
 	Body *b = m_space->FindBodyForPath(&path);
 	assert(b);
 
-	m_player.reset(new Player("police_mecha"));
+	m_player.reset(new Player("deneb"));
 
 	m_space->AddBody(m_player.get());
 

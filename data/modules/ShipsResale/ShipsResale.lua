@@ -1,4 +1,4 @@
--- ShipsResale.lua for Pioneer Scout+ (c)2013-2014 by walterar <walterar2@gmail.com>
+-- ShipsResale.lua for Pioneer Scout+ (c)2012-2015 by walterar <walterar2@gmail.com>
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- Work in progress.
 
@@ -44,6 +44,7 @@ local onChat = function (form, ref, option)
 				def.tag == 'SHIP'
 				and def.basePrice > 0
 				and def.name ~= my_ship_name
+				and def.basePrice > my_ship_price
 				and def.basePrice < (Game.player:GetMoney() + my_ship_price)
 			end, pairs(ShipDef)))
 		if #shipdefs == 0 then return end

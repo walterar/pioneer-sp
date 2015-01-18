@@ -1,4 +1,4 @@
-// Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "Sfx.h"
@@ -25,7 +25,6 @@ Graphics::Material *Sfx::smokeParticle = 0;
 Graphics::Material *Sfx::explosionParticle = 0;
 Graphics::RenderState *Sfx::alphaState = nullptr;
 Graphics::RenderState *Sfx::additiveAlphaState = nullptr;
-Graphics::RenderState *Sfx::alphaOneState = nullptr;
 
 Sfx::Sfx()
 {
@@ -122,7 +121,8 @@ void Sfx::Render(Renderer *renderer, const matrix4x4d &ftransform)
 			//face camera
 			matrix4x4f trans = trans.Identity();
 			renderer->SetTransform(trans);
-			renderer->DrawPointSprites(1, &pos, alphaOneState, explosionParticle, m_speed);
+
+			renderer->DrawPointSprites(1, &pos, additiveAlphaState, explosionParticle, m_speed);
 			break;
 		}
 		case TYPE_DAMAGE:
@@ -253,8 +253,6 @@ void Sfx::Init(Graphics::Renderer *r)
 	alphaState = r->CreateRenderState(rsd);
 	rsd.blendMode = Graphics::BLEND_ALPHA_ONE;
 	additiveAlphaState = r->CreateRenderState(rsd);
-	rsd.depthWrite = true;
-	alphaOneState = r->CreateRenderState(rsd);
 
 	Graphics::MaterialDescriptor desc;
 	RefCountedPtr<Graphics::Material> explosionMat(r->CreateMaterial(desc));

@@ -1,4 +1,4 @@
--- Player.lua for Pioneer Scout+ (c)2012-2014 by walterar <walterar2@gmail.com>
+-- Player.lua for Pioneer Scout+ (c)2012-2015 by walterar <walterar2@gmail.com>
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- Work in progress.
 
@@ -82,12 +82,12 @@ local onShipUndocked = function (player, station)
 			(station.path.sectorY)..","..
 			(station.path.sectorZ)..")")
 		_G.PrevFac = faction
-		if station.isGroundStation then
-			player:AIEnterHighOrbit(player:FindNearestTo("PLANET"))
-			Timer:CallAt(Game.time + 5, function ()
-				player:CancelAI()
-			end)
-		end
+		local target = player:FindNearestTo("PLANET") or player:FindNearestTo("STAR")
+		local timeundock = 10
+		if station.isGroundStation then timeundock = 3 end
+		Timer:CallAt(Game.time + timeundock, function ()
+			player:AIEnterLowOrbit(target)
+		end)
 	end
 end
 Event.Register("onShipUndocked", onShipUndocked)
@@ -214,6 +214,11 @@ local onShipHit = function (ship, attacker)
 			_G.ShotsSuccessful = (ShotsSuccessful or 0) + 1
 		end
 		if not shipNeutralized then ship:AIKill(attacker) end
+	elseif ship and ship:exists()
+		and attacker and attacker:exists()
+		and not attacker:IsPlayer() then
+		attacker:SetHullPercent(0)
+		ship:SetHullPercent(0)
 	end
 end
 Event.Register("onShipHit", onShipHit)

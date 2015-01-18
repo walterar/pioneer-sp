@@ -1,4 +1,4 @@
--- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 -- Modified by Walter Arnolfo <walterar2@gmail.com> for Pioneer Scout Plus
 -- Licensed under the terms of the GPL v3. See http://en.wikipedia.org/wiki/GNU_General_Public_License
 

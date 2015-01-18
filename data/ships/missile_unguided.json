@@ -1,0 +1,14 @@
+{
+   "tag" : "missile",
+   "name" : "MISSILE_UNGUIDED",
+   "model" : "missile",
+   "forward_thrust" : 200000,
+   "reverse_thrust" : 0.1,
+   "angular_thrust" : 0.1,
+   "up_thrust" : 0.1,
+   "down_thrust" : 0.1,
+   "left_thrust" : 0.1,
+   "right_thrust" : 0.1,
+   "hull_mass" : 1,
+   "price" : 100.0
+}

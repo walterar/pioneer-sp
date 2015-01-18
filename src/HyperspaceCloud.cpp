@@ -1,4 +1,4 @@
-// Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "HyperspaceCloud.h"
@@ -167,7 +167,7 @@ void HyperspaceCloud::Render(Renderer *renderer, const Camera *camera, const vec
 	vector3d zaxis = viewCoords.NormalizedSafe();
 	vector3d xaxis = vector3d(0,1,0).Cross(zaxis).Normalized();
 	vector3d yaxis = zaxis.Cross(xaxis);
-	matrix4x4d rot = matrix4x4d::MakeRotMatrix(xaxis, yaxis, zaxis).InverseOf();
+	matrix4x4d rot = matrix4x4d::MakeRotMatrix(xaxis, yaxis, zaxis).Inverse();
 	renderer->SetTransform(trans * rot);
 
 	// precise to the rendered frame (better than PHYSICS_HZ granularity)

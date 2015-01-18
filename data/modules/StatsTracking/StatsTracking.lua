@@ -1,4 +1,4 @@
--- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 local Game      = import("Game")
@@ -43,8 +43,8 @@ local onShipDestroyed = function (ship, attacker)
 			or Character.persistent.player.killcount == 2048-- level 8 ELITE
 			or Character.persistent.player.killcount == 4096-- level 9 GOD OF DEATH :)
 		then
-			local station = attacker:FindNearestTo("SPACESTATION") or nil-- quiero estar seguro :)
-			if station and station:DistanceTo(attacker) < 100000 then
+			local station = attacker:FindNearestTo("SPACESTATION")
+			if not station or station:DistanceTo(attacker) > 100e3 then
 				Comms.Message(l.WELL_DONE_COMMANDER_YOUR_COMBAT_RATING_HAS_IMPROVED,l.PIONEERING_PILOTS_GUILD)
 			else
 				local crime = "MURDER"
@@ -60,7 +60,7 @@ end
 Event.Register("onShipDestroyed",onShipDestroyed)
 
 local onShipHit = function (ship, attacker)
-	if attacker and attacker:IsPlayer() then
+	if attacker and attacker:isa("Ship") and attacker:IsPlayer() then
 		if ship then
 			PlayerDamagedShips[ship]=true
 			local station = attacker:FindNearestTo("SPACESTATION") or nil-- quiero estar seguro :)

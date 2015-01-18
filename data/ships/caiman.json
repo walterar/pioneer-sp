@@ -1,0 +1,32 @@
+{
+   "angular_thrust" : 80000000.0,
+   "capacity" : 60,
+   "cockpit" : "",
+   "down_thrust" : 4000000.0,
+   "effective_exhaust_velocity" : -1.0,
+   "forward_thrust" : 11000000.0,
+   "fuel_tank_mass" : 10,
+   "hull_mass" : 30,
+   "hyperdrive_class" : 2,
+   "left_thrust" : 4000000.0,
+   "manufacturer" : "p66",
+   "max_crew" : 2,
+   "min_crew" : 1,
+   "model" : "caiman",
+   "name" : "Caiman",
+   "price" : 65000.0,
+   "reverse_thrust" : 5000000.0,
+   "right_thrust" : 4000000.0,
+   "ship_class" : "medium_scout",
+   "slots" : {
+      "cabin" : 4,
+      "cargo" : 60,
+      "cargo_life_support" : 1,
+      "laser_front" : 1,
+      "laser_rear" : 0,
+      "missile" : 4,
+      "scoop" : 2
+   },
+   "thruster_fuel_use" : 0.0001500000071246177,
+   "up_thrust" : 4000000.0
+}

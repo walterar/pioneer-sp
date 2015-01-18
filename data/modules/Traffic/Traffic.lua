@@ -1,6 +1,6 @@
--- Traffic.lua for Pioneer Scout+ by walterar Copyright © 2012-2014 <walterar2@gmail.com>
+-- Traffic.lua for Pioneer Scout+ by walterar Copyright © 2012-2015 <walterar2@gmail.com>
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
--- Work in progress, pre alpha 0.--
+-- Work in progress, pre alpha 1.--
 --
 local Comms      = import("Comms")
 local Engine     = import("Engine")
@@ -13,7 +13,6 @@ local Timer      = import("Timer")
 local Event      = import("Event")
 local Serializer = import("Serializer")
 local Lang       = import("Lang")
---local Format     = import("Format")
 local Eq         = import("Equipment")
 local StarSystem = import("StarSystem")--XXX
 local Constant   = import("Constant")
@@ -41,8 +40,6 @@ local ShipStatic   = {}
 local StaticCount  = 0
 
 local loaded_data  = nil
-local collided     = {}
-local coll_count   = 0
 local playerAlert  = "NONE"
 local policeAlert  = "NONE"
 local npshipAlert  = "NONE"
@@ -66,8 +63,6 @@ local reinitialize = function ()
 	basePort     = nil
 	lastPort     = nil
 	nextPort     = nil
-	collided     = {}
-	coll_count   = 0
 	playerAlert  = "NONE"
 	policeAlert  = "NONE"
 	npshipAlert  = "NONE"
@@ -88,17 +83,23 @@ local erase_old_spawn = function ()
 	if ShipsCount == 0 then return end
 	if Game.time > 10 then
 		for i = 1, ShipsCount do
-			if TraffiShip[i] and TraffiShip[i].flightState ~= "HYPERSPACE" then
-				TraffiShip[i]:Explode()
-				TraffiShip[i]=nil
+			if TraffiShip[i] and TraffiShip[i]:exists() then
+				local state = TraffiShip[i].flightState
+				if state ~= "HYPERSPACE" then
+--print(TraffiShip[i].label.." EN ESTADO "..state)
+					TraffiShip[i]:Explode()--XXX
+					TraffiShip[i]=nil
+				end
 			end
 		end
 	end
 	if StaticCount and StaticCount > 0 then
 		for i = 1, StaticCount do
 --
-			ShipStatic[i]:Explode()
-			ShipStatic[i] = nil
+			if ShipStatic[i] and ShipStatic[i]:exists() then
+				ShipStatic[i]:Explode()
+				ShipStatic[i] = nil
+			end
 		end
 	end
 	TraffiShip   = {}
@@ -111,10 +112,12 @@ local erase_old_spawn = function ()
 	activateON   = false
 end
 
+
 local replace_and_spawn = function (n)
+--print(ShipDef[TraffiShip[n].shipId].name.." DESTRUÍDA O EN HIPERESPACIO, SE INTENTARÁ REEMPLAZAR NAVE "..n)
+	TraffiShip[n] = nil
 	local truestation = basePort
-	Timer:CallAt(Game.time+10, function ()--XXX
---
+	Timer:CallAt(Game.time + Engine.rand:Integer(2,30), function ()--XXX
 		if not basePort or truestation ~= basePort then
 --
 		return end
@@ -124,18 +127,23 @@ local replace_and_spawn = function (n)
 		else
 			ships_traffic = SpaceShips
 		end
+
+		local x=0
 		local drive
-		local nship = {}
 		repeat
-			nship[n] = ships_traffic[Engine.rand:Integer(1,#ships_traffic)]
-			drive = hyperspace["hyperdrive_"..tostring(nship[n].hyperdriveClass)]
+			TraffiShip[n] = ships_traffic[Engine.rand:Integer(1,#ships_traffic)]
+			drive = hyperspace["hyperdrive_"..tostring(TraffiShip[n].hyperdriveClass)]
+			x = (x or 0) + 1
+			if x > 10 then
+			break end
 		until drive
-		TraffiShip[n] = Space.SpawnShipNear(nship[n].id,Game.player,110, 110)
+
+		TraffiShip[n] = Space.SpawnShipNear(TraffiShip[n].id,Game.player,120, 200)
+
 		if drive then
 			TraffiShip[n]:AddEquip(drive)
 			TraffiShip[n]:AddEquip(cargo.hydrogen,drive.capabilities.hyperclass ^ 2)
 		end
-		nship = nil
 		if not basePort.isGroundStation then TraffiShip[n]:AddEquip(misc.scanner) end
 		if TraffiShip[n]:CountEquip(misc.shield_generator) > 0 then
 			TraffiShip[n]:AddEquip(misc.atmospheric_shielding)
@@ -145,68 +153,82 @@ local replace_and_spawn = function (n)
 		else
 			TraffiShip[n]:SetLabel(Ship.MakeRandomLabel())
 		end
---
+--print(ShipDef[TraffiShip[n].shipId].name.." REEMPLAZA NAVE DESTRUÍDA O EN HIPERESPACIO "..n)
 		TraffiShip[n]:AIDockWith(basePort)
 	end)
 end
 
+
 local activate = function (i)
 	if not basePort or not basePort:exists() then return end
 	local drive
-	local min = 40--XXX
-	if basePort.isGroundStation then min = 20 end
-	local xtime = Game.time+Engine.rand:Integer(min,60*5)
+	local xtime = Game.time+Engine.rand:Integer(20,60*5)
 	local truestation = basePort
 	Timer:CallAt(xtime, function ()
-		if not basePort or truestation ~= basePort then return end
-		local sbody = basePort.path:GetSystemBody()
-		local body = Space.GetBody(sbody.parent.index)
-		if not body or not TraffiShip[i] then return end
-		if TraffiShip[i].flightState ~= "DOCKED"
-				or (npshipAlert ~= "NONE" and TraffiShip[i]:DistanceTo(Game.player) < 5000)
-		then return end--XXX
-		TraffiShip[i]:AIEnterLowOrbit(body)
-		if Engine.rand:Integer(1) > 0 then
-			local timeundock = Game.time + 30--XXX orbitales - mas tiempo para salto = mas lejos
-			if basePort.isGroundStation then timeundock = Game.time + 10 end
-			Timer:CallAt(timeundock, function ()
-				if not TraffiShip[i] or TraffiShip[i].flightState == "DOCKING" then return end
+		if not basePort or truestation ~= basePort then return end--XXX
+		if not TraffiShip[i] then return end
+		if TraffiShip[i].flightState ~= "DOCKED" or (npshipAlert ~= "NONE"
+			and TraffiShip[i]:DistanceTo(Game.player) < 15000) then
+		return end
+		local x=0
+		repeat
+			local success = TraffiShip[i]:Undock()
+			x = (x or 0) + 1
+			if x > 10 then
+			break end
+		until success
+		local timeundock = Game.time + 20--XXX orbitales
+		if basePort.isGroundStation then timeundock = Game.time + 3 end
+		Timer:CallAt(timeundock, function ()
+			local target = Game.player:FindNearestTo("PLANET") or Game.player:FindNearestTo("STAR")
+			if not target or not TraffiShip[i] then return end
+			TraffiShip[i]:AIEnterLowOrbit(target)
+		end)
+		local timeundock = Game.time + 20--XXX orbitales
+		if basePort.isGroundStation then timeundock = Game.time + 10 end
+		Timer:CallAt(timeundock, function ()
+			if not TraffiShip[i] or TraffiShip[i].flightState == "DOCKING" then return end
+			if Engine.rand:Integer(1) > 0 then-- XXX a hiperespacio o a planeta (o estrella)
 				local range = TraffiShip[i].hyperspaceRange
-				if range > 30 then range = 30 end
-				local nearbystations = StarSystem:GetNearbyStationPaths(range, nil,function (s) return
-					(s.type ~= 'STARPORT_SURFACE') or (s.parent.type ~= 'PLANET_ASTEROID') end)
-				local system_target = nearbystations[Engine.rand:Integer(1,#nearbystations)]
-				if system_target == nil then return end
---				local systems = Game.system:GetNearbySystems(range)
---				if #systems < 1 then return end
---				local system_target = systems[Engine.rand:Integer(1,#systems)]
-				local JumpShip = TraffiShip[i]
-				local status = JumpShip:HyperjumpTo(system_target)
---				local status = JumpShip:HyperjumpTo(system_target.path)
-
-				if status == "OK" then
-					TraffiShip[i] = nil
+				if range and range ~= 0 then
+					if range > 30 then range = 30 end
+					local nearbystations = StarSystem:GetNearbyStationPaths(range, nil,function (s) return
+						(s.type ~= 'STARPORT_SURFACE') or (s.parent.type ~= 'PLANET_ASTEROID') end)
+					local system_target = nearbystations[Engine.rand:Integer(1,#nearbystations)]
+					if system_target == nil then return end
+			if not TraffiShip[i] or TraffiShip[i].flightState == "DOCKING" then return end
+					local status = TraffiShip[i]:HyperjumpTo(system_target)
+					if status == "OK" then--XXX
+--print(ShipDef[TraffiShip[i].shipId].name.." HA SALTADO A HIPERESPACIO "..i)
+						replace_and_spawn(i)
 --
-				else
---
-					TraffiShip[i]:AIEnterLowOrbit(body)
+						return
+					end
 				end
-				Timer:CallAt(Game.time+(60*5), function ()--XXX
-					if basePort and basePort:exists() then replace_and_spawn(i) end
-				end)
-			end)
-		end
+			else
+--		SI NO HIPERESPACIO, PLANETA O ESTRELLA XXX
+				local target = Game.player:FindNearestTo("PLANET") or Game.player:FindNearestTo("STAR")
+				if not target or not TraffiShip[i] then return end
+				TraffiShip[i]:AIEnterLowOrbit(target)
+--print(TraffiShip[i].label.." STATUS="..TraffiShip[i].flightState..", VUELA A "..target.label)
+			end
+		end)
 	end)
+	return true
 end
+
 
 local traffic_docked = function ()
 	if activateON then return end
 	activateON = true
 --
 	for i=1, ShipsCount do
-		activate(i)
+		if TraffiShip[i] and TraffiShip[i].flightState =="DOCKED" then
+			activate(i)
+		end
 	end
 end
+
 
 local spawnShipsDocked = function ()
 	if spawnDocked == true then return end
@@ -241,32 +263,36 @@ local spawnShipsDocked = function ()
 --
 	end
 	local ships_traffic
-	ShipsCount = basePort.numDocks - 2
+
+	ShipsCount = Engine.rand:Integer((math.abs((basePort.numDocks/4) * 1+Game.system.lawlessness)), basePort.numDocks-2)
+print(ShipsCount.." NAVES EN ".. basePort.label)
+
+
 	if basePort.isGroundStation then
 		ships_traffic = GroundShips
 	else
 		ships_traffic = SpaceShips
 	end
-	if Game.time > 10 then ShipsCount = Engine.rand:Integer(1,ShipsCount) end
+	if Game.time > 10 then ShipsCount = Engine.rand:Integer(2,ShipsCount) end
 	if not ships_traffic or ShipsCount == 0 then return end
 	ShipsCount = ShipsCount + free_police
 	local ships_traffic_count = #ships_traffic
 --
-	local n=0
-	local ship1
+	local x=0
 	local drive
 	local drivenum
 	for i = 1, ShipsCount do
 		repeat
-			ship1 = ships_traffic[Engine.rand:Integer(1,ships_traffic_count)]
-			drivenum = ship1.hyperdriveClass
+			TraffiShip[i] = ships_traffic[Engine.rand:Integer(1,ships_traffic_count)]
+			drivenum = TraffiShip[i].hyperdriveClass
 			drive = hyperspace["hyperdrive_"..tostring(drivenum)]
-			TraffiShip[i] = Space.SpawnShipDocked(ship1.id, basePort)
+			TraffiShip[i] = Space.SpawnShipDocked(TraffiShip[i].id, basePort)
 --
-			n = (n or 0) + 1
-			if n > 10 then break end
+			x = (x or 0) + 1
+			if x > 10 then
+			break end
 		until TraffiShip[i]
-		n=0
+
 		if not TraffiShip[i] then
 			ShipsCount = i-1
 --
@@ -290,6 +316,7 @@ local spawnShipsDocked = function ()
 	end
 end
 
+
 local onShipDocked = function (ship, station)
 	if ship:IsPlayer() then
 		basePort = station
@@ -305,6 +332,7 @@ local onShipDocked = function (ship, station)
 --
 end
 
+
 local policeStopFire = function ()--XXX la única forma de que deje de disparar.
 	Police:CancelAI()
 	if Police:GetEquipFree("laser_front") < 1 then
@@ -312,6 +340,7 @@ local policeStopFire = function ()--XXX la única forma de que deje de disparar.
 		Police:RemoveEquip(misc.laser_cooling_booster)
 	end
 end
+
 
 local onAICompleted = function (ship, ai_error)
 	if ship == Police and not pol_ai_compl then
@@ -340,13 +369,13 @@ local onAICompleted = function (ship, ai_error)
 		if basePort then
 			for i = 1, ShipsCount do
 				if ship == TraffiShip[i] then
-					local state = ship.flightState
---
+					local state = TraffiShip[i].flightState
+--print(ship.label.." HA COMPLETADO AI EN ESTADO "..state)
 					if ai_error == "REFUSED_PERM" and state == "FLYING" then
-						local star = Game.player:FindNearestTo("STAR")
-						if not star or not TraffiShip[i] then return end
-						TraffiShip[i]:AIEnterHighOrbit(star)
---
+						local target = Game.player:FindNearestTo("PLANET") or Game.player:FindNearestTo("STAR")
+						if not target or not TraffiShip[i] then return end
+						TraffiShip[i]:AIEnterLowOrbit(target)
+--print(TraffiShip[i].label.." EN ORBITA BAJA DE "..target.label)
 					elseif ai_error == "NONE" and state ~= "DOCKING" then
 						TraffiShip[i]:AIDockWith(basePort)
 --
@@ -356,6 +385,7 @@ local onAICompleted = function (ship, ai_error)
 		end
 	end
 end
+
 
 local spawnShipsStatics = function ()
 	if Game.time < 10 then basePort = Game.player:GetDockedWith() end
@@ -374,6 +404,7 @@ local spawnShipsStatics = function ()
 	end
 end
 
+
 local onShipCollided = function (ship, other)
 	if ship:IsPlayer()
 		or ship == Police
@@ -381,47 +412,34 @@ local onShipCollided = function (ship, other)
 		or not ShipsCount
 		or ShipsCount == 0 then
 	return end
-	if not coll_count or coll_count > 10 then
-		collided = {}
-		coll_count = 0
-	else
-		coll_count = coll_count + 1
-	end
-	collided[coll_count] = ship.label..other.label
---
-	if collided[1]==collided[coll_count] then
+
+	if other == basePort then
 		for i=1, ShipsCount do
 			if ship == TraffiShip[i] then
---
+print(ShipDef[TraffiShip[i].shipId].name.." DESTRUIDA POR "..other.label)
 				TraffiShip[i]:Explode()
-				TraffiShip[i] = nil
-				coll_count = 0
-				collided = {}
-				replace_and_spawn(i)--XXX
-				break
-			end
+				replace_and_spawn(i)
+			return end
 		end
 	end
---
-	ship:SetHullPercent(1)
-	ship:AIFlyTo(ship.frameBody)
 end
+
 
 local onShipDestroyed = function (ship, attacker)
 	if not ShipsCount or ShipsCount == 0 then return end
 	for i=1, ShipsCount do
 		if ship == TraffiShip[i] then
---
-			TraffiShip[i] = nil
+print(ShipDef[TraffiShip[i].shipId].name.." "..ship.label.." FUÉ DESTRUÍDA 'onShipDestroyed' "..i)
+--			TraffiShip[i] = nil
 			replace_and_spawn(i)
-			break
-		end
+		break end
 	end
 	if ship == Police then
---
+		--print(Police.label.." HA SIDO DESTRUÍDA")
 		Police = nil
 	end
 end
+
 
 local actionPolice = function ()
 	if warning == true or not Police then return end
@@ -431,12 +449,6 @@ local actionPolice = function ()
 	local crime,fine = player:GetCrime()
 	local police = system.faction.policeName.." "..basePort.label
 	warning = true
---	local targetPlayer = player:GetNavTarget()
---	if targetPlayer then
---
---	else
---
---	end
 	if fine > 0 then
 --
 		Comms.ImportantMessage(myl.Warning_You_must_go_back_to_the_Station_now_or_you_will_die_soon, police)
@@ -465,6 +477,7 @@ local actionPolice = function ()
 	end)
 end
 
+
 local distance
 local sensorDistance = function (every)
 --
@@ -489,13 +502,13 @@ local sensorDistance = function (every)
 			else
 --
 			end
-		elseif distance > 100e3 and playerStatus == "outbound" and not spawnErased then
+		elseif distance > 150e3 and playerStatus == "outbound" and not spawnErased then
 --
 			Target = Game.player:GetNavTarget()-- asegura target por si no hay cambio de frame
 			spawnErased = true-- evita repeticion
 			erase_old_spawn()
 			return true
-		elseif  distance < 100e3 and not spawnDocked and not playerStatus then-- genera spawn
+		elseif  distance < 150e3 and not spawnDocked and not playerStatus then-- genera spawn
 			playerStatus = "inbound"
 --
 			spawnShipsDocked()
@@ -506,6 +519,7 @@ local sensorDistance = function (every)
 		end
 	end)
 end
+
 
 local onFrameChanged = function (body)
 	if activateON then return end
@@ -534,6 +548,7 @@ local onFrameChanged = function (body)
 		end
 	end
 end
+
 
 Event.Register("onShipFiring", function (ship)
 	if not ship
@@ -567,6 +582,7 @@ Event.Register("onShipFiring", function (ship)
 	end
 end)
 
+
 Event.Register("onShipAlertChanged", function (ship, alert)
 	playerAlert = "NONE"
 	policeAlert = "NONE"
@@ -589,6 +605,7 @@ Event.Register("onShipAlertChanged", function (ship, alert)
 	end
 end)
 
+
 local onShipUndocked = function (ship, station)
 	if not ship:IsPlayer() then return end
 	playerStatus = "outbound"
@@ -603,11 +620,11 @@ local onShipUndocked = function (ship, station)
 	sensorDistance()
 end
 
+
 local onLeaveSystem = function (ship)
 	if ship:IsPlayer() then
+		if playerStatus == "outbound" then ship:CancelAI() end
 		if distance and distance < 2500 then
-
---			local money = math.floor(Game.player:GetMoney()*30/100) --XXX
 			local money = crime_fine("ILLEGAL_JUMP")
 			Game.player:AddCrime("ILLEGAL_JUMP", money)
 			Comms.ImportantMessage(myl.ILLEGAL_JUMP .."  ".. myl.You_has_been_fined .. showCurrency(money), Game.system.faction.policeName)
@@ -617,6 +634,7 @@ local onLeaveSystem = function (ship)
 		reinitialize()
 	end
 end
+
 
 local onGameStart = function ()
 	GroundShips = utils.build_array(utils.filter(function (k,def)
@@ -645,11 +663,34 @@ local onGameStart = function ()
 			and def.capacity > 19
 			and def.capacity < 501
 			and def.hyperdriveClass > 0
+			and def.id ~= ('pumpkinseed')
+			and def.id ~= ('pumpkinseed_x2')
+			and def.id ~= ('wave')
+			and def.id ~= ('nerodia')
+			and def.id ~= ('anax')
+			and def.id ~= ('ac33')
+			and def.id ~= ('sinonatrix')
+			and def.id ~= ('amphiesma')
+			and def.id ~= ('kanarascout')
+			and def.id ~= ('cobra_mk1_a')
+			and def.id ~= ('cobra_mk1_b')
+			and def.id ~= ('cobra_mk1_c')
+			and def.id ~= ('ladybird')
+			and def.id ~= ('malabar')
+			and def.id ~= ('natrix')
+			and def.id ~= ('viper_hw')
+			and def.id ~= ('viper_lz')
+			and def.id ~= ('viper_mw')
+			and def.id ~= ('viper_tw')
+			and def.id ~= ('vatakara')
+			and def.id ~= ('deneb')
 	end, pairs(ShipDef)))
 
 	if loaded_data then
 		TraffiShip   = loaded_data.TraffiShip
 		ShipsCount   = loaded_data.ShipsCount
+		ShipStatic   = loaded_data.ShipStatic
+		StaticCount  = loaded_data.StaticCount
 		spawnDocked  = loaded_data.spawnDocked
 		Target       = loaded_data.Target
 		Police       = loaded_data.Police
@@ -665,7 +706,7 @@ local onGameStart = function ()
 		fineDetect   = loaded_data.fineDetect
 		shipX        = loaded_data.shipX
 
-		activateON   = false
+		activateON   = false--XXX
 		traffic_docked()
 	else
 		reinitialize()
@@ -676,13 +717,16 @@ local onGameStart = function ()
 	loaded_data = nil
 end
 
+
 local serialize = function ()
 	return {
-	TraffiShip   = TraffiShip or nil,
+	TraffiShip   = TraffiShip,
 	ShipsCount   = ShipsCount,
+	ShipStatic   = ShipStatic,
+	StaticCount  = StaticCount,
 	spawnDocked  = spawnDocked,
 	Target       = Target,
-	Police       = Police or nil,
+	Police       = Police,
 	basePort     = basePort,
 	lastPort     = lastPort,
 	nextPort     = nextPort,
@@ -693,13 +737,15 @@ local serialize = function ()
 	pol_ai_compl = pol_ai_compl,
 	warning      = warning,
 	fineDetect   = fineDetect,
-	shipX        = shipX or nil
+	shipX        = shipX
 		}
 end
+
 
 local unserialize = function (data)
 	loaded_data = data
 end
+
 
 local onGameEnd = function ()
 	TraffiShip   = nil
@@ -710,8 +756,6 @@ local onGameEnd = function ()
 	Target       = nil
 	Police       = nil
 	basePort     = nil
-	collided     = nil
-	coll_count   = nil
 	loaded_data  = nil
 	playerStatus = nil
 	pol_ai_compl = nil
@@ -729,6 +773,7 @@ local onGameEnd = function ()
 	nextPort     = nil
 	distance     = nil
 end
+
 
 Event.Register("onShipUndocked", onShipUndocked)
 Event.Register("onGameEnd", onGameEnd)

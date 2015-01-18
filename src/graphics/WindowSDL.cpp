@@ -1,4 +1,4 @@
-// Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "WindowSDL.h"
@@ -12,6 +12,13 @@ namespace Graphics {
 bool WindowSDL::CreateWindowAndContext(const char *name, int w, int h, bool fullscreen, bool hidden, int samples, int depth_bits) {
 	Uint32 winFlags = SDL_WINDOW_OPENGL | (hidden ? SDL_WINDOW_HIDDEN : SDL_WINDOW_SHOWN);
 	if (!hidden && fullscreen) winFlags |= SDL_WINDOW_FULLSCREEN;
+
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+	// cannot initialise 3.x content on OSX with anything but CORE profile
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+	// OSX also forces us to use this for 3.2 onwards
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG);
 
 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, depth_bits);
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);

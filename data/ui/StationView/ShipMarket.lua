@@ -1,6 +1,6 @@
--- Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
--- modified for Pioneer Scout+ (c)2012-2014 by walterar <walterar2@gmail.com>
+-- modified for Pioneer Scout+ (c)2012-2015 by walterar <walterar2@gmail.com>
 -- Work in progress.
 
 local Engine       = import("Engine")
@@ -109,7 +109,7 @@ local function buyShip (sos)
 	if sos.pattern then player.model:SetPattern(sos.pattern) end
 	player:SetLabel(sos.label)
 	if def.hyperdriveClass > 0 then
-		player:AddEquip(equipment.hyperspace['hyperdrive_'..tostring(def.hyperdriveClass)])
+		player:AddEquip(equipment.hyperspace["hyperdrive_" .. def.hyperdriveClass])
 	end
 	player:SetFuelPercent(100)
 
@@ -134,6 +134,8 @@ shipTable.onRowClicked:Connect(function (row)
 	local station = Game.player:GetDockedWith()
 	currentShipOnSale = station:GetShipsOnSale()[row+1]
 	local def = currentShipOnSale.def
+
+	local hyperdrive_str = (def.hyperdriveClass > 0 and equipment.hyperspace["hyperdrive_" .. def.hyperdriveClass]:GetName()) or l.NONE
 
 	local forwardAccelEmpty =  def.linearThrust.FORWARD / (-9.81*1000*(def.hullMass+def.fuelTankMass))
 	local forwardAccelFull  =  def.linearThrust.FORWARD / (-9.81*1000*(def.hullMass+def.capacity+def.fuelTankMass))
@@ -163,7 +165,7 @@ shipTable.onRowClicked:Connect(function (row)
 				ui:Expand("HORIZONTAL", ui:Align("RIGHT", buyButton)),
 			}),
 			ModelSpinner.New(ui, def.modelName, currentShipOnSale.skin, currentShipOnSale.pattern),
-			ui:Label(l.HYPERDRIVE_FITTED.." "..lc[(def.hyperdriveClass > 0 and 'DRIVE_CLASS'..def.hyperdriveClass or 'NONE')]):SetFont("SMALL"),
+			ui:Label(l.HYPERDRIVE_FITTED.." "..hyperdrive_str):SetFont("SMALL"),
 			ui:Margin(10, "TOP",
 				ui:Grid(2,1)
 					:SetFont("SMALL")

@@ -1,4 +1,4 @@
-// Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "libs.h"
@@ -200,8 +200,9 @@ static void lookupBuildingListModels(citybuildinglist_t *list)
 		const double maxx = std::max(fabs(aabb.max.x), fabs(aabb.min.x));
 		const double maxy = std::max(fabs(aabb.max.z), fabs(aabb.min.z));
 		list->buildings[i].xzradius = sqrt(maxx*maxx + maxy*maxy);
-		//Output("%s: %f\n", list->buildings[i].modelname, list->buildings[i].xzradius);
+		Output(" - %s: %f\n", (*m)->GetName().c_str(), list->buildings[i].xzradius);
 	}
+	Output("End of buildings.\n");
 }
 
 void CityOnPlanet::Init()
@@ -318,7 +319,7 @@ CityOnPlanet::CityOnPlanet(Planet *planet, SpaceStation *station, const Uint32 s
 		cityflavour[i].center = p + a*mx + b*mz;
 		cityflavour[i].size = rand.Int32(int(blist->minRadius), int(blist->maxRadius));
 	}
-
+	
 	vector3d p1, p2, p3, p4;
 	for (int side=0; side<4; side++) {
 		/* put buildings on all sides of spaceport */

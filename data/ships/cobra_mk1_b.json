@@ -1,0 +1,32 @@
+{
+   "angular_thrust" : 60000000.0,
+   "capacity" : 60,
+   "cockpit" : "",
+   "down_thrust" : 4000000.0,
+   "effective_exhaust_velocity" : -1.0,
+   "forward_thrust" : 12000000.0,
+   "fuel_tank_mass" : 20,
+   "hull_mass" : 40,
+   "hyperdrive_class" : 2,
+   "left_thrust" : 4000000.0,
+   "manufacturer" : "p66",
+   "max_crew" : 2,
+   "min_crew" : 1,
+   "model" : "cobra_mk1_b",
+   "name" : "Cobra Mk1",
+   "price" : 70000.0,
+   "reverse_thrust" : 4000000.0,
+   "right_thrust" : 4000000.0,
+   "ship_class" : "medium_scout",
+   "slots" : {
+      "cabin" : 5,
+      "cargo" : 60,
+      "cargo_life_support" : 1,
+      "laser_front" : 1,
+      "laser_rear" : 0,
+      "missile" : 2,
+      "scoop" : 2
+   },
+   "thruster_fuel_use" : 0.0001999999949475750,
+   "up_thrust" : 4000000.0
+}

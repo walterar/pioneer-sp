@@ -1,4 +1,4 @@
-// Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #ifndef _SFX_H
@@ -43,7 +43,6 @@ public:
 	static Graphics::Material *explosionParticle;
 	static Graphics::RenderState *alphaState;
 	static Graphics::RenderState *additiveAlphaState;
-	static Graphics::RenderState *alphaOneState;
 
 private:
 	static Sfx *AllocSfxInFrame(Frame *f);

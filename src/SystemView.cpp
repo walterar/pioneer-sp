@@ -1,4 +1,4 @@
-// Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "SystemView.h"
@@ -319,11 +319,13 @@ void SystemView::PutOrbit(const Orbit *orbit, const vector3d &offset, const Colo
 	}
 
 	if (num_vertices > 1) {
+		m_orbits.SetData(num_vertices, vts, color);
 		// don't close the loop for hyperbolas and parabolas and crashed ellipses
-		if ((orbit->GetEccentricity() > 1.0) || (num_vertices < int(COUNTOF(vts))))
-			m_renderer->DrawLines(num_vertices, vts, color, m_lineState, LINE_STRIP);
-		else
-			m_renderer->DrawLines(num_vertices, vts, color, m_lineState, LINE_LOOP);
+		if ((orbit->GetEccentricity() > 1.0) || (num_vertices < int(COUNTOF(vts)))) {
+			m_orbits.Draw(m_renderer, m_lineState, LINE_STRIP);
+		} else {
+			m_orbits.Draw(m_renderer, m_lineState, LINE_LOOP);
+		}
 	}
 
 	Gui::Screen::EnterOrtho();
@@ -473,7 +475,7 @@ void SystemView::PutBody(const SystemBody *b, const vector3d &offset, const matr
 
 		matrix4x4f invRot = trans;
 		invRot.ClearToRotOnly();
-		invRot = invRot.InverseOf();
+		invRot = invRot.Inverse();
 
 		matrix4x4f bodyTrans = trans;
 		bodyTrans.Translate(vector3f(offset));
@@ -556,7 +558,8 @@ void SystemView::PutSelectionBox(const vector3d &worldPos, const Color &col)
                 vector3f(x2, y2, 0.f),
                 vector3f(x1, y2, 0.f)
         };
-		m_renderer->DrawLines(4, &verts[0], col, m_lineState, Graphics::LINE_LOOP);
+		m_selectBox.SetData(4, &verts[0], col);
+		m_selectBox.Draw(m_renderer, m_lineState, Graphics::LINE_LOOP);
 	}
 
 	Gui::Screen::LeaveOrtho();
@@ -610,7 +613,7 @@ void SystemView::Draw3D()
 	vector3d pos(0,0,0);
 	if (m_selectedObject) GetTransformTo(m_selectedObject, pos);
 
-	glLineWidth(2);
+	// glLineWidth(2);
 	m_objectLabels->Clear();
 	if (m_system->GetUnexplored())
 		m_infoLabel->SetText(Lang::UNEXPLORED_SYSTEM_NO_SYSTEM_VIEW);
@@ -626,7 +629,7 @@ void SystemView::Draw3D()
 			}
 		}
 	}
-	glLineWidth(1);
+	// glLineWidth(1);
 
 	if(m_shipDrawing != OFF) {
 		RefreshShips();

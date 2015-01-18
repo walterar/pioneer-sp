@@ -1,4 +1,4 @@
-// Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "TerrainBody.h"
@@ -89,7 +89,7 @@ void TerrainBody::Render(Graphics::Renderer *renderer, const Camera *camera, con
 
 	vector3d campos = fpos;
 	ftran.ClearToRotOnly();
-	campos = ftran.InverseOf() * campos;
+	campos = ftran.Inverse() * campos;
 
 	campos = campos * (1.0/rad);		// position of camera relative to planet "model"
 

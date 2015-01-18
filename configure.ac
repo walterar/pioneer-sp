@@ -1,4 +1,4 @@
-dnl Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+dnl Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 dnl Licensed under the terms of the GPL v3. See COPYING.txt for details
 
 dnl Process this file with autoconf to create configure.
@@ -163,7 +163,9 @@ AC_ARG_WITH([extra-version], AS_HELP_STRING([--with-extra-version], [Additional 
 
 EXTRA_CPPFLAGS="$EXTRA_CPPFLAGS -DPIONEERSP_VERSION=\\\"$PIONEERSP_VERSION\\\" -DPIONEERSP_EXTRAVERSION=\\\"$PIONEERSP_EXTRAVERSION\\\""
 
-EXTRA_CPPFLAGS="$EXTRA_CPPFLAGS -DGLEW_STATIC"
+dnl __STDC_LIMIT_MACROS is defined so that GCC 4.7 will provide limit macros (eg, INT64_MAX) as part of cstdint
+dnl (note, __STDC_LIMIT_MACROS is not needed in GCC 4.8 or later; those macros are part of the C++11 standard)
+EXTRA_CPPFLAGS="$EXTRA_CPPFLAGS -D__STDC_LIMIT_MACROS"
 
 
 dnl Compiler warning options
@@ -394,6 +396,8 @@ AC_CONFIG_FILES([
 	src/gameui/Makefile
 	src/gui/Makefile
 	src/graphics/Makefile
+	src/graphics/opengl/Makefile
+	src/graphics/dummy/Makefile
 	src/scenegraph/Makefile
 	src/galaxy/Makefile
 	src/terrain/Makefile
@@ -408,7 +412,6 @@ AC_CONFIG_FILES([
 	contrib/json/Makefile
 	contrib/PicoDDS/Makefile
 	contrib/vcacheopt/Makefile
-	contrib/glew/Makefile
 	contrib/profiler/Makefile
 	osx/Makefile
 	win32/Makefile])

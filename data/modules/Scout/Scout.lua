@@ -1,4 +1,4 @@
--- Scout.lua for Pioneer Scout+ (c)2013-2014 by walterar <walterar2@gmail.com>
+-- Scout.lua for Pioneer Scout+ (c)2012-2015 by walterar <walterar2@gmail.com>
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- Work in progress.
 
@@ -441,7 +441,7 @@ local onShipDocked = function (player, station)
 				local crime = "ESPIONAGE"
 				Game.player:AddCrime(crime, crime_fine(crime))
 				Comms.ImportantMessage(l.Unauthorized_data_here_is_REMOVED, faction.militaryName)
-				Comms.ImportantMessage(l.You_have_been_fined .. showCurrency(money), faction.policeName)
+				Comms.ImportantMessage(l.You_have_been_fined .. showCurrency(crime_fine(crime)), faction.policeName)
 --				_G.MissionsFailures = MissionsFailures + 1
 				mission:Remove()
 				missions[ref] = nil

@@ -286,6 +286,7 @@ pioneersp_LDADD = \
 	collider/libcollider.a \
 	gui/libgui.a \
 	graphics/libgraphics.a \
+	graphics/opengl/libgraphicsopengl.a \
 	galaxy/libgalaxy.a \
 	scenegraph/libscenegraph.a \
 	text/libtext.a \
@@ -295,7 +296,6 @@ pioneersp_LDADD = \
 	../contrib/PicoDDS/libpicodds.a \
 	../contrib/jenkins/libjenkins.a \
 	../contrib/json/libjson.a \
-	../contrib/glew/libglew.a \
 	../contrib/profiler/libprofiler.a
 
 pioneersp_LDADD += \
@@ -372,7 +372,6 @@ uitest_LDADD = \
 	../contrib/jenkins/libjenkins.a \
 	../contrib/PicoDDS/libpicodds.a \
 	../contrib/json/libjson.a \
-	../contrib/glew/libglew.a \
 	../contrib/profiler/libprofiler.a
 
 uitest_LDADD += \
@@ -400,7 +399,6 @@ textstress_LDADD = \
 	graphics/libgraphics.a \
 	posix/libposix.a \
 	../contrib/json/libjson.a \
-	../contrib/glew/libglew.a \
 	../contrib/profiler/libprofiler.a
 
 textstress_LDADD += \
@@ -545,6 +543,8 @@ modelcompiler_LDADD = \
 	collider/libcollider.a \
 	gui/libgui.a \
 	graphics/libgraphics.a \
+	graphics/dummy/libgraphicsdummy.a \
+	graphics/opengl/libgraphicsopengl.a \
 	galaxy/libgalaxy.a \
 	scenegraph/libscenegraph.a \
 	text/libtext.a \
@@ -554,7 +554,6 @@ modelcompiler_LDADD = \
 	../contrib/PicoDDS/libpicodds.a \
 	../contrib/jenkins/libjenkins.a \
 	../contrib/json/libjson.a \
-	../contrib/glew/libglew.a \
 	../contrib/profiler/libprofiler.a
 
 modelcompiler_LDADD += \

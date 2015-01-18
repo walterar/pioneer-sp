@@ -1,4 +1,4 @@
-// Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "Ship.h"
@@ -171,16 +171,15 @@ void Ship::InitEquipSet() {
 void Ship::InitGun(const char *tag, int num)
 {
 	const SceneGraph::MatrixTransform *mt = GetModel()->FindTagByName(tag);
-	if (mt) {
+/*	if (mt) {
 		const matrix4x4f &trans = mt->GetTransform();
 		m_gun[num].pos = trans.GetTranslate();
 		m_gun[num].dir = trans.GetOrient().VectorZ();
-	}
-	else {
+	} else {*/
 		// XXX deprecated
-		m_gun[num].pos = m_type->gunMount[num].pos;
-		m_gun[num].dir = m_type->gunMount[num].dir;
-	}
+		m_gun[num].pos = (num==ShipType::GUN_FRONT) ? vector3f(0,0,0) : vector3f(0,0,0);
+		m_gun[num].dir = (num==ShipType::GUN_FRONT) ? vector3f(0,0,-1) : vector3f(0,0,1);
+//	}
 }
 
 void Ship::InitMaterials()
@@ -369,7 +368,7 @@ bool Ship::OnDamage(Object *attacker, float kgDamage, const CollisionContact& co
 		// transform the collision location into the models local space (from world space) and add it as a hit.
 		matrix4x4d mtx = GetOrient();
 		mtx.SetTranslate( GetPosition() );
-		const matrix4x4d invmtx = mtx.InverseOf();
+		const matrix4x4d invmtx = mtx.Inverse();
 		const vector3d localPos = invmtx * contactData.pos;
 		GetShields()->AddHit(localPos);
 
@@ -828,12 +827,15 @@ void Ship::TimeAccelAdjust(const float timeStep)
 
 void Ship::FireWeapon(int num)
 {
-	if (m_flightState != FLYING) return;
+	if (m_flightState != FLYING)
+		return;
+
 	std::string prefix(num?"laser_rear_":"laser_front_");
 	int damage = 0;
 	Properties().Get(prefix+"damage", damage);
 	if (!damage)
 		return;
+
 	Properties().PushLuaTable();
 	LuaTable prop(Lua::manager->GetLuaState(), -1);
 
@@ -844,27 +846,25 @@ void Ship::FireWeapon(int num)
 	m_gun[num].temperature += 0.01f;
 
 	m_gun[num].recharge = prop.Get<float>(prefix+"rechargeTime");
-	vector3d baseVel = GetVelocity();
-	vector3d dirVel = prop.Get<float>(prefix+"speed") * dir.Normalized();
+	const vector3d baseVel = GetVelocity();
+	const vector3d dirVel = prop.Get<float>(prefix+"speed") * dir.Normalized();
 
-	Color c(prop.Get<float>(prefix+"rgba_r"), prop.Get<float>(prefix+"rgba_g"),
+	const Color c(prop.Get<float>(prefix+"rgba_r"), prop.Get<float>(prefix+"rgba_g"),
 			prop.Get<float>(prefix+"rgba_b"), prop.Get<float>(prefix+"rgba_a"));
-	float lifespan = prop.Get<float>(prefix+"lifespan");
-	float width = prop.Get<float>(prefix+"width");
-	float length = prop.Get<float>(prefix+"length");
-	bool mining = prop.Get<int>(prefix+"mining");
+	const float lifespan = prop.Get<float>(prefix+"lifespan");
+	const float width = prop.Get<float>(prefix+"width");
+	const float length = prop.Get<float>(prefix+"length");
+	const bool mining = prop.Get<int>(prefix+"mining");
 	if (prop.Get<int>(prefix+"dual"))
 	{
-		const ShipType::DualLaserOrientation orient = m_type->gunMount[num].orient;
-		const vector3d orient_norm =
-				(orient == ShipType::DUAL_LASERS_VERTICAL) ? m.VectorX() : m.VectorY();
-		const vector3d sep = m_type->gunMount[num].sep * dir.Cross(orient_norm).NormalizedSafe();
+		const vector3d orient_norm = m.VectorY();
+		const vector3d sep = 2.0 * dir.Cross(orient_norm).NormalizedSafe();
 
 		Projectile::Add(this, lifespan, damage, length, width, mining, c, pos + sep, baseVel, dirVel);
 		Projectile::Add(this, lifespan, damage, length, width, mining, c, pos - sep, baseVel, dirVel);
-	}
-	else
+	} else {
 		Projectile::Add(this, lifespan, damage, length, width, mining, c, pos, baseVel, dirVel);
+	}
 
 //	Polit::NotifyOfCrime(this, Polit::CRIME_WEAPON_DISCHARGE);
 	Sound::BodyMakeNoise(this, "Pulse_Laser", 1.0f);
@@ -1033,7 +1033,7 @@ void Ship::StaticUpdate(const float timeStep)
 				vector3d pdir = -GetOrient().VectorZ();
 				double dot = vdir.Dot(pdir);
 				if ((m_stats.free_capacity) && (dot > 0.95) && (speed > 2000.0) && (density > 1.0)) {
-					double rate = speed*density*0.00000333f*double(capacity);//#3267
+					double rate = speed*density*0.00000333f*double(capacity);
 					if (Pi::rng.Double() < rate) {
 						lua_State *l = Lua::manager->GetLuaState();
 						pi_lua_import(l, "Equipment");
@@ -1228,7 +1228,7 @@ void Ship::Render(Graphics::Renderer *renderer, const Camera *camera, const vect
 	GetModel()->SetThrust(vector3f(m_thrusters), -vector3f(m_angThrusters));
 
 	matrix3x3f mt;
-	matrix3x3dtof(viewTransform.InverseOf().GetOrient(), mt);
+	matrix3x3dtof(viewTransform.Inverse().GetOrient(), mt);
 	s_heatGradientParams.heatingMatrix = mt;
 	s_heatGradientParams.heatingNormal = vector3f(GetVelocity().Normalized());
 	s_heatGradientParams.heatingAmount = Clamp(GetHullTemperature(),0.0,1.0);

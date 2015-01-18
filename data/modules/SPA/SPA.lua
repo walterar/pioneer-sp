@@ -1,4 +1,4 @@
--- SPA.lua for Pioneer Scout+ (c)2013-2014 by walterar <walterar2@gmail.com>
+-- SPA.lua for Pioneer Scout+ (c)2012-2015 by walterar <walterar2@gmail.com>
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- Work in progress.
 

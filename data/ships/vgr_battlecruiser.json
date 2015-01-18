@@ -1,0 +1,28 @@
+{
+   "tag" : "static",
+   "angular_thrust" : 2500000000.0,
+   "capacity" : 16000,
+   "cockpit" : "",
+   "down_thrust" : 80000000.0,
+   "effective_exhaust_velocity" : 55123000.0,
+   "forward_thrust" : 320000000.0,
+   "fuel_tank_mass" : 6000,
+   "hull_mass" : 4000,
+   "hyperdrive_class" : 0,
+   "left_thrust" : 80000000.0,
+   "manufacturer" : "albr",
+   "max_crew" : 1,
+   "min_crew" : 1,
+   "model" : "vgr_battlecruiser",
+   "name" : "SP Tanker",
+   "price" : 0.0,
+   "reverse_thrust" : 80000000.0,
+   "right_thrust" : 80000000.0,
+   "ship_class" : "medium_freighter",
+   "slots" : {
+      "cargo" : 16000,
+      "cargoscoop" : 0
+   },
+   "thruster_fuel_use" : -1.0,
+   "up_thrust" : 80000000.0
+}

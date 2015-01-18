@@ -1,0 +1,32 @@
+{
+   "name" : "AC33 (Dropstar)",
+   "model" : "ac33",
+   "manufacturer" : "albr",
+   "ship_class" : "medium_freighter",
+   "forward_thrust" : 35000000.0,
+   "reverse_thrust" : 10000000.0,
+   "up_thrust" : 15000000.0,
+   "down_thrust" : 8000000.0,
+   "right_thrust" : 8000000.0,
+   "left_thrust" : 8000000.0,
+   "angular_thrust" : 50000000.0,
+   "hull_mass" : 200,
+   "capacity" : 500,
+   "fuel_tank_mass" : 200,
+   "hyperdrive_class" : 4,
+   "max_crew" : 5,
+   "min_crew" : 1,
+   "cockpit" : "",
+   "slots" : {
+      "cabin" : 10,
+      "cargo" : 500,
+      "cargo_life_support" : 1,
+      "laser_front" : 1,
+      "laser_rear" : 0,
+      "missile" : 16,
+      "scoop" : 2
+   },
+   "effective_exhaust_velocity" : 51784000.0,
+   "thruster_fuel_use" : -1.0,
+   "price" : 630000.0
+}

@@ -1,4 +1,4 @@
-// Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "Pi.h"
@@ -66,6 +66,7 @@
 #include "galaxy/GalaxyGenerator.h"
 #include "galaxy/StarSystem.h"
 #include "gameui/Lua.h"
+#include "graphics/opengl/RendererGL.h"
 #include "graphics/Graphics.h"
 #include "graphics/Light.h"
 #include "graphics/Renderer.h"
@@ -198,7 +199,7 @@ void Pi::DrawRenderTarget() {
 		Pi::renderer->PushMatrix();
 		Pi::renderer->LoadIdentity();
 	}
-
+	
 	Pi::renderQuad->Draw( Pi::renderer );
 
 	{
@@ -386,8 +387,11 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	SDL_GetVersion(&ver);
 	Output("SDL Version %d.%d.%d\n", ver.major, ver.minor, ver.patch);
 
+	Graphics::RendererOGL::RegisterRenderer();
+
 	// Do rest of SDL video initialization and create Renderer
 	Graphics::Settings videoSettings = {};
+	videoSettings.rendererType = Graphics::RENDERER_OPENGL;
 	videoSettings.width = config->Int("ScrWidth");
 	videoSettings.height = config->Int("ScrHeight");
 	videoSettings.fullscreen = (config->Int("StartFullscreen") != 0);
@@ -406,7 +410,7 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	Pi::rng.seed(time(0));
 
 	InitJoysticks();
-
+	
 	// we can only do bindings once joysticks are initialised.
 	if (!no_gui) // This re-saves the config file. With no GUI we want to allow multiple instances in parallel.
 		KeyBindings::InitBindings();
@@ -429,12 +433,14 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	asyncJobQueue.reset(new AsyncJobQueue(numThreads));
 	Output("started %d worker threads\n", numThreads);
 	syncJobQueue.reset(new SyncJobQueue);
-
+	
+	Output("ShipType::Init()\n");
 	// XXX early, Lua init needs it
 	ShipType::Init();
 
 	// XXX UI requires Lua  but Pi::ui must exist before we start loading
 	// templates. so now we have crap everywhere :/
+	Output("Lua::Init()\n");
 	Lua::Init();
 
 	Pi::ui.Reset(new UI::Context(Lua::manager, Pi::renderer, Graphics::GetScreenWidth(), Graphics::GetScreenHeight()));
@@ -462,49 +468,56 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 		)
     );
 
-	draw_progress(gauge, label, 0.1f);
+	draw_progress(gauge, label, 0.0f);
 
+	Output("GalaxyGenerator::Init()\n");
 	if (config->HasEntry("GalaxyGenerator"))
 		GalaxyGenerator::Init(config->String("GalaxyGenerator"),
 			config->Int("GalaxyGeneratorVersion", GalaxyGenerator::LAST_VERSION));
 	else
 		GalaxyGenerator::Init();
 
+	draw_progress(gauge, label, 0.1f);
+
+	Output("FaceParts::Init()\n");
+	FaceParts::Init();
 	draw_progress(gauge, label, 0.2f);
 
-	FaceParts::Init();
-
+	Output("new ModelCache\n");
+	modelCache = new ModelCache(Pi::renderer);
 	draw_progress(gauge, label, 0.3f);
 
-	// Reload home sector, they might have changed, due to custom systems
-	// Sectors might be changed in game, so have to re-create them again once we have a Game.
-	draw_progress(gauge, label, 0.4f);
-
-	modelCache = new ModelCache(Pi::renderer);
+	Output("Shields::Init\n");
 	Shields::Init(Pi::renderer);
-	draw_progress(gauge, label, 0.5f);
+	draw_progress(gauge, label, 0.4f);
 
 //unsigned int control_word;
 //_clearfp();
 //_controlfp_s(&control_word, _EM_INEXACT | _EM_UNDERFLOW | _EM_ZERODIVIDE, _MCW_EM);
 //double fpexcept = Pi::timeAccelRates[1] / Pi::timeAccelRates[0];
 
-	draw_progress(gauge, label, 0.6f);
-
+	Output("BaseSphere::Init\n");
 	BaseSphere::Init();
-	draw_progress(gauge, label, 0.7f);
+	draw_progress(gauge, label, 0.5f);
 
+	Output("CityOnPlanet::Init\n");
 	CityOnPlanet::Init();
+	draw_progress(gauge, label, 0.6f);
+	
+	Output("SpaceStation::Init\n");
+	SpaceStation::Init();
+	draw_progress(gauge, label, 0.7f);
+	
+	Output("NavLights::Init\n");
+	NavLights::Init(Pi::renderer);
+	draw_progress(gauge, label, 0.75f);
+
+	Output("Sfx::Init\n");
+	Sfx::Init(Pi::renderer);
 	draw_progress(gauge, label, 0.8f);
 
-	SpaceStation::Init();
-	draw_progress(gauge, label, 0.9f);
-
-	NavLights::Init(Pi::renderer);
-	Sfx::Init(Pi::renderer);
-	draw_progress(gauge, label, 0.95f);
-
 	if (!no_gui && !config->Int("DisableSound")) {
+		Output("Sound::Init\n");
 		Sound::Init();
 		Sound::SetMasterVolume(config->Float("MasterVolume"));
 		Sound::SetSfxVolume(config->Float("SfxVolume"));
@@ -515,9 +528,10 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 		if (config->Int("SfxMuted")) Sound::SetSfxVolume(0.f);
 		if (config->Int("MusicMuted")) GetMusicPlayer().SetEnabled(false);
 	}
-	draw_progress(gauge, label, 1.0f);
+	draw_progress(gauge, label, 0.9f);
 
 	OS::NotifyLoadEnd();
+	draw_progress(gauge, label, 1.0f);
 
 #if 0
 	// frame test code
@@ -590,10 +604,9 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	if (pStatFile)
 	{
 		fprintf(pStatFile, "name,modelname,hullmass,capacity,fakevol,rescale,xsize,ysize,zsize,facc,racc,uacc,sacc,aacc,exvel\n");
-		for (std::map<std::string, ShipType>::iterator i = ShipType::types.begin();
-				i != ShipType::types.end(); ++i)
+		for (auto iter : ShipType::types)
 		{
-			const ShipType *shipdef = &(i->second);
+			const ShipType *shipdef = &(iter.second);
 			SceneGraph::Model *model = Pi::FindModel(shipdef->modelName, false);
 
 			double hullmass = shipdef->hullMass;
@@ -652,7 +665,6 @@ void Pi::Quit()
 	Shields::Uninit();
 	Sfx::Uninit();
 	Sound::Uninit();
-	SpaceStation::Uninit();
 	CityOnPlanet::Uninit();
 	BaseSphere::Uninit();
 	FaceParts::Uninit();
@@ -769,7 +781,9 @@ void Pi::HandleEvents()
 							const time_t t = time(0);
 							struct tm *_tm = localtime(&t);
 							strftime(buf, sizeof(buf), "screenshot-%Y%m%d-%H%M%S.png", _tm);
-							Screendump(buf, Graphics::GetScreenWidth(), Graphics::GetScreenHeight());
+							Graphics::ScreendumpState sd;
+							Pi::renderer->Screendump(sd);
+							write_screenshot(sd, buf);
 							break;
 						}
 #if WITH_DEVKEYS
@@ -1227,7 +1241,8 @@ void Pi::MainLoop()
 				// display pathStr
 				Gui::Screen::EnterOrtho();
 				Gui::Screen::PushFont("ConsoleFont");
-				Gui::Screen::RenderString(pathStr.str(), 0, 0);
+				static RefCountedPtr<Graphics::VertexBuffer> s_pathvb;
+				Gui::Screen::RenderStringBuffer(s_pathvb, pathStr.str(), 0, 0);
 				Gui::Screen::PopFont();
 				Gui::Screen::LeaveOrtho();
 			}
@@ -1246,7 +1261,8 @@ void Pi::MainLoop()
 		if (Pi::showDebugInfo) {
 			Gui::Screen::EnterOrtho();
 			Gui::Screen::PushFont("ConsoleFont");
-			Gui::Screen::RenderString(fps_readout, 0, 0);
+			static RefCountedPtr<Graphics::VertexBuffer> s_debugInfovb;
+			Gui::Screen::RenderStringBuffer(s_debugInfovb, fps_readout, 0, 0);
 			Gui::Screen::PopFont();
 			Gui::Screen::LeaveOrtho();
 		}
@@ -1345,7 +1361,7 @@ std::string Pi::JoystickName(int joystick) {
 
 std::string Pi::JoystickGUIDString(int joystick) {
 	const int guidBufferLen = 33; // as documented by SDL
-	char	guidBuffer[guidBufferLen];
+	char	guidBuffer[guidBufferLen]; 
 
 	SDL_JoystickGetGUIDString(joysticks[joystick].guid, guidBuffer, guidBufferLen);
 	return std::string(guidBuffer);

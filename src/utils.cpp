@@ -1,4 +1,4 @@
-// Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "utils.h"
@@ -73,8 +73,7 @@ std::string format_date(double t)
 	dt.GetTimeParts(&hour, &minute, &second);
 
 	char buf[32];
-	snprintf(buf, sizeof (buf), " %d  %s  %d    %02d:%02d:%02d",
-						year, MONTH_NAMES[month - 1], day + 1, hour, minute, second);
+	snprintf(buf, sizeof (buf), "%d %s %d [ %02d:%02d:%02d ]", year, MONTH_NAMES[month - 1], day + 1, hour, minute, second);
 	return buf;
 }
 
@@ -139,6 +138,17 @@ void Output(const char *format, ...)
 	fputs(buf, stderr);
 }
 
+void OpenGLDebugMsg(const char *format, ...)
+{
+	char buf[1024];
+	va_list ap;
+	va_start(ap, format);
+	vsnprintf(buf, sizeof(buf), format, ap);
+	va_end(ap);
+
+	fputs(buf, stderr);
+}
+
 std::string format_distance(double dist, int precision)
 {
 	std::ostringstream ss;
@@ -157,23 +167,13 @@ std::string format_distance(double dist, int precision)
 	return ss.str();
 }
 
-void Screendump(const char* destFile, const int width, const int height)
+void write_screenshot(const Graphics::ScreendumpState &sd, const char* destFile)
 {
 	const std::string dir = "screenshots";
 	FileSystem::userFiles.MakeDirectory(dir);
 	const std::string fname = FileSystem::JoinPathBelow(dir, destFile);
 
-	// pad rows to 4 bytes, which is the default row alignment for OpenGL
-	const int stride = (3*width + 3) & ~3;
-
-	std::vector<Uint8> pixel_data(stride * height);
-	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
-	glPixelStorei(GL_PACK_ALIGNMENT, 4); // never trust defaults
-	glReadBuffer(GL_FRONT);
-	glReadPixels(0, 0, width, height, GL_RGB, GL_UNSIGNED_BYTE, &pixel_data[0]);
-	glFinish();
-
-	write_png(FileSystem::userFiles, fname, &pixel_data[0], width, height, stride, 3);
+	write_png(FileSystem::userFiles, fname, sd.pixels.get(), sd.width, sd.height, sd.stride, sd.bpp);
 
 	Output("Screenshot %s saved\n", fname.c_str());
 }

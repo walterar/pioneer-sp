@@ -196,7 +196,7 @@
       "message" : "Soporte vital para carga"
    },
    "CARGO_LIFE_SUPPORT_DESCRIPTION" : {
-      "description" : "",
+      "description" : "live cargo = animals, slaves",
       "message" : "Permite el transporte de cargamento vivo."
    },
    "CARGO_N" : {
@@ -245,7 +245,7 @@
    },
    "COMMODITY_NONE" : {
       "description" : "When no commodities exist",
-      "message" : "None"
+      "message" : "No"
    },
    "COMMODITY_TRADE_ANALYSIS_COMPARE" : {
       "description" : "",
@@ -313,7 +313,7 @@
    },
    "DATE_DUE_N" : {
       "description" : "",
-      "message" : "Fecha de llegada: %date"
+      "message" : "Fecha de vencimiento: %date"
    },
    "DAY_LENGTH" : {
       "description" : "",
@@ -336,7 +336,7 @@
       "message" : "Destino"
    },
    "DIRECTION" : {
-      "description" : "",
+      "description" : "Direction",
       "message" : "\" Dir \""
    },
    "DISTANCE_FROM_SHIP_TO_NAV_TARGET" : {
@@ -515,17 +515,13 @@
       "description" : "",
       "message" : "fijar"
    },
-   "FRONT" : {
-      "description" : "",
-      "message" : "Proa"
-   },
    "FRUIT_AND_VEG" : {
       "description" : "",
       "message" : "Frutas y verd."
    },
    "FUEL" : {
       "description" : "",
-      "message" : "        Propelente"
+      "message" : "Propelente"
    },
    "FUEL_SCOOP" : {
       "description" : "",
@@ -540,7 +536,7 @@
       "message" : "Permite recoger combustible de hidrógeno de gigantes gaseosos."
    },
    "GALACTIC_VIEW" : {
-      "description" : "",
+      "description" : "view galactic map",
       "message" : "Vista galáctica"
    },
    "GALAXY_SECTOR_VIEW" : {
@@ -744,7 +740,7 @@
       "message" : "Vista interior"
    },
    "INT_LY" : {
-      "description" : "",
+      "description" : "integer number of light years",
       "message" : "%scale ly"
    },
    "IN_TRANSIT" : {
@@ -756,7 +752,7 @@
       "message" : "En tránsito a %system [%x,%y,%z]"
    },
    "JOY" : {
-      "description" : "",
+      "description" : "Short for Joystick",
       "message" : "Joy"
    },
    "JOYSTICK_INPUT" : {
@@ -764,8 +760,8 @@
       "message" : "Joystick"
    },
    "JOY_AXIS" : {
-      "description" : "",
-      "message" : "Eje %sign%axis Joy%joynum"
+      "description" : "Regarding joystick",
+      "message" : "Eje %{sign}%joyname %axis"
    },
    "KM_S_RELATIVE_TO" : {
       "description" : "",
@@ -1075,6 +1071,14 @@
       "description" : "",
       "message" : "Sep"
    },
+   "MULTI_SCOOP" : {
+      "description" : "A ship equipment: a cargo scoop and fuel scoop combined to one",
+      "message" : "Recolector multiple"
+   },
+   "MULTI_SCOOP_DESCRIPTION" : {
+      "description" : "",
+      "message" : "Permite recolectar Carga o Hidrógeno, aunque con menor eficacia que un recolector dedicado"
+   },
    "MURDER" : {
       "description" : "",
       "message" : "Asesinato"
@@ -1106,10 +1110,6 @@
    "NERVE_GAS" : {
       "description" : "",
       "message" : "Gas nervioso"
-   },
-   "NONE" : {
-      "description" : "",
-      "message" : "Nada"
    },
    "NORMA_ARM" : {
       "description" : "",
@@ -1159,10 +1159,6 @@
       "description" : "",
       "message" : "%acceleration{f.1} G"
    },
-   "NUMBER_GROUP_SEP" : {
-      "description" : "Para cifras largas, separador usado por grupo de digitos. Ej. 1,000 or 1 000 or 1.000",
-      "message" : "."
-   },
    "NUMBER_GROUP_MIN" : {
       "description" : "Smallest number to start grouping of digits for. (E.g. if \"10000\" start grouping thousands with 10,000, and not 1,000).",
       "message" : "1000"
@@ -1170,6 +1166,10 @@
    "NUMBER_GROUP_NUM" : {
       "description" : "For large number, group digits by this many. European languages use 3 (group thousands). 0 means no grouping.",
       "message" : "3"
+   },
+   "NUMBER_GROUP_SEP" : {
+      "description" : "Para cifras largas, separador usado por grupo de digitos. Ej. 1,000 or 1 000 or 1.000",
+      "message" : "."
    },
    "NUMBER_HOURS" : {
       "description" : "",
@@ -1212,7 +1212,7 @@
       "message" : "%mass{f.3} masa %units"
    },
    "N_WHATEVER_RADII" : {
-      "description" : "",
+      "description" : "Used in system info view. E.g. for Barnard's star: \"0.17 Solar radii (118235 km)\"",
       "message" : "%radius{f.3} radios %units (%radkm{f.0} km)"
    },
    "N_YEARS" : {
@@ -1240,7 +1240,7 @@
       "message" : "Mundo exterior agrícola."
    },
    "OUTER_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Brazo Exterior"
    },
    "OVER_N_BILLION" : {
@@ -1268,7 +1268,7 @@
       "message" : "Periapsis"
    },
    "PERSEUS_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Brazo Perseus"
    },
    "PIONEER" : {
@@ -1308,20 +1308,20 @@
       "message" : "Economía centralizada"
    },
    "PLANNER_RESET_FACTOR" : {
-      "description" : "",
-      "message" : "Rate of increase of delta-v values. Click to reset to default."
+      "description" : "For system orbit view",
+      "message" : "Tasa de incremento de valores delta-v. Click para restablecer valores."
    },
    "PLANNER_RESET_NORMAL" : {
-      "description" : "",
-      "message" : "Normal delta-v. Click to reset to zero."
+      "description" : "For system orbit view",
+      "message" : "Delta-v normal. Click para restablecer a cero."
    },
    "PLANNER_RESET_PROGRADE" : {
-      "description" : "",
-      "message" : "Prograde delta-v. Click to reset to zero."
+      "description" : "For system orbit view",
+      "message" : "Delta-v progrado. Click para restablecer a cero."
    },
    "PLANNER_RESET_RADIAL" : {
-      "description" : "",
-      "message" : "Radial delta-v. Click to reset to zero."
+      "description" : "For system orbit view",
+      "message" : "Delta-v radial. Click para restablecer a cero."
    },
    "PLASTICS" : {
       "description" : "",
@@ -1399,10 +1399,6 @@
       "description" : "",
       "message" : "Radio"
    },
-   "REAR" : {
-      "description" : "",
-      "message" : "Popa"
-   },
    "RECENTLY_EXPLORED_SYSTEM" : {
       "description" : "",
       "message" : "Este sistema se exploró el %date."
@@ -1476,7 +1472,7 @@
       "message" : "Desechos"
    },
    "SAGITTARIUS_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Brazo Sagittarius"
    },
    "SCANNER" : {
@@ -1491,16 +1487,16 @@
       "description" : "",
       "message" : "Visualiza la ubicación en 3D de los objetos próximos."
    },
+   "SCOOP" : {
+      "description" : "Is followed by a number, repersenting scoop mounts/slots available to fit cargo scoop and/or fuel scoop",
+      "message" : "Dispositivos recolectores"
+   },
    "SCREENSHOT_FILENAME_TEMPLATE" : {
       "description" : "",
       "message" : "screenshot%index{d08}.png"
    },
-   "SCOOP" : {
-      "description" : "A general word for cargo scoop or fuel scoop; used to scoop up cargo or fuel",
-      "message" : "Dispositivos recolectores"
-   },
    "SCUTUM_CENTAURUS_ARM" : {
-      "description" : "",
+      "description" : "Arm of the Milky Way galaxy",
       "message" : "Brazo Scutum-Centaurus"
    },
    "SEARCH" : {
@@ -1581,7 +1577,7 @@
    },
    "SHIELD_INTEGRITY" : {
       "description" : "",
-      "message" : "     Escudo"
+      "message" : "Escudo"
    },
    "SHIELD_STRENGTH_N" : {
       "description" : "",
@@ -1628,7 +1624,7 @@
       "message" : "Velocidad relativa"
    },
    "SIDEREAL_VIEW" : {
-      "description" : "",
+      "description" : "camera view setting",
       "message" : "Vista sideral"
    },
    "SIMULATING_UNIVERSE_EVOLUTION_N_BYEARS" : {
@@ -1672,8 +1668,8 @@
       "message" : "Alguna minería establecida."
    },
    "SOURCE" : {
-      "description" : "",
-      "message" : "Origen:"
+      "description" : "tell source system of hyperjump entry cloud",
+      "message" : "Origen"
    },
    "SPEED_CONTROL_MODE" : {
       "description" : "",
@@ -1868,7 +1864,7 @@
       "message" : "Fijar blanco"
    },
    "TENUOUS" : {
-      "description" : "",
+      "description" : "atmosphere thickness",
       "message" : "tenue"
    },
    "TEXTILES" : {
@@ -2007,14 +2003,6 @@
       "description" : "",
       "message" : "Gigante gaseoso muy grande"
    },
-   "VID_CONNECTING" : {
-      "description" : "",
-      "message" : "Conectando..."
-   },
-   "VID_LINK_ESTABLISHED" : {
-      "description" : "",
-      "message" : "Videoconexión establecida"
-   },
    "VIEW" : {
       "description" : "",
       "message" : "Vista"
@@ -2088,7 +2076,7 @@
       "message" : "Se encuentra sin fondos."
    },
    "Z" : {
-      "description" : "",
+      "description" : "keybinding: z axis",
       "message" : "Z"
    },
    "ZOOM_IN" : {

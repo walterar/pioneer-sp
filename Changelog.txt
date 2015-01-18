@@ -1,12 +1,43 @@
+January 2015
+   * Internal Changes
+     * Remove DrawPoints & DrawLines methods (#3303)
+     * Dummy renderer for headless tools (#3306)
+
 December 2014
    * New Features
      * New Multi Scoop equipment, and merge cargo and fuel scoop slots
        to a single one (#3267)
+     * New OPLI ship Storeria (#3257)
+     * Our two space stations decommissioned (hoop and big_crappy) and three new jaw
+       dropping amazing ones enter service! (#3099)
 
    * Fixes
      * Fix string "NONE" in ShipInfo not using the translated version (#3268)
+     * Require OpenGL 3.1 context when opening the SDL window (#3269)
+     * Move parentheses to correct position for ATLAS_SIZE test (#3299)
+
+   * Minor changes and tweaks
+     * Switch font texture U/V coordinates to unsigned int (#3273)
+     * README updated to markdown format (#3276)
+     * Ship and station labels can now include line breaks (#3188)
+     * Changed to compile as c++ for all build configurations (#3288)
+     * Handle non-core strings for lua equipment (#3279)
+     * Use counter not named bays for stations (#3291)
+
+   * Internal Changes
+     * Fix spelling error in DeliverPackage
+     * Better descriptions for translation strings in ui-/core (#3272)
+     * Change the Star Color structures to use Color instead of Uint8 (#3285)
+     * Remove the Colours.h/cpp files (#3289)
+     * Several bugfixes to the Lua serializer triggered by recent code (#3279)
+     * Remove redundant code and translation strings (#3294)
+     * Optimise VertexBuffer usage for SG Nodes (#3300)
+     * Bundle Collision with SGM file (#3297)
 
 November 2014
+   * New Features
+     * Update to use OpenGL 3.2 (#3219)
+
    * Script and UI API changes
      * Added random number from Poisson distribution (#3242)
 
@@ -15,12 +46,20 @@ November 2014
        fixes #3117 (#3238)
      * A smarter ShipMarket in SpaceStation (#3243)
      * Fix Anti-Aliasing (#3246)
+     * Remove defunct shader programs (#3258)
+     * Extra checking for program creation (#3253)
+     * Fix (unnoticeable) logical error in cargo code (#3261)
+     * Add CppCheck file. (#3266)
 
    * Fixes
      * Update deprecated gun tag on Lunar shuttle (#3245)
+     * Fix Open GL errors causing MXE build not working (#3251)
 
    * Internal Changes
      * The OSX build showed these might be shadowed (#3248)
+     * Json ship definitions (#3252)
+     * Disable shader validation due to OSX bug (#3260)
+     * Remove GLEW, use glLoadGen, downgrade to OpenGL 3.1 (#3265)
 
 October 2014
    * Art
@@ -129,7 +168,8 @@ August 2014
      * Zoom out button before zoom in in system,sector,galactic view (#3112)
      * Fix an Exit Game widget crash. (#3106)
      * Fix bad faction colour only being applied to uninhabited (#3116)
-     * Destroy Hyperspace clouds after 2 days of ingame time (#3118)
+     * Destroy Hyperspace clouds after 2 days of ingame time (#3118) *** Not in Scout
+				*** #3118 is not necessary in Scout and causes crash in Traffic
      * Fix system view ship crash (#3119)
      * Fix refreshing assertion in SystemInfoView (#3120)
      * Fix unnecessary limit on ship base price (#3129, #3130)
@@ -232,7 +272,7 @@ June 2014
      * Fix crash from spawned Assassination mission ship * Not applied in Scout+
 
    * Internal Changes
-     * Compress default (#2940) * Not in Scout+
+     * Compress default (#2940)
      * Added lua attribute to get faction->idx as an faction id (#2949)
 
 May 2014

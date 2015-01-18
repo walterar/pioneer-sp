@@ -1,4 +1,4 @@
-// Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "LuaObject.h"
@@ -379,8 +379,8 @@ static int l_body_find_nearest_to(lua_State *l)
 	Body *b = LuaObject<Body>::CheckFromLua(1);
 	Object::Type type = static_cast<Object::Type>(LuaConstants::GetConstantFromArg(l, "PhysicsObjectType", 2));
 
-	Body *near = Pi::game->GetSpace()->FindNearestTo(b, type);
-	LuaObject<Body>::PushToLua(near);
+	Body *nearest = Pi::game->GetSpace()->FindNearestTo(b, type);
+	LuaObject<Body>::PushToLua(nearest);
 
 	return 1;
 }

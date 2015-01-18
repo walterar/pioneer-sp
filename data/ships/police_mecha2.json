@@ -1,0 +1,39 @@
+{
+   "name" : "Police Mecha",
+   "model" : "police_mecha",
+   "ship_class" : "light_fighter",
+   "manufacturer" : "haber",
+
+   "forward_thrust" : 3800000,
+   "reverse_thrust" : 1900000,
+   "angular_thrust" : 6400000,
+
+   "up_thrust" : 900000,
+   "down_thrust" : 900000,
+   "left_thrust" : 900000,
+   "right_thrust" : 900000,
+
+   "slots" : {
+      "cargo" : 15,
+      "atmo_shield" : 1,
+      "cabin" : 0,
+      "laser_front" : 1,
+      "laser_rear" : 0,
+      "missile" : 6,
+      "scoop" : 0,
+      "cargo_life_support" : 0,
+      "hull_autorepair" : 0
+   },
+
+   "min_crew" : 1,
+   "max_crew" : 1,
+
+   "capacity" : 15,
+   "hull_mass" : 10,
+   "fuel_tank_mass" : 5,
+   "thruster_fuel_use" : 0.0001,
+
+   "hyperdrive_class" : 0,
+
+   "price" : 0
+}

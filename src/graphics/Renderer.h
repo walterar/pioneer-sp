@@ -1,4 +1,4 @@
-// Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #ifndef _RENDERER_H
@@ -7,6 +7,7 @@
 #include "WindowSDL.h"
 #include "libs.h"
 #include "graphics/Types.h"
+#include "graphics/Light.h"
 #include <map>
 #include <memory>
 
@@ -17,7 +18,6 @@ namespace Graphics {
  * It is also used to create render states, materials and vertex/index buffers.
  */
 
-class Light;
 class Material;
 class MaterialDescriptor;
 class RenderState;
@@ -47,11 +47,15 @@ public:
 
 	virtual const char* GetName() const = 0;
 
+	virtual void WriteRendererInfo(std::ostream &out) const {}
+
+	virtual void CheckRenderErrors() const {}
+
 	WindowSDL *GetWindow() const { return m_window.get(); }
 	float GetDisplayAspect() const { return static_cast<float>(m_width) / static_cast<float>(m_height); }
 
 	//get supported minimum for z near and maximum for z far values
-	virtual bool GetNearFarRange(float &near, float &far) const = 0;
+	virtual bool GetNearFarRange(float &near_, float &far_) const = 0;
 
 	virtual bool BeginFrame() = 0;
 	virtual bool EndFrame() = 0;
@@ -73,15 +77,20 @@ public:
 	virtual bool SetTransform(const matrix4x4d &m) = 0;
 	virtual bool SetTransform(const matrix4x4f &m) = 0;
 	//set projection matrix
-	virtual bool SetPerspectiveProjection(float fov, float aspect, float near, float far) = 0;
+	virtual bool SetPerspectiveProjection(float fov, float aspect, float near_, float far_) = 0;
 	virtual bool SetOrthographicProjection(float xmin, float xmax, float ymin, float ymax, float zmin, float zmax) = 0;
 	virtual bool SetProjection(const matrix4x4f &m) = 0;
 
 	virtual bool SetRenderState(RenderState*) = 0;
 
+	// XXX maybe GL-specific. maybe should be part of the render state
+	virtual bool SetDepthRange(double near, double far) = 0;
+
 	virtual bool SetWireFrameMode(bool enabled) = 0;
 
-	virtual bool SetLights(int numlights, const Light *l) = 0;
+	virtual bool SetLights(Uint32 numlights, const Light *l) = 0;
+	const Light& GetLight(const Uint32 idx) const { assert(idx<=4); return m_lights[idx]; }
+	virtual Uint32 GetNumLights() const { return 0; }
 	virtual bool SetAmbientColor(const Color &c) = 0;
 	const Color &GetAmbientColor() const { return m_ambient; }
 
@@ -89,11 +98,6 @@ public:
 
 	//drawing functions
 	//2d drawing is generally understood to be for gui use (unlit, ortho projection)
-	//per-vertex colour lines
-	virtual bool DrawLines(int vertCount, const vector3f *vertices, const Color *colors, RenderState*, PrimitiveType type=LINE_SINGLE) = 0;
-	//flat colour lines
-	virtual bool DrawLines(int vertCount, const vector3f *vertices, const Color &color, RenderState*, PrimitiveType type=LINE_SINGLE) = 0;
-	virtual bool DrawPoints(int count, const vector3f *points, const Color *colors, RenderState*, float pointSize=1.f) = 0;
 	//unindexed triangle draw
 	virtual bool DrawTriangles(const VertexArray *vertices, RenderState *state, Material *material, PrimitiveType type=TRIANGLES) = 0;
 	//high amount of textured quads for particles etc
@@ -166,10 +170,13 @@ public:
 		MatrixMode m_matrixMode;
 	};
 
+	virtual bool Screendump(ScreendumpState &sd) { return false; }
+
 protected:
 	int m_width;
 	int m_height;
 	Color m_ambient;
+	Light m_lights[4];
 
 	virtual void PushState() = 0;
 	virtual void PopState() = 0;

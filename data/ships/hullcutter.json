@@ -14,7 +14,7 @@
    "min_crew" : 1,
    "model" : "hullcutter",
    "name" : "Hullcutter",
-   "price" : 48000.0,
+   "price" : 38000.0,
    "reverse_thrust" : 2500000.0,
    "right_thrust" : 2000000.0,
    "ship_class" : "light_scout",

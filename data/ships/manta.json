@@ -26,15 +26,17 @@
    "max_crew" : 1,
 
    "slots" : {
+      "atmo_shield" : 1,
       "cabin" : 0,
       "cargo" : 22,
       "cargo_life_support" : 0,
       "hull_autorepair" : 0,
+      "laser_front" : 1,
       "laser_rear" : 0,
       "missile" : 4,
       "scoop" : 0
    },
 
    "hyperdrive_class" : 1,
-   "price" : 27000.0
+   "price" : 34000.0
 }

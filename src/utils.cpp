@@ -73,7 +73,7 @@ std::string format_date(double t)
 	dt.GetTimeParts(&hour, &minute, &second);
 
 	char buf[32];
-	snprintf(buf, sizeof (buf), "%d %s %d [ %02d:%02d:%02d ]", year, MONTH_NAMES[month - 1], day + 1, hour, minute, second);
+	snprintf(buf, sizeof (buf), "%d %s %d [ %02d:%02d:%02d ]", year, MONTH_NAMES[month - 1], day, hour, minute, second);
 	return buf;
 }
 
@@ -124,7 +124,7 @@ void Warning(const char *format, ...)
 	va_end(ap);
 
 	Output("warning: %s\n", buf);
-	SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_WARNING, "Pioneer warning", buf, 0);
+	SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_WARNING, "PioneerSP warning", buf, 0);
 }
 
 void Output(const char *format, ...)

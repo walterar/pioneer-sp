@@ -1,7 +1,16 @@
 January 2015
-   * Internal Changes
+   * Fixes
+     * Fix 3310 (#3312)
+     * Fix 3313 (#3316)
+     * Fix Ship:onShipEquipmentChanged (#3326)
+
+   * Internal Chnages
      * Remove DrawPoints & DrawLines methods (#3303)
      * Dummy renderer for headless tools (#3306)
+     * Fix scanner drawing post-load (#3309)
+     * Faster text buffer rendering (#3304)
+     * Ignore any sgm files in the repository (#3315)
+     * Faster deduplication of collision data (#3319)
 
 December 2014
    * New Features

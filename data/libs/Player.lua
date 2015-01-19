@@ -49,13 +49,13 @@ function Player:AddCrime (crime, addFine, faction)
 	if not self.record[forFaction].listcrimes[crime] then
 		self.record[forFaction].listcrimes[crime] = {}
 
-		self.record[forFaction].listcrimes[crime].date = 0--XXX
+--		self.record[forFaction].listcrimes[crime].date = 0--XXX
 
 		self.record[forFaction].listcrimes[crime].fine = 0
 		self.record[forFaction].listcrimes[crime].count = 0
 	end
 
-	self.record[forFaction].listcrimes[crime].date = Game.time --XXX
+--	self.record[forFaction].listcrimes[crime].date = Game.time --XXX
 
 	self.record[forFaction].listcrimes[crime].fine =
 		self.record[forFaction].listcrimes[crime].fine + addFine
@@ -217,7 +217,7 @@ local onGameStart = function ()
 			for crime, prop in pairs(crimes.listcrimes) do
 				Player.record[faction].listcrimes[crime] = {}
 
-				Player.record[faction].listcrimes[crime].date = prop.date--XXX
+--				Player.record[faction].listcrimes[crime].date = prop.date--XXX
 				Player.record[faction].listcrimes[crime].fine = prop.fine
 
 				Player.record[faction].listcrimes[crime].count = prop.count
@@ -241,7 +241,7 @@ local serialize = function ()
 		data.record[factionkey].listcrimes = {}
 		for crimekey,crimes in pairs(userdata.listcrimes) do
 			data.record[factionkey].listcrimes[crimekey] = {}
-			data.record[factionkey].listcrimes[crimekey].date = crimes.date--XXX
+--			data.record[factionkey].listcrimes[crimekey].date = crimes.date--XXX
 			data.record[factionkey].listcrimes[crimekey].fine = crimes.fine
 			data.record[factionkey].listcrimes[crimekey].count = crimes.count
 		end
@@ -261,7 +261,7 @@ local unserialize = function (data)
 		Player.record[factionkey].listcrimes = {}
 		for crimekey,crimes in pairs(userdata.listcrimes) do
 			Player.record[factionkey].listcrimes[crimekey] = {}
-			Player.record[factionkey].listcrimes[crimekey].date = crimes.date--XXX
+--			Player.record[factionkey].listcrimes[crimekey].date = crimes.date--XXX
 			Player.record[factionkey].listcrimes[crimekey].fine = crimes.fine
 			Player.record[factionkey].listcrimes[crimekey].count = crimes.count
 		end

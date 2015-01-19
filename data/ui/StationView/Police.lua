@@ -43,7 +43,7 @@ local police = function (tab)
 
 	local crimeStat = function (k,v)
 --		local s = Format.Date(crimes[v].date).."\t - "..crimes[v].count.."\t"..Constant.CrimeType[v].name.."\t"..showCurrency(crimes[v].fine)
-		local s = Format.Date(crimes[v].date).."\t - "..crimes[v].count.."\t"..Constant.CrimeType[v].name.."\t"..showCurrency(crimes[v].fine)
+		local s = crimes[v].count.."\t"..Constant.CrimeType[v].name.."\t"..showCurrency(crimes[v].fine)
 		return k, s
 	end
 

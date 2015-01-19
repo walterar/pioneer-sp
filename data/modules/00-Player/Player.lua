@@ -18,7 +18,6 @@ local Eq         = import("Equipment")
 local Constant   = import("Constant")
 
 local l = Lang.GetResource("module-00-player") or Lang.GetResource("module-00-player","en");
---local ll = Lang.GetResource("core") or Lang.GetResource("core","en");
 local ls = Lang.GetResource("module-system") or Lang.GetResource("module-system","en");
 local lc    = Lang.GetResource("ui-core")
 

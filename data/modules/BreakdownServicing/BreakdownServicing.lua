@@ -19,7 +19,7 @@ local l = Lang.GetResource("module-breakdownservicing")
 -- Default numeric values --
 ----------------------------
 local oneyear = 31557600 -- One standard Julian year
-local onemonth = 2593775 -- One standard Julian month
+local onemonth = 2592000 -- One standard Julian month
 
 -- 10, guaranteed random by D16 dice roll.
 -- This is to make the BBS name different from the station welcome character.
@@ -64,7 +64,7 @@ local ads = {}
 local service_history = {
 	lastdate = 0, -- Default will be overwritten on game start
 	company = nil, -- Name of company that did the last service
-	service_period = onemonth, -- default
+	service_period = oneyear, -- default
 	jumpcount = 0, -- Number of jumps made after the service_period
 }
 
@@ -234,10 +234,7 @@ end
 
 local onEnterSystem = function (ship)
 	if ship:IsPlayer() then
-		print(('DEBUG: Jumps since warranty: %d, if > 0 the chance of failure is: 1/%d\nWarranty expires: %s'):format(service_history.jumpcount,max_jumps_unserviced-service_history.jumpcount,Format.Date(service_history.lastdate + service_history.service_period)))
-		if service_history.jumpcount > 0 then
-			Comms.ImportantMessage(l.YOU_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN)
-		end
+		print(('DEBUG: Jumps since warranty: %d, chance of failure (if > 0): 1/%d\nWarranty expires: %s'):format(service_history.jumpcount,max_jumps_unserviced-service_history.jumpcount,Format.Date(service_history.lastdate + service_history.service_period)))
 	else
 		return -- Don't care about NPC ships
 	end
@@ -256,8 +253,8 @@ local onEnterSystem = function (ship)
 	if saved_by_this_guy then
 		-- Brag to the player
 		if saved_by_this_guy.player then
---			Comms.Message(l.YOU_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN)
---		else
+			Comms.Message(l.YOU_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN)
+		else
 			Comms.Message(l.I_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN,saved_by_this_guy.name)
 		end
 		-- Rewind the servicing countdown by a random amount based on crew member's ability

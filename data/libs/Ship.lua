@@ -179,7 +179,7 @@ function Ship:AddEquip(item, count, slot)
 	end
 	local ret = self.equipSet:Add(self, item, count, slot)
 	if ret > 0 then
-		Event.Queue("onShipEquipmentChange", self, item)
+		Event.Queue("onShipEquipmentChanged", self, item)
 	end
 	return ret
 end
@@ -337,7 +337,7 @@ Ship.SetEquip = function (self, slot, index, item)
 		item = compat.equip.old2new[item]
 	end
 	self.equipSet:Set(self, slot, index, item)
-	Event.Queue("onShipEquipmentChange", self)
+	Event.Queue("onShipEquipmentChanged", self)
 end
 
 --
@@ -379,7 +379,7 @@ Ship.RemoveEquip = function (self, item, count, slot)
 	end
 	local ret = self.equipSet:Remove(self, item, count, slot)
 	if ret > 0 then
-		Event.Queue("onShipEquipmentChange", self, item)
+		Event.Queue("onShipEquipmentChanged", self, item)
 	end
 	return ret
 end
@@ -583,17 +583,16 @@ function Ship:FireMissileAt(which_missile, target)
 		end
 		-- Let's keep a safe distance before activating this device, shall we ?
 		Timer:CallEvery(1, function ()
-			if not missile_object:exists() then -- Usually means it has already exploded
-				return true
-			end
-			if missile_object:DistanceTo(self) < 300 or missile_object:DistanceTo(target) > 500 then
-				return false
-			else
-				missile_object:Arm()
-				if ShipDef[missile_object.shipId].name == "MISSILE_NAVAL" then
-					target:SetHullPercent(0)
+			if missile_object and missile_object:exists() then -- Usually means it has already exploded
+				if missile_object:DistanceTo(self) < 300 or missile_object:DistanceTo(target) > 500 then
+					return false
+				else
+					missile_object:Arm()
+					if ShipDef[missile_object.shipId].name == "MISSILE_NAVAL" then
+						target:SetHullPercent(0)
+					end
+					return true
 				end
-				return true
 			end
 		end)
 	end

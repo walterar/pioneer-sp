@@ -86,7 +86,6 @@ local erase_old_spawn = function ()
 			if TraffiShip[i] and TraffiShip[i]:exists() then
 				local state = TraffiShip[i].flightState
 				if state ~= "HYPERSPACE" then
---print(TraffiShip[i].label.." EN ESTADO "..state)
 					TraffiShip[i]:Explode()--XXX
 					TraffiShip[i]=nil
 				end
@@ -114,7 +113,6 @@ end
 
 
 local replace_and_spawn = function (n)
---print(ShipDef[TraffiShip[n].shipId].name.." DESTRUÍDA O EN HIPERESPACIO, SE INTENTARÁ REEMPLAZAR NAVE "..n)
 	TraffiShip[n] = nil
 	local truestation = basePort
 	Timer:CallAt(Game.time + Engine.rand:Integer(2,30), function ()--XXX
@@ -137,9 +135,7 @@ local replace_and_spawn = function (n)
 			if x > 10 then
 			break end
 		until drive
-
 		TraffiShip[n] = Space.SpawnShipNear(TraffiShip[n].id,Game.player,120, 200)
-
 		if drive then
 			TraffiShip[n]:AddEquip(drive)
 			TraffiShip[n]:AddEquip(cargo.hydrogen,drive.capabilities.hyperclass ^ 2)
@@ -153,7 +149,6 @@ local replace_and_spawn = function (n)
 		else
 			TraffiShip[n]:SetLabel(Ship.MakeRandomLabel())
 		end
---print(ShipDef[TraffiShip[n].shipId].name.." REEMPLAZA NAVE DESTRUÍDA O EN HIPERESPACIO "..n)
 		TraffiShip[n]:AIDockWith(basePort)
 	end)
 end
@@ -199,9 +194,7 @@ local activate = function (i)
 			if not TraffiShip[i] or TraffiShip[i].flightState == "DOCKING" then return end
 					local status = TraffiShip[i]:HyperjumpTo(system_target)
 					if status == "OK" then--XXX
---print(ShipDef[TraffiShip[i].shipId].name.." HA SALTADO A HIPERESPACIO "..i)
 						replace_and_spawn(i)
---
 						return
 					end
 				end
@@ -210,7 +203,6 @@ local activate = function (i)
 				local target = Game.player:FindNearestTo("PLANET") or Game.player:FindNearestTo("STAR")
 				if not target or not TraffiShip[i] then return end
 				TraffiShip[i]:AIEnterLowOrbit(target)
---print(TraffiShip[i].label.." STATUS="..TraffiShip[i].flightState..", VUELA A "..target.label)
 			end
 		end)
 	end)
@@ -263,9 +255,9 @@ local spawnShipsDocked = function ()
 --
 	end
 	local ships_traffic
-
-	ShipsCount = Engine.rand:Integer((math.abs((basePort.numDocks/4) * 1+Game.system.lawlessness)), basePort.numDocks-2)
-print(ShipsCount.." NAVES EN ".. basePort.label)
+	local pNumDocks = basePort.numDocks - 2
+	ShipsCount = Engine.rand:Integer(2, (math.abs((pNumDocks/2) * (2.0-Game.system.lawlessness))))
+print(ShipsCount.." SHIPS IN ".. basePort.label)
 
 
 	if basePort.isGroundStation then
@@ -292,7 +284,6 @@ print(ShipsCount.." NAVES EN ".. basePort.label)
 			if x > 10 then
 			break end
 		until TraffiShip[i]
-
 		if not TraffiShip[i] then
 			ShipsCount = i-1
 --
@@ -370,12 +361,10 @@ local onAICompleted = function (ship, ai_error)
 			for i = 1, ShipsCount do
 				if ship == TraffiShip[i] then
 					local state = TraffiShip[i].flightState
---print(ship.label.." HA COMPLETADO AI EN ESTADO "..state)
 					if ai_error == "REFUSED_PERM" and state == "FLYING" then
 						local target = Game.player:FindNearestTo("PLANET") or Game.player:FindNearestTo("STAR")
 						if not target or not TraffiShip[i] then return end
 						TraffiShip[i]:AIEnterLowOrbit(target)
---print(TraffiShip[i].label.." EN ORBITA BAJA DE "..target.label)
 					elseif ai_error == "NONE" and state ~= "DOCKING" then
 						TraffiShip[i]:AIDockWith(basePort)
 --
@@ -416,7 +405,6 @@ local onShipCollided = function (ship, other)
 	if other == basePort then
 		for i=1, ShipsCount do
 			if ship == TraffiShip[i] then
-print(ShipDef[TraffiShip[i].shipId].name.." DESTRUIDA POR "..other.label)
 				TraffiShip[i]:Explode()
 				replace_and_spawn(i)
 			return end
@@ -429,13 +417,10 @@ local onShipDestroyed = function (ship, attacker)
 	if not ShipsCount or ShipsCount == 0 then return end
 	for i=1, ShipsCount do
 		if ship == TraffiShip[i] then
-print(ShipDef[TraffiShip[i].shipId].name.." "..ship.label.." FUÉ DESTRUÍDA 'onShipDestroyed' "..i)
---			TraffiShip[i] = nil
 			replace_and_spawn(i)
 		break end
 	end
 	if ship == Police then
-		--print(Police.label.." HA SIDO DESTRUÍDA")
 		Police = nil
 	end
 end
@@ -528,7 +513,6 @@ local onFrameChanged = function (body)
 		Target = Game.player:GetNavTarget()
 		if not Target or Target == lastPort then return end
 		local closestStation = Game.player:FindNearestTo("SPACESTATION")
---		local closestPlanet = Game.player:FindNearestTo("PLANET")
 		if Target.type == 'STARPORT_ORBITAL'
 			or Target.type == 'STARPORT_SURFACE' then
 			nextPort = Target
@@ -623,7 +607,7 @@ end
 
 local onLeaveSystem = function (ship)
 	if ship:IsPlayer() then
-		if playerStatus == "outbound" then ship:CancelAI() end
+		ship:CancelAI()
 		if distance and distance < 2500 then
 			local money = crime_fine("ILLEGAL_JUMP")
 			Game.player:AddCrime("ILLEGAL_JUMP", money)

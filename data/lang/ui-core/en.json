@@ -27,6 +27,10 @@
       "description" : "",
       "message" : "An error has occurred"
    },
+   "ATMOSPHERIC_SHIELDING" : {
+      "description" : "Used in ShipInfo view, followed by a yes/no depending on if the ship can carry atmospheric shields",
+      "message" : "Atmospheric shielding"
+   },
    "ATTEMPT_TO_REPAIR_HULL" : {
       "description" : "",
       "message" : "Attempt to repair hull"
@@ -800,7 +804,7 @@
       "message" : "Poor"
    },
    "POSITION" : {
-      "description" : "",
+      "description" : "The job title/position of crew memeber",
       "message" : "Position"
    },
    "PRESS_A_KEY_OR_CONTROLLER_BUTTON" : {
@@ -882,6 +886,10 @@
    "SAVE" : {
       "description" : "",
       "message" : "Save"
+   },
+   "SCOOP_MOUNTS" : {
+      "description" : "How many slots or mounts exist on the ship for fitting SCOOPS (e.g. cargo scoop, fuel scoop, multi-scoop) ",
+      "message" : "Scoop mounts"
    },
    "SELECT" : {
       "description" : "",
@@ -1057,7 +1065,7 @@
    },
    "WE_HAVE_NO_BUSINESS_WITH_YOU" : {
       "description" : "",
-      "message" : "We have no business with you at the moment.\n\nHowever, remember to respect the local rules.\n\nOur rules are simple:\n\n* Move at least 5Km from the station to hyperjump.\n* Do not fire their cannons within 100 km of the station.\n* Do not trade with illegal products.\n* Do not dispose any product in the station, and less,\n if is hazardous to the environment.\n* Shoot or ramming another ship within 100km of station\n will be considered Piracy.\n* Do not carry local information to another faction.\n* Comply with the agreed missions, avoid being fined\n for fraud or Abduction\n* Do not use the manual off for not paying their fines,\n this is serious and will be considered leak.\n* And... please... do not kill anyone."
+      "message" : "We have no business with you at the moment.\nHowever, remember to respect the local rules:\n\n* Move at least 5Km from the station to hyperjump.\n* Do not fire their cannons within 100km of the station.\n* Do not trade with illegal products.\n* Do not dispose any product in the station, and less,\n if is hazardous to the environment.\n* Do not jettison radioactive waste to space\nin inhabited systems.\n* Shoot or ramming another ship within 100km of station\n will be considered Piracy.\n* Do not carry local information to another faction.\n* Comply with the agreed missions, avoid being fined\n for fraud or Abduction\n* Do not use take off manual for not paying their fines,\n this is serious and will be considered leak.\n* And... please... do not kill anyone."
    },
    "YES" : {
       "description" : "Positive answer to a question",

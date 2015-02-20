@@ -1,25 +1,25 @@
 {
-   "angular_thrust" : 25000000.0,
-   "capacity" : 35,
-   "cockpit" : "",
-   "down_thrust" : 1000000.0,
-   "effective_exhaust_velocity" : 95000000.0,
-   "forward_thrust" : 5500000.0,
-   "fuel_tank_mass" : 30,
-   "hull_mass" : 20,
-   "hyperdrive_class" : 3,
-   "left_thrust" : 1000000.0,
+   "name"         : "Sinonatrix",
+   "model"        : "sinonatrix",
+   "ship_class"   : "light_courier",
    "manufacturer" : "opli",
+   "cockpit"      : "",
+
+   "capacity"       : 35,
+   "hull_mass"      : 20,
+   "fuel_tank_mass" : 15,
+
+   "forward_thrust" :  5500000.0,
+   "reverse_thrust" :  1200000.0,
+   "angular_thrust" : 25000000.0,
+   "up_thrust"      :  1500000.0,
+   "down_thrust"    :  1000000.0,
+   "right_thrust"   :  1000000.0,
+   "left_thrust"    :  1000000.0,
+
    "max_crew" : 1,
    "min_crew" : 1,
-   "model" : "sinonatrix",
-   "name" : "Sinonatrix",
-   "price" : 31000.0,
-   "reverse_thrust" : 1200000.0,
-   "right_thrust" : 1000000.0,
-   "ship_class" : "light_courier",
    "slots" : {
-      "atmo_shield" : 1,
       "cabin" : 2,
       "cargo" : 35,
       "cargo_life_support" : 0,
@@ -29,6 +29,9 @@
       "missile" : 2,
       "scoop" : 0
    },
-   "thruster_fuel_use" : -1.0,
-   "up_thrust" : 1500000.0
+
+   "thruster_fuel_use" : 0.0001,
+   "effective_exhaust_velocity" : -1,
+   "hyperdrive_class" : 2,
+   "price" : 35000.0
 }

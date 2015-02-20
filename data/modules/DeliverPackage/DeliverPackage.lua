@@ -291,6 +291,24 @@ local onShipDocked = function (player, station)
 	end
 end
 
+local onShipLanded = function (player, body)
+	if not player:IsPlayer() then return end
+	for ref,mission in pairs(missions) do
+		if mission.location == Game.player:FindNearestTo("SPACESTATION").path then
+			if Game.time > mission.due then
+				Comms.ImportantMessage(flavours[mission.flavour].failuremsg, mission.client.name)
+				_G.MissionsFailures = MissionsFailures + 1
+			else
+				Comms.ImportantMessage(flavours[mission.flavour].successmsg, mission.client.name)
+				_G.MissionsSuccesses = MissionsSuccesses + 1
+				player:AddMoney(mission.reward)
+			end
+			mission:Remove()
+			missions[ref] = nil
+		end
+	end
+end
+
 local loaded_data
 
 local onGameStart = function ()
@@ -415,6 +433,7 @@ end
 Event.Register("onCreateBB", onCreateBB)
 Event.Register("onUpdateBB", onUpdateBB)
 Event.Register("onFrameChanged", onFrameChanged)
+Event.Register("onShipLanded", onShipLanded)
 Event.Register("onShipDocked", onShipDocked)
 Event.Register("onGameStart", onGameStart)
 

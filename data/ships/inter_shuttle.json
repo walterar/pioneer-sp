@@ -1,23 +1,24 @@
 {
-   "angular_thrust" : 5000000.0,
-   "capacity" : 20,
-   "cockpit" : "",
-   "down_thrust" : 500000.0,
-   "effective_exhaust_velocity" : -1.0,
-   "forward_thrust" : 800000.0,
-   "fuel_tank_mass" : 2,
-   "hull_mass" : 13,
-   "hyperdrive_class" : 0,
-   "left_thrust" : 500000.0,
+   "name"         : "Inter Shuttle",
+   "model"        : "inter_shuttle",
+   "ship_class"   : "light_scout",
    "manufacturer" : "p66",
+   "cockpit"      : "",
+
+   "capacity"       : 20,
+   "hull_mass"      : 13,
+   "fuel_tank_mass" : 2,
+
+   "forward_thrust" :  800000.0,
+   "reverse_thrust" :  500000.0,
+   "angular_thrust" : 5000000.0,
+   "up_thrust"      :  500000.0,
+   "down_thrust"    :  500000.0,
+   "right_thrust"   :  500000.0,
+   "left_thrust"    :  500000.0,
+
    "max_crew" : 1,
    "min_crew" : 1,
-   "model" : "inter_shuttle",
-   "name" : "Inter Shuttle",
-   "price" : 20000.0,
-   "reverse_thrust" : 500000.0,
-   "right_thrust" : 500000.0,
-   "ship_class" : "light_scout",
    "slots" : {
       "atmo_shield" : 0,
       "cabin" : 4,
@@ -30,6 +31,9 @@
       "missile" : 0,
       "scoop" : 0
    },
-   "thruster_fuel_use" : 9.999999747378752e-05,
-   "up_thrust" : 500000.0
+
+   "effective_exhaust_velocity" : -1.0,
+   "thruster_fuel_use" : 0.0001,
+   "hyperdrive_class" : 0,
+   "price" : 18e3
 }

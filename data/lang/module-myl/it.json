@@ -35,6 +35,10 @@
 "description":"",
 "message":"Posizione Corrente:"
 },
+"Damage_Control":{
+"description":"",
+"message":"Rapporto Danni"
+},
 "ENTER_HIGH_ORBIT_AT_CURRENT_TARGET":{
 "description":"",
 "message":"Stabilire Orbita Alta"
@@ -50,6 +54,26 @@
 "ENVIRONMENTAL_DAMAGE":{
 "description":"",
 "message":"Danno Ambientale"
+},
+"ABDUCTION":{
+"description":"",
+"message":"Rapimento"
+},
+"FRAUD":{
+"description":"",
+"message":"Truffa"
+},
+"ESPIONAGE":{
+"description":"",
+"message":"Spionaggio"
+},
+"ESCAPE":{
+"description":"",
+"message":"Sfuggire"
+},
+"ILLEGAL_JUMP":{
+"description":"",
+"message":"Saltate illegale"
 },
 "Experience":{
 "description":"",

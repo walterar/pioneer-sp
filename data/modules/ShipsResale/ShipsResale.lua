@@ -11,13 +11,14 @@ local utils      = import("utils")
 local ShipDef    = import("ShipDef")
 local Lang       = import("Lang")
 local Eq         = import("Equipment")
+local MessageBox = import("ui/MessageBox")
 
 local l = Lang.GetResource("module-shipsresale") or Lang.GetResource("module-shipsresale","en")
 
 local ads = {}
 local loaded_data
 local saleship = {}
-local my_shipDef,my_ship_name,my_ship_id,my_ship_price,shipdefs,maxsales
+local my_shipDef,my_ship_name,my_ship_price,shipdefs,maxsales
 local oksel = 0
 
 local equipping = function ()
@@ -35,53 +36,57 @@ local equipping = function ()
 end
 
 local onChat = function (form, ref, option)
-	my_shipDef = ShipDef[Game.player.shipId]
-	my_ship_name = my_shipDef.name
+
 	if oksel == 0 or Game.time >= (oksel + 60*60*1) then
-		my_ship_price = math.ceil(my_shipDef.basePrice * Engine.rand:Number(0.7,0.90))
+		if not my_ship_price then
+			my_ship_price = math.ceil(my_shipDef.basePrice * Engine.rand:Number(0.7,0.90))
+		end
+
 		shipdefs = utils.build_array(utils.filter(function (k,def)
 			return
 				def.tag == 'SHIP'
 				and def.basePrice > 0
 				and def.name ~= my_ship_name
-				and def.basePrice > my_ship_price
-				and def.basePrice < (Game.player:GetMoney() + my_ship_price)
-			end, pairs(ShipDef)))
-		if #shipdefs == 0 then return end
-		maxsales = 6
-		local minsales = 4
-		local shipsales
-		local sales = 0
-		local shipsel
-		for i = 1, maxsales do
-			shipsel = shipdefs[Engine.rand:Integer(1,#shipdefs)]
-			if shipsales == nil then
-				shipsales = shipsel.name
-				sales = sales + 1
-				saleship[sales] = shipsel
-			else
-				local repe = string.find(shipsales,shipsel.name,1,true)
-				if repe == nil then
-					shipsales = shipsales.." / "..shipsel.name
+		end, pairs(ShipDef)))
+
+		if #shipdefs > 0 then
+			maxsales = 10
+			local minsales = 4
+			local shipsales
+			local sales = 0
+			local shipsel
+			for i = 1, maxsales do
+				shipsel = shipdefs[Engine.rand:Integer(1,#shipdefs)]
+				if shipsales == nil then
+					shipsales = shipsel.name
 					sales = sales + 1
 					saleship[sales] = shipsel
+				else
+					local repe = string.find(shipsales,shipsel.name,1,true)
+					if repe == nil then
+						shipsales = shipsales.." / "..shipsel.name
+						sales = sales + 1
+						saleship[sales] = shipsel
+					end
 				end
 			end
+			if sales <= minsales then minsales = sales end
+			maxsales = Engine.rand:Integer(minsales,sales)
+			oksel = Game.time
 		end
-		if sales <= minsales then minsales = sales end
-		maxsales = Engine.rand:Integer(minsales,sales)
-		oksel = Game.time
 	end
-
 	local ad = ads[ref]
 
 	if option == 0 then
 		form:Clear()
+		form:SetTitle(ad.title.."\n*")
+		form:SetMessage(string.interp(l["HelloCommander"..Engine.rand:Integer(1,4)].."\n"..l["Sale"..Engine.rand:Integer(1,4)].."[ "..my_ship_name.." ] "..showCurrency(my_ship_price).."\n*"))
 
-		form:SetTitle(ad.title.."\n*\n*")
-		form:SetMessage(string.interp(l["HelloCommander"..Engine.rand:Integer(1,4)].."\n*\n"..l["Sale"..Engine.rand:Integer(1,4)].."[ "..my_ship_name.." ] "..showCurrency(my_ship_price).."\n*\n*"))
+		if #shipdefs == 0 then
+			form:SetMessage(l.Closed_for_holidays)
+		return end
 
-		for i = 1,maxsales do
+		for i = 1, maxsales do
 			local difer = (saleship[i].basePrice - my_ship_price)
 			if difer >= 0 then
 				venta = l.His_ship_more..showCurrency(difer)..l["in_exchange_for_a"..Engine.rand:Integer(1,4)].." [ "..saleship[i].name.." ]"
@@ -92,6 +97,7 @@ local onChat = function (form, ref, option)
 		end
 		return
 	end
+
 	if option >= 1 and option <= maxsales then
 		if Game.player:CountEquip(Eq.misc.cabin_occupied) > 0 then
 			form:Clear()
@@ -132,6 +138,7 @@ local onShipTypeChanged = function (ship)
 	if not ship:IsPlayer() then return end
 	my_shipDef = ShipDef[Game.player.shipId]
 	my_ship_name = my_shipDef.name
+	my_ship_price = nil
 end
 
 local onDelete = function (ref)
@@ -153,7 +160,8 @@ local onCreateBB = function (station)
 end
 
 local onGameStart = function ()
-	ads = {}
+	my_shipDef = ShipDef[Game.player.shipId]
+	my_ship_name = my_shipDef.name
 	if loaded_data then
 		for k,ad in pairs(loaded_data.ads) do
 			ads[ad.station:AddAdvert({
@@ -162,18 +170,43 @@ local onGameStart = function ()
 			onChat      = onChat,
 			onDelete    = onDelete})] = ad
 		end
+		my_ship_price = loaded_data.my_ship_price
+		maxsales      = loaded_data.maxsales
 		loaded_data = nil
+	else
+	ads = {}
+	saleship = {}
+	my_ship_price = nil
+	maxsales = 10
 	end
 end
 
 local serialize = function ()
-	return { ads = ads }
+	return {
+		ads = ads,
+		my_ship_price = my_ship_price,
+		maxsales = maxsales
+	}
 end
 
 local unserialize = function (data)
 	loaded_data = data
 end
 
+local onGameEnd = function ()
+	ads = {}
+	loaded_data = nil
+	saleship = {}
+	my_shipDef,my_ship_name,my_ship_id,my_ship_price,shipdefs,maxsales = nil,nil,nil,nil,nil,nil
+	oksel = 0
+end
+
+local onEnterSystem = function (ship)
+	my_ship_price = nil
+end
+
+Event.Register("onEnterSystem", onEnterSystem)
+Event.Register("onGameEnd", onGameEnd)
 Event.Register("onShipTypeChanged", onShipTypeChanged)
 Event.Register("onCreateBB", onCreateBB)
 Event.Register("onGameStart", onGameStart)

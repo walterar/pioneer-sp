@@ -1,35 +1,32 @@
 {
-   "tag" : "static",
-   "angular_thrust" : 2500000000.0,
-   "capacity" : 16000,
-   "cockpit" : "",
-   "down_thrust" : 80000000.0,
-   "effective_exhaust_velocity" : 55123000.0,
-   "forward_thrust" : 320000000.0,
-   "fuel_tank_mass" : 6000,
-   "hull_mass" : 4000,
-   "hyperdrive_class" : 0,
-   "left_thrust" : 80000000.0,
+   "tag"          : "static",
+   "name"         : "Shadow battle crab",
+   "model"        : "shadowbc",
+   "ship_class"   : "medium_freighter",
    "manufacturer" : "albr",
+   "cockpit"      : "",
+
+   "capacity"       : 16000,
+   "hull_mass"      :  6000,
+   "fuel_tank_mass" :  6000,
+
+   "forward_thrust" :  320000000.0,
+   "reverse_thrust" :   80000000.0,
+   "angular_thrust" : 2500000000.0,
+   "up_thrust"      :   80000000.0,
+   "down_thrust"    :   80000000.0,
+   "right_thrust"   :   80000000.0,
+   "left_thrust"    :   80000000.0,
+
    "max_crew" : 1,
    "min_crew" : 1,
-   "model" : "shadowbc",
-   "name" : "Shadow battle crab",
-   "price" : 0.0,
-   "reverse_thrust" : 80000000.0,
-   "right_thrust" : 80000000.0,
-   "ship_class" : "medium_freighter",
    "slots" : {
-      "atmo_shield" : 0,
-      "cabin" : 0,
       "cargo" : 16000,
-      "cargo_life_support" : 0,
-      "hull_autorepair" : 0,
-      "laser_front" : 0,
-      "laser_rear" : 0,
-      "missile" : 0,
-      "scoop" : 0
+      "cargoscoop" : 0
    },
+
    "thruster_fuel_use" : -1.0,
-   "up_thrust" : 80000000.0
+   "effective_exhaust_velocity" : 55123000.0,
+   "hyperdrive_class" : 0,
+   "price" : 0.0
 }

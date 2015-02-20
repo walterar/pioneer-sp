@@ -17,7 +17,7 @@ Missile::Missile(ShipType::Id shipId, Body *owner, int power): Ship(shipId)
 		m_power = 0;
 		if (shipId == ShipType::MISSILE_GUIDED) m_power = 1;
 		if (shipId == ShipType::MISSILE_SMART) m_power = 2;
-		if (shipId == ShipType::MISSILE_NAVAL) m_power = 3;
+		if (shipId == ShipType::MISSILE_NAVAL) m_power = 4;//3
 	} else
 		m_power = power;
 

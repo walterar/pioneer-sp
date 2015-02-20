@@ -450,6 +450,42 @@ local onShipDocked = function (player, station)
 	end
 end
 
+local onShipLanded = function (player, body)
+	if not player:IsPlayer() then return end
+	local mission
+	local faction = Game.system.faction
+	for ref, mission in pairs(missions) do
+
+		if Game.time > mission.due then
+--			mission.status == "FAILED"
+			_G.MissionsFailures = MissionsFailures + 1
+				mission:Remove()
+				missions[ref] = nil
+--			return
+		end
+
+		if mission.status == "COMPLETED" then
+			if mission.faction == faction.name then
+				if mission.location == Game.player:FindNearestTo("SPACESTATION").path then
+					Comms.ImportantMessage((scout_flavours[mission.flavour].successmsg), mission.client.name)
+					player:AddMoney(mission.reward)
+					_G.MissionsSuccesses = MissionsSuccesses + 1
+					mission:Remove()
+					missions[ref] = nil
+				end
+			else
+				local crime = "ESPIONAGE"
+				Game.player:AddCrime(crime, crime_fine(crime))
+				Comms.ImportantMessage(l.Unauthorized_data_here_is_REMOVED, faction.militaryName)
+				Comms.ImportantMessage(l.You_have_been_fined .. showCurrency(crime_fine(crime)), faction.policeName)
+--				_G.MissionsFailures = MissionsFailures + 1
+				mission:Remove()
+				missions[ref] = nil
+			end
+		end
+	end
+end
+
 local loaded_data
 
 local onGameStart = function ()
@@ -677,6 +713,7 @@ Event.Register("onCreateBB", onCreateBB)
 Event.Register("onUpdateBB", onUpdateBB)
 Event.Register("onFrameChanged", onFrameChanged)
 Event.Register("onShipDocked", onShipDocked)
+Event.Register("onShipLanded", onShipLanded)
 Event.Register("onGameStart", onGameStart)
 
 Mission.RegisterType('Scout','Scout',onClick)

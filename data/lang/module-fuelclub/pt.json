@@ -1,0 +1,70 @@
+{
+   "APPLY_FOR_MEMBERSHIP" : {
+      "description" : "",
+      "message" : "Pedir associação"
+   },
+   "BEGIN_TRADE" : {
+      "description" : "",
+      "message" : "Começar comércio"
+   },
+   "FLAVOUR_0_CLUBNAME" : {
+      "description" : "",
+      "message" : "Cooperativa interestelar de combustível para pilotos"
+   },
+   "FLAVOUR_0_MEMBER_INTRO" : {
+      "description" : "",
+      "message" : "Pode comprar combustível e depositar {radioactives} aqui."
+   },
+   "FLAVOUR_0_NONMEMBER_INTRO" : {
+      "description" : "",
+      "message" : "{clubname} is an independent organisation dedicated to providing discounted starship fuel to its members. Branches can be found throughout the galaxy. Benefits of membership include:"
+   },
+   "FLAVOUR_0_WELCOME" : {
+      "description" : "",
+      "message" : "Bem-Vindo ao {clubname}"
+   },
+   "GO_BACK" : {
+      "description" : "",
+      "message" : "Voltar"
+   },
+   "LIST_BENEFITS_DISPOSAL" : {
+      "description" : "",
+      "message" : "{radioactives}, free disposal (conditions apply)"
+   },
+   "LIST_BENEFITS_FUEL" : {
+      "description" : "",
+      "message" : "{fuel} at discount prices"
+   },
+   "LIST_BENEFITS_FUEL_INTRO" : {
+      "description" : "",
+      "message" : "Our own stocks of fuel, independent of the general market"
+   },
+   "LIST_BENEFITS_FUEL_TANK" : {
+      "description" : "",
+      "message" : "Fuel tank refilling, where necessary"
+   },
+   "LIST_BENEFITS_JOIN" : {
+      "description" : "",
+      "message" : "Join now! Annual membership costs only {membership_fee}"
+   },
+   "WE_WILL_ONLY_DISPOSE_OF" : {
+      "description" : "",
+      "message" : "Apenas iremos dispensar tantas toneladas de {radioactives} quantas toneladas de {military_fuel} nos comprou."
+   },
+   "WHAT_CONDITIONS_APPLY" : {
+      "description" : "",
+      "message" : "Quais as condições que se aplicam ao depósito de {radioactives}?"
+   },
+   "YOUR_MEMBERSHIP_APPLICATION_HAS_BEEN_DECLINED" : {
+      "description" : "",
+      "message" : "O pedido de associação foi recusado."
+   },
+   "YOU_ARE_NOW_A_MEMBER" : {
+      "description" : "",
+      "message" : "É agora membro. A sua associação expira em {expiry_date}"
+   },
+   "YOU_MUST_BUY" : {
+      "description" : "",
+      "message" : "Tem de comprar o nosso {military_fuel} antes que possamos aceitar o  seu {radioactives}"
+   }
+}

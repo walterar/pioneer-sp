@@ -1,31 +1,35 @@
 {
-   "angular_thrust" : 6400000.0,
-   "capacity" : 20,
-   "cockpit" : "",
-   "down_thrust" : 900000.0,
-   "effective_exhaust_velocity" : -1.0,
-   "forward_thrust" : 3800000.0,
-   "fuel_tank_mass" : 5,
-   "hull_mass" : 10,
-   "hyperdrive_class" : 2,
-   "left_thrust" : 900000.0,
+   "name"         : "Centurion",
+   "model"        : "centurion",
+   "ship_class"   : "light_fighter",
    "manufacturer" : "mandarava_csepel",
+   "cockpit"      : "",
+
+   "capacity"       : 20,
+   "hull_mass"      : 10,
+   "fuel_tank_mass" :  5,
+
+   "forward_thrust" : 3800000.0,
+   "reverse_thrust" : 1900000.0,
+   "angular_thrust" : 6400000.0,
+   "up_thrust"      :  900000.0,
+   "down_thrust"    :  400000.0,
+   "right_thrust"   :  600000.0,
+   "left_thrust"    :  600000.0,
+
    "max_crew" : 1,
    "min_crew" : 1,
-   "model" : "centurion",
-   "name" : "Centurion",
-   "price" : 38000.0,
-   "reverse_thrust" : 1900000.0,
-   "right_thrust" : 900000.0,
-   "ship_class" : "light_fighter",
    "slots" : {
       "cabin" : 1,
       "cargo" : 20,
       "cargo_life_support" : 0,
       "laser_front" : 1,
       "missile" : 2,
-      "scoop" : 2
+      "scoop" : 0
    },
-   "thruster_fuel_use" : 9.999999747378752e-05,
-   "up_thrust" : 900000.0
+
+   "thruster_fuel_use" : 0.00015,
+   "effective_exhaust_velocity" : -1.0,
+   "hyperdrive_class" : 2,
+   "price" : 28000.0
 }

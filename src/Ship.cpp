@@ -8,6 +8,7 @@
 #include "LuaEvent.h"
 #include "LuaUtils.h"
 #include "Missile.h"
+#include "Player.h"
 #include "Projectile.h"
 #include "ShipAICmd.h"
 #include "ShipController.h"
@@ -256,7 +257,11 @@ Ship::Ship(ShipType::Id shipId): DynamicBody(),
 	Properties().Set("flightState", EnumStrings::GetString("ShipFlightState", m_flightState));
 	Properties().Set("alertStatus", EnumStrings::GetString("ShipAlertStatus", m_alertState));
 
+	m_lastAlertUpdate = 0.0;
 	m_lastFiringAlert = 0.0;
+	m_shipNear = false;
+	m_shipFiring = false;
+
 	m_testLanded = false;
 	m_launchLockTimeout = 0;
 	m_wheelTransition = 0;
@@ -659,10 +664,15 @@ void Ship::SetFlightState(Ship::FlightState newState)
 
 	if (newState == FLYING) {
 		m_testLanded = false;
-		if (m_flightState == DOCKING || m_flightState == DOCKED) onUndock.emit();
-		m_dockedWith = 0;
-		// lock thrusters for two seconds to push us out of station
-		m_launchLockTimeout = 2.0;
+		if (m_flightState == DOCKING || m_flightState == DOCKED)
+			onUndock.emit();
+
+		m_dockedWith = nullptr;
+
+		// lock thrusters on for amount of time needed to push us out of station
+		static const double MASS_LOCK_REFERENCE(40000.0); // based purely on experimentation
+		// limit the time to between 2.0 and 20.0 seconds of thrust, the player can override
+		m_launchLockTimeout = std::min(std::max(2.0, 2.0 * (GetMass() / MASS_LOCK_REFERENCE)), 20.0);
 	}
 
 	m_flightState = newState;
@@ -902,7 +912,7 @@ void Ship::UpdateAlertState()
 	// no alerts if no scanner
 	int scanner_cap = 0;
 	Properties().Get("scanner_cap", scanner_cap);
-	if (scanner_cap <= 0) {
+	if (scanner_cap < 1) {
 		// clear existing alert state if there was one
 		if (GetAlertState() != ALERT_NONE) {
 			SetAlertState(ALERT_NONE);
@@ -911,34 +921,50 @@ void Ship::UpdateAlertState()
 		return;
 	}
 
-	static const double ALERT_DISTANCE = 100000.0; // 100km
-
-	Space::BodyNearList nearby;
-	Pi::game->GetSpace()->GetBodiesMaybeNear(this, ALERT_DISTANCE, nearby);
-
 	bool ship_is_near = false, ship_is_firing = false;
-	for (Space::BodyNearIterator i = nearby.begin(); i != nearby.end(); ++i)
+	if (m_lastAlertUpdate + 1.0 <= Pi::game->GetTime())
 	{
-		if ((*i) == this) continue;
-		if (!(*i)->IsType(Object::SHIP) || (*i)->IsType(Object::MISSILE)) continue;
+		// time to update the list again, once per second should suffice
+		m_lastAlertUpdate = Pi::game->GetTime();
 
-		const Ship *ship = static_cast<const Ship*>(*i);
+		// refresh the list
+		m_nearbyBodies.clear();
+		static const double ALERT_DISTANCE = 100000.0; // 100km
+		Pi::game->GetSpace()->GetBodiesMaybeNear(this, ALERT_DISTANCE, m_nearbyBodies);
 
-		if (ship->GetShipType()->tag == ShipType::TAG_STATIC_SHIP) continue;
-		if (ship->GetFlightState() == LANDED || ship->GetFlightState() == DOCKED) continue;
+		// handle the results
+		for (auto i : m_nearbyBodies)
+		{
+			if ((i) == this) continue;
+			if (!(i)->IsType(Object::SHIP) || (i)->IsType(Object::MISSILE)) continue;
 
-		if (GetPositionRelTo(ship).LengthSqr() < ALERT_DISTANCE*ALERT_DISTANCE) {
-			ship_is_near = true;
+			const Ship *ship = static_cast<const Ship*>(i);
 
-			Uint32 gunstate = 0;
-			for (int j = 0; j < ShipType::GUNMOUNT_MAX; j++)
-				gunstate |= ship->m_gun[j].state;
+			if (ship->GetShipType()->tag == ShipType::TAG_STATIC_SHIP) continue;
+			if (ship->GetFlightState() == LANDED || ship->GetFlightState() == DOCKED) continue;
 
-			if (gunstate) {
-				ship_is_firing = true;
-				break;
+			if (GetPositionRelTo(ship).LengthSqr() < ALERT_DISTANCE*ALERT_DISTANCE) {
+				ship_is_near = true;
+
+				Uint32 gunstate = 0;
+				for (int j = 0; j < ShipType::GUNMOUNT_MAX; j++)
+					gunstate |= ship->m_gun[j].state;
+
+				if (gunstate) {
+					ship_is_firing = true;
+					break;
+				}
 			}
 		}
+
+		// store
+		m_shipNear = ship_is_near;
+		m_shipFiring = ship_is_firing;
+	}
+	else
+	{
+		ship_is_near = m_shipNear;
+		ship_is_firing = m_shipFiring;
 	}
 
 	bool changed = false;
@@ -1290,6 +1316,9 @@ void Ship::EnterHyperspace() {
 			SetFlightState(FLYING);
 		return;
 	}
+
+	// Clear ships cached list of nearby bodies so we don't try to access them.
+	m_nearbyBodies.clear();
 
 	LuaEvent::Queue("onLeaveSystem", this);
 

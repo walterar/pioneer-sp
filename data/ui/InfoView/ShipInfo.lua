@@ -13,7 +13,7 @@ local ModelSpinner = import("UI.Game.ModelSpinner")
 
 local ui = Engine.ui
 local l = Lang.GetResource("ui-core");
-local lc = Lang.GetResource("core");
+local lc = Lang.GetResource("equipment-core") or Lang.GetResource("equipment-core","en");
 local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en");
 
 local yes_no = function (binary)
@@ -113,8 +113,11 @@ local shipInfo = function (args)
 						ui:Label(myl.CAPACITY):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
 						{ l.MISSILE_MOUNTS..":",         shipDef.equipSlotCapacity.missile},
 						{ lc.ATMOSPHERIC_SHIELDING..":", yes_no(shipDef.equipSlotCapacity.atmo_shield)},
-						{ lc.SCOOP..":",                 shipDef.equipSlotCapacity.scoop},
+						{ l.SCOOP_MOUNTS..":",           shipDef.equipSlotCapacity.scoop},
 						{ lc.UNOCCUPIED_CABIN..":",      shipDef.equipSlotCapacity.cabin},
+						{ lc.AUTO_COMBAT..":",           shipDef.equipSlotCapacity.autocombat},
+						{ lc.DEMP..":",                  shipDef.equipSlotCapacity.demp},
+						{ lc.MATTER_CAPACITOR..":",      shipDef.equipSlotCapacity.capacitor},
 						"",
 						ui:Label(myl.CREW):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
 						{ myl.CREW_VACANCIES..":", shipDef.maxCrew-shipDef.minCrew},
@@ -124,9 +127,9 @@ local shipInfo = function (args)
 						{ l.REAR_WEAPON..":",  rearWeapon and rearWeapon:GetName() or l.NONE },
 						"",
 						{ lc.MISSILE_UNGUIDED..":", Game.player:CountEquip(Equipment.misc.missile_unguided)},
-						{ lc.MISSILE_GUIDED..":", Game.player:CountEquip(Equipment.misc.missile_guided)},
-						{ lc.MISSILE_SMART..":", Game.player:CountEquip(Equipment.misc.missile_smart)},
-						{ lc.MISSILE_NAVAL..":", Game.player:CountEquip(Equipment.misc.missile_naval)},
+						{ lc.MISSILE_GUIDED..":",   Game.player:CountEquip(Equipment.misc.missile_guided)},
+						{ lc.MISSILE_SMART..":",    Game.player:CountEquip(Equipment.misc.missile_smart)},
+						{ lc.MISSILE_NAVAL..":",    Game.player:CountEquip(Equipment.misc.missile_naval)},
 					}),
 					"",
 						ui:Label(l.EQUIPMENT):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),

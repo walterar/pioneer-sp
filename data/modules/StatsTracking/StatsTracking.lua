@@ -1,5 +1,7 @@
 -- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
+-- modified for Pioneer Scout+ (c)2012-2015 by walterar <walterar2@gmail.com>
+-- Work in progress.
 
 local Game      = import("Game")
 local Event     = import("Event")
@@ -25,32 +27,35 @@ local lc    = Lang.GetResource("ui-core")
 local PlayerDamagedShips = {}
 
 -- >         'HARMLESS','MOSTLY_HARMLESS','POOR','AVERAGE','ABOVE_AVERAGE',
--- >         'COMPETENT','DANGEROUS','DEADLY','ELITE'
+-- >         'COMPETENT','DANGEROUS','DEADLY','ELITE','GOD OF DEATH' :)
 --
 local onShipDestroyed = function (ship, attacker)
-	if attacker:isa('Ship') and attacker:IsPlayer() then
+	if attacker == Game.player then
+print("ONSHIPDESTROYED StatsTracking")
 		-- Increment player's kill count
-		Character.persistent.player.killcount = Character.persistent.player.killcount + 1
+		local kills = Character.persistent.player.killcount
+		kills = kills + 1
+		Character.persistent.player.killcount = kills
 		PlayerDamagedShips[ship]=nil
-		if Character.persistent.player.killcount == 1--      level 0 HARMLESS
-			or Character.persistent.player.killcount == 8--    level 1 MOSTLY_HARMLESS
-			or Character.persistent.player.killcount == 16--   level 2 POOR
-			or Character.persistent.player.killcount == 32--   level 3 AVERAGE
-			or Character.persistent.player.killcount == 64--   level 4 ABOVE_AVERAGE
-			or Character.persistent.player.killcount == 128--  level 5 COMPETENT
-			or Character.persistent.player.killcount == 512--  level 6 DANGEROUS
-			or Character.persistent.player.killcount == 1024-- level 7 DEADLY
-			or Character.persistent.player.killcount == 2048-- level 8 ELITE
-			or Character.persistent.player.killcount == 4096-- level 9 GOD OF DEATH :)
-		then
-			local station = attacker:FindNearestTo("SPACESTATION")
-			if not station or station:DistanceTo(attacker) > 100e3 then
+		if policingArea() then
+print("ONSHIPDESTROYED StatsTracking MURDER")
+			local crime = "MURDER"
+			Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE, {crime=Constant.CrimeType[crime].name}), Game.system.faction.policeName)
+--			local fine = math.max(1, 1+math.floor(Constant.CrimeType[crime].basefine * (1.0-Game.system.lawlessness)))
+			Game.player:AddCrime(crime, crime_fine(crime))
+		else
+			if   kills == 1--    level 0 HARMLESS
+				or kills == 8--    level 1 MOSTLY_HARMLESS
+				or kills == 16--   level 2 POOR
+				or kills == 32--   level 3 AVERAGE
+				or kills == 64--   level 4 ABOVE_AVERAGE
+				or kills == 128--  level 5 COMPETENT
+				or kills == 512--  level 6 DANGEROUS
+				or kills == 1024-- level 7 DEADLY
+				or kills == 2048-- level 8 ELITE
+				or kills == 4096-- level 9 GOD OF DEATH :)
+			then
 				Comms.Message(l.WELL_DONE_COMMANDER_YOUR_COMBAT_RATING_HAS_IMPROVED,l.PIONEERING_PILOTS_GUILD)
-			else
-				local crime = "MURDER"
-				Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE, {crime=Constant.CrimeType[crime].name}), Game.system.faction.policeName)
-				local fine = math.max(1, 1+math.floor(Constant.CrimeType[crime].basefine * (1.0-Game.system.lawlessness)))
-				Game.player:AddCrime(crime, fine)
 			end
 		end
 	elseif PlayerDamagedShips[ship] then
@@ -59,18 +64,35 @@ local onShipDestroyed = function (ship, attacker)
 end
 Event.Register("onShipDestroyed",onShipDestroyed)
 
+local impact = false
+local onShipCollided = function (ship, other)
+	if other==Game.player and ship and (ship:isa("Ship") or ship:isa("static")) and not impact then
+		impact = true
+		PlayerDamagedShips[ship]=true
+		if policingArea() then
+			local crime = "PIRACY"
+			Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE, {crime=Constant.CrimeType[crime].name}), Game.system.faction.policeName)
+			Game.player:AddCrime(crime, crime_fine(crime))
+		end
+	else impact = false
+	end
+end
+Event.Register("onShipCollided",onShipCollided)
+
 local onShipHit = function (ship, attacker)
-	if attacker and attacker:isa("Ship") and attacker:IsPlayer() then
+	if attacker and attacker:IsPlayer() and not impact then
+		impact = true
 		if ship then
 			PlayerDamagedShips[ship]=true
-			local station = attacker:FindNearestTo("SPACESTATION") or nil-- quiero estar seguro :)
-			if station and station:DistanceTo(attacker) < 100000 then
+			if policingArea() and playerAlert ~= "SHIP_FIRING" then
 				local crime = "PIRACY"
+print("ONSHIPHIT StatsTracking")
 				Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE, {crime=Constant.CrimeType[crime].name}), Game.system.faction.policeName)
-				local fine = math.max(1, 1+math.floor(Constant.CrimeType[crime].basefine * (1.0-Game.system.lawlessness)))
-				Game.player:AddCrime(crime, fine)
+--				local fine = math.max(1, 1+math.floor(Constant.CrimeType[crime].basefine * (1.0-Game.system.lawlessness)))
+				Game.player:AddCrime(crime, crime_fine(crime))
 			end
 		end
+	else impact = false
 	end
 end
 Event.Register("onShipHit",onShipHit)

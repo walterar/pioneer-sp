@@ -27,7 +27,7 @@ local seedbump = 10
 -- How many jumps might you get after your service_period is finished?
 -- Failure is increasingly likely with each jump, this being the limit
 -- where probability = 1
-local max_jumps_unserviced = 10
+local max_jumps_unserviced = 20
 
 local flavours = {
 	{
@@ -46,7 +46,7 @@ local flavours = {
 		strength = 2.1, -- these guys are good.
 		baseprice = 10,
 	}, {
-		strength = 0.0, -- These guys just reset the jump count.  Shoddy.
+		strength = 0.1, -- These guys are bad.
 		baseprice = 1.8,
 	}
 }
@@ -234,6 +234,9 @@ end
 
 local onEnterSystem = function (ship)
 	if ship:IsPlayer() then
+		if service_history.jumpcount > 0 then
+			Comms.Message(l.YOU_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN)
+		end
 		print(('DEBUG: Jumps since warranty: %d, chance of failure (if > 0): 1/%d\nWarranty expires: %s'):format(service_history.jumpcount,max_jumps_unserviced-service_history.jumpcount,Format.Date(service_history.lastdate + service_history.service_period)))
 	else
 		return -- Don't care about NPC ships

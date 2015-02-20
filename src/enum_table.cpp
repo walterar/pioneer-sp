@@ -52,7 +52,7 @@ const struct EnumItem ENUM_PhysicsObjectType[] = {
 	{ "MISSILE", int(Object::MISSILE) },
 	{ 0, 0 },
 };
-
+/*
 const struct EnumItem ENUM_PolitCrime[] = {
 	{ "TRADING_ILLEGAL_GOODS", int(Polit::CRIME_TRADING_ILLEGAL_GOODS) },
 	{ "WEAPON_DISCHARGE", int(Polit::CRIME_WEAPON_DISCHARGE) },
@@ -60,7 +60,7 @@ const struct EnumItem ENUM_PolitCrime[] = {
 	{ "MURDER", int(Polit::CRIME_MURDER) },
 	{ 0, 0 },
 };
-
+*/
 const struct EnumItem ENUM_PolitEcon[] = {
 	{ "NONE", int(Polit::ECON_NONE) },
 	{ "VERY_CAPITALIST", int(Polit::ECON_VERY_CAPITALIST) },
@@ -456,7 +456,7 @@ const struct EnumTable ENUM_TABLES[] = {
 	{ "DetailLevel", ENUM_DetailLevel },
 	{ "FileSystemRoot", ENUM_FileSystemRoot },
 	{ "PhysicsObjectType", ENUM_PhysicsObjectType },
-	{ "PolitCrime", ENUM_PolitCrime },
+//	{ "PolitCrime", ENUM_PolitCrime },
 	{ "PolitEcon", ENUM_PolitEcon },
 	{ "PolitGovType", ENUM_PolitGovType },
 	{ "ShipFlightState", ENUM_ShipFlightState },
@@ -499,7 +499,7 @@ const struct EnumTable ENUM_TABLES_PUBLIC[] = {
 	{ "DetailLevel", ENUM_DetailLevel },
 	{ "FileSystemRoot", ENUM_FileSystemRoot },
 	{ "PhysicsObjectType", ENUM_PhysicsObjectType },
-	{ "PolitCrime", ENUM_PolitCrime },
+//	{ "PolitCrime", ENUM_PolitCrime },
 	{ "PolitEcon", ENUM_PolitEcon },
 	{ "PolitGovType", ENUM_PolitGovType },
 	{ "ShipFlightState", ENUM_ShipFlightState },

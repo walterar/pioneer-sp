@@ -1,34 +1,35 @@
 {
-   "angular_thrust" : 20000000.0,
-   "capacity" : 30,
-   "cockpit" : "",
-   "down_thrust" : 2000000.0,
-   "effective_exhaust_velocity" : -1.0,
-   "forward_thrust" : 5000000.0,
-   "fuel_tank_mass" : 10,
-   "hull_mass" : 10,
-   "hyperdrive_class" : 2,
-   "left_thrust" : 2000000.0,
+   "name"         : "Hullcutter",
+   "model"        : "hullcutter",
+   "ship_class"   : "light_scout",
    "manufacturer" : "p66",
+   "cockpit"      : "",
+
+   "capacity"       : 30,
+   "hull_mass"      : 20,
+   "fuel_tank_mass" : 10,
+
+   "forward_thrust" :  8000000.0,
+   "reverse_thrust" :  4000000.0,
+   "angular_thrust" : 15000000.0,
+   "up_thrust"      :  4000000.0,
+   "down_thrust"    :  2000000.0,
+   "right_thrust"   :  2000000.0,
+   "left_thrust"    :  2000000.0,
+
    "max_crew" : 2,
    "min_crew" : 1,
-   "model" : "hullcutter",
-   "name" : "Hullcutter",
-   "price" : 38000.0,
-   "reverse_thrust" : 2500000.0,
-   "right_thrust" : 2000000.0,
-   "ship_class" : "light_scout",
    "slots" : {
-      "atmo_shield" : 1,
       "cabin" : 1,
       "cargo" : 30,
-      "cargo_life_support" : 0,
-      "hull_autorepair" : 0,
       "laser_front" : 1,
       "laser_rear" : 0,
       "missile" : 4,
-      "scoop" : 0
+      "scoop" : 1
    },
-   "thruster_fuel_use" : 9.999999747378752e-05,
-   "up_thrust" : 2000000.0
+
+   "thruster_fuel_use" : 0.0001,
+   "effective_exhaust_velocity" : -1.0,
+   "hyperdrive_class" : 2,
+   "price" : 38000.0
 }

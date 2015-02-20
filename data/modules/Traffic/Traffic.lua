@@ -48,7 +48,6 @@ local playerStatus = nil
 local pol_ai_compl = false
 local warning      = false
 local fineDetect   = false
-local shipX        = nil
 local activateON   = false
 
 
@@ -70,13 +69,13 @@ local reinitialize = function ()
 	pol_ai_compl = false
 	warning      = false
 	fineDetect   = false
-	shipX        = nil
 	activateON   = false
 end
 
 local erase_old_spawn = function ()
 	if Police then
 --
+		Police:SetInvulnerable(false)
 		Police:Explode()
 		Police=nil
 	end
@@ -94,7 +93,6 @@ local erase_old_spawn = function ()
 	end
 	if StaticCount and StaticCount > 0 then
 		for i = 1, StaticCount do
---
 			if ShipStatic[i] and ShipStatic[i]:exists() then
 				ShipStatic[i]:Explode()
 				ShipStatic[i] = nil
@@ -249,17 +247,18 @@ local spawnShipsDocked = function ()
 		Police:AddEquip(misc.atmospheric_shielding)
 		Police:AddEquip(misc.scanner)
 		Police:SetLabel(l.POLICE_SHIP_REGISTRATION)
+		Police:SetInvulnerable(true)
 		free_police = 0
 --
 	else
 --
 	end
 	local ships_traffic
-	local pNumDocks = basePort.numDocks - 2
-	ShipsCount = Engine.rand:Integer(2, (math.abs((pNumDocks/2) * (2.0-Game.system.lawlessness))))
-print(ShipsCount.." SHIPS IN ".. basePort.label)
-
-
+	local min = math.abs(basePort.numDocks/3)
+	local max = math.abs((basePort.numDocks/2) * (2.0-Game.system.lawlessness))
+	if max > basePort.numDocks-2 then max = basePort.numDocks-2 end
+	if max < min then max=min end
+	ShipsCount = Engine.rand:Integer(min, max)
 	if basePort.isGroundStation then
 		ships_traffic = GroundShips
 	else
@@ -286,7 +285,6 @@ print(ShipsCount.." SHIPS IN ".. basePort.label)
 		until TraffiShip[i]
 		if not TraffiShip[i] then
 			ShipsCount = i-1
---
 		break end
 		if drive then
 			TraffiShip[i]:AddEquip(drive)
@@ -303,8 +301,8 @@ print(ShipsCount.." SHIPS IN ".. basePort.label)
 		else
 			TraffiShip[i]:SetLabel(Ship.MakeRandomLabel())
 		end
---
 	end
+print(ShipsCount.." SHIPS IN ".. basePort.label)
 end
 
 
@@ -326,6 +324,7 @@ end
 
 local policeStopFire = function ()--XXX la única forma de que deje de disparar.
 	Police:CancelAI()
+	Police:SetInvulnerable(true)
 	if Police:GetEquipFree("laser_front") < 1 then
 		Police:RemoveEquip(laser.pulsecannon_dual_1mw)
 		Police:RemoveEquip(misc.laser_cooling_booster)
@@ -339,7 +338,6 @@ local onAICompleted = function (ship, ai_error)
 		pol_ai_compl = true
 --
 		policeStopFire()
-		shipX = nil
 		Police:AIDockWith(basePort)
 		warning = false
 --
@@ -401,10 +399,10 @@ local onShipCollided = function (ship, other)
 		or not ShipsCount
 		or ShipsCount == 0 then
 	return end
-
 	if other == basePort then
 		for i=1, ShipsCount do
 			if ship == TraffiShip[i] then
+print(ShipDef[TraffiShip[i].shipId].name.." is collided by "..other.label.." and destroyed")
 				TraffiShip[i]:Explode()
 				replace_and_spawn(i)
 			return end
@@ -414,11 +412,21 @@ end
 
 
 local onShipDestroyed = function (ship, attacker)
-	if not ShipsCount or ShipsCount == 0 then return end
-	for i=1, ShipsCount do
-		if ship == TraffiShip[i] then
-			replace_and_spawn(i)
-		break end
+	if ShipsCount or ShipsCount > 0 then
+		for i=1, ShipsCount do
+			if ship == TraffiShip[i] then
+print(ShipDef[TraffiShip[i].shipId].name.." is destroyed by "..attacker.label)
+				replace_and_spawn(i)
+			break end
+		end
+	end
+	if StaticCount and StaticCount > 0 then
+		for i = 1, StaticCount do
+			if ship == ShipStatic[i] and attacker:IsPlayer() then
+				ShipStatic[i] = nil
+				StaticCount = StaticCount-1
+			break end
+		end
 	end
 	if ship == Police then
 		Police = nil
@@ -444,6 +452,7 @@ local actionPolice = function ()
 		local crime = "ESCAPE"
 		player:AddCrime(crime, crime_fine(crime))
 		pol_ai_compl = false
+		Police:SetInvulnerable(false)
 		Police:AIKill(player)
 	end
 	Timer:CallEvery(4, function ()--XXX
@@ -451,7 +460,6 @@ local actionPolice = function ()
 		if not basePort or not Police or not Police:exists() then return true end
 		if fine == 0 or player:GetNavTarget() == basePort then
 			policeStopFire()
-			shipX = nil
 			pol_ai_compl = false
 --
 			Police:AIFlyTo(basePort)
@@ -542,14 +550,8 @@ Event.Register("onShipFiring", function (ship)
 	then return end
 	if ship
 		and ship:exists()
-		and Game.player:DistanceTo(ship) > 100e3 then
-		ship:Explode()
-		ship = nil
-	return end
-	if shipX and shipX:exists() and shipX == ship then return end
-	if ship
-		and ship:exists()
 		and Police
+		and Police:exists()
 		and Police:DistanceTo(ship) < 100e3
 		and (Police:DistanceTo(Game.player) > 5000 or Game.player:GetDockedWith())
 	then
@@ -557,12 +559,11 @@ Event.Register("onShipFiring", function (ship)
 			Police:AddEquip(laser.pulsecannon_dual_1mw)--XXX
 			Police:AddEquip(misc.laser_cooling_booster)
 		end
-		shipX = ship
 --
 		pol_ai_compl = false
-		Police:AIKill(shipX)
-		shipX:SetHullPercent(0)
-		shipX:AIKill(Police)
+		Police:AIKill(ship)
+		ship:SetHullPercent(0)
+		ship:AIKill(Police)
 	end
 end)
 
@@ -688,7 +689,14 @@ local onGameStart = function ()
 		pol_ai_compl = loaded_data.pol_ai_compl
 		warning      = loaded_data.warning
 		fineDetect   = loaded_data.fineDetect
-		shipX        = loaded_data.shipX
+--		shipX        = loaded_data.shipX
+
+		for i = 1, ShipsCount do
+			if not TraffiShip[i] then
+print("NOT EXIST TraffiShip["..i.."] at init")
+				replace_and_spawn(i)
+			end
+		end
 
 		activateON   = false--XXX
 		traffic_docked()
@@ -703,6 +711,14 @@ end
 
 
 local serialize = function ()
+
+	for i = 1, ShipsCount do
+		if TraffiShip[i] and not TraffiShip[i]:exists() then
+print("NOT EXIST TraffiShip["..i.."]:exists()")
+			TraffiShip[i]=nil
+		end
+	end
+
 	return {
 	TraffiShip   = TraffiShip,
 	ShipsCount   = ShipsCount,
@@ -721,7 +737,6 @@ local serialize = function ()
 	pol_ai_compl = pol_ai_compl,
 	warning      = warning,
 	fineDetect   = fineDetect,
-	shipX        = shipX
 		}
 end
 
@@ -745,7 +760,6 @@ local onGameEnd = function ()
 	pol_ai_compl = nil
 	warning      = nil
 	fineDetect   = nil
-	shipX        = nil
 	activateON   = nil
 	playerAlert  = nil
 	policeAlert  = nil

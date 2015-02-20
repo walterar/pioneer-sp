@@ -1,23 +1,24 @@
 {
-   "angular_thrust" : 30000000.0,
-   "capacity" : 60,
-   "cockpit" : "",
-   "down_thrust" : 3000000.0,
-   "effective_exhaust_velocity" : -1.0,
-   "forward_thrust" : 10000000.0,
-   "fuel_tank_mass" : 10,
-   "hull_mass" : 30,
-   "hyperdrive_class" : 3,
-   "left_thrust" : 3000000.0,
+   "name"         : "Viper TW",
+   "model"        : "viper_tw",
+   "ship_class"   : "medium_freighter",
    "manufacturer" : "p66",
+   "cockpit"      : "",
+
+   "capacity"       : 60,
+   "hull_mass"      : 30,
+   "fuel_tank_mass" : 10,
+
+   "forward_thrust" : 10000000.0,
+   "reverse_thrust" :  4000000.0,
+   "angular_thrust" : 30000000.0,
+   "up_thrust"      :  4000000.0,
+   "down_thrust"    :  3000000.0,
+   "right_thrust"   :  3000000.0,
+   "left_thrust"    :  3000000.0,
+
    "max_crew" : 2,
    "min_crew" : 1,
-   "model" : "viper_tw",
-   "name" : "Viper TW",
-   "price" : 70000.0,
-   "reverse_thrust" : 4000000.0,
-   "right_thrust" : 3000000.0,
-   "ship_class" : "medium_scout",
    "slots" : {
       "atmo_shield" : 1,
       "cabin" : 6,
@@ -29,6 +30,9 @@
       "missile" : 4,
       "scoop" : 2
    },
-   "thruster_fuel_use" : 9.999999747378752e-05,
-   "up_thrust" : 4000000.0
+
+   "effective_exhaust_velocity" : -1.0,
+   "thruster_fuel_use" : 0.00015,
+   "hyperdrive_class" : 3,
+   "price" : 7e4
 }

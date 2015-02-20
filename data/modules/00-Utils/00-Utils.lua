@@ -258,3 +258,13 @@ Output:
 ($22,333,444.56)
 NEG $22,333,444.563
 --]]
+
+function _G.policingArea(ship)
+	local ship = ship or Game.player
+	local station = ship:FindNearestTo("SPACESTATION")
+	local policingArea = false
+	if station and station:DistanceTo(ship) < 1e5 then
+		policingArea = true
+	end
+	return policingArea
+end

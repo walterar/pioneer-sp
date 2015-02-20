@@ -1,0 +1,70 @@
+{
+   "APPLY_FOR_MEMBERSHIP" : {
+      "description" : "",
+      "message" : "Iarr ballrachd"
+   },
+   "BEGIN_TRADE" : {
+      "description" : "",
+      "message" : "Tòisich air malart"
+   },
+   "FLAVOUR_0_CLUBNAME" : {
+      "description" : "",
+      "message" : "Interstellar Pilots' Fuel Co-operative"
+   },
+   "FLAVOUR_0_MEMBER_INTRO" : {
+      "description" : "",
+      "message" : "Faodaidh sibh connadh a cheannach is cuidhteas fhaighinn de {radioactives} an-seo."
+   },
+   "FLAVOUR_0_NONMEMBER_INTRO" : {
+      "description" : "",
+      "message" : "{clubname} is an independent organisation dedicated to providing discounted starship fuel to its members. Branches can be found throughout the galaxy. Benefits of membership include:"
+   },
+   "FLAVOUR_0_WELCOME" : {
+      "description" : "",
+      "message" : "Fàilte gu {clubname}"
+   },
+   "GO_BACK" : {
+      "description" : "",
+      "message" : "Till"
+   },
+   "LIST_BENEFITS_DISPOSAL" : {
+      "description" : "",
+      "message" : "{radioactives}, free disposal (conditions apply)"
+   },
+   "LIST_BENEFITS_FUEL" : {
+      "description" : "",
+      "message" : "{fuel} at discount prices"
+   },
+   "LIST_BENEFITS_FUEL_INTRO" : {
+      "description" : "",
+      "message" : "Our own stocks of fuel, independent of the general market"
+   },
+   "LIST_BENEFITS_FUEL_TANK" : {
+      "description" : "",
+      "message" : "Fuel tank refilling, where necessary"
+   },
+   "LIST_BENEFITS_JOIN" : {
+      "description" : "",
+      "message" : "Gabhaibh ballrachd an-dràsta! Chan eil ballrachd bliadhnail ach {membership_fee}"
+   },
+   "WE_WILL_ONLY_DISPOSE_OF" : {
+      "description" : "",
+      "message" : "Cha ghabh sinn cùram air an uiread de {radioactives} ach na cheannaich sibh de {military_fuel} uainn."
+   },
+   "WHAT_CONDITIONS_APPLY" : {
+      "description" : "",
+      "message" : "Dè na cumhaichean ach an gabh sibh cùram de {radioactives}?"
+   },
+   "YOUR_MEMBERSHIP_APPLICATION_HAS_BEEN_DECLINED" : {
+      "description" : "",
+      "message" : "Chaidh do bhallrachd a dhiùltadh."
+   },
+   "YOU_ARE_NOW_A_MEMBER" : {
+      "description" : "",
+      "message" : "Tha thu 'nad bhall a-nis. Falbhaidh an ùine air do bhallrachd {expiry_date}."
+   },
+   "YOU_MUST_BUY" : {
+      "description" : "",
+      "message" : "Feumaidh sibh {military_fuel} a cheannach uainn mus gabh sinn ri ur {radioactives}"
+   }
+}

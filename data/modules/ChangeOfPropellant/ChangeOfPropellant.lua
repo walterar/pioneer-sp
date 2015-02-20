@@ -3,12 +3,8 @@
 -- Work in progress.
 --
 local Lang       = import("Lang")
-local Engine     = import("Engine")
 local Game       = import("Game")
-local Comms      = import("Comms")
 local Event      = import("Event")
-local Format     = import("Format")
-local Rand       = import("Rand")
 local Serializer = import("Serializer")
 
 local l = Lang.GetResource("module-changeofpropellant") or Lang.GetResource("module-changeofpropellant","en")

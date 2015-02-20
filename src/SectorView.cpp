@@ -307,7 +307,7 @@ void SectorView::InitObject()
 	hbox = new Gui::HBox();
 	hbox->SetSpacing(5.0f);
 	m_drawUninhabitedLabelButton = (new Gui::ToggleButton());
-	m_drawUninhabitedLabelButton->SetPressed(true); // TODO: replace with var
+	m_drawUninhabitedLabelButton->SetPressed(false); // TODO: replace with var
 	hbox->PackEnd(m_drawUninhabitedLabelButton);
 	label = (new Gui::Label(Lang::DRAW_UNINHABITED_LABELS))->Color(255, 255, 255);
 	hbox->PackEnd(label);
@@ -690,7 +690,7 @@ void SectorView::PutFactionLabels(const vector3f &origin)
 
 				Gui::Screen::MeasureString(labelText, labelWidth, labelHeight);
 
-				
+
 				{
 					Graphics::VertexArray va(Graphics::ATTRIB_POSITION);
 					va.Add(vector3f(pos.x - 5.f,              pos.y - 5.f,               0));

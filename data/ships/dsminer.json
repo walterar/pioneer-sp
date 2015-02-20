@@ -1,27 +1,28 @@
 {
-   "angular_thrust" : 80000000.0,
-   "capacity" : 4700,
-   "cockpit" : "",
-   "down_thrust" : 28000000.0,
-   "effective_exhaust_velocity" : 16600000.0,
-   "forward_thrust" : 70000000.0,
-   "fuel_tank_mass" : 1200,
-   "hull_mass" : 1200,
-   "hyperdrive_class" : 8,
-   "left_thrust" : 28000000.0,
+   "name"         : "Deep Space Miner",
+   "model"        : "dsminer",
+   "ship_class"   : "medium_freighter",
    "manufacturer" : "haber",
+   "cockpit"      : "",
+
+   "forward_thrust" : 90000000.0,
+   "reverse_thrust" : 50000000.0,
+   "angular_thrust" : 95000000.0,
+   "up_thrust"      : 50000000.0,
+   "down_thrust"    : 30000000.0,
+   "right_thrust"   : 30000000.0,
+   "left_thrust"    : 30000000.0,
+
+   "capacity"       : 600,
+   "hull_mass"      : 300,
+   "fuel_tank_mass" : 150,
+
    "max_crew" : 8,
    "min_crew" : 5,
-   "model" : "dsminer",
-   "name" : "Deep Space Miner",
-   "price" : 3773900.0,
-   "reverse_thrust" : 28000000.0,
-   "right_thrust" : 28000000.0,
-   "ship_class" : "medium_freighter",
    "slots" : {
       "atmo_shield" : 0,
       "cabin" : 0,
-      "cargo" : 4600,
+      "cargo" : 600,
       "cargo_life_support" : 1,
       "hull_autorepair" : 1,
       "laser_front" : 1,
@@ -29,6 +30,9 @@
       "missile" : 2,
       "scoop" : 2
    },
-   "thruster_fuel_use" : -1.0,
-   "up_thrust" : 28000000.0
+
+   "thruster_fuel_use" : 0.0001,
+   "effective_exhaust_velocity" : -1.0,
+   "hyperdrive_class" : 6,
+   "price" : 300000.0
 }

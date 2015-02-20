@@ -1,23 +1,24 @@
 {
-   "angular_thrust" : 40000000.0,
-   "capacity" : 80,
-   "cockpit" : "",
-   "down_thrust" : 6000000.0,
-   "effective_exhaust_velocity" : -1.0,
-   "forward_thrust" : 17000000.0,
-   "fuel_tank_mass" : 20,
-   "hull_mass" : 40,
-   "hyperdrive_class" : 3,
-   "left_thrust" : 6000000.0,
+   "name"         : "Cobra Mk3",
+   "model"        : "cobra3_b",
+   "ship_class"   : "medium_scout",
    "manufacturer" : "p66",
+   "cockpit"      : "",
+
+   "capacity"       : 80,
+   "hull_mass"      : 40,
+   "fuel_tank_mass" : 20,
+
+   "forward_thrust" : 17000000.0,
+   "reverse_thrust" :  8000000.0,
+   "angular_thrust" : 27000000.0,
+   "up_thrust"      :  6000000.0,
+   "down_thrust"    :  3000000.0,
+   "right_thrust"   :  6000000.0,
+   "left_thrust"    :  6000000.0,
+
    "max_crew" : 3,
    "min_crew" : 1,
-   "model" : "cobra3_b",
-   "name" : "Cobra Mk3",
-   "price" : 98000.0,
-   "reverse_thrust" : 8000000.0,
-   "right_thrust" : 6000000.0,
-   "ship_class" : "medium_scout",
    "slots" : {
       "cabin" : 8,
       "cargo" : 80,
@@ -27,6 +28,9 @@
       "missile" : 4,
       "scoop" : 2
    },
-   "thruster_fuel_use" : 0.0001999999949475750,
-   "up_thrust" : 6000000.0
+
+   "thruster_fuel_use" : 0.00015,
+   "effective_exhaust_velocity" : -1.0,
+   "hyperdrive_class" : 3,
+   "price" : 98000.0
 }

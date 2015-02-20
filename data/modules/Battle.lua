@@ -43,8 +43,8 @@ Event.Register("onEnterSystem", function (ship)
 			if n > max_hostiles then n = max_hostiles end
 			for i = 1, n do
 				hostil[i] = hostiles[Engine.rand:Integer(1,#hostiles)]
-				local default_drive = Eq.hyperspace['hyperdrive_'..tostring(hostil[i].hyperdriveClass)]
-				local max_laser_size = hostil[i].capacity - default_drive.capabilities.mass
+--				local default_drive = Eq.hyperspace['hyperdrive_'..tostring(hostil[i].hyperdriveClass)]
+				local max_laser_size = hostil[i].capacity-- - default_drive.capabilities.mass
 				local laserdefs = utils.build_array(utils.filter(function (k,l)
 					return l:IsValidSlot('laser_front')
 						and l.capabilities.mass <= max_laser_size
@@ -60,7 +60,7 @@ Event.Register("onEnterSystem", function (ship)
 				hostil[i]:AIKill(hostil[i+1])
 			end
 			if shipWithCannon(ship)
-				and DangerLevel > 1 and Engine.rand:Integer(2) > 1 then--XXX
+				and DangerLevel > 0 and Engine.rand:Integer(2) > 1 then--XXX
 				Timer:CallAt(Game.time+Engine.rand:Integer(10,20), function ()
 					if hostil[1] and hostil[1]:exists() then hostil[1]:AIKill(ship) end
 					if hostil[n] and hostil[n]:exists() then hostil[n]:AIKill(ship) end

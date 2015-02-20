@@ -27,6 +27,10 @@
       "description" : "",
       "message" : "Ha ocurrido un error"
    },
+   "ATMOSPHERIC_SHIELDING" : {
+      "description" : "Used in ShipInfo view, followed by a yes/no depending on if the ship can carry atmospheric shields",
+      "message" : "Atmospheric shielding"
+   },
    "ATTEMPT_TO_REPAIR_HULL" : {
       "description" : "",
       "message" : "Reparar casco"
@@ -425,7 +429,7 @@
    },
    "HULL_INTEGRITY" : {
       "description" : "",
-      "message" : "Estado del casco"
+      "message" : "Integridad del casco"
    },
    "HULL_REPAIRED_BY_NAME_NOW_AT_N_PERCENT" : {
       "description" : "",
@@ -681,7 +685,7 @@
    },
    "NAVIGATION" : {
       "description" : "",
-      "message" : "Navegación:"
+      "message" : "Navegación"
    },
    "NEGOTIATE" : {
       "description" : "",
@@ -883,6 +887,10 @@
       "description" : "",
       "message" : "Guardar"
    },
+   "SCOOP_MOUNTS" : {
+      "description" : "How many slots or mounts exist on the ship for fitting SCOOPS (e.g. cargo scoop, fuel scoop, multi-scoop) ",
+      "message" : "Bahías de Recolectores"
+   },
    "SELECT" : {
       "description" : "",
       "message" : "Seleccionar"
@@ -1057,7 +1065,7 @@
    },
    "WE_HAVE_NO_BUSINESS_WITH_YOU" : {
       "description" : "",
-      "message" : "No tenemos nada pendiente con usted, por el momento.\nNo obstante, recuerde respetar las reglas locales.\n\nNuestras reglas son sencillas:\n\n* Aléjese al menos 5Km de la estación para Hipersalto.\n* No dispare sus cañones a menos de 100Km de la estación.\n* No comercie con productos ilegales.\n* No arroje ningún tipo de producto en la estación,\n y menos productos peligrosos para el medio ambiente.\n* Disparar o embestir a otra nave dentro de los \n 100Km de la estación, será considerado Piratería.\n* No transporte información local hacia otra facción.\n* Cumpla con las misiones pactadas,\n evite ser multado por Fraude o Abducción\n* No use el despegue manual para no pagar sus multas,\n esto es grave y será considerado Fuga.\n* Y... por favor... no mate a nadie."
+      "message" : "No tenemos nada pendiente con usted, por el momento.\nNo obstante, recuerde respetar las reglas locales:\n\n* Aléjese al menos 5Km de la estación para Hipersalto.\n* No dispare sus cañones a menos de 100Km de la estación.\n* No comercie con productos ilegales.\n* No arroje ningún tipo de producto en la estación,\n y menos productos peligrosos para el medio ambiente.\n* No arroje residuos radioactivos al espacio\nen sistemas habitados.\n* Disparar o embestir a otra nave dentro de los \n 100Km de la estación, será considerado Piratería.\n* No transporte información local hacia otra facción.\n* Cumpla con las misiones pactadas,\n evite ser multado por Fraude o Abducción\n* No use el despegue manual para no pagar sus multas,\n esto es grave y será considerado Fuga.\n* Y... por favor... no mate a nadie."
    },
    "YES" : {
       "description" : "Positive answer to a question",
@@ -1095,7 +1103,6 @@
       "description" : "",
       "message" : "Usted no tiene crédito suficiente."
    },
-
    "X_CANNOT_BE_TOLERATED_HERE" : {
       "description" : "Message to be sent over comms by police when crime is committed by player",
       "message" : "{crime} no es tolerado aquí!"

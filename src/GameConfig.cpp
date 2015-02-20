@@ -41,6 +41,7 @@ GameConfig::GameConfig(const std::map<std::string,std::string> &override_)
 	map["SpeedLines"] = "1";
 	map["EnableCockpit"] = "0";
 	map["HudTrails"] = "1";
+	map["EnableServerAgent"] = "0";
 
 	map["RedirectStdio"] = "1";
 	map["EnableGLDebug"] = "0";

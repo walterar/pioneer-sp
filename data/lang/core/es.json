@@ -1,16 +1,4 @@
 {
-   "ADVANCED_RADAR_MAPPER" : {
-      "description" : "",
-      "message" : "Trazador avanzado de radar"
-   },
-   "ADVANCED_RADAR_MAPPER_DESCRIPTION" : {
-      "description" : "",
-      "message" : "Trazador de radar de largo alcance con cobertura completa del sistema."
-   },
-   "AUTO_COMBAT" : {
-      "description":"",
-      "message":"Auto Combate Sí/No"
-   },
    "AIR_PROCESSORS" : {
       "description" : "",
       "message" : "Procesadores de aire"
@@ -63,25 +51,17 @@
       "description" : "",
       "message" : "Asteroide"
    },
-   "ATMOSPHERIC_SHIELDING" : {
-      "description" : "",
-      "message" : "Escudo atmosférico"
-   },
-   "ATMOSPHERIC_SHIELDING_DESCRIPTION" : {
-      "description" : "",
-      "message" : "Protege su nave de las altas temperaturas durante la reentrada atmosférica."
+   "AUTO_COMBAT" : {
+      "description":"",
+      "message":"Auto Combate Sí/No"
    },
    "AUTOMATIC_SYSTEM_SELECTION" : {
       "description" : "",
       "message" : "SA"
    },
-   "AUTOPILOT" : {
-      "description" : "",
+   "AUTOPILOT_CONTROL" : {
+      "description" : "Indicating that ship is flying under autopilot control",
       "message" : "Piloto automático"
-   },
-   "AUTOPILOT_DESCRIPTION" : {
-      "description" : "",
-      "message" : "Computadora de a bordo de uso civil."
    },
    "AUTOPILOT_DOCK_WITH_STATION" : {
       "description" : "",
@@ -191,21 +171,9 @@
       "description" : "",
       "message" : "Los sensores informan de condiciones críticas en los sistemas de apoyo vital de la bahía de carga."
    },
-   "CARGO_LIFE_SUPPORT" : {
-      "description" : "",
-      "message" : "Soporte vital para carga"
-   },
-   "CARGO_LIFE_SUPPORT_DESCRIPTION" : {
-      "description" : "live cargo = animals, slaves",
-      "message" : "Permite el transporte de cargamento vivo."
-   },
    "CARGO_N" : {
       "description" : "",
       "message" : "Carga: %{mass}t"
-   },
-   "CARGO_SCOOP" : {
-      "description" : "",
-      "message" : "Recolector de carga"
    },
    "CARGO_SCOOP_ACTIVE_1_TONNE_X_COLLECTED" : {
       "description" : "",
@@ -214,10 +182,6 @@
    "CARGO_SCOOP_ATTEMPTED" : {
       "description" : "",
       "message" : "No hay suficiente espacio en la bodega de carga."
-   },
-   "CARGO_SCOOP_DESCRIPTION" : {
-      "description" : "",
-      "message" : "Permite recoger carga en el espacio."
    },
    "CH4_ATMOSPHERE" : {
       "description" : "",
@@ -375,58 +339,6 @@
       "description" : "Mostrar líneas verticales",
       "message" : "LV"
    },
-   "DRIVE_CLASS1" : {
-      "description" : "",
-      "message" : "Motor Hiperespacial C1"
-   },
-   "DRIVE_CLASS2" : {
-      "description" : "",
-      "message" : "Motor Hiperespacial C2"
-   },
-   "DRIVE_CLASS3" : {
-      "description" : "",
-      "message" : "Motor Hiperespacial C3"
-   },
-   "DRIVE_CLASS4" : {
-      "description" : "",
-      "message" : "Motor Hiperespacial C4"
-   },
-   "DRIVE_CLASS5" : {
-      "description" : "",
-      "message" : "Motor Hiperespacial C5"
-   },
-   "DRIVE_CLASS6" : {
-      "description" : "",
-      "message" : "Motor Hiperespacial C6"
-   },
-   "DRIVE_CLASS7" : {
-      "description" : "",
-      "message" : "Motor Hiperespacial C7"
-   },
-   "DRIVE_CLASS8" : {
-      "description" : "",
-      "message" : "Motor Hiperespacial C8"
-   },
-   "DRIVE_CLASS9" : {
-      "description" : "",
-      "message" : "Motor Hiperespacial C9"
-   },
-   "DRIVE_MIL1" : {
-      "description" : "",
-      "message" : "Motor Hiperespacial M1"
-   },
-   "DRIVE_MIL2" : {
-      "description" : "",
-      "message" : "Motor Hiperespacial M2"
-   },
-   "DRIVE_MIL3" : {
-      "description" : "",
-      "message" : "Motor Hiperespacial M3"
-   },
-   "DRIVE_MIL4" : {
-      "description" : "",
-      "message" : "Motor Hiperespacial M4"
-   },
    "EARTH" : {
       "description" : "",
       "message" : "Tierra"
@@ -442,22 +354,6 @@
    "ECCENTRICITY" : {
       "description" : "",
       "message" : "Excentricidad"
-   },
-   "ECM_ADVANCED" : {
-      "description" : "",
-      "message" : "Sistema ECM avanzado"
-   },
-   "ECM_ADVANCED_DESCRIPTION" : {
-      "description" : "",
-      "message" : "En adición al ECM básico, toma el control de combate de la nave al recibir un impacto de plasma."
-   },
-   "ECM_BASIC" : {
-      "description" : "",
-      "message" : "Sistema ECM"
-   },
-   "ECM_BASIC_DESCRIPTION" : {
-      "description" : "",
-      "message" : "Sistema de defensa activa de contramedidas electrónicas, capaz de neutralizar o destruir todo equipo electrónico a bordo de naves hostiles y misiles."
    },
    "ECONOMIC_INFO" : {
       "description" : "",
@@ -523,17 +419,9 @@
       "description" : "",
       "message" : "Propelente"
    },
-   "FUEL_SCOOP" : {
-      "description" : "",
-      "message" : "Recolector de hidrógeno"
-   },
    "FUEL_SCOOP_ACTIVE_N_TONNES_H_COLLECTED" : {
       "description" : "",
       "message" : "Recolector activo. %quantity toneladas de hidrógeno recogidas."
-   },
-   "FUEL_SCOOP_DESCRIPTION" : {
-      "description" : "",
-      "message" : "Permite recoger combustible de hidrógeno de gigantes gaseosos."
    },
    "GALACTIC_VIEW" : {
       "description" : "view galactic map",
@@ -631,14 +519,6 @@
       "description" : "",
       "message" : "Mundo exterior muy poblado."
    },
-   "HULL_AUTOREPAIR" : {
-      "description" : "",
-      "message" : "Autoreparación del casco"
-   },
-   "HULL_AUTOREPAIR_DESCRIPTION" : {
-      "description" : "",
-      "message" : "Repara automáticamente el casco de la nave en caso de daños."
-   },
    "HULL_INTEGRITY" : {
       "description" : "",
       "message" : "Integr. casco"
@@ -654,14 +534,6 @@
    "HYDROGEN_DESCRIPTION" : {
       "description" : "",
       "message" : "El Hidrógeno se usa como propelente y combustible de fusión."
-   },
-   "HYPERCLOUD_ANALYZER" : {
-      "description" : "",
-      "message" : "Analizador de nube hiperespacial"
-   },
-   "HYPERCLOUD_ANALYZER_DESCRIPTION" : {
-      "description" : "",
-      "message" : "Analiza la nube hiperespacial para así determinar el destino y el tiempo de llegada y/o salida."
    },
    "HYPERSPACE" : {
       "description" : "",
@@ -782,18 +654,6 @@
    "LARGE_GAS_GIANT" : {
       "description" : "",
       "message" : "Gigante gaseoso grande"
-   },
-   "LARGE_PLASMA_ACCEL" : {
-      "description" : "",
-      "message" : "Acelerador de Plasma XL"
-   },
-   "LASER_COOLING_BOOSTER" : {
-      "description" : "",
-      "message" : "Refrigeración extra del cañón"
-   },
-   "LASER_COOLING_BOOSTER_DESCRIPTION" : {
-      "description" : "",
-      "message" : "Sistema potenciado de refrigeración de armas."
    },
    "LASER_FIRE_DETECTED" : {
       "description" : "",
@@ -963,14 +823,6 @@
       "description" : "",
       "message" : "Combustible militar"
    },
-   "MININGCANNON_17MW" : {
-      "description" : "",
-      "message" : "Cañón minero 17MW"
-   },
-   "MININGCANNON_17MW_DESCRIPTION" : {
-      "description" : "",
-      "message" : "Se utiliza para la explotación de asteroides ricos en mineral."
-   },
    "MINING_COLONY" : {
       "description" : "",
       "message" : "Colonia minera."
@@ -1002,22 +854,6 @@
    "MISSILE" : {
       "description" : "",
       "message" : "misil"
-   },
-   "MISSILE_GUIDED" : {
-      "description" : "",
-      "message" : "Misil Guiado"
-   },
-   "MISSILE_NAVAL" : {
-      "description" : "",
-      "message" : "Torpedo de Fotones"
-   },
-   "MISSILE_SMART" : {
-      "description" : "",
-      "message" : "Misil Inteligente"
-   },
-   "MISSILE_UNGUIDED" : {
-      "description" : "",
-      "message" : "Misil Balístico"
    },
    "MIXED_ECONOMY" : {
       "description" : "",
@@ -1351,45 +1187,9 @@
       "description" : "",
       "message" : "Progreso: %probability%%"
    },
-   "PULSECANNON_10MW" : {
-      "description" : "",
-      "message" : "Cañón de pulsos 10MW"
-   },
-   "PULSECANNON_1MW" : {
-      "description" : "",
-      "message" : "Cañón de pulsos 1MW"
-   },
-   "PULSECANNON_20MW" : {
-      "description" : "",
-      "message" : "Cañón de pulsos 20MW"
-   },
-   "PULSECANNON_2MW" : {
-      "description" : "",
-      "message" : "Cañón de pulsos 2MW"
-   },
-   "PULSECANNON_4MW" : {
-      "description" : "",
-      "message" : "Cañón de pulsos 4MW"
-   },
-   "PULSECANNON_DUAL_1MW" : {
-      "description" : "",
-      "message" : "Cañón de pulsos doble 1MW"
-   },
-   "PULSECANNON_RAPID_2MW" : {
-      "description" : "",
-      "message" : "Cañón de pulsos rápido 2MW"
-   },
    "QUADRUPLE_SYSTEM" : {
       "description" : "",
       "message" : "Sistema cuádruple"
-   },
-   "RADAR_MAPPER" : {
-      "description" : "",
-      "message" : "Radar Mapeador"
-   },
-   "RADAR_MAPPER_DESCRIPTION" : {
-      "description" : "",
-      "message" : "Se utiliza para la inspección remota del equipo, carga y estado de otras naves."
    },
    "RADIOACTIVES" : {
       "description" : "",
@@ -1475,17 +1275,9 @@
       "description" : "Arm of the Milky Way galaxy",
       "message" : "Brazo Sagittarius"
    },
-   "SCANNER" : {
-      "description" : "",
-      "message" : "Radar 3D"
-   },
    "SCANNER_CONTROL" : {
       "description" : "",
       "message" : "Control de Radar"
-   },
-   "SCANNER_DESCRIPTION" : {
-      "description" : "",
-      "message" : "Visualiza la ubicación en 3D de los objetos próximos."
    },
    "SCOOP" : {
       "description" : "Is followed by a number, repersenting scoop mounts/slots available to fit cargo scoop and/or fuel scoop",
@@ -1559,22 +1351,6 @@
       "description" : "",
       "message" : "V: %speed{f.0} m/s"
    },
-   "SHIELD_ENERGY_BOOSTER" : {
-      "description" : "",
-      "message" : "Amplificador de escudo"
-   },
-   "SHIELD_ENERGY_BOOSTER_DESCRIPTION" : {
-      "description" : "",
-      "message" : "Incrementa la velocidad de recarga de los escudos."
-   },
-   "SHIELD_GENERATOR" : {
-      "description" : "",
-      "message" : "Generador de escudo"
-   },
-   "SHIELD_GENERATOR_DESCRIPTION" : {
-      "description" : "",
-      "message" : "Proporciona una defensa adicional del casco con cada unidad ensamblada."
-   },
    "SHIELD_INTEGRITY" : {
       "description" : "",
       "message" : "Escudo"
@@ -1646,10 +1422,6 @@
    "SMALL_INDUSTRIAL_OUTPOST" : {
       "description" : "",
       "message" : "Pequeño puesto industrial."
-   },
-   "SMALL_PLASMA_ACCEL" : {
-      "description" : "",
-      "message" : "Acelerador de Plasma X"
    },
    "SMALL_SCALE_PROSPECTING_NO_SETTLEMENTS" : {
       "description" : "",
@@ -1939,14 +1711,6 @@
       "description" : "",
       "message" : "R.I.P."
    },
-   "TRADE_ANALYZER" : {
-      "description" : "Ship equipment computing profitable commodities to trade between two systems",
-      "message" : "Analizador de comercio"
-   },
-   "TRADE_ANALYZER_DESCRIPTION" : {
-      "description" : "",
-      "message" : "Muestra las mercancías rentables con las que comerciar entre el sistema seleccionado y el actual"
-   },
    "TRADING_ILLEGAL_GOODS" : {
       "description" : "",
       "message" : "Comerciar con productos ilegales"
@@ -1974,14 +1738,6 @@
    "UNLAWFUL_WEAPONS_DISCHARGE" : {
       "description" : "",
       "message" : "Disparo de armas ilegal"
-   },
-   "UNOCCUPIED_CABIN" : {
-      "description" : "",
-      "message" : "Cabina de pasajeros"
-   },
-   "UNOCCUPIED_CABIN_DESCRIPTION" : {
-      "description" : "",
-      "message" : "Para el transporte de pasajeros.\nUna Cabina por pasajero."
    },
    "UNSET_NAVTARGET" : {
       "description" : "",

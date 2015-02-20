@@ -339,6 +339,25 @@ local onShipDocked = function (player, station)
 	end
 end
 
+local onShipLanded = function (player, body)
+	if not player:IsPlayer() then return end
+	for ref,mission in pairs(missions) do
+		if mission.location == Game.player:FindNearestTo("SPACESTATION").path or mission.status == 'FAILED' then
+			if Game.time > mission.due then
+				Comms.ImportantMessage(taxi_flavours[mission.flavour].failuremsg, mission.client.name)
+				_G.MissionsFailures = MissionsFailures + 1
+			else
+				Comms.ImportantMessage(taxi_flavours[mission.flavour].successmsg, mission.client.name)
+				player:AddMoney(mission.reward)
+				_G.MissionsSuccesses = MissionsSuccesses + 1
+			end
+			remove_passengers(mission.group)
+			mission:Remove()
+			missions[ref] = nil
+		end
+	end
+end
+
 local onShipUndocked = function (player, station)
 	if not player:IsPlayer() then return end
 	local current_passengers = Game.player:CountEquip(eq.misc.cabin_occupied)
@@ -475,6 +494,7 @@ Event.Register("onUpdateBB", onUpdateBB)
 Event.Register("onFrameChanged", onFrameChanged)
 Event.Register("onShipUndocked", onShipUndocked)
 Event.Register("onShipDocked", onShipDocked)
+Event.Register("onShipLanded", onShipLanded)
 Event.Register("onGameStart", onGameStart)
 
 Mission.RegisterType('Taxi',l.TAXI,onClick)

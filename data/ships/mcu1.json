@@ -1,25 +1,25 @@
 {
-   "angular_thrust" : 20000000.0,
-   "capacity" : 40,
-   "cockpit" : "",
-   "down_thrust" : 2000000.0,
-   "effective_exhaust_velocity" : 50000000.0,
-   "forward_thrust" : 2000000.0,
-   "fuel_tank_mass" : 10,
-   "hull_mass" : 20,
-   "hyperdrive_class" : 0,
-   "left_thrust" : 2000000.0,
+   "name"         : "MCU-1",
+   "model"        : "mcu1",
+   "ship_class"   : "medium_cargo_shuttle",
    "manufacturer" : "p66",
+   "cockpit"      : "",
+
+   "capacity"       : 40,
+   "hull_mass"      : 20,
+   "fuel_tank_mass" : 10,
+
+   "forward_thrust" :  2000000.0,
+   "reverse_thrust" :  2000000.0,
+   "angular_thrust" : 20000000.0,
+   "up_thrust"      :  2000000.0,
+   "down_thrust"    :  2000000.0,
+   "left_thrust"    :  2000000.0,
+   "right_thrust"   :  2000000.0,
+
    "max_crew" : 1,
    "min_crew" : 1,
-   "model" : "mcu1",
-   "name" : "MCU-1",
-   "price" : 30000.0,
-   "reverse_thrust" : 2000000.0,
-   "right_thrust" : 2000000.0,
-   "ship_class" : "medium_cargo_shuttle",
    "slots" : {
-      "atmo_shield" : 1,
       "cabin" : 5,
       "cargo" : 40,
       "cargo_life_support" : 0,
@@ -30,6 +30,9 @@
       "missile" : 0,
       "scoop" : 0
    },
-   "thruster_fuel_use" : -1.0,
-   "up_thrust" : 2000000.0
+
+   "thruster_fuel_use" : 0.0001,
+   "effective_exhaust_velocity" : -1.0,
+   "hyperdrive_class" : 0,
+   "price" : 18000.0
 }

@@ -1,25 +1,25 @@
 {
-   "angular_thrust" : 4500000.0,
-   "capacity" : 12,
-   "cockpit" : "",
-   "down_thrust" : 900000.0,
-   "effective_exhaust_velocity" : -1.0,
-   "forward_thrust" : 2700000.0,
-   "fuel_tank_mass" : 5,
-   "hull_mass" : 5,
-   "hyperdrive_class" : 1,
-   "left_thrust" : 900000.0,
+   "name"         : "Xylophis",
+   "model"        : "xylophis",
+   "ship_class"   : "light_cargo_shuttle",
    "manufacturer" : "opli",
+   "cockpit"      : "",
+
+   "capacity"       : 12,
+   "hull_mass"      : 7,
+   "fuel_tank_mass" : 5,
+
+   "forward_thrust" : 2700000.0,
+   "reverse_thrust" :  900000.0,
+   "angular_thrust" : 4500000.0,
+   "up_thrust"      :  900000.0,
+   "down_thrust"    :  900000.0,
+   "right_thrust"   :  900000.0,
+   "left_thrust"    :  900000.0,
+
    "max_crew" : 1,
    "min_crew" : 1,
-   "model" : "xylophis",
-   "name" : "Xylophis",
-   "price" : 18000.0,
-   "reverse_thrust" : 900000.0,
-   "right_thrust" : 900000.0,
-   "ship_class" : "light_cargo_shuttle",
    "slots" : {
-      "atmo_shield" : 1,
       "cabin" : 0,
       "cargo" : 12,
       "cargo_life_support" : 0,
@@ -29,6 +29,9 @@
       "missile" : 0,
       "scoop" : 0
    },
-   "thruster_fuel_use" : 9.999999747378752e-05,
-   "up_thrust" : 900000.0
+
+   "thruster_fuel_use" : 0.0001,
+   "effective_exhaust_velocity" : -1.0,
+   "hyperdrive_class" : 1,
+   "price" : 12000.0
 }

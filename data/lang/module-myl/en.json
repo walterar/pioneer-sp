@@ -35,6 +35,10 @@
 "description":"",
 "message":"Current Position:"
 },
+"Damage_Report":{
+"description":"",
+"message":"Damage Report"
+},
 "ENTER_HIGH_ORBIT_AT_CURRENT_TARGET":{
 "description":"",
 "message":"Enter High Orbit at Current Target"
@@ -69,7 +73,7 @@
 },
 "ILLEGAL_JUMP":{
 "description":"",
-"message":"Daño ambiental"
+"message":"Illegal jump"
 },
 "Experience":{
 "description":"",

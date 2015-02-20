@@ -20,7 +20,6 @@ GameLog::GameLog(RefCountedPtr<Text::TextureFont> font, vector2f scrSize)
 	m_lineHeight = m_font->GetHeight();
 
 	// position just above cpanel
-//	m_offset.x = scrSize.x / 800.f * 170.f;
 	m_offset.x = scrSize.x / 800.f * 120.f;
 	m_offset.y = scrSize.y / 600.f * 505.f;
 }

@@ -1,34 +1,35 @@
 {
-   "angular_thrust" : 120000000.0,
-   "capacity" : 500,
-   "cockpit" : "",
-   "down_thrust" : 50000000.0,
-   "effective_exhaust_velocity" : -1.0,
-   "forward_thrust" : 140000000.0,
-   "fuel_tank_mass" : 320,
-   "hull_mass" : 350,
-   "hyperdrive_class" : 5,
-   "left_thrust" : 50000000.0,
+   "name"         : "Vatakara",
+   "model"        : "vatakara",
+   "ship_class"   : "medium_freighter",
    "manufacturer" : "mandarava_csepel",
+   "cockpit"      : "",
+
+   "capacity"       : 500,
+   "hull_mass"      : 350,
+   "fuel_tank_mass" : 150,
+
+   "forward_thrust" : 140000000.0,
+   "reverse_thrust" :  50000000.0,
+   "angular_thrust" : 120000000.0,
+   "up_thrust"      :  50000000.0,
+   "down_thrust"    :  50000000.0,
+   "right_thrust"   :  50000000.0,
+   "left_thrust"    :  50000000.0,
+
    "max_crew" : 8,
    "min_crew" : 1,
-   "model" : "vatakara",
-   "name" : "Vatakara",
-   "price" : 920000.0,
-   "reverse_thrust" : 50000000.0,
-   "right_thrust" : 50000000.0,
-   "ship_class" : "medium_freighter",
    "slots" : {
-      "atmo_shield" : 1,
       "cabin" : 10,
       "cargo" : 500,
-      "cargo_life_support" : 1,
-      "hull_autorepair" : 1,
       "laser_front" : 1,
       "laser_rear" : 0,
       "missile" : 4,
       "scoop" : 2
    },
-   "thruster_fuel_use" : 9.999999747378752e-05,
-   "up_thrust" : 50000000.0
+
+   "thruster_fuel_use" : 0.0001,
+   "effective_exhaust_velocity" : -1.0,
+   "hyperdrive_class" : 5,
+   "price" : 500000.0
 }

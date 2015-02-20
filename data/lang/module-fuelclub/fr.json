@@ -1,0 +1,70 @@
+{
+   "APPLY_FOR_MEMBERSHIP" : {
+      "description" : "",
+      "message" : "Demande d'adhesion"
+   },
+   "BEGIN_TRADE" : {
+      "description" : "",
+      "message" : "Commencer les transactions"
+   },
+   "FLAVOUR_0_CLUBNAME" : {
+      "description" : "",
+      "message" : "Coopérative interstellaire pour le carburants des pilotes (CICP)"
+   },
+   "FLAVOUR_0_MEMBER_INTRO" : {
+      "description" : "",
+      "message" : "Vous pouvez acheter le carburant et deposer vos {radioactives} ici."
+   },
+   "FLAVOUR_0_NONMEMBER_INTRO" : {
+      "description" : "",
+      "message" : "{clubname} est une organisation indépendante dont le but est de fournir à ses membre du carburant au meilleur prix. Elle possède des succursales dans toute la galaxie. Les membres bénéficient des avantages suivants :"
+   },
+   "FLAVOUR_0_WELCOME" : {
+      "description" : "",
+      "message" : "Bienvenue chez {clubname}"
+   },
+   "GO_BACK" : {
+      "description" : "",
+      "message" : "Retour"
+   },
+   "LIST_BENEFITS_DISPOSAL" : {
+      "description" : "",
+      "message" : "{radioactives}, élimination gratuite (selon conditions)"
+   },
+   "LIST_BENEFITS_FUEL" : {
+      "description" : "",
+      "message" : "{fuel} à prix cassés"
+   },
+   "LIST_BENEFITS_FUEL_INTRO" : {
+      "description" : "",
+      "message" : "Nos propres réserves de carburant, en dehors du marché officiel."
+   },
+   "LIST_BENEFITS_FUEL_TANK" : {
+      "description" : "",
+      "message" : "Remplissage du réservoir de carburant, à l'endroit où c'est nécessaire."
+   },
+   "LIST_BENEFITS_JOIN" : {
+      "description" : "",
+      "message" : "Inscrivez-vous! Notre cotisation annuelle ne revient qu'à {membership_fee}"
+   },
+   "WE_WILL_ONLY_DISPOSE_OF" : {
+      "description" : "",
+      "message" : "Nous ne pouvons accepter que le nombre de tonnes de {radioactives} correspondant aux tonnes de  {military_fuel} achetés chez nous."
+   },
+   "WHAT_CONDITIONS_APPLY" : {
+      "description" : "",
+      "message" : "Quelles sont les conditions pour deposer des {radioactives} ?"
+   },
+   "YOUR_MEMBERSHIP_APPLICATION_HAS_BEEN_DECLINED" : {
+      "description" : "",
+      "message" : "Votre demande d'adhésion a été refusée."
+   },
+   "YOU_ARE_NOW_A_MEMBER" : {
+      "description" : "",
+      "message" : "Vous etes désormais membre . Votre adhesion expire le {expiry_date}."
+   },
+   "YOU_MUST_BUY" : {
+      "description" : "",
+      "message" : "Vous devez d'abord acheter notre  {military_fuel} avant que nous acceptions des {radioactives}"
+   }
+}

@@ -1,32 +1,35 @@
 {
-   "angular_thrust" : 25000000.0,
-   "capacity" : 100,
-   "cockpit" : "",
-   "down_thrust" : 12000000.0,
-   "effective_exhaust_velocity" : -1.0,
-   "forward_thrust" : 30000000.0,
-   "fuel_tank_mass" : 90,
-   "hull_mass" : 60,
-   "hyperdrive_class" : 3,
-   "left_thrust" : 12000000.0,
+   "name"         : "Anax",
+   "model"        : "anax",
+   "ship_class"   : "medium_scout",
    "manufacturer" : "kaluri",
+   "cockpit"      : "",
+
+   "capacity"       : 90,
+   "hull_mass"      : 60,
+   "fuel_tank_mass" : 30,
+
+   "forward_thrust" : 25000000.0,
+   "reverse_thrust" : 12500000.0,
+   "angular_thrust" : 50000000.0,
+   "up_thrust"      :  8000000.0,
+   "down_thrust"    :  4000000.0,
+   "right_thrust"   :  6000000.0,
+   "left_thrust"    :  6000000.0,
+
    "max_crew" : 2,
    "min_crew" : 1,
-   "model" : "anax",
-   "name" : "Anax",
-   "price" : 110000.0,
-   "reverse_thrust" : 15000000.0,
-   "right_thrust" : 12000000.0,
-   "ship_class" : "medium_scout",
    "slots" : {
-      "cabin" : 10,
-      "cargo" : 100,
-      "cargo_life_support" : 1,
+      "cabin"       : 10,
+      "cargo"       : 90,
       "laser_front" : 1,
-      "laser_rear" : 0,
-      "missile" : 4,
-      "scoop" : 2
+      "laser_rear"  : 0,
+      "missile"     : 4,
+      "scoop"       : 1
    },
-   "thruster_fuel_use" : 0.0001500000071246177,
-   "up_thrust" : 12000000.0
+
+   "thruster_fuel_use" : 0.00015,
+   "effective_exhaust_velocity" : -1.0,
+   "hyperdrive_class" : 3,
+   "price" : 9e4
 }

@@ -1,30 +1,24 @@
 {
-   "name" : "Manta",
-   "model" : "manta",
-   "ship_class" : "light_fighter",
-   "capacity" : 22,
+   "name"         : "Manta",
+   "model"        : "manta",
+   "ship_class"   : "light_scout",
    "manufacturer" : "p66",
-   "cockpit" : "",
+   "cockpit"      : "",
 
-   "effective_exhaust_velocity" : -1.0,
-   "thruster_fuel_use" : 9.999999747378752e-05,
+   "capacity"       : 22,
+   "hull_mass"      : 10,
+   "fuel_tank_mass" : 5,
 
-   "forward_thrust" : 5393657.0,
-   "reverse_thrust" : 3236194.0,
-   "angular_thrust" : 16180965.0,
+   "forward_thrust" : 3800000,
+   "reverse_thrust" : 1900000,
+   "angular_thrust" : 7600000,
+   "up_thrust"      :  900000,
+   "down_thrust"    :  400000,
+   "left_thrust"    :  400000,
+   "right_thrust"   :  400000,
 
-   "up_thrust" : 1078731.0,
-   "down_thrust" : 1078731.0,
-
-   "right_thrust" : 1078731.0,
-   "left_thrust" : 1078731.0,
-
-   "fuel_tank_mass" : 6,
-   "hull_mass" : 16,
-
-   "min_crew" : 1,
    "max_crew" : 1,
-
+   "min_crew" : 1,
    "slots" : {
       "atmo_shield" : 1,
       "cabin" : 0,
@@ -37,6 +31,8 @@
       "scoop" : 0
    },
 
-   "hyperdrive_class" : 1,
+   "effective_exhaust_velocity" : -1.0,
+   "thruster_fuel_use" : 0.0001,
+   "hyperdrive_class" : 2,
    "price" : 34000.0
 }

@@ -34,7 +34,7 @@ end
 local onShipDestroyed = function (ship, attacker)
 	if TrueJoust == true and attacker == Game.player then
 		Timer:CallAt(Game.time+4, function ()
-			if killcount < Character.persistent.player.killcount and money > 0  then
+			if ship and killcount < Character.persistent.player.killcount and money > 0  then
 				Comms.ImportantMessage(l.the_attacker_money.." ( " .. showCurrency(money*4) .. " ) "..l.is_now_yours)
 				Game.player:AddMoney(money*4)
 				money = 0

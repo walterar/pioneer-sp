@@ -1,17 +1,17 @@
--- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2015 Pioneer Developers. Author: impaktor / See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-local Engine = import("Engine")
-local utils = import("utils")
-local Lang = import("Lang")
-local Game = import("Game")
-local Event = import("Event")
-local Format = import("Format")
+local Engine     = import("Engine")
+local utils      = import("utils")
+local Lang       = import("Lang")
+local Game       = import("Game")
+local Event      = import("Event")
+local Format     = import("Format")
 local Serializer = import("Serializer")
-local Equipment = import ("Equipment")
-local Character = import("Character")
+local Equipment  = import ("Equipment")
+local Character  = import("Character")
 
-local l = Lang.GetResource("module-secondhand")
+local l  = Lang.GetResource("module-secondhand")
 local l2 = Lang.GetResource("ui-core")
 
 -- average number of adverts per BBS and billion population
@@ -25,17 +25,17 @@ local max_flavour_index = 5
 
 local flavours = {}
 for i = 0,max_flavour_index do
-    table.insert(flavours, {
-        adtitle = l["FLAVOUR_" .. i .. "_TITLE"],
-        adbody  = l["FLAVOUR_" .. i .. "_BODY"],
-    })
+		table.insert(flavours, {
+			adtitle = l["FLAVOUR_" .. i .. "_TITLE"],
+			adbody	= l["FLAVOUR_" .. i .. "_BODY"],
+		})
 end
 
 local ads = {}
 
 -- find a value in an array and return key
 local onDelete = function (ref)
-    ads[ref] = nil
+	ads[ref] = nil
 end
 
 -- check it fits on the ship, both the slot for that equipment and the
@@ -61,39 +61,39 @@ local canFit = function (e)
 		return false, l2.SHIP_IS_FULLY_LADEN
 	end
 
-    return true, ""
+	return true, ""
 end
 
 
 local onChat = function (form, ref, option)
-    local ad = ads[ref]
+	local ad = ads[ref]
 
-    form:Clear()
+	form:Clear()
 
-    if option == -1 then
-        form:Close()
-        return
-    end
+	if option == -1 then
+		form:Close()
+		return
+	end
 
-    form:SetFace(ad.character)
+	form:SetFace(ad.character)
 
-    if option == 0 then        -- state offer
-        local adbody = string.interp(flavours[ad.flavour].adbody, {
-            name  = ad.character.name,
-            equipment = ad.equipment:GetName(),
-            price = Format.Money(ad.price, false),
-        })
-        form:SetMessage(adbody)
+	if option == 0 then-- state offer
+		local adbody = string.interp(flavours[ad.flavour].adbody, {
+			name	= ad.character.name,
+			equipment = ad.equipment:GetName(),
+			price = Format.Money(ad.price, false),
+		})
+		form:SetMessage(adbody)
 		form:AddOption(l.HOW_DO_I_FITT_IT, 1);
-    elseif option == 1 then    -- "How do I fit it"?
+	elseif option == 1 then-- "How do I fit it"?
 		form:SetMessage(l.FITTING_IS_INCLUDED_IN_THE_PRICE)
 		form:AddOption(l.REPEAT_OFFER, 0);
-    elseif option == 2 then    --- "Buy"
+	elseif option == 2 then--- "Buy"
 		if Game.player:GetMoney() >= ad.price then
 			local state, message_str = canFit(ad.equipment)
 			if state then
 				local buy_message = string.interp(l.HAS_BEEN_FITTED_TO_YOUR_SHIP,
-												  {equipment = ad.equipment:GetName(),})
+					{equipment = ad.equipment:GetName(),})
 				form:SetMessage(buy_message)
 				Game.player:AddEquip(ad.equipment, 1)
 				Game.player:AddMoney(-ad.price)
@@ -102,22 +102,20 @@ local onChat = function (form, ref, option)
 			else
 				form:SetMessage(message_str)
 			end
-        else
+		else
 			form:SetMessage(l.YOU_DONT_HAVE_ENOUGH_MONEY)
-        end
-
-        return
-    end
-
-    form:AddOption(l.BUY, 2);
+		end
+		return
+	end
+	form:AddOption(l.BUY, 2);
 end
 
 
 local makeAdvert = function (station)
-    local character = Character.New()
-    local flavour = Engine.rand:Integer(1, #flavours)
+	local character = Character.New()
+	local flavour = Engine.rand:Integer(1, #flavours)
 
-	-- Get all non-cargo or engines
+-- Get all non-cargo or engines
 	local avail_equipment = {}
 	for k,v in pairs(Equipment) do
 		if k == "laser" or k == "misc" then
@@ -129,75 +127,75 @@ local makeAdvert = function (station)
 		end
 	end
 
-	-- choose a random ship equipment
-    local equipment = avail_equipment[Engine.rand:Integer(1,#avail_equipment)]
+-- choose a random ship equipment
+	local equipment = avail_equipment[Engine.rand:Integer(1,#avail_equipment)]
 
-	-- buy back price in equipment market is 0.8, so make sure the value is higher
+-- buy back price in equipment market is 0.8, so make sure the value is higher
 	local reduction = Engine.rand:Number(0.8,0.9)
 
-    local price = math.ceil(station:GetEquipmentPrice(equipment) * reduction)
+	local price = math.ceil(station:GetEquipmentPrice(equipment) * reduction)
 
-    local ad = {
-        character = character,
-        faceseed = Engine.rand:Integer(),
-        flavour = flavour,
-        price = price,
-        equipment = equipment,
-		station = station,
-    }
+	local ad = {
+			character = character,
+			faceseed = Engine.rand:Integer(),
+			flavour = flavour,
+			price = price,
+			equipment = equipment,
+			station = station,
+		}
 
-    ad.desc = string.interp(flavours[ad.flavour].adtitle, {
+	ad.desc = string.interp(flavours[ad.flavour].adtitle, {
 		equipment = equipment:GetName(),
-    })
-    local ref = station:AddAdvert({
-        description = ad.desc,
-        icon        = "second_hand",
-        onChat      = onChat,
-        onDelete    = onDelete})
-    ads[ref] = ad
+	})
+	local ref = station:AddAdvert({
+			description = ad.desc,
+			icon        = "second_hand",
+			onChat      = onChat,
+			onDelete    = onDelete})
+	ads[ref] = ad
 end
 
 
 -- Dynamics of adverts on the BBS --
 ------------------------------------
 -- N(t) = Number of ads, lambda = decay constant:
---    d/dt N(t) = prod - lambda * N
+--		d/dt N(t) = prod - lambda * N
 -- and equilibrium:
---    dN/dt = 0 = prod - lambda * N_equil
+--		dN/dt = 0 = prod - lambda * N_equil
 -- and solution (if prod=0), with N_0 initial number:
---    N(t) = N_0 * exp(-lambda * t)
+--		N(t) = N_0 * exp(-lambda * t)
 -- with tau = half life, i.e. N(tau) = 0.5*N_0 we get:
---    0.5*N_0 = N_0*exp(-lambda * tau)
+--		0.5*N_0 = N_0*exp(-lambda * tau)
 -- else, with production:
---   N(t) = prod/lambda - N_0*exp(-lambda * t)
+--	 N(t) = prod/lambda - N_0*exp(-lambda * t)
 -- We want to have N_0 = N_equil, since BBS should spawn at equilibrium
 
 local onCreateBB = function (station)
 
-	-- instead of "for i = 1, Game.system.population do", get higher,
-	-- and more consistent resolution
+-- instead of "for i = 1, Game.system.population do", get higher,
+-- and more consistent resolution
 	local iter = 10
 
-	-- create one ad for each unit of population with some probability
-    for i = 1,iter do
+-- create one ad for each unit of population with some probability
+	for i = 1,iter do
 		if Engine.rand:Number(0,1) < N_equil * Game.system.population / iter then
 			makeAdvert(station)
 		end
-    end
+	end
 end
 
 local onUpdateBB = function (station)
 
-	local lambda = 0.693147 * inv_tau    -- adv, del prob = ln(2) / tau
-	local prod = N_equil * lambda        -- adv. add prob
+	local lambda = 0.693147 * inv_tau-- adv, del prob = ln(2) / tau
+	local prod = N_equil * lambda    -- adv. add prob
 
-	-- local add = 0 -- just to print statistics
+-- local add = 0 -- just to print statistics
 
 	local inv_BBSnumber = 1.0 / #Game.system:GetStationPaths()
 
-	-- remove with decay rate lambda. Call ONCE/hour for all adverts
-	-- in system, thus normalize with #BBS, or we remove adverts with
-	-- a probability a factor #BBS too high.
+-- remove with decay rate lambda. Call ONCE/hour for all adverts
+-- in system, thus normalize with #BBS, or we remove adverts with
+-- a probability a factor #BBS too high.
 	for ref,ad in pairs(ads) do
 		if Engine.rand:Number(0,1) < lambda * inv_BBSnumber then
 			ad.station:RemoveAdvert(ref)
@@ -207,11 +205,11 @@ local onUpdateBB = function (station)
 	local iter = 10
 	local inv_iter = 1.0 / iter
 
-	-- spawn new adverts, call for each BBS
-    for i = 1,iter do
+-- spawn new adverts, call for each BBS
+	for i = 1,iter do
 		if Engine.rand:Number(0,1) <= prod * Game.system.population * inv_iter then
 			makeAdvert(station)
-			-- add = add + 1
+--			add = add + 1
 		end
 	end
 
@@ -219,39 +217,39 @@ local onUpdateBB = function (station)
 		print("Warning from Second Hand: too few ads spawning")
 	end
 
-	-- print(Game.time / (60*60*24), #utils.build_array(pairs(ads)),
-	--		 Game.system.population, #Game.system:GetStationPaths(), add)
+-- print(Game.time / (60*60*24), #utils.build_array(pairs(ads)),
+-- Game.system.population, #Game.system:GetStationPaths(), add)
 end
 
 
 local loaded_data
 
 local onGameStart = function ()
-    ads = {}
+	ads = {}
 
-    if not loaded_data then return end
+	if not loaded_data then return end
 
-    for k,ad in pairs(loaded_data.ads) do
-        local ref = ad.station:AddAdvert({
-            description = ad.desc,
-            icon        = "second_hand",
-            onChat      = onChat,
-            onDelete    = onDelete,
-        })
-        ads[ref] = ad
-    end
+	for k,ad in pairs(loaded_data.ads) do
+		local ref = ad.station:AddAdvert({
+			description = ad.desc,
+			icon        = "second_hand",
+			onChat      = onChat,
+			onDelete    = onDelete,
+		})
+		ads[ref] = ad
+	end
 
-    loaded_data = nil
+	loaded_data = nil
 end
 
 
 local serialize = function ()
-    return { ads = ads }
+	return { ads = ads }
 end
 
 
 local unserialize = function (data)
-    loaded_data = data
+	loaded_data = data
 end
 
 Event.Register("onCreateBB", onCreateBB)

@@ -2,13 +2,15 @@
    "tag" : "missile",
    "name" : "MISSILE_SMART",
    "model" : "missile",
+
    "forward_thrust" : 300000.0,
    "reverse_thrust" : 150000.0,
-   "angular_thrust" : 20000.0,
-   "up_thrust" : 0.1,
-   "down_thrust" : 0.1,
-   "left_thrust" : 0.1,
-   "right_thrust" : 0.1,
+   "angular_thrust" : 300000.0,
+   "up_thrust"      :      0.2,
+   "down_thrust"    :      0.2,
+   "left_thrust"    :      0.2,
+   "right_thrust"   :      0.2,
+
    "hull_mass" : 1,
    "price" : 100.0
 }

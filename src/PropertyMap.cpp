@@ -3,6 +3,7 @@
 
 #include "PropertyMap.h"
 #include "LuaUtils.h"
+#include "LuaSerializer.h"
 
 PropertyMap::PropertyMap(LuaManager *lua)
 {
@@ -26,4 +27,15 @@ void PropertyMap::SendSignal(const std::string &k)
 void PropertyMap::PushLuaTable()
 {
 	m_table.PushCopyToStack();
+}
+
+void PropertyMap::Save(Serializer::Writer &wr)
+{
+	m_table.Save(wr);
+}
+
+
+void PropertyMap::Load(Serializer::Reader &rd)
+{
+	m_table.Load(rd);
 }

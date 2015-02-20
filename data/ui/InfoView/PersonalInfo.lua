@@ -23,15 +23,15 @@ local personalInfo = function ()
 	local CurrentDanger
 	if DangerLevel == 0 then
 		CurrentDanger = ui:Label(myl.Risk_Area)
-											:SetFont("HEADING_SMALL")
+											:SetFont("HEADING_LARGE")
 											:SetColor({ r = 0.0, g = 1.0, b = 0.0 }) -- green
 	elseif DangerLevel == 1 then
 		CurrentDanger = ui:Label(myl.Risk_Area.." *")
-											:SetFont("HEADING_SMALL")
+											:SetFont("HEADING_LARGE")
 											:SetColor({ r = 1.0, g = 1.0, b = 0.0 }) -- yellow
 	elseif DangerLevel == 2 then
 		CurrentDanger = ui:Label(myl.Risk_Area.." **")
-											:SetFont("HEADING_SMALL")
+											:SetFont("HEADING_LARGE")
 											:SetColor({ r = 1.0, g = 0.0, b = 0.0 }) -- red
 	end
 
@@ -108,13 +108,18 @@ local personalInfo = function ()
 					"",
 					ui:Label(l.NAVIGATION):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
 					ui:Table():SetColumnSpacing(10):AddRows({
-						{ (myl.Previous_Position), PrevPos },
-						{ (myl.Previous_Faction), PrevFac },
-						{ (myl.Current_Position), CurrentPosition},
-						{ (myl.Current_Faction), CurrentFaction },
+						{ myl.Previous_Position, PrevPos },
+						{ myl.Previous_Faction, PrevFac },
+						{ myl.Current_Position, CurrentPosition},
+						{ myl.Current_Faction, CurrentFaction },
 					}),
 					"",
-					CurrentDanger
+					ui:Label(myl.Damage_Report):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
+					ui:Table():SetColumnSpacing(10):AddRows({
+						{ l.HULL_INTEGRITY..": ", showCurrency(Game.player.hullPercent,decimal, "%",neg_prefix) },
+					"",
+					CurrentDanger,
+					})
 				})
 			})
 			:SetColumn(2, {

@@ -46,5 +46,9 @@
 "You_are_in_space_controlled_by":{
 "description":"",
 "message":"Lei è nello spazio controllato da "
+},
+"neutralized_by":{
+"description":"",
+"message":" neutralizzato da "
 }
 }

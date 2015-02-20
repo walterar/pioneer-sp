@@ -1,25 +1,25 @@
 {
-   "angular_thrust" : 16000000.0,
-   "capacity" : 20,
-   "cockpit" : "",
-   "down_thrust" : 340000.0,
-   "effective_exhaust_velocity" : 80000000.0,
-   "forward_thrust" : 5000000.0,
-   "fuel_tank_mass" : 7,
-   "hull_mass" : 10,
-   "hyperdrive_class" : 1,
-   "left_thrust" : 340000.0,
+   "name"         : "Pumpkinseed",
+   "model"        : "pumpkinseed",
+   "ship_class"   : "light_courier",
    "manufacturer" : "kaluri",
+   "cockpit"      : "",
+
+   "capacity"       : 20,
+   "hull_mass"      : 10,
+   "fuel_tank_mass" : 10,
+
+   "forward_thrust" :  5000000.0,
+   "reverse_thrust" :  3000000.0,
+   "angular_thrust" : 10000000.0,
+   "up_thrust"      :  1500000.0,
+   "down_thrust"    :   800000.0,
+   "right_thrust"   :   800000.0,
+   "left_thrust"    :   800000.0,
+
    "max_crew" : 1,
    "min_crew" : 1,
-   "model" : "pumpkinseed",
-   "name" : "Pumpkinseed",
-   "price" : 28200.0,
-   "reverse_thrust" : 3000000.0,
-   "right_thrust" : 340000.0,
-   "ship_class" : "light_courier",
    "slots" : {
-      "atmo_shield" : 1,
       "cabin" : 1,
       "cargo" : 20,
       "cargo_life_support" : 0,
@@ -29,6 +29,9 @@
       "missile" : 4,
       "scoop" : 0
    },
-   "thruster_fuel_use" : -1.0,
-   "up_thrust" : 500000.0
+
+   "thruster_fuel_use" : 0.0001,
+   "effective_exhaust_velocity" : -1.0,
+   "hyperdrive_class" : 1,
+   "price" : 28200.0
 }

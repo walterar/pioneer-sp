@@ -1,0 +1,70 @@
+{
+   "APPLY_FOR_MEMBERSHIP" : {
+      "description" : "",
+      "message" : "Tagság igénylése"
+   },
+   "BEGIN_TRADE" : {
+      "description" : "",
+      "message" : "Üzlet megkezdése"
+   },
+   "FLAVOUR_0_CLUBNAME" : {
+      "description" : "",
+      "message" : "Csillagközi Pilóták Üzemanyag Szövetsége"
+   },
+   "FLAVOUR_0_MEMBER_INTRO" : {
+      "description" : "",
+      "message" : "Továbbá vehetsz üzemanyagot és a {radioactives} megsemmisítését is vállaljuk."
+   },
+   "FLAVOUR_0_NONMEMBER_INTRO" : {
+      "description" : "",
+      "message" : "{clubname} egy független szervezet, mely tagjainak kedvezményes áron kínál üzemanyagot. Fiókjai galaxis-szerte megtalálhatóak. A tagságal jár:"
+   },
+   "FLAVOUR_0_WELCOME" : {
+      "description" : "",
+      "message" : "Üdvözlünk a {clubname}ben."
+   },
+   "GO_BACK" : {
+      "description" : "",
+      "message" : "Vissza"
+   },
+   "LIST_BENEFITS_DISPOSAL" : {
+      "description" : "",
+      "message" : "{radioactives} ingyen átvétele (feltételekkel)"
+   },
+   "LIST_BENEFITS_FUEL" : {
+      "description" : "",
+      "message" : "Kedvezményes {fuel} árak"
+   },
+   "LIST_BENEFITS_FUEL_INTRO" : {
+      "description" : "",
+      "message" : "Üzemanyag a klub saját készleteiből, a piactól függetlenül"
+   },
+   "LIST_BENEFITS_FUEL_TANK" : {
+      "description" : "",
+      "message" : "Üzemanyag űjratöltése, ha szükséges"
+   },
+   "LIST_BENEFITS_JOIN" : {
+      "description" : "",
+      "message" : "Csatlakozzon még ma! Éves tagsági díj mindössze {membership_fee}"
+   },
+   "WE_WILL_ONLY_DISPOSE_OF" : {
+      "description" : "",
+      "message" : "Annyi tonna {radioactives} semlegesítését vállaljuk, amennyi {military_fuel} vásárolsz tőlünk."
+   },
+   "WHAT_CONDITIONS_APPLY" : {
+      "description" : "",
+      "message" : "Mik a feltételei a {radioactives} kezelésének?"
+   },
+   "YOUR_MEMBERSHIP_APPLICATION_HAS_BEEN_DECLINED" : {
+      "description" : "",
+      "message" : "A belépési igényedet visszautasítottuk."
+   },
+   "YOU_ARE_NOW_A_MEMBER" : {
+      "description" : "",
+      "message" : "Immáron tag vagy. A tagságod {expiry_date} napján jár le."
+   },
+   "YOU_MUST_BUY" : {
+      "description" : "",
+      "message" : "Csak a nálunk vásárolt {military_fuel}-ból keletkezett {radioactives}ot vesszük át."
+   }
+}

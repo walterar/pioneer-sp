@@ -1,14 +1,16 @@
 {
-      "tag" : "missile",
-   "name" : "MISSILE_NAVAL",
+   "tag"   : "missile",
+   "name"  : "MISSILE_NAVAL",
    "model" : "missile",
+
    "forward_thrust" : 800000.0,
    "reverse_thrust" : 400000.0,
-   "angular_thrust" : 40000.0,
-   "up_thrust" : 0.5,
-   "down_thrust" : 0.5,
-   "left_thrust" : 0.5,
-   "right_thrust" : 0.5,
+   "angular_thrust" : 800000.0,
+   "up_thrust"      :      0.1,
+   "down_thrust"    :      0.1,
+   "left_thrust"    : 200000.0,
+   "right_thrust"   : 200000.0,
+
    "hull_mass" : 1,
    "price" : 100.0
 }

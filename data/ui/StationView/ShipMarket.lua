@@ -23,7 +23,8 @@ local MessageBox         = import("ui/MessageBox")
 local ui = Engine.ui
 
 local l   = Lang.GetResource("ui-core");
-local lc  = Lang.GetResource("core");
+local lc = Lang.GetResource("equipment-core") or Lang.GetResource("equipment-core","en");
+--local lc  = Lang.GetResource("core");
 local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl", "en")
 
 local shipClassString = {
@@ -189,8 +190,11 @@ shipTable.onRowClicked:Connect(function (row)
 							:AddRow({l.WEIGHT_FULLY_LOADED, Format.MassTonnes(def.hullMass+def.capacity+def.fuelTankMass)})
 							:AddRow({l.FUEL_WEIGHT,         Format.MassTonnes(def.fuelTankMass)})
 							:AddRow({l.MISSILE_MOUNTS,      def.equipSlotCapacity["missile"]})
-							:AddRow({lc.ATMOSPHERIC_SHIELDING, yes_no(def.equipSlotCapacity["atmo_shield"])})
-							:AddRow({lc.SCOOP,           def.equipSlotCapacity["scoop"]})
+							:AddRow({l.ATMOSPHERIC_SHIELDING, yes_no(def.equipSlotCapacity["atmo_shield"])})
+							:AddRow({l.SCOOP_MOUNTS,        def.equipSlotCapacity["scoop"]})
+							:AddRow({lc.AUTO_COMBAT,        def.equipSlotCapacity["autocombat"]})
+							:AddRow({lc.DEMP,               def.equipSlotCapacity["demp"]})
+							:AddRow({lc.MATTER_CAPACITOR,   def.equipSlotCapacity["capacitor"]})
 					})
 			),
 		})

@@ -112,8 +112,8 @@ SystemView::SystemView(Game* game) : UIView(), m_game(game)
 	Gui::Screen::PopFont();
 
 	m_timePoint = (new Gui::Label(""))->Color(178, 178, 178);
-	Add(m_timePoint, 2, Gui::Screen::GetHeight()-Gui::Screen::GetFontHeight()-66);
-
+	Add(m_timePoint, 2, Gui::Screen::GetHeight()-Gui::Screen::GetFontHeight()-86);
+//Add(m_timePoint, 2, Gui::Screen::GetHeight()-Gui::Screen::GetFontHeight()-66);
 	m_infoLabel = (new Gui::Label(""))->Color(178, 178, 178);
 	Add(m_infoLabel, 2, 0);
 

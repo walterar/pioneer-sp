@@ -1,11 +1,27 @@
+March 2015
+   * Fixes
+     * Fix modelcompiler (#3356)
+     * Attempt to avoid calling methods on a nil object (#3357)
+     * Fix missing specular highlights (#3367)
+     * Fix compilation of planetrings shader (#3370)
+     
+   * New Features
+     * Mouselook for internal camera (#3361)
+     * Migrating the save-game serialisation from a binary flat file to JSON (#3355)
+     
+   * Internal Changes
+     * Fix VS2013 profiling configuration (#3368)
+     * Rendering statistics (#3371)
+
 February 2015
    * Fixes
      * Romanian characters added, fixes #3314 (#3318)
+     * Fix the libcurl linking for Profile, PreRelease and Debug (#3354)
 
    * Script and UI API changes
      * ServerAgent class for simple network communication (#3342)
 
-   * Internal Chnages
+   * Internal Changes
      * LuaSerializer refactoring to diminish coupling with LuaObject (#3349)
 
 January 2015

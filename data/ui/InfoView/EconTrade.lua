@@ -10,6 +10,7 @@ local Eq         = import("Equipment")
 local Comms      = import("Comms")
 local MessageBox = import("ui/MessageBox")
 local Constant   = import("Constant")
+local Music      = import("Music")
 
 local SmallLabeledButton = import("ui/SmallLabeledButton")
 local InfoGauge          = import("ui/InfoGauge")
@@ -39,6 +40,8 @@ local econTrade = function ()
 	local cargoListWidget = ui:Margin(0)
 
 	function updateCargoListWidget ()
+
+		local jettisonSong = "music/core/fx/jettison"
 
 		local cargoNameColumn = {}
 		local cargoQuantityColumn = {}
@@ -71,6 +74,7 @@ local econTrade = function ()
 					end
 					player:AddCrime(crime, fine)
 				end
+				Music.Play(jettisonSong, false)
 				Game.player:Jettison(et)
 				updateCargoListWidget()
 				cargoListWidget:SetInnerWidget(updateCargoListWidget())

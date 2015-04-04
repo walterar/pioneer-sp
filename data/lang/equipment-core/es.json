@@ -21,7 +21,7 @@
    },
    "AUTO_COMBAT_DESCRIPTION" : {
       "description" : "",
-      "message" : "COmputadora de combate de a bordo."
+      "message" : "Computadora de combate de a bordo."
    },
    "AUTOPILOT" : {
       "description" : "",
@@ -199,6 +199,14 @@
       "description" : "",
       "message" : "Aunque es menos efectivo que un recolector dedicado, permite la recoger tanto carga como hidrógeno"
    },
+   "PROP_CONVERTER" : {
+      "description" : "",
+      "message" : "Conversor de propelente"
+   },
+   "PROP_CONVERTER_DESCRIPTION" : {
+      "description" : "",
+      "message" : "Convertidor que permite el uso de hidrógeno en lugar de agua como propelente"
+   },
    "PULSECANNON_10MW" : {
       "description" : "",
       "message" : "Cañón de Pulsos 10MW"
@@ -222,6 +230,10 @@
    "PULSECANNON_DUAL_1MW" : {
       "description" : "",
       "message" : "Cañón de Pulsos doble 1MW"
+   },
+   "PULSECANNON_DUAL_2MW" : {
+      "description" : "",
+      "message" : "Cañón de Pulsos doble 2MW"
    },
    "PULSECANNON_RAPID_2MW" : {
       "description" : "",

@@ -4,8 +4,9 @@
 
 
 local Lang = import("Lang")
-local    l = Lang.GetResource("ui-core") or Lang.GetResource("ui-core.en")
-local  myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl.en")
+
+local l   = Lang.GetResource("ui-core") or Lang.GetResource("ui-core.en")
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl.en")
 
 --
 -- Namespace: Constants

@@ -12,8 +12,9 @@ local ShipDef   = import("ShipDef")
 local ModelSpinner = import("UI.Game.ModelSpinner")
 
 local ui = Engine.ui
-local l = Lang.GetResource("ui-core");
-local lc = Lang.GetResource("equipment-core") or Lang.GetResource("equipment-core","en");
+
+local l   = Lang.GetResource("ui-core");
+local lc  = Lang.GetResource("equipment-core") or Lang.GetResource("equipment-core","en");
 local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en");
 
 local yes_no = function (binary)
@@ -115,9 +116,10 @@ local shipInfo = function (args)
 						{ lc.ATMOSPHERIC_SHIELDING..":", yes_no(shipDef.equipSlotCapacity.atmo_shield)},
 						{ l.SCOOP_MOUNTS..":",           shipDef.equipSlotCapacity.scoop},
 						{ lc.UNOCCUPIED_CABIN..":",      shipDef.equipSlotCapacity.cabin},
-						{ lc.AUTO_COMBAT..":",           shipDef.equipSlotCapacity.autocombat},
-						{ lc.DEMP..":",                  shipDef.equipSlotCapacity.demp},
-						{ lc.MATTER_CAPACITOR..":",      shipDef.equipSlotCapacity.capacitor},
+						{ lc.AUTO_COMBAT..":",           yes_no(shipDef.equipSlotCapacity.autocombat)},
+						{ lc.DEMP..":",                  yes_no(shipDef.equipSlotCapacity.demp)},
+						{ lc.MATTER_CAPACITOR..":",      yes_no(shipDef.equipSlotCapacity.capacitor)},
+						{ lc.PROP_CONVERTER..":",        yes_no(shipDef.equipSlotCapacity.converter)},
 						"",
 						ui:Label(myl.CREW):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
 						{ myl.CREW_VACANCIES..":", shipDef.maxCrew-shipDef.minCrew},

@@ -3,7 +3,7 @@
 #include "graphics/Renderer.h"
 #include "graphics/VertexArray.h"
 
-const Uint32 MESSAGE_TIMEOUT  = 8000;
+const Uint32 MESSAGE_TIMEOUT  = 5000;
 const Uint32 FADE_TIME  = 1000;
 const Uint32 FADE_AFTER = MESSAGE_TIMEOUT - FADE_TIME;
 const Uint8 MAX_MESSAGES = 10;

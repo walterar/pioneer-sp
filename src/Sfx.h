@@ -26,8 +26,8 @@ public:
 	static void AddThrustSmoke(const Body *b, TYPE, float speed, vector3d adjustpos);
 	static void TimeStepAll(const float timeStep, Frame *f);
 	static void RenderAll(Graphics::Renderer *r, Frame *f, const Frame *camFrame);
-	static void Serialize(Serializer::Writer &wr, const Frame *f);
-	static void Unserialize(Serializer::Reader &rd, Frame *f);
+	static void ToJson(Json::Value &jsonObj, const Frame *f);
+	static void FromJson(const Json::Value &jsonObj, Frame *f);
 
 	Sfx();
 	void SetPosition(const vector3d &p);
@@ -36,21 +36,23 @@ public:
 	//create shared models
 	static void Init(Graphics::Renderer *r);
 	static void Uninit();
-	static Graphics::Drawables::Sphere3D *explosionEffect;
-	static Graphics::Material *damageParticle;
-	static Graphics::Material *ecmParticle;
-	static Graphics::Material *smokeParticle;
-	static Graphics::Material *explosionParticle;
+	static std::unique_ptr<Graphics::Material> damageParticle;
+	static std::unique_ptr<Graphics::Material> ecmParticle;
+	static std::unique_ptr<Graphics::Material> smokeParticle;
+	static std::unique_ptr<Graphics::Material> explosionParticle;
 	static Graphics::RenderState *alphaState;
 	static Graphics::RenderState *additiveAlphaState;
+	static Graphics::RenderState *alphaOneState;
 
 private:
 	static Sfx *AllocSfxInFrame(Frame *f);
+	static const Uint32 NUM_EXPLOSION_TEXTURES = 36;
+	static Graphics::Texture* explosionTextures[NUM_EXPLOSION_TEXTURES];
 
 	void Render(Graphics::Renderer *r, const matrix4x4d &transform);
 	void TimeStepUpdate(const float timeStep);
-	void Save(Serializer::Writer &wr);
-	void Load(Serializer::Reader &rd);
+	void SaveToJson(Json::Value &jsonObj);
+	void LoadFromJson(const Json::Value &jsonObj);
 
 	vector3d m_pos;
 	vector3d m_vel;

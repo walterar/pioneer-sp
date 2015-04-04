@@ -1,4 +1,4 @@
--- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+--[[ Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 --
@@ -234,4 +234,4 @@ Event.Register("onShipUndocked", AddStationToLog)
 Event.Register("onGameStart", onGameStart)
 Serializer:Register("FlightLog", serialize, unserialize)
 
-return FlightLog
+return FlightLog--]]

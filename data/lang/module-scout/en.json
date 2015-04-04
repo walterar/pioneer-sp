@@ -173,7 +173,7 @@
 },
 "SUCCESSMSG_2":{
 "description":"",
-"message":"I received the data thanks! I'm transferring the money now."
+"message":"I received the data, thanks! I'm transferring the money now."
 },
 "SUCCESSMSG_3":{
 "description":"",
@@ -181,7 +181,7 @@
 },
 "SUCCESSMSG_4":{
 "description":"",
-"message":"Thank You agreed amount should already be in your account!"
+"message":"Thank you. The agreed amount should already be in your account!"
 },
 "SUCCESSMSG_5":{
 "description":"",
@@ -273,7 +273,7 @@
 },
 "additional_information":{
 "description":"",
-"message":"If you accept this mission, you will program your mapper with what I'm looking for. This program will make decisions for me and report back to your computer. If you should come here, or bring the data to another system, depends on what you find. It may occur that I'll change the delivery destination to another more convenient system. You must be alert and assured of enough fuel and time.\nThis does not apply to local missions."
+"message":"If you accept this mission, you will program your mapper with what I'm looking for. This program will make decisions for me and report back to your computer. If you should come here, or bring the data to another system, depends on what you find. It may happen that I'll change the delivery destination to another more convenient system. You must be alert and assured of enough fuel and time.\nThis does not apply to local missions."
 },
 "computer":{
 "description":"",
@@ -281,15 +281,15 @@
 },
 "failed_mission":{
 "description":"",
-"message":"This mission has failed due to exceeding the expiry date. Sorry.\nHas started and will end soon, the clean of all traces of this mapped.\n\nThis has never happened, Commander."
+"message":"This mission has failed due to exceeding the expiration date. Sorry.\nWe are deleting all traces of this mapping data.\n\nThis has never happened, Commander."
 },
 "hostilemessage1":{
 "description":"",
-"message":"Check this out! Voyeur in sight! We are celebrating!"
+"message":"Check this out! Voyeur in sight! We're gonna party!"
 },
 "hostilemessage2":{
 "description":"",
-"message":"Your ship and your life belongs to us, stupid nosy!"
+"message":"Your ship and your life belongs to us, you meddling dolt!"
 },
 "hostilemessage3":{
 "description":"",

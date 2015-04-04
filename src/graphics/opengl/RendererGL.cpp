@@ -319,6 +319,7 @@ bool RendererOGL::SwapBuffers()
 #endif
 
 	GetWindow()->SwapBuffers();
+	m_stats.NextFrame();
 	return true;
 }
 
@@ -503,7 +504,6 @@ bool RendererOGL::DrawTriangles(const VertexArray *v, RenderState *rs, Material 
 {
 	PROFILE_SCOPED()
 	if (!v || v->position.size() < 3) return false;
-	CheckRenderErrors();
 
 	VertexBufferDesc vbd;
 	Uint32 attribIdx = 0;
@@ -534,10 +534,11 @@ bool RendererOGL::DrawTriangles(const VertexArray *v, RenderState *rs, Material 
 	std::unique_ptr<VertexBuffer> vb;
 	vb.reset(CreateVertexBuffer(vbd));
 	vb->Populate(*v);
-	CheckRenderErrors();
 
 	const bool res = DrawBuffer(vb.get(), rs, m, t);
 	CheckRenderErrors();
+	
+	m_stats.AddToStatCount(Stats::STAT_DRAWTRIS, 1);
 
 	return res;
 }
@@ -575,6 +576,9 @@ bool RendererOGL::DrawPointSprites(int count, const vector3f *positions, RenderS
 	}
 
 	DrawTriangles(&va, rs, material);
+	CheckRenderErrors();
+	
+	m_stats.AddToStatCount(Stats::STAT_DRAWPOINTSPRITES, count);
 
 	return true;
 }
@@ -582,7 +586,6 @@ bool RendererOGL::DrawPointSprites(int count, const vector3f *positions, RenderS
 bool RendererOGL::DrawBuffer(VertexBuffer* vb, RenderState* state, Material* mat, PrimitiveType pt)
 {
 	PROFILE_SCOPED()
-	CheckRenderErrors();
 	SetRenderState(state);
 	mat->Apply();
 
@@ -599,13 +602,14 @@ bool RendererOGL::DrawBuffer(VertexBuffer* vb, RenderState* state, Material* mat
 	gvb->Release();
 	CheckRenderErrors();
 
+	m_stats.AddToStatCount(Stats::STAT_DRAWCALL, 1);
+
 	return true;
 }
 
 bool RendererOGL::DrawBufferIndexed(VertexBuffer *vb, IndexBuffer *ib, RenderState *state, Material *mat, PrimitiveType pt)
 {
 	PROFILE_SCOPED()
-	CheckRenderErrors();
 	SetRenderState(state);
 	mat->Apply();
 
@@ -625,13 +629,13 @@ bool RendererOGL::DrawBufferIndexed(VertexBuffer *vb, IndexBuffer *ib, RenderSta
 	gvb->Release();
 	CheckRenderErrors();
 
+	m_stats.AddToStatCount(Stats::STAT_DRAWCALL, 1);
+
 	return true;
 }
 
 void RendererOGL::EnableVertexAttributes(const VertexBuffer* gvb)
 {
-	PROFILE_SCOPED()
-	CheckRenderErrors();
 	const auto &desc = gvb->GetDesc();
 	// Enable the Vertex attributes
 	for (Uint8 i = 0; i < MAX_ATTRIBS; i++) {
@@ -651,8 +655,6 @@ void RendererOGL::EnableVertexAttributes(const VertexBuffer* gvb)
 
 void RendererOGL::DisableVertexAttributes(const VertexBuffer* gvb)
 {
-	PROFILE_SCOPED()
-	CheckRenderErrors();
 	const auto &desc = gvb->GetDesc();
 	// Enable the Vertex attributes
 	for (Uint8 i = 0; i < MAX_ATTRIBS; i++) {
@@ -668,56 +670,6 @@ void RendererOGL::DisableVertexAttributes(const VertexBuffer* gvb)
 		}
 	}
 	CheckRenderErrors();
-}
-
-
-void RendererOGL::EnableVertexAttributes(const VertexArray *v)
-{
-	PROFILE_SCOPED();
-	CheckRenderErrors();
-
-	if (!v) return;
-	assert(v->position.size() > 0); //would be strange
-
-	// XXX could be 3D or 2D
-	m_vertexAttribsSet.push_back(0);
-	glEnableVertexAttribArray(0);	// Enable the attribute at that location
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<const GLvoid *>(&v->position[0]));
-	CheckRenderErrors();
-
-	if (v->HasAttrib(ATTRIB_NORMAL)) {
-		assert(! v->normal.empty());
-		m_vertexAttribsSet.push_back(1);
-		glEnableVertexAttribArray(1);	// Enable the attribute at that location
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<const GLvoid *>(&v->normal[0]));
-		CheckRenderErrors();
-	}
-	if (v->HasAttrib(ATTRIB_DIFFUSE)) {
-		assert(! v->diffuse.empty());
-		m_vertexAttribsSet.push_back(2);
-		glEnableVertexAttribArray(2);	// Enable the attribute at that location
-		glVertexAttribPointer(2, 4, GL_UNSIGNED_BYTE, GL_TRUE, 0, reinterpret_cast<const GLvoid *>(&v->diffuse[0]));	// only normalise the colours
-		CheckRenderErrors();
-	}
-	if (v->HasAttrib(ATTRIB_UV0)) {
-		assert(! v->uv0.empty());
-		m_vertexAttribsSet.push_back(3);
-		glEnableVertexAttribArray(3);	// Enable the attribute at that location
-		glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, 0, reinterpret_cast<const GLvoid *>(&v->uv0[0]));
-		CheckRenderErrors();
-	}
-}
-
-void RendererOGL::DisableVertexAttributes()
-{
-	PROFILE_SCOPED();
-	CheckRenderErrors();
-
-	for (auto i : m_vertexAttribsSet) {
-		glDisableVertexAttribArray(i);
-		CheckRenderErrors();
-	}
-	m_vertexAttribsSet.clear();
 }
 
 Material *RendererOGL::CreateMaterial(const MaterialDescriptor &d)
@@ -919,7 +871,6 @@ void RendererOGL::PopState()
 
 void RendererOGL::SetMatrixMode(MatrixMode mm)
 {
-	PROFILE_SCOPED()
 	if( mm != m_matrixMode ) {
 		m_matrixMode = mm;
 	}
@@ -927,7 +878,6 @@ void RendererOGL::SetMatrixMode(MatrixMode mm)
 
 void RendererOGL::PushMatrix()
 {
-	PROFILE_SCOPED()
 	switch(m_matrixMode) {
 		case MatrixMode::MODELVIEW:
 			m_modelViewStack.push(m_modelViewStack.top());
@@ -940,7 +890,6 @@ void RendererOGL::PushMatrix()
 
 void RendererOGL::PopMatrix()
 {
-	PROFILE_SCOPED()
 	switch(m_matrixMode) {
 		case MatrixMode::MODELVIEW:
 			m_modelViewStack.pop();
@@ -955,7 +904,6 @@ void RendererOGL::PopMatrix()
 
 void RendererOGL::LoadIdentity()
 {
-	PROFILE_SCOPED()
 	switch(m_matrixMode) {
 		case MatrixMode::MODELVIEW:
 			m_modelViewStack.top() = matrix4x4f::Identity();
@@ -968,7 +916,6 @@ void RendererOGL::LoadIdentity()
 
 void RendererOGL::LoadMatrix(const matrix4x4f &m)
 {
-	PROFILE_SCOPED()
 	switch(m_matrixMode) {
 		case MatrixMode::MODELVIEW:
 			m_modelViewStack.top() = m;
@@ -981,7 +928,6 @@ void RendererOGL::LoadMatrix(const matrix4x4f &m)
 
 void RendererOGL::Translate( const float x, const float y, const float z )
 {
-	PROFILE_SCOPED()
 	switch(m_matrixMode) {
 		case MatrixMode::MODELVIEW:
 			m_modelViewStack.top().Translate(x,y,z);
@@ -994,7 +940,6 @@ void RendererOGL::Translate( const float x, const float y, const float z )
 
 void RendererOGL::Scale( const float x, const float y, const float z )
 {
-	PROFILE_SCOPED()
 	switch(m_matrixMode) {
 		case MatrixMode::MODELVIEW:
 			m_modelViewStack.top().Scale(x,y,z);

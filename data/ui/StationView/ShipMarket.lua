@@ -23,8 +23,7 @@ local MessageBox         = import("ui/MessageBox")
 local ui = Engine.ui
 
 local l   = Lang.GetResource("ui-core");
-local lc = Lang.GetResource("equipment-core") or Lang.GetResource("equipment-core","en");
---local lc  = Lang.GetResource("core");
+local lc  = Lang.GetResource("equipment-core") or Lang.GetResource("equipment-core","en");
 local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl", "en")
 
 local shipClassString = {
@@ -110,7 +109,7 @@ local function buyShip (sos)
 	if sos.pattern then player.model:SetPattern(sos.pattern) end
 	player:SetLabel(sos.label)
 	if def.hyperdriveClass > 0 then
-		player:AddEquip(equipment.hyperspace["hyperdrive_" .. def.hyperdriveClass])
+		player:AddEquip(equipment.hyperspace['hyperdrive_'..tostring(def.hyperdriveClass)])
 	end
 	player:SetFuelPercent(100)
 
@@ -182,6 +181,8 @@ shipTable.onRowClicked:Connect(function (row)
 							:AddRow({l.DELTA_V_MAX, string.format("%d km/s", deltav_m / 1000)}),
 						ui:Table()
 							:SetColumnSpacing(5)
+							:AddRow({lc.ATMOSPHERIC_SHIELDING, yes_no(def.equipSlotCapacity["atmo_shield"])})
+
 							:AddRow({l.WEIGHT_EMPTY,        Format.MassTonnes(def.hullMass)})
 							:AddRow({l.CAPACITY,            Format.MassTonnes(def.capacity)})
 							:AddRow({lc.UNOCCUPIED_CABIN,   def.equipSlotCapacity["cabin"]})
@@ -190,11 +191,12 @@ shipTable.onRowClicked:Connect(function (row)
 							:AddRow({l.WEIGHT_FULLY_LOADED, Format.MassTonnes(def.hullMass+def.capacity+def.fuelTankMass)})
 							:AddRow({l.FUEL_WEIGHT,         Format.MassTonnes(def.fuelTankMass)})
 							:AddRow({l.MISSILE_MOUNTS,      def.equipSlotCapacity["missile"]})
-							:AddRow({l.ATMOSPHERIC_SHIELDING, yes_no(def.equipSlotCapacity["atmo_shield"])})
 							:AddRow({l.SCOOP_MOUNTS,        def.equipSlotCapacity["scoop"]})
-							:AddRow({lc.AUTO_COMBAT,        def.equipSlotCapacity["autocombat"]})
-							:AddRow({lc.DEMP,               def.equipSlotCapacity["demp"]})
-							:AddRow({lc.MATTER_CAPACITOR,   def.equipSlotCapacity["capacitor"]})
+
+							:AddRow({lc.AUTO_COMBAT,        yes_no(def.equipSlotCapacity["autocombat"])})
+							:AddRow({lc.DEMP,               yes_no(def.equipSlotCapacity["demp"])})
+							:AddRow({lc.MATTER_CAPACITOR,   yes_no(def.equipSlotCapacity["capacitor"])})
+							:AddRow({lc.PROP_CONVERTER,     yes_no(def.equipSlotCapacity["converter"])})
 					})
 			),
 		})

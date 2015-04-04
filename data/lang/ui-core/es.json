@@ -905,7 +905,7 @@
    },
    "SELECT_GAME_TO_LOAD" : {
       "description" : "",
-      "message" : "Selecciona juego salvado..."
+      "message" : "Selecciona juego salvado"
    },
    "SELL" : {
       "description" : "Commodities and equipment prices",

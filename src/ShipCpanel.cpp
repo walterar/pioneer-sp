@@ -26,14 +26,18 @@ ShipCpanel::ShipCpanel(Graphics::Renderer *r, Game* game): Gui::Fixed(float(Gui:
 	InitObject();
 }
 
-ShipCpanel::ShipCpanel(Serializer::Reader &rd, Graphics::Renderer *r, Game* game): Gui::Fixed(float(Gui::Screen::GetWidth()), 80),
-	m_game(game)
+ShipCpanel::ShipCpanel(const Json::Value &jsonObj, Graphics::Renderer *r, Game* game) : Gui::Fixed(float(Gui::Screen::GetWidth()), 80),
+m_game(game)
 {
-	m_scanner = new ScannerWidget(r, rd);
+	if (!jsonObj.isMember("ship_c_panel")) throw SavedGameCorruptException();
+	Json::Value shipCPanelObj = jsonObj["ship_c_panel"];
+
+	m_scanner = new ScannerWidget(r, shipCPanelObj);
 
 	InitObject();
 
-	m_camButton->SetActiveState(rd.Int32());
+	if (!shipCPanelObj.isMember("cam_button_state")) throw SavedGameCorruptException();
+	m_camButton->SetActiveState(shipCPanelObj["cam_button_state"].asInt());
 }
 
 void ShipCpanel::InitObject()
@@ -209,7 +213,7 @@ void ShipCpanel::InitObject()
 	m_overlay[OVERLAY_TOP_RIGHT]    = (new Gui::Label(""))->Color(s_hudTextColor);
 	m_overlay[OVERLAY_BOTTOM_LEFT]  = (new Gui::Label(""))->Color(s_hudTextColor);
 	m_overlay[OVERLAY_BOTTOM_RIGHT] = (new Gui::Label(""))->Color(s_hudTextColor);
-	Add(m_overlay[OVERLAY_TOP_LEFT],     170.0f, 2.0f);
+	Add(m_overlay[OVERLAY_TOP_LEFT],     178.0f, 2.0f);
 	Add(m_overlay[OVERLAY_TOP_RIGHT],    500.0f, 2.0f);
 	Add(m_overlay[OVERLAY_BOTTOM_LEFT],  150.0f, 62.0f);
 	Add(m_overlay[OVERLAY_BOTTOM_RIGHT], 520.0f, 62.0f);
@@ -247,7 +251,7 @@ void ShipCpanel::ChangeMultiFunctionDisplay(multifuncfunc_t f)
 	Remove(m_useEquipWidget);
 	if (selected) {
 		m_mfsel->SetSelected(f);
-		Add(selected, 200, 18);
+		Add(selected, 200, 14);
 		selected->ShowAll();
 	}
 }
@@ -402,10 +406,12 @@ void ShipCpanel::TimeStepUpdate(float step)
 	m_scanner->TimeStepUpdate(step);
 }
 
-void ShipCpanel::Save(Serializer::Writer &wr)
+void ShipCpanel::SaveToJson(Json::Value &jsonObj)
 {
-	m_scanner->Save(wr);
-	wr.Int32(m_camButton->GetState());
+	Json::Value shipCPanelObj(Json::objectValue); // Create JSON object to contain ship control panel data.
+	m_scanner->SaveToJson(shipCPanelObj);
+	shipCPanelObj["cam_button_state"] = m_camButton->GetState();
+	jsonObj["ship_c_panel"] = shipCPanelObj; // Add ship control panel object to supplied object.
 }
 
 void ShipCpanel::SetOverlayText(OverlayTextPos pos, const std::string &text)

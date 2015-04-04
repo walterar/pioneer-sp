@@ -13,6 +13,8 @@ local NameGen    = import("NameGen")
 local Format     = import("Format")
 local Serializer = import("Serializer")
 local Eq         = import("Equipment")
+local Music      = import("Music")
+local Timer      = import("Timer")
 
 local l = Lang.GetResource("module-breakdownservicing")
 
@@ -20,6 +22,7 @@ local l = Lang.GetResource("module-breakdownservicing")
 ----------------------------
 local oneyear = 31557600 -- One standard Julian year
 local onemonth = 2592000 -- One standard Julian month
+local alertMsg=l.YOU_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN
 
 -- 10, guaranteed random by D16 dice roll.
 -- This is to make the BBS name different from the station welcome character.
@@ -128,20 +131,23 @@ local onChat = function (form, ref, option)
 	end
 
 	if option == 1 then
-		-- Yes please, service my engine
-		form:Clear()
-		form:SetTitle(ad.title)
-		form:SetFace({ female = ad.isfemale, seed = ad.faceseed, name = ad.name })
-		if Game.player:GetMoney() >= price then -- We did check earlier, but...
-			-- Say thanks
-			form:SetMessage(ad.response)
-			Game.player:AddMoney(-price)
-			service_history.lastdate = Game.time
-			service_history.service_period = ad.strength * oneyear
-			service_history.company = ad.title.."\n*"
-			service_history.jumpcount = 0
-		else
+		if Game.player:GetMoney() < price then
 			form:SetMessage("\n"..l.I_DONT_HAVE_ENOUGH_MONEY.."\n*")
+		else
+			Music.Play("music/core/fx/repair1", false)
+--			Timer:CallAt(Game.time+10, function ()
+--				Music.Stop()
+				form:Clear()
+				form:SetTitle(ad.title)
+				form:SetFace({ female = ad.isfemale, seed = ad.faceseed, name = ad.name })
+				form:SetMessage(ad.response)
+				Game.player:AddMoney(-price)
+				service_history.lastdate = Game.time
+				service_history.service_period = ad.strength * oneyear
+				service_history.company = ad.title.."\n*"
+				service_history.jumpcount = 0
+				if damageControl == alertMsg then _G.damageControl = "" end
+--			end)
 		end
 	end
 end
@@ -232,10 +238,12 @@ local savedByCrew = function(ship)
 	return false
 end
 
+
 local onEnterSystem = function (ship)
 	if ship:IsPlayer() then
 		if service_history.jumpcount > 0 then
-			Comms.Message(l.YOU_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN)
+			Comms.Message(alertMsg)
+			_G.damageControl = alertMsg
 		end
 		print(('DEBUG: Jumps since warranty: %d, chance of failure (if > 0): 1/%d\nWarranty expires: %s'):format(service_history.jumpcount,max_jumps_unserviced-service_history.jumpcount,Format.Date(service_history.lastdate + service_history.service_period)))
 	else
@@ -244,19 +252,23 @@ local onEnterSystem = function (ship)
 	local saved_by_this_guy = savedByCrew(ship)
 	if (service_history.lastdate + service_history.service_period < Game.time) and not saved_by_this_guy then
 		service_history.jumpcount = service_history.jumpcount + 1
-		if Game.system.population > 0 and ((service_history.jumpcount > max_jumps_unserviced)
-			or (Engine.rand:Integer(max_jumps_unserviced - service_history.jumpcount) < 1)) then
+		if Game.system.population > 0
+			and damageControl== ""
+			and ((service_history.jumpcount > max_jumps_unserviced)
+			or (Engine.rand:Integer(max_jumps_unserviced - service_history.jumpcount) < 1))
+		then
 			-- Destroy the engine
 			local engine = ship:GetEquip('engine',1)
 			ship:RemoveEquip(engine)
 			ship:AddEquip(Eq.cargo.rubbish, engine.capabilities.mass)
-			Comms.ImportantMessage(l.THE_SHIPS_HYPERDRIVE_HAS_BEEN_DESTROYED_BY_A_MALFUNCTION)
+			_G.damageControl = l.THE_SHIPS_HYPERDRIVE_HAS_BEEN_DESTROYED_BY_A_MALFUNCTION
+			Comms.ImportantMessage(damageControl)
 		end
 	end
 	if saved_by_this_guy then
 		-- Brag to the player
 		if saved_by_this_guy.player then
-			Comms.Message(l.YOU_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN)
+			Comms.Message(alertMsg)
 		else
 			Comms.Message(l.I_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN,saved_by_this_guy.name)
 		end

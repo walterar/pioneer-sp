@@ -1,15 +1,15 @@
 -- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-local Engine = import("Engine")
-local Lang = import("Lang")
-local Game = import("Game")
-local Rand = import("Rand")
-local Event = import("Event")
-local Character = import("Character")
-local Format = import("Format")
+local Engine     = import("Engine")
+local Lang       = import("Lang")
+local Game       = import("Game")
+local Rand       = import("Rand")
+local Event      = import("Event")
+local Character  = import("Character")
+local Format     = import("Format")
 local Serializer = import("Serializer")
-local Equipment = import("Equipment")
+local Equipment  = import("Equipment")
 
 local MessageBox = import("ui/MessageBox")
 
@@ -240,7 +240,6 @@ end
 
 local unserialize = function (data)
 	loaded_data = data
---	loaded_data = nil
 end
 
 Event.Register("onCreateBB", onCreateBB)

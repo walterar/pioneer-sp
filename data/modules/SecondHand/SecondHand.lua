@@ -14,6 +14,8 @@ local Character  = import("Character")
 local l  = Lang.GetResource("module-secondhand")
 local l2 = Lang.GetResource("ui-core")
 
+local iconSH = "sale"
+
 -- average number of adverts per BBS and billion population
 local N_equil = 0.1 -- [ads/(BBS*unit_population)]
 
@@ -149,7 +151,7 @@ local makeAdvert = function (station)
 	})
 	local ref = station:AddAdvert({
 			description = ad.desc,
-			icon        = "second_hand",
+			icon        = iconSH,
 			onChat      = onChat,
 			onDelete    = onDelete})
 	ads[ref] = ad
@@ -174,15 +176,21 @@ local onCreateBB = function (station)
 
 -- instead of "for i = 1, Game.system.population do", get higher,
 -- and more consistent resolution
-	local iter = 10
+--	local iter = 10
 
 -- create one ad for each unit of population with some probability
-	for i = 1,iter do
-		if Engine.rand:Number(0,1) < N_equil * Game.system.population / iter then
-			makeAdvert(station)
-		end
+--	for i = 1,iter do
+--		if Engine.rand:Number(0,1) < N_equil * Game.system.population / iter then
+--			makeAdvert(station)
+--		end
+--	end
+--end
+
+	for i = 1, Engine.rand:Integer(1,math.abs(1 * (1 + Game.system.lawlessness) * 4)) do--XXX
+		makeAdvert(station)
 	end
 end
+
 
 local onUpdateBB = function (station)
 
@@ -232,7 +240,7 @@ local onGameStart = function ()
 	for k,ad in pairs(loaded_data.ads) do
 		local ref = ad.station:AddAdvert({
 			description = ad.desc,
-			icon        = "second_hand",
+			icon        = iconSH,
 			onChat      = onChat,
 			onDelete    = onDelete,
 		})

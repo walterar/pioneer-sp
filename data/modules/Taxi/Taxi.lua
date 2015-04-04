@@ -22,11 +22,9 @@ local utils      = import("utils")
 
 local InfoFace   = import("ui/InfoFace")
 
-
 -- Get the language resource
 local l   = Lang.GetResource("module-taxi") or Lang.GetResource("module-taxi","en");
 local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en");
-
 
 -- Get the UI class
 local ui = Engine.ui
@@ -304,13 +302,11 @@ local onFrameChanged = function (body)
 				if target_distance_from_entry > 100000e3 then return end
 				local risk = taxi_flavours[mission.flavour].risk
 				if risk > 0 and not hostilactive then ship = ship_hostil(risk) end
-
 				if ship and not hostilactive then
 					hostilactive = true
 					local pirate_greeting = string.interp(l['PIRATE_TAUNTS_'..Engine.rand:Integer(1,num_pirate_taunts)-1], { client = mission.client.name,})
 						Comms.ImportantMessage(pirate_greeting, ship.label)
 				end
-
 			end
 			if mission.status == "ACTIVE" and Game.time > mission.due then
 				mission.status = 'FAILED'
@@ -327,6 +323,7 @@ local onShipDocked = function (player, station)
 			if Game.time > mission.due then
 				Comms.ImportantMessage(taxi_flavours[mission.flavour].failuremsg, mission.client.name)
 				_G.MissionsFailures = MissionsFailures + 1
+				check_crime(mission,"ABDUCTION")
 			else
 				Comms.ImportantMessage(taxi_flavours[mission.flavour].successmsg, mission.client.name)
 				player:AddMoney(mission.reward)
@@ -342,10 +339,11 @@ end
 local onShipLanded = function (player, body)
 	if not player:IsPlayer() then return end
 	for ref,mission in pairs(missions) do
-		if mission.location == Game.player:FindNearestTo("SPACESTATION").path or mission.status == 'FAILED' then
-			if Game.time > mission.due then
+		if mission.location == player:FindNearestTo("SPACESTATION").path or mission.status == 'FAILED' then
+			if Game.time > mission.due or mission.status == 'FAILED' then
 				Comms.ImportantMessage(taxi_flavours[mission.flavour].failuremsg, mission.client.name)
 				_G.MissionsFailures = MissionsFailures + 1
+				check_crime(mission,"ABDUCTION")
 			else
 				Comms.ImportantMessage(taxi_flavours[mission.flavour].successmsg, mission.client.name)
 				player:AddMoney(mission.reward)
@@ -362,10 +360,8 @@ local onShipUndocked = function (player, station)
 	if not player:IsPlayer() then return end
 	local current_passengers = Game.player:CountEquip(eq.misc.cabin_occupied)
 	if current_passengers >= passengers then return end
-
 	for ref,mission in pairs(missions) do
 		remove_passengers(mission.group)
-
 		Comms.ImportantMessage(l.HEY_YOU_ARE_GOING_TO_PAY_FOR_THIS, mission.client.name)
 		mission:Remove()
 		missions[ref] = nil
@@ -385,8 +381,10 @@ local onGameStart = function ()
 				onChat      = onChat,
 				onDelete    = onDelete})] = ad
 		end
-		missions = loaded_data.missions
-		passengers = loaded_data.passengers
+		missions     = loaded_data.missions
+		passengers   = loaded_data.passengers
+		hostilactive = loaded_data.hostilactive
+
 		loaded_data = nil
 	end
 end
@@ -482,7 +480,13 @@ local onClick = function (mission)
 end
 
 local serialize = function ()
-	return { ads = ads, missions = missions, passengers = passengers }
+	return
+		{
+		ads          = ads,
+		missions     = missions,
+		passengers   = passengers,
+		hostilactive = hostilactive,
+		}
 end
 
 local unserialize = function (data)

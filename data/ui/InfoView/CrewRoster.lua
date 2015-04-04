@@ -1,13 +1,13 @@
 -- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-local Lang               = import("Lang")
-local Engine             = import("Engine")
-local Game               = import("Game")
-local Format             = import("Format")
-local ShipDef            = import("ShipDef")
-local Comms              = import("Comms")
-local Space              = import("Space")
+local Lang      = import("Lang")
+local Engine    = import("Engine")
+local Game      = import("Game")
+local Format    = import("Format")
+local ShipDef   = import("ShipDef")
+local Comms     = import("Comms")
+local Space     = import("Space")
 local Equipment = import("Equipment")
 
 local InfoFace           = import("ui/InfoFace")
@@ -15,8 +15,8 @@ local SmallLabeledButton = import("ui/SmallLabeledButton")
 
 local ui = Engine.ui
 
-local l = Lang.GetResource("ui-core")
---local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
+local l   = Lang.GetResource("ui-core")
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
 
 -- Anti-abuse feature - this locks out the piloting commands based on a timer.
 -- It knows when the crew were last checked for a piloting skill, and prevents
@@ -140,7 +140,7 @@ local crewRoster = function ()
 					end
 				end
 			end,
---********************************************************************************************
+
 			UNDOCK_AND_ENTER_LOW_ORBIT = function ()
 				local state = Game.player.flightState
 				if state == "DOCKED" or state == "LANDED" then
@@ -157,7 +157,7 @@ local crewRoster = function ()
 					end
 				end
 			end,
---********************************************************************************************
+
 			ENTER_LOW_ORBIT_AT_CURRENT_TARGET = function ()
 				local target = Game.player:GetNavTarget()
 				if Game.player.flightState ~= 'FLYING'
@@ -229,14 +229,8 @@ local crewRoster = function ()
 		local taskList = ui:VBox() -- This could do with being something prettier
 
 		for label,task in pairs(crewTasks) do
-			local labelok
-			if not pcall(function () return (l[label]) end) then
-				l = Lang.GetResource("module-myl") or Lang.GetResource("module-myl", "en")
-				labelok = (l[label])
-				l = Lang.GetResource("ui-core")
-			else
-				labelok = (l[label])
-			end
+			local labelok = l[label]
+			if not labelok then labelok = myl[label] end
 			local taskButton = SmallLabeledButton.New(labelok)
 			taskButton.button.onClick:Connect(task)
 			taskList:PackEnd(taskButton)

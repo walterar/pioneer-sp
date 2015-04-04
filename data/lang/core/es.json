@@ -1369,7 +1369,7 @@
    },
    "SHIPS_DISPLAY_MODE_TOGGLE" : {
       "description" : "Either show no ships, show ships, or show ships + their orbits",
-      "message" : "Cambiar entre modos de pantalla."
+      "message" : "Ver Naves en el Sistema"
    },
    "SHIP_ALTITUDE_ABOVE_TERRAIN" : {
       "description" : "",
@@ -1685,7 +1685,7 @@
    },
    "TIME_POINT" : {
       "description" : "",
-      "message" : "Eje de tiempo:"
+      "message" : "Eje de Tiempo: "
    },
    "TINY" : {
       "description" : "",

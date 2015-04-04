@@ -249,7 +249,7 @@ local onUpdateBB = function (station)
 	end
 end
 
-local hostilactive = 0
+local hostilactive = false
 local onFrameChanged = function (body)
 	if body:isa("Ship") and body:IsPlayer() and body.frameBody ~= nil then
 		local syspath = Game.system.path
@@ -258,9 +258,9 @@ local onFrameChanged = function (body)
 				local target_distance_from_entry = body:DistanceTo(Space.GetBody(mission.location.bodyIndex))
 				if target_distance_from_entry > 100000e3 then return end
 				local risk = flavours[mission.flavour].risk
-				if risk > 0 and hostilactive == 0 then ship = ship_hostil(risk) end
-				if ship and hostilactive == 0 then
-					hostilactive = 1
+				if risk > 0 and not hostilactive then ship = ship_hostil(risk) end
+				if ship and not hostilactive then
+					hostilactive = true
 					local hostile_greeting = string.interp(l["PIRATE_TAUNTS_"..Engine.rand:Integer(1,num_pirate_taunts)-1], {
 								client = mission.client.name, location = mission.location:GetSystemBody().name,})
 					Comms.ImportantMessage(hostile_greeting, ship.label)
@@ -275,7 +275,13 @@ end
 
 local onShipDocked = function (player, station)
 	if not player:IsPlayer() then return end
+	hostilactive = false
 	for ref,mission in pairs(missions) do
+		if check_crime(mission,"FRAUD") then
+			mission:Remove()
+			missions[ref] = nil
+			return
+		end
 		if mission.location == station.path then
 			if Game.time > mission.due then
 				Comms.ImportantMessage(flavours[mission.flavour].failuremsg, mission.client.name)
@@ -293,7 +299,13 @@ end
 
 local onShipLanded = function (player, body)
 	if not player:IsPlayer() then return end
+	hostilactive = false
 	for ref,mission in pairs(missions) do
+		if check_crime(mission,"FRAUD") then
+			mission:Remove()
+			missions[ref] = nil
+			return
+		end
 		if mission.location == Game.player:FindNearestTo("SPACESTATION").path then
 			if Game.time > mission.due then
 				Comms.ImportantMessage(flavours[mission.flavour].failuremsg, mission.client.name)
@@ -322,7 +334,9 @@ local onGameStart = function ()
 				onChat      = onChat,
 				onDelete    = onDelete})] = ad
 		end
-		missions = loaded_data.missions
+		missions     = loaded_data.missions
+		hostilactive = loaded_data.hostilactive
+
 		loaded_data = nil
 	end
 end
@@ -421,9 +435,12 @@ end
 
 local serialize = function ()
 	return
-		{ ads      = ads,
-			missions = missions
+		{
+		ads          = ads,
+		missions     = missions,
+		hostilactive = hostilactive,
 		}
+
 end
 
 local unserialize = function (data)

@@ -51,7 +51,7 @@ Event.Register("onEnterSystem", function (ship)
 						and l.l10n_key:find("PULSECANNON")
 				end, pairs(Eq.laser)))
 				local laserdef = laserdefs[Engine.rand:Integer(1,#laserdefs)]
-				hostil[i] = Space.SpawnShipNear(hostil[i].id, ship,2,3)
+				hostil[i] = Space.SpawnShipNear(hostil[i].id, ship,6,6)
 --				hostil[i]:AddEquip(default_drive)
 				hostil[i]:AddEquip(laserdef)
 				hostil[i]:SetLabel(Ship.MakeRandomLabel())
@@ -60,7 +60,7 @@ Event.Register("onEnterSystem", function (ship)
 				hostil[i]:AIKill(hostil[i+1])
 			end
 			if shipWithCannon(ship)
-				and DangerLevel > 0 and Engine.rand:Integer(2) > 1 then--XXX
+				and DangerLevel > 0 and Engine.rand:Integer(2) < 1 then--XXX
 				Timer:CallAt(Game.time+Engine.rand:Integer(10,20), function ()
 					if hostil[1] and hostil[1]:exists() then hostil[1]:AIKill(ship) end
 					if hostil[n] and hostil[n]:exists() then hostil[n]:AIKill(ship) end
@@ -79,19 +79,8 @@ Event.Register("onShipHit",  function (ship, attacker)
 		or attacker:IsPlayer() then
 		return
 	end
-	t = t + 1
-	if t > 2 then
-		t = 0
-		ship:CancelAI()
-		ship:Explode()
-		ship = nil
-		Timer:CallAt(Game.time+4, function ()
-			if not attacker or not attacker:exists() then return end
-			attacker:CancelAI()
-			attacker:Explode()
-			attacker = nil
-		end)
-	end
+	ship:SetHullPercent()
+	ship:AIKill(attacker)
 end)
 
 Event.Register("onFrameChanged", function (body)

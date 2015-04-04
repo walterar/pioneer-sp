@@ -25,7 +25,7 @@ local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl", "en
 
 local setupPlayer1 = function ()
 	Game.player:SetShipType('eagle_lrf')
-	Game.player:SetLabel(Ship.MakeRandomLabel())
+	Game.player:SetLabel(Ship.MakeRandomLabel('Federation'))
 	Game.player:AddEquip(hyperspace['hyperdrive_1'])
 	Game.player:AddEquip(laser.pulsecannon_1mw)
 	Game.player:AddEquip(misc.atmospheric_shielding)
@@ -38,7 +38,7 @@ end
 
 local setupPlayer2 = function ()
 	Game.player:SetShipType("centurion")
-	Game.player:SetLabel(Ship.MakeRandomLabel())
+	Game.player:SetLabel(Ship.MakeRandomLabel('Confederation'))
 	Game.player:AddEquip(hyperspace["hyperdrive_1"])
 	Game.player:AddEquip(laser.pulsecannon_1mw)
 	Game.player:AddEquip(misc.atmospheric_shielding)
@@ -50,7 +50,7 @@ end
 
 local setupPlayer3 = function ()
 	Game.player:SetShipType("anax")
-	Game.player:SetLabel(Ship.MakeRandomLabel())
+	Game.player:SetLabel(Ship.MakeRandomLabel('Empire'))
 	--Game.player:AddEquip(equipment.laser.pulsecannon_1mw)
 	Game.player:AddEquip(misc.atmospheric_shielding)
 	Game.player:AddEquip(misc.autopilot)
@@ -61,7 +61,7 @@ end
 
 local setupPlayer4 = function ()
 	Game.player:SetShipType("sidie_m")
-	Game.player:SetLabel(Ship.MakeRandomLabel())
+	Game.player:SetLabel(Ship.MakeRandomLabel('Independent'))
 	Game.player:AddEquip(hyperspace["hyperdrive_2"])
 	Game.player:AddEquip(misc.atmospheric_shielding)
 	Game.player:AddEquip(misc.autopilot)
@@ -101,14 +101,27 @@ local doSettingsScreen = function()
 	)
 end
 
+local doQuitConfirmation = function()
+	if Engine.GetConfirmQuit() then
+		ui:NewLayer(
+			ui.templates.QuitConfirmation({
+				onConfirm = function () Engine.Quit() end,
+				onCancel  = function () ui:DropLayer() end
+			})
+		)
+	else
+		Engine.Quit()
+	end
+end
+
 local buttonDefs = {
 	{   l.START_AT_EARTH,    function () Game.StartGame(SystemPath.New(0,0,0,0,Engine.rand:Integer(4,9)))   setupPlayer1() end },
 	{   l.START_AT_NEW_HOPE, function () Game.StartGame(SystemPath.New(1,-1,-1,0,Engine.rand:Integer(4,7))) setupPlayer2() end },
 	{ myl.START_AT_ACHERNAR, function () Game.StartGame(SystemPath.New(4,-9,-16,0,Engine.rand:Integer(16,20))) setupPlayer3() end },
 	{ myl.START_AT_LAVE,     function () Game.StartGame(SystemPath.New(-2,1,90,0,2)) setupPlayer4() end },
-	{   l.LOAD_GAME,         doLoadDialog },
-	{   l.OPTIONS,           doSettingsScreen },
-	{   l.QUIT,              function () Engine.Quit() end },
+	{ l.LOAD_GAME, doLoadDialog },
+	{ l.OPTIONS,   doSettingsScreen },
+	{ l.QUIT,      doQuitConfirmation },
 }
 
 local anims = {}
@@ -146,7 +159,7 @@ table.insert(anims, {
 	duration = 0.4,
 })
 
-local versionLabel = ui:Label("G21 full version"):SetFont("HEADING_XSMALL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 })
+local versionLabel = ui:Label("G22 full version"):SetFont("HEADING_XSMALL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 })
 table.insert(anims, {
 	widget = versionLabel,
 	type = "IN",

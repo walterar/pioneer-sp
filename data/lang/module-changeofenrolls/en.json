@@ -1,11 +1,11 @@
 {
 "Change_of_enrolls":{
 "description":"",
-"message":"Change of Enrollment"
+"message":"Change of Registration"
 },
 "Change_of_enrolls_His_new_register_is":{
 "description":"",
-"message":"CHANGE OF ENROLLMENT\n Your new registration is: "
+"message":"CHANGE OF REGISTRATION\n You are now registered with us as: "
 },
 "Hang":{
 "description":"",
@@ -25,6 +25,6 @@
 },
 "You_are_owner_of_the_registration":{
 "description":"",
-"message":"You are owner of the registration: "
+"message":"We will change your registration from: "
 }
 }

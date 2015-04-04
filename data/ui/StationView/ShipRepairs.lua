@@ -13,6 +13,8 @@ local Rand         = import("Rand")
 local InfoGauge    = import("ui/InfoGauge")
 local InfoFace     = import("ui/InfoFace")
 local ModelSpinner = import("UI.Game.ModelSpinner")
+local Music        = import("Music")
+local Timer        = import("Timer")
 
 local l = Lang.GetResource("ui-core")
 local ui = Engine.ui
@@ -78,7 +80,14 @@ local shipRepairs = function (args)
 		if Game.player:GetMoney() >= price then
 			Game.player:AddMoney(-price)
 			Game.player:SetHullPercent(Game.player.hullPercent + damage)
-			update('')
+			local song
+			if Music.IsPlaying then song = Music.GetSongName() end
+			Music.Play("music/core/fx/repair", false)
+			Timer:CallAt(Game.time + 10, function ()
+				Music.Stop()
+				if song then Music.Play(song, false) end
+				update('')
+			end)
 		else
 			update(l.YOU_DONT_HAVE_ENOUGH_MONEY_FOR_THAT_OPTION)
 		end

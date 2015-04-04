@@ -15,6 +15,14 @@
       "description" : "",
       "message" : "Proteggono l'astronave dal surriscaldamento durante l'ingresso in atmosfera."
    },
+   "AUTO_COMBAT" : {
+      "description" : "",
+      "message" : "AutoCombat"
+   },
+   "AUTO_COMBAT_DESCRIPTION" : {
+      "description" : "",
+      "message" : "An on-board combat computer."
+   },
    "AUTOPILOT" : {
       "description" : "",
       "message" : "Autopilota"
@@ -38,6 +46,14 @@
    "CARGO_SCOOP_DESCRIPTION" : {
       "description" : "",
       "message" : "Permette la raccolta di container di cargo vaganti nello spazio."
+   },
+   "DEMP" : {
+      "description" : "Directional electro magnetic pulse.",
+      "message" : "DEMP System"
+   },
+   "DEMP_DESCRIPTION" : {
+      "description" : "",
+      "message" : "Temporarily overrides the electronics of the attacker.."
    },
    "DRIVE_CLASS1" : {
       "description" : "",
@@ -143,6 +159,14 @@
       "description" : "",
       "message" : "Refrigera il generatore di impulsi laser ritardandone il surriscaldamento."
    },
+   "MATTER_CAPACITOR" : {
+      "description" : "",
+      "message" : "Matter Capacitor"
+   },
+   "MATTER_CAPACITOR_DESCRIPTION" : {
+      "description" : "",
+      "message" : "Provides unlimited system fuel."
+   },
    "MININGCANNON_17MW" : {
       "description" : "",
       "message" : "Cannone minerario da 17MW"
@@ -175,6 +199,14 @@
       "description" : "",
       "message" : "Seppur meno efficace di un raccoglitore di carburante, permette di raccogliere sia cargo che carburante"
    },
+   "PROP_CONVERTER" : {
+      "description" : "",
+      "message" : "Propellant Converter"
+   },
+   "PROP_CONVERTER_DESCRIPTION" : {
+      "description" : "",
+      "message" : "Converter that allows use hydrogen instead of water in propellant engine"
+   },
    "PULSECANNON_10MW" : {
       "description" : "",
       "message" : "Laser a impulsi da 10MW"
@@ -199,6 +231,10 @@
       "description" : "",
       "message" : "Laser a doppio impulso da 1MW"
    },
+   "PULSECANNON_DUAL_2MW" : {
+      "description" : "",
+      "message" : "Laser a doppio impulso da 2MW"
+   },
    "PULSECANNON_RAPID_2MW" : {
       "description" : "",
       "message" : "Laser a impulsi rapidi da 2MW"
@@ -218,6 +254,10 @@
    "SCANNER_DESCRIPTION" : {
       "description" : "",
       "message" : "Sensore a corto raggio che identifica la posizione in tre dimensioni di astronavi e stazioni spaziali vicine."
+   },
+   "SCOOP_MOUNTS" : {
+      "description" : "",
+      "message" : "Scoop Mouts"
    },
    "SHIELD_ENERGY_BOOSTER" : {
       "description" : "",

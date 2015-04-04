@@ -13,66 +13,84 @@
 #include "graphics/Material.h"
 #include "graphics/Renderer.h"
 #include "graphics/TextureBuilder.h"
+#include "json/JsonUtils.h"
 
 using namespace Graphics;
 
 static const int MAX_SFX_PER_FRAME = 1024;
 
-Graphics::Drawables::Sphere3D *Sfx::explosionEffect = 0;
-Graphics::Material *Sfx::damageParticle = 0;
-Graphics::Material *Sfx::ecmParticle = 0;
-Graphics::Material *Sfx::smokeParticle = 0;
-Graphics::Material *Sfx::explosionParticle = 0;
+std::unique_ptr<Graphics::Material> Sfx::damageParticle;
+std::unique_ptr<Graphics::Material> Sfx::ecmParticle;
+std::unique_ptr<Graphics::Material> Sfx::smokeParticle;
+std::unique_ptr<Graphics::Material> Sfx::explosionParticle;
 Graphics::RenderState *Sfx::alphaState = nullptr;
 Graphics::RenderState *Sfx::additiveAlphaState = nullptr;
+Graphics::RenderState *Sfx::alphaOneState = nullptr;
+
+Graphics::Texture* Sfx::explosionTextures[Sfx::NUM_EXPLOSION_TEXTURES];
 
 Sfx::Sfx()
 {
 	m_type = TYPE_NONE;
 }
 
-void Sfx::Save(Serializer::Writer &wr)
+void Sfx::SaveToJson(Json::Value &jsonObj)
 {
-	wr.Vector3d(m_pos);
-	wr.Vector3d(m_vel);
-	wr.Float(m_age);
-	wr.Int32(m_type);
+	Json::Value sfxObj(Json::objectValue); // Create JSON object to contain sfx data.
+
+	VectorToJson(sfxObj, m_pos, "pos");
+	VectorToJson(sfxObj, m_vel, "vel");
+	sfxObj["age"] = FloatToStr(m_age);
+	sfxObj["type"] = m_type;
+
+	jsonObj["sfx"] = sfxObj; // Add sfx object to supplied object.
 }
 
-void Sfx::Load(Serializer::Reader &rd)
+void Sfx::LoadFromJson(const Json::Value &jsonObj)
 {
-	m_pos = rd.Vector3d();
-	m_vel = rd.Vector3d();
-	m_age = rd.Float();
-	m_type = static_cast<Sfx::TYPE>(rd.Int32());
+	if (!jsonObj.isMember("sfx")) throw SavedGameCorruptException();
+	Json::Value sfxObj = jsonObj["sfx"];
+	if (!sfxObj.isMember("pos")) throw SavedGameCorruptException();
+	if (!sfxObj.isMember("vel")) throw SavedGameCorruptException();
+	if (!sfxObj.isMember("age")) throw SavedGameCorruptException();
+	if (!sfxObj.isMember("type")) throw SavedGameCorruptException();
+
+	JsonToVector(&m_pos, sfxObj, "pos");
+	JsonToVector(&m_vel, sfxObj, "vel");
+	m_age = StrToFloat(sfxObj["age"].asString());
+	m_type = static_cast<Sfx::TYPE>(sfxObj["type"].asInt());
 }
 
-void Sfx::Serialize(Serializer::Writer &wr, const Frame *f)
+void Sfx::ToJson(Json::Value &jsonObj, const Frame *f)
 {
-	// how many sfx turds are active in frame?
-	int numActive = 0;
-	if (f->m_sfx) {
-		for (int i=0; i<MAX_SFX_PER_FRAME; i++) {
-			if (f->m_sfx[i].m_type != TYPE_NONE) numActive++;
+	Json::Value sfxArray(Json::arrayValue); // Create JSON array to contain sfx data.
+
+	if (f->m_sfx)
+	{
+		for (int i = 0; i < MAX_SFX_PER_FRAME; i++)
+		{
+			if (f->m_sfx[i].m_type != TYPE_NONE)
+			{
+				Json::Value sfxArrayEl(Json::objectValue); // Create JSON object to contain sfx element.
+				f->m_sfx[i].SaveToJson(sfxArrayEl);
+				sfxArray.append(sfxArrayEl); // Append sfx object to array.
+			}
 		}
 	}
-	wr.Int32(numActive);
 
-	if (numActive) for (int i=0; i<MAX_SFX_PER_FRAME; i++) {
-		if (f->m_sfx[i].m_type != TYPE_NONE) {
-			f->m_sfx[i].Save(wr);
-		}
-	}
+	jsonObj["sfx_array"] = sfxArray; // Add sfx array to supplied object.
 }
 
-void Sfx::Unserialize(Serializer::Reader &rd, Frame *f)
+void Sfx::FromJson(const Json::Value &jsonObj, Frame *f)
 {
-	int numActive = rd.Int32();
-	if (numActive) {
-		f->m_sfx = new Sfx[MAX_SFX_PER_FRAME];
-		for (int i=0; i<numActive; i++) {
-			f->m_sfx[i].Load(rd);
-		}
+	if (!jsonObj.isMember("sfx_array")) throw SavedGameCorruptException();
+	Json::Value sfxArray = jsonObj["sfx_array"];
+	if (!sfxArray.isArray()) throw SavedGameCorruptException();
+
+	if (sfxArray.size()) f->m_sfx = new Sfx[MAX_SFX_PER_FRAME];
+	for (unsigned int i = 0; i < sfxArray.size(); ++i)
+	{
+		f->m_sfx[i].LoadFromJson(sfxArray[i]);
 	}
 }
 
@@ -89,10 +107,11 @@ void Sfx::TimeStepUpdate(const float timeStep)
 
 	switch (m_type) {
 		case TYPE_EXPLOSION:
-			if (m_age > 1.7) m_type = TYPE_NONE;
+			//if (m_age > 0.5) m_type = TYPE_NONE;
+			if (m_age > 3.2) m_type = TYPE_NONE;
 			break;
 		case TYPE_DAMAGE:
-			if (m_age > 1.5) m_type = TYPE_NONE;
+			if (m_age > 2.0) m_type = TYPE_NONE;
 			break;
 		case TYPE_SMOKE:
 			if (m_age > 8.0)
@@ -114,40 +133,34 @@ void Sfx::Render(Renderer *renderer, const matrix4x4d &ftransform)
 		case TYPE_EXPLOSION:
 		{
 			renderer->SetTransform(matrix4x4d::Translation(fpos));
-			float spriteframe=m_age*20+1;
-			std::string fname="textures/explosion/image"+std::to_string(static_cast<int>(spriteframe))+".png";
-			explosionParticle->texture0 = Graphics::TextureBuilder::Billboard(fname).GetOrCreateTexture(renderer, "billboard");
-
+			const int spriteframe = Clamp( Uint32(m_age*20.0f), Uint32(0), NUM_EXPLOSION_TEXTURES-1 );
+			assert(explosionTextures[spriteframe]);
+			explosionParticle->texture0 = explosionTextures[spriteframe];
 			//face camera
-			matrix4x4f trans = trans.Identity();
-			renderer->SetTransform(trans);
-
-			renderer->DrawPointSprites(1, &pos, additiveAlphaState, explosionParticle, m_speed);
+			renderer->SetTransform(matrix4x4f::Identity());
+			renderer->DrawPointSprites(1, &pos, alphaOneState, explosionParticle.get(), m_speed);
 			break;
 		}
 		case TYPE_DAMAGE:
 		{
 			renderer->SetTransform(matrix4x4d::Translation(fpos));
 			damageParticle->diffuse = Color(255, 255, 0, (1.0f-(m_age/2.0f))*255);
-			renderer->DrawPointSprites(1, &pos, additiveAlphaState, damageParticle, 20.f);
+			renderer->DrawPointSprites(1, &pos, additiveAlphaState, damageParticle.get(), 20.f);
 			break;
 		}
 		case TYPE_SMOKE:
 		{
 			float var = Pi::rng.Double()*0.05f; //slightly variation to trail color
-			if (m_age < 0.5)
-				//start trail
-				smokeParticle->diffuse = Color((0.75f-var)*255,
-						(0.75f-var)*255, (0.75f-var)*255, (m_age*0.5-(m_age/2.0f))*255);
-			else
-				//end trail
-				smokeParticle->diffuse = Color((0.75-var)*255,
-						(0.75f-var)*255, (0.75f-var)*255, Clamp(0.5*0.5-(m_age/16.0),0.0,1.0)*255);
+			if (m_age < 0.5) { //start trail
+				smokeParticle->diffuse = Color((0.75f-var)*255, (0.75f-var)*255, (0.75f-var)*255, (m_age*0.5-(m_age/2.0f))*255);
+			} else { //end trail
+				smokeParticle->diffuse = Color((0.75-var)*255, (0.75f-var)*255, (0.75f-var)*255, Clamp(0.5*0.5-(m_age/16.0),0.0,1.0)*255);
+			}
 
 			renderer->SetTransform(matrix4x4d::Translation(fpos));
 
 			damageParticle->diffuse*=0.05;
-			renderer->DrawPointSprites(1, &pos, alphaState, smokeParticle, (m_speed*m_age));
+			renderer->DrawPointSprites(1, &pos, alphaState, smokeParticle.get(), (m_speed*m_age));
 			break;
 		}
 	}
@@ -192,9 +205,10 @@ void Sfx::AddExplosion(Body *b, TYPE t)
 	sfx->m_vel = b->GetVelocity();
 	if (b->IsType(Object::SHIP)) {
 		Ship *s = static_cast<Ship*>(b);
-		sfx->m_speed = s->GetAabb().radius*20.0;
+		sfx->m_speed = s->GetAabb().radius*8.0;
 	}
 }
+
 
 void Sfx::AddThrustSmoke(const Body *b, TYPE t, const float speed, vector3d adjustpos)
 {
@@ -253,28 +267,34 @@ void Sfx::Init(Graphics::Renderer *r)
 	alphaState = r->CreateRenderState(rsd);
 	rsd.blendMode = Graphics::BLEND_ALPHA_ONE;
 	additiveAlphaState = r->CreateRenderState(rsd);
+	rsd.depthWrite = true;
+	alphaOneState = r->CreateRenderState(rsd);
 
 	Graphics::MaterialDescriptor desc;
 	RefCountedPtr<Graphics::Material> explosionMat(r->CreateMaterial(desc));
 
-	explosionEffect = new Graphics::Drawables::Sphere3D(r, explosionMat, alphaState, 2);
-
 	desc.textures = 1;
-	damageParticle = r->CreateMaterial(desc);
-	damageParticle->texture0 = Graphics::TextureBuilder::Billboard("textures/smoke.png").GetOrCreateTexture(r, "billboard");
-	ecmParticle = r->CreateMaterial(desc);
+	damageParticle.reset( r->CreateMaterial(desc) );
+	damageParticle->texture0 = Graphics::TextureBuilder::Billboard("textures/smoke.dds").GetOrCreateTexture(r, "billboard");
+	ecmParticle.reset( r->CreateMaterial(desc) );
 	ecmParticle->texture0 = Graphics::TextureBuilder::Billboard("textures/ecm.png").GetOrCreateTexture(r, "billboard");
-	smokeParticle = r->CreateMaterial(desc);
-	smokeParticle->texture0 = Graphics::TextureBuilder::Billboard("textures/smoke.png").GetOrCreateTexture(r, "billboard");
-	explosionParticle = r->CreateMaterial(desc);
-	explosionParticle->texture0 = Graphics::TextureBuilder::Billboard("textures/smoke.png").GetOrCreateTexture(r, "billboard");
+	smokeParticle.reset( r->CreateMaterial(desc) );
+	smokeParticle->texture0 = Graphics::TextureBuilder::Billboard("textures/smoke.dds").GetOrCreateTexture(r, "billboard");
+	explosionParticle.reset( r->CreateMaterial(desc) );
+	explosionParticle->texture0 = Graphics::TextureBuilder::Billboard("textures/smoke.dds").GetOrCreateTexture(r, "billboard");
+
+	// NB: 0-31
+	for( Uint32 i=0 ; i<NUM_EXPLOSION_TEXTURES ; i++ )
+	{
+		const std::string fname="textures/explosion/image"+std::to_string(i)+".dds";
+		explosionTextures[i] = Graphics::TextureBuilder::Billboard(fname).GetOrCreateTexture(r, "billboard");
+	}
 }
 
 void Sfx::Uninit()
 {
-	delete explosionEffect; explosionEffect = 0;
-	delete damageParticle; damageParticle = 0;
-	delete ecmParticle; ecmParticle = 0;
-	delete smokeParticle; smokeParticle = 0;
-	delete explosionParticle; explosionParticle = 0;
+	damageParticle.reset();
+	ecmParticle.reset();
+	smokeParticle.reset();
+	explosionParticle.reset();
 }

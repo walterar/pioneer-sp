@@ -19,7 +19,7 @@
 "description":"",
 "message":"Контроль из повреждения: Внимание!\nАвтопилот уничтожены!"
 },
-"Damage_Control_Radar":{
+"Damage_Control_Scanner":{
 "description":"",
 "message":"Контроль из повреждения: Внимание!\nРадар был разрушен!"
 },

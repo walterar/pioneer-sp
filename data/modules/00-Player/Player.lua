@@ -16,11 +16,11 @@ local Space      = import("Space")
 local Timer      = import("Timer")
 local Eq         = import("Equipment")
 local Constant   = import("Constant")
-local Music      = import("Music")
 
-local l = Lang.GetResource("module-00-player") or Lang.GetResource("module-00-player","en");
+
+local l  = Lang.GetResource("module-00-player") or Lang.GetResource("module-00-player","en");
 local le = Lang.GetResource("equipment-core") or Lang.GetResource("equipment-core","en");
-local lc    = Lang.GetResource("ui-core")
+local lc = Lang.GetResource("ui-core")
 
 local shipData = {}
 local loaded_data
@@ -37,18 +37,33 @@ _G.ShipFaction       = "no"
 _G.PrevPos           = "no"
 _G.PrevFac           = "no"
 _G.DangerLevel       = 0
-_G.FuelHydrogen      = false
 _G.MissileActive     = 0
 _G.autoCombat        = false
 _G.DEMPsystem        = false
 _G.MATTcapacitor     = false
 _G.playerAlert       = "NONE"
+_G.damageControl     = ""
+_G.fuelConvert       = false
+
+
+local danger_level = function ()
+	local lawlessness = Game.system.lawlessness
+	if lawlessness < 0.100 then
+		_G.DangerLevel = 0
+	elseif lawlessness >= 0.100 and lawlessness <= 0.500 then
+		_G.DangerLevel = 1
+	elseif lawlessness > 0.500 then
+		_G.DangerLevel = 2
+	end
+end
+
 
 local welcome = function ()
 	if (not Game.system) then return end
 	local factionName = Game.system.faction.name
 	if PrevFac ~= factionName then
 		Comms.Message(l.You_are_in_space_controlled_by.." " .. factionName, Game.system.faction.militaryName)
+		Music.Play("music/core/faction/"..Game.system.faction.name,false)
 		if Game.system.population == 0 then
 			if Game.system.explored == true then
 				explored = l.Explored
@@ -58,15 +73,9 @@ local welcome = function ()
 			Comms.Message(l.System_uninhabited .. explored)
 		end
 	end
-	local prefix = string.upper(string.sub(factionName, 1 , 2))
-	if prefix == "FE" or prefix == "CO" then
-		_G.DangerLevel = 1
-	elseif prefix == "EM" then
-		_G.DangerLevel = 2
-	else
-		_G.DangerLevel = Engine.rand:Integer(0,2)
-	end
+	danger_level()
 end
+
 
 local onEnterSystem = function (player)
 	if player:IsPlayer() then
@@ -75,6 +84,7 @@ local onEnterSystem = function (player)
 	end
 end
 Event.Register("onEnterSystem", onEnterSystem)
+
 
 local onShipUndocked = function (player, station)
 	if player:IsPlayer() then
@@ -90,13 +100,18 @@ local onShipUndocked = function (player, station)
 		if station.isGroundStation then timeundock = 3 end
 		local trueSystem = Game.system
 		Timer:CallAt(Game.time + timeundock, function ()
-			if trueSystem == Game.system then player:AIEnterLowOrbit(target) end
+			local current_target = player:GetNavTarget()
+			if trueSystem == Game.system and (not current_target or current_target==station) then
+				player:AIEnterLowOrbit(target)
+			end
 		end)
 	end
 end
 Event.Register("onShipUndocked", onShipUndocked)
 
+
 local onGameStart = function ()
+
 	if loaded_data then
 		for k,v in pairs (loaded_data.shipData) do
 			shipData[k] = v
@@ -111,12 +126,14 @@ local onGameStart = function ()
 		_G.PrevPos           = shipData.prev_pos or "no"
 		_G.PrevFac           = shipData.prev_fac or "no"
 		_G.DangerLevel       = shipData.danger_level or 0
-		_G.FuelHydrogen      = shipData.fuel_hydrogen or false
 		_G.MissileActive     = shipData.missile_active or 0
 		_G.autoCombat        = shipData.auto_combat or false
 		_G.DEMPsystem        = shipData.demp_system or false
 		_G.MATTcapacitor     = shipData.matt_capacitor or false
 		_G.playerAlert       = shipData.player_alert or "NONE"
+		_G.damageControl     = shipData.damage_control or ""
+		_G.fuelConvert       = shipData.fuel_convert or false
+
 	else
 
 		_G.MissionsSuccesses = 0
@@ -125,27 +142,20 @@ local onGameStart = function ()
 		_G.ShotsReceived     = 0
 		_G.PrevPos           = "no"
 		_G.PrevFac           = "no"
-		_G.FuelHydrogen      = false
 		_G.MissileActive     = 0
 		_G.autoCombat        = false
 		_G.DEMPsystem        = false
 		_G.MATTcapacitor     = false
 		_G.playerAlert       = "NONE"
+		_G.damageControl     = ""
+		_G.fuelConvert       = false
 
 		_G.ShipFaction       = Game.system.faction.name
 		_G.OriginFaction     = ShipFaction
 
-		local prefix = string.upper(string.sub(Game.system.faction.name,1,2))
-		_G.DangerLevel = 1
-		if prefix == "IN" then
-			_G.DangerLevel = Engine.rand:Integer(0,2)
-		elseif prefix == "EM" then
-			_G.DangerLevel = 2
-		end
+		danger_level()
 
-		local label = string.format("%02s-%04d", prefix, Engine.rand:Integer(0,9999))
-		Game.player:SetLabel(label)
-		Comms.Message(l.YOUR_SHIP.." < "..label.." > "..l.IS_REGISTERED_IN_OUR_DOMAIN,
+		Comms.Message(l.YOUR_SHIP.." < "..Game.player.label.." > "..l.IS_REGISTERED_IN_OUR_DOMAIN,
 			Game.system.faction.militaryName)
 		welcome()
 	end
@@ -160,37 +170,46 @@ local shipWithCannon = function (ship)
 	end
 end
 
+
 local onShipAlertChanged = function (ship, alert)
 --	if Music.IsPlaying() and alert=="NONE" then Music.FadeIn(song, 0.5, false) end
 	if ship:IsPlayer() then
-		if DEMPsystem then
-			if alert == "SHIP_FIRING" and autoCombat then
+		if (DEMPsystem or autoCombat) and alert == "SHIP_FIRING" then
 				ship:SetInvulnerable(true)
-			else
+		else
 				ship:SetInvulnerable(false)
-			end
 		end
 		_G.playerAlert = alert
 	end
 end
 Event.Register("onShipAlertChanged", onShipAlertChanged)
 
+
+local dempSong = "music/core/fx/demp"
 local trigger = 0
 local onShipHit = function (ship, attacker)
 	if ship:IsPlayer() then
 		_G.ShotsReceived = (ShotsReceived or 0) + 1
-		trigger = trigger + 1
-		if attacker
-			and trigger > 4
-			and DEMPsystem == true
-		then
-			Music.Play("music/core/demp/demp", false)
+		if attacker then
+			trigger = trigger + 1
+			if attacker ~= ship:GetCombatTarget() then
+				trigger = 0
+			return end
+		else
+			trigger = 0
+			ship:SetInvulnerable(true)
+		return end
+		if trigger > 3 and DEMPsystem == true then
+			Music.Play(dempSong, false)
 			Comms.Message(attacker.label..l.neutralized_by..le.DEMP)
 			shipNeutralized = true
 			attacker:CancelAI()
+			ship:SetInvulnerable(true)
 			trigger = 0
 		end
-		if trigger == 1 then ship:SetInvulnerable(false) end
+		if trigger == 1 then
+			ship:SetInvulnerable(false)
+		return end
 		local hullIntegrity = math.ceil(ship.hullMassLeft/ShipDef[ship.shipId].hullMass*100)
 		if hullIntegrity == 100 then damaged = false
 		elseif hullIntegrity < 90 and not damaged then
@@ -198,18 +217,22 @@ local onShipHit = function (ship, attacker)
 			local chance = Engine.rand:Integer(0,9)
 			if chance == 0 then
 				ship:SetFuelPercent(ship.fuel/2)
-				Comms.ImportantMessage(l.Damage_Control_Propellant)
+				_G.damageControl = l.Damage_Control_Propellant
+				Comms.ImportantMessage(damageControl)
 			elseif chance == 1 then
 				ship:RemoveEquip(Eq.misc.scanner)
 				ship:AddEquip(Eq.cargo.rubbish,1)
-				Comms.ImportantMessage(l.Damage_Control_Radar)
+				_G.damageControl = l.Damage_Control_Scanner
+				Comms.ImportantMessage(damageControl)
 			elseif chance == 2 and hullIntegrity < 30 then
 				ship:RemoveEquip(Eq.misc.autopilot)
 				ship:AddEquip(Eq.cargo.rubbish,1)
-				Comms.ImportantMessage(l.Damage_Control_Autopilot)
+				_G.damageControl = l.Damage_Control_Autopilot
+				Comms.ImportantMessage(damageControl)
 			end
 		end
-		if autoCombat == false or shipWithCannon(ship) == false then return end
+		if not autoCombat or not shipWithCannon(ship)
+		then return end
 		local target = ship:GetCombatTarget()
 		if attacker and (not target and ship:DistanceTo(attacker) < 4000)
 			or (target and target ~= attacker and
@@ -237,46 +260,118 @@ local onShipHit = function (ship, attacker)
 end
 Event.Register("onShipHit", onShipHit)
 
-local penalized
-local onShipFiring = function (ship)
 
-	if ship
-		and ship:exists()
-		and ship:IsPlayer()
+local penalized
+local FiringSong = ("music/core/fx/combat0"..tostring(Engine.rand:Integer(1,4)))
+
+local onShipFiring = function (ship)
+	if not ship then return end
+	local player = Game.player
+	if ship == player
 		and policingArea()
 		and playerAlert ~= "SHIP_FIRING"
 	then
 		if penalized then return end
 		penalized=true
-		Timer:CallAt(Game.time + 5, function ()
-			penalized = false
-		end)
 		local crime = "UNLAWFUL_WEAPONS_DISCHARGE"
 		Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE,
 			{crime=Constant.CrimeType[crime].name}), Game.system.faction.policeName)
-		ship:AddCrime(crime, crime_fine(crime))
-	end
-
-	if not autoCombat
-		or not ship
-		or not ship:exists()
-		or ship:IsPlayer()
-		or Game.player:GetDockedWith()
-	then return end
-	local player = Game.player
-	local target = player:GetCombatTarget()
-	if (not target and player:DistanceTo(ship) < 5001)
-		or (target and target ~= ship
-			and player:DistanceTo(ship) < player:DistanceTo(target)) then
-		player:SetCombatTarget(ship)
-		if shipWithCannon(player) then
-			player:CancelAI()
-			player:AIKill(ship)
+		player:AddCrime(crime, crime_fine(crime))
+		Timer:CallAt(Game.time + 5, function ()
+			penalized = false
+		end)
+	else
+		if ship and ship:exists() and ship:DistanceTo(player) < 5000 and autoCombat then
+			if Music.GetSongName() ~= FiringSong and Music.GetSongName() ~= dempSong then
+				Music.FadeIn(Music.GetSongName(), 0.5, false)
+				Music.Play(FiringSong, false)
+			end
 		end
 	end
 
+	if not ship
+		or not ship:exists()
+		or ship:IsPlayer()--XXX si player disparó, return
+		or player.flightState ~= "FLYING"
+		or ship.label == lc.POLICE_SHIP_REGISTRATION--XXX
+	then return end
+
+	local target = player:GetCombatTarget()
+
+	if (not target and player:DistanceTo(ship) < 5000)
+		or (target and target ~= ship and player:DistanceTo(ship) < player:DistanceTo(target))
+	then
+		if shipWithCannon(player) and autoCombat then
+			player:SetCombatTarget(ship)
+			player:AIKill(ship)
+		end
+--	elseif target and player:DistanceTo(ship) > 10000 then
+--		player:SetCombatTarget()-- not implemented yet XXX
+	end
+--[[
+	if target
+		and ship
+		and target:exists()
+		and ship:exists()
+		and target == ship and ship:DistanceTo(player) < 5000 then
+			ship:AIKill(player)
+	end
+--]]
 end
 Event.Register("onShipFiring", onShipFiring)
+
+
+Event.Register("onShipEquipmentChanged", function(ship, equipType)
+	if not ship:IsPlayer() then return end
+	if ship:GetEquipFree("demp") < 1 then
+		_G.DEMPsystem=true
+	else
+		_G.DEMPsystem=false
+	end
+	if ship:GetEquipFree("capacitor") < 1 then
+		_G.MATTcapacitor=true
+	else
+		_G.MATTcapacitor=false
+	end
+	if ship:GetEquipFree("convert") < 1 then
+		_G.fuelConvert=true
+	else
+		_G.fuelConvert=false
+	end
+
+	if (damageControl == l.Damage_Control_Scanner and ship:GetEquipFree("scanner") < 1)
+		or (damageControl == l.Damage_Control_autopilot and ship:GetEquipFree("autopilot") < 1) then
+		_G.damageControl = ""
+	end
+end)
+
+
+Event.Register("onAutoCombatON",function()
+	if Game.player:GetEquipFree("autocombat") < 1 then
+		Comms.Message(l.AutoCombatON)
+			songOk()
+		_G.autoCombat = true
+		local target = Game.player:GetCombatTarget()
+		if target and target:exists() then
+			Game.player:AIKill(target)
+		end
+	else
+		_G.autoCombat = false
+	end
+end)
+
+
+Event.Register("onAutoCombatOFF",function()
+	if Game.player:GetEquipFree("autocombat") < 1 then
+		Comms.Message(l.AutoCombatOFF)
+		songOk()
+		if Game.player:GetCombatTarget() then
+			Game.player:CancelAI()
+		end
+		_G.autoCombat = false
+	end
+end)
+
 
 local serialize = function ()
 	shipData = {
@@ -289,19 +384,22 @@ local serialize = function ()
 			prev_pos           = PrevPos,
 			prev_fac           = PrevFac,
 			danger_level       = DangerLevel,
-			fuel_hydrogen      = FuelHydrogen,
 			missile_active     = MissileActive,
 			auto_combat        = autoCombat,
 			demp_system        = DEMPsystem,
 			matt_capacitor     = MATTcapacitor,
-			player_alert       = playerAlert
+			player_alert       = playerAlert,
+			damage_control     = damageControl,
+			fuel_convert       = fuelConvert
 			}
 	return {shipData = shipData}
 end
 
+
 local unserialize = function (data)
 	loaded_data = data
 end
+
 
 local onGameEnd = function ()
 -- globales
@@ -314,38 +412,14 @@ local onGameEnd = function ()
 	_G.DangerLevel       = nil
 	_G.PrevPos           = nil
 	_G.PrevFac           = nil
-	_G.FuelHydrogen      = nil
 	_G.MissileActive     = nil
 	_G.autoCombat        = nil
 	_G.DEMPsystem        = nil
 	_G.MATTcapacitor     = nil
 	_G.playerAlert       = nil
+	_G.damageControl     = nil
+	_G.fuelConvert       = nil
 end
 Event.Register("onGameEnd", onGameEnd)
-
-Event.Register("onShipEquipmentChanged", function(ship, equipType)
-	if not ship:IsPlayer() then return end
-	if (ship:GetEquipFree("demp") < ship:GetEquipSlotCapacity("demp")) then
-		_G.DEMPsystem=true end
-	if (ship:GetEquipFree("capacitor") < ship:GetEquipSlotCapacity("capacitor")) then
-		_G.MATTcapacitor=true end
-end)
-
-Event.Register("onAutoCombatON",function()
-	if (Game.player:GetEquipFree("autocombat") < Game.player:GetEquipSlotCapacity("autocombat")) then
-		Comms.Message(l.AutoCombatON)
-		_G.autoCombat = true
-	end
-end)
-
-Event.Register("onAutoCombatOFF",function()
-	if (Game.player:GetEquipFree("autocombat") < Game.player:GetEquipSlotCapacity("autocombat")) then
-		Comms.Message(l.AutoCombatOFF)
-		if playerAlert == "SHIP_FIRING" then
-			Game.player:CancelAI()
-		end
-		_G.autoCombat = false
-	end
-end)
 
 Serializer:Register("ShipID", serialize, unserialize)

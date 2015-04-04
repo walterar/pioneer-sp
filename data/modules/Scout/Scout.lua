@@ -159,10 +159,8 @@ local onChat = function (form, ref, option)
 			return
 		end
 
-		if Game.player:CountEquip(Eq.misc.radar_mapper) == 0 then
-
-
---		if Game.player:GetEquip('RADARMAPPER',1) == "NONE" then
+		if Game.player:CountEquip(Eq.misc.radar_mapper) == 0
+			and Game.player:CountEquip(Eq.misc.advanced_radar_mapper) == 0 then
 			form:SetMessage(l.You_have_not_installed_RADAR_MAPPER.."\n*\n*")
 			return
 		end
@@ -347,7 +345,7 @@ local mapped = function(body)
 						or mission.status == "SUSPENDED") then
 						local lapse = scan_time / 60
 						Comms.ImportantMessage(l.Distance_reached .. lapse .. l.minutes, l.computer)
-						Music.Play("music/core/radar-mapping/mapping-on")
+						Music.Play("music/core/radar-mapping/mapping-on"..tostring(Engine.rand:Integer(1,3)))
 						mission.status = "MAPPING"
 					elseif Dist > PhysBody.radius * radius_max and mission.status == "MAPPING" then
 						Music.Play("music/core/radar-mapping/mapping-off",false)

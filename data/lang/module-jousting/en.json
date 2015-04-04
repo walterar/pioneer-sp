@@ -9,7 +9,7 @@
 },
 "I_have_taken3":{
 "description":"",
-"message":"Just take your money "
+"message":"I have just taken your money "
 },
 "is_now_yours":{
 "description":"",
@@ -29,7 +29,7 @@
 },
 "the_attacker_money":{
 "description":"",
-"message":"Commander, the attacker money"
+"message":"Commander, the attacker's money"
 },
 "the_time_has_come1":{
 "description":"",
@@ -37,7 +37,7 @@
 },
 "the_time_has_come2":{
 "description":"",
-"message":"What a beautiful ship you, Pilot. Nice guns too. Do you know how to use them?"
+"message":"What a beautiful ship you have, Pilot. Nice guns, too. Do you know how to use them?"
 },
 "the_time_has_come3":{
 "description":"",
@@ -45,14 +45,14 @@
 },
 "you_have_been_challenged1":{
 "description":"",
-"message":"Knight, you have been challenged to fight."
+"message":"Knight, you have been challenged to fight!"
 },
 "you_have_been_challenged2":{
 "description":"",
-"message":"Sir, you are in my domain. To fight must continue."
+"message":"Commander, you are in my domain. Prepare to engage in combat."
 },
 "you_have_been_challenged3":{
 "description":"",
-"message":"Stop! These are my domains. You must fight to continue."
+"message":"You shouldn't have come here, Commander! Now I must destroy you!"
 }
 }

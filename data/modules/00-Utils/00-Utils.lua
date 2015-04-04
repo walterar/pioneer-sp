@@ -12,8 +12,17 @@ local Ship       = import("Ship")
 local Lang       = import("Lang")
 local Eq         = import("Equipment")
 local Constant   = import("Constant")
+local Music      = import("Music")
+local Comms      = import("Comms")
 
-local l = Lang.GetResource("core")
+local l  = Lang.GetResource("core")
+local lc = Lang.GetResource("ui-core")
+
+_G.songOk = function ()
+--	local SongName = Music.GetSongName()
+--	if SongName then Music.Stop() end
+	Music.Play("music/core/fx/Ok", false)
+end
 
 local factor_x = function ()
 	local locate = Game.system.path
@@ -36,10 +45,19 @@ local factor_x = function ()
 end
 
 _G.crime_fine = function (crime)
-	local lawlessness = Game.system.lawlessness
 	return math.max(1, 1+math.floor(
 		Constant.CrimeType[crime].basefine
 		* factor_x()))
+end
+
+_G.check_crime = function (mission,crime)
+	if Game.time > (mission.due + (60*60*24*30)) then-- 30 dias de demora = fraude
+		_G.MissionsFailures = MissionsFailures + 1
+		Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE,
+			{crime=Constant.CrimeType[crime].name}), Game.system.faction.policeName)
+		Game.player:AddCrime(crime, crime_fine(crime))
+		return true
+	end
 end
 
 -- a tariff (reward) calculator
@@ -105,7 +123,18 @@ _G.ship_hostil = function (risk)
 						and l.l10n_key:find("PULSECANNON")
 				end, pairs(Eq.laser)))
 				local laserdef = laserdefs[Engine.rand:Integer(1,#laserdefs)]
-				hostil = Space.SpawnShipNear(hostile.id, Game.player,2,2)
+				local target = Game.player:GetNavTarget()
+
+--				if target and target.type == 'STARPORT_ORBITAL' then
+--					hostil = Space.SpawnShipParked(hostile.id, target)
+--					hostil = Space.SpawnShipNear(hostile.id, target,2,2)
+--				elseif target and target.type == 'STARPORT_SURFACE' then
+
+				if target and target.type == 'STARPORT_SURFACE' then
+					hostil = Space.SpawnShipLandedNear(hostile.id, target,5,5)
+				else
+					hostil = Space.SpawnShipNear(hostile.id, Game.player,2,2)
+				end
 				hostil:AddEquip(default_drive)
 				hostil:AddEquip(laserdef)
 				hostil:SetLabel(Ship.MakeRandomLabel())

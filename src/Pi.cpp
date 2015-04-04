@@ -72,6 +72,7 @@
 #include "graphics/Graphics.h"
 #include "graphics/Light.h"
 #include "graphics/Renderer.h"
+#include "graphics/Stats.h"
 #include "gui/Gui.h"
 #include "scenegraph/Model.h"
 #include "scenegraph/Lua.h"
@@ -169,8 +170,8 @@ void Pi::CreateRenderTarget(const Uint16 width, const Uint16 height) {
 		Graphics::LINEAR_CLAMP, false, false, 0);
 	Pi::renderTexture.Reset(Pi::renderer->CreateTexture(texDesc));
 	Pi::renderQuad.reset(new Graphics::Drawables::TexturedQuad(
-		Pi::renderer, Pi::renderTexture.Get(), 
-		vector2f(0.0f,0.0f), vector2f(float(Graphics::GetScreenWidth()), float(Graphics::GetScreenHeight())), 
+		Pi::renderer, Pi::renderTexture.Get(),
+		vector2f(0.0f,0.0f), vector2f(float(Graphics::GetScreenWidth()), float(Graphics::GetScreenHeight())),
 		quadRenderState));
 
 	// Complete the RT description so we can request a buffer.
@@ -191,7 +192,7 @@ void Pi::CreateRenderTarget(const Uint16 width, const Uint16 height) {
 void Pi::DrawRenderTarget() {
 #if USE_RTT
 	Pi::renderer->BeginFrame();
-	Pi::renderer->SetViewport(0, 0, Graphics::GetScreenWidth(), Graphics::GetScreenHeight());	
+	Pi::renderer->SetViewport(0, 0, Graphics::GetScreenWidth(), Graphics::GetScreenHeight());
 	Pi::renderer->SetTransform(matrix4x4f::Identity());
 
 	{
@@ -202,7 +203,7 @@ void Pi::DrawRenderTarget() {
 		Pi::renderer->PushMatrix();
 		Pi::renderer->LoadIdentity();
 	}
-	
+
 	Pi::renderQuad->Draw( Pi::renderer );
 
 	{
@@ -363,9 +364,9 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	if (strlen(PIONEERSP_EXTRAVERSION)) version += " (" PIONEERSP_EXTRAVERSION ")";
 	const char* platformName = SDL_GetPlatform();
 	if(platformName)
-		Output("Pioneer Scout Plus G21f %s on: %s\n\n", version.c_str(), platformName);
+		Output("Pioneer Scout Plus G22f %s on: %s\n\n", version.c_str(), platformName);
 	else
-		Output("Pioneer Scout Plus G21f %s but could not detect platform name.\n\n", version.c_str());
+		Output("Pioneer Scout Plus G22f %s but could not detect platform name.\n\n", version.c_str());
 
 	Output("%s\n", OS::GetOSInfoString().c_str());
 
@@ -414,7 +415,7 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	Pi::rng.seed(time(0));
 
 	InitJoysticks();
-	
+
 	// we can only do bindings once joysticks are initialised.
 	if (!no_gui) // This re-saves the config file. With no GUI we want to allow multiple instances in parallel.
 		KeyBindings::InitBindings();
@@ -437,7 +438,7 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	asyncJobQueue.reset(new AsyncJobQueue(numThreads));
 	Output("started %d worker threads\n", numThreads);
 	syncJobQueue.reset(new SyncJobQueue);
-	
+
 	Output("ShipType::Init()\n");
 	// XXX early, Lua init needs it
 	ShipType::Init();
@@ -520,11 +521,11 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	Output("CityOnPlanet::Init\n");
 	CityOnPlanet::Init();
 	draw_progress(gauge, label, 0.6f);
-	
+
 	Output("SpaceStation::Init\n");
 	SpaceStation::Init();
 	draw_progress(gauge, label, 0.7f);
-	
+
 	Output("NavLights::Init\n");
 	NavLights::Init(Pi::renderer);
 	draw_progress(gauge, label, 0.75f);
@@ -1145,7 +1146,7 @@ void Pi::MainLoop()
 	Uint32 last_stats = SDL_GetTicks();
 	int frame_stat = 0;
 	int phys_stat = 0;
-	char fps_readout[256];
+	char fps_readout[2048];
 	memset(fps_readout, 0, sizeof(fps_readout));
 #endif
 
@@ -1320,13 +1321,34 @@ void Pi::MainLoop()
 			int lua_memB = int(lua_mem & ((1u << 10) - 1));
 			int lua_memKB = int(lua_mem >> 10) % 1024;
 			int lua_memMB = int(lua_mem >> 20);
+			const Graphics::Stats::TFrameData &stats = Pi::renderer->GetStats().FrameStatsPrevious();
+			const Uint32 numDrawCalls = stats.m_stats[Graphics::Stats::STAT_DRAWCALL];
+			const Uint32 numDrawTris = stats.m_stats[Graphics::Stats::STAT_DRAWTRIS];
+			const Uint32 numDrawPointSprites = stats.m_stats[Graphics::Stats::STAT_DRAWPOINTSPRITES];
+			const Uint32 numDrawBuildings		= stats.m_stats[Graphics::Stats::STAT_BUILDINGS];
+			const Uint32 numDrawCities			= stats.m_stats[Graphics::Stats::STAT_CITIES];
+			const Uint32 numDrawGroundStations	= stats.m_stats[Graphics::Stats::STAT_GROUNDSTATIONS];
+			const Uint32 numDrawSpaceStations	= stats.m_stats[Graphics::Stats::STAT_SPACESTATIONS];
+			const Uint32 numDrawAtmospheres		= stats.m_stats[Graphics::Stats::STAT_ATMOSPHERES];
+			const Uint32 numDrawPatches			= stats.m_stats[Graphics::Stats::STAT_PATCHES];
+			const Uint32 numDrawPlanets			= stats.m_stats[Graphics::Stats::STAT_PLANETS];
+			const Uint32 numDrawGasGiants		= stats.m_stats[Graphics::Stats::STAT_GASGIANTS];
+			const Uint32 numDrawStars			= stats.m_stats[Graphics::Stats::STAT_STARS];
+			const Uint32 numDrawShips			= stats.m_stats[Graphics::Stats::STAT_SHIPS];
+			const Uint32 numDrawBillBoards = stats.m_stats[Graphics::Stats::STAT_BILLBOARD];
 			snprintf(
 				fps_readout, sizeof(fps_readout),
 				"%d fps (%.1f ms/f), %d phys updates, %d triangles, %.3f M tris/sec, %d glyphs/sec, %d patches/frame\n"
-				"Lua mem usage: %d MB + %d KB + %d bytes (stack top: %d)",
+				"Lua mem usage: %d MB + %d KB + %d bytes (stack top: %d)\n\n"
+				"Draw Calls (%u), of which were:\n Tris (%u)\n Point Sprites (%u)\n Billboards (%u)\n"
+				"Buildings (%u), Cities (%u), GroundStations (%u), SpaceStations (%u), Atmospheres (%u)\n"
+				"Patches (%u), Planets (%u), GasGiants (%u), Stars (%u), Ships (%u)\n",
 				frame_stat, (1000.0/frame_stat), phys_stat, Pi::statSceneTris, Pi::statSceneTris*frame_stat*1e-6,
 				Text::TextureFont::GetGlyphCount(), Pi::statNumPatches,
-				lua_memMB, lua_memKB, lua_memB, lua_gettop(Lua::manager->GetLuaState())
+				lua_memMB, lua_memKB, lua_memB, lua_gettop(Lua::manager->GetLuaState()),
+				numDrawCalls, numDrawTris, numDrawPointSprites, numDrawBillBoards,
+				numDrawBuildings, numDrawCities, numDrawGroundStations, numDrawSpaceStations, numDrawAtmospheres,
+				numDrawPatches, numDrawPlanets, numDrawGasGiants, numDrawStars, numDrawShips
 			);
 			frame_stat = 0;
 			phys_stat = 0;
@@ -1384,7 +1406,7 @@ std::string Pi::JoystickName(int joystick) {
 
 std::string Pi::JoystickGUIDString(int joystick) {
 	const int guidBufferLen = 33; // as documented by SDL
-	char	guidBuffer[guidBufferLen]; 
+	char	guidBuffer[guidBufferLen];
 
 	SDL_JoystickGetGUIDString(joysticks[joystick].guid, guidBuffer, guidBufferLen);
 	return std::string(guidBuffer);

@@ -51,15 +51,15 @@ void Player::SetShipType(const ShipType::Id &shipId) {
 	InitCockpit();
 }
 
-void Player::Save(Serializer::Writer &wr, Space *space)
+void Player::SaveToJson(Json::Value &jsonObj, Space *space)
 {
-	Ship::Save(wr, space);
+	Ship::SaveToJson(jsonObj, space);
 }
 
-void Player::Load(Serializer::Reader &rd, Space *space)
+void Player::LoadFromJson(const Json::Value &jsonObj, Space *space)
 {
 	Pi::player = this;
-	Ship::Load(rd, space);
+	Ship::LoadFromJson(jsonObj, space);
 	InitCockpit();
 	registerEquipChangeListener(this);
 }
@@ -134,6 +134,7 @@ void Player::SetAlertState(Ship::AlertState as)
 		case ALERT_NONE:
 			if (prev != ALERT_NONE)
 				Pi::game->log->Add(Lang::ALERT_CANCELLED);
+				Sound::PlaySfx("Click");
 			break;
 
 		case ALERT_SHIP_NEARBY:
@@ -141,7 +142,7 @@ void Player::SetAlertState(Ship::AlertState as)
 				Pi::game->log->Add(Lang::SHIP_DETECTED_NEARBY);
 			else
 				Pi::game->log->Add(Lang::DOWNGRADING_ALERT_STATUS);
-			Sound::PlaySfx("OK");
+				Sound::PlaySfx("OK");
 			break;
 
 		case ALERT_SHIP_FIRING:

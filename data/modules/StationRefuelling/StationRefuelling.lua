@@ -8,13 +8,13 @@ local Event     = import("Event")
 local Format    = import("Format")
 local Equipment = import("Equipment")
 
-local l = Lang.GetResource("module-stationrefuelling")
-
+local l  = Lang.GetResource("module-stationrefuelling")
+local lp = Lang.GetResource("module-00-player") or Lang.GetResource("module-00-player","en")
 
 local calculateFee = function (station)
 	local fee = math.ceil(4 * (2.0-Game.system.lawlessness))
 	local propeller = Equipment.cargo.water
-	if FuelHydrogen then propeller = Equipment.cargo.hydrogen end
+	if fuelConvert then propeller = Equipment.cargo.hydrogen end
 	local recharge = math.ceil(((Game.player.fuelMassLeft/Game.player.fuel)*100)-Game.player.fuelMassLeft)
 	fee = fee+(recharge*station:GetEquipmentPrice(propeller))
 	return fee
@@ -34,6 +34,7 @@ local onShipDocked = function (ship, station)
 		Comms.Message(l.WELCOME_ABOARD_STATION_FEE_DEDUCTED:interp({station = station.label,fee = showCurrency(fee)}))
 		ship:AddMoney(0 - fee)
 		ship:SetFuelPercent()
+		if damageControl == lp.Damage_Control_Propellant then _G.damageControl = "" end
 	end
 end
 

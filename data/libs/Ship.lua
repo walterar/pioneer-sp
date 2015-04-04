@@ -577,20 +577,28 @@ function Ship:FireMissileAt(which_missile, target)
 
 	if missile_object then
 		if target and target:exists() then
+			if ShipDef[missile_object.shipId].name == "MISSILE_NAVAL" then
+				target:SetHullPercent(0)
+				target:SetInvulnerable(false)
+				target:CancelAI()
+			end
 			missile_object:AIKamikaze(target)
 			_G.MissileActive = MissileActive +1
-			target:CancelAI()
 		end
-		-- Let's keep a safe distance before activating this device, shall we ?
 		Timer:CallEvery(1, function ()
-			if missile_object and missile_object:exists() then -- Usually means it has already exploded
-				if missile_object:DistanceTo(self) < 300 or missile_object:DistanceTo(target) > 1000 then
-					return false
-				else
-					missile_object:Arm()
-					if ShipDef[missile_object.shipId].name == "MISSILE_NAVAL" then
-						target:SetHullPercent(0)
+			if target and target:exists() then
+				if missile_object and missile_object:exists() then
+					if missile_object:DistanceTo(self) < 500 then
+						return false
+					else
+						missile_object:Arm()
+						return true
 					end
+				end
+			else
+				if missile_object and missile_object:exists() then
+					_G.MissileActive = MissileActive -1
+					missile_object:Explode()
 					return true
 				end
 			end
@@ -631,7 +639,7 @@ Ship.Refuel = function (self,amount)
 	end
 	local fuelTankMass = ShipDef[self.shipId].fuelTankMass
 	local needed = math.clamp(math.ceil(fuelTankMass - self.fuelMassLeft), 0, amount)
-	if FuelHydrogen then
+	if fuelConvert then
 		removed = self:RemoveEquip(Equipment.cargo.hydrogen, needed)
 	else
 		removed = self:RemoveEquip(Equipment.cargo.water, needed)

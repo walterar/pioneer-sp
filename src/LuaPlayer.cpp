@@ -82,8 +82,9 @@ static int l_player_clear_crime_fine(lua_State *l)
 	Polit::GetCrime(&crimeBitset, &fine);
 	Polit::AddCrime(0, -fine);
 	return 0;
-}
+} */
 
+/*
  * Method: GetNavTarget
  *
  * Get the player's navigation target
@@ -101,7 +102,7 @@ static int l_player_clear_crime_fine(lua_State *l)
  * Status:
  *
  *   experimental
- * */
+ */
 
 static int l_get_nav_target(lua_State *l)
 {

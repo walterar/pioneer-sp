@@ -32,6 +32,7 @@ EquipSet.default = {
 	cargo_life_support=1,
 	autopilot=1,
 	trade_analyzer=1,
+	converter=1,
 }
 
 function EquipSet.New (slots)

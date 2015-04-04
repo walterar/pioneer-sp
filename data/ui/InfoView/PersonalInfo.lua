@@ -116,7 +116,8 @@ local personalInfo = function ()
 					"",
 					ui:Label(myl.Damage_Report):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
 					ui:Table():SetColumnSpacing(10):AddRows({
-						{ l.HULL_INTEGRITY..": ", showCurrency(Game.player.hullPercent,decimal, "%",neg_prefix) },
+						{ l.HULL_INTEGRITY..": "..showCurrency(Game.player.hullPercent,0, "%",neg_prefix) },
+					damageControl,
 					"",
 					CurrentDanger,
 					})

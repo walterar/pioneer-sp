@@ -109,11 +109,11 @@ Event.Register("onSongFinished", function ()
 end)
 
 -- start some ambient music when first arriving in system
-Event.Register("onEnterSystem", function (ship)
-	if ship:IsPlayer() then
-			Music.Play("music/core/faction/"..Game.system.faction.name,false)
-	end
-end)
+--Event.Register("onEnterSystem", function (ship)
+--	if ship:IsPlayer() then
+--			Music.Play("music/core/faction/"..Game.system.faction.name,false)
+--	end
+--end)
 
 -- ship or player destruction (aka game over)
 Event.Register("onShipDestroyed", function (ship, attacker)

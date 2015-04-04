@@ -1,11 +1,11 @@
 -- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-local utils = import("utils")
-local Game = import_core("Game")
+local utils      = import("utils")
+local Game       = import_core("Game")
 local Serializer = import("Serializer")
-local Lang = import("Lang")
-local ShipDef = import("ShipDef")
+local Lang       = import("Lang")
+local ShipDef    = import("ShipDef")
 
 --
 -- Class: EquipType
@@ -320,6 +320,7 @@ end
 -- trade_analyzer - commodity trade analyzer computer module
 -- demp - Directional Electro Magnetic Pulse
 -- matter_capacitor - Virtually inexhaustible source of propellant
+-- prop_converter - Converter that allows use hydrogen instead of water in propellant engine
 
 local cargo = {
 	hydrogen = EquipType.New({
@@ -508,11 +509,11 @@ cargo.consumer_goods.requirements = { cargo.plastics, cargo.textiles }
 local misc = {}
 misc.matter_capacitor = EquipType.New({
 	l10n_key="MATTER_CAPACITOR", slots="capacitor", price=2500,
-	capabilities={mass=1}, purchasable=true
+	capabilities={mass=1, capacitor=1}, purchasable=true
 })
 misc.auto_combat = EquipType.New({
 	l10n_key="AUTO_COMBAT", slots="autocombat", price=2500,
-	capabilities={mass=1}, purchasable=true
+	capabilities={mass=1, autocombat=1}, purchasable=true
 })
 misc.missile_unguided = EquipType.New({
 	l10n_key="MISSILE_UNGUIDED", slots="missile", price=30,
@@ -543,7 +544,7 @@ misc.atmospheric_shielding = EquipType.New({
 	capabilities={mass=1, atmo_shield=1}, purchasable=true
 })
 misc.demp = EquipType.New({
-	l10n_key="DEMP", slots="demp", price=15700,
+	l10n_key="DEMP", slots="demp", price=6700,
 	capabilities={mass=1,}, purchasable=true
 })
 misc.ecm_basic = EquipType.New({
@@ -618,43 +619,47 @@ misc.trade_analyzer = EquipType.New({
 	l10n_key="TRADE_ANALYZER", slots="trade_analyzer", price=400,
 	capabilities={mass=0, trade_analyzer=1}, purchasable=true
 })
+misc.prop_converter = EquipType.New({
+	l10n_key="PROP_CONVERTER", slots="converter", price=2400,
+	capabilities={mass=1, }, purchasable=true
+})
 
 local hyperspace = {}
 hyperspace.hyperdrive_1 = HyperdriveType.New({
 	l10n_key="DRIVE_CLASS1", fuel=cargo.hydrogen, slots="engine",
-	price=700, capabilities={mass=4, hyperclass=1}, purchasable=true
+	price=700, capabilities={mass=3, hyperclass=1}, purchasable=true
 })
 hyperspace.hyperdrive_2 = HyperdriveType.New({
 	l10n_key="DRIVE_CLASS2", fuel=cargo.hydrogen, slots="engine",
-	price=1300, capabilities={mass=10, hyperclass=2}, purchasable=true
+	price=1300, capabilities={mass=6, hyperclass=2}, purchasable=true
 })
 hyperspace.hyperdrive_3 = HyperdriveType.New({
 	l10n_key="DRIVE_CLASS3", fuel=cargo.hydrogen, slots="engine",
-	price=2500, capabilities={mass=20, hyperclass=3}, purchasable=true
+	price=2500, capabilities={mass=12, hyperclass=3}, purchasable=true
 })
 hyperspace.hyperdrive_4 = HyperdriveType.New({
 	l10n_key="DRIVE_CLASS4", fuel=cargo.hydrogen, slots="engine",
-	price=5000, capabilities={mass=40, hyperclass=4}, purchasable=true
+	price=5000, capabilities={mass=24, hyperclass=4}, purchasable=true
 })
 hyperspace.hyperdrive_5 = HyperdriveType.New({
 	l10n_key="DRIVE_CLASS5", fuel=cargo.hydrogen, slots="engine",
-	price=10000, capabilities={mass=120, hyperclass=5}, purchasable=true
+	price=10000, capabilities={mass=48, hyperclass=5}, purchasable=true
 })
 hyperspace.hyperdrive_6 = HyperdriveType.New({
 	l10n_key="DRIVE_CLASS6", fuel=cargo.hydrogen, slots="engine",
-	price=20000, capabilities={mass=225, hyperclass=6}, purchasable=true
+	price=20000, capabilities={mass=96, hyperclass=6}, purchasable=true
 })
 hyperspace.hyperdrive_7 = HyperdriveType.New({
 	l10n_key="DRIVE_CLASS7", fuel=cargo.hydrogen, slots="engine",
-	price=30000, capabilities={mass=400, hyperclass=7}, purchasable=true
+	price=30000, capabilities={mass=112, hyperclass=7}, purchasable=true
 })
 hyperspace.hyperdrive_8 = HyperdriveType.New({
 	l10n_key="DRIVE_CLASS8", fuel=cargo.hydrogen, slots="engine",
-	price=60000, capabilities={mass=580, hyperclass=8}, purchasable=true
+	price=60000, capabilities={mass=224, hyperclass=8}, purchasable=true
 })
 hyperspace.hyperdrive_9 = HyperdriveType.New({
 	l10n_key="DRIVE_CLASS9", fuel=cargo.hydrogen, slots="engine",
-	price=120000, capabilities={mass=740, hyperclass=9}, purchasable=true
+	price=120000, capabilities={mass=448, hyperclass=9}, purchasable=true
 })
 hyperspace.hyperdrive_mil1 = HyperdriveType.New({
 	l10n_key="DRIVE_MIL1", fuel=cargo.military_fuel, byproduct=cargo.radioactives, slots="engine",
@@ -688,6 +693,13 @@ laser.pulsecannon_dual_1mw = LaserType.New({
 		width=5, dual=1, mining=0, rgba_r = 255, rgba_g = 51, rgba_b = 51, rgba_a = 255
 	}, purchasable=true
 })
+laser.pulsecannon_dual_2mw = LaserType.New({
+	l10n_key="PULSECANNON_DUAL_2MW", price=1900, capabilities={mass=6},
+	slots = {"laser_front", "laser_rear"}, laser_stats = {
+		lifespan=8, speed=1000, damage=2000, rechargeTime=0.25, length=30,
+		width=6, dual=1, mining=0, rgba_r = 255, rgba_g = 127, rgba_b = 51, rgba_a = 255
+	}, purchasable=true
+})
 laser.pulsecannon_2mw = LaserType.New({
 	l10n_key="PULSECANNON_2MW", price=1000, capabilities={mass=3},
 	slots = {"laser_front", "laser_rear"}, laser_stats = {
@@ -698,8 +710,8 @@ laser.pulsecannon_2mw = LaserType.New({
 laser.pulsecannon_rapid_2mw = LaserType.New({
 	l10n_key="PULSECANNON_RAPID_2MW", price=1800, capabilities={mass=7},
 	slots = {"laser_front", "laser_rear"}, laser_stats = {
-		lifespan=8, speed=1000, damage=2000, rechargeTime=0.13, length=30,
-		width=5, dual=0, mining=0, rgba_r = 255, rgba_g = 127, rgba_b = 51, rgba_a = 255
+		lifespan=8, speed=1000, damage=2000, rechargeTime=0.20, length=30,
+		width=5, dual=0, mining=0, rgba_r = 255, rgba_g = 200, rgba_b = 51, rgba_a = 255
 	}, purchasable=true
 })
 laser.pulsecannon_4mw = LaserType.New({

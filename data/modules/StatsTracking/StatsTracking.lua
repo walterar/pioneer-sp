@@ -8,11 +8,12 @@ local Event     = import("Event")
 local Character = import("Character")
 local Comms     = import("Comms")
 local Constant  = import("Constant")
+local Timer     = import("Timer")
 
 local Lang = import("Lang")
 
-local l = Lang.GetResource("module-statstracking")
-local lc    = Lang.GetResource("ui-core")
+local l  = Lang.GetResource("module-statstracking")
+local lc = Lang.GetResource("ui-core")
 
 -- Stats-gathering module. Initially, gathers kill statistics for the player.
 -- Can (and should) be expanded in the future to gather other information.
@@ -31,17 +32,14 @@ local PlayerDamagedShips = {}
 --
 local onShipDestroyed = function (ship, attacker)
 	if attacker == Game.player then
-print("ONSHIPDESTROYED StatsTracking")
 		-- Increment player's kill count
 		local kills = Character.persistent.player.killcount
 		kills = kills + 1
 		Character.persistent.player.killcount = kills
 		PlayerDamagedShips[ship]=nil
-		if policingArea() then
-print("ONSHIPDESTROYED StatsTracking MURDER")
+		if policingArea() and playerAlert ~= "SHIP_FIRING" then
 			local crime = "MURDER"
 			Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE, {crime=Constant.CrimeType[crime].name}), Game.system.faction.policeName)
---			local fine = math.max(1, 1+math.floor(Constant.CrimeType[crime].basefine * (1.0-Game.system.lawlessness)))
 			Game.player:AddCrime(crime, crime_fine(crime))
 		else
 			if   kills == 1--    level 0 HARMLESS
@@ -64,35 +62,38 @@ print("ONSHIPDESTROYED StatsTracking MURDER")
 end
 Event.Register("onShipDestroyed",onShipDestroyed)
 
-local impact = false
+local penalizedCollided = false
 local onShipCollided = function (ship, other)
-	if other==Game.player and ship and (ship:isa("Ship") or ship:isa("static")) and not impact then
-		impact = true
+	if other==Game.player and ship and (ship:isa("Ship") or ship:isa("static")) then
 		PlayerDamagedShips[ship]=true
-		if policingArea() then
+		if policingArea() and not penalizedCollided then
+			penalizedCollided=true
 			local crime = "PIRACY"
 			Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE, {crime=Constant.CrimeType[crime].name}), Game.system.faction.policeName)
 			Game.player:AddCrime(crime, crime_fine(crime))
+			Timer:CallAt(Game.time + 5, function ()
+				penalizedCollided = false
+			end)
 		end
-	else impact = false
 	end
 end
 Event.Register("onShipCollided",onShipCollided)
 
+local penalizedHit = false
 local onShipHit = function (ship, attacker)
-	if attacker and attacker:IsPlayer() and not impact then
-		impact = true
+	if attacker == Game.player and not penalizedHit then
 		if ship then
 			PlayerDamagedShips[ship]=true
 			if policingArea() and playerAlert ~= "SHIP_FIRING" then
+				penalizedHit = true
 				local crime = "PIRACY"
-print("ONSHIPHIT StatsTracking")
 				Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE, {crime=Constant.CrimeType[crime].name}), Game.system.faction.policeName)
---				local fine = math.max(1, 1+math.floor(Constant.CrimeType[crime].basefine * (1.0-Game.system.lawlessness)))
 				Game.player:AddCrime(crime, crime_fine(crime))
+				Timer:CallAt(Game.time + 5, function ()
+					penalizedHit = false
+				end)
 			end
 		end
-	else impact = false
 	end
 end
 Event.Register("onShipHit",onShipHit)

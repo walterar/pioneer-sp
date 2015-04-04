@@ -47,10 +47,11 @@ ui.templates.FileDialog = function (args)
 
 	local fileEntry
 	if args.allowNewFile then
+
 		fileEntry = ui:TextEntry()
-		if #files > 0 then
-			fileEntry:SetText(files[1].name)
-		end
+--		if #files > 0 then
+--			fileEntry:SetText(files[1].name)
+--		end
 		fileEntry.onChange:Connect(function (fileName)
 			fileName = util.trim(fileName)
 			selectButton:SetEnabled(fileName ~= '')

@@ -10,12 +10,8 @@ local Equipment = import("Equipment")
 
 local MessageBox = import("ui/MessageBox")
 
-local l = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en");
-
--- XXX equipment strings are in core. this sucks
-local lcore = Lang.GetResource("core") or Lang.GetResource("core","en");
-
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en");
+local l = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
+local le = Lang.GetResource("equipment-core") or Lang.GetResource("equipment-core","en")
 
 local ui = Engine.ui
 
@@ -40,7 +36,7 @@ local defaultFuncs = {
 
 	-- what do we get for this item if we are selling
 	getSellPrice = function (e)
-		basePrice = Game.player:GetDockedWith():GetEquipmentPrice(e)
+		local basePrice = Game.player:GetDockedWith():GetEquipmentPrice(e)
 		if basePrice > 0 then
 			return sellPriceReduction * basePrice
 		else
@@ -261,6 +257,11 @@ function EquipmentTableWidgets.Pair (config)
 		if player:GetMoney() < funcs.getBuyPrice(e) then
 			MessageBox.Message(l.YOU_NOT_ENOUGH_MONEY)
 			return
+		end
+
+		local msg = le[e.l10n_key.."_DESCRIPTION"]
+		if msg and e.l10n_key ~= "UNOCCUPIED_CABIN" then
+			MessageBox.Message(msg)
 		end
 
 		assert(player:AddEquip(e, 1, slot) == 1)

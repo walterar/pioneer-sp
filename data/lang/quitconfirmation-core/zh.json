@@ -1,19 +1,19 @@
 {
    "MSG_1" : {
       "description" : "",
-      "message" : "Say {yes} to get out of here and go back to your boring programs?"
+      "message" : "真的要离开这里去做那些无聊的事情吗?"
    },
    "MSG_10" : {
       "description" : "",
-      "message" : "Please choose {no} to waste a few more productive hours. Please?"
+      "message" : "可以请您选择[留下]再继续浪费几个小时吗?"
    },
    "MSG_11" : {
       "description" : "",
-      "message" : "Explorers don't quit, but go ahead and click {yes} if you aren't one."
+      "message" : "探索者从不言弃, 如果你不属于其中一员的话, 尽管选择[离开]吧."
    },
    "MSG_12" : {
       "description" : "",
-      "message" : "Choose {no} If you are a tough bounty hunter, if not, click {yes} daintily."
+      "message" : "如果你是个坚强的赏金猎人, 那就选择[留下], 如果不是那就优雅地[离开]吧."
    },
    "MSG_13" : {
       "description" : "\"Seeing\" as in having an affair / being unfaithful",
@@ -21,11 +21,11 @@
    },
    "MSG_14" : {
       "description" : "",
-      "message" : "Do you really have something better to do?"
+      "message" : "真的有更好的事情要去做吗?"
    },
    "MSG_15" : {
       "description" : "",
-      "message" : "Giving up already?"
+      "message" : "已经放弃了吗?"
    },
    "MSG_16" : {
       "description" : "A little homage to the movie 2001 A Space Odyssey",
@@ -37,46 +37,46 @@
    },
    "MSG_2" : {
       "description" : "",
-      "message" : "Don't go now, there's a pirate waiting for you in the other program."
+      "message" : "现在别走, 外面有好多海盗等着你呢."
    },
    "MSG_3" : {
       "description" : "",
-      "message" : "Are you sure you want to quit this great game that cost you nothing?"
+      "message" : "确定要退出这个好玩又不花你一分钱的游戏吗?"
    },
    "MSG_4" : {
       "description" : "",
-      "message" : "Doest thou wish to leave with such hasty abandon?"
+      "message" : "就这么匆匆忙忙地走了吗?"
    },
    "MSG_5" : {
       "description" : "(Inspired by Wolfenstein 3D)",
-      "message" : "Choose {no} for guns and glory, {yes} for work and worry."
+      "message" : "想要战争和荣耀就[留下], 想要工作和烦恼就[离开]."
    },
    "MSG_6" : {
       "description" : "",
-      "message" : "Click {no} to be brave, click {yes} to cower in shame."
+      "message" : "勇敢地[留下]或是怯懦地[离开]."
    },
    "MSG_7" : {
       "description" : "Doom 1 anyone? Although it said DOS instead of Command line",
-      "message" : "I wouldn't leave if I were you. The command line is much worse."
+      "message" : "如果我是你我就不会这么做, 回去敲代码比玩游戏惨多了."
    },
    "MSG_8" : {
       "description" : "",
-      "message" : "I'm thinking you want to click {no} to play more. You do it."
+      "message" : "你会选择[留下]然后继续玩. 照着做吧."
    },
    "MSG_9" : {
       "description" : "",
-      "message" : "Clicking {yes} means you must return to the humdrum workday world."
+      "message" : "选择[离开]意味着你就得回到乏味的工作中去了."
    },
    "NO" : {
       "description" : "No, don't quit program",
-      "message" : "否"
+      "message" : "留下"
    },
    "QUIT" : {
       "description" : "Quit game, as a question",
-      "message" : "Quit?"
+      "message" : "要退出游戏吗?"
    },
    "YES" : {
       "description" : "Yes, quit program",
-      "message" : "是"
+      "message" : "离开"
    }
 }

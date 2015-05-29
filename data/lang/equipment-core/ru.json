@@ -17,11 +17,11 @@
    },
    "AUTO_COMBAT" : {
       "description" : "",
-      "message" : "AutoCombat"
+      "message" : "АвтоБорьба"
    },
    "AUTO_COMBAT_DESCRIPTION" : {
       "description" : "",
-      "message" : "An on-board combat computer."
+      "message" : "На борту боевой компьютер."
    },
    "AUTOPILOT" : {
       "description" : "",
@@ -48,12 +48,12 @@
       "message" : "Предназначен для сбора грузовых контейнеров в космическом пространстве."
    },
    "DEMP" : {
-      "description" : "Directional electro magnetic pulse.",
-      "message" : "DEMP System"
+      "description" : "Направленная электромагнитный импульс.",
+      "message" : "DEMP система"
    },
    "DEMP_DESCRIPTION" : {
       "description" : "",
-      "message" : "Temporarily overrides the electronics of the attacker.."
+      "message" : "Временно переопределяет электронику злоумышленника."
    },
    "DRIVE_CLASS1" : {
       "description" : "",
@@ -161,11 +161,11 @@
    },
    "MATTER_CAPACITOR" : {
       "description" : "",
-      "message" : "Matter Capacitor"
+      "message" : "Материя Конденсатор"
    },
    "MATTER_CAPACITOR_DESCRIPTION" : {
       "description" : "",
-      "message" : "Provides unlimited system fuel."
+      "message" : "Обеспечивает неограниченное топливной системы."
    },
    "MININGCANNON_17MW" : {
       "description" : "",
@@ -201,11 +201,11 @@
    },
    "PROP_CONVERTER" : {
       "description" : "",
-      "message" : "Propellant Converter"
+      "message" : "Ракетного топлива Конвертор"
    },
    "PROP_CONVERTER_DESCRIPTION" : {
       "description" : "",
-      "message" : "Converter that allows use hydrogen instead of water in propellant engine"
+      "message" : "Конвертер, который позволяет использовать водород вместо воды в двигателя ракеты"
    },
    "PULSECANNON_10MW" : {
       "description" : "",

@@ -1164,8 +1164,8 @@
       "message" : "富商独裁"
    },
    "POLICE_SHIP_REGISTRATION" : {
-      "description" : "",
-      "message" : "警察"
+      "description" : "警察 conflict with 'police-mecha' ship model",
+      "message" : "POLICE"
    },
    "POPULATION" : {
       "description" : "",

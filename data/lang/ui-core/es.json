@@ -28,8 +28,8 @@
       "message" : "Ha ocurrido un error"
    },
    "ATMOSPHERIC_SHIELDING" : {
-      "description" : "Used in ShipInfo view, followed by a yes/no depending on if the ship can carry atmospheric shields",
-      "message" : "Atmospheric shielding"
+      "description" : "",
+      "message" : "Escudo atmosférico"
    },
    "ATTEMPT_TO_REPAIR_HULL" : {
       "description" : "",
@@ -217,15 +217,15 @@
    },
    "DELTA_V_EMPTY" : {
       "description" : "Delta-v capacity of a ship with no cargo or upgrades",
-      "message" : "Delta-v (empty)"
+      "message" : "Delta-v (vacío)"
    },
    "DELTA_V_FULL" : {
       "description" : "Delta-v capacity of a ship with maximum cargo",
-      "message" : "Delta-v (full)"
+      "message" : "Delta-v (cargado)"
    },
    "DELTA_V_MAX" : {
       "description" : "Delta-v capacity of a ship with cargo bay fully loaded with propellant",
-      "message" : "Delta-v (max)"
+      "message" : "Delta-v (máximo)"
    },
    "DESCENT_TO_GROUND_SPEED" : {
       "description" : "",
@@ -505,15 +505,15 @@
    },
    "LAUNCH_PERMISSION_DENIED_BUSY" : {
       "description" : "",
-      "message" : "Permiso para despegar denegado: Bahía de atraque ocupada."
+      "message" : "Lanzamiento denegado: Bahía de atraque ocupada."
    },
    "LAUNCH_PERMISSION_DENIED_CREW" : {
       "description" : "",
-      "message" : "Permission to launch denied: not enough crew too handle this ship."
+      "message" : "Lanzamiento denegado: No hay suficiente tripulación para manejar esta nave."
    },
    "LAUNCH_PERMISSION_DENIED_FINED" : {
       "description" : "",
-      "message" : "Permiso denegado por multa pendiente de pago."
+      "message" : "Lanzamiento denegado: Multa pendiente de pago."
    },
    "LEGAL_STATUS" : {
       "description" : "",
@@ -649,7 +649,7 @@
    },
    "MISSION_DETAILS" : {
       "description" : "",
-      "message" : "Detalles de Misión"
+      "message" : "Detalles de la Misión"
    },
    "MORE_INFO" : {
       "description" : "",
@@ -1105,6 +1105,6 @@
    },
    "X_CANNOT_BE_TOLERATED_HERE" : {
       "description" : "Message to be sent over comms by police when crime is committed by player",
-      "message" : "{crime} no es tolerado aquí!"
+      "message" : "¡El delito de < {crime} > no se tolera aquí! ¡Usted ha sido multado!"
    }
 }

@@ -19,40 +19,43 @@ local loaded_data
 local onChat = function (form, ref, option)
 	local ad = ads[ref]
 
+	local tariff = 100 * (1+Game.system.lawlessness)
+
+	local crime,fine = Game.player:GetCrime()
+
 	if option == 0 then
 		form:Clear()
-		local location
 
 		form:SetTitle(l.You_are_owner_of_the_registration..Game.player.label.."\n")
 		form:SetFace({seed = ad.faceseed+1})
-		form:SetMessage(l.Work_we_do.."\n*\n*")
 
-		if Game.system.faction == nil then
-			location = "XX"
+		if fine > 0 then
+				form:SetMessage("\nHola Comandante.\nLamentablemente no podemos cambiar su matrícula\nUsted adeuda multas policiales por "..showCurrency(fine).."\n \n*\n*")
+
+		elseif Game.player:CriminalRecord() then
+			tariff = 5000 * (1+Game.system.lawlessness)
+			form:SetMessage("Hola Comandante.\nCambie aquí su matrícula y limpie\nsus antecedentes criminales por sólo "..showCurrency(tariff).."\n \n*\n*")
+			form:AddOption(l.Register_in .. Game.system.faction.name, 1)
 		else
-			location = Game.system.faction.name
+			form:SetMessage(l.Work_we_do..showCurrency(tariff).."\n \n*\n*")
+			form:AddOption(l.Register_in .. Game.system.faction.name, 1)
 		end
-		form:AddOption(l.Register_in .. location, 1)
 		return
 	end
 
 	if option == 1 then
 		form:Clear()
-		if Game.player:GetMoney() < 100 then
-			form:SetMessage("\n"..l.Not_have_enough_credit, ad.title)
+
+		if Game.player:GetMoney() < tariff then
+			form:SetMessage("\n"..l.Not_have_enough_credit)
 		else
 			local ship_prefix = string.upper(string.sub(Game.system.faction.name,1,2))
 			local shiplabel = string.format("%02s-%04d", ship_prefix, Engine.rand:Integer(0,9999))
 			Game.player:SetLabel(shiplabel)
 			_G.ShipFaction = Game.system.faction.name
 			local prefix = string.sub(Game.player.label, 1 , 2)
-			_G.DangerLevel = 1
-			if prefix == "IN" then
-				_G.DangerLevel = 0
-			elseif prefix == "EM" then
-				_G.DangerLevel = 2
-			end
-			Game.player:AddMoney(-100)
+			Game.player:ClearCriminalRecord()
+			Game.player:AddMoney(-tariff)
 			form:SetMessage("\n"..l.Change_of_enrolls_His_new_register_is..Game.player.label, ad.title)
 		end
 		return

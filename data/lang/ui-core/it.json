@@ -1,1102 +1,1050 @@
 {
-   "ABOVE_AVERAGE" : {
-      "description" : "",
-      "message" : "Sopra la media"
-   },
-   "ACTIVE" : {
-      "description" : "",
-      "message" : "Attivo"
-   },
-   "AFTER_TRADE_IN" : {
-      "description" : "",
-      "message" : "Dopo la permuta"
-   },
-   "ALLEGIANCE" : {
-      "description" : "",
-      "message" : "Alleanze:"
-   },
-   "ALL_UP_WEIGHT" : {
-      "description" : "",
-      "message" : "Peso in ordine di marcia"
-   },
-   "AMOUNT" : {
-      "description" : "",
-      "message" : "Quantità"
-   },
-   "AN_ERROR_HAS_OCCURRED" : {
-      "description" : "",
-      "message" : "Si è verificato un errore"
-   },
-   "ATMOSPHERIC_SHIELDING" : {
-      "description" : "Used in ShipInfo view, followed by a yes/no depending on if the ship can carry atmospheric shields",
-      "message" : "Scudi atmosferici"
-   },
-   "ATTEMPT_TO_REPAIR_HULL" : {
-      "description" : "",
-      "message" : "Tenta di riparare lo scavo"
-   },
-   "AVAILABLE_FOR_PURCHASE" : {
-      "description" : "",
-      "message" : "Acquistabile"
-   },
-   "AVERAGE" : {
-      "description" : "",
-      "message" : "Medio"
-   },
-   "BACKWARD_ACCEL" : {
-      "description" : "",
-      "message" : "Accelerazione indietro"
-   },
-   "BULLETIN_BOARD" : {
-      "description" : "",
-      "message" : "Bacheca Annunci"
-   },
-   "BUY" : {
-      "description" : "Commodities and equipment prices",
-      "message" : "Compra"
-   },
-   "BUY_SHIP" : {
-      "description" : "",
-      "message" : "Compra Astronave"
-   },
-   "CABINS" : {
-      "description" : "For passengers",
-      "message" : "Alloggi"
-   },
-   "CABIN_FREE" : {
-      "description" : "Free capacity for passengers",
-      "message" : "{amount} liberi"
-   },
-   "CABIN_USED" : {
-      "description" : "Passengers using cabins",
-      "message" : "{amount} occupati"
-   },
-   "CANCEL" : {
-      "description" : "",
-      "message" : "Annulla"
-   },
-   "CAPACITY" : {
-      "description" : "Capacity of ship to fit more equipment",
-      "message" : "Capacità"
-   },
-   "CAPACITY_USED" : {
-      "description" : "",
-      "message" : "Capacità utilizzata"
-   },
-   "CARGO" : {
-      "description" : "",
-      "message" : "Carico"
-   },
-   "CARGO_SPACE" : {
-      "description" : "",
-      "message" : "Capacità di carico"
-   },
-   "CARGO_SPACE_USED" : {
-      "description" : "",
-      "message" : "Capacità di carico usata"
-   },
-   "CARGO_T_FREE" : {
-      "description" : "t for tonne",
-      "message" : "{amount}t disponibili"
-   },
-   "CARGO_T_USED" : {
-      "description" : "t for tonne",
-      "message" : "{amount}t occupate"
-   },
-   "CASH" : {
-      "description" : "",
-      "message" : "Crediti"
-   },
-   "CASH_N" : {
-      "description" : "",
-      "message" : "Denaro: {money}"
-   },
-   "CHANGE_BINDING" : {
-      "description" : "Key binding option",
-      "message" : "Cambia associazioni"
-   },
-   "CHIEF_MECHANIC" : {
-      "description" : "",
-      "message" : "Capo Meccanico"
-   },
-   "CIRCULAR_ORBIT_SPEED" : {
-      "description" : "",
-      "message" : "Velocità orbita circolare"
-   },
-   "CITY_DETAIL_LEVEL" : {
-      "description" : "Game graphics option",
-      "message" : "Livello dettaglio città"
-   },
-   "CLEAN" : {
-      "description" : "Legal status of player",
-      "message" : "Pulito"
-   },
-   "CLEAR" : {
-      "description" : "Clear an option in game settings/options menu",
-      "message" : "Pulisci"
-   },
-   "CLIENT" : {
-      "description" : "",
-      "message" : "Cliente"
-   },
-   "COMBAT" : {
-      "description" : "Headline for kills and combat rating",
-      "message" : "Combattimento"
-   },
-   "COMMANDER" : {
-      "description" : "",
-      "message" : "Comandante"
-   },
-   "COMMODITY_MARKET" : {
-      "description" : "",
-      "message" : "Mercato dei beni di scambio"
-   },
-   "COMPACT_SCANNER" : {
-      "description" : "Game settings option",
-      "message" : "Scanner compatto"
-   },
-   "COMPETENT" : {
-      "description" : "Combat rating",
-      "message" : "Competente"
-   },
-   "COMPLETED" : {
-      "description" : "",
-      "message" : "Completato"
-   },
-   "COMPRESS_TEXTURES" : {
-      "description" : "graphics option in game settings menu ",
-      "message" : "Compressione Texture"
-   },
-   "CONSTABLE" : {
-      "description" : "",
-      "message" : "Conestabile"
-   },
-   "CONTINUE_GAME" : {
-      "description" : "",
-      "message" : "Continua partita"
-   },
-   "CONTROLS" : {
-      "description" : "",
-      "message" : "Controlli"
-   },
-   "CONTROL_OPTIONS" : {
-      "description" : "",
-      "message" : "Opzioni controlli"
-   },
-   "COULD_NOT_LOAD_GAME" : {
-      "description" : "",
-      "message" : "Impossibile caricare la partita:"
-   },
-   "CREDIBLE" : {
-      "description" : "For player reputation",
-      "message" : "Credibile"
-   },
-   "CREW_CABINS" : {
-      "description" : "",
-      "message" : "Alloggi equipaggio"
-   },
-   "CREW_ROSTER" : {
-      "description" : "",
-      "message" : "Equipaggio"
-   },
-   "CRIMINAL_RECORD" : {
-      "description" : "",
-      "message" : "Fedina penale"
-   },
-   "DANGEROUS" : {
-      "description" : "Player combat rating",
-      "message" : "Pericoloso"
-   },
-   "DEADLY" : {
-      "description" : "Player combat rating",
-      "message" : "Letale"
-   },
-   "DELTA_V" : {
-      "description" : "",
-      "message" : "Delta-V"
-   },
-   "DELTA_V_EMPTY" : {
-      "description" : "Delta-v capacity of a ship with no cargo or upgrades",
-      "message" : "Delta-v (vuoto)"
-   },
-   "DELTA_V_FULL" : {
-      "description" : "Delta-v capacity of a ship with maximum cargo",
-      "message" : "Delta-v (pieno)"
-   },
-   "DELTA_V_MAX" : {
-      "description" : "Delta-v capacity of a ship with cargo bay fully loaded with propellant",
-      "message" : "Delta-v (max)"
-   },
-   "DESCENT_TO_GROUND_SPEED" : {
-      "description" : "",
-      "message" : "Velocità di discesa-a-terra:"
-   },
-   "DESTROY_ENEMY_SHIP" : {
-      "description" : "",
-      "message" : "Distruggi l'astronave nemica"
-   },
-   "DISMISS" : {
-      "description" : "Terminate crew memeber's contract",
-      "message" : "Licenzia"
-   },
-   "DISPLAY_HUD_TRAILS" : {
-      "description" : "",
-      "message" : "Mostra scie nel HUD"
-   },
-   "DISPLAY_NAV_TUNNELS" : {
-      "description" : "Settings option: hyperspace tunnel effect",
-      "message" : "Mostra tunnel di navigazione"
-   },
-   "DISPLAY_SPEED_LINES" : {
-      "description" : "Settings option: effect when travelling in space",
-      "message" : "Mostra effetti di velocità"
-   },
-   "DOCK_AT_CURRENT_TARGET" : {
-      "description" : "",
-      "message" : "Attracca alla destinazione selezionata"
-   },
-   "DUE" : {
-      "description" : "mission deadline date",
-      "message" : "Scadenza"
-   },
-   "D_DAYS_LEFT" : {
-      "description" : "",
-      "message" : "Giorni rimasti: %d"
-   },
-   "ECONOMY_TRADE" : {
-      "description" : "",
-      "message" : "Economia & Commercio"
-   },
-   "EFFECTS" : {
-      "description" : "",
-      "message" : "Effetti:"
-   },
-   "ELITE" : {
-      "description" : "Player combat rating",
-      "message" : "ELITE"
-   },
-   "EMPLOYMENT" : {
-      "description" : "",
-      "message" : "Impiego"
-   },
-   "ENABLE_COCKPIT" : {
-      "description" : "Game settings option: to use a cockpit 3D model",
-      "message" : "Abilita abitacolo (SPERIMENTALE)"
-   },
-   "ENABLE_JOYSTICK" : {
-      "description" : "",
-      "message" : "Abilita Joystick"
-   },
-   "ENGINEERING" : {
-      "description" : "Engineering skills of crew",
-      "message" : "Ingegneria:"
-   },
-   "EQUIPMENT" : {
-      "description" : "",
-      "message" : "Equipaggiamento"
-   },
-   "EQUIPMENT_MARKET" : {
-      "description" : "",
-      "message" : "Mercato delle apparecchiature"
-   },
-   "EQUIPPED" : {
-      "description" : "",
-      "message" : "Montato a bordo"
-   },
-   "ERROR" : {
-      "description" : "",
-      "message" : "Errore"
-   },
-   "ESCAPE_SPEED" : {
-      "description" : "",
-      "message" : "Velocità di fuga:"
-   },
-   "EXIT_THIS_GAME" : {
-      "description" : "",
-      "message" : "Esci dalla partita"
-   },
-   "EXPERIENCED" : {
-      "description" : "For player reputation",
-      "message" : "Competente"
-   },
-   "EXPERT" : {
-      "description" : "For player reputation",
-      "message" : "Esperto"
-   },
-   "FAILED" : {
-      "description" : "When failed mission",
-      "message" : "Fallito"
-   },
-   "FEMALE" : {
-      "description" : "",
-      "message" : "Femmina"
-   },
-   "FORWARD_ACCEL" : {
-      "description" : "",
-      "message" : "Accelerazione avanti"
-   },
-   "FORWARD_ACCEL_EMPTY" : {
-      "description" : "",
-      "message" : "Accelerazione (vuoto)"
-   },
-   "FORWARD_ACCEL_FULL" : {
-      "description" : "",
-      "message" : "Accelerazione (carico)"
-   },
-   "FRACTAL_DETAIL" : {
-      "description" : "",
-      "message" : "Dettaglo frattali"
-   },
-   "FREE" : {
-      "description" : "Used in Ship Information view as in Capacity: 10t (5t free)",
-      "message" : "liberi"
-   },
-   "FRONT_WEAPON" : {
-      "description" : "",
-      "message" : "Arma anteriore"
-   },
-   "FUEL" : {
-      "description" : "",
-      "message" : "Carburante"
-   },
-   "FUEL_TANK_FULL" : {
-      "description" : "",
-      "message" : "Serbatoio carburante pieno."
-   },
-   "FUEL_WEIGHT" : {
-      "description" : "",
-      "message" : "Peso carburante"
-   },
-   "FULL_SCREEN" : {
-      "description" : "",
-      "message" : "Schermo intero"
-   },
-   "GENERAL_CREW" : {
-      "description" : "",
-      "message" : "Equipaggio generale"
-   },
-   "GIVE_ORDERS_TO_CREW" : {
-      "description" : "",
-      "message" : "Impartisci gli ordini all'equipaggio"
-   },
-   "GOOD_RIDDANCE_TO_YOU_TOO" : {
-      "description" : "",
-      "message" : "Buon viaggio anche a te."
-   },
-   "HANG_UP" : {
-      "description" : "",
-      "message" : "Riaggancia."
-   },
-   "HARMLESS" : {
-      "description" : "Player combat rating",
-      "message" : "Innocuo"
-   },
-   "HEAVY_CARGO_SHUTTLE" : {
-      "description" : "",
-      "message" : "Navetta da cargo pesante"
-   },
-   "HEAVY_COURIER" : {
-      "description" : "",
-      "message" : "Corriere pesante"
-   },
-   "HEAVY_FIGHTER" : {
-      "description" : "",
-      "message" : "Caccia pesante"
-   },
-   "HEAVY_FREIGHTER" : {
-      "description" : "",
-      "message" : "Mercantile pesante"
-   },
-   "HEAVY_PASSENGER_SHUTTLE" : {
-      "description" : "",
-      "message" : "Navetta passeggeri pesante"
-   },
-   "HEAVY_PASSENGER_TRANSPORT" : {
-      "description" : "",
-      "message" : "Trasporto passeggeri pesante"
-   },
-   "HIGH" : {
-      "description" : "Game settings option: for graphics resolution",
-      "message" : "Alto"
-   },
-   "HULL_DOES_NOT_REQUIRE_REPAIR" : {
-      "description" : "",
-      "message" : "Lo scafo non necessità di riparazione."
-   },
-   "HULL_INTEGRITY" : {
-      "description" : "",
-      "message" : "Integrità scafo"
-   },
-   "HULL_REPAIRED_BY_NAME_NOW_AT_N_PERCENT" : {
-      "description" : "",
-      "message" : "Scafo riparato da {name}, ora al {repairPercent}%"
-   },
-   "HULL_REPAIR_ATTEMPT_FAILED_HULL_SUFFERED_MINOR_DAMAGE" : {
-      "description" : "",
-      "message" : "Tentativo di riparazione scafo fallito. Lo scafo ha subito un leggero danno."
-   },
-   "HYPERDRIVE" : {
-      "description" : "",
-      "message" : "Ipermotore"
-   },
-   "HYPERDRIVE_FITTED" : {
-      "description" : "",
-      "message" : "Ipermotore montato:"
-   },
-   "HYPERSPACE_RANGE" : {
-      "description" : "",
-      "message" : "Portata iperspaziale"
-   },
-   "IM_TIRED_OF_WORKING_FOR_NOTHING_DONT_YOU_KNOW_WHAT_A_CONTRACT_IS" : {
-      "description" : "",
-      "message" : "Sono stanco di lavorare gratis. Ha idea di cosa sia un contratto?"
-   },
-   "INACTIVE" : {
-      "description" : "",
-      "message" : "Inattivo"
-   },
-   "INCOMPETENT" : {
-      "description" : "For player reputation",
-      "message" : "Incompetente"
-   },
-   "INEXPERIENCED" : {
-      "description" : "For player reputation",
-      "message" : "Inesperto"
-   },
-   "INVERT_MOUSE_Y" : {
-      "description" : "",
-      "message" : "Inverti Mouse Y"
-   },
-   "IN_CARGO_HOLD" : {
-      "description" : "",
-      "message" : "In stiva"
-   },
-   "IN_STOCK" : {
-      "description" : "",
-      "message" : "Giacenza"
-   },
-   "ITEM_IS_OUT_OF_STOCK" : {
-      "description" : "",
-      "message" : "Quest'articolo è esaurito."
-   },
-   "ITS_BEEN_GREAT_WORKING_FOR_YOU_IF_YOU_NEED_ME_AGAIN_ILL_BE_HERE_A_WHILE" : {
-      "description" : "",
-      "message" : "È stato bello lavorare con lei. Sarò qua ancora un po', se avesse bisogno di me."
-   },
-   "JETTISON" : {
-      "description" : "",
-      "message" : "Espelli"
-   },
-   "KILLS" : {
-      "description" : "",
-      "message" : "Uccisioni:"
-   },
-   "LANGUAGE" : {
-      "description" : "",
-      "message" : "Lingua"
-   },
-   "LANGUAGE_RESTART_GAME_TO_APPLY" : {
-      "description" : "",
-      "message" : "Lingua (riavvia il gioco per applicare)"
-   },
-   "LAUNCH_PERMISSION_DENIED_BUSY" : {
-      "description" : "",
-      "message" : "Autorizzazione al lancio negata: attracco occupato."
-   },
-   "LAUNCH_PERMISSION_DENIED_CREW" : {
-      "description" : "",
-      "message" : "Permesso di lancio negato: equipaggio insufficiente per poter pilotare questa astronave."
-   },
-   "LAUNCH_PERMISSION_DENIED_FINED" : {
-      "description" : "",
-      "message" : "Permesso di lancio negato: lei ha delle multe pendenti."
-   },
-   "LEGAL_STATUS" : {
-      "description" : "",
-      "message" : "Stato giuridico"
-   },
-   "LIGHT_CARGO_SHUTTLE" : {
-      "description" : "",
-      "message" : "Navetta da cargo leggera"
-   },
-   "LIGHT_COURIER" : {
-      "description" : "",
-      "message" : "Correre leggero"
-   },
-   "LIGHT_FIGHTER" : {
-      "description" : "",
-      "message" : "Caccia leggero"
-   },
-   "LIGHT_FREIGHTER" : {
-      "description" : "",
-      "message" : "Mercantile leggero"
-   },
-   "LIGHT_PASSENGER_SHUTTLE" : {
-      "description" : "",
-      "message" : "Navetta passeggeri leggera"
-   },
-   "LIGHT_PASSENGER_TRANSPORT" : {
-      "description" : "",
-      "message" : "Trasporto passeggeri pesante"
-   },
-   "LOAD" : {
-      "description" : "",
-      "message" : "Carica"
-   },
-   "LOAD_GAME" : {
-      "description" : "",
-      "message" : "Carica partita"
-   },
-   "LOBBY" : {
-      "description" : "",
-      "message" : "Anticamera"
-   },
-   "LOCATED_N_KM_FROM_THE_CENTRE_OF_NAME" : {
-      "description" : "",
-      "message" : "Localizzato a {distance}km dal centro di {name}:"
-   },
-   "LOCATION" : {
-      "description" : "",
-      "message" : "Posizione"
-   },
-   "LOW" : {
-      "description" : "",
-      "message" : "Basso"
-   },
-   "LY" : {
-      "description" : "Light year",
-      "message" : "AL"
-   },
-   "MAKE_NEW_FACE" : {
-      "description" : "",
-      "message" : "Genera nuovo volto"
-   },
-   "MALE" : {
-      "description" : "",
-      "message" : "Maschio"
-   },
-   "MASS" : {
-      "description" : "",
-      "message" : "Massa"
-   },
-   "MASTER" : {
-      "description" : "For player reputation",
-      "message" : "Maestro"
-   },
-   "MASTER_VOL" : {
-      "description" : "Master sound in settings option",
-      "message" : "Principale:"
-   },
-   "MAX" : {
-      "description" : "",
-      "message" : "massimo"
-   },
-   "MAXIMUM_CREW" : {
-      "description" : "",
-      "message" : "Equipaggio massimo"
-   },
-   "MEDIUM" : {
-      "description" : "Game settings option: graphics resolution",
-      "message" : "Medio"
-   },
-   "MEDIUM_CARGO_SHUTTLE" : {
-      "description" : "",
-      "message" : "Navetta da carico media"
-   },
-   "MEDIUM_COURIER" : {
-      "description" : "",
-      "message" : "Corriere medio"
-   },
-   "MEDIUM_FIGHTER" : {
-      "description" : "",
-      "message" : "Caccia medio"
-   },
-   "MEDIUM_FREIGHTER" : {
-      "description" : "",
-      "message" : "Mercantile medio"
-   },
-   "MEDIUM_PASSENGER_SHUTTLE" : {
-      "description" : "",
-      "message" : "Navetta passeggeri media"
-   },
-   "MEDIUM_PASSENGER_TRANSPORT" : {
-      "description" : "",
-      "message" : "Trasporto passeggeri medio"
-   },
-   "METAL_ALLOYS" : {
-      "description" : "",
-      "message" : "Leghe metalliche"
-   },
-   "MILITARY" : {
-      "description" : "",
-      "message" : "Militanza"
-   },
-   "MINIMUM_CREW" : {
-      "description" : "",
-      "message" : "Equipaggio minimo"
-   },
-   "MISSILE_MOUNTS" : {
-      "description" : "",
-      "message" : "Supporti per missili"
-   },
-   "MISSIONS" : {
-      "description" : "",
-      "message" : "Missioni"
-   },
-   "MISSION_DETAILS" : {
-      "description" : "",
-      "message" : "Dettagli Missione"
-   },
-   "MORE_INFO" : {
-      "description" : "",
-      "message" : "Più informazioni..."
-   },
-   "MOSTLY_HARMLESS" : {
-      "description" : "",
-      "message" : "Praticamente innocuo"
-   },
-   "MULTISAMPLING" : {
-      "description" : "",
-      "message" : "Multisampling"
-   },
-   "MURDER" : {
-      "description" : "",
-      "message" : "Omicidio"
-   },
-   "MUSIC" : {
-      "description" : "",
-      "message" : "Musica:"
-   },
-   "MUTE" : {
-      "description" : "",
-      "message" : "Muto"
-   },
-   "NAME_OBJECT" : {
-      "description" : "For an item or object",
-      "message" : "Nome"
-   },
-   "NAME_PERSON" : {
-      "description" : "For a person",
-      "message" : "Nome"
-   },
-   "NAVIGATION" : {
-      "description" : "",
-      "message" : "Navigazione"
-   },
-   "NEGOTIATE" : {
-      "description" : "",
-      "message" : "Negoziare"
-   },
-   "NEXT_PAID" : {
-      "description" : "",
-      "message" : "Prossima paga"
-   },
-   "NO" : {
-      "description" : "Negative answer to a question",
-      "message" : "No"
-   },
-   "NOBODY" : {
-      "description" : "For player reputation",
-      "message" : "Nessuno"
-   },
-   "NONE" : {
-      "description" : "",
-      "message" : "Vuoto"
-   },
-   "NOTES" : {
-      "description" : "",
-      "message" : "Note:"
-   },
-   "NOT_ENOUGH_ALLOY_TO_ATTEMPT_A_REPAIR" : {
-      "description" : "",
-      "message" : "Non ci sono abbastanza {alloy} per tentare la riparazione"
-   },
-   "NOT_SUPPORTED_ON_THIS_SHIP" : {
-      "description" : "",
-      "message" : "{equipment} non è supportato da questo modello di astronave."
-   },
-   "NO_MISSIONS" : {
-      "description" : "",
-      "message" : "Nessuna missione."
-   },
-   "N_LIGHT_YEARS_N_MAX" : {
-      "description" : "",
-      "message" : "{range} anni luce ({maxRange} massimi)"
-   },
-   "N_OCCUPIED_PASSENGER_CABINS" : {
-      "description" : "",
-      "message" : "{quantity} Alloggi passeggeri occupati"
-   },
-   "N_SHIELD_GENERATORS" : {
-      "description" : "",
-      "message" : "{quantity} Generatori di Scudi"
-   },
-   "N_UNOCCUPIED_PASSENGER_CABINS" : {
-      "description" : "",
-      "message" : "{quantity} Alloggi passeggeri non occupati"
-   },
-   "OFF" : {
-      "description" : "",
-      "message" : "Spento"
-   },
-   "OK" : {
-      "description" : "",
-      "message" : "Ok"
-   },
-   "OPTIONS" : {
-      "description" : "",
-      "message" : "Opzioni"
-   },
-   "ORBIT" : {
-      "description" : "",
-      "message" : "Orbita"
-   },
-   "ORBITAL_ANALYSIS" : {
-      "description" : "",
-      "message" : "Analisi orbitale"
-   },
-   "ORBITAL_ANALYSIS_NOTES" : {
-      "description" : "",
-      "message" : "La velocità di orbita circolare è data come velocità tangenziale. L'astronave deve muoversi in una direzione di 90° rispetto all'asse astronave/{name}.\n\nLa velocità di discesa è un minimo assoluto, ed è anch'essa tangenziale. Una velocità od un angolo inferiori porteranno ad una traiettoria che interseca con la superficie di {name}.\n\nLa velocità di fuga si applica teoricamente ad ogni direzione, fintanto che l'astronave non entra in rotta di collisione con {name}."
-   },
-   "OWED" : {
-      "description" : "Player owing money to crew members",
-      "message" : "Dovuto"
-   },
-   "PAY_FINE_OF_N" : {
-      "description" : "",
-      "message" : "Paga multa di {amount}"
-   },
-   "PERSONAL_INFORMATION" : {
-      "description" : "",
-      "message" : "Informazioni personali"
-   },
-   "PILOTING" : {
-      "description" : "",
-      "message" : "Pilotaggio:"
-   },
-   "PILOT_SEAT_IS_NOW_OCCUPIED_BY_NAME" : {
-      "description" : "",
-      "message" : "Il posto di pilotaggio è ora occupato da {name}"
-   },
-   "PIRACY" : {
-      "description" : "",
-      "message" : "Pirateria"
-   },
-   "PLANET_DETAIL_DISTANCE" : {
-      "description" : "",
-      "message" : "Distanza dettagli pianeta"
-   },
-   "PLANET_TEXTURES" : {
-      "description" : "",
-      "message" : "Texture pianeta"
-   },
-   "POLICE" : {
-      "description" : "",
-      "message" : "Polizia"
-   },
-   "POOR" : {
-      "description" : "Player combat rating",
-      "message" : "Scarso"
-   },
-   "POSITION" : {
-      "description" : "",
-      "message" : "Posizione"
-   },
-   "PRESS_A_KEY_OR_CONTROLLER_BUTTON" : {
-      "description" : "",
-      "message" : "Premere un tasto od un pulsante del controller"
-   },
-   "PRICE" : {
-      "description" : "",
-      "message" : "Prezzo"
-   },
-   "PROFESSIONAL" : {
-      "description" : "For player reputation",
-      "message" : "Professionista"
-   },
-   "QUALIFICATION_SCORES" : {
-      "description" : "",
-      "message" : "Punteggi qualifiche"
-   },
-   "QUIT" : {
-      "description" : "",
-      "message" : "Esci"
-   },
-   "RANK" : {
-      "description" : "",
-      "message" : "Grado:"
-   },
-   "RATING" : {
-      "description" : "",
-      "message" : "Qualifica:"
-   },
-   "REAR_WEAPON" : {
-      "description" : "",
-      "message" : "Arma posteriore"
-   },
-   "REFUEL" : {
-      "description" : "",
-      "message" : "Rifornimento"
-   },
-   "REFUEL_FULL" : {
-      "description" : "",
-      "message" : "Rifornimento completo"
-   },
-   "RELIABLE" : {
-      "description" : "For player reputation",
-      "message" : "Affidabile"
-   },
-   "REPAIR_X_HULL_DAMAGE_FOR_X" : {
-      "description" : "",
-      "message" : "Ripara il {damage}% dei danni allo scafo per {price}"
-   },
-   "REPUTATION" : {
-      "description" : "",
-      "message" : "Reputazione"
-   },
-   "REQUEST_LAUNCH" : {
-      "description" : "",
-      "message" : "Richiesta autorizzazione al lancio"
-   },
-   "RETURN_TO_GAME" : {
-      "description" : "",
-      "message" : "Torna al gioco"
-   },
-   "RETURN_TO_MENU" : {
-      "description" : "",
-      "message" : "Ritorna al menu"
-   },
-   "REVERSE_ACCEL_EMPTY" : {
-      "description" : "",
-      "message" : "Decelerazione (vuoto)"
-   },
-   "REVERSE_ACCEL_FULL" : {
-      "description" : "",
-      "message" : "Decelerazione (carico)"
-   },
-   "REWARD" : {
-      "description" : "",
-      "message" : "Ricompensa"
-   },
-   "SAVE" : {
-      "description" : "",
-      "message" : "Salva"
-   },
-   "SCOOP_MOUNTS" : {
-      "description" : "How many slots or mounts exist on the ship for fitting SCOOPS (e.g. cargo scoop, fuel scoop, multi-scoop) ",
-      "message" : "Supporti per raccoglitori"
-   },
-   "SELECT" : {
-      "description" : "",
-      "message" : "Seleziona"
-   },
-   "SELECT_A_FILE_TO_SAVE_TO_OR_ENTER_A_NEW_FILENAME" : {
-      "description" : "",
-      "message" : "Seleziona un file su cui salvare, oppure inserisci un nuovo nome"
-   },
-   "SELECT_FILE" : {
-      "description" : "",
-      "message" : "Seleziona file..."
-   },
-   "SELECT_GAME_TO_LOAD" : {
-      "description" : "",
-      "message" : "Seleziona la partita da caricare..."
-   },
-   "SELL" : {
-      "description" : "Commodities and equipment prices",
-      "message" : "Vendi"
-   },
-   "SENSORS" : {
-      "description" : "",
-      "message" : "Sensori:"
-   },
-   "SHIP" : {
-      "description" : "",
-      "message" : "Astronave"
-   },
-   "SHIP_INFORMATION" : {
-      "description" : "",
-      "message" : "Scheda Astronave"
-   },
-   "SHIP_IS_ALREADY_FULLY_REPAIRED" : {
-      "description" : "",
-      "message" : "Al momento la Sua nave non necessita di manutenzione."
-   },
-   "SHIP_IS_FULLY_EQUIPPED" : {
-      "description" : "",
-      "message" : "La tua astronave completamente equipaggiata."
-   },
-   "SHIP_IS_FULLY_LADEN" : {
-      "description" : "",
-      "message" : "L'astronave è a pieno carico."
-   },
-   "SHIP_MARKET" : {
-      "description" : "",
-      "message" : "Mercato delle Astronavi"
-   },
-   "SHIP_REPAIRS" : {
-      "description" : "",
-      "message" : "Riparazione Astronavi"
-   },
-   "SHIP_VIEWING_WAS_SOLD" : {
-      "description" : "",
-      "message" : "L'astronave che stavi guardando è stata venduta"
-   },
-   "SOUND" : {
-      "description" : "",
-      "message" : "Suono"
-   },
-   "START_AT_BARNARDS_STAR" : {
-      "description" : "",
-      "message" : "Parti dalla Stella di Barnard"
-   },
-   "START_AT_EARTH" : {
-      "description" : "",
-      "message" : "Parti dalla Terra"
-   },
-   "START_AT_NEW_HOPE" : {
-      "description" : "New Hope is an in game location",
-      "message" : "Parti da New Hope"
-   },
-   "STATION_MANAGER" : {
-      "description" : "",
-      "message" : "Amministratore della stazione"
-   },
-   "STATUS" : {
-      "description" : "",
-      "message" : "Stato"
-   },
-   "THANKS_AND_REMEMBER_TO_BUY_FUEL" : {
-      "description" : "",
-      "message" : "Nel ringraziarLa per il Suo acquisto Le consigliamo di passare al Reparto Equipaggiamento ... e non dimentichi di rifornirsi di carburante PRIMA del lancio."
-   },
-   "THERE_IS_NOBODY_ELSE_ON_BOARD_ABLE_TO_FLY_THIS_SHIP" : {
-      "description" : "",
-      "message" : "Non c'è nessun'altro a bordo in grado di pilotare questa astronave."
-   },
-   "THE_SHIP_IS_UNDER_STATION_CONTROL_COMMANDER" : {
-      "description" : "",
-      "message" : "La sua astronave è sotto il controllo della stazione, Comandante."
-   },
-   "TOGGLE_MALE_FEMALE" : {
-      "description" : "player gender",
-      "message" : "Cambia maschio/femmina"
-   },
-   "TOO_SMALL_FOR_CURRENT_CREW" : {
-      "description" : "",
-      "message" : "L'astronave è troppo piccola per questo equipaggio."
-   },
-   "TOTAL" : {
-      "description" : "",
-      "message" : "Totale:"
-   },
-   "TOTAL_MASS" : {
-      "description" : "",
-      "message" : "Massa totale"
-   },
-   "TRADING_ILLEGAL_GOODS" : {
-      "description" : "",
-      "message" : "Commercio di merci Illegali"
-   },
-   "TRUSTWORTHY" : {
-      "description" : "For player reputation",
-      "message" : "Fidato"
-   },
-   "TYPE" : {
-      "description" : "",
-      "message" : "Tipo"
-   },
-   "UNLAWFUL_WEAPONS_DISCHARGE" : {
-      "description" : "",
-      "message" : "Scaricare illecitamente le proprie armi"
-   },
-   "UNRELIABLE" : {
-      "description" : "",
-      "message" : "Inaffidabile"
-   },
-   "UP_ACCEL" : {
-      "description" : "",
-      "message" : "Accelerazione in alto"
-   },
-   "USED" : {
-      "description" : "",
-      "message" : "Utilizzato"
-   },
-   "VERY_HIGH" : {
-      "description" : "Game settings option: graphic resolution",
-      "message" : "Molto alto"
-   },
-   "VERY_LOW" : {
-      "description" : "Game settings option: graphic resolution",
-      "message" : "Molto basso"
-   },
-   "VIDEO" : {
-      "description" : "",
-      "message" : "Video"
-   },
-   "VIDEO_CONFIGURATION_RESTART_GAME_TO_APPLY" : {
-      "description" : "",
-      "message" : "Configurazione video (riavvia il gioco per applicare)"
-   },
-   "VIDEO_RESOLUTION" : {
-      "description" : "",
-      "message" : "Risoluzione video"
-   },
-   "WAGE" : {
-      "description" : "Salary of crew shown in crew roster",
-      "message" : "Stipendio"
-   },
-   "WEIGHT_EMPTY" : {
-      "description" : "",
-      "message" : "Peso a vuoto"
-   },
-   "WEIGHT_FULLY_LOADED" : {
-      "description" : "",
-      "message" : "Peso a pieno carico"
-   },
-   "WE_ARE_IN_HYPERSPACE_COMMANDER" : {
-      "description" : "",
-      "message" : "Siamo nell'iperspazio, Comandante."
-   },
-   "WE_HAVE_NO_BUSINESS_WITH_YOU" : {
-      "description" : "",
-      "message" : "Al momento non ha pendenze con la Polizia."
-   },
-   "YES" : {
-      "description" : "Positive answer to a question",
-      "message" : "Sì"
-   },
-   "YOURE_GOING_TO_REGRET_SACKING_ME" : {
-      "description" : "",
-      "message" : "Ti pentirai di avermi scaricato!"
-   },
-   "YOUR_HULL_IS_AT_X_INTEGRITY" : {
-      "description" : "",
-      "message" : "Il tuo scafo è al {value}% dell'integrità."
-   },
-   "YOU_DONT_HAVE_ENOUGH_MONEY_FOR_THAT_OPTION" : {
-      "description" : "",
-      "message" : "Non ha abbastanza crediti per questa opzione."
-   },
-   "YOU_MUST_FIRST_SELECT_A_COMBAT_TARGET_COMMANDER" : {
-      "description" : "",
-      "message" : "Deve prima selezionare un bersaglio per il combattimento, Comandante."
-   },
-   "YOU_MUST_FIRST_SELECT_A_SUITABLE_NAVIGATION_TARGET_COMMANDER" : {
-      "description" : "",
-      "message" : "Deve prima selezionare una destinazione di navigazione adatta, Comandante."
-   },
-   "YOU_MUST_LAUNCH_FIRST_COMMANDER" : {
-      "description" : "",
-      "message" : "Deve prima decollare, Comandante."
-   },
-   "YOU_MUST_REQUEST_LAUNCH_CLEARANCE_FIRST_COMMANDER" : {
-      "description" : "",
-      "message" : "Deve prima richiedere l'autorizzazione al decollo, Comandante."
-   },
-   "YOU_NOT_ENOUGH_MONEY" : {
-      "description" : "",
-      "message" : "Crediti insufficienti"
-   }
+"ABOVE_AVERAGE":{
+"description":"",
+"message":"Sopra la media"
+},
+"ACTIVE":{
+"description":"",
+"message":"Attivo"
+},
+"AFTER_TRADE_IN":{
+"description":"",
+"message":"Dopo la permuta"
+},
+"ALLEGIANCE":{
+"description":"",
+"message":"Alleanze:"
+},
+"ALL_UP_WEIGHT":{
+"description":"",
+"message":"Peso in ordine di marcia"
+},
+"AMOUNT":{
+"description":"",
+"message":"Quantità"
+},
+"AN_ERROR_HAS_OCCURRED":{
+"description":"",
+"message":"Si è verificato un errore"
+},
+"ATMOSPHERIC_SHIELDING":{
+"description":"Used in ShipInfo view, followed by a yes/no depending on if the ship can carry atmospheric shields","message":"Scudi atmosferici"
+},
+"ATTEMPT_TO_REPAIR_HULL":{
+"description":"",
+"message":"Tenta di riparare lo scavo"
+},
+"AVAILABLE_FOR_PURCHASE":{
+"description":"",
+"message":"Acquistabile"
+},
+"AVERAGE":{
+"description":"",
+"message":"Medio"
+},
+"BACKWARD_ACCEL":{
+"description":"",
+"message":"Accelerazione indietro"
+},
+"BULLETIN_BOARD":{
+"description":"",
+"message":"Bacheca Annunci"
+},
+"BUY":{
+"description":"Commodities and equipment prices","message":"Compra"
+},
+"BUY_SHIP":{
+"description":"",
+"message":"Compra Astronave"
+},
+"CABINS":{
+"description":"For passengers","message":"Alloggi"
+},
+"CABIN_FREE":{
+"description":"Free capacity for passengers","message":"{amount} liberi"
+},
+"CABIN_USED":{
+"description":"Passengers using cabins","message":"{amount} occupati"
+},
+"CANCEL":{
+"description":"",
+"message":"Annulla"
+},
+"CAPACITY":{
+"description":"Capacity of ship to fit more equipment","message":"Capacità"
+},
+"CAPACITY_USED":{
+"description":"",
+"message":"Capacità utilizzata"
+},
+"CARGO":{
+"description":"",
+"message":"Carico"
+},
+"CARGO_SPACE":{
+"description":"",
+"message":"Capacità di carico"
+},
+"CARGO_SPACE_USED":{
+"description":"",
+"message":"Capacità di carico usata"
+},
+"CARGO_T_FREE":{
+"description":"t for tonne","message":"{amount}t disponibili"
+},
+"CARGO_T_USED":{
+"description":"t for tonne","message":"{amount}t occupate"
+},
+"CASH":{
+"description":"",
+"message":"Crediti"
+},
+"CASH_N":{
+"description":"",
+"message":"Denaro: {money}"
+},
+"CHANGE_BINDING":{
+"description":"Key binding option","message":"Cambia associazioni"
+},
+"CHIEF_MECHANIC":{
+"description":"",
+"message":"Capo Meccanico"
+},
+"CIRCULAR_ORBIT_SPEED":{
+"description":"",
+"message":"Velocità orbita circolare"
+},
+"CITY_DETAIL_LEVEL":{
+"description":"Game graphics option","message":"Livello dettaglio città"
+},
+"CLEAN":{
+"description":"Legal status of player","message":"Pulito"
+},
+"CLEAR":{
+"description":"Clear an option in game settings/options menu","message":"Pulisci"
+},
+"CLIENT":{
+"description":"",
+"message":"Cliente"
+},
+"COMBAT":{
+"description":"Headline for kills and combat rating","message":"Combattimento"
+},
+"COMMANDER":{
+"description":"",
+"message":"Comandante"
+},
+"COMMODITY_MARKET":{
+"description":"",
+"message":"Mercato dei beni di scambio"
+},
+"COMPACT_SCANNER":{
+"description":"Game settings option","message":"Scanner compatto"
+},
+"COMPETENT":{
+"description":"Combat rating","message":"Competente"
+},
+"COMPLETED":{
+"description":"",
+"message":"Completato"
+},
+"COMPRESS_TEXTURES":{
+"description":"graphics option in game settings menu ","message":"Compressione Texture"
+},
+"CONSTABLE":{
+"description":"",
+"message":"Conestabile"
+},
+"CONTINUE_GAME":{
+"description":"",
+"message":"Continua partita"
+},
+"CONTROLS":{
+"description":"",
+"message":"Controlli"
+},
+"CONTROL_OPTIONS":{
+"description":"",
+"message":"Opzioni controlli"
+},
+"COULD_NOT_LOAD_GAME":{
+"description":"",
+"message":"Impossibile caricare la partita:"
+},
+"CREDIBLE":{
+"description":"For player reputation","message":"Credibile"
+},
+"CREW_CABINS":{
+"description":"",
+"message":"Alloggi equipaggio"
+},
+"CREW_ROSTER":{
+"description":"",
+"message":"Equipaggio"
+},
+"CRIMINAL_RECORD":{
+"description":"",
+"message":"Fedina penale"
+},
+"DANGEROUS":{
+"description":"Player combat rating","message":"Pericoloso"
+},
+"DEADLY":{
+"description":"Player combat rating","message":"Letale"
+},
+"DELTA_V":{
+"description":"",
+"message":"Delta-V"
+},
+"DELTA_V_EMPTY":{
+"description":"Delta-v capacity of a ship with no cargo or upgrades","message":"Delta-v (vuoto)"
+},
+"DELTA_V_FULL":{
+"description":"Delta-v capacity of a ship with maximum cargo","message":"Delta-v (pieno)"
+},
+"DELTA_V_MAX":{
+"description":"Delta-v capacity of a ship with cargo bay fully loaded with propellant","message":"Delta-v (max)"
+},
+"DESCENT_TO_GROUND_SPEED":{
+"description":"",
+"message":"Velocità di discesa-a-terra:"
+},
+"DESTROY_ENEMY_SHIP":{
+"description":"",
+"message":"Distruggi l'astronave nemica"
+},
+"DISMISS":{
+"description":"Terminate crew memeber's contract","message":"Licenzia"
+},
+"DISPLAY_HUD_TRAILS":{
+"description":"",
+"message":"Mostra scie nel HUD"
+},
+"DISPLAY_NAV_TUNNELS":{
+"description":"Settings option: hyperspace tunnel effect","message":"Mostra tunnel di navigazione"
+},
+"DISPLAY_SPEED_LINES":{
+"description":"Settings option: effect when travelling in space","message":"Mostra effetti di velocità"
+},
+"DOCK_AT_CURRENT_TARGET":{
+"description":"",
+"message":"Attracca alla destinazione selezionata"
+},
+"DUE":{
+"description":"mission deadline date","message":"Scadenza"
+},
+"DUMPING":{
+"description":"The illegal act of dumping waste","message":"Scarico illegale"
+},
+"D_DAYS_LEFT":{
+"description":"",
+"message":"Giorni rimasti: %d"
+},
+"ECONOMY_TRADE":{
+"description":"",
+"message":"Economia & Commercio"
+},
+"EFFECTS":{
+"description":"",
+"message":"Effetti:"
+},
+"ELITE":{
+"description":"Player combat rating","message":"ELITE"
+},
+"EMPLOYMENT":{
+"description":"",
+"message":"Impiego"
+},
+"ENABLE_COCKPIT":{
+"description":"Game settings option: to use a cockpit 3D model","message":"Abilita abitacolo (SPERIMENTALE)"
+},
+"ENABLE_JOYSTICK":{
+"description":"",
+"message":"Abilita Joystick"
+},
+"ENGINEERING":{
+"description":"Engineering skills of crew","message":"Ingegneria:"
+},
+"EQUIPMENT":{
+"description":"",
+"message":"Equipaggiamento"
+},
+"EQUIPMENT_MARKET":{
+"description":"",
+"message":"Mercato delle apparecchiature"
+},
+"EQUIPPED":{
+"description":"",
+"message":"Montato a bordo"
+},
+"ERROR":{
+"description":"",
+"message":"Errore"
+},
+"ESCAPE_SPEED":{
+"description":"",
+"message":"Velocità di fuga:"
+},
+"EXIT_THIS_GAME":{
+"description":"",
+"message":"Esci dalla partita"
+},
+"EXPERIENCED":{
+"description":"For player reputation","message":"Competente"
+},
+"EXPERT":{
+"description":"For player reputation","message":"Esperto"
+},
+"FAILED":{
+"description":"When failed mission","message":"Fallito"
+},
+"FEMALE":{
+"description":"",
+"message":"Femmina"
+},
+"FORWARD_ACCEL":{
+"description":"",
+"message":"Accelerazione avanti"
+},
+"FORWARD_ACCEL_EMPTY":{
+"description":"",
+"message":"Accelerazione (vuoto)"
+},
+"FORWARD_ACCEL_FULL":{
+"description":"",
+"message":"Accelerazione (carico)"
+},
+"FRACTAL_DETAIL":{
+"description":"",
+"message":"Dettaglo frattali"
+},
+"FREE":{
+"description":"Used in Ship Information view as in Capacity: 10t (5t free)","message":"liberi"
+},
+"FRONT_WEAPON":{
+"description":"",
+"message":"Arma anteriore"
+},
+"FUEL":{
+"description":"",
+"message":"Carburante"
+},
+"FUEL_TANK_FULL":{
+"description":"",
+"message":"Serbatoio carburante pieno."
+},
+"FUEL_WEIGHT":{
+"description":"",
+"message":"Peso carburante"
+},
+"FULL_SCREEN":{
+"description":"",
+"message":"Schermo intero"
+},
+"GENERAL_CREW":{
+"description":"",
+"message":"Equipaggio generale"
+},
+"GIVE_ORDERS_TO_CREW":{
+"description":"",
+"message":"Impartisci gli ordini all'equipaggio"
+},
+"GOOD_RIDDANCE_TO_YOU_TOO":{
+"description":"",
+"message":"Buon viaggio anche a te."
+},
+"HANG_UP":{
+"description":"",
+"message":"Riaggancia."
+},
+"HARMLESS":{
+"description":"Player combat rating","message":"Innocuo"
+},
+"HEAVY_CARGO_SHUTTLE":{
+"description":"",
+"message":"Navetta da cargo pesante"
+},
+"HEAVY_COURIER":{
+"description":"",
+"message":"Corriere pesante"
+},
+"HEAVY_FIGHTER":{
+"description":"",
+"message":"Caccia pesante"
+},
+"HEAVY_FREIGHTER":{
+"description":"",
+"message":"Mercantile pesante"
+},
+"HEAVY_PASSENGER_SHUTTLE":{
+"description":"",
+"message":"Navetta passeggeri pesante"
+},
+"HEAVY_PASSENGER_TRANSPORT":{
+"description":"",
+"message":"Trasporto passeggeri pesante"
+},
+"HIGH":{
+"description":"Game settings option: for graphics resolution","message":"Alto"
+},
+"HULL_DOES_NOT_REQUIRE_REPAIR":{
+"description":"",
+"message":"Lo scafo non necessità di riparazione."
+},
+"HULL_INTEGRITY":{
+"description":"",
+"message":"Integrità scafo"
+},
+"HULL_REPAIRED_BY_NAME_NOW_AT_N_PERCENT":{
+"description":"",
+"message":"Scafo riparato da {name}, ora al {repairPercent}%"
+},
+"HULL_REPAIR_ATTEMPT_FAILED_HULL_SUFFERED_MINOR_DAMAGE":{
+"description":"",
+"message":"Tentativo di riparazione scafo fallito. Lo scafo ha subito un leggero danno."
+},
+"HYPERDRIVE":{
+"description":"",
+"message":"Ipermotore"
+},
+"HYPERDRIVE_FITTED":{
+"description":"",
+"message":"Ipermotore montato:"
+},
+"HYPERSPACE_RANGE":{
+"description":"",
+"message":"Portata iperspaziale"
+},
+"IM_TIRED_OF_WORKING_FOR_NOTHING_DONT_YOU_KNOW_WHAT_A_CONTRACT_IS":{
+"description":"",
+"message":"Sono stanco di lavorare gratis. Ha idea di cosa sia un contratto?"
+},
+"INACTIVE":{
+"description":"",
+"message":"Inattivo"
+},
+"INCOMPETENT":{
+"description":"For player reputation","message":"Incompetente"
+},
+"INEXPERIENCED":{
+"description":"For player reputation","message":"Inesperto"
+},
+"INVERT_MOUSE_Y":{
+"description":"",
+"message":"Inverti Mouse Y"
+},
+"IN_CARGO_HOLD":{
+"description":"",
+"message":"In stiva"
+},
+"IN_STOCK":{
+"description":"",
+"message":"Giacenza"
+},
+"ITEM_IS_OUT_OF_STOCK":{
+"description":"",
+"message":"Quest'articolo è esaurito."
+},
+"ITS_BEEN_GREAT_WORKING_FOR_YOU_IF_YOU_NEED_ME_AGAIN_ILL_BE_HERE_A_WHILE":{
+"description":"",
+"message":"È stato bello lavorare con lei. Sarò qua ancora un po', se avesse bisogno di me."
+},
+"JETTISON":{
+"description":"",
+"message":"Espelli"
+},
+"KILLS":{
+"description":"",
+"message":"Uccisioni:"
+},
+"LANGUAGE":{
+"description":"",
+"message":"Lingua"
+},
+"LANGUAGE_RESTART_GAME_TO_APPLY":{
+"description":"",
+"message":"Lingua (riavvia il gioco per applicare)"
+},
+"LAUNCH_PERMISSION_DENIED_BUSY":{
+"description":"",
+"message":"Autorizzazione al lancio negata: attracco occupato."
+},
+"LAUNCH_PERMISSION_DENIED_CREW":{
+"description":"",
+"message":"Permesso di lancio negato: equipaggio insufficiente per poter pilotare questa astronave."
+},
+"LAUNCH_PERMISSION_DENIED_FINED":{
+"description":"",
+"message":"Permesso di lancio negato: lei ha delle multe pendenti."
+},
+"LEGAL_STATUS":{
+"description":"",
+"message":"Stato giuridico"
+},
+"LIGHT_CARGO_SHUTTLE":{
+"description":"",
+"message":"Navetta da cargo leggera"
+},
+"LIGHT_COURIER":{
+"description":"",
+"message":"Correre leggero"
+},
+"LIGHT_FIGHTER":{
+"description":"",
+"message":"Caccia leggero"
+},
+"LIGHT_FREIGHTER":{
+"description":"",
+"message":"Mercantile leggero"
+},
+"LIGHT_PASSENGER_SHUTTLE":{
+"description":"",
+"message":"Navetta passeggeri leggera"
+},
+"LIGHT_PASSENGER_TRANSPORT":{
+"description":"",
+"message":"Trasporto passeggeri pesante"
+},
+"LOAD":{
+"description":"",
+"message":"Carica"
+},
+"LOAD_GAME":{
+"description":"",
+"message":"Carica partita"
+},
+"LOBBY":{
+"description":"",
+"message":"Anticamera"
+},
+"LOCATED_N_KM_FROM_THE_CENTRE_OF_NAME":{
+"description":"",
+"message":"Localizzato a {distance}km dal centro di {name}:"
+},
+"LOCATION":{
+"description":"",
+"message":"Posizione"
+},
+"LOW":{
+"description":"",
+"message":"Basso"
+},
+"LY":{
+"description":"Light year","message":"AL"
+},
+"MAKE_NEW_FACE":{
+"description":"",
+"message":"Genera nuovo volto"
+},
+"MALE":{
+"description":"",
+"message":"Maschio"
+},
+"MASS":{
+"description":"",
+"message":"Massa"
+},
+"MASTER":{
+"description":"For player reputation","message":"Maestro"
+},
+"MASTER_VOL":{
+"description":"Master sound in settings option","message":"Principale:"
+},
+"MAX":{
+"description":"",
+"message":"massimo"
+},
+"MAXIMUM_CREW":{
+"description":"",
+"message":"Equipaggio massimo"
+},
+"MEDIUM":{
+"description":"Game settings option: graphics resolution","message":"Medio"
+},
+"MEDIUM_CARGO_SHUTTLE":{
+"description":"",
+"message":"Navetta da carico media"
+},
+"MEDIUM_COURIER":{
+"description":"",
+"message":"Corriere medio"
+},
+"MEDIUM_FIGHTER":{
+"description":"",
+"message":"Caccia medio"
+},
+"MEDIUM_FREIGHTER":{
+"description":"",
+"message":"Mercantile medio"
+},
+"MEDIUM_PASSENGER_SHUTTLE":{
+"description":"",
+"message":"Navetta passeggeri media"
+},
+"MEDIUM_PASSENGER_TRANSPORT":{
+"description":"",
+"message":"Trasporto passeggeri medio"
+},
+"METAL_ALLOYS":{
+"description":"",
+"message":"Leghe metalliche"
+},
+"MILITARY":{
+"description":"",
+"message":"Militanza"
+},
+"MINIMUM_CREW":{
+"description":"",
+"message":"Equipaggio minimo"
+},
+"MISSILE_MOUNTS":{
+"description":"",
+"message":"Supporti per missili"
+},
+"MISSIONS":{
+"description":"",
+"message":"Missioni"
+},
+"MISSION_DETAILS":{
+"description":"",
+"message":"Dettagli Missione"
+},
+"MORE_INFO":{
+"description":"",
+"message":"Più informazioni..."
+},
+"MOSTLY_HARMLESS":{
+"description":"",
+"message":"Praticamente innocuo"
+},
+"MULTISAMPLING":{
+"description":"",
+"message":"Multisampling"
+},
+"MURDER":{
+"description":"",
+"message":"Omicidio"
+},
+"MUSIC":{
+"description":"",
+"message":"Musica:"
+},
+"MUTE":{
+"description":"",
+"message":"Muto"
+},
+"NAME_OBJECT":{
+"description":"For an item or object","message":"Nome"
+},
+"NAME_PERSON":{
+"description":"For a person","message":"Nome"
+},
+"NAVIGATION":{
+"description":"",
+"message":"Navigazione"
+},
+"NEGOTIATE":{
+"description":"",
+"message":"Negoziare"
+},
+"NEXT_PAID":{
+"description":"",
+"message":"Prossima paga"
+},
+"NO":{
+"description":"Negative answer to a question","message":"No"
+},
+"NOBODY":{
+"description":"For player reputation","message":"Nessuno"
+},
+"NONE":{
+"description":"",
+"message":"Vuoto"
+},
+"NOTES":{
+"description":"",
+"message":"Note:"
+},
+"NOT_ENOUGH_ALLOY_TO_ATTEMPT_A_REPAIR":{
+"description":"",
+"message":"Non ci sono abbastanza {alloy} per tentare la riparazione"
+},
+"NOT_SUPPORTED_ON_THIS_SHIP":{
+"description":"",
+"message":"{equipment} non è supportato da questo modello di astronave."
+},
+"NO_MISSIONS":{
+"description":"",
+"message":"Nessuna missione."
+},
+"N_LIGHT_YEARS_N_MAX":{
+"description":"",
+"message":"{range} anni luce ({maxRange} massimi)"
+},
+"N_OCCUPIED_PASSENGER_CABINS":{
+"description":"",
+"message":"{quantity} Alloggi passeggeri occupati"
+},
+"N_SHIELD_GENERATORS":{
+"description":"",
+"message":"{quantity} Generatori di Scudi"
+},
+"N_UNOCCUPIED_PASSENGER_CABINS":{
+"description":"",
+"message":"{quantity} Alloggi passeggeri non occupati"
+},
+"OFF":{
+"description":"",
+"message":"Spento"
+},
+"OK":{
+"description":"",
+"message":"Ok"
+},
+"OPTIONS":{
+"description":"",
+"message":"Opzioni"
+},
+"ORBIT":{
+"description":"",
+"message":"Orbita"
+},
+"ORBITAL_ANALYSIS":{
+"description":"",
+"message":"Analisi orbitale"
+},
+"ORBITAL_ANALYSIS_NOTES":{
+"description":"",
+"message":"La velocità di orbita circolare è data come velocità tangenziale. L'astronave deve muoversi in una direzione di 90° rispetto all'asse astronave/{name}.\n\nLa velocità di discesa è un minimo assoluto, ed è anch'essa tangenziale. Una velocità od un angolo inferiori porteranno ad una traiettoria che interseca con la superficie di {name}.\n\nLa velocità di fuga si applica teoricamente ad ogni direzione, fintanto che l'astronave non entra in rotta di collisione con {name}."
+},
+"OWED":{
+"description":"Player owing money to crew members","message":"Dovuto"
+},
+"PAY_FINE_OF_N":{
+"description":"",
+"message":"Paga multa di {amount}"
+},
+"PERSONAL_INFORMATION":{
+"description":"",
+"message":"Informazioni personali"
+},
+"PILOTING":{
+"description":"",
+"message":"Pilotaggio:"
+},
+"PILOT_SEAT_IS_NOW_OCCUPIED_BY_NAME":{
+"description":"",
+"message":"Il posto di pilotaggio è ora occupato da {name}"
+},
+"PIRACY":{
+"description":"",
+"message":"Pirateria"
+},
+"PLANET_DETAIL_DISTANCE":{
+"description":"",
+"message":"Distanza dettagli pianeta"
+},
+"PLANET_TEXTURES":{
+"description":"",
+"message":"Texture pianeta"
+},
+"POLICE":{
+"description":"",
+"message":"Polizia"
+},
+"POOR":{
+"description":"Player combat rating","message":"Scarso"
+},
+"POSITION":{
+"description":"",
+"message":"Posizione"
+},
+"PRESS_A_KEY_OR_CONTROLLER_BUTTON":{
+"description":"",
+"message":"Premere un tasto od un pulsante del controller"
+},
+"PRICE":{
+"description":"",
+"message":"Prezzo"
+},
+"PROFESSIONAL":{
+"description":"For player reputation","message":"Professionista"
+},
+"QUALIFICATION_SCORES":{
+"description":"",
+"message":"Punteggi qualifiche"
+},
+"QUIT":{
+"description":"",
+"message":"Esci"
+},
+"QUIT_CONFIRMATION":{
+"description":"For the checkbox in settings window","message":"Conferma uscita"
+},
+"RANK":{
+"description":"",
+"message":"Grado:"
+},
+"RATING":{
+"description":"",
+"message":"Qualifica:"
+},
+"REAR_WEAPON":{
+"description":"",
+"message":"Arma posteriore"
+},
+"REFUEL":{
+"description":"",
+"message":"Rifornimento"
+},
+"REFUEL_FULL":{
+"description":"",
+"message":"Rifornimento completo"
+},
+"RELIABLE":{
+"description":"For player reputation","message":"Affidabile"
+},
+"REPAIR_X_HULL_DAMAGE_FOR_X":{
+"description":"",
+"message":"Ripara il {damage}% dei danni allo scafo per {price}"
+},
+"REPUTATION":{
+"description":"",
+"message":"Reputazione"
+},
+"REQUEST_LAUNCH":{
+"description":"",
+"message":"Richiesta autorizzazione al lancio"
+},
+"RETURN_TO_GAME":{
+"description":"",
+"message":"Torna al gioco"
+},
+"RETURN_TO_MENU":{
+"description":"",
+"message":"Ritorna al menu"
+},
+"REVERSE_ACCEL_EMPTY":{
+"description":"",
+"message":"Decelerazione (vuoto)"
+},
+"REVERSE_ACCEL_FULL":{
+"description":"",
+"message":"Decelerazione (carico)"
+},
+"REWARD":{
+"description":"",
+"message":"Ricompensa"
+},
+"SAVE":{
+"description":"",
+"message":"Salva"
+},
+"SCOOP_MOUNTS":{
+"description":"How many slots or mounts exist on the ship for fitting SCOOPS (e.g. cargo scoop, fuel scoop, multi-scoop) ","message":"Supporti per raccoglitori"
+},
+"SELECT":{
+"description":"",
+"message":"Seleziona"
+},
+"SELECT_A_FILE_TO_SAVE_TO_OR_ENTER_A_NEW_FILENAME":{
+"description":"",
+"message":"Seleziona un file su cui salvare, oppure inserisci un nuovo nome"
+},
+"SELECT_FILE":{
+"description":"",
+"message":"Seleziona file..."
+},
+"SELECT_GAME_TO_LOAD":{
+"description":"",
+"message":"Seleziona la partita da caricare..."
+},
+"SELL":{
+"description":"Commodities and equipment prices","message":"Vendi"
+},
+"SENSORS":{
+"description":"",
+"message":"Sensori:"
+},
+"SHIP":{
+"description":"",
+"message":"Astronave"
+},
+"SHIP_INFORMATION":{
+"description":"",
+"message":"Scheda Astronave"
+},
+"SHIP_IS_ALREADY_FULLY_REPAIRED":{
+"description":"",
+"message":"Al momento la Sua nave non necessita di manutenzione."
+},
+"SHIP_IS_FULLY_EQUIPPED":{
+"description":"",
+"message":"La tua astronave completamente equipaggiata."
+},
+"SHIP_IS_FULLY_LADEN":{
+"description":"",
+"message":"L'astronave è a pieno carico."
+},
+"SHIP_MARKET":{
+"description":"",
+"message":"Mercato delle Astronavi"
+},
+"SHIP_REPAIRS":{
+"description":"",
+"message":"Riparazione Astronavi"
+},
+"SHIP_VIEWING_WAS_SOLD":{
+"description":"",
+"message":"L'astronave che stavi guardando è stata venduta"
+},
+"SOUND":{
+"description":"",
+"message":"Suono"
+},
+"START_AT_BARNARDS_STAR":{
+"description":"",
+"message":"Parti dalla Stella di Barnard"
+},
+"START_AT_EARTH":{
+"description":"",
+"message":"Parti dalla Terra"
+},
+"START_AT_NEW_HOPE":{
+"description":"New Hope is an in game location","message":"Parti da New Hope"
+},
+"STATION_MANAGER":{
+"description":"",
+"message":"Amministratore della stazione"
+},
+"STATUS":{
+"description":"",
+"message":"Stato"
+},
+"THANKS_AND_REMEMBER_TO_BUY_FUEL":{
+"description":"",
+"message":"Nel ringraziarLa per il Suo acquisto Le consigliamo di passare al Reparto Equipaggiamento ... e non dimentichi di rifornirsi di carburante PRIMA del lancio."
+},
+"THERE_IS_NOBODY_ELSE_ON_BOARD_ABLE_TO_FLY_THIS_SHIP":{
+"description":"",
+"message":"Non c'è nessun'altro a bordo in grado di pilotare questa astronave."
+},
+"THE_SHIP_IS_UNDER_STATION_CONTROL_COMMANDER":{
+"description":"",
+"message":"La sua astronave è sotto il controllo della stazione, Comandante."
+},
+"TOGGLE_MALE_FEMALE":{
+"description":"player gender","message":"Cambia maschio/femmina"
+},
+"TOO_SMALL_FOR_CURRENT_CREW":{
+"description":"",
+"message":"L'astronave è troppo piccola per questo equipaggio."
+},
+"TOTAL":{
+"description":"",
+"message":"Totale:"
+},
+"TOTAL_MASS":{
+"description":"",
+"message":"Massa totale"
+},
+"TRADING_ILLEGAL_GOODS":{
+"description":"",
+"message":"Commercio di merci Illegali"
+},
+"TRUSTWORTHY":{
+"description":"For player reputation","message":"Fidato"
+},
+"TYPE":{
+"description":"",
+"message":"Tipo"
+},
+"UNLAWFUL_WEAPONS_DISCHARGE":{
+"description":"",
+"message":"Scaricare illecitamente le proprie armi"
+},
+"UNRELIABLE":{
+"description":"",
+"message":"Inaffidabile"
+},
+"UP_ACCEL":{
+"description":"",
+"message":"Accelerazione in alto"
+},
+"USED":{
+"description":"",
+"message":"Utilizzato"
+},
+"VERY_HIGH":{
+"description":"Game settings option: graphic resolution","message":"Molto alto"
+},
+"VERY_LOW":{
+"description":"Game settings option: graphic resolution","message":"Molto basso"
+},
+"VIDEO":{
+"description":"",
+"message":"Video"
+},
+"VIDEO_CONFIGURATION_RESTART_GAME_TO_APPLY":{
+"description":"",
+"message":"Configurazione video (riavvia il gioco per applicare)"
+},
+"VIDEO_RESOLUTION":{
+"description":"",
+"message":"Risoluzione video"
+},
+"WAGE":{
+"description":"Salary of crew shown in crew roster","message":"Stipendio"
+},
+"WEIGHT_EMPTY":{
+"description":"",
+"message":"Peso a vuoto"
+},
+"WEIGHT_FULLY_LOADED":{
+"description":"",
+"message":"Peso a pieno carico"
+},
+"WE_ARE_IN_HYPERSPACE_COMMANDER":{
+"description":"",
+"message":"Siamo nell'iperspazio, Comandante."
+},
+"WE_HAVE_NO_BUSINESS_WITH_YOU":{
+"description":"",
+"message":"Non abbiamo alcun affari con voi in questo momento \nTuttavia, ricordarsi di rispettare le regole locali:.\n \n * Spostare almeno 5 km dalla stazione per HyperJump.\n * Non sparare i cannoni entro 100 km dalla stazione.\n * Non commercio di prodotti illegali.\n * Non scartare qualsiasi prodotto nella stazione,\n soprattutto se è pericoloso per l'ambiente.\n * Non scartare rifiuti radioattivi nello spazio in sistemi abitati.\n * Sparare o colpire un'altra nave entro 100 km di stazione\n  sarà considerato pirateria.\n * Non trasportare informazioni locale ad un'altra fazione.\n * Rispettare le missioni concordate, evitare di essere multato\n per Frode o Abduction\n * Non decollare manualmente per evitare di pagare le vostre multe,\n questo è grave e sarà trattata come una Fuga.\n * E ... per favore ... non uccidere nessuno ."
+},
+"YES":{
+"description":"Positive answer to a question","message":"Sì"
+},
+"YOURE_GOING_TO_REGRET_SACKING_ME":{
+"description":"",
+"message":"Ti pentirai di avermi scaricato!"
+},
+"YOUR_HULL_IS_AT_X_INTEGRITY":{
+"description":"",
+"message":"Il tuo scafo è al {value}% dell'integrità."
+},
+"YOU_DONT_HAVE_ENOUGH_MONEY_FOR_THAT_OPTION":{
+"description":"",
+"message":"Non ha abbastanza crediti per questa opzione."
+},
+"YOU_MUST_FIRST_SELECT_A_COMBAT_TARGET_COMMANDER":{
+"description":"",
+"message":"Deve prima selezionare un bersaglio per il combattimento, Comandante."
+},
+"YOU_MUST_FIRST_SELECT_A_SUITABLE_NAVIGATION_TARGET_COMMANDER":{
+"description":"",
+"message":"Deve prima selezionare una destinazione di navigazione adatta, Comandante."
+},
+"YOU_MUST_LAUNCH_FIRST_COMMANDER":{
+"description":"",
+"message":"Deve prima decollare, Comandante."
+},
+"YOU_MUST_REQUEST_LAUNCH_CLEARANCE_FIRST_COMMANDER":{
+"description":"",
+"message":"Deve prima richiedere l'autorizzazione al decollo, Comandante."
+},
+"YOU_NOT_ENOUGH_MONEY":{
+"description":"",
+"message":"Crediti insufficienti"
+}
 }

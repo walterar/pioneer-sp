@@ -1,4 +1,8 @@
 {
+"ABDUCTION":{
+"description":"",
+"message":"Похищение"
+},
 "ACTIVE":{
 "description":"",
 "message":"Активно"
@@ -8,8 +12,7 @@
 "message":"Внимание! Это будет стоить вам дорого. Ваша жизнь не стоит "
 },
 "BUY":{
-"description":"Commodities and equipment prices",
-"message":"покупка"
+"description":"Commodities and equipment prices","message":"покупка"
 },
 "CAPACITY":{
 "description":"",
@@ -19,13 +22,17 @@
 "description":"",
 "message":"законченный"
 },
-"Check_with_the_police":{
+"CREW":{
 "description":"",
-"message":"Проверьте с Охрана"
+"message":"Экипаж"
 },
 "CREW_VACANCIES":{
 "description":"",
 "message":"Экипаж Вакансия"
+},
+"Check_with_the_police":{
+"description":"",
+"message":"Проверьте с Охрана"
 },
 "Current_Faction":{
 "description":"",
@@ -55,25 +62,13 @@
 "description":"",
 "message":"экологического ущерба"
 },
-"ABDUCTION":{
-"description":"",
-"message":"Похищение"
-},
-"FRAUD":{
-"description":"",
-"message":"Мошенничество"
-},
-"ESPIONAGE":{
-"description":"",
-"message":"Шпионаж"
-},
 "ESCAPE":{
 "description":"",
 "message":"Побег"
 },
-"ILLEGAL_JUMP":{
+"ESPIONAGE":{
 "description":"",
-"message":"Перейти незаконным"
+"message":"Шпионаж"
 },
 "Experience":{
 "description":"",
@@ -82,6 +77,14 @@
 "FAILED":{
 "description":"",
 "message":"Не удалось"
+},
+"FEATURES":{
+"description":"",
+"message":"Особенности"
+},
+"FRAUD":{
+"description":"",
+"message":"Мошенничество"
 },
 "Failed_Missions":{
 "description":"",
@@ -131,6 +134,10 @@
 "description":"",
 "message":"Средний Проводник"
 },
+"MISSILE_BAYS":{
+"description":"",
+"message":"Ракетных отсеки"
+},
 "New_Ships_without_stock":{
 "description":"",
 "message":"Рынок новых судов без складе\nво всей системе: "
@@ -156,8 +163,7 @@
 "message":"Район риска"
 },
 "SELL":{
-"description":"Commodities and equipment prices",
-"message":"продажа"
+"description":"Commodities and equipment prices","message":"продажа"
 },
 "START_AT_ACHERNAR":{
 "description":"",
@@ -187,6 +193,14 @@
 "description":"",
 "message":"Запуск и введите низкой орбите, на текущей цели"
 },
+"WEAPONS":{
+"description":"",
+"message":"Оружие"
+},
+"Warning_You_must_go_back_to_the_Station_now_or_you_will_die_soon":{
+"description":"",
+"message":"Предупреждение! Вы должны вернуть на станцию ​​сейчас или умереть."
+},
 "YOU_DESERVE_TO_BE_IMMORTAL":{
 "description":"",
 "message":"Вы заслуживаете быть бессмертным!"
@@ -203,10 +217,6 @@
 "description":"",
 "message":"Необходимо установить жизнеобеспечения грузовой отсек"
 },
-"port_or_vecinity":{
-"description":"",
-"message":" в порту или вблизи."
-},
 "for_jettison":{
 "description":"",
 "message":" бросая "
@@ -215,28 +225,12 @@
 "description":"",
 "message":"У вас нет достаточного опыта для этой миссии."
 },
-"MISSILE_BAYS":{
-"description":"",
-"message":"Ракетных отсеки"
-},
-"FEATURES":{
-"description":"",
-"message":"Особенности"
-},
-"CREW":{
-"description":"",
-"message":"Экипаж"
-},
-"Warning_You_must_go_back_to_the_Station_now_or_you_will_die_soon":{
-"description":"",
-"message":"Предупреждение! Вы должны вернуть на станцию ​​сейчас или умереть."
-},
-"WEAPONS":{
-"description":"",
-"message":"Оружие"
-},
 "light_year":{
 "description":"",
 "message":" световых лет"
+},
+"port_or_vecinity":{
+"description":"",
+"message":" в порту или вблизи."
 }
 }

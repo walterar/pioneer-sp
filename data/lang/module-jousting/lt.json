@@ -1,0 +1,58 @@
+{
+"I_have_taken1":{
+"description":"",
+"message":"Knight, I have taken "
+},
+"I_have_taken2":{
+"description":"",
+"message":"Sorry, but I need  "
+},
+"I_have_taken3":{
+"description":"",
+"message":"I have just taken your money "
+},
+"is_now_yours":{
+"description":"",
+"message":" is now yours."
+},
+"of_your_money1":{
+"description":"",
+"message":" of your money, I hope you do not mind."
+},
+"of_your_money2":{
+"description":"",
+"message":"  to feed my children."
+},
+"of_your_money3":{
+"description":"",
+"message":" Please excuse the inconvenience."
+},
+"the_attacker_money":{
+"description":"",
+"message":"Commander, the attacker's money"
+},
+"the_time_has_come1":{
+"description":"",
+"message":"Pilot, the time has come. May the best win!"
+},
+"the_time_has_come2":{
+"description":"",
+"message":"What a beautiful ship you have, Pilot. Nice guns, too. Do you know how to use them?"
+},
+"the_time_has_come3":{
+"description":"",
+"message":"Wow! Worthy opponent for an old pirate. I guess you know how to use your weapons."
+},
+"you_have_been_challenged1":{
+"description":"",
+"message":"Knight, you have been challenged to fight!"
+},
+"you_have_been_challenged2":{
+"description":"",
+"message":"Commander, you are in my domain. Prepare to engage in combat."
+},
+"you_have_been_challenged3":{
+"description":"",
+"message":"You shouldn't have come here, Commander! Now I must destroy you!"
+}
+}

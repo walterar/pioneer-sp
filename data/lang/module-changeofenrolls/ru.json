@@ -7,6 +7,10 @@
 "description":"",
 "message":"ИЗМЕНЕНИЕ РЕГ. НОМЕРА\n Новая регистрация: "
 },
+"Change_your_registration_and_clean_criminal_record":{
+"description":"",
+"message":"Привет командир. Изменение регистрацию и судимостей всего за "
+},
 "Hang":{
 "description":"",
 "message":"вешать трубку"
@@ -26,5 +30,9 @@
 "You_are_owner_of_the_registration":{
 "description":"",
 "message":"Вы владелец регистрации: "
+},
+"cannot_change_your_registration":{
+"description":"",
+"message":"Привет командир. К сожалению, мы не можем изменить вашу регистрацию. Вы должны полицейские штрафы за "
 }
 }

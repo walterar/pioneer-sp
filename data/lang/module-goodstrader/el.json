@@ -1,30 +1,30 @@
 {
-   "GOODS_TRADER_0" : {
-      "description" : "",
-      "message" : "Εμπόριο Αγαθών {name}'s"
-   },
-   "GOODS_TRADER_1" : {
-      "description" : "",
-      "message" : "Εμπορικό κατάστημα {name}'s"
-   },
-   "GOODS_TRADER_2" : {
-      "description" : "",
-      "message" : "Κατάστημα {name}'s"
-   },
-   "GOODS_TRADER_3" : {
-      "description" : "",
-      "message" : "{name}'s Goods Exchange"
-   },
-   "GOODS_TRADER_4" : {
-      "description" : "",
-      "message" : "{name} Holdings"
-   },
-   "GOODS_TRADER_5" : {
-      "description" : "",
-      "message" : "{name} & ΥΙΟΙ "
-   },
-   "WELCOME_TO" : {
-      "description" : "",
-      "message" : "Καλωσορίσατε στο"
-   }
+"GOODS_TRADER_0":{
+"description":"",
+"message":"Εμπόριο Αγαθών {name}'s"
+},
+"GOODS_TRADER_1":{
+"description":"",
+"message":"Εμπορικό κατάστημα {name}'s"
+},
+"GOODS_TRADER_2":{
+"description":"",
+"message":"Κατάστημα {name}'s"
+},
+"GOODS_TRADER_3":{
+"description":"",
+"message":"{name}'s Goods Exchange"
+},
+"GOODS_TRADER_4":{
+"description":"",
+"message":"{name} Holdings"
+},
+"GOODS_TRADER_5":{
+"description":"",
+"message":"{name} & ΥΙΟΙ "
+},
+"WELCOME_TO":{
+"description":"",
+"message":"Καλωσορίσατε στο"
+}
 }

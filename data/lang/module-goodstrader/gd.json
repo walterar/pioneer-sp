@@ -1,30 +1,30 @@
 {
-   "GOODS_TRADER_0" : {
-      "description" : "",
-      "message" : "gun taigh-bhathair onarach aig {name}"
-   },
-   "GOODS_TRADER_1" : {
-      "description" : "",
-      "message" : "gun taigh-mhalairt aig {name}"
-   },
-   "GOODS_TRADER_2" : {
-      "description" : "",
-      "message" : "gun taigh-bhathair aig {name}"
-   },
-   "GOODS_TRADER_3" : {
-      "description" : "",
-      "message" : "gun ionad malairt aig {name}"
-   },
-   "GOODS_TRADER_4" : {
-      "description" : "",
-      "message" : "batharnach {name}"
-   },
-   "GOODS_TRADER_5" : {
-      "description" : "",
-      "message" : "{name} ⁊ a mhac"
-   },
-   "WELCOME_TO" : {
-      "description" : "",
-      "message" : "Fàilte"
-   }
+"GOODS_TRADER_0":{
+"description":"",
+"message":"gun taigh-bhathair onarach aig {name}"
+},
+"GOODS_TRADER_1":{
+"description":"",
+"message":"gun taigh-mhalairt aig {name}"
+},
+"GOODS_TRADER_2":{
+"description":"",
+"message":"gun taigh-bhathair aig {name}"
+},
+"GOODS_TRADER_3":{
+"description":"",
+"message":"gun ionad malairt aig {name}"
+},
+"GOODS_TRADER_4":{
+"description":"",
+"message":"batharnach {name}"
+},
+"GOODS_TRADER_5":{
+"description":"",
+"message":"{name} ⁊ a mhac"
+},
+"WELCOME_TO":{
+"description":"",
+"message":"Fàilte"
+}
 }

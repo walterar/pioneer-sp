@@ -1,27 +1,27 @@
 {
-"Explored":{
+"AutoCombatOFF":{
 "description":"",
-"message":" - esplorato"
+"message":"Auto Combattente NON ATTIVO"
 },
 "AutoCombatON":{
 "description":"",
 "message":"Auto Combattente ATTIVO"
 },
-"AutoCombatOFF":{
+"Damage_Control_Autopilot":{
 "description":"",
-"message":"Auto Combattente NON ATTIVO"
+"message":"Controllo di danno: Attenzione! Pilota Automatico distrutta!"
 },
 "Damage_Control_Propellant":{
 "description":"",
 "message":"Controllo di danno: Attenzione! Ha perso il 50% di Propellente!"
 },
-"Damage_Control_Autopilot":{
-"description":"",
-"message":"Controllo di danno: Attenzione! Pilota Automatico distrutta!"
-},
 "Damage_Control_Scanner":{
 "description":"",
 "message":"Controllo di danno: Attenzione! Il Radar è stata distrutta!"
+},
+"Explored":{
+"description":"",
+"message":" - esplorato"
 },
 "IS_REGISTERED_IN_OUR_DOMAIN":{
 "description":"",

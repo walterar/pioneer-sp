@@ -1,27 +1,27 @@
 {
-"Explored":{
+"AutoCombatOFF":{
 "description":"",
-"message":" - Разведанные"
+"message":"Авто Боевой НЕ АКТИВНО"
 },
 "AutoCombatON":{
 "description":"",
 "message":"Авто Боевой АКТИВНО"
 },
-"AutoCombatOFF":{
+"Damage_Control_Autopilot":{
 "description":"",
-"message":"Авто Боевой НЕ АКТИВНО"
+"message":"Контроль из повреждения: Внимание!\nАвтопилот уничтожены!"
 },
 "Damage_Control_Propellant":{
 "description":"",
 "message":"Контроль из повреждения: Внимание!\nПотерял 50% пропеллента!"
 },
-"Damage_Control_Autopilot":{
-"description":"",
-"message":"Контроль из повреждения: Внимание!\nАвтопилот уничтожены!"
-},
 "Damage_Control_Scanner":{
 "description":"",
 "message":"Контроль из повреждения: Внимание!\nРадар был разрушен!"
+},
+"Explored":{
+"description":"",
+"message":" - Разведанные"
 },
 "IS_REGISTERED_IN_OUR_DOMAIN":{
 "description":"",

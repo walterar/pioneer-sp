@@ -1,1102 +1,1051 @@
 {
-   "ABOVE_AVERAGE" : {
-      "description" : "",
-      "message" : "Выше среднего"
-   },
-   "ACTIVE" : {
-      "description" : "",
-      "message" : "Активно"
-   },
-   "AFTER_TRADE_IN" : {
-      "description" : "",
-      "message" : "+ цена вашего корпуса"
-   },
-   "ALLEGIANCE" : {
-      "description" : "",
-      "message" : "Лояльность:"
-   },
-   "ALL_UP_WEIGHT" : {
-      "description" : "",
-      "message" : "Общая масса"
-   },
-   "AMOUNT" : {
-      "description" : "",
-      "message" : "Кол-во"
-   },
-   "AN_ERROR_HAS_OCCURRED" : {
-      "description" : "",
-      "message" : "Произошла ошибка"
-   },
-   "ATMOSPHERIC_SHIELDING" : {
-      "description" : "Used in ShipInfo view, followed by a yes/no depending on if the ship can carry atmospheric shields",
-      "message" : "Атмосферный щит"
-   },
-   "ATTEMPT_TO_REPAIR_HULL" : {
-      "description" : "",
-      "message" : "Попытка починки корпуса"
-   },
-   "AVAILABLE_FOR_PURCHASE" : {
-      "description" : "",
-      "message" : "Доступно для покупки"
-   },
-   "AVERAGE" : {
-      "description" : "",
-      "message" : "Средний"
-   },
-   "BACKWARD_ACCEL" : {
-      "description" : "",
-      "message" : "Ускорение назад"
-   },
-   "BULLETIN_BOARD" : {
-      "description" : "",
-      "message" : "Служба объявлений"
-   },
-   "BUY" : {
-      "description" : "Commodities and equipment prices",
-      "message" : "[+]"
-   },
-   "BUY_SHIP" : {
-      "description" : "",
-      "message" : "Купить"
-   },
-   "CABINS" : {
-      "description" : "For passengers",
-      "message" : "Каюты"
-   },
-   "CABIN_FREE" : {
-      "description" : "Free capacity for passengers",
-      "message" : "свободно"
-   },
-   "CABIN_USED" : {
-      "description" : "Passengers using cabins",
-      "message" : "используется"
-   },
-   "CANCEL" : {
-      "description" : "",
-      "message" : "Отмена"
-   },
-   "CAPACITY" : {
-      "description" : "Capacity of ship to fit more equipment",
-      "message" : "Грузоподъёмность"
-   },
-   "CAPACITY_USED" : {
-      "description" : "",
-      "message" : "Загруженность"
-   },
-   "CARGO" : {
-      "description" : "",
-      "message" : "Трюм"
-   },
-   "CARGO_SPACE" : {
-      "description" : "",
-      "message" : "Грузоподъёмность"
-   },
-   "CARGO_SPACE_USED" : {
-      "description" : "",
-      "message" : "Грузовой отсек"
-   },
-   "CARGO_T_FREE" : {
-      "description" : "t for tonne",
-      "message" : "{amount}т свободно"
-   },
-   "CARGO_T_USED" : {
-      "description" : "t for tonne",
-      "message" : "{amount}т загружено"
-   },
-   "CASH" : {
-      "description" : "",
-      "message" : "Счёт"
-   },
-   "CASH_N" : {
-      "description" : "",
-      "message" : "Счёт: {money}"
-   },
-   "CHANGE_BINDING" : {
-      "description" : "Key binding option",
-      "message" : "Назначить"
-   },
-   "CHIEF_MECHANIC" : {
-      "description" : "",
-      "message" : "Главный механик"
-   },
-   "CIRCULAR_ORBIT_SPEED" : {
-      "description" : "",
-      "message" : "Скорость круговой орбиты"
-   },
-   "CITY_DETAIL_LEVEL" : {
-      "description" : "Game graphics option",
-      "message" : "Уровень детализации городов"
-   },
-   "CLEAN" : {
-      "description" : "Legal status of player",
-      "message" : "Чистый"
-   },
-   "CLEAR" : {
-      "description" : "Clear an option in game settings/options menu",
-      "message" : "Очистить"
-   },
-   "CLIENT" : {
-      "description" : "",
-      "message" : "Заказчик"
-   },
-   "COMBAT" : {
-      "description" : "Headline for kills and combat rating",
-      "message" : "Боевая статистика"
-   },
-   "COMMANDER" : {
-      "description" : "",
-      "message" : "Командир"
-   },
-   "COMMODITY_MARKET" : {
-      "description" : "",
-      "message" : "Торговый центр"
-   },
-   "COMPACT_SCANNER" : {
-      "description" : "Game settings option",
-      "message" : "Компактный сканер"
-   },
-   "COMPETENT" : {
-      "description" : "Combat rating",
-      "message" : "Квалифицированный"
-   },
-   "COMPLETED" : {
-      "description" : "",
-      "message" : "Завершено"
-   },
-   "COMPRESS_TEXTURES" : {
-      "description" : "graphics option in game settings menu ",
-      "message" : "Сжатие текстур"
-   },
-   "CONSTABLE" : {
-      "description" : "",
-      "message" : "Начальник охраны"
-   },
-   "CONTINUE_GAME" : {
-      "description" : "",
-      "message" : "Продолжить игру"
-   },
-   "CONTROLS" : {
-      "description" : "",
-      "message" : "Управление"
-   },
-   "CONTROL_OPTIONS" : {
-      "description" : "",
-      "message" : "Настройки управления"
-   },
-   "COULD_NOT_LOAD_GAME" : {
-      "description" : "",
-      "message" : "Не удалось загрузить игру:"
-   },
-   "CREDIBLE" : {
-      "description" : "For player reputation",
-      "message" : "Значимый"
-   },
-   "CREW_CABINS" : {
-      "description" : "",
-      "message" : "Каюты для экипажа"
-   },
-   "CREW_ROSTER" : {
-      "description" : "",
-      "message" : "Список экипажа"
-   },
-   "CRIMINAL_RECORD" : {
-      "description" : "",
-      "message" : "Досье"
-   },
-   "DANGEROUS" : {
-      "description" : "Player combat rating",
-      "message" : "Опасный"
-   },
-   "DEADLY" : {
-      "description" : "Player combat rating",
-      "message" : "Смертельный"
-   },
-   "DELTA_V" : {
-      "description" : "",
-      "message" : "Дельта v"
-   },
-   "DELTA_V_EMPTY" : {
-      "description" : "Delta-v capacity of a ship with no cargo or upgrades",
-      "message" : "Дельта v (пустой)"
-   },
-   "DELTA_V_FULL" : {
-      "description" : "Delta-v capacity of a ship with maximum cargo",
-      "message" : "Дельта v (полный)"
-   },
-   "DELTA_V_MAX" : {
-      "description" : "Delta-v capacity of a ship with cargo bay fully loaded with propellant",
-      "message" : "Дельта v (макс.)"
-   },
-   "DESCENT_TO_GROUND_SPEED" : {
-      "description" : "",
-      "message" : "Скорость снижения:"
-   },
-   "DESTROY_ENEMY_SHIP" : {
-      "description" : "",
-      "message" : "Уничтожить корабль противника"
-   },
-   "DISMISS" : {
-      "description" : "Terminate crew memeber's contract",
-      "message" : "Уволить"
-   },
-   "DISPLAY_HUD_TRAILS" : {
-      "description" : "",
-      "message" : "Отображать тоннель в HUD"
-   },
-   "DISPLAY_NAV_TUNNELS" : {
-      "description" : "Settings option: hyperspace tunnel effect",
-      "message" : "Отображать навигационный тоннель"
-   },
-   "DISPLAY_SPEED_LINES" : {
-      "description" : "Settings option: effect when travelling in space",
-      "message" : "Отображать линии скорости"
-   },
-   "DOCK_AT_CURRENT_TARGET" : {
-      "description" : "",
-      "message" : "Стыковка с выбранной целью"
-   },
-   "DUE" : {
-      "description" : "mission deadline date",
-      "message" : "Сроки"
-   },
-   "D_DAYS_LEFT" : {
-      "description" : "",
-      "message" : "Осталось дней: %d"
-   },
-   "ECONOMY_TRADE" : {
-      "description" : "",
-      "message" : "Экономика и торговля"
-   },
-   "EFFECTS" : {
-      "description" : "",
-      "message" : "Эффекты:"
-   },
-   "ELITE" : {
-      "description" : "Player combat rating",
-      "message" : "ЭЛИТА"
-   },
-   "EMPLOYMENT" : {
-      "description" : "",
-      "message" : "Занятость"
-   },
-   "ENABLE_COCKPIT" : {
-      "description" : "Game settings option: to use a cockpit 3D model",
-      "message" : "Включить кабину (ЭКСПЕРИМЕНТАЛЬНО)"
-   },
-   "ENABLE_JOYSTICK" : {
-      "description" : "",
-      "message" : "Включить джойстик"
-   },
-   "ENGINEERING" : {
-      "description" : "Engineering skills of crew",
-      "message" : "Инженерное дело:"
-   },
-   "EQUIPMENT" : {
-      "description" : "",
-      "message" : "Оборудование"
-   },
-   "EQUIPMENT_MARKET" : {
-      "description" : "",
-      "message" : "Магазин оборудования"
-   },
-   "EQUIPPED" : {
-      "description" : "",
-      "message" : "Оборудовано"
-   },
-   "ERROR" : {
-      "description" : "",
-      "message" : "Ошибка"
-   },
-   "ESCAPE_SPEED" : {
-      "description" : "",
-      "message" : "Скорость отдаления:"
-   },
-   "EXIT_THIS_GAME" : {
-      "description" : "",
-      "message" : "Выйти из игры"
-   },
-   "EXPERIENCED" : {
-      "description" : "For player reputation",
-      "message" : "Опытный"
-   },
-   "EXPERT" : {
-      "description" : "For player reputation",
-      "message" : "Эксперт"
-   },
-   "FAILED" : {
-      "description" : "When failed mission",
-      "message" : "Провалено"
-   },
-   "FEMALE" : {
-      "description" : "",
-      "message" : "Женщина"
-   },
-   "FORWARD_ACCEL" : {
-      "description" : "",
-      "message" : "Ускорение вперёд"
-   },
-   "FORWARD_ACCEL_EMPTY" : {
-      "description" : "",
-      "message" : "Ускорение вперёд (пустой)"
-   },
-   "FORWARD_ACCEL_FULL" : {
-      "description" : "",
-      "message" : "Ускорение вперёд (полный)"
-   },
-   "FRACTAL_DETAIL" : {
-      "description" : "",
-      "message" : "Детализация частиц"
-   },
-   "FREE" : {
-      "description" : "Used in Ship Information view as in Capacity: 10t (5t free)",
-      "message" : "свободно"
-   },
-   "FRONT_WEAPON" : {
-      "description" : "",
-      "message" : "Носовая турель"
-   },
-   "FUEL" : {
-      "description" : "",
-      "message" : "Топливо"
-   },
-   "FUEL_TANK_FULL" : {
-      "description" : "",
-      "message" : "Топливный бак полон."
-   },
-   "FUEL_WEIGHT" : {
-      "description" : "",
-      "message" : "Количество топлива"
-   },
-   "FULL_SCREEN" : {
-      "description" : "",
-      "message" : "Полноэкранный режим"
-   },
-   "GENERAL_CREW" : {
-      "description" : "",
-      "message" : "Основной экипаж"
-   },
-   "GIVE_ORDERS_TO_CREW" : {
-      "description" : "",
-      "message" : "Отдать приказы экипажу"
-   },
-   "GOOD_RIDDANCE_TO_YOU_TOO" : {
-      "description" : "",
-      "message" : "Скатертью дорожка!"
-   },
-   "HANG_UP" : {
-      "description" : "",
-      "message" : "Спасибо за информацию, конец связи."
-   },
-   "HARMLESS" : {
-      "description" : "Player combat rating",
-      "message" : "Безобидный"
-   },
-   "HEAVY_CARGO_SHUTTLE" : {
-      "description" : "",
-      "message" : "Тяжёлый грузовой шаттл"
-   },
-   "HEAVY_COURIER" : {
-      "description" : "",
-      "message" : "Тяжёлый курьер"
-   },
-   "HEAVY_FIGHTER" : {
-      "description" : "",
-      "message" : "Тяжёлый истребитель"
-   },
-   "HEAVY_FREIGHTER" : {
-      "description" : "",
-      "message" : "Тяжёлый грузовой транспорт"
-   },
-   "HEAVY_PASSENGER_SHUTTLE" : {
-      "description" : "",
-      "message" : "Тяжёлый пассажирский шаттл"
-   },
-   "HEAVY_PASSENGER_TRANSPORT" : {
-      "description" : "",
-      "message" : "Тяжёлый пассажирский транспорт"
-   },
-   "HIGH" : {
-      "description" : "Game settings option: for graphics resolution",
-      "message" : "Высокая"
-   },
-   "HULL_DOES_NOT_REQUIRE_REPAIR" : {
-      "description" : "",
-      "message" : "Корпус не требует ремонта."
-   },
-   "HULL_INTEGRITY" : {
-      "description" : "",
-      "message" : "Корпус"
-   },
-   "HULL_REPAIRED_BY_NAME_NOW_AT_N_PERCENT" : {
-      "description" : "",
-      "message" : "{name} отремонтировал корпус до {repairPercent}%"
-   },
-   "HULL_REPAIR_ATTEMPT_FAILED_HULL_SUFFERED_MINOR_DAMAGE" : {
-      "description" : "",
-      "message" : "Попытка ремонта не удалась. Корпус получил незначительные повреждения."
-   },
-   "HYPERDRIVE" : {
-      "description" : "",
-      "message" : "Установленный двигатель"
-   },
-   "HYPERDRIVE_FITTED" : {
-      "description" : "",
-      "message" : "Установленный двигатель:"
-   },
-   "HYPERSPACE_RANGE" : {
-      "description" : "",
-      "message" : "Возможный радиус прыжка"
-   },
-   "IM_TIRED_OF_WORKING_FOR_NOTHING_DONT_YOU_KNOW_WHAT_A_CONTRACT_IS" : {
-      "description" : "",
-      "message" : "Я устал работать даром. Разве вы не знаете, что такое контракт?"
-   },
-   "INACTIVE" : {
-      "description" : "",
-      "message" : "Неактивно"
-   },
-   "INCOMPETENT" : {
-      "description" : "For player reputation",
-      "message" : "Некомпетентный"
-   },
-   "INEXPERIENCED" : {
-      "description" : "For player reputation",
-      "message" : "Неопытный"
-   },
-   "INVERT_MOUSE_Y" : {
-      "description" : "",
-      "message" : "Инвертировать мышь по оси Y"
-   },
-   "IN_CARGO_HOLD" : {
-      "description" : "",
-      "message" : "В грузовом отсеке"
-   },
-   "IN_STOCK" : {
-      "description" : "",
-      "message" : "На складе"
-   },
-   "ITEM_IS_OUT_OF_STOCK" : {
-      "description" : "",
-      "message" : "Этого товара нет на складе."
-   },
-   "ITS_BEEN_GREAT_WORKING_FOR_YOU_IF_YOU_NEED_ME_AGAIN_ILL_BE_HERE_A_WHILE" : {
-      "description" : "",
-      "message" : "Работать на вас было одним удовольствием. Если вновь захотите меня нанять - некоторое время я буду здесь."
-   },
-   "JETTISON" : {
-      "description" : "",
-      "message" : "Выбросить груз"
-   },
-   "KILLS" : {
-      "description" : "",
-      "message" : "Побед:"
-   },
-   "LANGUAGE" : {
-      "description" : "",
-      "message" : "Язык игры"
-   },
-   "LANGUAGE_RESTART_GAME_TO_APPLY" : {
-      "description" : "",
-      "message" : "Язык игры (требуется перезапуск игры)"
-   },
-   "LAUNCH_PERMISSION_DENIED_BUSY" : {
-      "description" : "",
-      "message" : "В разрешении на взлёт отказано: стыковочная зона занята."
-   },
-   "LAUNCH_PERMISSION_DENIED_CREW" : {
-      "description" : "",
-      "message" : "В разрешении на взлёт отказано: на вашем корабле не укомплектован экипаж."
-   },
-   "LAUNCH_PERMISSION_DENIED_FINED" : {
-      "description" : "",
-      "message" : "В разрешении на взлёт отказано: у вас имеются неоплаченные штрафы."
-   },
-   "LEGAL_STATUS" : {
-      "description" : "",
-      "message" : "Правовой статус"
-   },
-   "LIGHT_CARGO_SHUTTLE" : {
-      "description" : "",
-      "message" : "Лёгкий грузовой челнок"
-   },
-   "LIGHT_COURIER" : {
-      "description" : "",
-      "message" : "Лёгкий курьер"
-   },
-   "LIGHT_FIGHTER" : {
-      "description" : "",
-      "message" : "Лёгкий истребитель"
-   },
-   "LIGHT_FREIGHTER" : {
-      "description" : "",
-      "message" : "Лёгкий грузовой транспорт"
-   },
-   "LIGHT_PASSENGER_SHUTTLE" : {
-      "description" : "",
-      "message" : "Лёгкий пассажирский челнок"
-   },
-   "LIGHT_PASSENGER_TRANSPORT" : {
-      "description" : "",
-      "message" : "Лёгкий пассажирский транспорт"
-   },
-   "LOAD" : {
-      "description" : "",
-      "message" : "Загрузка игры"
-   },
-   "LOAD_GAME" : {
-      "description" : "",
-      "message" : "Загрузить игру"
-   },
-   "LOBBY" : {
-      "description" : "",
-      "message" : "Информационный центр"
-   },
-   "LOCATED_N_KM_FROM_THE_CENTRE_OF_NAME" : {
-      "description" : "",
-      "message" : "Положение: {distance}км от центра {name}:"
-   },
-   "LOCATION" : {
-      "description" : "",
-      "message" : "Система"
-   },
-   "LOW" : {
-      "description" : "",
-      "message" : "Низкая"
-   },
-   "LY" : {
-      "description" : "Light year",
-      "message" : "св. лет"
-   },
-   "MAKE_NEW_FACE" : {
-      "description" : "",
-      "message" : "Новое лицо"
-   },
-   "MALE" : {
-      "description" : "",
-      "message" : "Мужчина"
-   },
-   "MASS" : {
-      "description" : "",
-      "message" : "Вес"
-   },
-   "MASTER" : {
-      "description" : "For player reputation",
-      "message" : "Мастер"
-   },
-   "MASTER_VOL" : {
-      "description" : "Master sound in settings option",
-      "message" : "Общая:"
-   },
-   "MAX" : {
-      "description" : "",
-      "message" : "макс."
-   },
-   "MAXIMUM_CREW" : {
-      "description" : "",
-      "message" : "Максимум экипажа"
-   },
-   "MEDIUM" : {
-      "description" : "Game settings option: graphics resolution",
-      "message" : "Средняя"
-   },
-   "MEDIUM_CARGO_SHUTTLE" : {
-      "description" : "",
-      "message" : "Средний грузовой челнок"
-   },
-   "MEDIUM_COURIER" : {
-      "description" : "",
-      "message" : "Средний курьер"
-   },
-   "MEDIUM_FIGHTER" : {
-      "description" : "",
-      "message" : "Средний истребитель"
-   },
-   "MEDIUM_FREIGHTER" : {
-      "description" : "",
-      "message" : "Средний грузовой транспорт"
-   },
-   "MEDIUM_PASSENGER_SHUTTLE" : {
-      "description" : "",
-      "message" : "Средний пассажирский челнок"
-   },
-   "MEDIUM_PASSENGER_TRANSPORT" : {
-      "description" : "",
-      "message" : "Средний пассажирский транспорт"
-   },
-   "METAL_ALLOYS" : {
-      "description" : "",
-      "message" : "Металлические сплавы"
-   },
-   "MILITARY" : {
-      "description" : "",
-      "message" : "Военная статистика"
-   },
-   "MINIMUM_CREW" : {
-      "description" : "",
-      "message" : "Минимум экипажа"
-   },
-   "MISSILE_MOUNTS" : {
-      "description" : "",
-      "message" : "Крепления для ракет"
-   },
-   "MISSIONS" : {
-      "description" : "",
-      "message" : "Список заданий"
-   },
-   "MISSION_DETAILS" : {
-      "description" : "",
-      "message" : "Детали миссии"
-   },
-   "MORE_INFO" : {
-      "description" : "",
-      "message" : "Доп.информация..."
-   },
-   "MOSTLY_HARMLESS" : {
-      "description" : "",
-      "message" : "Почти безобидный"
-   },
-   "MULTISAMPLING" : {
-      "description" : "",
-      "message" : "Сглаживание "
-   },
-   "MURDER" : {
-      "description" : "",
-      "message" : "Убийство"
-   },
-   "MUSIC" : {
-      "description" : "",
-      "message" : "Музыка:"
-   },
-   "MUTE" : {
-      "description" : "",
-      "message" : "Отключить"
-   },
-   "NAME_OBJECT" : {
-      "description" : "For an item or object",
-      "message" : "Имя"
-   },
-   "NAME_PERSON" : {
-      "description" : "For a person",
-      "message" : "Имя"
-   },
-   "NAVIGATION" : {
-      "description" : "",
-      "message" : "Навигация:"
-   },
-   "NEGOTIATE" : {
-      "description" : "",
-      "message" : "Условия"
-   },
-   "NEXT_PAID" : {
-      "description" : "",
-      "message" : "День платежа"
-   },
-   "NO" : {
-      "description" : "Negative answer to a question",
-      "message" : "Нет"
-   },
-   "NOBODY" : {
-      "description" : "For player reputation",
-      "message" : " Пустое место"
-   },
-   "NONE" : {
-      "description" : "",
-      "message" : "<отсутствует>"
-   },
-   "NOTES" : {
-      "description" : "",
-      "message" : "Примечание:"
-   },
-   "NOT_ENOUGH_ALLOY_TO_ATTEMPT_A_REPAIR" : {
-      "description" : "",
-      "message" : "Недостаточно {alloy} для проведения ремонта"
-   },
-   "NOT_SUPPORTED_ON_THIS_SHIP" : {
-      "description" : "",
-      "message" : "{equipment} невозможно установить на данной модели корабля"
-   },
-   "NO_MISSIONS" : {
-      "description" : "",
-      "message" : "Нет заданий."
-   },
-   "N_LIGHT_YEARS_N_MAX" : {
-      "description" : "",
-      "message" : "{range} св. лет (из {maxRange} макс.)"
-   },
-   "N_OCCUPIED_PASSENGER_CABINS" : {
-      "description" : "",
-      "message" : "Занятых пассажирских кают {quantity}"
-   },
-   "N_SHIELD_GENERATORS" : {
-      "description" : "",
-      "message" : "Генераторы защитного поля {quantity}"
-   },
-   "N_UNOCCUPIED_PASSENGER_CABINS" : {
-      "description" : "",
-      "message" : "Свободных пассажирских кают {quantity}"
-   },
-   "OFF" : {
-      "description" : "",
-      "message" : "Выкл."
-   },
-   "OK" : {
-      "description" : "",
-      "message" : "Хорошо"
-   },
-   "OPTIONS" : {
-      "description" : "",
-      "message" : "Настройки"
-   },
-   "ORBIT" : {
-      "description" : "",
-      "message" : "Орбита"
-   },
-   "ORBITAL_ANALYSIS" : {
-      "description" : "",
-      "message" : "Анализ орбиты"
-   },
-   "ORBITAL_ANALYSIS_NOTES" : {
-      "description" : "",
-      "message" : "Круговая орбитальная скорость дана для тангенциальной скорости. Корабль должен двигаться под 90В° к оси корабля/{name}.\n\nСкорость снижения - минимальная и тангенциальная. Наиболее низка скорость или минимальный угол, которые приведут к пересечению с поверхностью {name}.\n\nСкорость отдаления - теоретическая для любого направления, на котором корабль не пересечется с поверхностью {name}.\n\t\t"
-   },
-   "OWED" : {
-      "description" : "Player owing money to crew members",
-      "message" : "Долг"
-   },
-   "PAY_FINE_OF_N" : {
-      "description" : "",
-      "message" : "Оплатить штраф в размере {amount}"
-   },
-   "PERSONAL_INFORMATION" : {
-      "description" : "",
-      "message" : "Персональная информация"
-   },
-   "PILOTING" : {
-      "description" : "",
-      "message" : "Пилотирование:"
-   },
-   "PILOT_SEAT_IS_NOW_OCCUPIED_BY_NAME" : {
-      "description" : "",
-      "message" : "Обязанности пилота сейчас выполняет {name}."
-   },
-   "PIRACY" : {
-      "description" : "",
-      "message" : "Пиратство"
-   },
-   "PLANET_DETAIL_DISTANCE" : {
-      "description" : "",
-      "message" : "Детализация планет на расстоянии"
-   },
-   "PLANET_TEXTURES" : {
-      "description" : "",
-      "message" : "Текстуры планет"
-   },
-   "POLICE" : {
-      "description" : "",
-      "message" : "Охрана"
-   },
-   "POOR" : {
-      "description" : "Player combat rating",
-      "message" : "Слабый"
-   },
-   "POSITION" : {
-      "description" : "The job title/position of crew memeber",
-      "message" : "Должность"
-   },
-   "PRESS_A_KEY_OR_CONTROLLER_BUTTON" : {
-      "description" : "",
-      "message" : "Нажмите любую клавишу или кнопку контроллера."
-   },
-   "PRICE" : {
-      "description" : "",
-      "message" : "Цена"
-   },
-   "PROFESSIONAL" : {
-      "description" : "For player reputation",
-      "message" : "Профессионал"
-   },
-   "QUALIFICATION_SCORES" : {
-      "description" : "",
-      "message" : "Оценка квалификации"
-   },
-   "QUIT" : {
-      "description" : "",
-      "message" : "Выход"
-   },
-   "RANK" : {
-      "description" : "",
-      "message" : "Ранг:"
-   },
-   "RATING" : {
-      "description" : "",
-      "message" : "Рейтинг:"
-   },
-   "REAR_WEAPON" : {
-      "description" : "",
-      "message" : "Кормовая турель"
-   },
-   "REFUEL" : {
-      "description" : "",
-      "message" : "Дозаправить"
-   },
-   "REFUEL_FULL" : {
-      "description" : "",
-      "message" : "Полная заправка"
-   },
-   "RELIABLE" : {
-      "description" : "For player reputation",
-      "message" : "Надёжный"
-   },
-   "REPAIR_X_HULL_DAMAGE_FOR_X" : {
-      "description" : "",
-      "message" : "Ремонт {damage}% повреждённого корпуса за {price}"
-   },
-   "REPUTATION" : {
-      "description" : "",
-      "message" : "Репутация"
-   },
-   "REQUEST_LAUNCH" : {
-      "description" : "",
-      "message" : "Запрос на взлёт"
-   },
-   "RETURN_TO_GAME" : {
-      "description" : "",
-      "message" : "Вернуться к игре"
-   },
-   "RETURN_TO_MENU" : {
-      "description" : "",
-      "message" : "Вернуться к меню"
-   },
-   "REVERSE_ACCEL_EMPTY" : {
-      "description" : "",
-      "message" : "Ускорение назад (пустой)"
-   },
-   "REVERSE_ACCEL_FULL" : {
-      "description" : "",
-      "message" : "Ускорение назад (полный)"
-   },
-   "REWARD" : {
-      "description" : "",
-      "message" : "Награда"
-   },
-   "SAVE" : {
-      "description" : "",
-      "message" : "Сохранить игру"
-   },
-   "SCOOP_MOUNTS" : {
-      "description" : "How many slots or mounts exist on the ship for fitting SCOOPS (e.g. cargo scoop, fuel scoop, multi-scoop) ",
-      "message" : "Крепления для заборника"
-   },
-   "SELECT" : {
-      "description" : "",
-      "message" : "Выбрать"
-   },
-   "SELECT_A_FILE_TO_SAVE_TO_OR_ENTER_A_NEW_FILENAME" : {
-      "description" : "",
-      "message" : "Выберите файл для сохранения или введите новое имя"
-   },
-   "SELECT_FILE" : {
-      "description" : "",
-      "message" : "Выберите файл..."
-   },
-   "SELECT_GAME_TO_LOAD" : {
-      "description" : "",
-      "message" : "Выберите файл для загрузки..."
-   },
-   "SELL" : {
-      "description" : "Commodities and equipment prices",
-      "message" : "[-]"
-   },
-   "SENSORS" : {
-      "description" : "",
-      "message" : "Сенсоры:"
-   },
-   "SHIP" : {
-      "description" : "",
-      "message" : "Корабль"
-   },
-   "SHIP_INFORMATION" : {
-      "description" : "",
-      "message" : "Информация о корабле"
-   },
-   "SHIP_IS_ALREADY_FULLY_REPAIRED" : {
-      "description" : "",
-      "message" : "Ваш корабль находится в отличном состоянии."
-   },
-   "SHIP_IS_FULLY_EQUIPPED" : {
-      "description" : "",
-      "message" : "Ваш корабль полностью оснащён."
-   },
-   "SHIP_IS_FULLY_LADEN" : {
-      "description" : "",
-      "message" : "Ваш корабль полностью загружен."
-   },
-   "SHIP_MARKET" : {
-      "description" : "",
-      "message" : "Покупка кораблей"
-   },
-   "SHIP_REPAIRS" : {
-      "description" : "",
-      "message" : "Сервисный центр"
-   },
-   "SHIP_VIEWING_WAS_SOLD" : {
-      "description" : "",
-      "message" : "Корабль, который вы смотрели, был продан"
-   },
-   "SOUND" : {
-      "description" : "",
-      "message" : "Звук"
-   },
-   "START_AT_BARNARDS_STAR" : {
-      "description" : "",
-      "message" : "Новый старт: Barnard's Star"
-   },
-   "START_AT_EARTH" : {
-      "description" : "",
-      "message" : "Новый старт: Earth"
-   },
-   "START_AT_NEW_HOPE" : {
-      "description" : "New Hope is an in game location",
-      "message" : "Новый старт: New Hope"
-   },
-   "STATION_MANAGER" : {
-      "description" : "",
-      "message" : "Управляющий станцией"
-   },
-   "STATUS" : {
-      "description" : "",
-      "message" : "Статус"
-   },
-   "THANKS_AND_REMEMBER_TO_BUY_FUEL" : {
-      "description" : "",
-      "message" : "Спасибо за покупку! Перед взлётом не забудьте заправить баки и отремонтировать повреждённое оборудование."
-   },
-   "THERE_IS_NOBODY_ELSE_ON_BOARD_ABLE_TO_FLY_THIS_SHIP" : {
-      "description" : "",
-      "message" : "Больше никто на борту не умеет управлять этим кораблем."
-   },
-   "THE_SHIP_IS_UNDER_STATION_CONTROL_COMMANDER" : {
-      "description" : "",
-      "message" : "Корабль под контролем станции, Командир."
-   },
-   "TOGGLE_MALE_FEMALE" : {
-      "description" : "player gender",
-      "message" : "Пол муж./жен."
-   },
-   "TOO_SMALL_FOR_CURRENT_CREW" : {
-      "description" : "",
-      "message" : "Корабль слишком мал для вашей команды."
-   },
-   "TOTAL" : {
-      "description" : "",
-      "message" : "Всего: "
-   },
-   "TOTAL_MASS" : {
-      "description" : "",
-      "message" : "Общая"
-   },
-   "TRADING_ILLEGAL_GOODS" : {
-      "description" : "",
-      "message" : "Торговля нелегальным товаром"
-   },
-   "TRUSTWORTHY" : {
-      "description" : "For player reputation",
-      "message" : "Достойный доверия"
-   },
-   "TYPE" : {
-      "description" : "",
-      "message" : "Тип"
-   },
-   "UNLAWFUL_WEAPONS_DISCHARGE" : {
-      "description" : "",
-      "message" : "Стрельба в зоне станции"
-   },
-   "UNRELIABLE" : {
-      "description" : "",
-      "message" : "Ненадёжный"
-   },
-   "UP_ACCEL" : {
-      "description" : "",
-      "message" : "Ускорение вверх"
-   },
-   "USED" : {
-      "description" : "",
-      "message" : "Занято"
-   },
-   "VERY_HIGH" : {
-      "description" : "Game settings option: graphic resolution",
-      "message" : "Очень высокая"
-   },
-   "VERY_LOW" : {
-      "description" : "Game settings option: graphic resolution",
-      "message" : "Очень низкая"
-   },
-   "VIDEO" : {
-      "description" : "",
-      "message" : "Видео"
-   },
-   "VIDEO_CONFIGURATION_RESTART_GAME_TO_APPLY" : {
-      "description" : "",
-      "message" : "Настройки видео (требуется перезапуск игры)"
-   },
-   "VIDEO_RESOLUTION" : {
-      "description" : "",
-      "message" : "Разрешение экрана"
-   },
-   "WAGE" : {
-      "description" : "Salary of crew shown in crew roster",
-      "message" : "Оклад"
-   },
-   "WEIGHT_EMPTY" : {
-      "description" : "",
-      "message" : "Масса корпуса"
-   },
-   "WEIGHT_FULLY_LOADED" : {
-      "description" : "",
-      "message" : "Масса при полной загрузке"
-   },
-   "WE_ARE_IN_HYPERSPACE_COMMANDER" : {
-      "description" : "",
-      "message" : "Мы в гиперпространстве, Командир."
-   },
-   "WE_HAVE_NO_BUSINESS_WITH_YOU" : {
-      "description" : "Said by the police to law abiding player",
-      "message" : "Ваш правовой статус чист. Всего доброго, Командир!"
-   },
-   "YES" : {
-      "description" : "Positive answer to a question",
-      "message" : "Да"
-   },
-   "YOURE_GOING_TO_REGRET_SACKING_ME" : {
-      "description" : "",
-      "message" : "Вы пожалеете о том, что уволили меня!"
-   },
-   "YOUR_HULL_IS_AT_X_INTEGRITY" : {
-      "description" : "",
-      "message" : "Ваш корпус цел на {value}%."
-   },
-   "YOU_DONT_HAVE_ENOUGH_MONEY_FOR_THAT_OPTION" : {
-      "description" : "",
-      "message" : "У вас недостаточно средств для совершения этой операции."
-   },
-   "YOU_MUST_FIRST_SELECT_A_COMBAT_TARGET_COMMANDER" : {
-      "description" : "",
-      "message" : "Командир, сначала вы должны указать боевую цель."
-   },
-   "YOU_MUST_FIRST_SELECT_A_SUITABLE_NAVIGATION_TARGET_COMMANDER" : {
-      "description" : "",
-      "message" : "Командир, сначала вы должны указать цель навигации."
-   },
-   "YOU_MUST_LAUNCH_FIRST_COMMANDER" : {
-      "description" : "",
-      "message" : "Командир, сначала мы должны взлететь."
-   },
-   "YOU_MUST_REQUEST_LAUNCH_CLEARANCE_FIRST_COMMANDER" : {
-      "description" : "",
-      "message" : "Командир, сначала вы должны запросить разрешение на взлёт."
-   },
-   "YOU_NOT_ENOUGH_MONEY" : {
-      "description" : "",
-      "message" : "У вас недостаточно средств"
-   }
+"ABOVE_AVERAGE":{
+"description":"",
+"message":"Выше среднего"
+},
+"ACTIVE":{
+"description":"",
+"message":"Активно"
+},
+"AFTER_TRADE_IN":{
+"description":"",
+"message":"+ цена вашего корпуса"
+},
+"ALLEGIANCE":{
+"description":"",
+"message":"Лояльность:"
+},
+"ALL_UP_WEIGHT":{
+"description":"",
+"message":"Общая масса"
+},
+"AMOUNT":{
+"description":"",
+"message":"Кол-во"
+},
+"AN_ERROR_HAS_OCCURRED":{
+"description":"",
+"message":"Произошла ошибка"
+},
+"ATMOSPHERIC_SHIELDING":{
+"description":"Used in ShipInfo view, followed by a yes/no depending on if the ship can carry atmospheric shields","message":"Атмосферный щит"
+},
+"ATTEMPT_TO_REPAIR_HULL":{
+"description":"",
+"message":"Попытка починки корпуса"
+},
+"AVAILABLE_FOR_PURCHASE":{
+"description":"",
+"message":"Доступно для покупки"
+},
+"AVERAGE":{
+"description":"",
+"message":"Средний"
+},
+"BACKWARD_ACCEL":{
+"description":"",
+"message":"Ускорение назад"
+},
+"BULLETIN_BOARD":{
+"description":"",
+"message":"Служба объявлений"
+},
+"BUY":{
+"description":"Commodities and equipment prices","message":"[+]"
+},
+"BUY_SHIP":{
+"description":"",
+"message":"Купить"
+},
+"CABINS":{
+"description":"For passengers","message":"Каюты"
+},
+"CABIN_FREE":{
+"description":"Free capacity for passengers","message":"свободно"
+},
+"CABIN_USED":{
+"description":"Passengers using cabins","message":"используется"
+},
+"CANCEL":{
+"description":"",
+"message":"Отмена"
+},
+"CAPACITY":{
+"description":"Capacity of ship to fit more equipment","message":"Грузоподъёмность"
+},
+"CAPACITY_USED":{
+"description":"",
+"message":"Загруженность"
+},
+"CARGO":{
+"description":"",
+"message":"Трюм"
+},
+"CARGO_SPACE":{
+"description":"",
+"message":"Грузоподъёмность"
+},
+"CARGO_SPACE_USED":{
+"description":"",
+"message":"Грузовой отсек"
+},
+"CARGO_T_FREE":{
+"description":"t for tonne","message":"{amount}т свободно"
+},
+"CARGO_T_USED":{
+"description":"t for tonne","message":"{amount}т загружено"
+},
+"CASH":{
+"description":"",
+"message":"Счёт"
+},
+"CASH_N":{
+"description":"",
+"message":"Счёт: {money}"
+},
+"CHANGE_BINDING":{
+"description":"Key binding option","message":"Назначить"
+},
+"CHIEF_MECHANIC":{
+"description":"",
+"message":"Главный механик"
+},
+"CIRCULAR_ORBIT_SPEED":{
+"description":"",
+"message":"Скорость круговой орбиты"
+},
+"CITY_DETAIL_LEVEL":{
+"description":"Game graphics option","message":"Уровень детализации городов"
+},
+"CLEAN":{
+"description":"Legal status of player","message":"Чистый"
+},
+"CLEAR":{
+"description":"Clear an option in game settings/options menu","message":"Очистить"
+},
+"CLIENT":{
+"description":"",
+"message":"Заказчик"
+},
+"COMBAT":{
+"description":"Headline for kills and combat rating","message":"Боевая статистика"
+},
+"COMMANDER":{
+"description":"",
+"message":"Командир"
+},
+"COMMODITY_MARKET":{
+"description":"",
+"message":"Торговый центр"
+},
+"COMPACT_SCANNER":{
+"description":"Game settings option","message":"Компактный сканер"
+},
+"COMPETENT":{
+"description":"Combat rating","message":"Квалифицированный"
+},
+"COMPLETED":{
+"description":"",
+"message":"Завершено"
+},
+"COMPRESS_TEXTURES":{
+"description":"graphics option in game settings menu ","message":"Сжатие текстур"
+},
+"CONSTABLE":{
+"description":"",
+"message":"Начальник охраны"
+},
+"CONTINUE_GAME":{
+"description":"",
+"message":"Продолжить игру"
+},
+"CONTROLS":{
+"description":"",
+"message":"Управление"
+},
+"CONTROL_OPTIONS":{
+"description":"",
+"message":"Настройки управления"
+},
+"COULD_NOT_LOAD_GAME":{
+"description":"",
+"message":"Не удалось загрузить игру:"
+},
+"CREDIBLE":{
+"description":"For player reputation","message":"Значимый"
+},
+"CREW_CABINS":{
+"description":"",
+"message":"Каюты для экипажа"
+},
+"CREW_ROSTER":{
+"description":"",
+"message":"Список экипажа"
+},
+"CRIMINAL_RECORD":{
+"description":"",
+"message":"Досье"
+},
+"DANGEROUS":{
+"description":"Player combat rating","message":"Опасный"
+},
+"DEADLY":{
+"description":"Player combat rating","message":"Смертельный"
+},
+"DELTA_V":{
+"description":"",
+"message":"Дельта v"
+},
+"DELTA_V_EMPTY":{
+"description":"Delta-v capacity of a ship with no cargo or upgrades","message":"Дельта v (пустой)"
+},
+"DELTA_V_FULL":{
+"description":"Delta-v capacity of a ship with maximum cargo","message":"Дельта v (полный)"
+},
+"DELTA_V_MAX":{
+"description":"Delta-v capacity of a ship with cargo bay fully loaded with propellant","message":"Дельта v (макс.)"
+},
+"DESCENT_TO_GROUND_SPEED":{
+"description":"",
+"message":"Скорость снижения:"
+},
+"DESTROY_ENEMY_SHIP":{
+"description":"",
+"message":"Уничтожить корабль противника"
+},
+"DISMISS":{
+"description":"Terminate crew memeber's contract","message":"Уволить"
+},
+"DISPLAY_HUD_TRAILS":{
+"description":"",
+"message":"Отображать тоннель в HUD"
+},
+"DISPLAY_NAV_TUNNELS":{
+"description":"Settings option: hyperspace tunnel effect","message":"Отображать навигационный тоннель"
+},
+"DISPLAY_SPEED_LINES":{
+"description":"Settings option: effect when travelling in space","message":"Отображать линии скорости"
+},
+"DOCK_AT_CURRENT_TARGET":{
+"description":"",
+"message":"Стыковка с выбранной целью"
+},
+"DUE":{
+"description":"mission deadline date","message":"Сроки"
+},
+"DUMPING":{
+"description":"The illegal act of dumping waste","message":"Незаконное демпинга"
+},
+"D_DAYS_LEFT":{
+"description":"",
+"message":"Осталось дней: %d"
+},
+"ECONOMY_TRADE":{
+"description":"",
+"message":"Экономика и торговля"
+},
+"EFFECTS":{
+"description":"",
+"message":"Эффекты:"
+},
+"ELITE":{
+"description":"Player combat rating","message":"ЭЛИТА"
+},
+"EMPLOYMENT":{
+"description":"",
+"message":"Занятость"
+},
+"ENABLE_COCKPIT":{
+"description":"Game settings option: to use a cockpit 3D model","message":"Включить кабину (ЭКСПЕРИМЕНТАЛЬНО)"
+},
+"ENABLE_JOYSTICK":{
+"description":"",
+"message":"Включить джойстик"
+},
+"ENGINEERING":{
+"description":"Engineering skills of crew","message":"Инженерное дело:"
+},
+"EQUIPMENT":{
+"description":"",
+"message":"Оборудование"
+},
+"EQUIPMENT_MARKET":{
+"description":"",
+"message":"Магазин оборудования"
+},
+"EQUIPPED":{
+"description":"",
+"message":"Оборудовано"
+},
+"ERROR":{
+"description":"",
+"message":"Ошибка"
+},
+"ESCAPE_SPEED":{
+"description":"",
+"message":"Скорость отдаления:"
+},
+"EXIT_THIS_GAME":{
+"description":"",
+"message":"Выйти из игры"
+},
+"EXPERIENCED":{
+"description":"For player reputation","message":"Опытный"
+},
+"EXPERT":{
+"description":"For player reputation","message":"Эксперт"
+},
+"FAILED":{
+"description":"When failed mission","message":"Провалено"
+},
+"FEMALE":{
+"description":"",
+"message":"Женщина"
+},
+"FORWARD_ACCEL":{
+"description":"",
+"message":"Ускорение вперёд"
+},
+"FORWARD_ACCEL_EMPTY":{
+"description":"",
+"message":"Ускорение вперёд (пустой)"
+},
+"FORWARD_ACCEL_FULL":{
+"description":"",
+"message":"Ускорение вперёд (полный)"
+},
+"FRACTAL_DETAIL":{
+"description":"",
+"message":"Детализация частиц"
+},
+"FREE":{
+"description":"Used in Ship Information view as in Capacity: 10t (5t free)","message":"свободно"
+},
+"FRONT_WEAPON":{
+"description":"",
+"message":"Носовая турель"
+},
+"FUEL":{
+"description":"",
+"message":"Топливо"
+},
+"FUEL_TANK_FULL":{
+"description":"",
+"message":"Топливный бак полон."
+},
+"FUEL_WEIGHT":{
+"description":"",
+"message":"Количество топлива"
+},
+"FULL_SCREEN":{
+"description":"",
+"message":"Полноэкранный режим"
+},
+"GENERAL_CREW":{
+"description":"",
+"message":"Основной экипаж"
+},
+"GIVE_ORDERS_TO_CREW":{
+"description":"",
+"message":"Отдать приказы экипажу"
+},
+"GOOD_RIDDANCE_TO_YOU_TOO":{
+"description":"",
+"message":"Скатертью дорожка!"
+},
+"HANG_UP":{
+"description":"",
+"message":"Спасибо за информацию, конец связи."
+},
+"HARMLESS":{
+"description":"Player combat rating","message":"Безобидный"
+},
+"HEAVY_CARGO_SHUTTLE":{
+"description":"",
+"message":"Тяжёлый грузовой шаттл"
+},
+"HEAVY_COURIER":{
+"description":"",
+"message":"Тяжёлый курьер"
+},
+"HEAVY_FIGHTER":{
+"description":"",
+"message":"Тяжёлый истребитель"
+},
+"HEAVY_FREIGHTER":{
+"description":"",
+"message":"Тяжёлый грузовой транспорт"
+},
+"HEAVY_PASSENGER_SHUTTLE":{
+"description":"",
+"message":"Тяжёлый пассажирский шаттл"
+},
+"HEAVY_PASSENGER_TRANSPORT":{
+"description":"",
+"message":"Тяжёлый пассажирский транспорт"
+},
+"HIGH":{
+"description":"Game settings option: for graphics resolution","message":"Высокая"
+},
+"HULL_DOES_NOT_REQUIRE_REPAIR":{
+"description":"",
+"message":"Корпус не требует ремонта."
+},
+"HULL_INTEGRITY":{
+"description":"",
+"message":"Корпус"
+},
+"HULL_REPAIRED_BY_NAME_NOW_AT_N_PERCENT":{
+"description":"",
+"message":"{name} отремонтировал корпус до {repairPercent}%"
+},
+"HULL_REPAIR_ATTEMPT_FAILED_HULL_SUFFERED_MINOR_DAMAGE":{
+"description":"",
+"message":"Попытка ремонта не удалась. Корпус получил незначительные повреждения."
+},
+"HYPERDRIVE":{
+"description":"",
+"message":"Установленный двигатель"
+},
+"HYPERDRIVE_FITTED":{
+"description":"",
+"message":"Установленный двигатель:"
+},
+"HYPERSPACE_RANGE":{
+"description":"",
+"message":"Возможный радиус прыжка"
+},
+"IM_TIRED_OF_WORKING_FOR_NOTHING_DONT_YOU_KNOW_WHAT_A_CONTRACT_IS":{
+"description":"",
+"message":"Я устал работать даром. Разве вы не знаете, что такое контракт?"
+},
+"INACTIVE":{
+"description":"",
+"message":"Неактивно"
+},
+"INCOMPETENT":{
+"description":"For player reputation","message":"Некомпетентный"
+},
+"INEXPERIENCED":{
+"description":"For player reputation","message":"Неопытный"
+},
+"INVERT_MOUSE_Y":{
+"description":"",
+"message":"Инвертировать мышь по оси Y"
+},
+"IN_CARGO_HOLD":{
+"description":"",
+"message":"В грузовом отсеке"
+},
+"IN_STOCK":{
+"description":"",
+"message":"На складе"
+},
+"ITEM_IS_OUT_OF_STOCK":{
+"description":"",
+"message":"Этого товара нет на складе."
+},
+"ITS_BEEN_GREAT_WORKING_FOR_YOU_IF_YOU_NEED_ME_AGAIN_ILL_BE_HERE_A_WHILE":{
+"description":"",
+"message":"Работать на вас было одним удовольствием. Если вновь захотите меня нанять - некоторое время я буду здесь."
+},
+"JETTISON":{
+"description":"",
+"message":"Выбросить груз"
+},
+"KILLS":{
+"description":"",
+"message":"Побед:"
+},
+"LANGUAGE":{
+"description":"",
+"message":"Язык игры"
+},
+"LANGUAGE_RESTART_GAME_TO_APPLY":{
+"description":"",
+"message":"Язык игры (требуется перезапуск игры)"
+},
+"LAUNCH_PERMISSION_DENIED_BUSY":{
+"description":"",
+"message":"В разрешении на взлёт отказано: стыковочная зона занята."
+},
+"LAUNCH_PERMISSION_DENIED_CREW":{
+"description":"",
+"message":"В разрешении на взлёт отказано: на вашем корабле не укомплектован экипаж."
+},
+"LAUNCH_PERMISSION_DENIED_FINED":{
+"description":"",
+"message":"В разрешении на взлёт отказано: у вас имеются неоплаченные штрафы."
+},
+"LEGAL_STATUS":{
+"description":"",
+"message":"Правовой статус"
+},
+"LIGHT_CARGO_SHUTTLE":{
+"description":"",
+"message":"Лёгкий грузовой челнок"
+},
+"LIGHT_COURIER":{
+"description":"",
+"message":"Лёгкий курьер"
+},
+"LIGHT_FIGHTER":{
+"description":"",
+"message":"Лёгкий истребитель"
+},
+"LIGHT_FREIGHTER":{
+"description":"",
+"message":"Лёгкий грузовой транспорт"
+},
+"LIGHT_PASSENGER_SHUTTLE":{
+"description":"",
+"message":"Лёгкий пассажирский челнок"
+},
+"LIGHT_PASSENGER_TRANSPORT":{
+"description":"",
+"message":"Лёгкий пассажирский транспорт"
+},
+"LOAD":{
+"description":"",
+"message":"Загрузка игры"
+},
+"LOAD_GAME":{
+"description":"",
+"message":"Загрузить игру"
+},
+"LOBBY":{
+"description":"",
+"message":"Информационный центр"
+},
+"LOCATED_N_KM_FROM_THE_CENTRE_OF_NAME":{
+"description":"",
+"message":"Положение: {distance}км от центра {name}:"
+},
+"LOCATION":{
+"description":"",
+"message":"Система"
+},
+"LOW":{
+"description":"",
+"message":"Низкая"
+},
+"LY":{
+"description":"Light year","message":"св. лет"
+},
+"MAKE_NEW_FACE":{
+"description":"",
+"message":"Новое лицо"
+},
+"MALE":{
+"description":"",
+"message":"Мужчина"
+},
+"MASS":{
+"description":"",
+"message":"Вес"
+},
+"MASTER":{
+"description":"For player reputation","message":"Мастер"
+},
+"MASTER_VOL":{
+"description":"Master sound in settings option","message":"Общая:"
+},
+"MAX":{
+"description":"",
+"message":"макс."
+},
+"MAXIMUM_CREW":{
+"description":"",
+"message":"Максимум экипажа"
+},
+"MEDIUM":{
+"description":"Game settings option: graphics resolution","message":"Средняя"
+},
+"MEDIUM_CARGO_SHUTTLE":{
+"description":"",
+"message":"Средний грузовой челнок"
+},
+"MEDIUM_COURIER":{
+"description":"",
+"message":"Средний курьер"
+},
+"MEDIUM_FIGHTER":{
+"description":"",
+"message":"Средний истребитель"
+},
+"MEDIUM_FREIGHTER":{
+"description":"",
+"message":"Средний грузовой транспорт"
+},
+"MEDIUM_PASSENGER_SHUTTLE":{
+"description":"",
+"message":"Средний пассажирский челнок"
+},
+"MEDIUM_PASSENGER_TRANSPORT":{
+"description":"",
+"message":"Средний пассажирский транспорт"
+},
+"METAL_ALLOYS":{
+"description":"",
+"message":"Металлические сплавы"
+},
+"MILITARY":{
+"description":"",
+"message":"Военная статистика"
+},
+"MINIMUM_CREW":{
+"description":"",
+"message":"Минимум экипажа"
+},
+"MISSILE_MOUNTS":{
+"description":"",
+"message":"Крепления для ракет"
+},
+"MISSIONS":{
+"description":"",
+"message":"Список заданий"
+},
+"MISSION_DETAILS":{
+"description":"",
+"message":"Детали миссии"
+},
+"MORE_INFO":{
+"description":"",
+"message":"Доп.информация..."
+},
+"MOSTLY_HARMLESS":{
+"description":"",
+"message":"Почти безобидный"
+},
+"MULTISAMPLING":{
+"description":"",
+"message":"Сглаживание "
+},
+"MURDER":{
+"description":"",
+"message":"Убийство"
+},
+"MUSIC":{
+"description":"",
+"message":"Музыка:"
+},
+"MUTE":{
+"description":"",
+"message":"Отключить"
+},
+"NAME_OBJECT":{
+"description":"For an item or object","message":"Имя"
+},
+"NAME_PERSON":{
+"description":"For a person","message":"Имя"
+},
+"NAVIGATION":{
+"description":"",
+"message":"Навигация:"
+},
+"NEGOTIATE":{
+"description":"",
+"message":"Условия"
+},
+"NEXT_PAID":{
+"description":"",
+"message":"День платежа"
+},
+"NO":{
+"description":"Negative answer to a question","message":"Нет"
+},
+"NOBODY":{
+"description":"For player reputation","message":" Пустое место"
+},
+"NONE":{
+"description":"",
+"message":"<отсутствует>"
+},
+"NOTES":{
+"description":"",
+"message":"Примечание:"
+},
+"NOT_ENOUGH_ALLOY_TO_ATTEMPT_A_REPAIR":{
+"description":"",
+"message":"Недостаточно {alloy} для проведения ремонта"
+},
+"NOT_SUPPORTED_ON_THIS_SHIP":{
+"description":"",
+"message":"{equipment} невозможно установить на данной модели корабля"
+},
+"NO_MISSIONS":{
+"description":"",
+"message":"Нет заданий."
+},
+"N_LIGHT_YEARS_N_MAX":{
+"description":"",
+"message":"{range} св. лет (из {maxRange} макс.)"
+},
+"N_OCCUPIED_PASSENGER_CABINS":{
+"description":"",
+"message":"Занятых пассажирских кают {quantity}"
+},
+"N_SHIELD_GENERATORS":{
+"description":"",
+"message":"Генераторы защитного поля {quantity}"
+},
+"N_UNOCCUPIED_PASSENGER_CABINS":{
+"description":"",
+"message":"Свободных пассажирских кают {quantity}"
+},
+"OFF":{
+"description":"",
+"message":"Выкл."
+},
+"OK":{
+"description":"",
+"message":"Хорошо"
+},
+"OPTIONS":{
+"description":"",
+"message":"Настройки"
+},
+"ORBIT":{
+"description":"",
+"message":"Орбита"
+},
+"ORBITAL_ANALYSIS":{
+"description":"",
+"message":"Анализ орбиты"
+},
+"ORBITAL_ANALYSIS_NOTES":{
+"description":"",
+"message":"Круговая орбитальная скорость дана для тангенциальной скорости. Корабль должен двигаться под 90В° к оси корабля/{name}.\n\nСкорость снижения - минимальная и тангенциальная. Наиболее низка скорость или минимальный угол, которые приведут к пересечению с поверхностью {name}.\n\nСкорость отдаления - теоретическая для любого направления, на котором корабль не пересечется с поверхностью {name}.\n\t\t"
+},
+"OWED":{
+"description":"Player owing money to crew members","message":"Долг"
+},
+"PAY_FINE_OF_N":{
+"description":"",
+"message":"Оплатить штраф в размере {amount}"
+},
+"PERSONAL_INFORMATION":{
+"description":"",
+"message":"Персональная информация"
+},
+"PILOTING":{
+"description":"",
+"message":"Пилотирование:"
+},
+"PILOT_SEAT_IS_NOW_OCCUPIED_BY_NAME":{
+"description":"",
+"message":"Обязанности пилота сейчас выполняет {name}."
+},
+"PIRACY":{
+"description":"",
+"message":"Пиратство"
+},
+"PLANET_DETAIL_DISTANCE":{
+"description":"",
+"message":"Детализация планет на расстоянии"
+},
+"PLANET_TEXTURES":{
+"description":"",
+"message":"Текстуры планет"
+},
+"POLICE":{
+"description":"",
+"message":"Охрана"
+},
+"POOR":{
+"description":"Player combat rating","message":"Слабый"
+},
+"POSITION":{
+"description":"The job title/position of crew memeber","message":"Должность"
+},
+"PRESS_A_KEY_OR_CONTROLLER_BUTTON":{
+"description":"",
+"message":"Нажмите любую клавишу или кнопку контроллера."
+},
+"PRICE":{
+"description":"",
+"message":"Цена"
+},
+"PROFESSIONAL":{
+"description":"For player reputation","message":"Профессионал"
+},
+"QUALIFICATION_SCORES":{
+"description":"",
+"message":"Оценка квалификации"
+},
+"QUIT":{
+"description":"",
+"message":"Выход"
+},
+"QUIT_CONFIRMATION":{
+"description":"For the checkbox in settings window","message":"Подтверждение выхода из игры"
+},
+"RANK":{
+"description":"",
+"message":"Ранг:"
+},
+"RATING":{
+"description":"",
+"message":"Рейтинг:"
+},
+"REAR_WEAPON":{
+"description":"",
+"message":"Кормовая турель"
+},
+"REFUEL":{
+"description":"",
+"message":"Дозаправить"
+},
+"REFUEL_FULL":{
+"description":"",
+"message":"Полная заправка"
+},
+"RELIABLE":{
+"description":"For player reputation","message":"Надёжный"
+},
+"REPAIR_X_HULL_DAMAGE_FOR_X":{
+"description":"",
+"message":"Ремонт {damage}% повреждённого корпуса за {price}"
+},
+"REPUTATION":{
+"description":"",
+"message":"Репутация"
+},
+"REQUEST_LAUNCH":{
+"description":"",
+"message":"Запрос на взлёт"
+},
+"RETURN_TO_GAME":{
+"description":"",
+"message":"Вернуться к игре"
+},
+"RETURN_TO_MENU":{
+"description":"",
+"message":"Вернуться к меню"
+},
+"REVERSE_ACCEL_EMPTY":{
+"description":"",
+"message":"Ускорение назад (пустой)"
+},
+"REVERSE_ACCEL_FULL":{
+"description":"",
+"message":"Ускорение назад (полный)"
+},
+"REWARD":{
+"description":"",
+"message":"Награда"
+},
+"SAVE":{
+"description":"",
+"message":"Сохранить игру"
+},
+"SCOOP_MOUNTS":{
+"description":"How many slots or mounts exist on the ship for fitting SCOOPS (e.g. cargo scoop, fuel scoop, multi-scoop) ","message":"Крепления для заборника"
+},
+"SELECT":{
+"description":"",
+"message":"Выбрать"
+},
+"SELECT_A_FILE_TO_SAVE_TO_OR_ENTER_A_NEW_FILENAME":{
+"description":"",
+"message":"Выберите файл для сохранения или введите новое имя"
+},
+"SELECT_FILE":{
+"description":"",
+"message":"Выберите файл..."
+},
+"SELECT_GAME_TO_LOAD":{
+"description":"",
+"message":"Выберите файл для загрузки..."
+},
+"SELL":{
+"description":"Commodities and equipment prices","message":"[-]"
+},
+"SENSORS":{
+"description":"",
+"message":"Сенсоры:"
+},
+"SHIP":{
+"description":"",
+"message":"Корабль"
+},
+"SHIP_INFORMATION":{
+"description":"",
+"message":"Информация о корабле"
+},
+"SHIP_IS_ALREADY_FULLY_REPAIRED":{
+"description":"",
+"message":"Ваш корабль находится в отличном состоянии."
+},
+"SHIP_IS_FULLY_EQUIPPED":{
+"description":"",
+"message":"Ваш корабль полностью оснащён."
+},
+"SHIP_IS_FULLY_LADEN":{
+"description":"",
+"message":"Ваш корабль полностью загружен."
+},
+"SHIP_MARKET":{
+"description":"",
+"message":"Покупка кораблей"
+},
+"SHIP_REPAIRS":{
+"description":"",
+"message":"Сервисный центр"
+},
+"SHIP_VIEWING_WAS_SOLD":{
+"description":"",
+"message":"Корабль, который вы смотрели, был продан"
+},
+"SOUND":{
+"description":"",
+"message":"Звук"
+},
+"START_AT_BARNARDS_STAR":{
+"description":"",
+"message":"Новый старт: Barnard's Star"
+},
+"START_AT_EARTH":{
+"description":"",
+"message":"Новый старт: Earth"
+},
+"START_AT_NEW_HOPE":{
+"description":"New Hope is an in game location","message":"Новый старт: New Hope"
+},
+"STATION_MANAGER":{
+"description":"",
+"message":"Управляющий станцией"
+},
+"STATUS":{
+"description":"",
+"message":"Статус"
+},
+"THANKS_AND_REMEMBER_TO_BUY_FUEL":{
+"description":"",
+"message":"Спасибо за покупку! Перед взлётом не забудьте заправить баки и отремонтировать повреждённое оборудование."
+},
+"THERE_IS_NOBODY_ELSE_ON_BOARD_ABLE_TO_FLY_THIS_SHIP":{
+"description":"",
+"message":"Больше никто на борту не умеет управлять этим кораблем."
+},
+"THE_SHIP_IS_UNDER_STATION_CONTROL_COMMANDER":{
+"description":"",
+"message":"Корабль под контролем станции, Командир."
+},
+"TOGGLE_MALE_FEMALE":{
+"description":"player gender","message":"Пол муж./жен."
+},
+"TOO_SMALL_FOR_CURRENT_CREW":{
+"description":"",
+"message":"Корабль слишком мал для вашей команды."
+},
+"TOTAL":{
+"description":"",
+"message":"Всего: "
+},
+"TOTAL_MASS":{
+"description":"",
+"message":"Общая"
+},
+"TRADING_ILLEGAL_GOODS":{
+"description":"",
+"message":"Торговля нелегальным товаром"
+},
+"TRUSTWORTHY":{
+"description":"For player reputation","message":"Достойный доверия"
+},
+"TYPE":{
+"description":"",
+"message":"Тип"
+},
+"UNLAWFUL_WEAPONS_DISCHARGE":{
+"description":"",
+"message":"Стрельба в зоне станции"
+},
+"UNRELIABLE":{
+"description":"",
+"message":"Ненадёжный"
+},
+"UP_ACCEL":{
+"description":"",
+"message":"Ускорение вверх"
+},
+"USED":{
+"description":"",
+"message":"Занято"
+},
+"VERY_HIGH":{
+"description":"Game settings option: graphic resolution","message":"Очень высокая"
+},
+"VERY_LOW":{
+"description":"Game settings option: graphic resolution","message":"Очень низкая"
+},
+"VIDEO":{
+"description":"",
+"message":"Видео"
+},
+"VIDEO_CONFIGURATION_RESTART_GAME_TO_APPLY":{
+"description":"",
+"message":"Настройки видео (требуется перезапуск игры)"
+},
+"VIDEO_RESOLUTION":{
+"description":"",
+"message":"Разрешение экрана"
+},
+"VSYNC":{
+"description":"For the checkbox in settings window","message":"VSync"
+},
+"WAGE":{
+"description":"Salary of crew shown in crew roster","message":"Оклад"
+},
+"WEIGHT_EMPTY":{
+"description":"",
+"message":"Масса корпуса"
+},
+"WEIGHT_FULLY_LOADED":{
+"description":"",
+"message":"Масса при полной загрузке"
+},
+"WE_ARE_IN_HYPERSPACE_COMMANDER":{
+"description":"",
+"message":"Мы в гиперпространстве, Командир."
+},
+"WE_HAVE_NO_BUSINESS_WITH_YOU":{
+"description":"Said by the police to law abiding player","message":"Мы не имеем ничего против вас на данный момент.\n Однако следует помнить, уважать местные законы:\n \n *Перед hyperjump, остаться по крайней мере в 5 км от станции.\n *Не стрелять из пушки пределах 100 км от станции.\n *Не торгуйте с незаконной продукции.\n *Не бросайте любой продукт на станции,\nand, менее опасны для окружающей среды.\n *Не выбросить за борт радиоактивные отходы\nв жилых человеческими систем.\n *Стрелять или ударил другого судна, в пределах 100 км\nот станции он будет считаться пиратством.\n *Не носите местную информацию на другой фракции.\n *Соблюдать согласованные заданий или будут штрафовать\n за мошенничества или похищения\n *Не используйте ручной взлета, за неуплату штрафы,\n это серьезно и будет рассматриваться утечки.\n *И ... пожалуйста ... не убить никого."
+},
+"YES":{
+"description":"Positive answer to a question","message":"Да"
+},
+"YOURE_GOING_TO_REGRET_SACKING_ME":{
+"description":"",
+"message":"Вы пожалеете о том, что уволили меня!"
+},
+"YOUR_HULL_IS_AT_X_INTEGRITY":{
+"description":"",
+"message":"Ваш корпус цел на {value}%."
+},
+"YOU_DONT_HAVE_ENOUGH_MONEY_FOR_THAT_OPTION":{
+"description":"",
+"message":"У вас недостаточно средств для совершения этой операции."
+},
+"YOU_MUST_FIRST_SELECT_A_COMBAT_TARGET_COMMANDER":{
+"description":"",
+"message":"Командир, сначала вы должны указать боевую цель."
+},
+"YOU_MUST_FIRST_SELECT_A_SUITABLE_NAVIGATION_TARGET_COMMANDER":{
+"description":"",
+"message":"Командир, сначала вы должны указать цель навигации."
+},
+"YOU_MUST_LAUNCH_FIRST_COMMANDER":{
+"description":"",
+"message":"Командир, сначала мы должны взлететь."
+},
+"YOU_MUST_REQUEST_LAUNCH_CLEARANCE_FIRST_COMMANDER":{
+"description":"",
+"message":"Командир, сначала вы должны запросить разрешение на взлёт."
+},
+"YOU_NOT_ENOUGH_MONEY":{
+"description":"",
+"message":"У вас недостаточно средств"
+}
 }

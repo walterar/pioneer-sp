@@ -1,4 +1,8 @@
 {
+"ABDUCTION":{
+"description":"",
+"message":"Secuestro"
+},
 "ACTIVE":{
 "description":"",
 "message":"Activa"
@@ -8,8 +12,7 @@
 "message":"¡Atención! Esto puede costarle caro. Su vida no vale "
 },
 "BUY":{
-"description":"Commodities and equipment prices",
-"message":"COMPRA"
+"description":"Commodities and equipment prices","message":"COMPRA"
 },
 "CAPACITY":{
 "description":"",
@@ -19,13 +22,17 @@
 "description":"",
 "message":"Completa"
 },
-"Check_with_the_police":{
+"CREW":{
 "description":"",
-"message":"Consulte con la policía"
+"message":"Tripulación"
 },
 "CREW_VACANCIES":{
 "description":"",
 "message":"Vacantes tripulación"
+},
+"Check_with_the_police":{
+"description":"",
+"message":"Consulte con la policía"
 },
 "Current_Faction":{
 "description":"",
@@ -55,25 +62,13 @@
 "description":"",
 "message":"Daño ambiental"
 },
-"ABDUCTION":{
-"description":"",
-"message":"Secuestro"
-},
-"FRAUD":{
-"description":"",
-"message":"Estafa"
-},
-"ESPIONAGE":{
-"description":"",
-"message":"Espionaje"
-},
 "ESCAPE":{
 "description":"",
 "message":"Fuga"
 },
-"ILLEGAL_JUMP":{
+"ESPIONAGE":{
 "description":"",
-"message":"Salto ilegal"
+"message":"Espionaje"
 },
 "Experience":{
 "description":"",
@@ -82,6 +77,14 @@
 "FAILED":{
 "description":"",
 "message":"Fallida"
+},
+"FEATURES":{
+"description":"",
+"message":"Características"
+},
+"FRAUD":{
+"description":"",
+"message":"Estafa"
 },
 "Failed_Missions":{
 "description":"",
@@ -131,6 +134,10 @@
 "description":"",
 "message":"Explorador mediano"
 },
+"MISSILE_BAYS":{
+"description":"",
+"message":"Bahías de Misiles"
+},
 "New_Ships_without_stock":{
 "description":"",
 "message":"Mercado de Naves Nuevas sin stock\nen todo el sistema: "
@@ -156,8 +163,7 @@
 "message":"Riesgo Zonal"
 },
 "SELL":{
-"description":"Commodities and equipment prices",
-"message":"VENTA"
+"description":"Commodities and equipment prices","message":"VENTA"
 },
 "START_AT_ACHERNAR":{
 "description":"",
@@ -187,6 +193,14 @@
 "description":"",
 "message":"Despegar y Establecer Órbita Baja"
 },
+"WEAPONS":{
+"description":"",
+"message":"Armamento"
+},
+"Warning_You_must_go_back_to_the_Station_now_or_you_will_die_soon":{
+"description":"",
+"message":"¡Advertencia! Debes volver a la estación ahora o morirás."
+},
 "YOU_DESERVE_TO_BE_IMMORTAL":{
 "description":"",
 "message":"¡Tú mereces ser inmortal!"
@@ -203,10 +217,6 @@
 "description":"",
 "message":"Usted debe instalar el Soporte Vital para Carga"
 },
-"port_or_vecinity":{
-"description":"",
-"message":" en puerto o cercanías."
-},
 "for_jettison":{
 "description":"",
 "message":" por arrojar "
@@ -215,28 +225,12 @@
 "description":"",
 "message":"Usted no tiene suficiente experiencia para esta misión."
 },
-"MISSILE_BAYS":{
-"description":"",
-"message":"Bahías de Misiles"
-},
-"FEATURES":{
-"description":"",
-"message":"Características"
-},
-"CREW":{
-"description":"",
-"message":"Tripulación"
-},
-"Warning_You_must_go_back_to_the_Station_now_or_you_will_die_soon":{
-"description":"",
-"message":"¡Advertencia! Debes volver a la estación ahora o morirás."
-},
-"WEAPONS":{
-"description":"",
-"message":"Armamento"
-},
 "light_year":{
 "description":"",
 "message":" años luz"
+},
+"port_or_vecinity":{
+"description":"",
+"message":" en puerto o cercanías."
 }
 }

@@ -7,6 +7,10 @@
 "description":"",
 "message":"* * * CAMBIO DI REGISTRAZIONE.* * *\n-\n* La vostra nuova registrazione è: "
 },
+"Change_your_registration_and_clean_criminal_record":{
+"description":"",
+"message":"Ciao comandante. Cambia la tua registrazione e ripulire la fedina penale per solo "
+},
 "Hang":{
 "description":"",
 "message":"Riaggancia"
@@ -21,10 +25,14 @@
 },
 "Work_we_do":{
 "description":"",
-"message":"Salve Comandante.\nPuò modificare la registrazione della sua nave per soli 100 $."
+"message":"Salve Comandante.\nPuò modificare la registrazione della sua nave per soli "
 },
 "You_are_owner_of_the_registration":{
 "description":"",
 "message":"Lei è titolare della registrazione: "
+},
+"cannot_change_your_registration":{
+"description":"",
+"message":"Ciao comandante. Purtroppo non siamo in grado di cambiare la vostra registrazione. Avete multe della polizia per "
 }
 }

@@ -1,30 +1,30 @@
 {
-   "GOODS_TRADER_0" : {
-      "description" : "",
-      "message" : "Dürüst {name} Ürün Pazarı"
-   },
-   "GOODS_TRADER_1" : {
-      "description" : "",
-      "message" : "{name} Ticaret Evi"
-   },
-   "GOODS_TRADER_2" : {
-      "description" : "",
-      "message" : "{name} Eşya Deposu"
-   },
-   "GOODS_TRADER_3" : {
-      "description" : "",
-      "message" : "{name} Ürün Borsası"
-   },
-   "GOODS_TRADER_4" : {
-      "description" : "",
-      "message" : "{name} Holding"
-   },
-   "GOODS_TRADER_5" : {
-      "description" : "",
-      "message" : "{name} ve Oğulları"
-   },
-   "WELCOME_TO" : {
-      "description" : "",
-      "message" : "Hoş geldiniz:"
-   }
+"GOODS_TRADER_0":{
+"description":"",
+"message":"Dürüst {name} Ürün Pazarı"
+},
+"GOODS_TRADER_1":{
+"description":"",
+"message":"{name} Ticaret Evi"
+},
+"GOODS_TRADER_2":{
+"description":"",
+"message":"{name} Eşya Deposu"
+},
+"GOODS_TRADER_3":{
+"description":"",
+"message":"{name} Ürün Borsası"
+},
+"GOODS_TRADER_4":{
+"description":"",
+"message":"{name} Holding"
+},
+"GOODS_TRADER_5":{
+"description":"",
+"message":"{name} ve Oğulları"
+},
+"WELCOME_TO":{
+"description":"",
+"message":"Hoş geldiniz:"
+}
 }

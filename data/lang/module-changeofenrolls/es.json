@@ -7,6 +7,10 @@
 "description":"",
 "message":"* * * CAMBIO DE MATRÍCULA.* * *\n-\n* Su nueva matrícula es: "
 },
+"Change_your_registration_and_clean_criminal_record":{
+"description":"",
+"message":"Hola Comandante. Cambie su matrícula y limpie sus antecedentes criminales por solo "
+},
 "Hang":{
 "description":"",
 "message":"Colgar"
@@ -26,5 +30,9 @@
 "You_are_owner_of_the_registration":{
 "description":"",
 "message":"Su matrícula actual es: "
+},
+"cannot_change_your_registration":{
+"description":"",
+"message":"Hola Comandante. Lamentablemente lo podemos cambiar su matrícula. Usted debe multas policiales por "
 }
 }

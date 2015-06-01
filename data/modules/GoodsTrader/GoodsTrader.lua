@@ -13,7 +13,7 @@ local NameGen    = import("NameGen")
 local Serializer = import("Serializer")
 local Eq         = import("Equipment")
 
-local l   = Lang.GetResource("module-goodstrader")
+local l   = Lang.GetResource("module-goodstrader") or Lang.GetResource("module-goodstrader","en")
 local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
 
 local num_names = 6 -- number of GOODS_TRADER_N names

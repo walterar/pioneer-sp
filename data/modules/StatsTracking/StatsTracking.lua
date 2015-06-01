@@ -12,8 +12,8 @@ local Timer     = import("Timer")
 
 local Lang = import("Lang")
 
-local l  = Lang.GetResource("module-statstracking")
-local lc = Lang.GetResource("ui-core")
+local l  = Lang.GetResource("module-statstracking") or Lang.GetResource("module-statstracking","en")
+local lc = Lang.GetResource("core") or Lang.GetResource("core","en")
 
 -- Stats-gathering module. Initially, gathers kill statistics for the player.
 -- Can (and should) be expanded in the future to gather other information.
@@ -51,7 +51,7 @@ local onShipDestroyed = function (ship, attacker)
 				or kills == 512--  level 6 DANGEROUS
 				or kills == 1024-- level 7 DEADLY
 				or kills == 2048-- level 8 ELITE
-				or kills == 4096-- level 9 GOD OF DEATH :)
+				or kills == 4096-- level 9 ADDICTED TO LYING :)
 			then
 				Comms.Message(l.WELL_DONE_COMMANDER_YOUR_COMBAT_RATING_HAS_IMPROVED,l.PIONEERING_PILOTS_GUILD)
 			end

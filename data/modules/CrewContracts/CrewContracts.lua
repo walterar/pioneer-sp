@@ -13,7 +13,7 @@ local Timer      = import("Timer")
 -- This module allows the player to hire crew members through BB adverts
 -- on stations, and handles periodic events such as their wages.
 
-local l = Lang.GetResource("module-crewcontracts")
+local l = Lang.GetResource("module-crewcontracts") or Lang.GetResource("module-crewcontracts","en")
 
 local wage_period = 604800 -- a week of seconds
 

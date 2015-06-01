@@ -77,8 +77,7 @@ Event.Register("onShipHit",  function (ship, attacker)
 		or not attacker
 		or ship:IsPlayer()
 		or attacker:IsPlayer() then
-		return
-	end
+	return end
 	ship:SetHullPercent()
 	ship:AIKill(attacker)
 end)

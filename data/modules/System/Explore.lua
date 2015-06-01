@@ -1,21 +1,21 @@
 -- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-local Game = import("Game")
+local Game  = import("Game")
 local Space = import("Space")
 local Event = import("Event")
 local Comms = import("Comms")
 local Timer = import("Timer")
-local Lang = import("Lang")
+local Lang  = import("Lang")
 
-local l = Lang.GetResource("module-system")
+local l = Lang.GetResource("module-system") or Lang.GetResource("module-system","en")
 
 local exploreSystem = function (system)
 	system:Explore()
 	local starports = #Space.GetBodies(function (body) return body.superType == 'STARPORT' end)
 	local major_bodies = #Space.GetBodies(function (body) return body.superType and body.superType ~= 'STARPORT' and body.superType ~= 'NONE' end)
 	local bodies
-	if major_modies == 1 then
+	if major_bodies == 1 then
 		bodies = l.BODY
 	else
 		bodies = l.BODIES

@@ -9,14 +9,15 @@ local Character  = import("Character")
 local Format     = import("Format")
 local utils      = import("utils")
 local Constant   = import("Constant")
+local SystemPath  = import("SystemPath")
 
 local InfoFace           = import("ui/InfoFace")
 local SmallLabeledButton = import("ui/SmallLabeledButton")
 local MessageBox         = import("ui/MessageBox")
 
 local ui = Engine.ui
-local l = Lang.GetResource("ui-core")
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
+local l = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
+--local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
 
 --local crimeStrings = {
 --	TRADING_ILLEGAL_GOODS = l.TRADING_ILLEGAL_GOODS,
@@ -42,18 +43,16 @@ local police = function (tab)
 	end
 
 	local crimeStat = function (k,v)
---		local s = Format.Date(crimes[v].date).."\t - "..crimes[v].count.."\t"..Constant.CrimeType[v].name.."\t"..showCurrency(crimes[v].fine)
 		local s = crimes[v].count.."\t"..Constant.CrimeType[v].name.."\t"..showCurrency(crimes[v].fine)
 		return k, s
 	end
 
 	local infoBox = ui:VBox(10)
---	if #crimes > 0 then
+
 	if #utils.build_array(pairs(crimes)) > 0 then
 		infoBox:PackEnd({
 			ui:Label(l.CRIMINAL_RECORD):SetFont("HEADING_LARGE"),
 			ui:VBox():PackEnd(
---				utils.build_table(utils.map(function (k,v) return k,crimeStrings[v] end, pairs(crimes)))
 				utils.build_table(utils.map(crimeStat, pairs(tmp_table)))
 			),
 		})
@@ -79,14 +78,15 @@ local police = function (tab)
 			end
 
 			Game.player:AddMoney(-fine)
-			Game.player:ClearCrimeFine()
+			Game.player:PayCrimeFine()
 
 			noBusiness()
 		end)
 	end
 
 	return
-		ui:Grid({48,4,48},1)
+		ui:Grid({60,1,39},1)
+--		ui:Grid({48,4,48},1)
 			:SetColumn(0, {
 				infoBox
 			})

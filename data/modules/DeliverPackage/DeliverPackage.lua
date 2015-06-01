@@ -15,15 +15,16 @@ local Format     = import("Format")
 local Serializer = import("Serializer")
 local Character  = import("Character")
 local InfoFace   = import("ui/InfoFace")
+local Timer      = import("Timer")
 
-local l   = Lang.GetResource("module-deliverpackage");
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en");
+local l   = Lang.GetResource("module-deliverpackage") or Lang.GetResource("module-deliverpackage","en")
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
 
 -- Get the UI class
 local ui = Engine.ui
 
 -- don't produce missions for further than this many light years away
-local max_delivery_dist = 30
+local max_dist = 30
 
 local AU = 149600000000
 
@@ -99,14 +100,11 @@ local onChat = function (form, ref, option)
 	if option == 0 then
 		form:SetFace(ad.client)
 
-		local sys   = ad.location:GetStarSystem()
-		local sbody = ad.location:GetSystemBody()
-
 		local introtext = string.interp(flavours[ad.flavour].introtext, {
 			name     = ad.client.name,
 			cash     = showCurrency(ad.reward),
-			starport = sbody.name,
-			system   = sys.name,
+			starport = ad.location:GetSystemBody().name,
+			system   = ad.location:GetStarSystem().name,
 			sectorx  = ad.location.sectorX,
 			sectory  = ad.location.sectorY,
 			sectorz  = ad.location.sectorZ,
@@ -156,8 +154,10 @@ local onChat = function (form, ref, option)
 		}
 
 		table.insert(missions,Mission.New(mission))
-		Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
 
+		if Game.system.path ~= mission.location:GetStarSystem().path then
+			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
+		end
 		form:SetMessage(l.EXCELLENT_I_WILL_LET_THE_RECIPIENT_KNOW_YOU_ARE_ON_YOUR_WAY)
 
 		return
@@ -175,31 +175,35 @@ local onDelete = function (ref)
 end
 
 local makeAdvert = function (station)
+
 	local reward, due, location, dist
-	local client = Character.New()
 	local flavour = Engine.rand:Integer(1,#flavours)
 	local urgency = flavours[flavour].urgency
 	local risk = flavours[flavour].risk
 
 	if flavours[flavour].localdelivery == true then
-		local nearbystations = Game.system:GetStationPaths()
-		location = nearbystations[Engine.rand:Integer(1,#nearbystations)]
-		if location == station.path then return end
-		local locdist = Space.GetBody(location.bodyIndex)
-		dist = station:DistanceTo(locdist)
+
+		location = _nearbystationsLocals[Engine.rand:Integer(1,#_nearbystationsLocals)]
+		if not location or location == station.path then return end
+
+		dist = station:DistanceTo(Space.GetBody(location.bodyIndex))
 		if dist < 1000 then return end
+
 		reward = 150 + (math.sqrt(dist) / 15000) * (1+urgency)
 		due = Game.time + ((4*24*60*60) * (Engine.rand:Number(1.5,3.5) - urgency))
+
 	else
-		local nearbystations = StarSystem:GetNearbyStationPaths(max_delivery_dist, nil,function (s) return
-			(s.type ~= 'STARPORT_SURFACE') or (s.parent.type ~= 'PLANET_ASTEROID') end)
-		location = nil
-		location = nearbystations[Engine.rand:Integer(1,#nearbystations)]
+
+		location = _nearbystationsRemotes[Engine.rand:Integer(1,#_nearbystationsRemotes)]
 		if location == nil then return end
-		dist = location:DistanceTo(Game.system)
+
+		dist = Game.system:DistanceTo(location)
+
 		reward = tariff(dist,risk,urgency,location)
 		due = term(dist,urgency)
 	end
+
+	local client = Character.New()
 
 	local ad = {
 		station  = station,
@@ -211,8 +215,7 @@ local makeAdvert = function (station)
 		risk     = risk,
 		urgency  = urgency,
 		reward   = reward,
-		isfemale = isfemale,
-		faceseed = Engine.rand:Integer(),
+		faceseed = Engine.rand:Integer()
 	}
 
 	ad.desc = string.interp(flavours[flavour].adtext, {
@@ -249,22 +252,32 @@ local onUpdateBB = function (station)
 	end
 end
 
-local hostilactive = false
+	local hostilactive = false
 local onFrameChanged = function (body)
+	if hostilactive then return end
 	if body:isa("Ship") and body:IsPlayer() and body.frameBody ~= nil then
-		local syspath = Game.system.path
 		for ref,mission in pairs(missions) do
-			if mission.status == "ACTIVE" and mission.location:IsSameSystem(syspath) then
+			local risk = flavours[mission.flavour].risk
+			if risk < 1 then return end
+			if mission.status == "ACTIVE" and mission.location:IsSameSystem(Game.system.path) then
 				local target_distance_from_entry = body:DistanceTo(Space.GetBody(mission.location.bodyIndex))
-				if target_distance_from_entry > 100000e3 then return end
-				local risk = flavours[mission.flavour].risk
-				if risk > 0 and not hostilactive then ship = ship_hostil(risk) end
-				if ship and not hostilactive then
-					hostilactive = true
-					local hostile_greeting = string.interp(l["PIRATE_TAUNTS_"..Engine.rand:Integer(1,num_pirate_taunts)-1], {
-								client = mission.client.name, location = mission.location:GetSystemBody().name,})
-					Comms.ImportantMessage(hostile_greeting, ship.label)
-				end
+				if target_distance_from_entry > 500000e3 then return end
+				Timer:CallEvery(1, function ()
+					if hostilactive then return true end
+					if body:DistanceTo(Space.GetBody(mission.location.bodyIndex)) > 100000e3 then return false end
+					ship = ship_hostil(risk)
+					if ship then
+						hostilactive = true
+						local hostile_greeting = string.interp(
+									l["PIRATE_TAUNTS_"..Engine.rand:Integer(1,num_pirate_taunts)-1],
+										{
+										client = mission.client.name,
+										location = mission.location:GetSystemBody().name
+										})
+						Comms.ImportantMessage(hostile_greeting, ship.label)
+						return true
+					end
+				end)
 			end
 			if mission.status == "ACTIVE" and Game.time > mission.due then
 				mission.status = 'FAILED'
@@ -359,7 +372,7 @@ local onClick = function (mission)
 		danger = (l.THIS_IS_VERY_RISKY_YOU_WILL_ALMOST_CERTAINLY_RUN_INTO_RESISTANCE)
 	end
 
-	return ui:Grid(2,1)
+	return ui:Grid({68,32},1)
 		:SetColumn(0,{ui:VBox(10):PackEnd({ui:MultiLineText((flavours[mission.flavour].introtext):interp({
 														name     = mission.client.name,
 														starport = mission.location:GetSystemBody().name,
@@ -390,7 +403,11 @@ local onClick = function (mission)
 											})
 											:SetColumn(1, {
 												ui:VBox():PackEnd({
-													ui:MultiLineText(mission.location:GetStarSystem().name.." ("..mission.location.sectorX..","..mission.location.sectorY..","..mission.location.sectorZ..")")
+													ui:MultiLineText(mission.location:GetStarSystem().name
+															.." ("..mission.location.sectorX
+															..","..mission.location.sectorY
+															..","..mission.location.sectorZ
+															..")")
 												})
 											}),
 										ui:Grid(2,1)
@@ -438,9 +455,8 @@ local serialize = function ()
 		{
 		ads          = ads,
 		missions     = missions,
-		hostilactive = hostilactive,
+		hostilactive = hostilactive
 		}
-
 end
 
 local unserialize = function (data)

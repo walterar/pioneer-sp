@@ -25,6 +25,11 @@ Format: 1.51
 #   yyyy  - Four digit year.  2006 is "2006"
 #   year  - Four digit year.  2006 is "2006"
 
+# These are indexes you deleted, so Natural Docs will not add them again
+# unless you remove them from this line.
+
+Don't Index: Files
+
 
 # --------------------------------------------------------------------------
 # 
@@ -52,40 +57,47 @@ Format: 1.51
 
 Group: Src  {
 
-   File: Body  (/home/robn/code/pioneer/src/LuaBody.cpp)
-   File: CargoBody  (/home/robn/code/pioneer/src/LuaCargoBody.cpp)
-   File: ChatForm  (/home/robn/code/pioneer/src/LuaChatForm.cpp)
-   File: Comms  (/home/robn/code/pioneer/src/LuaComms.cpp)
-   File: Console  (/home/robn/code/pioneer/src/LuaConsole.cpp)
-   File: Constants  (/home/robn/code/pioneer/src/LuaConstants.cpp)
-   File: Engine  (/home/robn/code/pioneer/src/LuaEngine.cpp)
-   File: EquipType  (/home/robn/code/pioneer/src/LuaEquipType.cpp)
-   File: Format  (/home/robn/code/pioneer/src/LuaFormat.cpp)
-   File: Game  (/home/robn/code/pioneer/src/LuaGame.cpp)
-   File: Lang  (/home/robn/code/pioneer/src/LuaLang.cpp)
-   File: LMR  (/home/robn/code/pioneer/src/LmrModel.cpp)
-   File: Music  (/home/robn/code/pioneer/src/LuaMusic.cpp)
-   File: Object  (/home/robn/code/pioneer/src/LuaObject.cpp)
-   File: Planet  (/home/robn/code/pioneer/src/LuaPlanet.cpp)
-   File: Player  (/home/robn/code/pioneer/src/LuaPlayer.cpp)
-   File: Rand  (/home/robn/code/pioneer/src/LuaRand.cpp)
-   File: Ship  (/home/robn/code/pioneer/src/LuaShip.cpp)
-   File: ShipType  (/home/robn/code/pioneer/src/LuaShipType.cpp)
-   File: Space  (/home/robn/code/pioneer/src/LuaSpace.cpp)
-   File: SpaceStation  (/home/robn/code/pioneer/src/LuaSpaceStation.cpp)
-   File: Star  (/home/robn/code/pioneer/src/LuaStar.cpp)
-   File: StarSystem  (/home/robn/code/pioneer/src/LuaStarSystem.cpp)
-   File: SystemBody  (/home/robn/code/pioneer/src/LuaSystemBody.cpp)
-   File: SystemPath  (/home/robn/code/pioneer/src/LuaSystemPath.cpp)
-   File: Timer  (/home/robn/code/pioneer/src/LuaTimer.cpp)
-   File: util  (/home/robn/code/pioneer/src/LuaUtils.cpp)
+   File: Body  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaBody.cpp)
+   File: CargoBody  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaCargoBody.cpp)
+   File: Comms  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaComms.cpp)
+   File: Console  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaConsole.cpp)
+   File: Constants  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaConstants.cpp)
+   File: Engine  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaEngine.cpp)
+   File: Faction  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaFaction.cpp)
+   File: FileSystem  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaFileSystem.cpp)
+   File: Format  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaFormat.cpp)
+   File: Game  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaGame.cpp)
+   File: Missile  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaMissile.cpp)
+   File: ModelBody  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaModelBody.cpp)
+   File: Music  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaMusic.cpp)
+   File: Object  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaObject.cpp)
+   File: Planet  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaPlanet.cpp)
+   File: Player  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaPlayer.cpp)
+   File: PropertiedObject  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaPropertiedObject.cpp)
+   File: Rand  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaRand.cpp)
+   File: ServerAgent  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaServerAgent.cpp)
+   File: Ship  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaShip.cpp)
+   File: ShipDef  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaShipDef.cpp)
+   File: Space  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaSpace.cpp)
+   File: SpaceStation  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaSpaceStation.cpp)
+   File: Star  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaStar.cpp)
+   File: StarSystem  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaStarSystem.cpp)
+   File: SystemBody  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaSystemBody.cpp)
+   File: SystemPath  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaSystemPath.cpp)
+   File: Timer  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaTimer.cpp)
+   File: util  (/media/auxiliar/Building/APIONEER64/pioneersp/src/LuaUtils.cpp)
    }  # Group: Src
 
-File: Character  (no auto-title, /home/robn/code/pioneer/data/libs/Characters.lua)
-File: Event  (/home/robn/code/pioneer/data/libs/00-Event.lua)
-File: FlightLog  (/home/robn/code/pioneer/data/libs/FlightLog.lua)
-File: NameGen  (/home/robn/code/pioneer/data/libs/NameGen.lua)
-File: Translate  (/home/robn/code/pioneer/data/libs/Translate.lua)
+File: Character  (/media/auxiliar/Building/APIONEER64/pioneersp/data/libs/Character.lua)
+File: Constants  (/media/auxiliar/Building/APIONEER64/pioneersp/data/libs/Constant.lua)
+File: EquipSet  (/media/auxiliar/Building/APIONEER64/pioneersp/data/libs/EquipSet.lua)
+File: EquipType  (/media/auxiliar/Building/APIONEER64/pioneersp/data/libs/Equipment.lua)
+File: Event  (/media/auxiliar/Building/APIONEER64/pioneersp/data/libs/Event.lua)
+File: Mission  (/media/auxiliar/Building/APIONEER64/pioneersp/data/libs/Mission.lua)
+File: NameGen  (/media/auxiliar/Building/APIONEER64/pioneersp/data/libs/NameGen.lua)
+File: Player.lua  (/media/auxiliar/Building/APIONEER64/pioneersp/data/libs/Player.lua)
+File: Ship  (/media/auxiliar/Building/APIONEER64/pioneersp/data/libs/Ship.lua)
+File: SpaceStation  (/media/auxiliar/Building/APIONEER64/pioneersp/data/libs/SpaceStation.lua)
 
 Group: Index  {
 
@@ -102,5 +114,5 @@ Group: Index  {
 
 
 ##### Do not change or remove these lines. #####
-Data: 1(D3333RuEG3HuY\39ufG3I8u\GGH36H9)
-Data: 1(h3333RuEG3HuY\39ufG3I8u\GGH3fptp3o8Y6)
+Data: 1(D3333EGf8p3pNs8o8pH3xN8of8\`3KgvFy55CS-3I8u\GGH6I36H9)
+Data: 1(h3333EGf8p3pNs8o8pH3xN8of8\`3KgvFy55CS-3I8u\GGH6I3fptp3o8Y6)

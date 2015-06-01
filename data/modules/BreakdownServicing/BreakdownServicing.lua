@@ -16,7 +16,7 @@ local Eq         = import("Equipment")
 local Music      = import("Music")
 local Timer      = import("Timer")
 
-local l = Lang.GetResource("module-breakdownservicing")
+local l = Lang.GetResource("module-breakdownservicing") or Lang.GetResource("module-breakdownservicing","en")
 
 -- Default numeric values --
 ----------------------------
@@ -99,7 +99,7 @@ local onChat = function (form, ref, option)
 	end
 
 	-- Replace those tokens into ad's intro text that can change during play
-	message = string.interp(ad.intro, {
+	local message = string.interp(ad.intro, {
 		drive = hyperdrive and hyperdrive:GetName() or "None",
 		price = showCurrency(price),
 	})
@@ -160,6 +160,10 @@ local onShipTypeChanged = function (ship)
 	if ship:IsPlayer() then
 		service_history.company = nil
 		service_history.lastdate = Game.time
+		if Engine.rand:Integer(3) < 1 then
+			service_history.service_period = onemonth
+			service_history.jumpcount = 0
+		end
 	end
 end
 

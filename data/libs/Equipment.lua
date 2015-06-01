@@ -140,7 +140,7 @@ end
 
 local function __ApplyCapabilities(ship, capabilities, num, factor)
 	if num <= 0 then return 0 end
-	local factor = factor or 1
+	factor = factor or 1
 	for k,v in pairs(capabilities) do
 		local full_name = k.."_cap"
 		local prev = (ship:hasprop(full_name) and ship[full_name]) or 0
@@ -192,14 +192,14 @@ end
 
 -- range_max is as usual optional
 HyperdriveType.GetDuration = function (self, ship, distance, range_max)
-	local range_max = range_max or self:GetMaximumRange(ship)
+	range_max = range_max or self:GetMaximumRange(ship)
 	local hyperclass = self.capabilities.hyperclass
 	return 0.36*distance^2/(range_max*hyperclass) * (3600*24*math.sqrt(ship.totalMass))
 end
 
 -- range_max is optional, distance defaults to the maximal range.
 HyperdriveType.GetFuelUse = function (self, ship, distance, range_max)
-	local range_max = range_max or self:GetMaximumRange(ship)
+	range_max = range_max or self:GetMaximumRange(ship)
 	local distance = distance or range_max
 	local hyperclass_squared = self.capabilities.hyperclass^2
 	return math.clamp(math.ceil(hyperclass_squared*distance / range_max), 1, hyperclass_squared);
@@ -239,7 +239,7 @@ end
 HyperdriveType.GetRange = function (self, ship, remaining_fuel)
 	local range_max = self:GetMaximumRange(ship)
 	local fuel_max = fuel_max or self:GetFuelUse(ship, range_max, range_max)
-	local remaining_fuel = remaining_fuel or ship:CountEquip(self.fuel)
+	remaining_fuel = remaining_fuel or ship:CountEquip(self.fuel)
 
 	if fuel_max <= remaining_fuel then
 		return range_max, range_max
@@ -710,8 +710,8 @@ laser.pulsecannon_2mw = LaserType.New({
 laser.pulsecannon_rapid_2mw = LaserType.New({
 	l10n_key="PULSECANNON_RAPID_2MW", price=1800, capabilities={mass=7},
 	slots = {"laser_front", "laser_rear"}, laser_stats = {
-		lifespan=8, speed=1000, damage=2000, rechargeTime=0.20, length=30,
-		width=5, dual=0, mining=0, rgba_r = 255, rgba_g = 200, rgba_b = 51, rgba_a = 255
+		lifespan=8, speed=1000, damage=2000, rechargeTime=0.13, length=30,
+		width=5, dual=0, mining=0, rgba_r = 255, rgba_g = 127, rgba_b = 51, rgba_a = 255
 	}, purchasable=true
 })
 laser.pulsecannon_4mw = LaserType.New({

@@ -24,9 +24,7 @@
       "cabin" : 0,
       "cargo" : 15,
       "cargo_life_support" : 0,
-      "hull_autorepair" : 0,
       "laser_front" : 1,
-      "laser_rear" : 0,
       "missile" : 6,
       "scoop" : 0
    },

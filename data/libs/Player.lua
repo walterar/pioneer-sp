@@ -6,6 +6,8 @@ local Serializer = import("Serializer")
 local Event      = import("Event")
 local Game       = import("Game")
 local Faction    = import("Faction")
+local utils      = import("utils")
+
 --local Format     = import("Format")
 
 -- TODO: save load with serializer.
@@ -116,17 +118,39 @@ function Player:GetCrime (faction)
 end
 
 
-function Player:ClearCrimeFine (faction)
+function Player:CriminalRecord (faction)
+	local forFaction = (faction and faction.id) or Game.system.faction.id
+	local crimes, fine = Game.player:GetCrime()
+	local result = false
+	if #utils.build_array(pairs(crimes)) > 0 then
+		result = true
+	end
+	return result
+end
+
+
+function Player:ClearCriminalRecord (faction)
 	local forFaction = (faction and faction.id) or Game.system.faction.id
 
 	if self.record[forFaction] then
---		self.record[forFaction] = {}
---		self.record[forFaction].listcrimes = {}
+		self.record[forFaction] = {}
+		self.record[forFaction].listcrimes = {}
 		self.record[forFaction].totalfine = 0
 	end
 
 	-- TODO
 end
+
+function Player:PayCrimeFine (faction)
+	local forFaction = (faction and faction.id) or Game.system.faction.id
+
+	if self.record[forFaction] then
+		self.record[forFaction].totalfine = 0
+	end
+
+	-- TODO
+end
+
 
 --
 -- Method: GetMoney

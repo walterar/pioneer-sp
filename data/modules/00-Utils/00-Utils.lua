@@ -14,9 +14,9 @@ local Eq         = import("Equipment")
 local Constant   = import("Constant")
 local Music      = import("Music")
 local Comms      = import("Comms")
+local Format     = import("Format")
 
-local l  = Lang.GetResource("core")
-local lc = Lang.GetResource("ui-core")
+local l  = Lang.GetResource("core") or Lang.GetResource("core","en")
 
 _G.songOk = function ()
 --	local SongName = Music.GetSongName()
@@ -52,9 +52,10 @@ end
 
 _G.check_crime = function (mission,crime)
 	if Game.time > (mission.due + (60*60*24*30)) then-- 30 dias de demora = fraude
-		_G.MissionsFailures = MissionsFailures + 1
-		Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE,
-			{crime=Constant.CrimeType[crime].name}), Game.system.faction.policeName)
+		Comms.ImportantMessage(string.interp(l.X_CANNOT_BE_TOLERATED_HERE,
+						{ crime = Constant.CrimeType[crime].name,
+							fine  = crime_fine(crime)
+						}), Game.system.faction.policeName)
 		Game.player:AddCrime(crime, crime_fine(crime))
 		return true
 	end
@@ -69,7 +70,7 @@ _G.tariff = function (dist,risk,urgency,locate)
 
 	local multiplier = 1 + ((math.abs(locate.sectorX) + math.abs(locate.sectorY) + sectorz)/100)
 	if string.sub(Game.player.label,1,2) == string.upper(string.sub(Game.system.faction.name,1,2)) then
-		multiplier = multiplier * Engine.rand:Number(1.2,1.3)
+		multiplier = multiplier * Engine.rand:Number(1.3,1.4)
 	end
 
 	local lawlessness = Game.system.lawlessness
@@ -95,16 +96,11 @@ end
 _G.ship_hostil = function (risk)
 	if risk < 1 then return end
 	local hostil,hostile
-	local count_hostiles = Engine.rand:Integer(1,risk)
+	local count_hostiles = risk
 	local capacity1 = 20
-	local capacity2 = 400
-	if DangerLevel > 1 then
-		count_hostiles = risk
-		capacity1 = 40
-		capacity2 = 400
-	end
+	local capacity2 = 100
 	local hostiles = utils.build_array(utils.filter(function (k,def)
-		return def.tag      == 'SHIP'
+		return def.tag == 'SHIP'
 			and  def.capacity >= capacity1
 			and  def.capacity <= capacity2
 			and  def.hyperdriveClass > 0
@@ -113,36 +109,30 @@ _G.ship_hostil = function (risk)
 	if #hostiles > 0 then
 		while count_hostiles > 0 do
 			count_hostiles = count_hostiles - 1
-			if Engine.rand:Number(1) <= risk then
-				local hostile = hostiles[Engine.rand:Integer(1,#hostiles)]
-				local default_drive = Eq.hyperspace['hyperdrive_'..tostring(hostile.hyperdriveClass)]
-				local max_laser_size = hostile.capacity - default_drive.capabilities.mass
-				local laserdefs = utils.build_array(utils.filter(function (k,l)
-					return l:IsValidSlot('laser_front')
-						and l.capabilities.mass <= max_laser_size
-						and l.l10n_key:find("PULSECANNON")
-				end, pairs(Eq.laser)))
-				local laserdef = laserdefs[Engine.rand:Integer(1,#laserdefs)]
-				local target = Game.player:GetNavTarget()
-
---				if target and target.type == 'STARPORT_ORBITAL' then
---					hostil = Space.SpawnShipParked(hostile.id, target)
---					hostil = Space.SpawnShipNear(hostile.id, target,2,2)
---				elseif target and target.type == 'STARPORT_SURFACE' then
-
-				if target and target.type == 'STARPORT_SURFACE' then
-					hostil = Space.SpawnShipLandedNear(hostile.id, target,5,5)
-				else
-					hostil = Space.SpawnShipNear(hostile.id, Game.player,2,2)
-				end
-				hostil:AddEquip(default_drive)
-				hostil:AddEquip(laserdef)
-				hostil:SetLabel(Ship.MakeRandomLabel())
-				hostil:AIKill(Game.player)
+			local hostile = hostiles[Engine.rand:Integer(1,#hostiles)]
+			local default_drive = Eq.hyperspace['hyperdrive_'..tostring(hostile.hyperdriveClass)]
+			local max_laser_size = hostile.capacity - default_drive.capabilities.mass
+			local laserdefs = utils.build_array(utils.filter(function (k,l)
+				return l:IsValidSlot('laser_front')
+					and l.capabilities.mass <= max_laser_size
+					and l.l10n_key:find("PULSECANNON")
+			end, pairs(Eq.laser)))
+			local laserdef = laserdefs[Engine.rand:Integer(1,#laserdefs)]
+			local target = Game.player:GetNavTarget()
+			if target and target.type == 'STARPORT_ORBITAL' then
+				hostil = Space.SpawnShipNear(hostile.id, target,20,30)
+			elseif target and target.type == 'STARPORT_SURFACE' then
+				hostil = Space.SpawnShipLandedNear(hostile.id, target,1,1)
+			else
+				hostil = Space.SpawnShipNear(hostile.id, Game.player,30,30)
 			end
+			hostil:AddEquip(default_drive)
+			hostil:AddEquip(laserdef)
+			hostil:SetLabel(Ship.MakeRandomLabel())
+			hostil:AIKill(Game.player)
 		end
 	end
-	return hostil
+	return hostil-- el último hostil manda mensaje intimidatorio
 end
 
 -- GetNearbyStation by John Bartolomew

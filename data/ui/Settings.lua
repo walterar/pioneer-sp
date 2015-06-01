@@ -1,18 +1,19 @@
 -- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-local Game = import("Game")
-local Engine = import("Engine")
-local Lang = import("Lang")
-local utils = import("utils")
-local TabView = import("ui/TabView")
-local SmallLabeledButton = import("ui/SmallLabeledButton")
-local KeyBindingCapture = import("UI.Game.KeyBindingCapture")
-local AxisBindingCapture = import("UI.Game.AxisBindingCapture")
+local Game        = import("Game")
+local Engine      = import("Engine")
+local Lang        = import("Lang")
+local utils       = import("utils")
 local ErrorScreen = import("ErrorScreen")
 
+local TabView            = import("ui/TabView")
+local SmallLabeledButton = import("ui/SmallLabeledButton")
+local KeyBindingCapture  = import("UI.Game.KeyBindingCapture")
+local AxisBindingCapture = import("UI.Game.AxisBindingCapture")
+
 local ui = Engine.ui
-local l = Lang.GetResource("ui-core");
+local l  = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
 
 local optionCheckBox = function (getter, setter, caption)
 	local cb = ui:CheckBox()
@@ -104,6 +105,10 @@ ui.templates.Settings = function (args)
 			Engine.GetConfirmQuit, Engine.SetConfirmQuit,
 			"Confirm quit")
 
+		local vsyncCheckBox = optionCheckBox(
+			Engine.GetVSyncEnabled, Engine.SetVSyncEnabled,
+			"VSync")
+
 		local speedLinesCheckBox = optionCheckBox(
 			Engine.GetDisplaySpeedLines, Engine.SetDisplaySpeedLines,
 			l.DISPLAY_SPEED_LINES)
@@ -126,6 +131,7 @@ ui.templates.Settings = function (args)
 				modeDropDown,
 				aaDropDown,
 				fullScreenCheckBox,
+				vsyncCheckBox,
 			})))
 			:SetCell(1,0, ui:Margin(5, 'ALL', ui:VBox(5):PackEnd({
 				planetDetailDropDown,
@@ -368,9 +374,9 @@ ui.templates.Settings = function (args)
 	return ui:VBox():PackEnd({setTabs, ui:Margin(10, "ALL", close_buttons)})
 end
 
-local last_exit_game = function ()
-	if Game.player.flightState ~= "HYPERSPACE" then Game.SaveGame("_last-exit-game") end
-end
+--local last_exit_game = function ()
+--	if Game.player.flightState ~= "HYPERSPACE" then Game.SaveGame("_last-exit-game") end
+--end
 
 ui.templates.SettingsInGame = function ()
 	return ui.templates.Settings({
@@ -404,7 +410,8 @@ ui.templates.SettingsInGame = function ()
 				end
 			},
 			{ text = l.RETURN_TO_GAME, onClick = Game.SwitchView },
-			{ text = l.EXIT_THIS_GAME, onClick = Game.EndGame, last_exit_game() }
+			{ text = l.EXIT_THIS_GAME, onClick = Game.EndGame }
+--			{ text = l.EXIT_THIS_GAME, onClick = Game.EndGame, last_exit_game() }
 		}
 	})
 end

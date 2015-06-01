@@ -20,8 +20,8 @@ local hyperspace = equipment.hyperspace
 
 local ui = Engine.ui
 
-local l   = Lang.GetResource("ui-core");
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl", "en");
+local l   = Lang.GetResource("ui-core") or Lang.GetResource("ui-core", "en")
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl", "en")
 
 local setupPlayer1 = function ()
 	Game.player:SetShipType('eagle_lrf')
@@ -114,13 +114,27 @@ local doQuitConfirmation = function()
 	end
 end
 
+local timehearth   = 0
+local timenewhope  = 0
+local timeachernar = 0
+local timelave     = 0
+local timeuser     = 20668272.697951
+
+local hearth   = SystemPath.New(0,0,0,0,Engine.rand:Integer(4,9))
+local newhope  = SystemPath.New(1,-1,-1,0,Engine.rand:Integer(4,7))
+local achernar = SystemPath.New(4,-9,-16,0,Engine.rand:Integer(16,20))
+local lave     = SystemPath.New(-2,1,90,0,2)
+local user     = SystemPath.New(-13,23,11,1,3)
+
 local buttonDefs = {
-	{   l.START_AT_EARTH,    function () Game.StartGame(SystemPath.New(0,0,0,0,Engine.rand:Integer(4,9)))   setupPlayer1() end },
-	{   l.START_AT_NEW_HOPE, function () Game.StartGame(SystemPath.New(1,-1,-1,0,Engine.rand:Integer(4,7))) setupPlayer2() end },
-	{ myl.START_AT_ACHERNAR, function () Game.StartGame(SystemPath.New(4,-9,-16,0,Engine.rand:Integer(16,20))) setupPlayer3() end },
-	{ myl.START_AT_LAVE,     function () Game.StartGame(SystemPath.New(-2,1,90,0,2)) setupPlayer4() end },
-	{ l.LOAD_GAME, doLoadDialog },
-	{ l.OPTIONS,   doSettingsScreen },
+	{ l.START_AT_EARTH,      function () Game.StartGame(hearth,timehearth)   setupPlayer1() end },
+	{ l.START_AT_NEW_HOPE,   function () Game.StartGame(newhope,timenewhope)  setupPlayer2() end },
+	{ myl.START_AT_ACHERNAR, function () Game.StartGame(achernar,timeachernar) setupPlayer3() end },
+	{ myl.START_AT_LAVE,     function () Game.StartGame(lave,timelave)     setupPlayer4() end },
+--	{ "User place",   function () Game.StartGame(user,timeuser)     setupPlayer4() end },
+
+	{ l.LOAD_GAME, doLoadDialog       },
+	{ l.OPTIONS,   doSettingsScreen   },
 	{ l.QUIT,      doQuitConfirmation },
 }
 
@@ -159,7 +173,7 @@ table.insert(anims, {
 	duration = 0.4,
 })
 
-local versionLabel = ui:Label("G22 full version"):SetFont("HEADING_XSMALL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 })
+local versionLabel = ui:Label("G23 full version"):SetFont("HEADING_XSMALL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 })
 table.insert(anims, {
 	widget = versionLabel,
 	type = "IN",

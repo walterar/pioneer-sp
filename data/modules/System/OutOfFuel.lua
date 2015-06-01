@@ -7,7 +7,7 @@ local Lang = import("Lang")
 local Comms = import("Comms")
 local Event = import("Event")
 
-local l = Lang.GetResource("module-system")
+local l = Lang.GetResource("module-system") or Lang.GetResource("module-system","en")
 
 local onShipFuelChanged = function (ship, state)
 	if ship:IsPlayer() and (state == "WARNING" or state == "EMPTY") then

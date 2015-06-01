@@ -1,0 +1,282 @@
+{
+"ADTEXT":{
+"description":"",
+"message":"¡CONFIDENCIAL! Mensaje de: < {org} > Para: < {you} >."
+},
+"BEFORE_THIS_DATE":{
+"description":"",
+"message":"Antes de esta fecha:"
+},
+"CONTACT":{
+"description":"agent of contractor","message":"Contacto:"
+},
+"CONTRACTOR":{
+"description":"",
+"message":"Contratista:"
+},
+"COULD_YOU_REPEAT_THE_ORIGINAL_REQUEST":{
+"description":"",
+"message":"¿Podría repetir la petición?"
+},
+"CRIMINAL_RECORD":{
+"description":"Sorry, Commander. I have been informed that criminal record has incompatible with this task. Please check back when you resolve the issue.","message":"Lo lamento Comandante. Me informan que posee antecedentes criminales incompatibles con esta tarea. Por favor, vuelva cuando resuelva ese tema."
+},
+"DISTANCE":{
+"description":"",
+"message":"Distancia:"
+},
+"EXCELLENT":{
+"description":"",
+"message":"¡Excelente!"
+},
+"FAILURE_1":{
+"description":"",
+"message":"Hola {you}. Soy {name} nuevamente. - Si está viendo esto es que la misión ha fracasado. - Todo rastro de esta misión será eliminado. - Esto nunca ha sucedido."
+},
+"FAILURE_2":{
+"description":"",
+"message":"{org} dice que el caso {target} fue resuelto por otro, los {cash} no son suyos"
+},
+"FAILURE_3":{
+"description":"",
+"message":"{org} lamenta su fracaso en el caso {target}, ha perdido sus {cash}."
+},
+"HOW_SOON_MUST_IT_BE_DONE":{
+"description":"",
+"message":"¿De cuanto tiempo dispongo?"
+},
+"HOW_WILL_I_BE_PAID":{
+"description":"",
+"message":"¿Cómo será efectuado el pago?"
+},
+"INSUFFICIENT_LEVEL_COMBAT":{
+"description":"Sorry, Commander. Combat level greater than 0 is required for this task. Please check back when you resolve the issue.","message":"Lo lamento Comandante. Se requiere un nivel de combate superior a 0 para esta tarea. Por favor, vuelva cuando resuelva ese tema."
+},
+"INTROTEXT":{
+"description":"",
+"message":"Hola, soy {name}, agente de {org} - La existencia de {target} se ha convertido en {reason} uno de nuestros clientes - Ofrecemos una recompensa de {cash} para aquél que solucione definitivamente este problema."
+},
+"IT_MUST_BE_DONE_AFTER":{
+"description":"You must act when the target leaves the space station and prevent return. It is very important avoid any problems with local authorities, it is advisable to act outside the radius of policing, that is, in general, more than 100 km from the station.","message":"Usted deberá actuar cuando el objetivo deje la estación espacial y evitar que regrese. Es muy importante evitar cualquier problema con las autoridades locales, se aconseja actuar fuera del radio de vigilancia policial, esto es, en general, a más de 100 Km de la estación."
+},
+"KILLED_1":{
+"description":"",
+"message":"ha sido removido"
+},
+"KILLED_2":{
+"description":"",
+"message":"ha muerto"
+},
+"KILLED_3":{
+"description":"",
+"message":"ya no está en este mundo"
+},
+"KILLED_4":{
+"description":"",
+"message":"ha sido eliminado"
+},
+"LY":{
+"description":"",
+"message":"ly"
+},
+"OK_AGREED":{
+"description":"",
+"message":"De acuerdo."
+},
+"ORG_1":{
+"description":"Solutions Ltd.","message":"Soluciones Ltd."
+},
+"ORG_2":{
+"description":"Popular Justice Inc.","message":"Justicia Popular Inc."
+},
+"ORG_3":{
+"description":"Extermination Inc.","message":"Exterminación Inc."
+},
+"ORG_4":{
+"description":"Cleaning Galactic Ltd.","message":"Limpieza Galáctica Ltd."
+},
+"ORG_5":{
+"description":"Hitman & Hitman Inc.","message":"Hitman & Hitman Inc."
+},
+"PAID_SITE":{
+"description":"If the contract is executed successfully, you will immediately inform the place where you must go to receive their reward. In case of failure, all traces of this mission will be removed and this has never happened.","message":"Si el contrato es cumplido con éxito, se le informará inmediatamente el lugar donde deberá reportarse para recibir su recompensa. En caso de fallar, todo rastro de esta misión se eliminará y esto nunca ha sucedido."
+},
+"REASON_1":{
+"description":"a imminent danger to the security of","message":"un peligro inminente para la seguridad de"
+},
+"REASON_2":{
+"description":"a true nightmare for","message":"una verdadera pesadilla para"
+},
+"REASON_3":{
+"description":"an unbearable nuisance for","message":"una molestia insoportable para"
+},
+"REASON_4":{
+"description":"something absolutely intolerable for","message":"algo absolutamente intolerable para"
+},
+"REASON_5":{
+"description":"an intolerable pain for","message":"un dolor intolerable para"
+},
+"REWARD":{
+"description":"",
+"message":"Recompensa:"
+},
+"SHIP":{
+"description":"",
+"message":"Nave:"
+},
+"SHIP_ID":{
+"description":"ship id - registration","message":"Matrícula:"
+},
+"SPACEPORT1":{
+"description":"",
+"message":"Despegará de:"
+},
+"SPACEPORT2":{
+"description":"",
+"message":"Reportarse en:"
+},
+"SUCCESS":{
+"description":"",
+"message":"{org} cierra el caso {target}. Sus {cash} fueron transferidos."
+},
+"SUCCESSMSG":{
+"description":"",
+"message":"Hola {you}. {name} nuevamente. - Si está viendo esto es que {target} {dead} y la misión se ha cumplido con éxito. - Su recompensa de {cash} lo espera a {dist} de aquí, no se demore."
+},
+"SYSTEM":{
+"description":"",
+"message":"Sistema:"
+},
+"TARGET_LEAVING_SPACEPORT":{
+"description":"",
+"message":"A esta fecha exacta:"
+},
+"TARGET_NAME":{
+"description":"",
+"message":"Objetivo:"
+},
+"TAUNT_1":{
+"description":"",
+"message":"¿Me buscas a mí, basura? ¡Pues aquí me tienes! Voy a darte un mensaje para {org}"
+},
+"TAUNT_2":{
+"description":"",
+"message":"¿Te envía {org}? ¡Aquí tengo algo para que les lleves!"
+},
+"TAUNT_3":{
+"description":"",
+"message":"{org} debe estar muy mal para mandar a imbéciles como tú."
+},
+"TITLE_1":{
+"description":"",
+"message":"Soldado"
+},
+"TITLE_10":{
+"description":"",
+"message":"Mercader"
+},
+"TITLE_11":{
+"description":"",
+"message":"Oficial"
+},
+"TITLE_12":{
+"description":"",
+"message":"Teniente"
+},
+"TITLE_13":{
+"description":"",
+"message":"Capitán"
+},
+"TITLE_14":{
+"description":"",
+"message":"Comandante"
+},
+"TITLE_15":{
+"description":"",
+"message":"Diputado"
+},
+"TITLE_16":{
+"description":"",
+"message":"Senador"
+},
+"TITLE_17":{
+"description":"",
+"message":"Fiscal"
+},
+"TITLE_18":{
+"description":"",
+"message":"Juez"
+},
+"TITLE_19":{
+"description":"",
+"message":"Embajador"
+},
+"TITLE_2":{
+"description":"",
+"message":"Marinero"
+},
+"TITLE_20":{
+"description":"",
+"message":"Brigadier"
+},
+"TITLE_21":{
+"description":"",
+"message":"Coronel"
+},
+"TITLE_22":{
+"description":"",
+"message":"Comodoro"
+},
+"TITLE_23":{
+"description":"",
+"message":"General"
+},
+"TITLE_24":{
+"description":"",
+"message":"Mariscal"
+},
+"TITLE_25":{
+"description":"",
+"message":"Almirante"
+},
+"TITLE_3":{
+"description":"",
+"message":"Cadete"
+},
+"TITLE_4":{
+"description":"",
+"message":"Cabo"
+},
+"TITLE_5":{
+"description":"",
+"message":"Sargento"
+},
+"TITLE_6":{
+"description":"",
+"message":"Alferez"
+},
+"TITLE_7":{
+"description":"",
+"message":"Profesor"
+},
+"TITLE_8":{
+"description":"",
+"message":"Rector"
+},
+"TITLE_9":{
+"description":"",
+"message":"Abogado"
+},
+"WHERE_CAN_I_FIND_X":{
+"description":"",
+"message":"¿Dónde puedo encontrar a {target}?"
+},
+"X_WILL_BE_LEAVING":{
+"description":"",
+"message":"Información confiable asegura que el objetivo desarrollará ciertas actividades en {system} ({sectorX}, {sectorY}, {sectorZ}) Nuestros agentes locales harán que deba despegar de {spaceport} en esta fecha y hora exactamente: {date}. Usted debe realizar su trabajo rápidamente, pero sin llamar la atención de la Policía local. {target} viaja en una {shipname} {shipregid}, muy bien armada."
+},
+"hitman":{
+"description":"",
+"message":"Exterminador"
+}
+}

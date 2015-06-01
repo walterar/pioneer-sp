@@ -48,7 +48,7 @@
 -- Character.persistent.player, and is the special case.
 
 local Lang = import("Lang")
-local l = Lang.GetResource("ui-core");
+local l = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
 
 local Engine     = import("Engine")
 local Game       = import("Game")

@@ -35,11 +35,11 @@ local orbitalAnalysis = function ()
 
 	return ui:Expand():SetInnerWidget(
 		ui:VBox(20):PackEnd({
-            (l.LOCATED_N_KM_FROM_THE_CENTRE_OF_NAME):interp({
-														-- convert to kilometres
-														distance = string.format('%6.2f',distance/1000),
-														name = name
-													}),
+			(l.LOCATED_N_KM_FROM_THE_CENTRE_OF_NAME):interp({
+			-- convert to kilometres
+				distance = string.format('%6.2f',distance/1000),
+				name = name
+			}),
 			ui:Table():SetColumnSpacing(10):AddRows({
 				-- convert to kilometres per second
 				{ l.CIRCULAR_ORBIT_SPEED,    string.format('%6.2fkm/s',vCircular/1000) },

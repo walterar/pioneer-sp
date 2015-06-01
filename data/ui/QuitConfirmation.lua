@@ -5,7 +5,7 @@ local Engine = import("Engine")
 local Lang = import("Lang")
 
 local ui = Engine.ui
-local l = Lang.GetResource("quitconfirmation-core")
+local l = Lang.GetResource("quitconfirmation-core") or Lang.GetResource("quitconfirmation-core","en")
 
 local max_flavours = 17
 

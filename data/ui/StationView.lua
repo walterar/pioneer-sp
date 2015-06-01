@@ -2,17 +2,15 @@
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 local Game    = import("Game")
-local Format  = import("Format")
 local Engine  = import("Engine")
-local ShipDef = import("ShipDef")
 local Lang    = import("Lang")
 local Event   = import("Event")
 
 local TabView   = import("ui/TabView")
 local InfoGauge = import("ui/InfoGauge")
 
-local l = Lang.GetResource("ui-core");
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en");
+local l = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
 
 local lobby           = import("StationView/Lobby")
 local bulletinBoard   = import("StationView/BulletinBoard")

@@ -24,7 +24,7 @@ local hyperspace = Eq.hyperspace
 local cargo      = Eq.cargo
 
 local l = Lang.GetResource("core") or Lang.GetResource("core","en")
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en");
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
 
 local TraffiShip   = {}
 local ShipsCount   = 0
@@ -182,6 +182,7 @@ function activate (i)
 			local success = TraffiShip[i]:Undock()
 			x = (x or 0) + 1
 			if x > 10 then
+print(TraffiShip[i].label.." NO DESPEGÓ")
 			break end
 		until success
 		local timeundock = Game.time + 20--XXX orbitals

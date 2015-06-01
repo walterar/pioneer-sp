@@ -6,14 +6,13 @@ local Game         = import("Game")
 local SpaceStation = import("SpaceStation")
 local Event        = import("Event")
 local ChatForm     = import("ChatForm")
-local utils        = import("utils")
 
 local ui = Engine.ui
 
 local tabGroup
 
 local rowRef = {}
-
+print("Inicia BulletinBoard.lua")
 local bbTable = ui:Table()
 	:SetRowSpacing(5)
 	:SetColumnSpacing(10)

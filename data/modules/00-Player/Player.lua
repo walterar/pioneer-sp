@@ -16,16 +16,17 @@ local Space      = import("Space")
 local Timer      = import("Timer")
 local Eq         = import("Equipment")
 local Constant   = import("Constant")
+local StarSystem = import("StarSystem")
 
-
-local l  = Lang.GetResource("module-00-player") or Lang.GetResource("module-00-player","en");
-local le = Lang.GetResource("equipment-core") or Lang.GetResource("equipment-core","en");
-local lc = Lang.GetResource("ui-core")
+local l  = Lang.GetResource("module-00-player") or Lang.GetResource("module-00-player","en")
+local le = Lang.GetResource("equipment-core") or Lang.GetResource("equipment-core","en")
+local lc = Lang.GetResource("core") or Lang.GetResource("core","en")
 
 local shipData = {}
 local loaded_data
 local damaged = false
 local shipNeutralized = false
+local max_dist = 30
 
 -- globales
 _G.MissionsSuccesses = 0
@@ -49,11 +50,11 @@ _G.fuelConvert       = false
 local danger_level = function ()
 	local lawlessness = Game.system.lawlessness
 	if lawlessness < 0.100 then
-		_G.DangerLevel = 0
+		_G.DangerLevel = 0-- green
 	elseif lawlessness >= 0.100 and lawlessness <= 0.500 then
-		_G.DangerLevel = 1
+		_G.DangerLevel = 1-- yellow
 	elseif lawlessness > 0.500 then
-		_G.DangerLevel = 2
+		_G.DangerLevel = 2-- red
 	end
 end
 
@@ -76,9 +77,19 @@ local welcome = function ()
 	danger_level()
 end
 
+local onLeaveSystem = function (player)
+	if player:IsPlayer() then
+		_G._nearbystationsRemotes = nil
+		_G._nearbystationsLocals = nil
+	end
+end
+Event.Register("onLeaveSystem", onLeaveSystem)
 
 local onEnterSystem = function (player)
-	if player:IsPlayer() then
+	if player:IsPlayer() and Game.system.population > 0 then
+		_G._nearbystationsRemotes = StarSystem:GetNearbyStationPaths(max_dist, nil,function (s) return
+		(s.type ~= 'STARPORT_SURFACE') or (s.parent.type ~= 'PLANET_ASTEROID') end)
+		_G._nearbystationsLocals = Game.system:GetStationPaths()
 		shipNeutralized = false
 		welcome()
 	end
@@ -88,13 +99,12 @@ Event.Register("onEnterSystem", onEnterSystem)
 
 local onShipUndocked = function (player, station)
 	if player:IsPlayer() then
-		local faction = Game.system.faction.name
+		_G.PrevFac = Game.system.faction.name
 		_G.PrevPos = ((station.label)..", "..
 			Game.system.name.." ("..
 			(station.path.sectorX)..","..
 			(station.path.sectorY)..","..
 			(station.path.sectorZ)..")")
-		_G.PrevFac = faction
 		local target = player:FindNearestTo("PLANET") or player:FindNearestTo("STAR")
 		local timeundock = 8
 		if station.isGroundStation then timeundock = 3 end
@@ -159,6 +169,9 @@ local onGameStart = function ()
 			Game.system.faction.militaryName)
 		welcome()
 	end
+	_G._nearbystationsRemotes = StarSystem:GetNearbyStationPaths(max_dist, nil,function (s) return
+					(s.type ~= 'STARPORT_SURFACE') or (s.parent.type ~= 'PLANET_ASTEROID') end)
+	_G._nearbystationsLocals = Game.system:GetStationPaths()
 	loaded_data = nil
 end
 Event.Register("onGameStart", onGameStart)
@@ -187,70 +200,73 @@ Event.Register("onShipAlertChanged", onShipAlertChanged)
 
 local dempSong = "music/core/fx/demp"
 local trigger = 0
+local player
 local onShipHit = function (ship, attacker)
 	if ship:IsPlayer() then
+		player = ship
 		_G.ShotsReceived = (ShotsReceived or 0) + 1
 		if attacker then
 			trigger = trigger + 1
-			if attacker ~= ship:GetCombatTarget() then
+			if attacker ~= player:GetCombatTarget() then
 				trigger = 0
 			return end
 		else
 			trigger = 0
-			ship:SetInvulnerable(true)
+			player:SetInvulnerable(true)
 		return end
 		if trigger > 3 and DEMPsystem == true then
-			Music.Play(dempSong, false)
-			Comms.Message(attacker.label..l.neutralized_by..le.DEMP)
 			shipNeutralized = true
 			attacker:CancelAI()
-			ship:SetInvulnerable(true)
+			player:SetInvulnerable(true)
+			Music.Play(dempSong, false)
+			Comms.Message(attacker.label..l.neutralized_by..le.DEMP)
 			trigger = 0
 		end
 		if trigger == 1 then
-			ship:SetInvulnerable(false)
+			player:SetInvulnerable(false)
 		return end
-		local hullIntegrity = math.ceil(ship.hullMassLeft/ShipDef[ship.shipId].hullMass*100)
+		local hullIntegrity = math.ceil(player.hullMassLeft/ShipDef[player.shipId].hullMass*100)
 		if hullIntegrity == 100 then damaged = false
 		elseif hullIntegrity < 90 and not damaged then
 			damaged = true
 			local chance = Engine.rand:Integer(0,9)
 			if chance == 0 then
-				ship:SetFuelPercent(ship.fuel/2)
+				player:SetFuelPercent(ship.fuel/2)
 				_G.damageControl = l.Damage_Control_Propellant
 				Comms.ImportantMessage(damageControl)
 			elseif chance == 1 then
-				ship:RemoveEquip(Eq.misc.scanner)
-				ship:AddEquip(Eq.cargo.rubbish,1)
+				player:RemoveEquip(Eq.misc.scanner)
+				player:AddEquip(Eq.cargo.rubbish,1)
 				_G.damageControl = l.Damage_Control_Scanner
 				Comms.ImportantMessage(damageControl)
 			elseif chance == 2 and hullIntegrity < 30 then
-				ship:RemoveEquip(Eq.misc.autopilot)
-				ship:AddEquip(Eq.cargo.rubbish,1)
+				player:RemoveEquip(Eq.misc.autopilot)
+				player:AddEquip(Eq.cargo.rubbish,1)
 				_G.damageControl = l.Damage_Control_Autopilot
 				Comms.ImportantMessage(damageControl)
 			end
 		end
 		if not autoCombat or not shipWithCannon(ship)
 		then return end
-		local target = ship:GetCombatTarget()
-		if attacker and (not target and ship:DistanceTo(attacker) < 4000)
+		local target = player:GetCombatTarget()
+		if attacker and (not target and player:DistanceTo(attacker) < 4000)
 			or (target and target ~= attacker and
-					ship:DistanceTo(attacker) < ship:DistanceTo(target)) then
+					player:DistanceTo(attacker) < player:DistanceTo(target)) then
 			if attacker then
 				shipNeutralized = false
-				ship:CancelAI()
-				ship:SetCombatTarget(attacker)
-				ship:AIKill(attacker)
+				player:CancelAI()
+				player:SetCombatTarget(attacker)
+				player:AIKill(attacker)
 			end
 		end
-	elseif ship and ship:exists() and attacker and attacker:exists() and attacker:IsPlayer() then
+	elseif ship and ship:exists() and attacker and attacker:IsPlayer() then
+		player = attacker
 		if MissileActive > 0 then
 			_G.MissileActive = MissileActive - 1
 		else
+			if not shipNeutralized then ship:AIKill(player) end
 			_G.ShotsSuccessful = (ShotsSuccessful or 0) + 1
 		end
-		if not shipNeutralized then ship:AIKill(attacker) end
 	elseif ship and ship:exists()
 		and attacker and attacker:exists()
 		and not attacker:IsPlayer() then
@@ -348,12 +364,24 @@ end)
 
 Event.Register("onAutoCombatON",function()
 	if Game.player:GetEquipFree("autocombat") < 1 then
-		Comms.Message(l.AutoCombatON)
-			songOk()
 		_G.autoCombat = true
+		Comms.Message(l.AutoCombatON)
+		songOk()
 		local target = Game.player:GetCombatTarget()
-		if target and target:exists() then
-			Game.player:AIKill(target)
+		if (target and target:exists()) then
+			if Game.player:DistanceTo(target) > 10000 then
+				Game.player:AIKamikaze(target)
+				Timer:CallEvery(1, function ()
+					if (target and target:exists()) and Game.player:DistanceTo(target) < 10000 then
+						Game.player:AIKill(target)
+						return true
+					else
+						return false
+					end
+				end)
+			else
+				Game.player:AIKill(target)
+			end
 		end
 	else
 		_G.autoCombat = false
@@ -363,12 +391,12 @@ end)
 
 Event.Register("onAutoCombatOFF",function()
 	if Game.player:GetEquipFree("autocombat") < 1 then
-		Comms.Message(l.AutoCombatOFF)
-		songOk()
 		if Game.player:GetCombatTarget() then
 			Game.player:CancelAI()
 		end
 		_G.autoCombat = false
+		Comms.Message(l.AutoCombatOFF)
+		songOk()
 	end
 end)
 

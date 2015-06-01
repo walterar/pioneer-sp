@@ -512,7 +512,7 @@ compat.equip.new2old = {
 	[laser.pulsecannon_dual_1mw]     = "PULSECANNON_DUAL_1MW",
 	[laser.pulsecannon_2mw]          = "PULSECANNON_2MW",
 	[laser.pulsecannon_rapid_2mw]    = "PULSECANNON_RAPID_2MW",
-	[laser.pulsecannon_4mw]          = " PULSECANNON_4MW",
+	[laser.pulsecannon_4mw]          = "PULSECANNON_4MW",
 	[laser.pulsecannon_10mw]         = "PULSECANNON_10MW",
 	[laser.pulsecannon_20mw]         = "PULSECANNON_20MW",
 	[laser.miningcannon_17mw]        = "MININGCANNON_17MW",
@@ -555,6 +555,7 @@ end
 --
 function Ship:FireMissileAt(which_missile, target)
 	local missile_object = false
+	local MissileNaval = false
 	if type(which_missile) == "number" then
 		local missile_equip = self:GetEquip("missile", which_missile)
 		if missile_equip then
@@ -566,6 +567,10 @@ function Ship:FireMissileAt(which_missile, target)
 	else
 		for i,m in pairs(self:GetEquip("missile")) do
 			if (which_missile == m) or (which_missile == "any") then
+				if m.missile_type == "missile_naval" then
+					MissileNaval = true
+					target:CancelAI()
+				end
 				missile_object = self:SpawnMissile(m.missile_type)
 				if missile_object ~= nil then
 					self:SetEquip("missile", i)
@@ -577,34 +582,32 @@ function Ship:FireMissileAt(which_missile, target)
 
 	if missile_object then
 		if target and target:exists() then
-			if ShipDef[missile_object.shipId].name == "MISSILE_NAVAL" then
-				target:SetHullPercent(0)
-				target:SetInvulnerable(false)
-				target:CancelAI()
-			end
 			missile_object:AIKamikaze(target)
 			_G.MissileActive = MissileActive +1
 		end
 		Timer:CallEvery(1, function ()
-			if target and target:exists() then
-				if missile_object and missile_object:exists() then
-					if missile_object:DistanceTo(self) < 500 then
-						return false
-					else
-						missile_object:Arm()
-						return true
-					end
-				end
-			else
-				if missile_object and missile_object:exists() then
+			if not target or not target:exists() then
+				if (missile_object and missile_object:exists()) then
 					_G.MissileActive = MissileActive -1
 					missile_object:Explode()
+					return true
+				end
+			else
+				if (missile_object and missile_object:exists()) then
+					if missile_object:DistanceTo(self) < 500 then
+						return false
+					end
+					if MissileNaval then
+						MissileNaval = false
+						target:SetInvulnerable(false)
+						target:SetHullPercent(0)
+					end
+					missile_object:Arm()
 					return true
 				end
 			end
 		end)
 	end
-
 	return missile_object
 end
 

@@ -9,13 +9,13 @@
    "hull_mass"      : 20,
    "fuel_tank_mass" : 10,
 
-   "forward_thrust" :  6800000.0,
-   "reverse_thrust" :  3400000.0,
-   "angular_thrust" : 13000000.0,
-   "up_thrust"      :  3400000.0,
-   "down_thrust"    :   800000.0,
-   "right_thrust"   :   800000.0,
-   "left_thrust"    :   800000.0,
+   "forward_thrust" :  8000000.0,
+   "reverse_thrust" :  4000000.0,
+   "angular_thrust" : 15000000.0,
+   "up_thrust"      :  4000000.0,
+   "down_thrust"    :  2000000.0,
+   "right_thrust"   :  2000000.0,
+   "left_thrust"    :  2000000.0,
 
    "min_crew" : 1,
    "max_crew" : 1,
@@ -31,8 +31,8 @@
       "scoop" : 0
    },
 
-   "thruster_fuel_use" : -0.00015,
+   "thruster_fuel_use" : 0.0001,
    "effective_exhaust_velocity" : -1.0,
    "hyperdrive_class" : 2,
-   "price" : 33000.0
+   "price" : 38000.0
 }

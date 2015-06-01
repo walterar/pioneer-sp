@@ -30,11 +30,11 @@ local onChat = function (form, ref, option)
 		form:SetFace({seed = ad.faceseed+1})
 
 		if fine > 0 then
-				form:SetMessage("\nHola Comandante.\nLamentablemente no podemos cambiar su matrícula\nUsted adeuda multas policiales por "..showCurrency(fine).."\n \n*\n*")
+				form:SetMessage(l.cannot_change_your_registration..showCurrency(fine).."\n \n*\n*")
 
 		elseif Game.player:CriminalRecord() then
 			tariff = 5000 * (1+Game.system.lawlessness)
-			form:SetMessage("Hola Comandante.\nCambie aquí su matrícula y limpie\nsus antecedentes criminales por sólo "..showCurrency(tariff).."\n \n*\n*")
+			form:SetMessage(l.Change_your_registration_and_clean_criminal_record..showCurrency(tariff).."\n \n*\n*")
 			form:AddOption(l.Register_in .. Game.system.faction.name, 1)
 		else
 			form:SetMessage(l.Work_we_do..showCurrency(tariff).."\n \n*\n*")

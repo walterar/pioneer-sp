@@ -3,6 +3,7 @@
 
 local Engine     = import("Engine")
 local Game       = import("Game")
+local Player      = import("Player")
 local Rand       = import("Rand")
 local Character  = import("Character")
 local Lang       = import("Lang")
@@ -13,6 +14,7 @@ local InfoFace   = import("ui/InfoFace")
 local l = Lang.GetResource("ui-core")
 
 local ui = Engine.ui
+
 
 local lobby = function (tab)
 	local station = Game.player:GetDockedWith()
@@ -37,7 +39,7 @@ local lobby = function (tab)
 	end)
 
 	return
-		ui:Grid({48,4,48},1)
+		ui:Grid({60,1,39},1)
 			:SetColumn(0, {
 				ui:VBox(10):PackEnd({
 					ui:Label(station.label):SetFont("HEADING_LARGE"),

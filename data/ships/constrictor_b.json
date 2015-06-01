@@ -25,7 +25,7 @@
       "cargo_life_support" : 1,
       "laser_front" : 1,
       "laser_rear" : 0,
-      "missile" : 2,
+      "missile" : 4,
       "scoop" : 2
    },
 

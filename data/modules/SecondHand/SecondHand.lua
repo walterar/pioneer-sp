@@ -11,8 +11,8 @@ local Serializer = import("Serializer")
 local Equipment  = import ("Equipment")
 local Character  = import("Character")
 
-local l  = Lang.GetResource("module-secondhand")
-local l2 = Lang.GetResource("ui-core")
+local l  = Lang.GetResource("module-secondhand") or Lang.GetResource("module-secondhand","en")
+local l2 = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
 
 local iconSH = "sale"
 
@@ -139,11 +139,11 @@ local makeAdvert = function (station)
 
 	local ad = {
 			character = character,
-			faceseed = Engine.rand:Integer(),
-			flavour = flavour,
-			price = price,
+			faceseed  = Engine.rand:Integer(),
+			flavour   = flavour,
+			price     = price,
 			equipment = equipment,
-			station = station,
+			station   = station,
 		}
 
 	ad.desc = string.interp(flavours[ad.flavour].adtitle, {

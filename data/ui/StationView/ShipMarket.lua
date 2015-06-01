@@ -4,7 +4,6 @@
 -- Work in progress.
 
 local Engine       = import("Engine")
-local SpaceStation = import("SpaceStation")
 local Game         = import("Game")
 local Event        = import("Event")
 local Format       = import("Format")

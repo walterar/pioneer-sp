@@ -8,7 +8,7 @@ local Event     = import("Event")
 local Format    = import("Format")
 local Equipment = import("Equipment")
 
-local l  = Lang.GetResource("module-stationrefuelling")
+local l  = Lang.GetResource("module-stationrefuelling") or Lang.GetResource("module-stationrefuelling","en")
 local lp = Lang.GetResource("module-00-player") or Lang.GetResource("module-00-player","en")
 
 local calculateFee = function (station)

@@ -12,7 +12,8 @@
 "message":"所属:"
 },
 "ALT":{
-"description":"Alt key on keyboard","message":"Alt"
+"description":"Alt key on keyboard",
+"message":"Alt"
 },
 "ALT_IN_KM":{
 "description":"",
@@ -51,10 +52,12 @@
 "message":"小行星"
 },
 "AUTOMATIC_SYSTEM_SELECTION":{
-"description":"for star map, select star system when mouse close to it","message":"自动化系统选择"
+"description":"for star map, select star system when mouse close to it",
+"message":"自动化系统选择"
 },
 "AUTOPILOT_CONTROL":{
-"description":"Indicating that ship is flying under autopilot control","message":"自动驾驶中"
+"description":"Indicating that ship is flying under autopilot control",
+"message":"自动驾驶中"
 },
 "AUTOPILOT_DOCK_WITH_STATION":{
 "description":"",
@@ -89,7 +92,8 @@
 "message":"转轴倾角"
 },
 "A_FEW_THOUSAND":{
-"description":"regarding population","message":"只有几千"
+"description":"regarding population",
+"message":"只有几千"
 },
 "BATTLE_WEAPONS":{
 "description":"",
@@ -100,7 +104,8 @@
 "message":"双星系统"
 },
 "BODIES":{
-"description":"space bodies","message":"体"
+"description":"space bodies",
+"message":"体"
 },
 "BODY":{
 "description":"",
@@ -203,7 +208,8 @@
 "message":", 高度火山化"
 },
 "COMMODITY_NONE":{
-"description":"When no commodities exist","message":"无"
+"description":"When no commodities exist",
+"message":"无"
 },
 "COMMODITY_TRADE_ANALYSIS_COMPARE":{
 "description":"",
@@ -262,10 +268,12 @@
 "message":"\"一氧化碳大气\""
 },
 "CTRL":{
-"description":"Ctrl key on keyboard","message":"Ctrl"
+"description":"Ctrl key on keyboard",
+"message":"Ctrl"
 },
 "CURRENT_SYSTEM":{
-"description":"selected current star system","message":"当前星系"
+"description":"selected current star system",
+"message":"当前星系"
 },
 "DATE_DUE_N":{
 "description":"",
@@ -292,7 +300,8 @@
 "message":"目的地"
 },
 "DIRECTION":{
-"description":"Direction","message":"\" Dir\""
+"description":"Direction",
+"message":"\" Dir\""
 },
 "DISTANCE_FROM_SHIP_TO_NAV_TARGET":{
 "description":"",
@@ -415,7 +424,8 @@
 "message":"燃料收集器启动.你现在有 %quantity 吨氢燃料."
 },
 "GALACTIC_VIEW":{
-"description":"view galactic map","message":"银河视角"
+"description":"view galactic map",
+"message":"银河视角"
 },
 "GALAXY_SECTOR_VIEW":{
 "description":"",
@@ -450,7 +460,8 @@
 "message":"政府类型:"
 },
 "GRAIN":{
-"description":"like wheat or barley","message":"粮食"
+"description":"like wheat or barley",
+"message":"粮食"
 },
 "HAND_WEAPONS":{
 "description":"",
@@ -461,29 +472,36 @@
 "message":"完全资本主义 - 政府不提供福利"
 },
 "HAT":{
-"description":"Hat switch: Is the top button on a joystick","message":"\" Hat\""
+"description":"Hat switch: Is the top button on a joystick",
+"message":"\" Hat\""
 },
 "HEADING_LOCK_ANTINORMAL":{
-"description":"Autopilot direction (perpendicular, down), relative to plane of orbit","message":"锁定航向 (反法线)"
+"description":"Autopilot direction (perpendicular, down), relative to plane of orbit",
+"message":"锁定航向 (反法线)"
 },
 "HEADING_LOCK_BACKWARD":{
-"description":"Autopilot points/holds/faces you retrograde (backwards rel. orbital direction)","message":"锁定航向 (船尾)"
+"description":"Autopilot points/holds/faces you retrograde (backwards rel. orbital direction)",
+"message":"锁定航向 (船尾)"
 },
 "HEADING_LOCK_FORWARD":{
-"description":"Autopilot points/holds/faces you prograde (tangent to the orbit, i.e. forward), http://wiki.kerbalspaceprogram.com/wiki/Maneuver_node","message":"锁定航向 (船首)"
+"description":"Autopilot points/holds/faces you prograde (tangent to the orbit, i.e. forward), http://wiki.kerbalspaceprogram.com/wiki/Maneuver_node",
+"message":"锁定航向 (船首)"
 },
 "HEADING_LOCK_KILLROT":{
 "description":"",
 "message":"消除旋转"
 },
 "HEADING_LOCK_NORMAL":{
-"description":"Autopilot direction (perpendicular, up), relative to plane of orbit. ","message":"锁定航向 (法线)"
+"description":"Autopilot direction (perpendicular, up), relative to plane of orbit. ",
+"message":"锁定航向 (法线)"
 },
 "HEADING_LOCK_RADIALLY_INWARD":{
-"description":"Autopilot direction, relative to orbit (face towards planet)","message":"锁定航向 (径向内)"
+"description":"Autopilot direction, relative to orbit (face towards planet)",
+"message":"锁定航向 (径向内)"
 },
 "HEADING_LOCK_RADIALLY_OUTWARD":{
-"description":"Autopilot direction, relative to orbit (face away from palent)","message":"锁定航向 (径向外)"
+"description":"Autopilot direction, relative to orbit (face away from palent)",
+"message":"锁定航向 (径向外)"
 },
 "HEAVY_INDUSTRY":{
 "description":"",
@@ -558,7 +576,8 @@
 "message":"\"冰封的世界\""
 },
 "ILLEGAL_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of commodity (singular) status in the system the player is currently in","message":"非法的(当前星系):"
+"description":"Short (tooltip) description of commodity (singular) status in the system the player is currently in",
+"message":"非法的(当前星系):"
 },
 "ILLEGAL_GOODS":{
 "description":"",
@@ -593,7 +612,8 @@
 "message":"内部视角"
 },
 "INT_LY":{
-"description":"integer number of light years","message":"%scale ly"
+"description":"integer number of light years",
+"message":"%scale ly"
 },
 "IN_TRANSIT":{
 "description":"",
@@ -604,14 +624,16 @@
 "message":"正在中转到 %system [%x,%y,%z]"
 },
 "JOY":{
-"description":"Short for Joystick","message":"摇杆"
+"description":"Short for Joystick",
+"message":"摇杆"
 },
 "JOYSTICK_INPUT":{
 "description":"",
 "message":"摇杆输入"
 },
 "JOY_AXIS":{
-"description":"Regarding joystick","message":"%{sign}Joy%joynum %axis 轴"
+"description":"Regarding joystick",
+"message":"%{sign}Joy%joynum %axis 轴"
 },
 "KM_S_RELATIVE_TO":{
 "description":"",
@@ -622,10 +644,12 @@
 "message":"着陆"
 },
 "LANG_NAME":{
-"description":"The name that native speakers use for this language. This will be used in the language selection screen.","message":"简体中文"
+"description":"The name that native speakers use for this language. This will be used in the language selection screen.",
+"message":"简体中文"
 },
 "LARGE":{
-"description":"regarding terrestrial planet size (mass actually)","message":"较大的"
+"description":"regarding terrestrial planet size (mass actually)",
+"message":"较大的"
 },
 "LARGE_GAS_GIANT":{
 "description":"",
@@ -636,7 +660,8 @@
 "message":"侦测到激光发射."
 },
 "LEGAL_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of commodity (singular) status in the system the player is currently in","message":"合法的(当前星系):"
+"description":"Short (tooltip) description of commodity (singular) status in the system the player is currently in",
+"message":"合法的(当前星系):"
 },
 "LIBERAL_DEMOCRACY":{
 "description":"",
@@ -659,24 +684,28 @@
 "message":"活动物"
 },
 "LOCAL_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"猎户臂"
+"description":"Arm of the Milky Way galaxy",
+"message":"猎户臂"
 },
 "LOCKED":{
-"description":"to lock a hyperspace target","message":"锁定"
+"description":"to lock a hyperspace target",
+"message":"锁定"
 },
 "MAJOR_EXPORTS":{
 "description":"",
 "message":"主要出口:"
 },
 "MAJOR_EXPORT_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in","message":"主要出口(本星系)"
+"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+"message":"主要出口(本星系)"
 },
 "MAJOR_IMPORTS":{
 "description":"",
 "message":"主要进口:"
 },
 "MAJOR_IMPORT_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in","message":"主要进口(本星系)"
+"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+"message":"主要进口(本星系)"
 },
 "MANUAL_CONTROL":{
 "description":"",
@@ -775,7 +804,8 @@
 "message":"从 %sender 来的消息:"
 },
 "META":{
-"description":"'Meta' key on keyboard","message":"Meta"
+"description":"'Meta' key on keyboard",
+"message":"Meta"
 },
 "METAL_ALLOYS":{
 "description":"",
@@ -806,14 +836,16 @@
 "message":"次要出口:"
 },
 "MINOR_EXPORT_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in","message":"次要出口(本星系)"
+"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+"message":"次要出口(本星系)"
 },
 "MINOR_IMPORTS":{
 "description":"",
 "message":"次要进口:"
 },
 "MINOR_IMPORT_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in","message":"次要入口(本星系)"
+"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+"message":"次要入口(本星系)"
 },
 "MISCELLANEOUS":{
 "description":"",
@@ -876,7 +908,8 @@
 "message":"九月"
 },
 "MULTI_SCOOP":{
-"description":"A ship equipment: a cargo scoop and fuel scoop combined to one","message":"联合收集器"
+"description":"A ship equipment: a cargo scoop and fuel scoop combined to one",
+"message":"联合收集器"
 },
 "MULTI_SCOOP_DESCRIPTION":{
 "description":"",
@@ -891,10 +924,12 @@
 "message":"%speed{f.0} m/s 相对于 %frame"
 },
 "NAME_OBJECT":{
-"description":"For an item or object","message":"名称"
+"description":"For an item or object",
+"message":"名称"
 },
 "NAME_PERSON":{
-"description":"For a person","message":"姓名"
+"description":"For a person",
+"message":"姓名"
 },
 "NARCOTICS":{
 "description":"",
@@ -913,10 +948,12 @@
 "message":"神经毒气"
 },
 "NORMA_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"天鹅臂"
+"description":"Arm of the Milky Way galaxy",
+"message":"天鹅臂"
 },
 "NOT_FOUND":{
-"description":"searching star system in sector view","message":"未找到"
+"description":"searching star system in sector view",
+"message":"未找到"
 },
 "NOT_FOUND_BEST_MATCH_X":{
 "description":"",
@@ -951,20 +988,24 @@
 "message":"%days{f.0} 天"
 },
 "NUMBER_DECIMAL_POINT":{
-"description":"Decimal delimiter used in numbers.","message":"."
+"description":"Decimal delimiter used in numbers.",
+"message":"."
 },
 "NUMBER_G":{
 "description":"",
 "message":"%acceleration{f.1} G"
 },
 "NUMBER_GROUP_MIN":{
-"description":"Smallest number to start grouping of digits for. (E.g. if \"10000\" start grouping thousands with 10,000, and not 1,000).","message":"1000"
+"description":"Smallest number to start grouping of digits for. (E.g. if \"10000\" start grouping thousands with 10,000, and not 1,000).",
+"message":"1000"
 },
 "NUMBER_GROUP_NUM":{
-"description":"For large number, group digits by this many. European languages use 3 (group thousands). 0 means no grouping.","message":"3"
+"description":"For large number, group digits by this many. European languages use 3 (group thousands). 0 means no grouping.",
+"message":"3"
 },
 "NUMBER_GROUP_SEP":{
-"description":"For large number, separator used when grouping digits. E.g. 1,000 or 1 000 or 1'000.","message":","
+"description":"For large number, separator used when grouping digits. E.g. 1,000 or 1 000 or 1'000.",
+"message":","
 },
 "NUMBER_HOURS":{
 "description":"",
@@ -1007,7 +1048,8 @@
 "message":"%mass{f.3} %units 质量"
 },
 "N_WHATEVER_RADII":{
-"description":"Used in system info view. E.g. for Barnard's star: \"0.17 Solar radii (118235 km)\"","message":"%radius{f.3} %units 半径 (%radkm{f.0} km)"
+"description":"Used in system info view. E.g. for Barnard's star: \"0.17 Solar radii (118235 km)\"",
+"message":"%radius{f.3} %units 半径 (%radkm{f.0} km)"
 },
 "N_YEARS":{
 "description":"",
@@ -1034,7 +1076,8 @@
 "message":"可在户外活动的农业星球."
 },
 "OUTER_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"外部臂"
+"description":"Arm of the Milky Way galaxy",
+"message":"外部臂"
 },
 "OVER_N_BILLION":{
 "description":"",
@@ -1061,7 +1104,8 @@
 "message":"近拱点距离"
 },
 "PERSEUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"英仙臂"
+"description":"Arm of the Milky Way galaxy",
+"message":"英仙臂"
 },
 "PIONEER":{
 "description":"",
@@ -1100,16 +1144,20 @@
 "message":"计划经济"
 },
 "PLANNER_RESET_FACTOR":{
-"description":"For system orbit view","message":"delta-v 增加率. 单击重置为默认值."
+"description":"For system orbit view",
+"message":"delta-v 增加率. 单击重置为默认值."
 },
 "PLANNER_RESET_NORMAL":{
-"description":"For system orbit view","message":"法线delta-v. 单击重置为零."
+"description":"For system orbit view",
+"message":"法线delta-v. 单击重置为零."
 },
 "PLANNER_RESET_PROGRADE":{
-"description":"For system orbit view","message":"前进方向delta-v. 单击重置为零."
+"description":"For system orbit view",
+"message":"前进方向delta-v. 单击重置为零."
 },
 "PLANNER_RESET_RADIAL":{
-"description":"For system orbit view","message":"径向delta-v. 单击重置为零."
+"description":"For system orbit view",
+"message":"径向delta-v. 单击重置为零."
 },
 "PLASTICS":{
 "description":"",
@@ -1120,7 +1168,8 @@
 "message":"富商独裁"
 },
 "POLICE_SHIP_REGISTRATION":{
-"description":"警察 conflict with 'police-mecha' ship model","message":"POLICE"
+"description":"",
+"message":"警察"
 },
 "POPULATION":{
 "description":"",
@@ -1223,21 +1272,24 @@
 "message":"废料"
 },
 "SAGITTARIUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"射手臂"
+"description":"Arm of the Milky Way galaxy",
+"message":"射手臂"
 },
 "SCANNER_CONTROL":{
 "description":"",
 "message":"扫描仪控制"
 },
 "SCOOP":{
-"description":"Is followed by a number, repersenting scoop mounts/slots available to fit cargo scoop and/or fuel scoop","message":"个收集器位"
+"description":"Is followed by a number, repersenting scoop mounts/slots available to fit cargo scoop and/or fuel scoop",
+"message":"个收集器位"
 },
 "SCREENSHOT_FILENAME_TEMPLATE":{
 "description":"",
 "message":"截图 %index{d08}.png"
 },
 "SCUTUM_CENTAURUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"半人马臂"
+"description":"Arm of the Milky Way galaxy",
+"message":"半人马臂"
 },
 "SEARCH":{
 "description":"",
@@ -1308,14 +1360,16 @@
 "message":"护盾强度: %shields{f.2}"
 },
 "SHIFT":{
-"description":"Shift key on keyboard","message":"Shift"
+"description":"Shift key on keyboard",
+"message":"Shift"
 },
 "SHIP":{
 "description":"",
 "message":"飞船"
 },
 "SHIPS_DISPLAY_MODE_TOGGLE":{
-"description":"Either show no ships, show ships, or show ships + their orbits","message":"切换飞船显示模式."
+"description":"Either show no ships, show ships, or show ships + their orbits",
+"message":"切换飞船显示模式."
 },
 "SHIP_ALTITUDE_ABOVE_TERRAIN":{
 "description":"",
@@ -1346,7 +1400,8 @@
 "message":"飞船相对于参照物体的速度"
 },
 "SIDEREAL_VIEW":{
-"description":"camera view setting","message":"恒星视角"
+"description":"camera view setting",
+"message":"恒星视角"
 },
 "SIMULATING_UNIVERSE_EVOLUTION_N_BYEARS":{
 "description":"",
@@ -1385,7 +1440,8 @@
 "message":"一些已建立的采矿站."
 },
 "SOURCE":{
-"description":"tell source system of hyperjump entry cloud","message":"起源"
+"description":"tell source system of hyperjump entry cloud",
+"message":"起源"
 },
 "SPEED_CONTROL_MODE":{
 "description":"",
@@ -1544,13 +1600,16 @@
 "message":"表面温度"
 },
 "SWITCHED_TO_PARENT":{
-"description":"Show ship's heading, coordinates are on the celestial sphere (defined by the ecliptic).","message":"已将朝向模式设为星系坐标模式."
+"description":"Show ship's heading, coordinates are on the celestial sphere (defined by the ecliptic).",
+"message":"已将朝向模式设为星系坐标模式."
 },
 "SWITCHED_TO_ROTATIONAL":{
-"description":"Show ship's heading in planetary coordinates. heading 0 = north, 90 = east, 180 = south, 270 = west.","message":"已将朝向模式设为地表坐标模式."
+"description":"Show ship's heading in planetary coordinates. heading 0 = north, 90 = east, 180 = south, 270 = west.",
+"message":"已将朝向模式设为地表坐标模式."
 },
 "SYSTEM":{
-"description":"star system","message":"星系"
+"description":"star system",
+"message":"星系"
 },
 "SYSTEM_NUMBER":{
 "description":"",
@@ -1577,7 +1636,8 @@
 "message":"将准星内物体设为目标"
 },
 "TENUOUS":{
-"description":"atmosphere thickness","message":"稀薄的"
+"description":"atmosphere thickness",
+"message":"稀薄的"
 },
 "TEXTILES":{
 "description":"",
@@ -1592,7 +1652,8 @@
 "message":"较薄的"
 },
 "THREE_KPC_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"3k秒差距旋臂"
+"description":"Arm of the Milky Way galaxy",
+"message":"3k秒差距旋臂"
 },
 "THRIVING_OUTDOOR_WORLD":{
 "description":"",
@@ -1647,7 +1708,8 @@
 "message":"切换扫描仪模式"
 },
 "TOMBSTONE_EPITAPH":{
-"description":"shown on tombstone when player dies","message":"缅怀老比恩"
+"description":"shown on tombstone when player dies",
+"message":"缅怀老比恩"
 },
 "TRADING_ILLEGAL_GOODS":{
 "description":"",
@@ -1738,14 +1800,16 @@
 "message":"\"没有明显大气\""
 },
 "X":{
-"description":"keybinding: x axis","message":"X"
+"description":"keybinding: x axis",
+"message":"X"
 },
 "X_CANNOT_BE_TOLERATED_HERE":{
 "description":"",
 "message":"%crime 在这里是无法容忍的."
 },
 "Y":{
-"description":"keybinding: y axis","message":"Y"
+"description":"keybinding: y axis",
+"message":"Y"
 },
 "YAW":{
 "description":"",
@@ -1768,7 +1832,8 @@
 "message":"你已经穷得响叮当了."
 },
 "Z":{
-"description":"keybinding: z axis","message":"Z"
+"description":"keybinding: z axis",
+"message":"Z"
 },
 "ZOOM_IN":{
 "description":"",

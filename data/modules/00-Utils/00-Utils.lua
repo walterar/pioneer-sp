@@ -16,7 +16,7 @@ local Music      = import("Music")
 local Comms      = import("Comms")
 local Format     = import("Format")
 
-local l  = Lang.GetResource("core") or Lang.GetResource("core","en")
+local l = Lang.GetResource("core") or Lang.GetResource("core","en")
 
 _G.songOk = function ()
 --	local SongName = Music.GetSongName()
@@ -97,12 +97,11 @@ _G.ship_hostil = function (risk)
 	if risk < 1 then return end
 	local hostil,hostile
 	local count_hostiles = risk
-	local capacity1 = 20
-	local capacity2 = 100
+
 	local hostiles = utils.build_array(utils.filter(function (k,def)
 		return def.tag == 'SHIP'
-			and  def.capacity >= capacity1
-			and  def.capacity <= capacity2
+			and  def.capacity >= 20
+			and  def.capacity <= 100
 			and  def.hyperdriveClass > 0
 	end, pairs(ShipDef)))
 

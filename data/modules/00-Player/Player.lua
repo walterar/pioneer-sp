@@ -198,9 +198,9 @@ end
 Event.Register("onShipAlertChanged", onShipAlertChanged)
 
 
-local dempSong = "music/core/fx/demp"
-local trigger = 0
-local player
+	local dempSong = "music/core/fx/demp"
+	local trigger = 0
+	local player
 local onShipHit = function (ship, attacker)
 	if ship:IsPlayer() then
 		player = ship
@@ -227,7 +227,7 @@ local onShipHit = function (ship, attacker)
 		return end
 		local hullIntegrity = math.ceil(player.hullMassLeft/ShipDef[player.shipId].hullMass*100)
 		if hullIntegrity == 100 then damaged = false
-		elseif hullIntegrity < 90 and not damaged then
+		elseif hullIntegrity < 90 and damageControl == "" and not damaged then
 			damaged = true
 			local chance = Engine.rand:Integer(0,9)
 			if chance == 0 then
@@ -277,9 +277,8 @@ end
 Event.Register("onShipHit", onShipHit)
 
 
-local penalized
-local FiringSong = ("music/core/fx/combat0"..tostring(Engine.rand:Integer(1,4)))
-
+	local penalized
+	local FiringSong = ("music/core/fx/combat0"..tostring(Engine.rand:Integer(1,4)))
 local onShipFiring = function (ship)
 	if not ship then return end
 	local player = Game.player
@@ -338,17 +337,25 @@ Event.Register("onShipFiring", onShipFiring)
 
 
 Event.Register("onShipEquipmentChanged", function(ship, equipType)
-	if not ship:IsPlayer() then return end
+	if not ship:IsPlayer() or not equipType then return end
+
+	if damageControl == l.THE_SHIPS_HYPERDRIVE_HAS_BEEN_DESTROYED_BY_A_MALFUNCTION
+			and equipType:IsValidSlot("engine", ship) then
+		_G.damageControl = ""
+	end
+
 	if ship:GetEquipFree("demp") < 1 then
 		_G.DEMPsystem=true
 	else
 		_G.DEMPsystem=false
 	end
+
 	if ship:GetEquipFree("capacitor") < 1 then
 		_G.MATTcapacitor=true
 	else
 		_G.MATTcapacitor=false
 	end
+
 	if ship:GetEquipFree("convert") < 1 then
 		_G.fuelConvert=true
 	else
@@ -359,8 +366,13 @@ Event.Register("onShipEquipmentChanged", function(ship, equipType)
 		or (damageControl == l.Damage_Control_autopilot and ship:GetEquipFree("autopilot") < 1) then
 		_G.damageControl = ""
 	end
+
 end)
 
+Event.Register("onShipTypeChanged", function(ship)
+	if not ship:IsPlayer() then return end
+	_G.damageControl = ""
+end)
 
 Event.Register("onAutoCombatON",function()
 	if Game.player:GetEquipFree("autocombat") < 1 then

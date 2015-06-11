@@ -52,7 +52,7 @@ local flavours = {
 		welcome = l.FLAVOUR_0_WELCOME,
 		nonmember_intro = l.FLAVOUR_0_NONMEMBER_INTRO,
 		member_intro = l.FLAVOUR_0_MEMBER_INTRO,
-		annual_fee = 400,
+		annual_fee = 400
 	}
 }
 
@@ -163,7 +163,7 @@ onChat = function (form, ref, option)
 			memberships[ad.flavour.clubname] = {
 				joined = Game.time,
 				expiry = oneyear,
-				milrads = 0,
+				milrads = 0
 			}
 			Game.player:AddMoney(0 - ad.flavour.annual_fee)
 			form:SetMessage(l.YOU_ARE_NOW_A_MEMBER:interp({
@@ -200,7 +200,7 @@ local onCreateBB = function (station)
 		ad.flavour = flavours[rand:Integer(1,#flavours)]
 		ad.character = Character.New({
 			title = ad.flavour.clubname,
-			armour = false,
+			armour = false
 		})
 		ads[station:AddAdvert({
 			description = ad.flavour.clubname,

@@ -12,6 +12,7 @@ local MessageBox = import("ui/MessageBox")
 
 local l = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
 local le = Lang.GetResource("equipment-core") or Lang.GetResource("equipment-core","en")
+local lr = Lang.GetResource("module-breakdownservicing") or Lang.GetResource("module-breakdownservicing","en")
 
 local ui = Engine.ui
 
@@ -216,7 +217,9 @@ function EquipmentTableWidgets.Pair (config)
 
 	local function onBuy (e)
 		if not funcs.onClickBuy(e) then return end
-
+		if e.l10n_key:find("DRIVE_")
+			and damageControl == lr.THE_SHIPS_HYPERDRIVE_HAS_BEEN_DESTROYED_BY_A_MALFUNCTION
+		then _G.damageControl = "" end
 		if funcs.getStock(e) <= 0 then
 			MessageBox.Message(l.ITEM_IS_OUT_OF_STOCK)
 			return

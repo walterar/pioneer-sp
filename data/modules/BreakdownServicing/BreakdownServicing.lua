@@ -22,7 +22,7 @@ local l = Lang.GetResource("module-breakdownservicing") or Lang.GetResource("mod
 ----------------------------
 local oneyear = 31557600 -- One standard Julian year
 local onemonth = 2592000 -- One standard Julian month
-local alertMsg=l.YOU_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN
+local alertMsg = l.YOU_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN
 
 -- 10, guaranteed random by D16 dice roll.
 -- This is to make the BBS name different from the station welcome character.
@@ -35,22 +35,22 @@ local max_jumps_unserviced = 20
 local flavours = {
 	{
 		strength = 1.5,
-		baseprice = 6,
+		baseprice = 6
 	}, {
 		strength = 1.2, -- At least a year... hidden bonus!
-		baseprice = 4,
+		baseprice = 4
 	}, {
 		strength = 1.0,
-		baseprice = 3,
+		baseprice = 3
 	}, {
 		strength = 0.5,
-		baseprice = 2,
+		baseprice = 2
 	}, {
 		strength = 2.1, -- these guys are good.
-		baseprice = 10,
+		baseprice = 10
 	}, {
 		strength = 0.1, -- These guys are bad.
-		baseprice = 1.8,
+		baseprice = 1.8
 	}
 }
 
@@ -101,7 +101,7 @@ local onChat = function (form, ref, option)
 	-- Replace those tokens into ad's intro text that can change during play
 	local message = string.interp(ad.intro, {
 		drive = hyperdrive and hyperdrive:GetName() or "None",
-		price = showCurrency(price),
+		price = showCurrency(price)
 	})
 
 	if option == -1 then
@@ -117,7 +117,7 @@ local onChat = function (form, ref, option)
 		-- Replace token with details of last service (which might have
 		-- been seconds ago)
 		form:SetMessage(string.interp(message, {
-			lasttime = lastServiceMessage(hyperdrive),
+			lasttime = lastServiceMessage(hyperdrive)
 		}))
 		if not hyperdrive then-- or service_history.jumpcount < 1
 			message = l.YOU_DO_NOT_HAVE_A_DRIVE_TO_SERVICE
@@ -188,18 +188,18 @@ local onCreateBB = function (station)
 		-- Only replace tokens which are not subject to further change
 		title = string.interp(flavours[n].title, {
 			name = station.label,
-			proprietor = name,
+			proprietor = name
 		}),
 		intro = string.interp(flavours[n].intro, {
 			name = station.label,
-			proprietor = name,
+			proprietor = name
 		}),
 		yesplease = flavours[n].yesplease,
 		response = flavours[n].response,
 		station = station,
 		faceseed = rand:Integer(),
 		strength = flavours[n].strength,
-		baseprice = flavours[n].baseprice *rand:Number(0.8,1.2), -- A little per-station flavouring
+		baseprice = flavours[n].baseprice *rand:Number(0.8,1.2) -- A little per-station flavouring
 	}
 
 	local ref = station:AddAdvert({
@@ -220,7 +220,7 @@ local onGameStart = function ()
 			lastdate = 0, -- Default will be overwritten on game start
 			company = nil, -- Name of company that did the last service
 			service_period = onemonth, -- default
-			jumpcount = 0, -- Number of jumps made after the service_period
+			jumpcount = 0 -- Number of jumps made after the service_period
 		}
 	else
 		for k,ad in pairs(loaded_data.ads) do
@@ -245,7 +245,7 @@ end
 
 local onEnterSystem = function (ship)
 	if ship:IsPlayer() then
-		if service_history.jumpcount > 0 then
+		if service_history.jumpcount > 0 and damageControl == "" then
 			Comms.Message(alertMsg)
 			_G.damageControl = alertMsg
 		end
@@ -254,17 +254,19 @@ local onEnterSystem = function (ship)
 		return -- Don't care about NPC ships
 	end
 	local saved_by_this_guy = savedByCrew(ship)
-	if (service_history.lastdate + service_history.service_period < Game.time) and not saved_by_this_guy then
+	if (service_history.lastdate + service_history.service_period < Game.time)
+		and not saved_by_this_guy then
 		service_history.jumpcount = service_history.jumpcount + 1
 		if Game.system.population > 0
-			and damageControl== ""
+			and damageControl == alertMsg
 			and ((service_history.jumpcount > max_jumps_unserviced)
 			or (Engine.rand:Integer(max_jumps_unserviced - service_history.jumpcount) < 1))
 		then
 			-- Destroy the engine
 			local engine = ship:GetEquip('engine',1)
+			local engine_mass = engine.capabilities.mass
 			ship:RemoveEquip(engine)
-			ship:AddEquip(Eq.cargo.rubbish, engine.capabilities.mass)
+			ship:AddEquip(Eq.cargo.rubbish, engine_mass)
 			_G.damageControl = l.THE_SHIPS_HYPERDRIVE_HAS_BEEN_DESTROYED_BY_A_MALFUNCTION
 			Comms.ImportantMessage(damageControl)
 		end

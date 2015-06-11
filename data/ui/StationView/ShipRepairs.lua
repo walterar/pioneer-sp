@@ -79,8 +79,7 @@ local shipRepairs = function (args)
 		end
 	end
 
-	local in_progress_repair = false
-
+		local in_progress_repair = false
 	local tryRepair = function (damage, price)
 		if in_progress_repair then return end
 		if Game.player:GetMoney() >= price then

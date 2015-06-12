@@ -197,6 +197,10 @@
 "description":"",
 "message":"Skopar både last containrar och bränsle, dock mindre effektiv än vanlig bränsleskopa"
 },
+"PASSENGER_CABIN":{
+"description":"",
+"message":"Occupied Passenger Cabin"
+},
 "PROP_CONVERTER":{
 "description":"",
 "message":"Propellant Converter"

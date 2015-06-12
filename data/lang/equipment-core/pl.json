@@ -197,6 +197,10 @@
 "description":"",
 "message":"Mniej skuteczny od czerpaka paliwowego, lecz mimo to pozwala przechwycić zarówno kontenery towarowe jak i paliwo."
 },
+"PASSENGER_CABIN":{
+"description":"",
+"message":"Occupied Passenger Cabin"
+},
 "PROP_CONVERTER":{
 "description":"",
 "message":"Propellant Converter"

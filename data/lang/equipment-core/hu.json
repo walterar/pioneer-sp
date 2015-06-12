@@ -197,6 +197,10 @@
 "description":"",
 "message":"Bár kevésbé hatékony üzemanyagszívó üzemmódban, mint a hagyományos üzemanyagszívó de lehetővé teszi rakomány befogását is."
 },
+"PASSENGER_CABIN":{
+"description":"",
+"message":"Occupied Passenger Cabin"
+},
 "PROP_CONVERTER":{
 "description":"",
 "message":"Propellant Converter"

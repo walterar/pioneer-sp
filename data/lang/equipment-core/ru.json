@@ -197,6 +197,10 @@
 "description":"",
 "message":"Позволяет собирать как топливо, так и груз, но с меньшей эффективностью"
 },
+"PASSENGER_CABIN":{
+"description":"",
+"message":"Occupied Passenger Cabin"
+},
 "PROP_CONVERTER":{
 "description":"",
 "message":"Ракетного топлива Конвертор"

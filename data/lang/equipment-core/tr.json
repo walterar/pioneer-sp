@@ -197,6 +197,10 @@
 "description":"",
 "message":"Yakıt toplayıcıdan daha az etkilli olsa da hem kargo hem de yakıt toplamaya izin verir"
 },
+"PASSENGER_CABIN":{
+"description":"",
+"message":"Occupied Passenger Cabin"
+},
 "PROP_CONVERTER":{
 "description":"",
 "message":"Propellant Converter"

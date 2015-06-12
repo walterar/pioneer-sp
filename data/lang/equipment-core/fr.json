@@ -197,6 +197,10 @@
 "description":"",
 "message":"Malgré une efficacité moindre que celle d'une écope à carubrant, cela permet d'écoper et la cargaison, et le carburant."
 },
+"PASSENGER_CABIN":{
+"description":"",
+"message":"Occupied Passenger Cabin"
+},
 "PROP_CONVERTER":{
 "description":"",
 "message":"Propellant Converter"

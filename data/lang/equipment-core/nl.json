@@ -197,6 +197,10 @@
 "description":"",
 "message":"Hoewel minder effectief dan een brandstofschep maakt het het binnenhalen van zowel brandstof als vracht mogelijk"
 },
+"PASSENGER_CABIN":{
+"description":"",
+"message":"Occupied Passenger Cabin"
+},
 "PROP_CONVERTER":{
 "description":"",
 "message":"Propellant Converter"

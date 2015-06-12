@@ -197,6 +197,10 @@
 "description":"",
 "message":"Seppur meno efficace di un raccoglitore di carburante, permette di raccogliere sia cargo che carburante"
 },
+"PASSENGER_CABIN":{
+"description":"",
+"message":"Occupied Passenger Cabin"
+},
 "PROP_CONVERTER":{
 "description":"",
 "message":"Propellant Converter"

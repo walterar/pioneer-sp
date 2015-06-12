@@ -197,6 +197,10 @@
 "description":"",
 "message":"Ist zwar weniger effizient als die Treibstoffschaufel, kann aber sowohl Fracht als auch Treibstoff aufnehmen"
 },
+"PASSENGER_CABIN":{
+"description":"",
+"message":"Occupied Passenger Cabin"
+},
 "PROP_CONVERTER":{
 "description":"",
 "message":"Propellant Converter"

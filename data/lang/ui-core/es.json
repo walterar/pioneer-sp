@@ -69,7 +69,7 @@
 },
 "CABIN_USED":{
 "description":"",
-"message":"{amount} usadas"
+"message":"{amount} ocupadas"
 },
 "CANCEL":{
 "description":"",
@@ -188,7 +188,8 @@
 "message":"No se pudo cargar el juego: "
 },
 "CREDIBLE":{
-"description":"For player reputation","message":"Creíble"
+"description":"For player reputation",
+"message":"Creíble"
 },
 "CREW_CABINS":{
 "description":"",
@@ -215,13 +216,16 @@
 "message":"Delta-v"
 },
 "DELTA_V_EMPTY":{
-"description":"Delta-v capacity of a ship with no cargo or upgrades","message":"Delta-v (vacío)"
+"description":"Delta-v capacity of a ship with no cargo or upgrades",
+"message":"Delta-v (vacío)"
 },
 "DELTA_V_FULL":{
-"description":"Delta-v capacity of a ship with maximum cargo","message":"Delta-v (cargado)"
+"description":"Delta-v capacity of a ship with maximum cargo",
+"message":"Delta-v (cargado)"
 },
 "DELTA_V_MAX":{
-"description":"Delta-v capacity of a ship with cargo bay fully loaded with propellant","message":"Delta-v (máximo)"
+"description":"Delta-v capacity of a ship with cargo bay fully loaded with propellant",
+"message":"Delta-v (máximo)"
 },
 "DESCENT_TO_GROUND_SPEED":{
 "description":"",
@@ -256,7 +260,8 @@
 "message":"Vencimiento"
 },
 "DUMPING":{
-"description":"The illegal act of dumping waste","message":"Vertido ilegal"
+"description":"The illegal act of dumping waste",
+"message":"Vertido ilegal"
 },
 "D_DAYS_LEFT":{
 "description":"",
@@ -315,10 +320,12 @@
 "message":"Abandonar el Juego"
 },
 "EXPERIENCED":{
-"description":"For player reputation","message":"Experiencia"
+"description":"For player reputation",
+"message":"Experiencia"
 },
 "EXPERT":{
-"description":"For player reputation","message":"Experto"
+"description":"For player reputation",
+"message":"Experto"
 },
 "FAILED":{
 "description":"",
@@ -453,10 +460,12 @@
 "message":"Inactivo"
 },
 "INCOMPETENT":{
-"description":"For player reputation","message":"Incompetente"
+"description":"For player reputation",
+"message":"Incompetente"
 },
 "INEXPERIENCED":{
-"description":"For player reputation","message":"Inexperto"
+"description":"For player reputation",
+"message":"Inexperto"
 },
 "INVERT_MOUSE_Y":{
 "description":"",
@@ -575,10 +584,12 @@
 "message":"MASA"
 },
 "MASTER":{
-"description":"For player reputation","message":"Master"
+"description":"For player reputation",
+"message":"Master"
 },
 "MASTER_VOL":{
-"description":"Master sound in settings option","message":"Master:"
+"description":"Master sound in settings option",
+"message":"Master:"
 },
 "MAX":{
 "description":"",
@@ -665,10 +676,12 @@
 "message":"Silenciar"
 },
 "NAME_OBJECT":{
-"description":"For an item or object","message":"ITEM"
+"description":"For an item or object",
+"message":"ITEM"
 },
 "NAME_PERSON":{
-"description":"For a person","message":"Nombre"
+"description":"For a person",
+"message":"Nombre"
 },
 "NAVIGATION":{
 "description":"",
@@ -683,10 +696,12 @@
 "message":"Próximo pago"
 },
 "NO":{
-"description":"Negative answer to a question","message":"No"
+"description":"Negative answer to a question",
+"message":"No"
 },
 "NOBODY":{
-"description":"For player reputation","message":"Ninguna"
+"description":"For player reputation",
+"message":"Ninguna"
 },
 "NONE":{
 "description":"",
@@ -722,7 +737,7 @@
 },
 "N_UNOCCUPIED_PASSENGER_CABINS":{
 "description":"",
-"message":"{quantity} Cabinas de Pasajeros Vacías"
+"message":"{quantity} Cabinas de Pasajeros Libres"
 },
 "OFF":{
 "description":"",
@@ -801,7 +816,8 @@
 "message":"PRECIO"
 },
 "PROFESSIONAL":{
-"description":"For player reputation","message":"Profesional"
+"description":"For player reputation",
+"message":"Profesional"
 },
 "QUALIFICATION_SCORES":{
 "description":"",
@@ -812,7 +828,8 @@
 "message":"Salir"
 },
 "QUIT_CONFIRMATION":{
-"description":"For the checkbox in settings window","message":"Confirma salida"
+"description":"For the checkbox in settings window",
+"message":"Confirma salida"
 },
 "RANK":{
 "description":"",
@@ -835,7 +852,8 @@
 "message":"Llenar el tanque"
 },
 "RELIABLE":{
-"description":"For player reputation","message":"Confiable"
+"description":"For player reputation",
+"message":"Confiable"
 },
 "REPAIR_X_HULL_DAMAGE_FOR_X":{
 "description":"",
@@ -874,7 +892,8 @@
 "message":"Guardar"
 },
 "SCOOP_MOUNTS":{
-"description":"How many slots or mounts exist on the ship for fitting SCOOPS (e.g. cargo scoop, fuel scoop, multi-scoop) ","message":"Bahías de Recolectores"
+"description":"How many slots or mounts exist on the ship for fitting SCOOPS (e.g. cargo scoop, fuel scoop, multi-scoop) ",
+"message":"Bahías de Recolectores"
 },
 "SELECT":{
 "description":"",
@@ -893,7 +912,8 @@
 "message":"Selecciona juego salvado"
 },
 "SELL":{
-"description":"Commodities and equipment prices","message":"Venta"
+"description":"Commodities and equipment prices",
+"message":"Venta"
 },
 "SENSORS":{
 "description":"",
@@ -988,7 +1008,8 @@
 "message":"Comerciar con productos ilegales"
 },
 "TRUSTWORTHY":{
-"description":"For player reputation","message":"Fiel"
+"description":"For player reputation",
+"message":"Fiel"
 },
 "TYPE":{
 "description":"",
@@ -1031,7 +1052,8 @@
 "message":"Resolución de pantalla"
 },
 "VSYNC":{
-"description":"For the checkbox in settings window","message":"VSync"
+"description":"For the checkbox in settings window",
+"message":"VSync"
 },
 "WAGE":{
 "description":"",
@@ -1054,7 +1076,8 @@
 "message":"No tenemos nada pendiente con usted, por el momento.\nNo obstante, recuerde respetar las reglas locales:\n\n* Aléjese al menos 5Km de la estación para Hipersalto.\n* No dispare sus cañones a menos de 100Km de la estación.\n* No comercie con productos ilegales.\n* No arroje ningún tipo de producto en la estación,\n y menos productos peligrosos para el medio ambiente.\n* No arroje residuos radioactivos al espacio\nen sistemas habitados.\n* Disparar o embestir a otra nave dentro de los \n 100Km de la estación, será considerado Piratería.\n* No transporte información local hacia otra facción.\n* Cumpla con las misiones pactadas,\n evite ser multado por Fraude o Abducción\n* No use el despegue manual para no pagar sus multas,\n esto es grave y será considerado Fuga.\n* Y... por favor... no mate a nadie."
 },
 "YES":{
-"description":"Positive answer to a question","message":"Sí"
+"description":"Positive answer to a question",
+"message":"Sí"
 },
 "YOURE_GOING_TO_REGRET_SACKING_ME":{
 "description":"",

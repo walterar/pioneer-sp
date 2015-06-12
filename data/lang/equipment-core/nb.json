@@ -197,6 +197,10 @@
 "description":"",
 "message":"Although less effective than a fuel scoop it permits scooping of both cargo and fuel"
 },
+"PASSENGER_CABIN":{
+"description":"",
+"message":"Occupied Passenger Cabin"
+},
 "PROP_CONVERTER":{
 "description":"",
 "message":"Propellant Converter"

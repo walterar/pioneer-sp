@@ -197,6 +197,10 @@
 "description":"",
 "message":"虽然收集效率不及燃料收集器, 但它却可以同时收集燃料和货物"
 },
+"PASSENGER_CABIN":{
+"description":"",
+"message":"Occupied Passenger Cabin"
+},
 "PROP_CONVERTER":{
 "description":"",
 "message":"Propellant Converter"

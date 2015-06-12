@@ -107,11 +107,10 @@ void Sfx::TimeStepUpdate(const float timeStep)
 
 	switch (m_type) {
 		case TYPE_EXPLOSION:
-			//if (m_age > 0.5) m_type = TYPE_NONE;
-			if (m_age > 3.2) m_type = TYPE_NONE;
+			if (m_age > 1.7) m_type = TYPE_NONE;
 			break;
 		case TYPE_DAMAGE:
-			if (m_age > 2.0) m_type = TYPE_NONE;
+			if (m_age > 1.5) m_type = TYPE_NONE;
 			break;
 		case TYPE_SMOKE:
 			if (m_age > 8.0)

@@ -532,9 +532,17 @@ void StarSystemCustomGenerator::CustomGetKidsOf(RefCountedPtr<StarSystem::Genera
 		if (kid->GetType() == SystemBody::TYPE_STARPORT_SURFACE) {
 			kid->m_orbit.SetPlane(matrix3x3d::RotateY(csbody->longitude) * matrix3x3d::RotateX(-0.5*M_PI + csbody->latitude));
 		} else {
-			if (kid->m_orbit.GetSemiMajorAxis() < 1.2 * parent->GetRadius()) {
-				Error("%s's orbit is too close to its parent", csbody->name.c_str());
-			}
+                        if (kid->GetSuperType() == SystemBody::SUPERTYPE_STARPORT) {
+                            fixed lowestOrbit = fixed().FromDouble(parent->CalcAtmosphereParams().atmosRadius + 500000.0/EARTH_RADIUS);
+                            if (kid->m_orbit.GetSemiMajorAxis() < lowestOrbit.ToDouble()) {
+                                    Error("%s's orbit is too close to its parent (%.2f/%.2f)", csbody->name.c_str(),kid->m_orbit.GetSemiMajorAxis(),lowestOrbit.ToFloat());
+                            }
+                        }
+                        else {
+                            if (kid->m_orbit.GetSemiMajorAxis() < 1.2 * parent->GetRadius()) {
+                                    Error("%s's orbit is too close to its parent", csbody->name.c_str());
+                            }
+                        }
 			double offset = csbody->want_rand_offset ? rand.Double(2*M_PI) : (csbody->orbitalOffset.ToDouble());
 			kid->m_orbit.SetPlane(matrix3x3d::RotateY(offset) * matrix3x3d::RotateX(-0.5*M_PI + csbody->latitude));
 		}
@@ -692,11 +700,11 @@ int StarSystemRandomGenerator::CalcSurfaceTemp(const SystemBody *primary, fixed 
 			std::vector<const SystemBody*>::reverse_iterator sit = second_to_root.rbegin();
 			while(sit!=second_to_root.rend() && fit!=first_to_root.rend() && (*sit)==(*fit))	//keep tracing both branches from system's root
 			{																					//until they diverge
-				sit++;
-				fit++;
+				++sit;
+				++fit;
 			}
-			if (sit == second_to_root.rend()) sit--;
-			if (fit == first_to_root.rend()) fit--;	//oops! one of the branches ends at lca, backtrack
+			if (sit == second_to_root.rend()) --sit;
+			if (fit == first_to_root.rend()) --fit;	//oops! one of the branches ends at lca, backtrack
 
 			if((*fit)->IsCoOrbitalWith(*sit))	//planet is around one part of coorbiting pair, star is another.
 			{
@@ -1542,49 +1550,98 @@ void PopulateStarSystemGenerator::PopulateAddStations(SystemBody* sbody, StarSys
 	namerand->seed(_init, 6);
 
 	if (sbody->GetPopulationAsFixed() < fixed(1,1000)) return;
-
 	fixed orbMaxS = fixed(1,4)*CalcHillRadius(sbody);
-	fixed orbMinS = 4 * sbody->GetRadiusAsFixed() * AU_EARTH_RADIUS;
-	if (sbody->GetNumChildren()) orbMaxS = std::min(orbMaxS, fixed(1,2) * sbody->GetChildren()[0]->GetOrbMinAsFixed());
+	fixed orbMinS = fixed().FromDouble((sbody->CalcAtmosphereParams().atmosRadius + + 500000.0/EARTH_RADIUS)) * AU_EARTH_RADIUS;
+	if (sbody->GetNumChildren() > 0) 
+		orbMaxS = std::min(orbMaxS, fixed(1,2) * sbody->GetChildren()[0]->GetOrbMinAsFixed());
 
 	// starports - orbital
 	fixed pop = sbody->GetPopulationAsFixed() + rand.Fixed();
 	if( orbMinS < orbMaxS )
 	{
+		// How many stations do we need?
 		pop -= rand.Fixed();
 		Uint32 NumToMake = 0;
 		while(pop >= 0) {
 			++NumToMake;
 			pop -= rand.Fixed();
 		}
-		for( Uint32 i=0; i<NumToMake; i++ ) {
-			SystemBody *sp = system->NewBody();
-			sp->m_type = SystemBody::TYPE_STARPORT_ORBITAL;
-			sp->m_seed = rand.Int32();
-			sp->m_parent = sbody;
-			sp->m_rotationPeriod = fixed(1,3600);
-			sp->m_averageTemp = sbody->GetAverageTemp();
-			sp->m_mass = 0;
 
-			// place stations between min and max orbits to reduce the number of extremely close/fast orbits
-			sp->m_semiMajorAxis = orbMinS + ((orbMaxS - orbMinS) / 4);
-			sp->m_eccentricity = fixed();
-			sp->m_axialTilt = fixed();
+		// Any to position?
+		if( NumToMake > 0 )
+		{
+			const double centralMass = sbody->GetMassAsFixed().ToDouble() * EARTH_MASS;
+                        
+			// What is our innermost orbit?
+			fixed innerOrbit = orbMinS;// + ((orbMaxS - orbMinS) / 25);
 
-			sp->m_orbit.SetShapeAroundPrimary(sp->GetSemiMajorAxisAsFixed().ToDouble()*AU, sbody->GetMassAsFixed().ToDouble() * EARTH_MASS, 0.0);
-			if (NumToMake > 1) {
-				sp->m_orbit.SetPlane(matrix3x3d::RotateZ(double(i) * (M_PI / double(NumToMake-1))));
-			} else {
-				sp->m_orbit.SetPlane(matrix3x3d::Identity());
+			// Try to limit the inner orbit to at least three hours.
+			{
+                                const double minHours = 3.0;
+				const double seconds = Orbit::OrbitalPeriod(innerOrbit.ToDouble() * AU, centralMass);
+				const double hours = seconds / (60.0*60.0);
+				if (hours < minHours)
+				{
+                                        //knowing that T=2*pi*R/sqrt(G*M/R) find R for set T=4 hours: 
+                                        fixed orbitFromPeriod = fixed().FromDouble((std::pow(G*centralMass, 1.0/3.0)*std::pow(minHours*60.0*60.0, 2.0/3.0))/(std::pow(2.0*M_PI, 2.0/3.0)*AU));
+                                        // We can't go higher than our maximum so set it to that.
+					innerOrbit = std::min(orbMaxS, orbitFromPeriod);
+				}
 			}
 
-			sp->m_inclination = fixed();
-			sbody->m_children.insert(sbody->m_children.begin(), sp);
-			system->AddSpaceStation(sp);
-			sp->m_orbMin = sp->GetSemiMajorAxisAsFixed();
-			sp->m_orbMax = sp->GetSemiMajorAxisAsFixed();
+			// I like to think that we'd fill several "shells" of orbits at once rather than fill one and move out further
+			static const Uint32 MAX_ORBIT_SHELLS = 3;
+			fixed shells[MAX_ORBIT_SHELLS];
+			if( innerOrbit != orbMaxS )
+			{
+				shells[0] = innerOrbit; // low
+				shells[1] = innerOrbit + ((orbMaxS - innerOrbit) * fixed(1,2)); // med
+				shells[2] = orbMaxS; // high
+			}
+			else
+			{
+				shells[0] = shells[1] = shells[2] = innerOrbit;
+			}
+			Uint32 orbitIdx = 0;
 
-			sp->m_name = gen_unique_station_name(sp, system, namerand);
+			for( Uint32 i=0; i<NumToMake; i++ ) 
+			{
+				// Pick the orbit we've currently placing a station into.
+				const fixed currOrbit = shells[orbitIdx];
+				++orbitIdx; 
+				orbitIdx = orbitIdx % MAX_ORBIT_SHELLS; // wrap it
+
+				// Begin creation of the new station
+				SystemBody *sp = system->NewBody();
+				sp->m_type = SystemBody::TYPE_STARPORT_ORBITAL;
+				sp->m_seed = rand.Int32();
+				sp->m_parent = sbody;
+				sp->m_rotationPeriod = fixed(1,3600);
+				sp->m_averageTemp = sbody->GetAverageTemp();
+				sp->m_mass = 0;
+
+				// place stations between min and max orbits to reduce the number of extremely close/fast orbits
+				sp->m_semiMajorAxis = currOrbit;
+				sp->m_eccentricity = fixed();
+				sp->m_axialTilt = fixed();
+
+				sp->m_orbit.SetShapeAroundPrimary(sp->GetSemiMajorAxisAsFixed().ToDouble()*AU, centralMass, 0.0);
+				if (NumToMake > 1) {
+					// The rotations around X & Y perturb the orbits just a little bit so that not all stations are exactly within the same plane
+					// The Z rotation is what gives them the separation in their orbit around the parent body as a whole.
+					sp->m_orbit.SetPlane(matrix3x3d::RotateX(rand.Double(M_PI * 0.03125)) * matrix3x3d::RotateY(rand.Double(M_PI * 0.03125)) * matrix3x3d::RotateZ(double(i) * ((M_PI * 2.0) / double(NumToMake-1))));
+				} else {
+					sp->m_orbit.SetPlane(matrix3x3d::Identity());
+				}
+
+				sp->m_inclination = fixed();
+				sbody->m_children.insert(sbody->m_children.begin(), sp);
+				system->AddSpaceStation(sp);
+				sp->m_orbMin = sp->GetSemiMajorAxisAsFixed();
+				sp->m_orbMax = sp->GetSemiMajorAxisAsFixed();
+
+				sp->m_name = gen_unique_station_name(sp, system, namerand);
+			}
 		}
 	}
 	// starports - surface

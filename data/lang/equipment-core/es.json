@@ -197,11 +197,22 @@
 },
 "MULTI_SCOOP_DESCRIPTION":{
 "description":"",
-"message":"Aunque es menos efectivo que un recolector dedicado, permite la recoger tanto carga como hidrógeno"
+"message":"Aunque menos efectivo que un recolector dedicado, permite la recoger tanto carga como hidrógeno"
+},
+"OUT_OF_SCANRANGE":{
+"description":"",
+"message":"Máximo alcance de escáner excedido:"
 },
 "PASSENGER_CABIN":{
 "description":"",
 "message":"Cabina de Pasajeros Ocupada"
+},
+"PLANETSCANNER":{
+"description":"Scans the nearest body for resources","message":"Escáner de cuerpo"
+},
+"PLANETSCANNER_DESCRIPTION":{
+"description":"",
+"message":"Escanea el cuerpo más cercano en busca de recursos."
 },
 "PROP_CONVERTER":{
 "description":"",
@@ -257,7 +268,15 @@
 },
 "SCANNER_DESCRIPTION":{
 "description":"",
-"message":"Proporciona una vista 3D de naves próximas."
+"message":"Proporciona una vista 3D de las naves próximas."
+},
+"SCAN_COMPLETED":{
+"description":"",
+"message":"Escaneo completo"
+},
+"SCAN_RESUMED":{
+"description":"",
+"message":"Escaneo retomado"
 },
 "SHIELD_ENERGY_BOOSTER":{
 "description":"",
@@ -277,7 +296,11 @@
 },
 "SMALL_PLASMA_ACCEL":{
 "description":"",
-"message":"Acelerador de Plasma X"
+"message":"Acelerador de plasma X"
+},
+"STARTING_SCAN":{
+"description":"",
+"message":"Escaneo iniciado, la distancia al objetivo es"
 },
 "TRADE_ANALYZER":{
 "description":"Ship equipment computing profitable commodities to trade between two systems",

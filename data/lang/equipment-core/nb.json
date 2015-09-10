@@ -197,9 +197,20 @@
 "description":"",
 "message":"Although less effective than a fuel scoop it permits scooping of both cargo and fuel"
 },
+"OUT_OF_SCANRANGE":{
+"description":"",
+"message":"Max scan range exceeded:"
+},
 "PASSENGER_CABIN":{
 "description":"",
 "message":"Occupied Passenger Cabin"
+},
+"PLANETSCANNER":{
+"description":"Scans the nearest body for resources","message":"Body scan"
+},
+"PLANETSCANNER_DESCRIPTION":{
+"description":"",
+"message":"Scan nearest body for resources."
 },
 "PROP_CONVERTER":{
 "description":"",
@@ -257,6 +268,14 @@
 "description":"",
 "message":"Viser ett 3D kart over skip i nærheten."
 },
+"SCAN_COMPLETED":{
+"description":"",
+"message":"Scanning completed"
+},
+"SCAN_RESUMED":{
+"description":"",
+"message":"Scanning resumed"
+},
 "SHIELD_ENERGY_BOOSTER":{
 "description":"",
 "message":"Shield Energy Booster"
@@ -276,6 +295,10 @@
 "SMALL_PLASMA_ACCEL":{
 "description":"",
 "message":"Liten plasmaakselerator"
+},
+"STARTING_SCAN":{
+"description":"",
+"message":"Starting scan, target distance is"
 },
 "TRADE_ANALYZER":{
 "description":"Ship equipment computing profitable commodities to trade between two systems","message":"Trade analyzer"

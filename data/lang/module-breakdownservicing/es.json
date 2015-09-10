@@ -119,8 +119,8 @@
 "description":"",
 "message":"¡Su nave no tiene ningún hipermotor instalado para revisar!"
 },
-"YOU_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN":{
-"description":"",
+"MAKE_HYPERDRIVE_REPAIR_BEFORE_IT_BREAKING":{
+"description":"Warning! Hyperdrive failure imminent! Shipyard service needed!",
 "message":"Debe hacer revisar el hipermotor antes de que se averíe."
 }
 }

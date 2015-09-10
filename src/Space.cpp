@@ -80,6 +80,7 @@ Space::Space(Game *game, RefCountedPtr<Galaxy> galaxy, Space* oldSpace)
 
 Space::Space(Game *game, RefCountedPtr<Galaxy> galaxy, const SystemPath &path, Space* oldSpace)
 	: m_starSystemCache(oldSpace ? oldSpace->m_starSystemCache : galaxy->NewStarSystemSlaveCache())
+	, m_starSystem(galaxy->GetStarSystem(path))
 	, m_game(game)
 	, m_frameIndexValid(false)
 	, m_bodyIndexValid(false)
@@ -89,8 +90,6 @@ Space::Space(Game *game, RefCountedPtr<Galaxy> galaxy, const SystemPath &path, S
 	, m_processingFinalizationQueue(false)
 #endif
 {
-	m_starSystem = galaxy->GetStarSystem(path);
-
 	Uint32 _init[5] = { path.systemIndex, Uint32(path.sectorX), Uint32(path.sectorY), Uint32(path.sectorZ), UNIVERSE_SEED };
 	Random rand(_init, 5);
 	m_background.reset(new Background::Container(Pi::renderer, rand));
@@ -157,6 +156,14 @@ Space::~Space()
 	for (std::list<Body*>::iterator i = m_bodies.begin(); i != m_bodies.end(); ++i)
 		KillBody(*i);
 	UpdateBodies();
+}
+
+void Space::RefreshBackground()
+{
+	const SystemPath &path = m_starSystem->GetPath();
+	Uint32 _init[5] = { path.systemIndex, Uint32(path.sectorX), Uint32(path.sectorY), Uint32(path.sectorZ), UNIVERSE_SEED };
+	Random rand(_init, 5);
+	m_background.reset(new Background::Container(Pi::renderer, rand));
 }
 
 void Space::ToJson(Json::Value &jsonObj)
@@ -908,6 +915,10 @@ void Space::CollideFrame(Frame *f)
 void Space::TimeStep(float step)
 {
 	PROFILE_SCOPED()
+
+	if( Pi::MustRefreshBackgroundClearFlag() )
+		RefreshBackground();
+
 	m_frameIndexValid = m_bodyIndexValid = m_sbodyIndexValid = false;
 
 	// XXX does not need to be done this often

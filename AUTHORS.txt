@@ -11,7 +11,9 @@ The Pioneer Developers are:
 * Alessandro Giachi
 * Andrew Cook
 * Andrew Copland
+* Anton Korzun
 * Antti Salonen
+* Armin Kretschmer
 * Asier Basagoiti
 * Benamucki
 * Benjamin Hodgetts
@@ -29,6 +31,7 @@ The Pioneer Developers are:
 * DerpyHooves
 * Dionisis Kontominas
 * Dmitry Marakasov
+* Edoardo Morandi
 * Emery Hemingway
 * Enric Morales
 * Florian Schmidt
@@ -46,6 +49,7 @@ The Pioneer Developers are:
 * Kimmo Kotajärvi
 * Konrad Mruk
 * Krzysztof Niedźwiecki
+* Kyungdahm Yun
 * Lars Westerhoff
 * Lee Reilly
 * Leonardo Manna
@@ -63,6 +67,7 @@ The Pioneer Developers are:
 * Pedro Gimeno
 * Peter Kurucz
 * Phil Howlett
+* Pieter Thielens
 * Piotr Gredka
 * PVJeltz
 * Radek Valášek aka vaLin

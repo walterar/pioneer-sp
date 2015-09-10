@@ -11,7 +11,7 @@ local ShipDef    = import("ShipDef")
 local Ship       = import("Ship")
 local Lang       = import("Lang")
 local Eq         = import("Equipment")
-local Constant   = import("Constant")
+local Laws       = import("Laws")
 local Music      = import("Music")
 local Comms      = import("Comms")
 local Format     = import("Format")
@@ -46,14 +46,14 @@ end
 
 _G.crime_fine = function (crime)
 	return math.max(1, 1+math.floor(
-		Constant.CrimeType[crime].basefine
+		Laws.CrimeType[crime].basefine
 		* factor_x()))
 end
 
 _G.check_crime = function (mission,crime)
 	if Game.time > (mission.due + (60*60*24*30)) then-- 30 dias de demora = fraude
 		Comms.ImportantMessage(string.interp(l.X_CANNOT_BE_TOLERATED_HERE,
-						{ crime = Constant.CrimeType[crime].name,
+						{ crime = Laws.CrimeType[crime].name,
 							fine  = crime_fine(crime)
 						}), Game.system.faction.policeName)
 		Game.player:AddCrime(crime, crime_fine(crime))

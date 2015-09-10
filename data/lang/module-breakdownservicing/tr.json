@@ -119,7 +119,7 @@
 "description":"",
 "message":"Bakım gerektiren bir sürücünüz yok!"
 },
-"YOU_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN":{
+"MAKE_HYPERDRIVE_REPAIR_BEFORE_IT_BREAKING":{
 "description":"",
 "message":"Hipersürücüyü parçalanmadan önce tamir ettiniz."
 }

@@ -439,7 +439,7 @@ local pluto = CustomSystemBody:new('Pluto', 'PLANET_TERRESTRIAL')-- #48
 	:radius(f(18,100))
 	:mass(f(21,10000))
 	:temp(44)
-	:atmos_oxidizing(f(66,100))
+--	:atmos_oxidizing(f(66,100))
 	:semi_major_axis(f(394,10))
 	:eccentricity(f(249,1000))
 	:inclination(math.deg2rad(11.88))
@@ -454,16 +454,16 @@ local pluto_starports = {
 }
 
 local charon = {
-   CustomSystemBody:new('Charon', 'PLANET_TERRESTRIAL')-- #50
-      :radius(f(9,100))
-      :mass(f(2,10000))
-      :temp(44)
-      :semi_major_axis(f(1172,10000000))
-      :eccentricity(f(220,10000))
-      :inclination(math.deg2rad(119.5))
-      :rotation_period(f(6,10))
-      :axial_tilt(fixed.deg2rad(f(668,100)))
-      :volcanicity(f(0,1)),
+	CustomSystemBody:new('Charon', 'PLANET_TERRESTRIAL')-- #50
+		:radius(f(9,100))
+		:mass(f(2,10000))
+		:temp(44)
+		:semi_major_axis(f(1172,10000000))
+		:eccentricity(f(220,10000))
+		:inclination(math.deg2rad(119.5))
+		:rotation_period(f(6,10))
+		:axial_tilt(fixed.deg2rad(f(668,100)))
+		:volcanicity(f(0,1)),
 }
 
 s:bodies(sol, {

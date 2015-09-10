@@ -57,7 +57,7 @@
 },
 "FLAVOUR_3_TITLE":{
 "description":"",
-"message":"SuperFix Instandhaltung (Ableger: {name})"
+"message":"SuperFix-Instandhaltung (Ableger: {name})"
 },
 "FLAVOUR_3_YESPLEASE":{
 "description":"",
@@ -97,7 +97,7 @@
 },
 "I_DONT_HAVE_ENOUGH_MONEY":{
 "description":"",
-"message":"Ich habe nichzt genug Geld"
+"message":"Ich habe nicht genug Geld"
 },
 "I_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN":{
 "description":"",
@@ -119,7 +119,7 @@
 "description":"",
 "message":"Es ist kein Antrieb vorhanden, der gewartet werden könnte!"
 },
-"YOU_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN":{
+"MAKE_HYPERDRIVE_REPAIR_BEFORE_IT_BREAKING":{
 "description":"",
 "message":"Sie haben den Hyperraumantrieb repariert, bevor er kaputt ging"
 }

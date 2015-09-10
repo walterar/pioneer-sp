@@ -197,9 +197,20 @@
 "description":"",
 "message":"Skopar både last containrar och bränsle, dock mindre effektiv än vanlig bränsleskopa"
 },
+"OUT_OF_SCANRANGE":{
+"description":"",
+"message":"Max scan-avstånd överskridet."
+},
 "PASSENGER_CABIN":{
 "description":"",
 "message":"Occupied Passenger Cabin"
+},
+"PLANETSCANNER":{
+"description":"Scans the nearest body for resources","message":"Kropp-scan"
+},
+"PLANETSCANNER_DESCRIPTION":{
+"description":"",
+"message":"Scannar närmast kropp efter resurser"
 },
 "PROP_CONVERTER":{
 "description":"",
@@ -257,6 +268,14 @@
 "description":"",
 "message":"Ger en 3D karta över närbelägna skepp."
 },
+"SCAN_COMPLETED":{
+"description":"",
+"message":"Scan färdig"
+},
+"SCAN_RESUMED":{
+"description":"",
+"message":"Återupptar scan"
+},
 "SHIELD_ENERGY_BOOSTER":{
 "description":"",
 "message":"Sköldenergiförstärkare"
@@ -276,6 +295,10 @@
 "SMALL_PLASMA_ACCEL":{
 "description":"",
 "message":"Liten plasmaaccellerator"
+},
+"STARTING_SCAN":{
+"description":"",
+"message":"Påbörjar scan, målavstånd är"
 },
 "TRADE_ANALYZER":{
 "description":"Ship equipment computing profitable commodities to trade between two systems","message":"Handelskomperator"

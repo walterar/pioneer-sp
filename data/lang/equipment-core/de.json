@@ -197,9 +197,20 @@
 "description":"",
 "message":"Ist zwar weniger effizient als die Treibstoffschaufel, kann aber sowohl Fracht als auch Treibstoff aufnehmen"
 },
+"OUT_OF_SCANRANGE":{
+"description":"",
+"message":"Max. Scan-Reichweite überschritten:"
+},
 "PASSENGER_CABIN":{
 "description":"",
 "message":"Occupied Passenger Cabin"
+},
+"PLANETSCANNER":{
+"description":"Scans the nearest body for resources","message":"Objektscan"
+},
+"PLANETSCANNER_DESCRIPTION":{
+"description":"",
+"message":"Nächstes Objekt nach Ressourcen scannen."
 },
 "PROP_CONVERTER":{
 "description":"",
@@ -257,6 +268,14 @@
 "description":"",
 "message":"Erstellt eine 3D-Kartenansicht von Schiffen in der Nähe."
 },
+"SCAN_COMPLETED":{
+"description":"",
+"message":"Scan fertig"
+},
+"SCAN_RESUMED":{
+"description":"",
+"message":"Scan fortgesetzt"
+},
 "SHIELD_ENERGY_BOOSTER":{
 "description":"",
 "message":"Schildenergie-Booster"
@@ -276,6 +295,10 @@
 "SMALL_PLASMA_ACCEL":{
 "description":"",
 "message":"Kleiner Plasmawerfer"
+},
+"STARTING_SCAN":{
+"description":"",
+"message":"Scan starten, Zieldistanz ist"
 },
 "TRADE_ANALYZER":{
 "description":"Ship equipment computing profitable commodities to trade between two systems","message":"Handels-Analyseeinheit"

@@ -413,7 +413,7 @@ bool RendererOGL::SetPerspectiveProjection(float fov, float aspect, float near_,
 	PROFILE_SCOPED()
 
 	// update values for log-z hack
-	m_invLogZfarPlus1 = 1.0f / (log(far_+1.0f)/log(2.0f));
+	m_invLogZfarPlus1 = 1.0f / (log1p(far_)/log(2.0f));
 
 	Graphics::SetFov(fov);
 
@@ -591,15 +591,9 @@ bool RendererOGL::DrawBuffer(VertexBuffer* vb, RenderState* state, Material* mat
 
 	SetMaterialShaderTransforms(mat);
 
-	auto gvb = static_cast<OGL::VertexBuffer*>(vb);
-
-	gvb->Bind();
-	EnableVertexAttributes(gvb);
-
-	glDrawArrays(pt, 0, gvb->GetVertexCount());
-
-	DisableVertexAttributes(gvb);
-	gvb->Release();
+	vb->Bind();
+	glDrawArrays(pt, 0, vb->GetVertexCount());
+	vb->Release();
 	CheckRenderErrors();
 
 	m_stats.AddToStatCount(Stats::STAT_DRAWCALL, 1);
@@ -615,18 +609,11 @@ bool RendererOGL::DrawBufferIndexed(VertexBuffer *vb, IndexBuffer *ib, RenderSta
 
 	SetMaterialShaderTransforms(mat);
 
-	auto gvb = static_cast<OGL::VertexBuffer*>(vb);
-	auto gib = static_cast<OGL::IndexBuffer*>(ib);
-
-	gvb->Bind();
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, gib->GetBuffer());
-	EnableVertexAttributes(gvb);
-
+	vb->Bind();
+	ib->Bind();
 	glDrawElements(pt, ib->GetIndexCount(), GL_UNSIGNED_SHORT, 0);
-
-	DisableVertexAttributes(gvb);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-	gvb->Release();
+	ib->Release();
+	vb->Release();
 	CheckRenderErrors();
 
 	m_stats.AddToStatCount(Stats::STAT_DRAWCALL, 1);
@@ -634,42 +621,46 @@ bool RendererOGL::DrawBufferIndexed(VertexBuffer *vb, IndexBuffer *ib, RenderSta
 	return true;
 }
 
-void RendererOGL::EnableVertexAttributes(const VertexBuffer* gvb)
+bool RendererOGL::DrawBufferInstanced(VertexBuffer* vb, RenderState* state, Material* mat, InstanceBuffer* instb, PrimitiveType pt)
 {
-	const auto &desc = gvb->GetDesc();
-	// Enable the Vertex attributes
-	for (Uint8 i = 0; i < MAX_ATTRIBS; i++) {
-		const auto& attr = desc.attrib[i];
-		switch (attr.semantic) {
-		case ATTRIB_POSITION:		glEnableVertexAttribArray(0);		break;
-		case ATTRIB_NORMAL:			glEnableVertexAttribArray(1);		break;
-		case ATTRIB_DIFFUSE:		glEnableVertexAttribArray(2);		break;
-		case ATTRIB_UV0:			glEnableVertexAttribArray(3);		break;
-		case ATTRIB_NONE:
-		default:
-			return;
-		}
-	}
+	PROFILE_SCOPED()
+	SetRenderState(state);
+	mat->Apply();
+
+	SetMaterialShaderTransforms(mat);
+
+	vb->Bind();
+	instb->Bind();
+	glDrawArraysInstanced(pt, 0, vb->GetVertexCount(), instb->GetInstanceCount());
+	instb->Release();
+	vb->Release();
 	CheckRenderErrors();
+
+	m_stats.AddToStatCount(Stats::STAT_DRAWCALL, 1);
+
+	return true;
 }
 
-void RendererOGL::DisableVertexAttributes(const VertexBuffer* gvb)
+bool RendererOGL::DrawBufferIndexedInstanced(VertexBuffer *vb, IndexBuffer *ib, RenderState *state, Material *mat, InstanceBuffer* instb, PrimitiveType pt)
 {
-	const auto &desc = gvb->GetDesc();
-	// Enable the Vertex attributes
-	for (Uint8 i = 0; i < MAX_ATTRIBS; i++) {
-		const auto& attr = desc.attrib[i];
-		switch (attr.semantic) {
-		case ATTRIB_POSITION:		glDisableVertexAttribArray(0);			break;
-		case ATTRIB_NORMAL:			glDisableVertexAttribArray(1);			break;
-		case ATTRIB_DIFFUSE:		glDisableVertexAttribArray(2);			break;
-		case ATTRIB_UV0:			glDisableVertexAttribArray(3);			break;
-		case ATTRIB_NONE:
-		default:
-			return;
-		}
-	}
+	PROFILE_SCOPED()
+	SetRenderState(state);
+	mat->Apply();
+
+	SetMaterialShaderTransforms(mat);
+
+	vb->Bind();
+	ib->Bind();
+	instb->Bind();
+	glDrawElementsInstanced(pt, ib->GetIndexCount(), GL_UNSIGNED_SHORT, 0, instb->GetInstanceCount());
+	instb->Release();
+	ib->Release();
+	vb->Release();
 	CheckRenderErrors();
+
+	m_stats.AddToStatCount(Stats::STAT_DRAWCALL, 1);
+
+	return true;
 }
 
 Material *RendererOGL::CreateMaterial(const MaterialDescriptor &d)
@@ -836,12 +827,20 @@ RenderTarget *RendererOGL::CreateRenderTarget(const RenderTargetDesc &desc)
 
 VertexBuffer *RendererOGL::CreateVertexBuffer(const VertexBufferDesc &desc)
 {
+	m_stats.AddToStatCount(Stats::STAT_CREATE_BUFFER, 1);
 	return new OGL::VertexBuffer(desc);
 }
 
 IndexBuffer *RendererOGL::CreateIndexBuffer(Uint32 size, BufferUsage usage)
 {
+	m_stats.AddToStatCount(Stats::STAT_CREATE_BUFFER, 1);
 	return new OGL::IndexBuffer(size, usage);
+}
+
+InstanceBuffer *RendererOGL::CreateInstanceBuffer(Uint32 size, BufferUsage usage)
+{
+	m_stats.AddToStatCount(Stats::STAT_CREATE_BUFFER, 1);
+	return new OGL::InstanceBuffer(size, usage);
 }
 
 // XXX very heavy. in the future when all GL calls are made through the

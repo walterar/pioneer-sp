@@ -345,7 +345,7 @@ end
 --
 -- Remove one or more of a given equipment type from its appropriate cargo slot
 --
--- > num_removed = ship:RemoveEquip(item, count)
+-- > num_removed = ship:RemoveEquip(item, count, slot)
 --
 -- Parameters:
 --
@@ -587,13 +587,13 @@ function Ship:FireMissileAt(which_missile, target)
 		end
 		Timer:CallEvery(1, function ()
 			if not target or not target:exists() then
-				if (missile_object and missile_object:exists()) then
-					_G.MissileActive = MissileActive -1
+				if missile_object and missile_object:exists() then
 					missile_object:Explode()
+					_G.MissileActive = MissileActive -1
 					return true
 				end
 			else
-				if (missile_object and missile_object:exists()) then
+				if missile_object and missile_object:exists() then
 					if missile_object:DistanceTo(self) < 500 then
 						return false
 					end
@@ -608,7 +608,50 @@ function Ship:FireMissileAt(which_missile, target)
 			end
 		end)
 	end
+
 	return missile_object
+end
+
+-- Method: StartSensor
+--
+-- Starts the equipped sensor
+--
+-- Parameters:
+--   idx - the index of the sensor in the equipment slots
+--
+-- Availability:
+--
+--   2015 June
+--
+-- Status:
+--
+--   experimental
+--
+
+function Ship:StartSensor(idx)
+	local sensor = self:GetEquip("sensor", idx)
+	sensor:BeginAcquisition(function(progress, state) end)
+end
+
+-- Method: StopSensor
+--
+-- Stops the equipped sensor
+--
+-- Parameters:
+--   idx - the index of the sensor in the equipment slots
+--
+-- Availability:
+--
+--   2015 June
+--
+-- Status:
+--
+--   experimental
+--
+
+function Ship:StopSensor(idx)
+	local sensor = self:GetEquip("sensor", idx)
+	sensor:ClearAcquisition()
 end
 
 --

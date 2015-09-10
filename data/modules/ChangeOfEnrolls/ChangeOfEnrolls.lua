@@ -15,29 +15,28 @@ local l = Lang.GetResource("module-changeofenrolls") or Lang.GetResource("module
 
 local ads = {}
 local loaded_data
+local amount
 
 local onChat = function (form, ref, option)
 	local ad = ads[ref]
-
-	local tariff = 100 * (1+Game.system.lawlessness)
-
 	local crime,fine = Game.player:GetCrime()
 
 	if option == 0 then
 		form:Clear()
-
 		form:SetTitle(l.You_are_owner_of_the_registration..Game.player.label.."\n")
 		form:SetFace({seed = ad.faceseed+1})
 
 		if fine > 0 then
 				form:SetMessage(l.cannot_change_your_registration..showCurrency(fine).."\n \n*\n*")
+		return end
 
-		elseif Game.player:CriminalRecord() then
-			tariff = 5000 * (1+Game.system.lawlessness)
-			form:SetMessage(l.Change_your_registration_and_clean_criminal_record..showCurrency(tariff).."\n \n*\n*")
+		if Game.player:CriminalRecord() then
+			amount = 5000 * (1+Game.system.lawlessness)
+			form:SetMessage(l.Change_your_registration_and_clean_criminal_record..showCurrency(amount).."\n \n*\n*")
 			form:AddOption(l.Register_in .. Game.system.faction.name, 1)
 		else
-			form:SetMessage(l.Work_we_do..showCurrency(tariff).."\n \n*\n*")
+			amount = 100 * (1+Game.system.lawlessness)
+			form:SetMessage(l.Work_we_do..showCurrency(amount).."\n \n*\n*")
 			form:AddOption(l.Register_in .. Game.system.faction.name, 1)
 		end
 		return
@@ -45,8 +44,7 @@ local onChat = function (form, ref, option)
 
 	if option == 1 then
 		form:Clear()
-
-		if Game.player:GetMoney() < tariff then
+		if Game.player:GetMoney() < amount then
 			form:SetMessage("\n"..l.Not_have_enough_credit)
 		else
 			local ship_prefix = string.upper(string.sub(Game.system.faction.name,1,2))
@@ -55,7 +53,7 @@ local onChat = function (form, ref, option)
 			_G.ShipFaction = Game.system.faction.name
 			local prefix = string.sub(Game.player.label, 1 , 2)
 			Game.player:ClearCriminalRecord()
-			Game.player:AddMoney(-tariff)
+			Game.player:AddMoney(-amount)
 			form:SetMessage("\n"..l.Change_of_enrolls_His_new_register_is..Game.player.label, ad.title)
 		end
 		return

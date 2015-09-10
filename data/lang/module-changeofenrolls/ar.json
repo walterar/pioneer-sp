@@ -1,0 +1,38 @@
+{
+"Change_of_enrolls":{
+"description":"",
+"message":"Change of Registration"
+},
+"Change_of_enrolls_His_new_register_is":{
+"description":"",
+"message":"CHANGE OF REGISTRATION\n You are now registered with us as: "
+},
+"Change_your_registration_and_clean_criminal_record":{
+"description":"",
+"message":"Hello Commander. Change your registration and clean criminal record for just "
+},
+"Hang":{
+"description":"",
+"message":"Hang up"
+},
+"Not_have_enough_credit":{
+"description":"",
+"message":"You don't have enough credits."
+},
+"Register_in":{
+"description":"",
+"message":"Register in the "
+},
+"Work_we_do":{
+"description":"",
+"message":"Hello Commander. You can change the registration of your ship for only $ 100.\n\n"
+},
+"You_are_owner_of_the_registration":{
+"description":"",
+"message":"We will change your registration from: "
+},
+"cannot_change_your_registration":{
+"description":"",
+"message":"Hello Commander. Unfortunately we can not change your registration. You have police fines for "
+}
+}

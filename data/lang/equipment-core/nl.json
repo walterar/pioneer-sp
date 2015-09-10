@@ -197,9 +197,20 @@
 "description":"",
 "message":"Hoewel minder effectief dan een brandstofschep maakt het het binnenhalen van zowel brandstof als vracht mogelijk"
 },
+"OUT_OF_SCANRANGE":{
+"description":"",
+"message":"Max scanbereik overschreden:"
+},
 "PASSENGER_CABIN":{
 "description":"",
 "message":"Occupied Passenger Cabin"
+},
+"PLANETSCANNER":{
+"description":"Scans the nearest body for resources","message":"Hemellichaamscan"
+},
+"PLANETSCANNER_DESCRIPTION":{
+"description":"",
+"message":"Scan dichtstbijzijnde hemellichaam op grondstoffen"
 },
 "PROP_CONVERTER":{
 "description":"",
@@ -257,6 +268,14 @@
 "description":"",
 "message":"Projecteert een 3D-kaart van nabije schepen."
 },
+"SCAN_COMPLETED":{
+"description":"",
+"message":"Scan voltooid"
+},
+"SCAN_RESUMED":{
+"description":"",
+"message":"Scannen hervat"
+},
 "SHIELD_ENERGY_BOOSTER":{
 "description":"",
 "message":"Schild-energie Aanjager"
@@ -276,6 +295,10 @@
 "SMALL_PLASMA_ACCEL":{
 "description":"",
 "message":"Kleine plasma accelerator"
+},
+"STARTING_SCAN":{
+"description":"",
+"message":"Scan starten. Afstand tot doel is"
 },
 "TRADE_ANALYZER":{
 "description":"Ship equipment computing profitable commodities to trade between two systems","message":"Handels-analysesysteem"

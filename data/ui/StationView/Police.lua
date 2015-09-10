@@ -8,8 +8,8 @@ local Rand       = import("Rand")
 local Character  = import("Character")
 local Format     = import("Format")
 local utils      = import("utils")
-local Constant   = import("Constant")
-local SystemPath  = import("SystemPath")
+local Laws       = import("Laws")
+local SystemPath = import("SystemPath")
 
 local InfoFace           = import("ui/InfoFace")
 local SmallLabeledButton = import("ui/SmallLabeledButton")
@@ -17,14 +17,7 @@ local MessageBox         = import("ui/MessageBox")
 
 local ui = Engine.ui
 local l = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
---local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
 
---local crimeStrings = {
---	TRADING_ILLEGAL_GOODS = l.TRADING_ILLEGAL_GOODS,
---	WEAPON_DISCHARGE      = myl.ENVIRONMENTAL_DAMAGE,
---	PIRACY                = l.PIRACY,
---	MURDER                = l.MURDER,
---}
 
 local police = function (tab)
 	local station = Game.player:GetDockedWith()
@@ -43,7 +36,7 @@ local police = function (tab)
 	end
 
 	local crimeStat = function (k,v)
-		local s = crimes[v].count.."\t"..Constant.CrimeType[v].name.."\t"..showCurrency(crimes[v].fine)
+		local s = crimes[v].count.."\t"..Laws.CrimeType[v].name.."\t"..showCurrency(crimes[v].fine)
 		return k, s
 	end
 

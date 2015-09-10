@@ -9,7 +9,7 @@ local Game       = import("Game")
 local Eq         = import("Equipment")
 local Comms      = import("Comms")
 local MessageBox = import("ui/MessageBox")
-local Constant   = import("Constant")
+local Laws       = import("Laws")
 local Music      = import("Music")
 
 local SmallLabeledButton = import("ui/SmallLabeledButton")
@@ -28,8 +28,8 @@ local econTrade = function ()
 
 	local player = Game.player
 
-	local totalCabins = Game.player:GetEquipCountOccupied("cabin")
-	local usedCabins = totalCabins - (Game.player.cabin_cap or 0)
+--	local totalCabins = Game.player:GetEquipCountOccupied("cabin")
+--	local usedCabins = totalCabins - (Game.player.cabin_cap or 0)
 
 	-- Using econTrade as an enclosure for the functions attached to the
 	-- buttons in the UI object that it returns. Seems like the most sane
@@ -40,8 +40,6 @@ local econTrade = function ()
 	local cargoListWidget = ui:Margin(0)
 
 	function updateCargoListWidget ()
-
-		local jettisonSong = "music/core/fx/jettison"
 
 		local cargoNameColumn = {}
 		local cargoQuantityColumn = {}
@@ -74,7 +72,7 @@ local econTrade = function ()
 					end
 					player:AddCrime(crime, fine)
 				end
-				Music.Play(jettisonSong, false)
+				Music.Play("music/core/fx/jettison", false)
 				Game.player:Jettison(et)
 				updateCargoListWidget()
 				cargoListWidget:SetInnerWidget(updateCargoListWidget())

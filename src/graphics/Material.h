@@ -45,7 +45,8 @@ enum EffectType {
 enum MaterialQuality {
 	HAS_ATMOSPHERE		= 1 << 0,
 	HAS_ECLIPSES		= 1 << 1,
-	HAS_HEAT_GRADIENT   = 1 << 2
+	HAS_HEAT_GRADIENT   = 1 << 2,
+	HAS_DETAIL_MAPS		= 1 << 3
 };
 
 // Renderer creates a material that best matches these requirements.
@@ -61,6 +62,7 @@ public:
 	bool specularMap;
 	bool usePatterns; //pattern/color system
 	bool vertexColors;
+	bool instanced;
 	Sint32 textures; //texture count
 	Uint32 dirLights; //set by RendererOGL if lighting == true
 	Uint32 quality; // see: Graphics::MaterialQuality

@@ -119,7 +119,7 @@
 "description":"",
 "message":"Nincs is szervizelni való hajtóműved!"
 },
-"YOU_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN":{
+"MAKE_HYPERDRIVE_REPAIR_BEFORE_IT_BREAKING":{
 "description":"",
 "message":"Megjavítottad a hiperhajtóművet még mielőtt meghibásodott volna."
 }

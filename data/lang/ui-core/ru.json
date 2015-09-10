@@ -901,6 +901,10 @@
 "description":"",
 "message":"Звук"
 },
+"STAR_FIELD_DENSITY" : {
+"description" : "",
+"message" : "Плотность звезда области"
+},
 "START_AT_BARNARDS_STAR":{
 "description":"",
 "message":"Новый старт: Barnard's Star"

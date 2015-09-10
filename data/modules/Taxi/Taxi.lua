@@ -19,6 +19,7 @@ local Ship       = import("Ship")
 local eq         = import("Equipment")
 local utils      = import("utils")
 local Timer      = import("Timer")
+local Music      = import("Music")
 
 local InfoFace   = import("ui/InfoFace")
 
@@ -43,55 +44,55 @@ local flavours = {
 	{
 		single = false,-- flavour 0
 		urgency = 0,
-		risk = 0,
+		risk = 0
 	}, {
 		single = false,-- flavour 1
 		urgency = 0,
-		risk = 0,
+		risk = 0
 	}, {
 		single = false,-- flavour 2
 		urgency = 0,
-		risk = 0,
+		risk = 0
 	}, {
 		single = true,-- flavour 3
 		urgency = 0.13,
-		risk = 1,
+		risk = 1
 	}, {
 		single = true,-- flavour 4
 		urgency = 0.3,
-		risk = 0,
+		risk = 0
 	}, {
 		single = true,-- flavour 5
 		urgency = 0.1,
-		risk = 0,
+		risk = 0
 	}, {
 		single = true,-- flavour 6
 		urgency = 0.02,
-		risk = 0,
+		risk = 0
 	}, {
 		single = true,-- flavour 7
 		urgency = 0.15,
-		risk = 3,
+		risk = 3
 	}, {
 		single = true,-- flavour 8
 		urgency = 0.6,
-		risk = 0,
+		risk = 0
 	}, {
 		single = true,-- flavour 9
 		urgency = 0.85,
-		risk = 2,
+		risk = 2
 	}, {
 		single = true,-- flavour 10
 		urgency = 0.9,
-		risk = 2,
+		risk = 2
 	}, {
 		single = true,-- flavour 11
 		urgency = 1,
-		risk = 1,
+		risk = 1
 	}, {
 		single = true,-- flavour 12
 		urgency = 0,
-		risk = 2,
+		risk = 2
 	}
 }
 
@@ -145,7 +146,7 @@ local onChat = function (form, ref, option)
 			sectorx  = ad.location.sectorX,
 			sectory  = ad.location.sectorY,
 			sectorz  = ad.location.sectorZ,
-			dist     = string.format("%.2f", ad.dist),
+			dist     = string.format("%.2f", ad.dist)
 		})
 
 		form:SetMessage(introtext)
@@ -153,14 +154,14 @@ local onChat = function (form, ref, option)
 	elseif option == 1 then
 		local corporation = l["CORPORATIONS_"..Engine.rand:Integer(0,num_corporations-1)]
 		local whysomuch = string.interp(flavours[ad.flavour].whysomuch, {
-			corp     = corporation,
+			corp     = corporation
 		})
 
 		form:SetMessage(whysomuch)
 
 	elseif option == 2 then
 		local howmany = string.interp(flavours[ad.flavour].howmany, {
-			group  = ad.group,
+			group = ad.group
 		})
 
 		form:SetMessage(howmany)
@@ -202,8 +203,7 @@ local onChat = function (form, ref, option)
 
 		return
 	elseif option == 4 then
-		if flavours[ad.flavour].single == true then
-
+		if flavours[ad.flavour].single then
 			form:SetMessage(l.I_MUST_BE_THERE_BEFORE..Format.Date(ad.due).."\n*\n*")
 		else
 			form:SetMessage(l.WE_WANT_TO_BE_THERE_BEFORE..Format.Date(ad.due).."\n*\n*")
@@ -259,13 +259,13 @@ local makeAdvert = function (station)
 		risk     = risk,
 		urgency  = urgency,
 		reward   = reward,
-		faceseed = Engine.rand:Integer(),
+		faceseed = Engine.rand:Integer()
 	}
 
 	ad.desc = string.interp(flavours[flavour].adtext, {
 		starport = ad.location:GetSystemBody().name,
 		system   = ad.location:GetStarSystem().name,
-		cash     = showCurrency(ad.reward),
+		cash     = showCurrency(ad.reward)
 	})
 	ads[station:AddAdvert({
 		description = ad.desc,
@@ -312,6 +312,7 @@ local onFrameChanged = function (body)
 									l["PIRATE_TAUNTS_"..Engine.rand:Integer(1,num_pirate_taunts)-1],
 										{client = mission.client.name})
 						Comms.ImportantMessage(hostile_greeting, ship.label)
+						Music.Play("music/core/fx/escalating-danger",false)
 						return true
 					end
 				end)
@@ -368,8 +369,9 @@ end
 
 local onShipUndocked = function (player, station)
 	if not player:IsPlayer() then return end
-	local current_passengers = Game.player:CountEquip(eq.misc.cabin_occupied)
-	if current_passengers >= passengers then return end
+	local current_passengers = Game.player:GetEquipCountOccupied("cabin")-(Game.player.cabin_cap or 0)
+	if current_passengers >= passengers then return end -- nothing changed, good
+
 	for ref,mission in pairs(missions) do
 		remove_passengers(mission.group)
 		Comms.ImportantMessage(l.HEY_YOU_ARE_GOING_TO_PAY_FOR_THIS, mission.client.name)
@@ -482,7 +484,7 @@ local onClick = function (mission)
 												ui:VBox():PackEnd({
 													ui:Label(dist.." "..l.LY)
 												})
-											}),
+											})
 		})})
 		:SetColumn(1, {
 			ui:VBox(10):PackEnd(InfoFace.New(mission.client))

@@ -23,6 +23,7 @@ local InfoFace = import("ui/InfoFace")
 
 local l   = Lang.GetResource("module-hitman") or Lang.GetResource("module-hitman","en")
 local luc = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
+local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
 
 local ui = Engine.ui
 
@@ -54,7 +55,7 @@ local onChat = function (form, ref, option)
 								org    = ad.org,
 								cash   = showCurrency(ad.reward),
 								target = ad.target.title.." "..ad.target.name,
-								reason = l["REASON_"..Engine.rand:Integer(1, 5)],
+								reason = l["REASON_"..Engine.rand:Integer(1, 5)]
 		})
 		form:SetMessage(introtext.."\n \n*\n*")
 	elseif option == 1 then
@@ -70,17 +71,21 @@ local onChat = function (form, ref, option)
 			dist      = string.format("%.2f", ad.dist),
 			date      = Format.Date(ad.due),
 			shipname  = ad.shipname,
-			shipregid = ad.shipregid,
+			shipregid = ad.shipregid
 		  }).."\n \n*\n*"
 		)
 	elseif option == 2 then
 		local sbody = ad.location:GetSystemBody()
 		form:SetMessage(string.interp(l.IT_MUST_BE_DONE_AFTER, {
 			target    = ad.target.name,
-			spaceport = sbody.name,
+			spaceport = sbody.name
 			}).."\n \n*\n*"
 		)
 	elseif option == 3 then
+		if MissionsSuccesses - MissionsFailures < 5 then
+			form:SetMessage(myl.have_enough_experience)
+			return
+		end
 		if Game.player:CriminalRecord() then
 			form:SetMessage(l.CRIMINAL_RECORD)
 		elseif ad.rank >= 15 and Character.persistent.player:GetCombatRating() < 1 then
@@ -103,7 +108,7 @@ local onChat = function (form, ref, option)
 				shipname    = ad.shipname,
 				shipregid   = ad.shipregid,
 				rank        = ad.rank,
-				status      = 'ACTIVE',
+				status      = 'ACTIVE'
 			}
 			table.insert(missions,Mission.New(mission))
 			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
@@ -160,17 +165,17 @@ local makeAdvert = function (station)
 		shipregid = Ship.MakeRandomLabel(),
 		station   = station,
 		target    = target,
-		rank      = rank,
+		rank      = rank
 	}
 	ad.desc = string.interp(l.ADTEXT, {
 								org = ad.org,
-								you = luc.COMMANDER.." "..Character.persistent.player.name,
+								you = luc.COMMANDER.." "..Character.persistent.player.name
 		})
 	local ref = station:AddAdvert({
 		description = ad.desc,
 		icon        = "hitman",
 		onChat      = onChat,
-		onDelete    = onDelete,
+		onDelete    = onDelete
 	})
 	ads[ref] = ad
 end
@@ -191,7 +196,12 @@ local onShipDestroyed = function (ship, body)
 				mission.notplayer = 'TRUE'
 			else
 				mission.status = 'COMPLETED'
-				mission.location = mission.backstation
+				mission.location = _nearbystationsRemotes[Engine.rand:Integer(1,#_nearbystationsRemotes)]
+				if Engine.rand:Integer(2) > 0 or mission.location == nil then
+					mission.location = mission.backstation
+				else
+					mission.backstation = mission.location
+				end
 				local dist = mission.location:DistanceTo(Game.system)
 				mission.due = term(dist,Engine.rand:Number(0.8, 1))
 				Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
@@ -304,13 +314,13 @@ local onShipDocked = function (ship, station)
 					text = string.interp(l.FAILURE_2, {
 						org    = mission.org,
 						target = mission.target.name,
-						cash   = showCurrency(mission.reward),
+						cash   = showCurrency(mission.reward)
 					})
 				else
 					text = string.interp(l.FAILURE_3, {
 						org    = mission.org,
 						target = mission.target.name,
-						cash   = showCurrency(mission.reward),
+						cash   = showCurrency(mission.reward)
 					})
 				end
 				Comms.ImportantMessage(text)
@@ -411,7 +421,7 @@ local onClick = function (mission)
 					ui:Grid(2,1)
 						:SetColumn(0, {ui:VBox():PackEnd({ui:Label(l.TARGET_NAME)})})
 						:SetColumn(1, {ui:VBox():PackEnd({ui:MultiLineText(
-													mission.target.title.." "..mission.target.name)})
+											mission.target.title.." "..mission.target.name)})
 						}),
 					ui:Grid(2,1)
 						:SetColumn(0, {ui:VBox():PackEnd({ui:MultiLineText(l.TARGET_LEAVING_SPACEPORT)})})

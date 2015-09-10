@@ -119,7 +119,7 @@
 "description":"",
 "message":"You do not have a drive to service!"
 },
-"YOU_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN":{
+"MAKE_HYPERDRIVE_REPAIR_BEFORE_IT_BREAKING":{
 "description":"",
 "message":"You fixed the hyperdrive before it broke down."
 }

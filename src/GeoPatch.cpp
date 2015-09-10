@@ -67,7 +67,7 @@ GeoPatch::~GeoPatch() {
 	colors.reset();
 }
 
-void GeoPatch::_UpdateVBOs(Graphics::Renderer *renderer) 
+void GeoPatch::UpdateVBOs(Graphics::Renderer *renderer)
 {
 	if (m_needUpdateVBOs) {
 		assert(renderer);
@@ -81,6 +81,8 @@ void GeoPatch::_UpdateVBOs(Graphics::Renderer *renderer)
 		vbd.attrib[1].format   = Graphics::ATTRIB_FORMAT_FLOAT3;
 		vbd.attrib[2].semantic = Graphics::ATTRIB_DIFFUSE;
 		vbd.attrib[2].format   = Graphics::ATTRIB_FORMAT_UBYTE4;
+		vbd.attrib[3].semantic = Graphics::ATTRIB_UV0;
+		vbd.attrib[3].format   = Graphics::ATTRIB_FORMAT_FLOAT2;
 		vbd.numVertices = ctx->NUMVERTICES();
 		vbd.usage = Graphics::BUFFER_USAGE_STATIC;
 		m_vertexBuffer.reset(renderer->CreateVertexBuffer(vbd));
@@ -113,6 +115,10 @@ void GeoPatch::_UpdateVBOs(Graphics::Renderer *renderer)
 				vtxPtr->col[3] = 255;
 				++pColr; // next colour
 
+				// uv coords
+				vtxPtr->uv.x = 1.0f - float(x) / float(edgeLen);
+				vtxPtr->uv.y = float(y) / float(edgeLen);
+
 				++vtxPtr; // next vertex
 			}
 		}
@@ -130,7 +136,7 @@ static const SSphere s_sph;
 void GeoPatch::Render(Graphics::Renderer *renderer, const vector3d &campos, const matrix4x4d &modelView, const Graphics::Frustum &frustum)
 {
 	// must update the VBOs to calculate the clipRadius...
-	_UpdateVBOs(renderer);
+	UpdateVBOs(renderer);
 	// ...before doing the furstum culling that relies on it.
 	if (!frustum.TestPoint(clipCentroid, clipRadius))
 		return; // nothing below this patch is visible
@@ -163,6 +169,9 @@ void GeoPatch::Render(Graphics::Renderer *renderer, const vector3d &campos, cons
 		Pi::statSceneTris += (ctx->GetNumTris());
 		++Pi::statNumPatches;
 
+		// per-patch detail texture scaling value
+		geosphere->GetMaterialParameters().patchDepth = m_depth;
+
 		renderer->DrawBufferIndexed(m_vertexBuffer.get(), ctx->GetIndexBuffer(DetermineIndexbuffer()), rs, mat);
 #ifdef DEBUG_BOUNDING_SPHERES
 		if(m_boundsphere.get()) {
@@ -185,6 +194,7 @@ void GeoPatch::LODUpdate(const vector3d &campos)
 	bool canMerge = bool(kids[0]);
 
 	// always split at first level
+	double centroidDist = DBL_MAX;
 	if (parent) {
 		for (int i=0; i<NUM_EDGES; i++) {
 			if (!edgeFriend[i]) {
@@ -195,7 +205,7 @@ void GeoPatch::LODUpdate(const vector3d &campos)
 				break;
 			}
 		}
-		const float centroidDist = (campos - centroid).Length();
+		centroidDist = (campos - centroid).Length();
 		const bool errorSplit = (centroidDist < m_roughLength);
 		if( !(canSplit && (m_depth < std::min(GEOPATCH_MAX_DEPTH, geosphere->GetMaxDepth())) && errorSplit) ) {
 			canSplit = false;
@@ -205,13 +215,14 @@ void GeoPatch::LODUpdate(const vector3d &campos)
 	if (canSplit) {
 		if (!kids[0]) {
             assert(!mHasJobRequest);
-            assert(!m_job.HasJob());
 			mHasJobRequest = true;
 
 			SQuadSplitRequest *ssrd = new SQuadSplitRequest(v0, v1, v2, v3, centroid.Normalized(), m_depth,
 						geosphere->GetSystemBody()->GetPath(), mPatchID, ctx->GetEdgeLen(),
 						ctx->GetFrac(), geosphere->GetTerrain());
-			m_job = Pi::GetAsyncJobQueue()->Queue(new QuadPatchJob(ssrd));
+
+			// add to the GeoSphere to be processed at end of all LODUpdate requests
+			geosphere->AddQuadSplitRequest(centroidDist, ssrd, this);
 		} else {
 			for (int i=0; i<NUM_KIDS; i++) {
 				kids[i]->LODUpdate(campos);
@@ -233,7 +244,6 @@ void GeoPatch::RequestSinglePatch()
 {
 	if( !heights ) {
         assert(!mHasJobRequest);
-        assert(!m_job.HasJob());
 		mHasJobRequest = true;
 		SSingleSplitRequest *ssrd = new SSingleSplitRequest(v0, v1, v2, v3, centroid.Normalized(), m_depth,
 					geosphere->GetSystemBody()->GetPath(), mPatchID, ctx->GetEdgeLen(), ctx->GetFrac(), geosphere->GetTerrain());
@@ -295,7 +305,7 @@ void GeoPatch::ReceiveHeightmaps(SQuadSplitResult *psr)
 		}
 		for (int i=0; i<NUM_EDGES; i++) { if(edgeFriend[i]) edgeFriend[i]->NotifyEdgeFriendSplit(this); }
 		for (int i=0; i<NUM_KIDS; i++) {
-			kids[i]->UpdateVBOs();
+			kids[i]->NeedToUpdateVBOs();
 		}
 		mHasJobRequest = false;
 	}
@@ -313,4 +323,10 @@ void GeoPatch::ReceiveHeightmap(const SSingleSplitResult *psr)
 		colors.reset(data.colors);
 	}
 	mHasJobRequest = false;
+}
+
+void GeoPatch::ReceiveJobHandle(Job::Handle job)
+{
+	assert(!m_job.HasJob());
+	m_job = static_cast<Job::Handle&&>(job);
 }

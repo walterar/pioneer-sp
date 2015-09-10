@@ -430,7 +430,7 @@ bool Ship::OnDamage(Object *attacker, float kgDamage, const CollisionContact& co
 		m_stats.hull_mass_left -= dam;
 		Properties().Set("hullMassLeft", m_stats.hull_mass_left);
 		Properties().Set("hullPercent", 100.0f * (m_stats.hull_mass_left / float(m_type->hullMass)));
-		if (m_stats.hull_mass_left < 0) {
+		if (m_stats.hull_mass_left <= 0) {// menor que 0 ?
 			if (attacker) {
 				if (attacker->IsType(Object::BODY))
 					LuaEvent::Queue("onShipDestroyed", this, dynamic_cast<Body*>(attacker));
@@ -661,6 +661,7 @@ float Ship::GetECMRechargeTime()
 	return ecm_recharge_cap;
 }
 
+
 Ship::ECMResult Ship::UseECM()
 {
 	int ecm_power_cap = 0;
@@ -716,7 +717,7 @@ void Ship::SetFlightState(Ship::FlightState newState)
 
 	if (newState == FLYING) {
 		m_testLanded = false;
-		if (m_flightState == DOCKING || m_flightState == DOCKED)
+		if (m_flightState == DOCKING || m_flightState == DOCKED) 
 			onUndock.emit();
 
 		m_dockedWith = nullptr;
@@ -889,7 +890,7 @@ void Ship::TimeAccelAdjust(const float timeStep)
 
 void Ship::FireWeapon(int num)
 {
-	if (m_flightState != FLYING)
+	if (m_flightState != FLYING) 
 		return;
 
 	std::string prefix(num?"laser_rear_":"laser_front_");
@@ -976,7 +977,7 @@ void Ship::UpdateAlertState()
 	bool ship_is_near = false, ship_is_firing = false;
 	if (m_lastAlertUpdate + 1.0 <= Pi::game->GetTime())
 	{
-		// time to update the list again, once per second should suffice?
+		// time to update the list again, once per second should suffice
 		m_lastAlertUpdate = Pi::game->GetTime();
 
 		// refresh the list
@@ -1025,7 +1026,7 @@ void Ship::UpdateAlertState()
 			if (ship_is_near) {
 				SetAlertState(ALERT_SHIP_NEARBY);
 				changed = true;
-			}
+            }
 			if (ship_is_firing) {
 				m_lastFiringAlert = Pi::game->GetTime();
 				SetAlertState(ALERT_SHIP_FIRING);

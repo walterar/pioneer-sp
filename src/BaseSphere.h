@@ -26,7 +26,7 @@ public:
 	virtual ~BaseSphere();
 
 	virtual void Update()=0;
-	virtual void Render(Graphics::Renderer *renderer, const matrix4x4d &modelView, vector3d campos, const float radius, const float scale, const std::vector<Camera::Shadow> &shadows)=0;
+	virtual void Render(Graphics::Renderer *renderer, const matrix4x4d &modelView, vector3d campos, const float radius, const std::vector<Camera::Shadow> &shadows)=0;
 
 	virtual double GetHeight(const vector3d &p) const { return 0.0; }
 
@@ -44,6 +44,8 @@ public:
 	struct MaterialParameters {
 		SystemBody::AtmosphereParameters atmosphere;
 		std::vector<Camera::Shadow> shadows;
+		Sint32 patchDepth;
+		Sint32 maxPatchDepth;
 	};
 
 	virtual void Reset()=0;
@@ -53,6 +55,7 @@ public:
 
 	Graphics::RenderState* GetSurfRenderState() const { return m_surfRenderState; }
 	Graphics::Material* GetSurfaceMaterial() const { return m_surfaceMaterial.get(); }
+	MaterialParameters& GetMaterialParameters() { return m_materialParameters; }
 
 protected:
 	const SystemBody *m_sbody;

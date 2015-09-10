@@ -1,6 +1,6 @@
 -- Traffic.lua for Pioneer Scout+ by walterar Copyright © 2012-2015 <walterar2@gmail.com>
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
--- Work in progress, pre alpha 1.--
+-- Work in progress, pre alpha 1.1--
 --
 local Comms      = import("Comms")
 local Engine     = import("Engine")
@@ -15,7 +15,7 @@ local Serializer = import("Serializer")
 local Lang       = import("Lang")
 local Eq         = import("Equipment")
 local StarSystem = import("StarSystem")--XXX
-local Constant   = import("Constant")
+local Laws       = import("Laws")
 local Format     = import("Format")
 
 local misc       = Eq.misc
@@ -193,9 +193,12 @@ print(TraffiShip[i].label.." NO DESPEGÓ")
 			TraffiShip[i]:AIEnterLowOrbit(target)
 			if Engine.rand:Integer(1) > 0 then-- XXX hyperspace
 				Timer:CallAt(Game.time + 5, function ()
-					if not TraffiShip[i] or TraffiShip[i].flightState == "DOCKING" then return end
+					if not TraffiShip[i]
+						or TraffiShip[i].flightState == "DOCKING"
+						or MissileActive > 0--XXX
+					then return end
 					local range = TraffiShip[i].hyperspaceRange
-					if range and range ~= 0 then
+					if range and range > 0 then
 						if range > 30 then range = 30 end
 						local nearbystations = StarSystem:GetNearbyStationPaths(range, nil,function (s) return
 							(s.type ~= 'STARPORT_SURFACE') or (s.parent.type ~= 'PLANET_ASTEROID') end)

@@ -103,11 +103,11 @@ ui.templates.Settings = function (args)
 
 		local confirmQuit = optionCheckBox(
 			Engine.GetConfirmQuit, Engine.SetConfirmQuit,
-			"Confirm quit")
+			l.QUIT_CONFIRMATION)
 
 		local vsyncCheckBox = optionCheckBox(
 			Engine.GetVSyncEnabled, Engine.SetVSyncEnabled,
-			"VSync")
+			l.VSYNC)
 
 		local speedLinesCheckBox = optionCheckBox(
 			Engine.GetDisplaySpeedLines, Engine.SetDisplaySpeedLines,
@@ -124,6 +124,18 @@ ui.templates.Settings = function (args)
 		local fullScreenCheckBox = optionCheckBox(
 			Engine.GetFullscreen, Engine.SetFullscreen,
 			l.FULL_SCREEN)
+		local capt = l.STAR_FIELD_DENSITY or "Density of Star field"
+		local starDensity = function (caption, getter, setter)
+			local initial_value = getter()
+			local slider = ui:HSlider()
+			local label = ui:Label(caption .. " " .. math.floor(initial_value * 100) .. "%")
+			slider:SetValue(initial_value)
+			slider.onValueChanged:Connect(function (new_value)
+					label:SetText(capt .. " " .. math.floor(new_value * 100) .. "%")
+					setter(new_value)
+				end)
+			return ui:HBox():PackEnd({label, slider})
+		end
 
 		return ui:Grid({1,1}, 1)
 			:SetCell(0,0, ui:Margin(5, 'ALL', ui:VBox(5):PackEnd({
@@ -144,6 +156,7 @@ ui.templates.Settings = function (args)
 				cockpitCheckBox,
 				compactScannerCheckBox,
 				confirmQuit,
+				starDensity(capt, Engine.GetAmountStars, Engine.SetAmountStars),
 			})))
 	end
 

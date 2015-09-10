@@ -100,7 +100,7 @@ local function buyShip (sos)
 		def     = ShipDef[player.shipId],
 		skin    = player:GetSkin(),
 		pattern = player.model.pattern,
-		label   = player.label,
+		label   = player.label
 	})
 
 	player:SetShipType(def.id)
@@ -110,7 +110,7 @@ local function buyShip (sos)
 	if def.hyperdriveClass > 0 then
 		player:AddEquip(equipment.hyperspace['hyperdrive_'..tostring(def.hyperdriveClass)])
 	end
-	player:SetFuelPercent(100)
+	player:SetFuelPercent()
 
 	shipInfo:SetInnerWidget(
 		ui:MultiLineText(l.THANKS_AND_REMEMBER_TO_BUY_FUEL)
@@ -127,8 +127,7 @@ local yes_no = function (binary)
 	end
 end
 
-local currentShipOnSale
-
+	local currentShipOnSale
 shipTable.onRowClicked:Connect(function (row)
 	local station = Game.player:GetDockedWith()
 	currentShipOnSale = station:GetShipsOnSale()[row+1]

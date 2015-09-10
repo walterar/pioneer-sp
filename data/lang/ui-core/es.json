@@ -955,6 +955,10 @@
 "description":"",
 "message":"Sonido"
 },
+"STAR_FIELD_DENSITY" : {
+"description" : "",
+"message" : "Densidad del campo estelar"
+},
 "START_AT_BARNARDS_STAR":{
 "description":"",
 "message":"Comenzar en Barnard's Star"

@@ -22,8 +22,10 @@ namespace Graphics {
 			Uniform geosphereAtmosInvScaleHeight;
 			Uniform geosphereAtmosTopRad; // in planet radii
 			Uniform geosphereCenter;
-			Uniform geosphereScale;
-			Uniform geosphereScaledRadius; // (planet radius) / scale
+			Uniform geosphereRadius; // (planet radius)
+			
+			Uniform detailScaleHi;
+			Uniform detailScaleLo;
 
 			Uniform shadows;
 			Uniform occultedLight;
@@ -41,6 +43,7 @@ namespace Graphics {
 		class GeoSphereSurfaceMaterial : public Material {
 			virtual Program *CreateProgram(const MaterialDescriptor &);
 			virtual void Apply();
+			virtual void Unapply();
 
 		protected:
 			void SetGSUniforms();

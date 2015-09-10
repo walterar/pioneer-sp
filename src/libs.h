@@ -18,6 +18,7 @@
 #include <cstdlib>
 #include <cerrno>
 #include <cstring>
+#include <cinttypes>
 #include <string>
 #include <deque>
 #include <vector>
@@ -26,7 +27,7 @@
 #include <memory>
 
 // The glLoadGen header was generated using the following command line:
-// lua LoadGen.lua -style=pointer_c -spec=gl -version=3.1 -profile=core core_3_x -stdext=gl_ubiquitous.txt -stdext=gl_core_post_3_3.txt -ext ARB_seamless_cube_map ARB_seamless_cubemap_per_texture
+// lua LoadGen.lua -style=pointer_c -spec=gl -version=3.3 -profile=compatibility core_3_x -stdext=gl_ubiquitous.txt -stdext=gl_core_post_3_3.txt -ext ARB_seamless_cube_map ARB_seamless_cubemap_per_texture ARB_draw_instanced ARB_uniform_buffer_object ARB_instanced_arrays
 #include "graphics/opengl/gl_core_3_x.h"
 
 #ifdef _WIN32
@@ -48,11 +49,7 @@
 #endif
 
 #ifdef _WIN32 // MSVC doesn't support the %z specifier, but has its own %I specifier
-#	ifndef __MINGW32__
-#	define SIZET_FMT "%Iu"
-#	else
-#	define SIZET_FMT "%zu"
-#	endif
+#define SIZET_FMT "%Iu"
 #else
 #define SIZET_FMT "%zu"
 #endif

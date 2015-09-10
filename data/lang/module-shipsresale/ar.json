@@ -1,0 +1,86 @@
+{
+"Closed_for_holidays":{
+"description":"",
+"message":"Closed for holidays"
+},
+"Exchange":{
+"description":"",
+"message":"Exchange"
+},
+"Hang":{
+"description":"",
+"message":"\nHang up"
+},
+"HelloCommander1":{
+"description":"",
+"message":"A pleasure to have you here Commander. There are excellent opportunities for you.\n"
+},
+"HelloCommander2":{
+"description":"",
+"message":"Hello Commander. I received new ships that may interest you.\n"
+},
+"HelloCommander3":{
+"description":"",
+"message":"Welcome Commander. If you're looking for something special, you're sure to find it here.\n"
+},
+"HelloCommander4":{
+"description":"",
+"message":"Thanks for visiting, Commander. If you're looking for an opportunity, this is the place.\n"
+},
+"His_ship_less":{
+"description":"",
+"message":"Sell your ship and we'll pay, cash "
+},
+"His_ship_more":{
+"description":"",
+"message":"Sell your ship, pay more cash "
+},
+"Not_have_enough_credit":{
+"description":"",
+"message":"You don't have enough credits."
+},
+"Sale1":{
+"description":"",
+"message":"Your old ship has value to us..\nShare Prices of the day "
+},
+"Sale2":{
+"description":"",
+"message":"For your information.\nOur quote for your ship: "
+},
+"Sale3":{
+"description":"",
+"message":"Today we are generous, we offer for your ship "
+},
+"Sale4":{
+"description":"",
+"message":"I have a buyer for this ship. We'll pay you "
+},
+"Ships_Resale":{
+"description":"",
+"message":"Ships Resale"
+},
+"Thanks":{
+"description":"",
+"message":"Thank you for your trust, Commander. Come back anytime."
+},
+"in_exchange_for_a1":{
+"description":"",
+"message":"\nand you will leave here on board a beautiful "
+},
+"in_exchange_for_a2":{
+"description":"",
+"message":"\nand you will be the happy owner of a precious "
+},
+"in_exchange_for_a3":{
+"description":"",
+"message":"\nand gladly leave us on board a beautiful "
+},
+"in_exchange_for_a4":{
+"description":"",
+"message":"\nand you will leave here to enjoy a magnificent "
+},
+"passengers":{
+"description":"",
+"message":"Perhaps you intended to make your passengers pay for part of it?"
+}
+}

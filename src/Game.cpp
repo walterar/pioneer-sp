@@ -299,14 +299,18 @@ bool Game::UpdateTimeAccel()
 	// normal flight
 	else if (m_player->GetFlightState() == Ship::FLYING) {
 
-		// special timeaccel lock rules while in alert
-		if (m_player->GetAlertState() == Ship::ALERT_SHIP_NEARBY)
-			newTimeAccel = std::min(newTimeAccel, Game::TIMEACCEL_10X);
-		else if (m_player->GetAlertState() == Ship::ALERT_SHIP_FIRING)
+		// limit timeaccel to 1x when fired on (no forced acceleration allowed)
+  		if (m_player->GetAlertState() == Ship::ALERT_SHIP_FIRING)
 			newTimeAccel = std::min(newTimeAccel, Game::TIMEACCEL_1X);
 
-		else if (!m_forceTimeAccel) {
-			// check we aren't too near to objects for timeaccel //
+		if (!m_forceTimeAccel)
+
+		        // if not forced - limit timeaccel to 10x when other ships are close
+		        if (m_player->GetAlertState() == Ship::ALERT_SHIP_NEARBY)
+			        newTimeAccel = std::min(newTimeAccel, Game::TIMEACCEL_10X);
+
+      			// if not forced - check if we aren't too near to objects for timeaccel
+			else {
 			for (const Body* b : m_space->GetBodies()) {
 				if (b == m_player.get()) continue;
 				if (b->IsType(Object::HYPERSPACECLOUD)) continue;
@@ -420,6 +424,10 @@ void Game::SwitchToHyperspace()
 	m_space.reset(new Space(this, m_galaxy, m_space.get()));
 
 	m_space->GetBackground()->SetDrawFlags( Background::Container::DRAW_STARS );
+
+	// Reset planner
+	Pi::planner->ResetStartTime();
+	Pi::planner->ResetDv();
 
 	// put the player in it
 	m_player->SetFrame(m_space->GetRootFrame());
@@ -780,7 +788,8 @@ Game *Game::LoadGame(const std::string &filename)
 	if (!file) throw CouldNotOpenFileException();
 	Json::Value rootNode; // Create the root JSON value for receiving the game data.
 	Json::Reader jsonReader; // Create reader for parsing the JSON string.
-	jsonReader.parse(file->GetData(), rootNode); // Parse the JSON string.
+	const auto data = file->AsByteRange();
+	jsonReader.parse(data.begin, data.end, rootNode); // Parse the JSON string.
 	if (!rootNode.isObject()) throw SavedGameCorruptException();
 	return new Game(rootNode); // Decode the game data from JSON and create the game.
 	// file data is freed here

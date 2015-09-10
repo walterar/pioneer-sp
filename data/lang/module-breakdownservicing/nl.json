@@ -119,7 +119,7 @@
 "description":"",
 "message":"U heeft geen aandrijving om onderhoud op te plegen!"
 },
-"YOU_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN":{
+"MAKE_HYPERDRIVE_REPAIR_BEFORE_IT_BREAKING":{
 "description":"",
 "message":"U heeft de hyperaandrijving gerepareerd voordat die het begaf."
 }

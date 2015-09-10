@@ -25,7 +25,7 @@ local ui = Engine.ui
 local getRepairCost = function (percent, shipDef)
 	-- repairing 1% hull damage costs 0.1% of ship price
 	shipDef = shipDef or ShipDef[Game.player.shipId]
-	return math.ceil(shipDef.basePrice * (percent * 0.1)) * 0.01
+	return math.ceil(shipDef.basePrice * (percent * 0.1)) * 0.015--XXX
 end
 
 local getRepairMessage = function (damage, price)

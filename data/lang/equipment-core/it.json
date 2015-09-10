@@ -197,17 +197,28 @@
 "description":"",
 "message":"Seppur meno efficace di un raccoglitore di carburante, permette di raccogliere sia cargo che carburante"
 },
+"OUT_OF_SCANRANGE":{
+"description":"",
+"message":"Portata massima dell'analizzatore superata:"
+},
 "PASSENGER_CABIN":{
 "description":"",
-"message":"Occupied Passenger Cabin"
+"message":"Cabina passeggeri occupata"
+},
+"PLANETSCANNER":{
+"description":"Scans the nearest body for resources","message":"Analizzatore Ogg. Celesti"
+},
+"PLANETSCANNER_DESCRIPTION":{
+"description":"",
+"message":"Analizza l'oggetto più vicino cercando risorse."
 },
 "PROP_CONVERTER":{
 "description":"",
-"message":"Propellant Converter"
+"message":"Convertitori di propellente"
 },
 "PROP_CONVERTER_DESCRIPTION":{
 "description":"",
-"message":"Converter that allows use hydrogen instead of water in propellant engine"
+"message":"Converter che consente l'impiego di idrogeno al posto dell'acqua in motore a propellente"
 },
 "PULSECANNON_10MW":{
 "description":"",
@@ -257,6 +268,14 @@
 "description":"",
 "message":"Sensore a corto raggio che identifica la posizione in tre dimensioni di astronavi e stazioni spaziali vicine."
 },
+"SCAN_COMPLETED":{
+"description":"",
+"message":"Analisi completata"
+},
+"SCAN_RESUMED":{
+"description":"",
+"message":"Riprendo analisi"
+},
 "SHIELD_ENERGY_BOOSTER":{
 "description":"",
 "message":"Sovralimentatore di scudi"
@@ -276,6 +295,10 @@
 "SMALL_PLASMA_ACCEL":{
 "description":"",
 "message":"Acceleratore di plasma: piccolo"
+},
+"STARTING_SCAN":{
+"description":"",
+"message":"Inizio analisi, distanza dal bersaglio"
 },
 "TRADE_ANALYZER":{
 "description":"Ship equipment computing profitable commodities to trade between two systems","message":"Analizzatore commerciale"

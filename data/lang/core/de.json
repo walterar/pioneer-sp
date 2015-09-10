@@ -12,7 +12,8 @@
 "message":"Zugehörigkeit:"
 },
 "ALT":{
-"description":"Alt key on keyboard","message":"Alt"
+"description":"Alt key on keyboard",
+"message":"Alt"
 },
 "ALT_IN_KM":{
 "description":"",
@@ -51,10 +52,12 @@
 "message":"Asteroid"
 },
 "AUTOMATIC_SYSTEM_SELECTION":{
-"description":"for star map, select star system when mouse close to it","message":"Automatische Systemauswahl"
+"description":"for star map, select star system when mouse close to it",
+"message":"Automatische Systemauswahl"
 },
 "AUTOPILOT_CONTROL":{
-"description":"Indicating that ship is flying under autopilot control","message":"Autopilot steuert"
+"description":"Indicating that ship is flying under autopilot control",
+"message":"Autopilot steuert"
 },
 "AUTOPILOT_DOCK_WITH_STATION":{
 "description":"",
@@ -89,7 +92,8 @@
 "message":"Neigung der Rotationsachse"
 },
 "A_FEW_THOUSAND":{
-"description":"regarding population","message":"Nur einige Tausend"
+"description":"regarding population",
+"message":"Nur einige Tausend"
 },
 "BATTLE_WEAPONS":{
 "description":"",
@@ -100,7 +104,8 @@
 "message":"Doppel-Sternsystem"
 },
 "BODIES":{
-"description":"space bodies","message":"Körpern"
+"description":"space bodies",
+"message":"Körpern"
 },
 "BODY":{
 "description":"",
@@ -203,7 +208,8 @@
 "message":", stark vulkanischer"
 },
 "COMMODITY_NONE":{
-"description":"When no commodities exist","message":"keine"
+"description":"When no commodities exist",
+"message":"keine"
 },
 "COMMODITY_TRADE_ANALYSIS_COMPARE":{
 "description":"",
@@ -262,10 +268,12 @@
 "message":"\" Kohlenmonoxidatmosphäre\""
 },
 "CTRL":{
-"description":"Ctrl key on keyboard","message":"Strg"
+"description":"Ctrl key on keyboard",
+"message":"Strg"
 },
 "CURRENT_SYSTEM":{
-"description":"selected current star system","message":"Aktuelles System"
+"description":"selected current star system",
+"message":"Aktuelles System"
 },
 "DATE_DUE_N":{
 "description":"",
@@ -292,7 +300,8 @@
 "message":"Reiseziel"
 },
 "DIRECTION":{
-"description":"Direction","message":"\"-Richtung \""
+"description":"Direction",
+"message":"\"-Richtung \""
 },
 "DISTANCE_FROM_SHIP_TO_NAV_TARGET":{
 "description":"",
@@ -415,7 +424,8 @@
 "message":"Treibstoffschaufel aktiv. Sie haben jetzt %quantity t Wasserstoff."
 },
 "GALACTIC_VIEW":{
-"description":"view galactic map","message":"Galaxienansicht"
+"description":"view galactic map",
+"message":"Galaxienansicht"
 },
 "GALAXY_SECTOR_VIEW":{
 "description":"",
@@ -450,7 +460,8 @@
 "message":"Regierungsform:"
 },
 "GRAIN":{
-"description":"like wheat or barley","message":"Getreide"
+"description":"like wheat or barley",
+"message":"Getreide"
 },
 "HAND_WEAPONS":{
 "description":"",
@@ -461,29 +472,36 @@
 "message":"Rein kapitalistisch – kein staatliches Sozialsystem"
 },
 "HAT":{
-"description":"Hat switch: Is the top button on a joystick","message":"-Hut"
+"description":"Hat switch: Is the top button on a joystick",
+"message":"-Hut"
 },
 "HEADING_LOCK_ANTINORMAL":{
-"description":"Autopilot direction (perpendicular, down), relative to plane of orbit","message":"Anti-Normal halten."
+"description":"Autopilot direction (perpendicular, down), relative to plane of orbit",
+"message":"Anti-Normal halten."
 },
 "HEADING_LOCK_BACKWARD":{
-"description":"Autopilot points/holds/faces you retrograde (backwards rel. orbital direction)","message":"Rückläufig halten."
+"description":"Autopilot points/holds/faces you retrograde (backwards rel. orbital direction)",
+"message":"Rückläufig halten."
 },
 "HEADING_LOCK_FORWARD":{
-"description":"Autopilot points/holds/faces you prograde (tangent to the orbit, i.e. forward), http://wiki.kerbalspaceprogram.com/wiki/Maneuver_node","message":"Rechtläufig halten."
+"description":"Autopilot points/holds/faces you prograde (tangent to the orbit, i.e. forward), http://wiki.kerbalspaceprogram.com/wiki/Maneuver_node",
+"message":"Rechtläufig halten."
 },
 "HEADING_LOCK_KILLROT":{
 "description":"",
 "message":"Rotation stoppen"
 },
 "HEADING_LOCK_NORMAL":{
-"description":"Autopilot direction (perpendicular, up), relative to plane of orbit. ","message":"Normal halten."
+"description":"Autopilot direction (perpendicular, up), relative to plane of orbit. ",
+"message":"Normal halten."
 },
 "HEADING_LOCK_RADIALLY_INWARD":{
-"description":"Autopilot direction, relative to orbit (face towards planet)","message":"Radial nach innen halten."
+"description":"Autopilot direction, relative to orbit (face towards planet)",
+"message":"Radial nach innen halten."
 },
 "HEADING_LOCK_RADIALLY_OUTWARD":{
-"description":"Autopilot direction, relative to orbit (face away from palent)","message":"Radial nach außen halten."
+"description":"Autopilot direction, relative to orbit (face away from palent)",
+"message":"Radial nach außen halten."
 },
 "HEAVY_INDUSTRY":{
 "description":"",
@@ -533,9 +551,13 @@
 "description":"",
 "message":"Hyperraumabflugswolke"
 },
-"HYPERSPACE_JUMP":{
-"description":"",
-"message":"Hyperraumsprung"
+"HYPERSPACE_JUMP_ABORT" : {
+"description" : "Mouse over text for hyperdrive button on ship control panel",
+"message" : "Hyperraumantrieb ausschalten"
+},
+"HYPERSPACE_JUMP_ENGAGE" : {
+"description" : "Mouse over text for hyperdrive button on ship control panel",
+"message" : "Hyperraumantrieb anschalten"
 },
 "HYPERSPACE_JUMP_ABORTED":{
 "description":"",
@@ -558,7 +580,8 @@
 "message":"\" Eisplanet\""
 },
 "ILLEGAL_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of commodity (singular) status in the system the player is currently in","message":"Illegal (aktuelles System):"
+"description":"Short (tooltip) description of commodity (singular) status in the system the player is currently in",
+"message":"Illegal (aktuelles System):"
 },
 "ILLEGAL_GOODS":{
 "description":"",
@@ -593,7 +616,8 @@
 "message":"Innenansicht"
 },
 "INT_LY":{
-"description":"integer number of light years","message":"%scale Lj"
+"description":"integer number of light years",
+"message":"%scale Lj"
 },
 "IN_TRANSIT":{
 "description":"",
@@ -604,14 +628,16 @@
 "message":"Auf dem Weg nach %system [%x,%y,%z]"
 },
 "JOY":{
-"description":"Short for Joystick","message":"Joy"
+"description":"Short for Joystick",
+"message":"Joy"
 },
 "JOYSTICK_INPUT":{
 "description":"",
 "message":"Joystickeingabe"
 },
 "JOY_AXIS":{
-"description":"Regarding joystick","message":"%{sign}%joyname %axis Achse"
+"description":"Regarding joystick",
+"message":"%{sign}%joyname %axis Achse"
 },
 "KM_S_RELATIVE_TO":{
 "description":"",
@@ -622,10 +648,12 @@
 "message":"Gelandet"
 },
 "LANG_NAME":{
-"description":"The name that native speakers use for this language. This will be used in the language selection screen.","message":"Deutsch"
+"description":"The name that native speakers use for this language. This will be used in the language selection screen.",
+"message":"Deutsch"
 },
 "LARGE":{
-"description":"regarding terrestrial planet size (mass actually)","message":"Großer"
+"description":"regarding terrestrial planet size (mass actually)",
+"message":"Großer"
 },
 "LARGE_GAS_GIANT":{
 "description":"",
@@ -636,7 +664,8 @@
 "message":"Waffenfeuer detektiert."
 },
 "LEGAL_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of commodity (singular) status in the system the player is currently in","message":"Legal (aktuelles System):"
+"description":"Short (tooltip) description of commodity (singular) status in the system the player is currently in",
+"message":"Legal (aktuelles System):"
 },
 "LIBERAL_DEMOCRACY":{
 "description":"",
@@ -659,24 +688,28 @@
 "message":"Lebendige Tiere"
 },
 "LOCAL_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Lokaler Arm"
+"description":"Arm of the Milky Way galaxy",
+"message":"Lokaler Arm"
 },
 "LOCKED":{
-"description":"to lock a hyperspace target","message":"Eingerastet"
+"description":"to lock a hyperspace target",
+"message":"Eingerastet"
 },
 "MAJOR_EXPORTS":{
 "description":"",
 "message":"Wichtige Exporte:"
 },
 "MAJOR_EXPORT_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in","message":"Hauptexport (aktuelles System)"
+"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+"message":"Hauptexport (aktuelles System)"
 },
 "MAJOR_IMPORTS":{
 "description":"",
 "message":"Wichtige Importe:"
 },
 "MAJOR_IMPORT_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in","message":"Hauptimport (aktuelles System)"
+"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+"message":"Hauptimport (aktuelles System)"
 },
 "MANUAL_CONTROL":{
 "description":"",
@@ -775,7 +808,8 @@
 "message":"Nachricht von %sender:"
 },
 "META":{
-"description":"'Meta' key on keyboard","message":"Meta"
+"description":"'Meta' key on keyboard",
+"message":"Meta"
 },
 "METAL_ALLOYS":{
 "description":"",
@@ -806,14 +840,16 @@
 "message":"Sonstige Exporte:"
 },
 "MINOR_EXPORT_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in","message":"Geringfügiger Exportartikel (aktuelles System)"
+"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+"message":"Geringfügiger Exportartikel (aktuelles System)"
 },
 "MINOR_IMPORTS":{
 "description":"",
 "message":"Sonstige Importe:"
 },
 "MINOR_IMPORT_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in","message":"Geringfügiger Importartikel (aktuelles System)"
+"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+"message":"Geringfügiger Importartikel (aktuelles System)"
 },
 "MISCELLANEOUS":{
 "description":"",
@@ -876,7 +912,8 @@
 "message":"Sep"
 },
 "MULTI_SCOOP":{
-"description":"A ship equipment: a cargo scoop and fuel scoop combined to one","message":"Mehrzweckschaufel"
+"description":"A ship equipment: a cargo scoop and fuel scoop combined to one",
+"message":"Mehrzweckschaufel"
 },
 "MULTI_SCOOP_DESCRIPTION":{
 "description":"",
@@ -891,10 +928,12 @@
 "message":"%speed{f.0} m/s relativ zu %frame"
 },
 "NAME_OBJECT":{
-"description":"For an item or object","message":"Name"
+"description":"For an item or object",
+"message":"Name"
 },
 "NAME_PERSON":{
-"description":"For a person","message":"Name"
+"description":"For a person",
+"message":"Name"
 },
 "NARCOTICS":{
 "description":"",
@@ -913,10 +952,12 @@
 "message":"Chemische Kampfstoffe"
 },
 "NORMA_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Norma-Arm"
+"description":"Arm of the Milky Way galaxy",
+"message":"Norma-Arm"
 },
 "NOT_FOUND":{
-"description":"searching star system in sector view","message":"Nicht gefunden"
+"description":"searching star system in sector view",
+"message":"Nicht gefunden"
 },
 "NOT_FOUND_BEST_MATCH_X":{
 "description":"",
@@ -951,20 +992,24 @@
 "message":"%days{f.0} Tage"
 },
 "NUMBER_DECIMAL_POINT":{
-"description":"Decimal delimiter used in numbers.","message":","
+"description":"Decimal delimiter used in numbers.",
+"message":","
 },
 "NUMBER_G":{
 "description":"",
 "message":"%acceleration{f.1} G"
 },
 "NUMBER_GROUP_MIN":{
-"description":"Smallest number to start grouping of digits for. (E.g. if \"10000\" start grouping thousands with 10,000, and not 1,000).","message":"1000"
+"description":"Smallest number to start grouping of digits for. (E.g. if \"10000\" start grouping thousands with 10,000, and not 1,000).",
+"message":"1000"
 },
 "NUMBER_GROUP_NUM":{
-"description":"For large number, group digits by this many. European languages use 3 (group thousands). 0 means no grouping.","message":"3"
+"description":"For large number, group digits by this many. European languages use 3 (group thousands). 0 means no grouping.",
+"message":"3"
 },
 "NUMBER_GROUP_SEP":{
-"description":"For large number, separator used when grouping digits. E.g. 1,000 or 1 000 or 1'000.","message":" "
+"description":"For large number, separator used when grouping digits. E.g. 1,000 or 1 000 or 1'000.",
+"message":" "
 },
 "NUMBER_HOURS":{
 "description":"",
@@ -1007,7 +1052,8 @@
 "message":"%mass{f.3} %{units}massen"
 },
 "N_WHATEVER_RADII":{
-"description":"Used in system info view. E.g. for Barnard's star: \"0.17 Solar radii (118235 km)\"","message":"%radius{f.3} %{units}radii"
+"description":"Used in system info view. E.g. for Barnard's star: \"0.17 Solar radii (118235 km)\"",
+"message":"%radius{f.3} %{units}radii"
 },
 "N_YEARS":{
 "description":"",
@@ -1034,7 +1080,8 @@
 "message":"Planet mit Agrarwirtschaft unter freiem Himmel."
 },
 "OUTER_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Cygnus-Arm"
+"description":"Arm of the Milky Way galaxy",
+"message":"Cygnus-Arm"
 },
 "OVER_N_BILLION":{
 "description":"",
@@ -1061,7 +1108,8 @@
 "message":"Periapsisdistanz"
 },
 "PERSEUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Perseus-Arm"
+"description":"Arm of the Milky Way galaxy",
+"message":"Perseus-Arm"
 },
 "PIONEER":{
 "description":"",
@@ -1100,16 +1148,24 @@
 "message":"Planwirtschaft"
 },
 "PLANNER_RESET_FACTOR":{
-"description":"For system orbit view","message":"Wachstumsrate der delta-v-Werte. Klicken um auf Null zurückzusetzen."
+"description":"For system orbit view",
+"message":"Wachstumsrate der delta-v-Werte. Klicken um auf Null zurückzusetzen."
 },
 "PLANNER_RESET_NORMAL":{
-"description":"For system orbit view","message":"Normales delta-v. Klicken um auf Null zurückzusetzen."
+"description":"For system orbit view",
+"message":"Normales delta-v. Klicken um auf Null zurückzusetzen."
 },
 "PLANNER_RESET_PROGRADE":{
-"description":"For system orbit view","message":"Rechtläufiges delta-v. Klicken um auf Null zurückzusetzen."
+"description":"For system orbit view",
+"message":"Rechtläufiges delta-v. Klicken um auf Null zurückzusetzen."
 },
 "PLANNER_RESET_RADIAL":{
-"description":"For system orbit view","message":"Radiales delta-v. Klicken um auf Null zurückzusetzen."
+"description":"For system orbit view",
+"message":"Radiales delta-v. Klicken um auf Null zurückzusetzen."
+},
+"PLANNER_RESET_START":{
+"description":"For system orbit view",
+"message":"Manöverstart. Klicken, um auf Standard zurückzusetzen."
 },
 "PLASTICS":{
 "description":"",
@@ -1224,21 +1280,24 @@
 "message":"Abfälle"
 },
 "SAGITTARIUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Sagittarius-Arm"
+"description":"Arm of the Milky Way galaxy",
+"message":"Sagittarius-Arm"
 },
 "SCANNER_CONTROL":{
 "description":"",
 "message":"Scanner-Einstellungen"
 },
 "SCOOP":{
-"description":"Is followed by a number, repersenting scoop mounts/slots available to fit cargo scoop and/or fuel scoop","message":"Schaufel"
+"description":"Is followed by a number, repersenting scoop mounts/slots available to fit cargo scoop and/or fuel scoop",
+"message":"Schaufel"
 },
 "SCREENSHOT_FILENAME_TEMPLATE":{
 "description":"",
 "message":"Pioneer-Screenshot%index{d08}.png"
 },
 "SCUTUM_CENTAURUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Scutum-Crux-Arm"
+"description":"Arm of the Milky Way galaxy",
+"message":"Scutum-Crux-Arm"
 },
 "SEARCH":{
 "description":"",
@@ -1309,14 +1368,16 @@
 "message":"Schildstärke: %shields{f.2}"
 },
 "SHIFT":{
-"description":"Shift key on keyboard","message":"Umschalt"
+"description":"Shift key on keyboard",
+"message":"Umschalt"
 },
 "SHIP":{
 "description":"",
 "message":"Schiff"
 },
 "SHIPS_DISPLAY_MODE_TOGGLE":{
-"description":"Either show no ships, show ships, or show ships + their orbits","message":"Zwischen Anzeigemodi des Schiffes umschalten."
+"description":"Either show no ships, show ships, or show ships + their orbits",
+"message":"Zwischen Anzeigemodi des Schiffes umschalten."
 },
 "SHIP_ALTITUDE_ABOVE_TERRAIN":{
 "description":"",
@@ -1347,7 +1408,8 @@
 "message":"Geschwindigkeit zum Referenzobjekt"
 },
 "SIDEREAL_VIEW":{
-"description":"camera view setting","message":"Seitliche Ansicht"
+"description":"camera view setting",
+"message":"Seitliche Ansicht"
 },
 "SIMULATING_UNIVERSE_EVOLUTION_N_BYEARS":{
 "description":"",
@@ -1386,7 +1448,8 @@
 "message":"Ein wenig Bergbau."
 },
 "SOURCE":{
-"description":"tell source system of hyperjump entry cloud","message":"Ursprung"
+"description":"tell source system of hyperjump entry cloud",
+"message":"Ursprung"
 },
 "SPEED_CONTROL_MODE":{
 "description":"",
@@ -1545,13 +1608,16 @@
 "message":"Oberflächentemperatur"
 },
 "SWITCHED_TO_PARENT":{
-"description":"Show ship's heading, coordinates are on the celestial sphere (defined by the ecliptic).","message":"Schalte Kursanzeige auf Systemkoordinaten um."
+"description":"Show ship's heading, coordinates are on the celestial sphere (defined by the ecliptic).",
+"message":"Schalte Kursanzeige auf Systemkoordinaten um."
 },
 "SWITCHED_TO_ROTATIONAL":{
-"description":"Show ship's heading in planetary coordinates. heading 0 = north, 90 = east, 180 = south, 270 = west.","message":"Schalte Kursanzeige auf Planetenkoordinaten um."
+"description":"Show ship's heading in planetary coordinates. heading 0 = north, 90 = east, 180 = south, 270 = west.",
+"message":"Schalte Kursanzeige auf Planetenkoordinaten um."
 },
 "SYSTEM":{
-"description":"star system","message":"System"
+"description":"star system",
+"message":"System"
 },
 "SYSTEM_NUMBER":{
 "description":"",
@@ -1578,7 +1644,8 @@
 "message":"Objekt im Fadenkreuz anvisieren"
 },
 "TENUOUS":{
-"description":"atmosphere thickness","message":"sehr dünnen"
+"description":"atmosphere thickness",
+"message":"sehr dünnen"
 },
 "TEXTILES":{
 "description":"",
@@ -1593,7 +1660,8 @@
 "message":"dünnen"
 },
 "THREE_KPC_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"3kpc Arm"
+"description":"Arm of the Milky Way galaxy",
+"message":"3kpc Arm"
 },
 "THRIVING_OUTDOOR_WORLD":{
 "description":"",
@@ -1648,7 +1716,8 @@
 "message":"Scanner-Modus umschalten"
 },
 "TOMBSTONE_EPITAPH":{
-"description":"shown on tombstone when player dies","message":"Ruhe in Frieden, Kumpel"
+"description":"shown on tombstone when player dies",
+"message":"Ruhe in Frieden, Kumpel"
 },
 "TRADING_ILLEGAL_GOODS":{
 "description":"",
@@ -1739,14 +1808,16 @@
 "message":"\" ohne signifikante Atmosphäre\""
 },
 "X":{
-"description":"keybinding: x axis","message":"X"
+"description":"keybinding: x axis",
+"message":"X"
 },
 "X_CANNOT_BE_TOLERATED_HERE":{
 "description":"",
 "message":"%crime wird hier nicht geduldet."
 },
 "Y":{
-"description":"keybinding: y axis","message":"Y"
+"description":"keybinding: y axis",
+"message":"Y"
 },
 "YAW":{
 "description":"",
@@ -1769,7 +1840,8 @@
 "message":"Sie haben kein Geld."
 },
 "Z":{
-"description":"keybinding: z axis","message":"Z"
+"description":"keybinding: z axis",
+"message":"Z"
 },
 "ZOOM_IN":{
 "description":"",

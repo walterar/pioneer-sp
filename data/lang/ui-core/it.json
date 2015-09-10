@@ -756,8 +756,7 @@
 "description":"Player combat rating","message":"Scarso"
 },
 "POSITION":{
-"description":"",
-"message":"Posizione"
+"description":"The job title/position of crew memeber","message":"Posizione"
 },
 "PRESS_A_KEY_OR_CONTROLLER_BUTTON":{
 "description":"",
@@ -902,6 +901,10 @@
 "description":"",
 "message":"Suono"
 },
+"STAR_FIELD_DENSITY" : {
+"description" : "",
+"message" : "Densità del campo stellare"
+},
 "START_AT_BARNARDS_STAR":{
 "description":"",
 "message":"Parti dalla Stella di Barnard"
@@ -992,6 +995,9 @@
 "VIDEO_RESOLUTION":{
 "description":"",
 "message":"Risoluzione video"
+},
+"VSYNC":{
+"description":"For the checkbox in settings window","message":"Sincronia verticale"
 },
 "WAGE":{
 "description":"Salary of crew shown in crew roster","message":"Stipendio"

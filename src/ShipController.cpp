@@ -314,7 +314,7 @@ void PlayerShipController::PollControls(const float timeStep, const bool force_r
 				changeVec[axis] = (changeVec[axis] - dz) / (1.0f - dz);
 			}
 		}
-
+		
 		wantAngVel += changeVec;
 
 		if (wantAngVel.Length() >= 0.001 || force_rotation_damping || m_rotationDamping) {

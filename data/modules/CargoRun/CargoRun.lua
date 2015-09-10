@@ -570,7 +570,7 @@ local onFrameChanged = function (body)
 	if hostilactive then return end
 	if body:isa("Ship") and body:IsPlayer() and body.frameBody ~= nil then
 		for ref,mission in pairs(missions) do
-			if mission.risk == 0 then return end
+			if mission.risk < 1 then return end
 			if mission.location:IsSameSystem(Game.system.path) then
 				if mission.status == "ACTIVE" then
 					if mission.pickup then
@@ -589,6 +589,12 @@ local onFrameChanged = function (body)
 					else
 						target_trip = mission.way_trip.bodyIndex
 					end
+					local locationx
+					if mission.pickup then
+						locationx = mission.return_trip:GetSystemBody().name
+					else
+						locationx = mission.return_trip:GetSystemBody().name
+					end
 					local pirate_greeting
 					Timer:CallEvery(1, function ()
 						if hostilactive then return true end
@@ -596,19 +602,11 @@ local onFrameChanged = function (body)
 						ship = ship_hostil(risk)
 						if ship then
 							hostilactive = true
-							if mission.pickup then
-								pirate_greeting = string.interp(l['PIRATE_TAUNTS_'..Engine.rand:Integer(1,7)],
-									{client   = mission.client.name,
-									location  = mission.return_trip:GetSystemBody().name,
-									cargoname = mission.cargotype:GetName()
-									})
-							else
-								pirate_greeting = string.interp(l['PIRATE_TAUNTS_'..Engine.rand:Integer(1,7)],
-									{client   = mission.client.name,
-									location  = mission.way_trip:GetSystemBody().name,
-									cargoname = mission.cargotype:GetName()
-									})
-							end
+							pirate_greeting = string.interp(l['PIRATE_TAUNTS_'..Engine.rand:Integer(1,7)],
+								{client   = mission.client.name,
+								location  = locationx,
+								cargoname = mission.cargotype:GetName()
+								})
 							Comms.ImportantMessage(pirate_greeting, ship.label)
 							return true
 						end

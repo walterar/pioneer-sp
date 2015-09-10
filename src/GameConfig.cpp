@@ -43,8 +43,13 @@ GameConfig::GameConfig(const std::map<std::string,std::string> &override_)
 	map["EnableCockpit"] = "0";
 	map["HudTrails"] = "1";
 	map["EnableServerAgent"] = "0";
+	map["AmountOfBackgroundStars"] = "0.25";
 
+#ifdef _WIN32
 	map["RedirectStdio"] = "1";
+#else
+	map["RedirectStdio"] = "0";
+#endif
 	map["EnableGLDebug"] = "0";
 
 	Load();

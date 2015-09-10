@@ -1,17 +1,93 @@
+September 2015
+   * New Features
+     * Control how many stars in the sky (#3431)
+     * Two state hyperspace button (#3438)
+
+   * Fixes
+     * Fix undefined symbols for static const members (#3446)
+
+   * Internal Changes
+     * Remove planetary scaling during rendering (#3434)
+     * Remove the animation Interpolate optimisation (#3435)
+
+August 2015
+   * New Features
+     * Orbital planner got some new features (#3426)
+
+   * Fixes
+     * Fix NAN for planned orbit (#3437)
+     * Fix math typo (#3440)
+
+   * Internal Changes
+     * Changed/removed some non-portable C++11 usage (#3444)
+
+July 2015
+   * New Features
+     * Add first initial support for Arab fonts (#3416)
+     * New (smaller) space station added (#3414)
+     * Allow custom stations to have realistic orbit heights (#3410)
+     * New SensorType API and BodyScanner equipment (#3287, #3396)
+
+   * Fixes
+     * Proposed fix for the MINGW32 issue #3409 (#3418)
+     * Fixed color of labels starting with empty strings (#3425)
+
+   * Internal Changes
+     * Numerous optimisations (#3419)
+     * Remove output spamming messages (#3421)
+     * Sort terrain gen (#3420)
+     * Inactivate BodyScanner equipment testing code (#3422)
+     * Drawing optimisations (#3424)
+     * Render far away (#3428)
+     * Modelviewer refactor (#3429)
+     * Cleanup build warnings (#3433)
+
+June 2015
+   * New Features
+     * Allow up to 3 orbits a spacestation can occupy (#3392)
+
+   * Fixes
+     * Calculate the correct distribution of orbitals, may affect saved games (#3389)
+     * Fix crash on start and crash on game load (#3399, #3387, #3400, #3402)
+     * Fix crash when using Chinese languge (#3405)
+     * Init model label in SpaceStation and CargoBody LoadFromJson (#3406)
+     * Fix redirection of stderr to avoid undefined behaviour on posix (#3373)
+     * Fix save/load crash (#3387) for real this time (#3407)
+     * Fix another save/load crash triggered by floating cargo (#3412, #3413)
+     * Fix terrain max depth calculation (#3411)
+
+May 2015
+   * New Features
+     * New mission: cargo run (#3274)
+
+April 2015
+   * New Features
+     * Confirm quit question added (#3374)
+     * Enable vsync (#3385)
+
+   * Fixes
+     * Broken cockpit rotations using headlook (#3381)
+
+   * Internal Changes
+     * luacheck changes (#3383)
+     * Cppcheck changes (#3384)
+
 March 2015
    * Fixes
      * Fix modelcompiler (#3356)
      * Attempt to avoid calling methods on a nil object (#3357)
      * Fix missing specular highlights (#3367)
      * Fix compilation of planetrings shader (#3370)
-     
+
    * New Features
      * Mouselook for internal camera (#3361)
      * Migrating the save-game serialisation from a binary flat file to JSON (#3355)
-     
+
    * Internal Changes
      * Fix VS2013 profiling configuration (#3368)
      * Rendering statistics (#3371)
+     * Instanced model rendering for cities (#3372)
+     * Update the sgm file version (#3375)
 
 February 2015
    * Fixes

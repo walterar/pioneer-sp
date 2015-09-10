@@ -197,9 +197,20 @@
 "description":"",
 "message":"Bár kevésbé hatékony üzemanyagszívó üzemmódban, mint a hagyományos üzemanyagszívó de lehetővé teszi rakomány befogását is."
 },
+"OUT_OF_SCANRANGE":{
+"description":"",
+"message":"Hatótávon kívül:"
+},
 "PASSENGER_CABIN":{
 "description":"",
 "message":"Occupied Passenger Cabin"
+},
+"PLANETSCANNER":{
+"description":"Scans the nearest body for resources","message":"Égitest felmérése"
+},
+"PLANETSCANNER_DESCRIPTION":{
+"description":"",
+"message":"A legközelebbi égitest ásványkincskészletének felmérése."
 },
 "PROP_CONVERTER":{
 "description":"",
@@ -257,6 +268,14 @@
 "description":"",
 "message":"Egy 3D térképet jelenít meg a közeli hajókról."
 },
+"SCAN_COMPLETED":{
+"description":"",
+"message":"Felmérés kész."
+},
+"SCAN_RESUMED":{
+"description":"",
+"message":"Felmérés folytatása"
+},
 "SHIELD_ENERGY_BOOSTER":{
 "description":"",
 "message":"Pajzsenergia töltő"
@@ -276,6 +295,10 @@
 "SMALL_PLASMA_ACCEL":{
 "description":"",
 "message":"Kicsi plazmagyorsító"
+},
+"STARTING_SCAN":{
+"description":"",
+"message":"Felmérés indul, célpont távolsága:"
 },
 "TRADE_ANALYZER":{
 "description":"Ship equipment computing profitable commodities to trade between two systems","message":"Piacelemző"

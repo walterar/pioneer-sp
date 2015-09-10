@@ -33,6 +33,7 @@ EquipSet.default = {
 	autopilot=1,
 	trade_analyzer=1,
 	converter=1,
+	sensor = 8,
 }
 
 function EquipSet.New (slots)

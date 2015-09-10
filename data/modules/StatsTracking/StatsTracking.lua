@@ -7,7 +7,7 @@ local Game      = import("Game")
 local Event     = import("Event")
 local Character = import("Character")
 local Comms     = import("Comms")
-local Constant  = import("Constant")
+local Laws      = import("Laws")
 local Timer     = import("Timer")
 
 local Lang = import("Lang")
@@ -39,7 +39,7 @@ local onShipDestroyed = function (ship, attacker)
 		PlayerDamagedShips[ship]=nil
 		if policingArea() and playerAlert ~= "SHIP_FIRING" then
 			local crime = "MURDER"
-			Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE, {crime=Constant.CrimeType[crime].name}), Game.system.faction.policeName)
+			Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE, {crime=Laws.CrimeType[crime].name}), Game.system.faction.policeName)
 			Game.player:AddCrime(crime, crime_fine(crime))
 		else
 			if   kills == 1--    level 0 HARMLESS
@@ -64,12 +64,16 @@ Event.Register("onShipDestroyed",onShipDestroyed)
 
 local penalizedCollided = false
 local onShipCollided = function (ship, other)
+	if (ship and ship.label == lc.MISSILE)
+		or (other and other.label == lc.MISSILE)
+		or not other:isa("Ship") then
+	return end--XXX
 	if other==Game.player and ship and (ship:isa("Ship") or ship:isa("static")) then
 		PlayerDamagedShips[ship]=true
 		if policingArea() and not penalizedCollided then
 			penalizedCollided=true
 			local crime = "PIRACY"
-			Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE, {crime=Constant.CrimeType[crime].name}), Game.system.faction.policeName)
+			Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE, {crime=Laws.CrimeType[crime].name}), Game.system.faction.policeName)
 			Game.player:AddCrime(crime, crime_fine(crime))
 			Timer:CallAt(Game.time + 5, function ()
 				penalizedCollided = false
@@ -81,13 +85,17 @@ Event.Register("onShipCollided",onShipCollided)
 
 local penalizedHit = false
 local onShipHit = function (ship, attacker)
+	if (ship and ship.label == lc.MISSILE)
+		or (attacker and attacker.label == lc.MISSILE)
+		or MissileActive > 0
+	then return end--XXX
 	if attacker == Game.player and not penalizedHit then
 		if ship then
 			PlayerDamagedShips[ship]=true
 			if policingArea() and playerAlert ~= "SHIP_FIRING" then
 				penalizedHit = true
 				local crime = "PIRACY"
-				Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE, {crime=Constant.CrimeType[crime].name}), Game.system.faction.policeName)
+				Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE, {crime=Laws.CrimeType[crime].name}), Game.system.faction.policeName)
 				Game.player:AddCrime(crime, crime_fine(crime))
 				Timer:CallAt(Game.time + 5, function ()
 					penalizedHit = false

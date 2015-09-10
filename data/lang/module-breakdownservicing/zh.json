@@ -119,7 +119,7 @@
 "description":"",
 "message":"你的飞船上还没有装引擎!"
 },
-"YOU_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN":{
+"MAKE_HYPERDRIVE_REPAIR_BEFORE_IT_BREAKING":{
 "description":"",
 "message":"你修好了马上就要损坏的超空间引擎."
 }

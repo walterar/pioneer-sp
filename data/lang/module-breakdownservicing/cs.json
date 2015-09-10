@@ -119,7 +119,7 @@
 "description":"",
 "message":"Není dostupný žádný motor, na kterém by šla provést údržba!"
 },
-"YOU_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN":{
+"MAKE_HYPERDRIVE_REPAIR_BEFORE_IT_BREAKING":{
 "description":"",
 "message":"Opravil(a) jste hypermotor těsně před jeho selháním."
 }

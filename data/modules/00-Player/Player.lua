@@ -15,7 +15,7 @@ local Music      = import("Music")
 local Space      = import("Space")
 local Timer      = import("Timer")
 local Eq         = import("Equipment")
-local Constant   = import("Constant")
+local Laws       = import("Laws")
 local StarSystem = import("StarSystem")
 
 local l  = Lang.GetResource("module-00-player") or Lang.GetResource("module-00-player","en")
@@ -202,6 +202,7 @@ Event.Register("onShipAlertChanged", onShipAlertChanged)
 	local trigger = 0
 	local player
 local onShipHit = function (ship, attacker)
+	if ship and ship.label == lc.MISSILE then return end--XXX
 	if ship:IsPlayer() then
 		player = ship
 		_G.ShotsReceived = (ShotsReceived or 0) + 1
@@ -214,7 +215,7 @@ local onShipHit = function (ship, attacker)
 			trigger = 0
 			player:SetInvulnerable(true)
 		return end
-		if trigger > 3 and DEMPsystem == true then
+		if trigger > 3 and DEMPsystem then
 			shipNeutralized = true
 			attacker:CancelAI()
 			player:SetInvulnerable(true)
@@ -261,11 +262,11 @@ local onShipHit = function (ship, attacker)
 		end
 	elseif ship and ship:exists() and attacker and attacker:IsPlayer() then
 		player = attacker
+		_G.ShotsSuccessful = (ShotsSuccessful or 0) + 1
 		if MissileActive > 0 then
 			_G.MissileActive = MissileActive - 1
 		else
 			if not shipNeutralized then ship:AIKill(player) end
-			_G.ShotsSuccessful = (ShotsSuccessful or 0) + 1
 		end
 	elseif ship and ship:exists()
 		and attacker and attacker:exists()
@@ -290,7 +291,7 @@ local onShipFiring = function (ship)
 		penalized=true
 		local crime = "UNLAWFUL_WEAPONS_DISCHARGE"
 		Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE,
-			{crime=Constant.CrimeType[crime].name}), Game.system.faction.policeName)
+			{crime=Laws.CrimeType[crime].name}), Game.system.faction.policeName)
 		player:AddCrime(crime, crime_fine(crime))
 		Timer:CallAt(Game.time + 5, function ()
 			penalized = false

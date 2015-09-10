@@ -6,7 +6,7 @@
 local Engine    = import("Engine")
 local Lang      = import("Lang")
 local Game      = import("Game")
-local Equipment = import("Equipment")
+local Equip     = import("Equipment")
 local ShipDef   = import("ShipDef")
 
 local ModelSpinner = import("UI.Game.ModelSpinner")
@@ -56,7 +56,7 @@ local shipInfo = function (args)
 	local deltav = shipDef.effectiveExhaustVelocity * math.log((player.totalMass + player.fuelMassLeft) / player.totalMass)
 
 	local equipItems = {}
-	local equips = {Equipment.cargo, Equipment.misc, Equipment.hyperspace, Equipment.laser}
+	local equips = {Equip.cargo, Equip.misc, Equip.hyperspace, Equip.laser}
 	for _,t in pairs(equips) do
 		for k,et in pairs(t) do
 			local slot = et:GetDefaultSlot(Game.player)
@@ -64,15 +64,15 @@ local shipInfo = function (args)
 				local count = Game.player:CountEquip(et)
 				if count > 0 then
 					if count > 1 then
-						if et == Equipment.misc.shield_generator then
-							table.insert(equipItems,
-								ui:Label(string.interp(l.N_SHIELD_GENERATORS, { quantity = string.format("%d", count) })))
-						elseif et == Equipment.misc.cabin_occupied then
-							table.insert(equipItems,
-								ui:Label(string.interp(l.N_OCCUPIED_PASSENGER_CABINS, { quantity = string.format("%d", count) })))
-						elseif et == Equipment.misc.cabin then
-							table.insert(equipItems,
-								ui:Label(string.interp(l.N_UNOCCUPIED_PASSENGER_CABINS, { quantity = string.format("%d", count) })))
+						if et == Equip.misc.cabin_occupied then
+							table.insert(equipItems, ui:Label(string.interp(l.N_OCCUPIED_PASSENGER_CABINS,
+								{ quantity = string.format("%d", count) })))
+						elseif et == Equip.misc.cabin then
+							table.insert(equipItems, ui:Label(string.interp(l.N_UNOCCUPIED_PASSENGER_CABINS,
+								{ quantity = string.format("%d", count) })))
+						elseif et == Equip.misc.shield_generator then
+							table.insert(equipItems, ui:Label(string.interp(l.N_SHIELD_GENERATORS,
+								{ quantity = string.format("%d", count) })))
 						else
 							table.insert(equipItems, ui:Label(et:GetName()))
 						end
@@ -128,10 +128,10 @@ local shipInfo = function (args)
 						{ l.FRONT_WEAPON..":", frontWeapon and frontWeapon:GetName() or l.NONE},
 						{ l.REAR_WEAPON..":",  rearWeapon and rearWeapon:GetName() or l.NONE },
 						"",
-						{ lc.MISSILE_UNGUIDED..":", Game.player:CountEquip(Equipment.misc.missile_unguided)},
-						{ lc.MISSILE_GUIDED..":",   Game.player:CountEquip(Equipment.misc.missile_guided)},
-						{ lc.MISSILE_SMART..":",    Game.player:CountEquip(Equipment.misc.missile_smart)},
-						{ lc.MISSILE_NAVAL..":",    Game.player:CountEquip(Equipment.misc.missile_naval)},
+						{ lc.MISSILE_UNGUIDED..":", Game.player:CountEquip(Equip.misc.missile_unguided)},
+						{ lc.MISSILE_GUIDED..":",   Game.player:CountEquip(Equip.misc.missile_guided)},
+						{ lc.MISSILE_SMART..":",    Game.player:CountEquip(Equip.misc.missile_smart)},
+						{ lc.MISSILE_NAVAL..":",    Game.player:CountEquip(Equip.misc.missile_naval)},
 					}),
 					"",
 						ui:Label(l.EQUIPMENT):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),

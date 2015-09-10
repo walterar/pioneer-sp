@@ -119,7 +119,7 @@
 "description":"",
 "message":"У вас нет двигателя для сервиса!"
 },
-"YOU_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN":{
+"MAKE_HYPERDRIVE_REPAIR_BEFORE_IT_BREAKING":{
 "description":"",
 "message":"Вы отремонтировали гипердвигатель прежде, чем он сломался."
 }

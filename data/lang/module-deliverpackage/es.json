@@ -285,7 +285,7 @@
 },
 "PIRATE_TAUNTS_0":{
 "description":"",
-"message":"Vas a lamentar el hacer negocios con {client}"
+"message":"Vas a lamentar hacer negocios con {client}"
 },
 "PIRATE_TAUNTS_1":{
 "description":"",

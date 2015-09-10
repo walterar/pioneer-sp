@@ -15,6 +15,7 @@ local Ship      = import("Ship")
 local ShipDef   = import("ShipDef")
 local Lang      = import("Lang")
 local Eq        = import("Equipment")
+local Music     = import("Music")
 
 local l = Lang.GetResource("module-jousting") or Lang.GetResource("module-jousting","en")
 
@@ -79,6 +80,7 @@ local joust = function (player)
 				hostil:AIKill(player)
 				msg = l["the_time_has_come"..Engine.rand:Integer(1,3)]
 				Comms.ImportantMessage(msg, hostil.label)
+				Music.Play("music/core/fx/escalating-danger",false)
 			else
 				TrueJoust = false
 				hostil:CancelAI()

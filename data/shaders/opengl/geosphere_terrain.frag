@@ -4,12 +4,22 @@
 uniform vec4 atmosColor;
 // to keep distances sane we do a nearer, smaller scam. this is how many times
 // smaller the geosphere has been made
-uniform float geosphereScale;
-uniform float geosphereScaledRadius;
+uniform float geosphereRadius;
 uniform float geosphereAtmosTopRad;
 uniform vec3 geosphereCenter;
 uniform float geosphereAtmosFogDensity;
 uniform float geosphereAtmosInvScaleHeight;
+
+#ifdef DETAIL_MAPS
+uniform sampler2D texture0;
+uniform sampler2D texture1;
+in vec2 texCoord0;
+#endif // DETAIL_MAPS
+
+in float dist;
+uniform float detailScaleHi;
+uniform float detailScaleLo;
+
 
 #ifdef ECLIPSE
 uniform int shadows;
@@ -68,10 +78,23 @@ float discCovered(const in float dist, const in float rad) {
 
 void main(void)
 {
+#ifdef DETAIL_MAPS
+	vec4 hidetail = texture2D(texture0, texCoord0 * detailScaleHi);
+	vec4 lodetail = texture2D(texture1, texCoord0 * detailScaleLo);
+#endif // DETAIL_MAPS
 	vec3 eyepos = varyingEyepos;
 	vec3 eyenorm = normalize(eyepos);
 	vec3 tnorm = normalize(varyingNormal);
 	vec4 diff = vec4(0.0);
+
+#ifdef DETAIL_MAPS
+	// calculte the detail texture contribution from hi and lo textures
+	float hiloMix = exp(-0.004 * dist);
+	float detailMix = exp(-0.001 * dist);
+	vec4 detailVal = mix(lodetail, hidetail, hiloMix);
+	vec4 detailMul = mix(vec4(1.0), detailVal, detailMix);
+#endif // DETAIL_MAPS
+
 	float nDotVP=0.0;
 	float nnDotVP=0.0;
 #ifdef TERRAIN_WITH_WATER
@@ -79,7 +102,7 @@ void main(void)
 #endif
 
 #if (NUM_LIGHTS > 0)
-	vec3 v = (eyepos - geosphereCenter)/geosphereScaledRadius;
+	vec3 v = (eyepos - geosphereCenter)/geosphereRadius;
 	float lenInvSq = 1.0/(dot(v,v));
 	for (int i=0; i<NUM_LIGHTS; ++i) {
 		vec3 lightDir = normalize(vec3(uLight[i].position));
@@ -117,17 +140,24 @@ void main(void)
 #endif
 	}
 
+#ifdef DETAIL_MAPS
+	// Use the detail value to multiply the final colour before lighting
+	vec4 final = vertexColor * detailMul;
+#else
+	vec4 final = vertexColor;
+#endif // DETAIL_MAPS
+	
 #ifdef ATMOSPHERE
 	// when does the eye ray intersect atmosphere
-	float atmosStart = findSphereEyeRayEntryDistance(geosphereCenter, eyepos, geosphereScaledRadius * geosphereAtmosTopRad);
+	float atmosStart = findSphereEyeRayEntryDistance(geosphereCenter, eyepos, geosphereRadius * geosphereAtmosTopRad);
 	float ldprod=0.0;
 	float fogFactor=0.0;
 	{
-		float atmosDist = geosphereScale * (length(eyepos) - atmosStart);
+		float atmosDist = (length(eyepos) - atmosStart);
 		
 		// a&b scaled so length of 1.0 means planet surface.
-		vec3 a = (atmosStart * eyenorm - geosphereCenter) / geosphereScaledRadius;
-		vec3 b = (eyepos - geosphereCenter) / geosphereScaledRadius;
+		vec3 a = (atmosStart * eyenorm - geosphereCenter) / geosphereRadius;
+		vec3 b = (eyepos - geosphereCenter) / geosphereRadius;
 		ldprod = AtmosLengthDensityProduct(a, b, atmosColor.w*geosphereAtmosFogDensity, atmosDist, geosphereAtmosInvScaleHeight);
 		fogFactor = clamp( 1.5 / exp(ldprod),0.0,1.0); 
 	}
@@ -143,7 +173,7 @@ void main(void)
 #endif
 		fogFactor *
 		((scene.ambient * vertexColor) +
-		(diff * vertexColor)) +
+		(diff * final)) +
 		(1.0-fogFactor)*(diff*atmosColor) +
 #ifdef TERRAIN_WITH_WATER
 		  diff*specularReflection*sunset +
@@ -157,7 +187,7 @@ void main(void)
 		varyingEmission +
 #endif
 		(scene.ambient * vertexColor) +
-		(diff * vertexColor * 2.0);
+		(diff * final * 2.0);
 #endif //ATMOSPHERE
 
 #else // NUM_LIGHTS > 0 -- unlit rendering - stars

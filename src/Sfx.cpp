@@ -107,6 +107,7 @@ void Sfx::TimeStepUpdate(const float timeStep)
 
 	switch (m_type) {
 		case TYPE_EXPLOSION:
+			//if (m_age > 0.5) m_type = TYPE_NONE;
 			if (m_age > 1.7) m_type = TYPE_NONE;
 			break;
 		case TYPE_DAMAGE:
@@ -123,13 +124,13 @@ void Sfx::TimeStepUpdate(const float timeStep)
 void Sfx::Render(Renderer *renderer, const matrix4x4d &ftransform)
 {
 	PROFILE_SCOPED()
-	vector3d fpos = ftransform * GetPosition();
-	vector3f pos(&fpos.x);
+	const vector3d fpos = ftransform * GetPosition();
+	const vector3f pos(fpos);
 
-	switch (m_type)
+	switch (m_type) 
 	{
 		case TYPE_NONE: break;
-		case TYPE_EXPLOSION:
+		case TYPE_EXPLOSION: 
 		{
 			renderer->SetTransform(matrix4x4d::Translation(fpos));
 			const int spriteframe = Clamp( Uint32(m_age*20.0f), Uint32(0), NUM_EXPLOSION_TEXTURES-1 );
@@ -139,15 +140,15 @@ void Sfx::Render(Renderer *renderer, const matrix4x4d &ftransform)
 			renderer->SetTransform(matrix4x4f::Identity());
 			renderer->DrawPointSprites(1, &pos, alphaOneState, explosionParticle.get(), m_speed);
 			break;
-		}
-		case TYPE_DAMAGE:
+		} 
+		case TYPE_DAMAGE: 
 		{
 			renderer->SetTransform(matrix4x4d::Translation(fpos));
 			damageParticle->diffuse = Color(255, 255, 0, (1.0f-(m_age/2.0f))*255);
 			renderer->DrawPointSprites(1, &pos, additiveAlphaState, damageParticle.get(), 20.f);
 			break;
-		}
-		case TYPE_SMOKE:
+		} 
+		case TYPE_SMOKE: 
 		{
 			float var = Pi::rng.Double()*0.05f; //slightly variation to trail color
 			if (m_age < 0.5) { //start trail

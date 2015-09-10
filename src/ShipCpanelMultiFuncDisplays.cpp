@@ -32,11 +32,11 @@ static const float A_BIT             = 1.1f;
 static const unsigned int SCANNER_STEPS = 100;
 
 // XXX target colours should be unified throughout the game
-static const Color scannerNavTargetColour     = Color( 0,   255, 0   );
-static const Color scannerCombatTargetColour  = Color( 255, 0,   0   );
+static const Color scannerNavTargetColour     = Color( 0,   255,   0 );
+static const Color scannerCombatTargetColour  = Color( 255,   0,   0 );
 static const Color scannerStationColour       = Color( 255, 255, 255 );
-static const Color scannerShipColour          = Color( 243, 237, 29  );
-static const Color scannerMissileColour       = Color( 240, 38,  50  );
+static const Color scannerShipColour          = Color( 243, 237,  29 );
+static const Color scannerMissileColour       = Color( 240,  38,  50 );
 static const Color scannerPlayerMissileColour = Color( 255, 128, 255 );
 static const Color scannerCargoColour         = Color( 166, 166, 166 );
 static const Color scannerCloudColour         = Color( 128, 128, 255 );
@@ -566,6 +566,35 @@ void UseEquipWidget::UpdateEquip()
 			Add(b, 32, 0);
 		}
 	}
+
+	LuaObject<Ship>::CallMethod<LuaRef>(Pi::player, "GetEquip", "sensor").PushCopyToStack();
+	int numSensorSlots = LuaObject<Ship>::CallMethod<int>(Pi::player, "GetEquipSlotCapacity", "sensor");
+	if (numSensorSlots) {
+	float spacing = 32.0f ;
+	lua_pushnil(l);
+	while(lua_next(l, -2)) {
+		if (lua_type(l, -2) == LUA_TNUMBER) {
+			int i = lua_tointeger(l, -2);
+			LuaTable sensor(l, -1);
+			Gui::MultiStateImageButton *b = new Gui::MultiStateImageButton();
+			b->AddState(0, (std::string("icons/")+sensor.Get<std::string>("icon_off_name", "")+".png").c_str());
+			b->AddState(1, (std::string("icons/")+sensor.Get<std::string>("icon_on_name", "")+".png").c_str());
+			const std::string sensor_label = sensor.CallMethod<std::string>("GetName");
+			b->SetToolTip(sensor_label);
+			b->onClick.connect([i](Gui::MultiStateImageButton *button){
+				if (button->GetState() == 1) {
+					LuaObject<Ship>::CallMethod(Pi::player, "StartSensor", i);
+				} else {
+					LuaObject<Ship>::CallMethod(Pi::player, "StopSensor", i);
+				}
+			});
+			b->SetRenderDimensions(30.0f, 22.0f);
+			Add(b, spacing*i, 38.0f);
+		}
+		lua_pop(l, 1);
+	}
+}
+
 
 }
 

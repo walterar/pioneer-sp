@@ -551,9 +551,13 @@
 "description":"",
 "message":"超空间出发云"
 },
-"HYPERSPACE_JUMP":{
-"description":"",
-"message":"超空间跳跃"
+"HYPERSPACE_JUMP_ABORT" : {
+"description" : "Mouse over text for hyperdrive button on ship control panel",
+"message" : "Abort Hyperjump"
+},
+"HYPERSPACE_JUMP_ENGAGE" : {
+"description" : "Mouse over text for hyperdrive button on ship control panel",
+"message" : "Start Hyperjump"
 },
 "HYPERSPACE_JUMP_ABORTED":{
 "description":"",
@@ -1158,6 +1162,9 @@
 "PLANNER_RESET_RADIAL":{
 "description":"For system orbit view",
 "message":"径向delta-v. 单击重置为零."
+},
+"PLANNER_RESET_START":{
+"description":"For system orbit view","message":"Maneuver start. Click to reset to default."
 },
 "PLASTICS":{
 "description":"",

@@ -22,7 +22,7 @@ local l = Lang.GetResource("module-breakdownservicing") or Lang.GetResource("mod
 ----------------------------
 local oneyear = 31557600 -- One standard Julian year
 local onemonth = 2592000 -- One standard Julian month
-local alertMsg = l.YOU_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN
+local alertMsg = l.MAKE_HYPERDRIVE_REPAIR_BEFORE_IT_BREAKING
 
 -- 10, guaranteed random by D16 dice roll.
 -- This is to make the BBS name different from the station welcome character.

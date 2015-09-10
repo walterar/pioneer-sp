@@ -37,11 +37,11 @@
 },
 "MINIMAL_TIME_SERVED_ABOARD_SHIP":{
 "description":"",
-"message":"Un tiempo mínimo en una nave"
+"message":"Tiempo mínimo servido en una nave"
 },
 "NAVIGATOR":{
 "description":"",
-"message":"Navegador"
+"message":"Navegante"
 },
 "NO_EXPERIENCE":{
 "description":"",
@@ -77,11 +77,11 @@
 },
 "SUGGEST_NEW_WEEKLY_WAGE_OF_N":{
 "description":"",
-"message":"Sugerir nuevo sueldo mensual de {newAmount}"
+"message":"Sugerir nuevo sueldo semanal de {newAmount}"
 },
 "THANKS_ILL_GET_SETTLED_ON_BOARD_IMMEDIATELY":{
 "description":"",
-"message":"Gracias, iré a bordo inmediatamente."
+"message":"Gracias, subiré abordo inmediatamente."
 },
 "THATS_EXTREMELY_GENEROUS_OF_YOU":{
 "description":"",
@@ -97,7 +97,7 @@
 },
 "TIME_SERVED_CREW_MEMBER":{
 "description":"",
-"message":"Experiencia normal como tripulante"
+"message":"Tripulante veterano"
 },
 "VETERAN_TIME_SERVED_CREW_MEMBER":{
 "description":"",

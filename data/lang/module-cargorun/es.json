@@ -60,14 +60,16 @@
 "message":"SERVICIO DE CARGAS. Necesito para transportar una carga a {system}"
 },
 "ALUMINIUM_TUBES":{
-"description":"custom cargo","message":"Tubos de Aluminio"
+"description":"custom cargo",
+"message":"Tubos de Aluminio"
 },
 "AMOUNT":{
 "description":"",
 "message":"Cantidad:"
 },
 "ART_OBJECTS":{
-"description":"custom cargo","message":"Objetos de Arte"
+"description":"custom cargo",
+"message":"Objetos de Arte"
 },
 "CARGO":{
 "description":"",
@@ -82,7 +84,8 @@
 "message":"Cease fire, cease fire. I'm on your side."
 },
 "CLUS":{
-"description":"custom cargo","message":"Viviendas"
+"description":"custom cargo",
+"message":"Viviendas"
 },
 "COULD_YOU_REPEAT_THE_ORIGINAL_REQUEST":{
 "description":"",
@@ -129,17 +132,20 @@
 "message":"Está bromeando, ¿verdad? ¡Vuelva cuando tenga más experiencia!"
 },
 "DIAMONDS":{
-"description":"custom cargo","message":"Diamantes"
+"description":"custom cargo",
+"message":"Diamantes"
 },
 "DIGESTERS":{
-"description":"custom cargo","message":"Digestores"
+"description":"custom cargo",
+"message":"Digestores"
 },
 "DISTANCE":{
 "description":"",
 "message":"Distancia:"
 },
 "ELECTRICAL_APPLIANCES":{
-"description":"custom cargo","message":"Electrodomésticos"
+"description":"custom cargo",
+"message":"Electrodomésticos"
 },
 "ESCORT_CHATTER_1":{
 "description":"",
@@ -162,7 +168,8 @@
 "message":"Tally ho. This will be my first catch today."
 },
 "EXPLOSIVES":{
-"description":"custom cargo","message":"Explosivos"
+"description":"custom cargo",
+"message":"Explosivos"
 },
 "FAILUREMSG_1":{
 "description":"",
@@ -185,16 +192,20 @@
 "message":"¡Monstruo! ¡Ha demorado demasiado! ¡Mis mascotas están hambrientas!"
 },
 "FURNITURE":{
-"description":"custom cargo","message":"Muebles"
+"description":"custom cargo",
+"message":"Muebles"
 },
 "GREENHOUSES":{
-"description":"custom cargo","message":"Invernaderos"
+"description":"custom cargo",
+"message":"Invernaderos"
 },
 "GUNS_GUNS_GUNS":{
-"description":"Military radio call to avoid friendly fire. It indicates that the cannon has been activated and should ensure that other friendly pilots do not maneuver into the path of harm.","message":"Guns, guns, guns."
+"description":"Military radio call to avoid friendly fire. It indicates that the cannon has been activated and should ensure that other friendly pilots do not maneuver into the path of harm.",
+"message":"Guns, guns, guns."
 },
 "HAZARDOUS_SUBSTANCES":{
-"description":"custom cargo","message":"Sustancias Peligrosas"
+"description":"custom cargo",
+"message":"Sustancias Peligrosas"
 },
 "HOWMUCH_1":{
 "description":"",
@@ -213,7 +224,8 @@
 "message":"Son {amount}t."
 },
 "HOWMUCH_SINGULAR_1":{
-"description":"This string is only used for 1 metric tons (singular)","message":"Es solo {amount}t."
+"description":"This string is only used for 1 metric tons (singular)",
+"message":"Es solo {amount}t."
 },
 "HOWMUCH_WHOLESALER_1":{
 "description":"",
@@ -316,10 +328,12 @@
 "message":"ly"
 },
 "MACHINE_TOOLS":{
-"description":"custom cargo","message":"Máquinas-Herramientas"
+"description":"custom cargo",
+"message":"Máquinas-Herramientas"
 },
 "NEPTUNIUM":{
-"description":"custom cargo","message":"Neptunio"
+"description":"custom cargo",
+"message":"Neptunio"
 },
 "OK_AGREED":{
 "description":"",
@@ -374,10 +388,12 @@
 "message":"¡Su suerte se ha acabado! ¡Esa carga de {cargoname} será mía!"
 },
 "PLUTONIUM":{
-"description":"custom cargo","message":"Plutonio"
+"description":"custom cargo",
+"message":"Plutonio"
 },
 "QUIBBLES":{
-"description":"custom cargo","message":"Mascotas"
+"description":"custom cargo",
+"message":"Mascotas"
 },
 "RISK_1":{
 "description":"",
@@ -432,14 +448,16 @@
 "message":"The risk is high. But an escort is ready to guard you."
 },
 "SEMI_FINISHED_PRODUCTS":{
-"description":"custom cargo","message":"Productos Semi-terminados"
+"description":"custom cargo",
+"message":"Semi-terminados"
 },
 "SPACEPORT":{
 "description":"",
 "message":"Puerto espacial:"
 },
 "SPACESHIP_PARTS":{
-"description":"custom cargo","message":"Partes de Naves"
+"description":"custom cargo",
+"message":"Partes de Naves"
 },
 "SUCCESSMSG_1":{
 "description":"",
@@ -470,13 +488,16 @@
 "message":"Objetivo destruído."
 },
 "TITANIUM":{
-"description":"custom cargo","message":"Titanio"
+"description":"custom cargo",
+"message":"Titanio"
 },
 "TUNGSTEN":{
-"description":"custom cargo","message":"Tungsteno"
+"description":"custom cargo",
+"message":"Tungsteno"
 },
 "URANIUM":{
-"description":"custom cargo","message":"Uranio"
+"description":"custom cargo",
+"message":"Uranio"
 },
 "URGENCY_1":{
 "description":"",
@@ -507,7 +528,8 @@
 "message":"Debido al período de vida de este isótopo, la entrega debe ser antes de {date}."
 },
 "WEDDING_DRESSES":{
-"description":"custom cargo","message":"Vestidos de Novia"
+"description":"custom cargo",
+"message":"Vestidos de Novia"
 },
 "WE_HAVE_LOADED_UP_THE_CARGO_ON_YOUR_SHIP":{
 "description":"",

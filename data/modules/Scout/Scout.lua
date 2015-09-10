@@ -201,18 +201,20 @@ local makeAdvert = function (station)
 	local urgency = flavours[flavour].urgency
 	local risk = flavours[flavour].risk
 	local	faction = Game.system.faction
+	local currentBody
 -- local system
 	if flavours[flavour].localscout == true then
 		local localbodies = Game.system:GetBodyPaths()
 		local checkedBodies = 0
 		while checkedBodies <= #localbodies do
 			location = localbodies[Engine.rand:Integer(1,#localbodies)]
-			local currentBody = location:GetSystemBody()
+			currentBody = location:GetSystemBody()
 			if currentBody.superType == "ROCKY_PLANET"
 				and currentBody.type ~= "PLANET_ASTEROID"
 			then break end
 			checkedBodies = checkedBodies + 1
 		end
+		if not currentBody or currentBody.superType ~= "ROCKY_PLANET" then return end
 		local dist = station:DistanceTo(Space.GetBody(location.bodyIndex))
 		if dist < 1000 then return end
 		reward = local_reward + (math.sqrt(dist) / 15000) * (1.5+urgency) * (1+Game.system.lawlessness)
@@ -228,12 +230,13 @@ local makeAdvert = function (station)
 		local checkedBodies = 0
 		while checkedBodies <= #remotebodies do
 			location = remotebodies[Engine.rand:Integer(1,#remotebodies)]
-			local currentBody = location:GetSystemBody()
+			currentBody = location:GetSystemBody()
 			if currentBody.superType == "ROCKY_PLANET"
 				and currentBody.type ~= "PLANET_ASTEROID"
 			then break end
 			checkedBodies = checkedBodies + 1
 		end
+		if not currentBody or currentBody.superType ~= "ROCKY_PLANET" then return end
 		local multiplier = Engine.rand:Number(1.5,1.6)
 		if Game.system.faction ~= location:GetStarSystem().faction then
 			multiplier = multiplier * Engine.rand:Number(1.3,1.5)
@@ -322,10 +325,10 @@ local start_mapping = function(mission)
 				or mission.status == 'SUSPENDED') then
 			local lapse = scan_time / 60
 			Comms.ImportantMessage(l.Distance_reached .. lapse .. l.minutes, l.computer)
-			Music.Play("music/core/radar-mapping/mapping-on"..Engine.rand:Integer(1,3))
+			Music.Play("music/core/fx/mapping-on"..Engine.rand:Integer(1,3))
 			mission.status = "MAPPING"
 		elseif Dist > PhysBody.radius * radius_max and mission.status == "MAPPING" then
-			Music.Play("music/core/radar-mapping/mapping-off",false)
+			Music.Play("music/core/fx/mapping-off",false)
 			Comms.ImportantMessage(l.MAPPING_interrupted, l.computer)
 			mission.status = "SUSPENDED"
 			TimeUp = 0
@@ -345,7 +348,7 @@ local start_mapping = function(mission)
 
 			if TimeUp >= scan_time then
 				mission.status = "COMPLETED"
-				Music.Play("music/core/radar-mapping/mapping-off",false)
+				Music.Play("music/core/fx/mapping-off",false)
 				Comms.ImportantMessage(l.COMPLETE_MAPPING, l.computer)
 
 -- decide destino de entrega estaciones remotas - no locales

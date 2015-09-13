@@ -89,10 +89,10 @@ Group: Src  {
    }  # Group: Src
 
 File: Character  (/media/auxiliar/Building/APIONEER64/pioneersp/data/libs/Character.lua)
-File: Constants  (/media/auxiliar/Building/APIONEER64/pioneersp/data/libs/Constant.lua)
 File: EquipSet  (/media/auxiliar/Building/APIONEER64/pioneersp/data/libs/EquipSet.lua)
 File: EquipType  (/media/auxiliar/Building/APIONEER64/pioneersp/data/libs/Equipment.lua)
 File: Event  (/media/auxiliar/Building/APIONEER64/pioneersp/data/libs/Event.lua)
+File: Laws  (/media/auxiliar/Building/APIONEER64/pioneersp/data/libs/Laws.lua)
 File: Mission  (/media/auxiliar/Building/APIONEER64/pioneersp/data/libs/Mission.lua)
 File: NameGen  (/media/auxiliar/Building/APIONEER64/pioneersp/data/libs/NameGen.lua)
 File: Player.lua  (/media/auxiliar/Building/APIONEER64/pioneersp/data/libs/Player.lua)

@@ -11,6 +11,7 @@ local EquipSet = utils.inherits(nil, "EquipSet")
 
 EquipSet.default = {
 	autocombat=1,
+	beacon_receiver=1,
 	capacitor=1,
 	cargo=0,
 	engine=1,

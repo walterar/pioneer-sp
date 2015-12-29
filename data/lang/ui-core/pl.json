@@ -151,6 +151,14 @@
 "COMPRESS_TEXTURES":{
 "description":"graphics option in game settings menu ","message":"Kompresja Tekstur"
 },
+"CONFIRM_PURCHASE":{
+"description":"",
+"message":"Potwierdzenie zakupu"
+},
+"CONFIRM_SALE":{
+"description":"",
+"message":"Potwierdzenie sprzedaży"
+},
 "CONSTABLE":{
 "description":"",
 "message":"Posterunkowy"
@@ -183,8 +191,7 @@
 "message":"Lista załogi"
 },
 "CRIMINAL_RECORD":{
-"description":"",
-"message":"Rejestr wykroczeń"
+"description":"Past crimes / crime history of character","message":"Rejestr wykroczeń"
 },
 "DANGEROUS":{
 "description":"Player combat rating","message":"Groźny"
@@ -234,7 +241,7 @@
 "description":"mission deadline date","message":"Termin"
 },
 "DUMPING":{
-"description":"The illegal act of dumping waste","message":"Dumping"
+"description":"The illegal act of dumping waste","message":"Wyrzucanie odpadów"
 },
 "D_DAYS_LEFT":{
 "description":"",
@@ -254,6 +261,9 @@
 "EMPLOYMENT":{
 "description":"",
 "message":"Zatrudnienie"
+},
+"ENABLE_AUTOSAVE":{
+"description":"Allow the game to autosave when docking","message":"Autozapis włączony"
 },
 "ENABLE_COCKPIT":{
 "description":"Game settings option: to use a cockpit 3D model","message":"Pokaż kokpit (EKSPERYMENTALNE)"
@@ -429,6 +439,10 @@
 "INEXPERIENCED":{
 "description":"For player reputation","message":"Niedoświadczony"
 },
+"INSUFFICIENT_FUNDS":{
+"description":"",
+"message":"Za mało pieniędzy."
+},
 "INVERT_MOUSE_Y":{
 "description":"",
 "message":"Odwróć Oś Y"
@@ -471,7 +485,7 @@
 },
 "LAUNCH_PERMISSION_DENIED_CREW":{
 "description":"",
-"message":"Brak pozwolenia na lądowanie: brak wystarczającej ilości załogi by poprowadzić ten statek."
+"message":"Brak pozwolenia na start: niewystarczająca ilość załogi do pilotowania statku."
 },
 "LAUNCH_PERMISSION_DENIED_FINED":{
 "description":"",
@@ -517,6 +531,9 @@
 "description":"",
 "message":"Recepcja"
 },
+"LOCAL_ARM":{
+"description":"Arm of the Milky Way galaxy","message":"Ramię Lokalne"
+},
 "LOCATED_N_KM_FROM_THE_CENTRE_OF_NAME":{
 "description":"",
 "message":"Położenie {distance}km od centrum {name}:"
@@ -539,6 +556,14 @@
 "MALE":{
 "description":"",
 "message":"Mężczyzna"
+},
+"MARKET_BUYLINE":{
+"description":"",
+"message":"Kupno: {amount} za {price}"
+},
+"MARKET_SELLINE":{
+"description":"",
+"message":"Sprzedaż: {amount} za {price}"
 },
 "MASS":{
 "description":"",
@@ -643,6 +668,10 @@
 "description":"",
 "message":"Nawigacja:"
 },
+"NAVIGATOR":{
+"description":"",
+"message":"Nawigator"
+},
 "NEGOTIATE":{
 "description":"",
 "message":"Negocjacje"
@@ -660,6 +689,13 @@
 "NONE":{
 "description":"",
 "message":"Brak"
+},
+"NONE_FOR_SALE_IN_THIS_STATION":{
+"description":"",
+"message":"Na tej stacji nie ma nic na sprzedaż."
+},
+"NORMA_ARM":{
+"description":"Arm of the Milky Way galaxy","message":"Ramię Normy"
 },
 "NOTES":{
 "description":"",
@@ -717,6 +753,12 @@
 "description":"",
 "message":"Prędkość orbitalna to stała prędkość z jaką powinien poruszać się statek pod kątem 90° względem osi statek/{name}.\n\nPrędkość graniczna, jest minimalną prędkością przy której statek pozostaje na orbicie.  Przy mniejszej prędkości lub kącie, rozpocznie się opadanie ku powierzchni {name}.\n\nPrędkość ucieczki teoretycznie powoduje opuszczenie orbity, jeśli tylko statek nie jest na kursie kolizyjnym z {name}.\n\t\t"
 },
+"OUTER_ARM":{
+"description":"Arm of the Milky Way galaxy","message":"Ramię Zewnętrzne"
+},
+"OUTSTANDING_FINES":{
+"description":"Unpaid fines for crimes committed","message":"Zaległe grzywny"
+},
 "OWED":{
 "description":"Player owing money to crew members","message":"Zalegasz"
 },
@@ -724,9 +766,16 @@
 "description":"",
 "message":"Zapłać {amount}"
 },
+"PERSEUS_ARM":{
+"description":"Arm of the Milky Way galaxy","message":"Ramię Perseusza"
+},
 "PERSONAL_INFORMATION":{
 "description":"",
 "message":"Informacje o pilocie"
+},
+"PILOT":{
+"description":"",
+"message":"Pilot"
 },
 "PILOTING":{
 "description":"",
@@ -768,6 +817,9 @@
 },
 "PROFESSIONAL":{
 "description":"For player reputation","message":"Profesjonalista"
+},
+"PUMP_DOWN":{
+"description":"Drain the fuel tank","message":"Wypompuj"
 },
 "QUALIFICATION_SCORES":{
 "description":"",
@@ -815,6 +867,10 @@
 "description":"",
 "message":"Pozwolenie na start"
 },
+"RESET":{
+"description":"",
+"message":"Reset"
+},
 "RETURN_TO_GAME":{
 "description":"",
 "message":"Powrót do gry"
@@ -835,12 +891,18 @@
 "description":"",
 "message":"Zapłata"
 },
+"SAGITTARIUS_ARM":{
+"description":"Arm of the Milky Way galaxy","message":"Ramię Strzelca"
+},
 "SAVE":{
 "description":"",
 "message":"Zapisz"
 },
 "SCOOP_MOUNTS":{
 "description":"How many slots or mounts exist on the ship for fitting SCOOPS (e.g. cargo scoop, fuel scoop, multi-scoop) ","message":"Mocowania czerpaków"
+},
+"SCUTUM_CENTAURUS_ARM":{
+"description":"Arm of the Milky Way galaxy","message":"Ramię Centaura"
 },
 "SELECT":{
 "description":"",
@@ -865,9 +927,17 @@
 "description":"",
 "message":"Sensory:"
 },
+"SENSORS_AND_DEFENCE":{
+"description":"",
+"message":"Sensory i obrona"
+},
 "SHIP":{
 "description":"",
 "message":"Statek"
+},
+"SHIPS_ENGINEER":{
+"description":"",
+"message":"Mechanik pokładowy"
 },
 "SHIP_INFORMATION":{
 "description":"",
@@ -901,10 +971,6 @@
 "description":"",
 "message":"Dźwięk"
 },
-"STAR_FIELD_DENSITY" : {
-"description" : "",
-"message" : "Density of Star field"
-},
 "START_AT_BARNARDS_STAR":{
 "description":"",
 "message":"Rozpocznij na Barnard's Star"
@@ -916,6 +982,10 @@
 "START_AT_NEW_HOPE":{
 "description":"New Hope is an in game location","message":"Rozpocznij na New Hope"
 },
+"STAR_FIELD_DENSITY":{
+"description":"",
+"message":"Zagęszczenie gwiazd"
+},
 "STATION_MANAGER":{
 "description":"",
 "message":"Menadżer stacji"
@@ -923,6 +993,12 @@
 "STATUS":{
 "description":"",
 "message":"Status"
+},
+"TECH_CERTIFIED":{
+"description":"Lobby screen shows the tech level (an integer number) of the station","message":"Ta stacja posiada certyfikat technologiczny {tech_level}. poziomu."
+},
+"TECH_CERTIFIED_MILITARY":{
+"description":"Lobby screen shows the tech level of the station","message":"Na tej stacji oficjalnie dostępna jest technologia militarna."
 },
 "THANKS_AND_REMEMBER_TO_BUY_FUEL":{
 "description":"",
@@ -935,6 +1011,9 @@
 "THE_SHIP_IS_UNDER_STATION_CONTROL_COMMANDER":{
 "description":"",
 "message":"Kapitanie, statek jest pod kontrolą stacji."
+},
+"THREE_KPC_ARM":{
+"description":"Arm of the Milky Way galaxy","message":"Ramię Trzech Kiloparseków"
 },
 "TOGGLE_MALE_FEMALE":{
 "description":"player gender","message":"Mężczyzna/Kobieta"
@@ -1015,8 +1094,10 @@
 "message":"Kapitanie, jesteśmy w nadprzestrzeni"
 },
 "WE_HAVE_NO_BUSINESS_WITH_YOU":{
-"description":"",
-"message":"We have no business with you at the moment.\nHowever, remember to respect the local rules:\n\n* Move at least 5Km from the station to hyperjump.\n* Do not fire your cannons within 100km of the station.\n* Do not trade in illegal products.\n* Do not dispose of any product in the station,\n especially if it is hazardous to the environment.\n* Do not jettison radioactive waste into space\nin inhabited systems.\n* Shooting at or ramming another ship within 100km of station\n will be considered Piracy.\n* Do not carry local information to another faction.\n* Comply with the agreed missions, avoid being fined\n for Fraud or Abduction\n* Do not take off manually to avoid paying your fines,\n this is serious and will be treated as an Escape.\n* And... please... do not kill anyone."
+"description":"Said by the police to law abiding player","message":"W tej chwili nie mamy do ciebie żadnych spraw."
+},
+"X_CANNOT_BE_TOLERATED_HERE":{
+"description":"Message to be sent over comms by police when crime is committed by player","message":"{crime} nie będzie tu tolerowane!"
 },
 "YES":{
 "description":"Positive answer to a question","message":"Tak"
@@ -1032,6 +1113,10 @@
 "YOU_DONT_HAVE_ENOUGH_MONEY_FOR_THAT_OPTION":{
 "description":"",
 "message":"Nie masz dość pieniędzy na tę opcję."
+},
+"YOU_HAVE_X_UNITS_IN_YOUR_CARGOHOLD":{
+"description":"",
+"message":"Posiadasz {units} w swojej ładowni "
 },
 "YOU_MUST_FIRST_SELECT_A_COMBAT_TARGET_COMMANDER":{
 "description":"",
@@ -1052,5 +1137,8 @@
 "YOU_NOT_ENOUGH_MONEY":{
 "description":"",
 "message":"Nie masz dość pieniędzy"
+},
+"ZOOM":{
+"description":"Label for a zoom (magnification) control bar.","message":"Zbliżenie"
 }
 }

@@ -6,6 +6,7 @@ PreRelease/
 Profile/
 Release/
 ipch/
+__pycache__/
 src/data
 debian/autoreconf*
 debian/files
@@ -64,3 +65,5 @@ gmon.out
 .dirstamp
 result
 *.sgm
+.vs/
+*.user

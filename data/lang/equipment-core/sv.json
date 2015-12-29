@@ -31,6 +31,14 @@
 "description":"",
 "message":"An autopilot of combat"
 },
+"BEACON_RECEIVER":{
+"description":"Software for Radar Mapper",
+"message":"Beacon Receiver"
+},
+"BEACON_RECEIVER_DESCRIPTION":{
+"description":"",
+"message":"Software extension for radar mapper."
+},
 "CARGO_LIFE_SUPPORT":{
 "description":"",
 "message":"Livsuppehållande lastrum"
@@ -212,14 +220,6 @@
 "description":"",
 "message":"Scannar närmast kropp efter resurser"
 },
-"PROP_CONVERTER":{
-"description":"",
-"message":"Propellant Converter"
-},
-"PROP_CONVERTER_DESCRIPTION":{
-"description":"",
-"message":"Converter that allows use hydrogen instead of water in propellant engine"
-},
 "PULSECANNON_10MW":{
 "description":"",
 "message":"10MW pulskanon"
@@ -246,7 +246,7 @@
 },
 "PULSECANNON_DUAL_2MW":{
 "description":"",
-"message":"2MW dual-fire pulse cannon"
+"message":"2MW dubbel pulskanon"
 },
 "PULSECANNON_RAPID_2MW":{
 "description":"",

@@ -10,7 +10,7 @@ local SmallLabeledButton = {}
 function SmallLabeledButton.New (text)
 	local self = {
 		button = ui:SmallButton(),
-		label  = ui:Label(text),
+		label  = ui:Label(text or "error"),
 	}
 	self.widget = ui:HBox(10):PackEnd({ self.button, self.label })
 

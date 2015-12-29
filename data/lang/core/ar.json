@@ -5,14 +5,15 @@
 },
 "ALERT_CANCELLED":{
 "description":"",
-"message":"Alert cancelled."
+"message":"تم الغاء التحذير."
 },
 "ALLEGIANCE":{
 "description":"",
 "message":"ولاء"
 },
 "ALT":{
-"description":"Alt key on keyboard","message":"Alt"
+"description":"Alt key on keyboard",
+"message":"Alt"
 },
 "ALT_IN_KM":{
 "description":"",
@@ -28,11 +29,11 @@
 },
 "AND_INDIGENOUS_MICROBIAL_LIFE":{
 "description":"",
-"message":"\" and indigenous microbial life.\""
+"message":"\"والحياة الميكروبية الأصلية\"."
 },
 "AND_INDIGENOUS_PLANT_LIFE":{
 "description":"",
-"message":"\" and indigenous plant life.\""
+"message":"\" و الحياة النباتية الاصلية.\""
 },
 "ANIMAL_MEAT":{
 "description":"",
@@ -44,17 +45,19 @@
 },
 "AR_ATMOSPHERE":{
 "description":"",
-"message":"\" Argon atmosphere\""
+"message":"\" غلاف جوي مكون من ارجون\""
 },
 "ASTEROID":{
 "description":"",
 "message":"كويكب"
 },
 "AUTOMATIC_SYSTEM_SELECTION":{
-"description":"for star map, select star system when mouse close to it","message":"Automatic system selection"
+"description":"for star map, select star system when mouse close to it",
+"message":"تحديد نظام تلقائي"
 },
 "AUTOPILOT_CONTROL":{
-"description":"Indicating that ship is flying under autopilot control","message":"Autopilot control"
+"description":"Indicating that ship is flying under autopilot control",
+"message":"تحكم الطيار الالي"
 },
 "AUTOPILOT_DOCK_WITH_STATION":{
 "description":"",
@@ -78,18 +81,19 @@
 },
 "AUTOPILOT_ON":{
 "description":"",
-"message":"Autopilot on"
+"message":"الطيار الالي مفعل"
 },
 "AUTO_COMBAT":{
-"description":"An autopilot of combat",
-"message":"Auto Combat Yes/No"
+"description":"",
+"message":"AutoCombat on/off"
 },
 "AXIAL_TILT":{
 "description":"",
 "message":"دوران محوري"
 },
 "A_FEW_THOUSAND":{
-"description":"regarding population","message":"بعض الاف"
+"description":"regarding population",
+"message":"بعض الاف"
 },
 "BATTLE_WEAPONS":{
 "description":"",
@@ -100,7 +104,8 @@
 "message":"نظام ثنائي"
 },
 "BODIES":{
-"description":"space bodies","message":"اجسام"
+"description":"space bodies",
+"message":"اجسام"
 },
 "BODY":{
 "description":"",
@@ -120,15 +125,15 @@
 },
 "CAMERA_FRONT_VIEW":{
 "description":"",
-"message":"Front camera"
+"message":"كاميرا امامية"
 },
 "CAMERA_LEFT_VIEW":{
 "description":"",
-"message":"Left camera"
+"message":"كاميرا يسرى"
 },
 "CAMERA_REAR_VIEW":{
 "description":"",
-"message":"Rear camera"
+"message":"الكاميرا الخلفية"
 },
 "CAMERA_RIGHT_VIEW":{
 "description":"",
@@ -140,19 +145,19 @@
 },
 "CANT_SAVE_DEAD_PLAYER":{
 "description":"",
-"message":"Can't save game after the player has died"
+"message":"لايمكن حفظ اللعبة بعد موت الااعب"
 },
 "CANT_SAVE_IN_HYPERSPACE":{
 "description":"",
-"message":"Can't save game while in hyperspace"
+"message":"لا يمكن الحفظ اثناء القذف"
 },
 "CAPITALIST":{
 "description":"",
-"message":"Capitalist"
+"message":"عاصمي"
 },
 "CARBON_ORE":{
 "description":"",
-"message":"Carbon ore"
+"message":"كربون خام"
 },
 "CARBON_ORE_DESCRIPTION":{
 "description":"",
@@ -172,11 +177,11 @@
 },
 "CARGO_SCOOP_ACTIVE_1_TONNE_X_COLLECTED":{
 "description":"",
-"message":"Cargo scoop active. Collected 1 tonne of %item."
+"message":"مغرفة البضائع نشطة. جمع 1 طن من "
 },
 "CARGO_SCOOP_ATTEMPTED":{
 "description":"",
-"message":"Cargo scoop attempted. Not enough room in cargo hold."
+"message":"مغرفة البضائع حاولت. لا يوجد مكان في عنبر الشحن."
 },
 "CH4_ATMOSPHERE":{
 "description":"",
@@ -188,11 +193,11 @@
 },
 "CLEARANCE_DENIED_NO_BAYS":{
 "description":"",
-"message":"Clearance denied. There are no free docking bays."
+"message":"طلب الهبوط رفظ. لا توجد مساحة هبوط شاغرة"
 },
 "CLEARANCE_GRANTED_BAY_N":{
 "description":"",
-"message":"Clearance granted. Proceed to docking bay %bay."
+"message":"نم قبول اذن الهبوط. اذهب الى مهبط "
 },
 "CO2_ATMOSPHERE":{
 "description":"",
@@ -203,15 +208,16 @@
 "message":", براكين متوهجة"
 },
 "COMMODITY_NONE":{
-"description":"When no commodities exist","message":"None"
+"description":"When no commodities exist",
+"message":"None"
 },
 "COMMODITY_TRADE_ANALYSIS_COMPARE":{
 "description":"",
-"message":"Commodity trade analysis of #ff0%selected_system#fff (selected) against #ff0%current_system#fff (current):"
+"message":"تحليل تجارة السلع لـ #ff0%selected_system#fff (محدد) الى #ff0%current_system#fff (حالي)"
 },
 "COMMODITY_TRADE_ANALYSIS_SELF":{
 "description":"",
-"message":"Commodity trade analysis of #fff%system#fff"
+"message":"تحليل تجارة السلع لـ #fff%system#fff"
 },
 "COMMS":{
 "description":"",
@@ -219,7 +225,7 @@
 },
 "COMMUNIST":{
 "description":"",
-"message":"Communist"
+"message":"اجتماعي"
 },
 "COMPUTERS":{
 "description":"",
@@ -231,7 +237,7 @@
 },
 "COMPUTER_SPEED_CONTROL":{
 "description":"",
-"message":"Computer speed control"
+"message":"تحكم السرعة الحاسوبي"
 },
 "CONSUMER_GOODS":{
 "description":"",
@@ -239,7 +245,7 @@
 },
 "CONTROLS":{
 "description":"",
-"message":"Controls"
+"message":"التحكم"
 },
 "CORPORATE_SYSTEM":{
 "description":"",
@@ -255,21 +261,23 @@
 },
 "COUNT_STARPORTS":{
 "description":"",
-"message":"starports"
+"message":"محطات فضائية"
 },
 "CO_ATMOSPHERE":{
 "description":"",
 "message":"\" غلاف جوي مكون من اول اكسيد الكربون\""
 },
 "CTRL":{
-"description":"Ctrl key on keyboard","message":"Ctrl"
+"description":"Ctrl key on keyboard",
+"message":"Ctrl"
 },
 "CURRENT_SYSTEM":{
-"description":"selected current star system","message":"Current system"
+"description":"selected current star system",
+"message":"النظام الحالي"
 },
 "DATE_DUE_N":{
 "description":"",
-"message":"Date due: %date"
+"message":"التاريخ: %date"
 },
 "DAY_LENGTH":{
 "description":"",
@@ -281,18 +289,23 @@
 },
 "DECREASE_SET_SPEED":{
 "description":"",
-"message":"Decrease set speed"
+"message":"خفض تثبيت السرعة"
+},
+"DECREASE_TIME_ACCELERATION":{
+"description":"",
+"message":"Decrease Time Acceleration"
 },
 "DEMOGRAPHICS":{
 "description":"",
-"message":"Demographics"
+"message":"التركية السكانية"
 },
 "DESTINATION":{
 "description":"",
 "message":"مكان الوصول"
 },
 "DIRECTION":{
-"description":"Direction","message":"\" Dir \""
+"description":"Direction",
+"message":"\" Dir \""
 },
 "DISTANCE_FROM_SHIP_TO_NAV_TARGET":{
 "description":"",
@@ -300,7 +313,7 @@
 },
 "DISTANCE_LY":{
 "description":"",
-"message":"Distance: %distance{f.2} ly"
+"message":"البعد: %distance{f.2} سنة ضوئية"
 },
 "DOCKED":{
 "description":"",
@@ -308,7 +321,7 @@
 },
 "DOCKING":{
 "description":"",
-"message":"Docking"
+"message":"هبوط"
 },
 "DOCKING_CLEARANCE_EXPIRED":{
 "description":"",
@@ -316,7 +329,7 @@
 },
 "DOWNGRADING_ALERT_STATUS":{
 "description":"",
-"message":"No fire detected for 60 seconds, downgrading alert status."
+"message":"لم يتم رصد نيران لمدة 30 ثانية, تم خفض مستوى التحذير."
 },
 "DRAW_OUT_RANGE_LABELS":{
 "description":"",
@@ -324,15 +337,15 @@
 },
 "DRAW_UNINHABITED_LABELS":{
 "description":"",
-"message":"Label uninhabited systems"
+"message":"تسمية الانظمة الغير مسكونة"
 },
 "DRAW_VERTICAL_LINES":{
 "description":"",
-"message":"Draw vertical lines"
+"message":"رسم خطوط عمودية"
 },
 "EARTH":{
 "description":"",
-"message":"Earth"
+"message":"الأرض"
 },
 "EARTH_FEDERATION_COLONIAL_RULE":{
 "description":"",
@@ -348,15 +361,15 @@
 },
 "ECONOMIC_INFO":{
 "description":"",
-"message":"Economic info"
+"message":"معلومات اقتصادية"
 },
 "ECONOMY_TYPE":{
 "description":"",
-"message":"Economy type:"
+"message":"نوع الاقتصاد:"
 },
 "EQUATORIAL_RADIUS_TO_POLAR_RADIUS_RATIO":{
 "description":"",
-"message":"Equatorial to polar radius ratio"
+"message":"الاستوائية إلى نسبة نصف القطر القطبي"
 },
 "EXACT_MATCH_X":{
 "description":"",
@@ -368,11 +381,11 @@
 },
 "EXTERNAL_ATMOSPHERIC_PRESSURE":{
 "description":"",
-"message":"External atmospheric pressure"
+"message":"ضغط غلاف جوي خارجي"
 },
 "EXTERNAL_VIEW":{
 "description":"",
-"message":"External view"
+"message":"روئية خارجية"
 },
 "FARM_MACHINERY":{
 "description":"",
@@ -380,7 +393,7 @@
 },
 "FERTILIZER":{
 "description":"",
-"message":"Fertilizer"
+"message":"سماد"
 },
 "FINE_PAID_N":{
 "description":"",
@@ -392,7 +405,7 @@
 },
 "FIRE_LASER":{
 "description":"",
-"message":"Fire laser"
+"message":"شعاع ناري"
 },
 "FIRE_MISSILE":{
 "description":"",
@@ -404,7 +417,7 @@
 },
 "FRUIT_AND_VEG":{
 "description":"",
-"message":"Fruit and Veg"
+"message":"خضار و فواكه"
 },
 "FUEL":{
 "description":"",
@@ -412,26 +425,27 @@
 },
 "FUEL_SCOOP_ACTIVE_N_TONNES_H_COLLECTED":{
 "description":"",
-"message":"Fuel scoop active. You now have %quantity tonnes of hydrogen."
+"message":"مغرفة الوقود النشطة. لديك %quantity  طن كمية من الهيدروجين."
 },
 "GALACTIC_VIEW":{
-"description":"view galactic map","message":"عرض المجرة"
+"description":"view galactic map",
+"message":"عرض المجرة"
 },
 "GALAXY_SECTOR_VIEW":{
 "description":"",
-"message":"Galaxy sector view"
+"message":"عرض نطاق المجرة"
 },
 "GAME_LOAD_CANNOT_OPEN":{
 "description":"",
-"message":"لا يمكن فتح ملف اللعبة هذا المحفوظة بسبب الصلاحيات أو شيء من هذا..."
+"message":"Save file '%filename' could not be found (or the game does not have access to open it)."
 },
 "GAME_LOAD_CORRUPT":{
 "description":"",
-"message":"This saved game cannot be loaded because it contains errors."
+"message":"لا يمكن تحميل ملف حفظ اللعبة بسبب اخطاء."
 },
 "GAME_LOAD_WRONG_VERSION":{
 "description":"",
-"message":"This saved game cannot be loaded because it was created by a different version of Pioneer."
+"message":"لا يمكن تحميل ملف حفظ اللعبة لانه محفوظ من قبل نخسة قديمة من اللعبة"
 },
 "GAME_SAVED_TO":{
 "description":"",
@@ -443,14 +457,15 @@
 },
 "GENERAL_VIEW_CONTROLS":{
 "description":"",
-"message":"General View Controls"
+"message":"تحكم الروئية الرئيسي"
 },
 "GOVERNMENT_TYPE":{
 "description":"",
 "message":"نوع الحكومة:"
 },
 "GRAIN":{
-"description":"like wheat or barley","message":"حبوب"
+"description":"like wheat or barley",
+"message":"حبوب"
 },
 "HAND_WEAPONS":{
 "description":"",
@@ -461,29 +476,36 @@
 "message":"Entirely Capitalist - no government welfare provision"
 },
 "HAT":{
-"description":"Hat switch: Is the top button on a joystick","message":"\" قبعة\""
+"description":"Hat switch: Is the top button on a joystick",
+"message":"\" قبعة\""
 },
 "HEADING_LOCK_ANTINORMAL":{
-"description":"Autopilot direction (perpendicular, down), relative to plane of orbit","message":"Hold anti-normal"
+"description":"Autopilot direction (perpendicular, down), relative to plane of orbit",
+"message":"امساك غير عادي"
 },
 "HEADING_LOCK_BACKWARD":{
-"description":"Autopilot points/holds/faces you retrograde (backwards rel. orbital direction)","message":"امساك رجعي"
+"description":"Autopilot points/holds/faces you retrograde (backwards rel. orbital direction)",
+"message":"امساك رجعي"
 },
 "HEADING_LOCK_FORWARD":{
-"description":"Autopilot points/holds/faces you prograde (tangent to the orbit, i.e. forward), http://wiki.kerbalspaceprogram.com/wiki/Maneuver_node","message":"Hold prograde"
+"description":"Autopilot points/holds/faces you prograde (tangent to the orbit, i.e. forward), http://wiki.kerbalspaceprogram.com/wiki/Maneuver_node",
+"message":"Hold prograde"
 },
 "HEADING_LOCK_KILLROT":{
 "description":"",
-"message":"Kill rotation"
+"message":"ايقاف الدوران"
 },
 "HEADING_LOCK_NORMAL":{
-"description":"Autopilot direction (perpendicular, up), relative to plane of orbit. ","message":"Hold normal"
+"description":"Autopilot direction (perpendicular, up), relative to plane of orbit. ",
+"message":"امساك عادي"
 },
 "HEADING_LOCK_RADIALLY_INWARD":{
-"description":"Autopilot direction, relative to orbit (face towards planet)","message":"Hold radially in"
+"description":"Autopilot direction, relative to orbit (face towards planet)",
+"message":"امساك شعاعي داخلي"
 },
 "HEADING_LOCK_RADIALLY_OUTWARD":{
-"description":"Autopilot direction, relative to orbit (face away from palent)","message":"Hold radially out"
+"description":"Autopilot direction, relative to orbit (face away from palent)",
+"message":"امساك شعاعي خارجي"
 },
 "HEAVY_INDUSTRY":{
 "description":"",
@@ -519,7 +541,7 @@
 },
 "HYPERSPACE":{
 "description":"",
-"message":"Hyperspace"
+"message":"القذف"
 },
 "HYPERSPACE_ARRIVAL_CLOUD":{
 "description":"",
@@ -533,17 +555,17 @@
 "description":"",
 "message":"سحابة رحيل القذف"
 },
-"HYPERSPACE_JUMP_ABORT" : {
-"description" : "Mouse over text for hyperdrive button on ship control panel",
-"message" : "Abort Hyperjump"
-},
-"HYPERSPACE_JUMP_ENGAGE" : {
-"description" : "Mouse over text for hyperdrive button on ship control panel",
-"message" : "Start Hyperjump"
+"HYPERSPACE_JUMP_ABORT":{
+"description":"Mouse over text for hyperdrive button on ship control panel",
+"message":"فك جهاز القذف"
 },
 "HYPERSPACE_JUMP_ABORTED":{
 "description":"",
-"message":"Hyperspace jump aborted."
+"message":"تم احباط القذف"
+},
+"HYPERSPACE_JUMP_ENGAGE":{
+"description":"Mouse over text for hyperdrive button on ship control panel",
+"message":"تركيب جهاز القذف"
 },
 "HYPERSPACE_TARGET":{
 "description":"",
@@ -562,11 +584,12 @@
 "message":"\"عالم جليدي\""
 },
 "ILLEGAL_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of commodity (singular) status in the system the player is currently in","message":"Illegal (current system):"
+"description":"Short (tooltip) description of commodity (singular) status in the system the player is currently in",
+"message":"ممنوع (النظام الحالي):"
 },
 "ILLEGAL_GOODS":{
 "description":"",
-"message":"Illegal Goods:"
+"message":"بضاعة ممنوعة:"
 },
 "IMPERIAL_RULE":{
 "description":"",
@@ -580,13 +603,17 @@
 "description":"",
 "message":"رفع ضبط السرعة"
 },
+"INCREASE_TIME_ACCELERATION":{
+"description":"",
+"message":"Increase Time Acceleration"
+},
 "INDUSTRIAL_COLONY":{
 "description":"",
 "message":"مستعمرة صناعية"
 },
 "INDUSTRIAL_HUB_SYSTEM":{
 "description":"",
-"message":"Industrial hub system."
+"message":"نظام مركز صناعي"
 },
 "INDUSTRIAL_MACHINERY":{
 "description":"",
@@ -594,10 +621,11 @@
 },
 "INTERNAL_VIEW":{
 "description":"",
-"message":"Internal view"
+"message":"روئية داخلية"
 },
 "INT_LY":{
-"description":"integer number of light years","message":"%scale ly"
+"description":"integer number of light years",
+"message":"%scale سنة ضوئية"
 },
 "IN_TRANSIT":{
 "description":"",
@@ -608,28 +636,36 @@
 "message":"العبور الى %system [%x,%y,%z]"
 },
 "JOY":{
-"description":"Short for Joystick","message":"عصا"
+"description":"Short for Joystick",
+"message":"عصا"
 },
 "JOYSTICK_INPUT":{
 "description":"",
-"message":"Joystick input"
+"message":"ادخال من عصا تحكم"
 },
 "JOY_AXIS":{
-"description":"Regarding joystick","message":"%{sign}%joyname %axis المحور"
+"description":"Regarding joystick",
+"message":"%{sign}%joyname %axis المحور"
 },
 "KM_S_RELATIVE_TO":{
 "description":"",
 "message":" %speed{f.2} كم/ث الى %frame"
+},
+"L4L5_DISPLAY_MODE_TOGGLE":{
+"description":"Either show L4/L5 points or don't",
+"message":"Switch between Lagrange L4/L5 point display modes."
 },
 "LANDED":{
 "description":"",
 "message":"هبطت"
 },
 "LANG_NAME":{
-"description":"The name that native speakers use for this language. This will be used in the language selection screen.","message":"English"
+"description":"The name that native speakers use for this language. This will be used in the language selection screen.",
+"message":"عربي"
 },
 "LARGE":{
-"description":"regarding terrestrial planet size (mass actually)","message":"ضخم"
+"description":"regarding terrestrial planet size (mass actually)",
+"message":"ضخم"
 },
 "LARGE_GAS_GIANT":{
 "description":"",
@@ -639,8 +675,13 @@
 "description":"",
 "message":"تم كشف نار الليزر "
 },
+"LATITUDE":{
+"description":"Latitude",
+"message":"Lat: %latitude"
+},
 "LEGAL_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of commodity (singular) status in the system the player is currently in","message":"Legal (current system):"
+"description":"Short (tooltip) description of commodity (singular) status in the system the player is currently in",
+"message":"متاح (النظام الحالي):"
 },
 "LIBERAL_DEMOCRACY":{
 "description":"",
@@ -648,7 +689,7 @@
 },
 "LIQUID_OXYGEN":{
 "description":"",
-"message":"Liquid Oxygen"
+"message":"اوكسجين سائل"
 },
 "LIQUID_OXYGEN_DESCRIPTION":{
 "description":"",
@@ -656,103 +697,107 @@
 },
 "LIQUOR":{
 "description":"",
-"message":"Liquor"
+"message":"خمور"
 },
 "LIVE_ANIMALS":{
 "description":"",
-"message":"Live Animals"
-},
-"LOCAL_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Local arm"
+"message":"حيوانات حية"
 },
 "LOCKED":{
-"description":"to lock a hyperspace target","message":"مقفل"
+"description":"to lock a hyperspace target",
+"message":"مقفل"
+},
+"LONGITUDE":{
+"description":"Longitude",
+"message":"Lon: %longitude"
 },
 "MAJOR_EXPORTS":{
 "description":"",
 "message":"الصادرات الرائدة"
 },
 "MAJOR_EXPORT_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in","message":"Major export (current system)"
+"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+"message":"صادرات رائدة (النظام الحالي)"
 },
 "MAJOR_IMPORTS":{
 "description":"",
-"message":"Major Imports:"
+"message":"الواردات الرائدة:"
 },
 "MAJOR_IMPORT_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in","message":"Major import (current system)"
+"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+"message":"واردات رائدة (النظام الحالي)"
 },
 "MANUAL_CONTROL":{
 "description":"",
-"message":"Manual control"
+"message":"تحكم يدوي"
 },
 "MANUAL_CONTROL_MODE":{
 "description":"",
-"message":"Manual control mode"
+"message":"تحكم يدوي"
 },
 "MAP_LOCK_HYPERSPACE_TARGET":{
 "description":"",
-"message":"Lock Hyperspace Target"
+"message":"تحديد هدف القذف"
 },
 "MAP_TOGGLE_INFO_PANEL":{
 "description":"",
-"message":"Toggle Info Panel"
+"message":"اظهار\\اخفاء لوحة المعلومات"
 },
 "MAP_TOGGLE_SELECTION_FOLLOW_VIEW":{
 "description":"",
-"message":"Toggle Selection Following View"
+"message":"تبديل اختيار وعقب المشاهدة"
 },
 "MAP_VIEW_ROTATE_DOWN":{
 "description":"",
-"message":"Rotate View Down"
+"message":"دوران العرض الى الاسفل"
 },
 "MAP_VIEW_ROTATE_LEFT":{
 "description":"",
-"message":"Rotate View Left"
+"message":"دوران العرض الى اليسار"
 },
 "MAP_VIEW_ROTATE_RIGHT":{
 "description":"",
-"message":"Rotate View Right"
+"message":"دوران العرض الى اليمين"
 },
 "MAP_VIEW_ROTATE_UP":{
 "description":"",
-"message":"Rotate View Up"
+"message":"دوران العرض الى الاعلى"
 },
 "MAP_VIEW_SHIFT_BACKWARD":{
 "description":"",
-"message":"Shift View Backwards"
+"message":"تحويل الروئية الى الوراء"
 },
 "MAP_VIEW_SHIFT_DOWN":{
 "description":"",
-"message":"Shift View Down"
+"message":"تحويل الروئية الى الاسفل"
 },
 "MAP_VIEW_SHIFT_FORWARD":{
 "description":"",
-"message":"Shift View Forwards"
+"message":"تحويل الروئية الى الامام"
 },
 "MAP_VIEW_SHIFT_LEFT":{
 "description":"",
-"message":"Shift View Left"
+"message":"تحويل الروئية الى اليسار"
 },
 "MAP_VIEW_SHIFT_RIGHT":{
 "description":"",
-"message":"Shift View Right"
+"message":"تحويل الروئية الى اليمين"
 },
 "MAP_VIEW_SHIFT_UP":{
 "description":"",
-"message":"Shift View Up"
+"message":"تحويل الروئية الى الاعلى"
 },
 "MAP_WARP_TO_CURRENT_SYSTEM":{
 "description":"",
-"message":"Warp to Current System"
+"message":"انتقل الى النظام الحالي"
 },
 "MAP_WARP_TO_HYPERSPACE_TARGET":{
 "description":"",
-"message":"Warp to Hyperspace Target"
+"message":"نقل الى هدف القذف"
 },
 "MAP_WARP_TO_SELECTED_SYSTEM":{
 "description":"",
-"message":"Warp to Selected System"
+"message":"انتقل الى النظام المحدد"
 },
 "MASS":{
 "description":"",
@@ -760,26 +805,27 @@
 },
 "MASSIVE":{
 "description":"",
-"message":"Massive"
+"message":"هائل"
 },
 "MASS_N_TONNES":{
 "description":"",
-"message":"Mass: %{mass}t"
+"message":"كتلة: "
 },
 "MEDICINES":{
 "description":"",
-"message":"Medicines"
+"message":"ادوية"
 },
 "MEDIUM_GAS_GIANT":{
 "description":"",
-"message":"Medium gas giant"
+"message":"كوكب غازي صخم"
 },
 "MESSAGE_FROM_X":{
 "description":"",
 "message":"رسالة من %sender:"
 },
 "META":{
-"description":"'Meta' key on keyboard","message":"Meta"
+"description":"'Meta' key on keyboard",
+"message":"Meta"
 },
 "METAL_ALLOYS":{
 "description":"",
@@ -795,7 +841,7 @@
 },
 "MILITARY_FUEL":{
 "description":"",
-"message":"Military fuel"
+"message":"وقود عسكري"
 },
 "MINING_COLONY":{
 "description":"",
@@ -807,21 +853,23 @@
 },
 "MINOR_EXPORTS":{
 "description":"",
-"message":"Minor Exports:"
+"message":"الصادرات الثانوية:"
 },
 "MINOR_EXPORT_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in","message":"Minor export (current system)"
+"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+"message":"صادرات ظفيفة (النظام الحالي)"
 },
 "MINOR_IMPORTS":{
 "description":"",
 "message":"واردات طفيفة:"
 },
 "MINOR_IMPORT_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in","message":"Minor import (current system)"
+"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+"message":"واردات ظفيفة (النظام الحالي)"
 },
 "MISCELLANEOUS":{
 "description":"",
-"message":"Miscellaneous"
+"message":"متفرقات"
 },
 "MISSILE":{
 "description":"",
@@ -829,11 +877,11 @@
 },
 "MIXED_ECONOMY":{
 "description":"",
-"message":"Mixed economy"
+"message":"اقتصاد مختلط"
 },
 "MONTH_APR":{
 "description":"",
-"message":"Apr"
+"message":"ابريل"
 },
 "MONTH_AUG":{
 "description":"",
@@ -857,7 +905,7 @@
 },
 "MONTH_JUN":{
 "description":"",
-"message":"Jun"
+"message":"يونيو"
 },
 "MONTH_MAR":{
 "description":"",
@@ -879,26 +927,17 @@
 "description":"",
 "message":"سبتمبر"
 },
-"MULTI_SCOOP":{
-"description":"A ship equipment: a cargo scoop and fuel scoop combined to one","message":"Multi Scoop"
-},
-"MULTI_SCOOP_DESCRIPTION":{
-"description":"",
-"message":"Although less effective than a fuel scoop it permits scooping of both cargo and fuel"
-},
-"MURDER":{
-"description":"",
-"message":"قتل"
-},
 "M_S_RELATIVE_TO":{
 "description":"",
-"message":"%speed{f.0} m/s rel-to %frame"
+"message":"%speed{f.0} م/ث الى %frame"
 },
 "NAME_OBJECT":{
-"description":"For an item or object","message":"Name"
+"description":"For an item or object",
+"message":"الاسم"
 },
 "NAME_PERSON":{
-"description":"For a person","message":"Name"
+"description":"For a person",
+"message":"الاسم"
 },
 "NARCOTICS":{
 "description":"",
@@ -906,29 +945,31 @@
 },
 "NAVIGATION_STAR_MAPS":{
 "description":"",
-"message":"Navigation and star maps"
+"message":"الملاحة وخرائط النجوم"
 },
 "NAVIGATION_TARGETS_IN_THIS_SYSTEM":{
 "description":"",
-"message":"Navigation targets in this system"
+"message":"اهداف الملاحة في هذا النظام"
 },
 "NERVE_GAS":{
 "description":"",
-"message":"Nerve Gas"
-},
-"NORMA_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Norma arm"
+"message":"غاز عصب"
 },
 "NOT_FOUND":{
-"description":"searching star system in sector view","message":"لم يتم العثور"
+"description":"searching star system in sector view",
+"message":"لم يتم العثور"
 },
 "NOT_FOUND_BEST_MATCH_X":{
 "description":"",
 "message":"لم يتم العثور, افضل مطابقة: %system"
 },
+"NOW":{
+"description":"In System Orbit View",
+"message":"Now"
+},
 "NO_ALERT":{
 "description":"",
-"message":"No alert"
+"message":"لا تحذير"
 },
 "NO_CENTRAL_GOVERNANCE":{
 "description":"",
@@ -948,27 +989,31 @@
 },
 "NO_TARGET_SELECTED":{
 "description":"",
-"message":"Ship Computer: No target selected"
+"message":"حاسوب السفينة: لا يوجد هدف محدد"
 },
 "NUMBER_DAYS":{
 "description":"",
 "message":"%days{f.0} يوم"
 },
 "NUMBER_DECIMAL_POINT":{
-"description":"Decimal delimiter used in numbers.","message":"."
+"description":"Decimal delimiter used in numbers.",
+"message":"."
 },
 "NUMBER_G":{
 "description":"",
 "message":"%acceleration{f.1} G"
 },
 "NUMBER_GROUP_MIN":{
-"description":"Smallest number to start grouping of digits for. (E.g. if \"10000\" start grouping thousands with 10,000, and not 1,000).","message":"1000"
+"description":"Smallest number to start grouping of digits for. (E.g. if \"10000\" start grouping thousands with 10,000, and not 1,000).",
+"message":"1000"
 },
 "NUMBER_GROUP_NUM":{
-"description":"For large number, group digits by this many. European languages use 3 (group thousands). 0 means no grouping.","message":"3"
+"description":"For large number, group digits by this many. European languages use 3 (group thousands). 0 means no grouping.",
+"message":"3"
 },
 "NUMBER_GROUP_SEP":{
-"description":"For large number, separator used when grouping digits. E.g. 1,000 or 1 000 or 1'000.","message":","
+"description":"For large number, separator used when grouping digits. E.g. 1,000 or 1 000 or 1'000.",
+"message":","
 },
 "NUMBER_HOURS":{
 "description":"",
@@ -992,7 +1037,7 @@
 },
 "N_DAYS":{
 "description":"",
-"message":"%days{f.1} days"
+"message":"%days{f.1} يوم"
 },
 "N_DEGREES":{
 "description":"",
@@ -1004,14 +1049,15 @@
 },
 "N_EARTH_DAYS":{
 "description":"",
-"message":"%days{f.1} earth days"
+"message":"%days{f.1} يوم ارضي"
 },
 "N_WHATEVER_MASSES":{
 "description":"",
-"message":"%mass{f.3} %units masses"
+"message":"%mass{f.3} %units كتلة"
 },
 "N_WHATEVER_RADII":{
-"description":"Used in system info view. E.g. for Barnard's star: \"0.17 Solar radii (118235 km)\"","message":"%radius{f.3} %units radii (%radkm{f.0} km)"
+"description":"Used in system info view. E.g. for Barnard's star: \"0.17 Solar radii (118235 km)\"",
+"message":"%radius{f.3} %units radii (%radkm{f.0} كم)"
 },
 "N_YEARS":{
 "description":"",
@@ -1019,15 +1065,15 @@
 },
 "O2_ATMOSPHERE":{
 "description":"",
-"message":"\" Oxygen atmosphere\""
+"message":"\" غلاف جوي مكون من اكسجين\""
 },
 "OCEANICWORLD":{
 "description":"",
-"message":"\" oceanic world\""
+"message":"\" عالم محيطي\""
 },
 "ORBITAL_PERIOD":{
 "description":"",
-"message":"Orbital period"
+"message":"مدة الدوران"
 },
 "ORBITAL_STARPORT":{
 "description":"",
@@ -1037,12 +1083,9 @@
 "description":"",
 "message":"العالم الزراعي الخارجي"
 },
-"OUTER_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Outer arm"
-},
 "OVER_N_BILLION":{
 "description":"",
-"message":"Over %population billion"
+"message":"اكثر من %population بليون"
 },
 "OVER_N_MILLION":{
 "description":"",
@@ -1064,16 +1107,9 @@
 "description":"",
 "message":"Periapsis distance"
 },
-"PERSEUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"ذرع الغول"
-},
 "PIONEER":{
 "description":"",
 "message":"PIONEER"
-},
-"PIRACY":{
-"description":"",
-"message":"قرصنة"
 },
 "PITCH":{
 "description":"",
@@ -1093,7 +1129,7 @@
 },
 "PLANET_CONTAINING_LIQUID_WATER":{
 "description":"",
-"message":"\" planet containing liquid water\""
+"message":"\" كوكب يحتوي على ماء سائل\""
 },
 "PLANET_WITH_SOME_ICE":{
 "description":"",
@@ -1104,19 +1140,24 @@
 "message":"اقتصاد مخطط مركزي"
 },
 "PLANNER_RESET_FACTOR":{
-"description":"For system orbit view","message":"Rate of increase of delta-v values. Click to reset to default."
+"description":"For system orbit view",
+"message":"معدل الزيادة في قيم دلتا-V. انقر لإعادة تعيين إلى الافتراضي."
 },
 "PLANNER_RESET_NORMAL":{
-"description":"For system orbit view","message":"Normal delta-v. Click to reset to zero."
+"description":"For system orbit view",
+"message":"طبيعي دلتا-V. انقر لإعادة تعيين إلى صفر."
 },
 "PLANNER_RESET_PROGRADE":{
-"description":"For system orbit view","message":"Prograde delta-v. Click to reset to zero."
+"description":"For system orbit view",
+"message":"Prograde delta-v. Click to reset to zero."
 },
 "PLANNER_RESET_RADIAL":{
-"description":"For system orbit view","message":"Radial delta-v. Click to reset to zero."
+"description":"For system orbit view",
+"message":"شعاعي دلتا-V. انقر لإعادة تعيين إلى صفر."
 },
 "PLANNER_RESET_START":{
-"description":"For system orbit view","message":"Maneuver start. Click to reset to default."
+"description":"For system orbit view",
+"message":"مناورة بدئية. انقر لاعادة تعيين الى الافتراضي."
 },
 "PLASTICS":{
 "description":"",
@@ -1126,17 +1167,13 @@
 "description":"",
 "message":"دكتاتورية"
 },
-"POLICE_SHIP_REGISTRATION":{
-"description":"",
-"message":"POLICE"
-},
 "POPULATION":{
 "description":"",
 "message":"الشعبية:"
 },
 "PRECIOUS_METALS":{
 "description":"",
-"message":"Precious metals"
+"message":"معادن ثمينة"
 },
 "PRESSURE_N_ATMOSPHERES":{
 "description":"",
@@ -1148,7 +1185,7 @@
 },
 "QUADRUPLE_SYSTEM":{
 "description":"",
-"message":"Quadruple system"
+"message":"نظام رباعي"
 },
 "RADIOACTIVES":{
 "description":"",
@@ -1160,7 +1197,7 @@
 },
 "RECENTLY_EXPLORED_SYSTEM":{
 "description":"",
-"message":"This system was explored on %date."
+"message":"هذا النظام اكتشف في: %date."
 },
 "REQUEST_DOCKING_CLEARANCE":{
 "description":"",
@@ -1172,7 +1209,7 @@
 },
 "RESET_ORIENTATION_AND_ZOOM":{
 "description":"",
-"message":"Reset Orientation and Zoom"
+"message":"اعادة التوجية و التكبير"
 },
 "ROBOTS":{
 "description":"",
@@ -1200,7 +1237,7 @@
 },
 "ROTATE_DOWN":{
 "description":"",
-"message":"Rotate Down"
+"message":"الدوران الى الاسفل"
 },
 "ROTATE_LEFT":{
 "description":"",
@@ -1208,7 +1245,7 @@
 },
 "ROTATE_RIGHT":{
 "description":"",
-"message":"Rotate Right"
+"message":"الاتفاف الى اليمين"
 },
 "ROTATE_UP":{
 "description":"",
@@ -1220,32 +1257,27 @@
 },
 "ROTATION_DAMPING_OFF":{
 "description":"",
-"message":"Rotation damping off"
+"message":"تناوب سقوط غير مفعل"
 },
 "ROTATION_DAMPING_ON":{
 "description":"",
-"message":"Rotation damping on"
+"message":"تفعيل الدوران"
 },
 "RUBBISH":{
 "description":"",
 "message":"قمامة"
 },
-"SAGITTARIUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Sagittarius arm"
-},
 "SCANNER_CONTROL":{
 "description":"",
-"message":"Scanner control"
+"message":"تحكم الماسح"
 },
 "SCOOP":{
-"description":"Is followed by a number, repersenting scoop mounts/slots available to fit cargo scoop and/or fuel scoop","message":"Scoop"
+"description":"Is followed by a number, repersenting scoop mounts/slots available to fit cargo scoop and/or fuel scoop",
+"message":"مغرفة بضائع"
 },
 "SCREENSHOT_FILENAME_TEMPLATE":{
 "description":"",
 "message":"screenshot%index{d08}.png"
-},
-"SCUTUM_CENTAURUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":" Scutum-Centaurus arm"
 },
 "SEARCH":{
 "description":"",
@@ -1253,7 +1285,7 @@
 },
 "SEARCH_MAP":{
 "description":"",
-"message":"Search Map"
+"message":"بحث الخريطة"
 },
 "SECTOR_COORDINATES":{
 "description":"",
@@ -1261,7 +1293,7 @@
 },
 "SECTOR_MAP_VIEW":{
 "description":"",
-"message":"Sector Map View"
+"message":"عرض خارطة القطاع"
 },
 "SECTOR_X_Y_Z":{
 "description":"",
@@ -1293,11 +1325,11 @@
 },
 "SET_LOW_THRUST_POWER_LEVEL_TO_X_PERCENT":{
 "description":"",
-"message":"Set low thrust power level to %power%%"
+"message":"تعيين مستوى منخفض القوة الدافعة الى %power%%"
 },
 "SET_NAVTARGET_TO":{
 "description":"",
-"message":"Set navigation target to: "
+"message":"تحديد هدف التجوال الى:"
 },
 "SET_SPEED_KM_S":{
 "description":"",
@@ -1305,37 +1337,43 @@
 },
 "SET_SPEED_M_S":{
 "description":"",
-"message":"Set speed: %speed{f.0} m/s"
+"message":"ثبت السرعة: %speed{f.0} م/ث"
 },
 "SHIELD_INTEGRITY":{
 "description":"",
-"message":"Shield integrity"
+"message":"سلامة الدرع"
 },
 "SHIELD_STRENGTH_N":{
 "description":"",
-"message":"Shield strength: %shields{f.2}"
+"message":"قوة الدرع: %shields{f.2}"
 },
 "SHIFT":{
-"description":"Shift key on keyboard","message":"بدل"
+"description":"Shift key on keyboard",
+"message":"بدل"
 },
 "SHIP":{
 "description":"",
 "message":"سفينة"
 },
 "SHIPS_DISPLAY_MODE_TOGGLE":{
-"description":"Either show no ships, show ships, or show ships + their orbits","message":"Switch between ship display modes."
+"description":"Either show no ships, show ships, or show ships + their orbits",
+"message":"تغيير وضع عرض السفينة."
 },
 "SHIP_ALTITUDE_ABOVE_TERRAIN":{
 "description":"",
-"message":"Ship altitude above terrain"
+"message":"ارتفاع السفينة فوق الارض"
 },
 "SHIP_DETECTED_NEARBY":{
 "description":"",
 "message":"تم رصد مركبة قريبة"
 },
+"SHIP_GEOGRAPHIC_POSITION":{
+"description":"",
+"message":"Ship Geographic Position"
+},
 "SHIP_INFORMATION":{
 "description":"",
-"message":"Ship information"
+"message":"معلومات السفينة"
 },
 "SHIP_MASS_N_TONNES":{
 "description":"",
@@ -1347,14 +1385,15 @@
 },
 "SHIP_ORIENTATION":{
 "description":"",
-"message":"Ship orientation"
+"message":"اتجاة السفينة"
 },
 "SHIP_VELOCITY_BY_REFERENCE_OBJECT":{
 "description":"",
-"message":"Ship velocity by reference object"
+"message":"سرعة السفينة بسبب جسم مرجح"
 },
 "SIDEREAL_VIEW":{
-"description":"camera view setting","message":"رؤية جانبية"
+"description":"camera view setting",
+"message":"رؤية جانبية"
 },
 "SIMULATING_UNIVERSE_EVOLUTION_N_BYEARS":{
 "description":"",
@@ -1378,11 +1417,11 @@
 },
 "SMALL_SCALE_PROSPECTING_NO_SETTLEMENTS":{
 "description":"",
-"message":"Small-scale prospecting. No registered settlements."
+"message":"تنقيب على نطاق صغير. لا مستوطنات مسجلة."
 },
 "SOCIAL_DEMOCRACY":{
 "description":"",
-"message":"الديمقراطية الاتماعية"
+"message":"الديمقراطية الاجتماعية"
 },
 "SOLAR":{
 "description":"",
@@ -1393,7 +1432,8 @@
 "message":"عمليات بحث عم معادن معترف بها"
 },
 "SOURCE":{
-"description":"tell source system of hyperjump entry cloud","message":"الأصل"
+"description":"tell source system of hyperjump entry cloud",
+"message":"الأصل"
 },
 "SPEED_CONTROL_MODE":{
 "description":"",
@@ -1401,15 +1441,15 @@
 },
 "STABLE_SYSTEM_WITH_N_MAJOR_BODIES_STARPORTS":{
 "description":"",
-"message":"Stable system with %bodycount major %{body(s)} and %portcount %{starport(s)}"
+"message":"نظام مستقر مع %bodycount رئيسي %{body(s)} و %portcount %{starport(s)}"
 },
 "STARPORT":{
 "description":"",
-"message":"Starport"
+"message":"محطة فضائية"
 },
 "STARPORTS":{
 "description":"",
-"message":"Starports"
+"message":"محطات فضائية"
 },
 "STAR_A":{
 "description":"",
@@ -1421,11 +1461,11 @@
 },
 "STAR_AF_HYPER_GIANT":{
 "description":"",
-"message":"White hyper giant star"
+"message":"نجم ابيض متوهج ضخم"
 },
 "STAR_AF_SUPER_GIANT":{
 "description":"",
-"message":"White super giant star"
+"message":"نجم ابيض خارق ضخم"
 },
 "STAR_B":{
 "description":"",
@@ -1449,7 +1489,7 @@
 },
 "STAR_F":{
 "description":"",
-"message":"Type 'F' white star"
+"message":"نوع 'F' نجم ابيض"
 },
 "STAR_G":{
 "description":"",
@@ -1469,7 +1509,7 @@
 },
 "STAR_IM_BH":{
 "description":"",
-"message":"An intermediate-mass black hole"
+"message":"تقب اسود متوسط الكتلة"
 },
 "STAR_K":{
 "description":"",
@@ -1493,19 +1533,19 @@
 },
 "STAR_M_GIANT":{
 "description":"",
-"message":"Red giant star"
+"message":"نجم احمر ضخم"
 },
 "STAR_M_HYPER_GIANT":{
 "description":"",
-"message":"Red hyper giant star"
+"message":"نجم احمر ضخم متوهج"
 },
 "STAR_M_SUPER_GIANT":{
 "description":"",
-"message":"Red super giant star"
+"message":"نجم احمر خارق ضخم"
 },
 "STAR_M_WF":{
 "description":"",
-"message":"Wolf-Rayet star - Unstable"
+"message":"نجم وولف رايت - غير مستقر"
 },
 "STAR_O":{
 "description":"",
@@ -1513,7 +1553,7 @@
 },
 "STAR_O_GIANT":{
 "description":"",
-"message":"Hot Blue giant star"
+"message":"نجم ازرق حار ضخم"
 },
 "STAR_O_HYPER_GIANT":{
 "description":"",
@@ -1521,15 +1561,15 @@
 },
 "STAR_O_SUPER_GIANT":{
 "description":"",
-"message":"Hot Blue super giant star"
+"message":"نجم ازرق خارق ضخم"
 },
 "STAR_O_WF":{
 "description":"",
-"message":"Wolf-Rayet star - Imminent collapse"
+"message":"نجم وولف رايت - انهيار وشيك"
 },
 "STAR_SM_BH":{
 "description":"",
-"message":"Our galactic anchor"
+"message":"مرساة المجرة"
 },
 "STAR_SYSTEM_INFORMATION":{
 "description":"",
@@ -1541,7 +1581,7 @@
 },
 "SUGGESTED_RESPONSES":{
 "description":"",
-"message":"Suggested responses:"
+"message":"ردود مقترحة:"
 },
 "SURFACE_GRAVITY":{
 "description":"",
@@ -1552,13 +1592,16 @@
 "message":"درجة حرارة السطح"
 },
 "SWITCHED_TO_PARENT":{
-"description":"Show ship's heading, coordinates are on the celestial sphere (defined by the ecliptic).","message":"Switched heading display to system-wide coordinates."
+"description":"Show ship's heading, coordinates are on the celestial sphere (defined by the ecliptic).",
+"message":"تم تغيير العرض الى احداثيات النظام."
 },
 "SWITCHED_TO_ROTATIONAL":{
-"description":"Show ship's heading in planetary coordinates. heading 0 = north, 90 = east, 180 = south, 270 = west.","message":"Switched heading display to planetary coordinates."
+"description":"Show ship's heading in planetary coordinates. heading 0 = north, 90 = east, 180 = south, 270 = west.",
+"message":"تم تغيير العرض الى احداثيات الكواكب."
 },
 "SYSTEM":{
-"description":"star system","message":"System"
+"description":"star system",
+"message":"نظام"
 },
 "SYSTEM_NUMBER":{
 "description":"",
@@ -1566,26 +1609,27 @@
 },
 "SYSTEM_ORBIT_VIEW":{
 "description":"",
-"message":"System orbit view"
+"message":"عرض محور دوران النظام"
 },
 "SYSTEM_TYPE":{
 "description":"",
-"message":"System type:"
+"message":"نوع النظام:"
 },
 "S_ATMOSPHERE":{
 "description":"",
-"message":"\" Sulfuric atmosphere\""
+"message":"\" غلاف جوي مكون من غاز الكبريتيك\""
 },
 "TAKEOFF":{
 "description":"",
-"message":"Takeoff"
+"message":"اقلاع"
 },
 "TARGET_OBJECT_IN_SIGHTS":{
 "description":"",
 "message":"تحديد الهدف على نقطة التسديد"
 },
 "TENUOUS":{
-"description":"atmosphere thickness","message":"tenuous"
+"description":"atmosphere thickness",
+"message":"ضعيف"
 },
 "TEXTILES":{
 "description":"",
@@ -1599,16 +1643,13 @@
 "description":"",
 "message":"رقيق"
 },
-"THREE_KPC_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"3kpc arm"
-},
 "THRIVING_OUTDOOR_WORLD":{
 "description":"",
 "message":"عالم خارجي مزدهر."
 },
 "THRUSTER_DORSAL":{
 "description":"",
-"message":"Thrust down"
+"message":"دفع الى الاسفل"
 },
 "THRUSTER_MAIN":{
 "description":"",
@@ -1620,7 +1661,7 @@
 },
 "THRUSTER_RETRO":{
 "description":"",
-"message":"Thrust backwards"
+"message":"دفع الى الخلف"
 },
 "THRUSTER_STARBOARD":{
 "description":"",
@@ -1638,9 +1679,13 @@
 "description":"",
 "message":"صغير"
 },
+"TOGGLE_EQUIPMENT_VIEW":{
+"description":"Tooltip for the Equipment View button",
+"message":"Equipment View"
+},
 "TOGGLE_HUD_MODE":{
 "description":"",
-"message":"Toggle HUD mode"
+"message":"تبديل وضع HUD"
 },
 "TOGGLE_LUA_CONSOLE":{
 "description":"",
@@ -1650,12 +1695,17 @@
 "description":"",
 "message":"تفعيل/تعطيل الدوران"
 },
+"TOGGLE_SCANNER_VIEW":{
+"description":"Tooltip for the Scanner View button",
+"message":"Scanner View"
+},
 "TOGGLE_SCAN_MODE":{
 "description":"",
 "message":"تشغيل/تعطيل وضع الردار"
 },
 "TOMBSTONE_EPITAPH":{
-"description":"shown on tombstone when player dies","message":"RIP OLD BEAN"
+"description":"shown on tombstone when player dies",
+"message":"RIP OLD BEAN"
 },
 "TRADING_ILLEGAL_GOODS":{
 "description":"",
@@ -1665,13 +1715,17 @@
 "description":"",
 "message":"نظام ثلاثي"
 },
+"UNDOCKING":{
+"description":"Flight state of ship when leaving station",
+"message":"Undocking"
+},
 "UNEXPLORED_SYSTEM_NO_DATA":{
 "description":"",
 "message":"النظام غير مستكشفة. لا توجد بيانات أخرى متوفرة."
 },
 "UNEXPLORED_SYSTEM_NO_SYSTEM_VIEW":{
 "description":"",
-"message":"Unexplored system. System view unavailable."
+"message":"نظام غير مكتشف. لا يوجد عرض."
 },
 "UNEXPLORED_SYSTEM_STAR_INFO_ONLY":{
 "description":"",
@@ -1681,13 +1735,9 @@
 "description":"",
 "message":"<unknown>"
 },
-"UNLAWFUL_WEAPONS_DISCHARGE":{
-"description":"",
-"message":"تفريغ الأسلحة غير المشروعة"
-},
 "UNSET_NAVTARGET":{
 "description":"",
-"message":"Unset navigation target."
+"message":"هدف تجوال غير محدد."
 },
 "USE_LOW_THRUST":{
 "description":"",
@@ -1695,7 +1745,7 @@
 },
 "VAST_STRIP_MINE":{
 "description":"",
-"message":"Vast strip-mining colony."
+"message":"مستعمرة قطاع التعدين."
 },
 "VERY_DENSE":{
 "description":"",
@@ -1719,11 +1769,11 @@
 },
 "WEAPONS":{
 "description":"",
-"message":"Weapons"
+"message":"اسلحة"
 },
 "WEAPON_TEMP":{
 "description":"",
-"message":"Weapon temp"
+"message":"حرارة السلاح"
 },
 "WHEELS_ARE_DOWN":{
 "description":"",
@@ -1731,7 +1781,7 @@
 },
 "WHEELS_ARE_UP":{
 "description":"",
-"message":"Wheels are up"
+"message":"تم خفض العجلات"
 },
 "WHITE_DWARF":{
 "description":"",
@@ -1746,14 +1796,12 @@
 "message":"\" لا يوجد غلاف جوي\""
 },
 "X":{
-"description":"keybinding: x axis","message":"X"
-},
-"X_CANNOT_BE_TOLERATED_HERE":{
-"description":"",
-"message":"لا يمكن التسامح مع %crime"
+"description":"keybinding: x axis",
+"message":"X"
 },
 "Y":{
-"description":"keybinding: y axis","message":"Y"
+"description":"keybinding: y axis",
+"message":"Y"
 },
 "YAW":{
 "description":"",
@@ -1761,11 +1809,11 @@
 },
 "YAW_LEFT":{
 "description":"",
-"message":"Yaw left"
+"message":"انعراج لليسار"
 },
 "YAW_RIGHT":{
 "description":"",
-"message":"Yaw right"
+"message":"انعراج الى اليمين"
 },
 "YOUNG_FARMING_COLONY":{
 "description":"",
@@ -1776,11 +1824,12 @@
 "message":"انت لا تملك اية مال"
 },
 "Z":{
-"description":"keybinding: z axis","message":"Z"
+"description":"keybinding: z axis",
+"message":"Z"
 },
 "ZOOM_IN":{
 "description":"",
-"message":"Zoom in"
+"message":"تقريب"
 },
 "ZOOM_OUT":{
 "description":"",

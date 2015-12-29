@@ -204,16 +204,11 @@ local makeAdvert = function (station)
 	local currentBody
 -- local system
 	if flavours[flavour].localscout == true then
-		local localbodies = Game.system:GetBodyPaths()
-		local checkedBodies = 0
-		while checkedBodies <= #localbodies do
-			location = localbodies[Engine.rand:Integer(1,#localbodies)]
-			currentBody = location:GetSystemBody()
-			if currentBody.superType == "ROCKY_PLANET"
-				and currentBody.type ~= "PLANET_ASTEROID"
-			then break end
-			checkedBodies = checkedBodies + 1
-		end
+
+		local localbodies = _localPlanetsWithoutStations
+		if #localbodies == 0 then return end
+		location = localbodies[Engine.rand:Integer(1,#localbodies)]
+		currentBody = location:GetSystemBody()
 		if not currentBody or currentBody.superType ~= "ROCKY_PLANET" then return end
 		local dist = station:DistanceTo(Space.GetBody(location.bodyIndex))
 		if dist < 1000 then return end
@@ -221,7 +216,7 @@ local makeAdvert = function (station)
 		due = Game.time + ((4*24*60*60) * (Engine.rand:Number(1.5,3.5) - urgency))
 	else
 -- remote system
-		local remotesystems =	Game.system:GetNearbySystems(max_dist,
+		local remotesystems = Game.system:GetNearbySystems(max_dist,
 			function (s) return #s:GetBodyPaths() > 0 and s.population == 0 end)
 		if #remotesystems == 0 then return end
 		remotesystem = remotesystems[Engine.rand:Integer(1,#remotesystems)]
@@ -280,6 +275,7 @@ end
 
 local onCreateBB = function (station)
 	local num = Engine.rand:Integer(math.ceil(Game.system.population))
+	if num > 3 then num = 3 end
 	for i = 1,num do
 		makeAdvert(station)
 	end
@@ -354,8 +350,7 @@ local start_mapping = function(mission)
 -- decide destino de entrega estaciones remotas - no locales
 
 				if mission.localscout == false
-					and (((mission.faction == faction.name)
-					and Engine.rand:Integer(2) > 1)
+					and (((mission.faction == faction.name) and Engine.rand:Integer(2) > 1)
 					or Engine.rand:Integer(2) > 1)
 				then
 					local remotestations =
@@ -482,6 +477,8 @@ local onGameStart = function ()
 		missions = loaded_data.missions
 		loaded_data = nil
 	end
+
+	if not Game.player.frameBody then return end
 
 	for ref,mission in pairs(missions) do
 		if mission.location == Game.player.frameBody.path then

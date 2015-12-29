@@ -67,7 +67,10 @@ RendererOGL::RendererOGL(WindowSDL *window, const Graphics::Settings &vs)
 		initted = true;
 
 		if (!ogl_LoadFunctions())
-			Error("glLoadGen failed to load functions.\n");
+			Error(
+				"Pioneer can not run on your graphics card as it does not appear to support OpenGL 3.3\n"
+				"Please check to see if your GPU driver vendor has an updated driver - or that drivers are installed correctly."
+			);
 
 		if (ogl_ext_EXT_texture_compression_s3tc == ogl_LOAD_FAILED)
 			Error(
@@ -100,6 +103,15 @@ RendererOGL::RendererOGL(WindowSDL *window, const Graphics::Settings &vs)
 
 	if (vs.enableDebugMessages)
 		GLDebug::Enable();
+
+	// check enum PrimitiveType matches OpenGL values
+	assert(POINTS == GL_POINTS);
+	assert(LINE_SINGLE == GL_LINES);
+	assert(LINE_LOOP == GL_LINE_LOOP);
+	assert(LINE_STRIP == GL_LINE_STRIP);
+	assert(TRIANGLES == GL_TRIANGLES);
+	assert(TRIANGLE_STRIP == GL_TRIANGLE_STRIP);
+	assert(TRIANGLE_FAN == GL_TRIANGLE_FAN);
 }
 
 RendererOGL::~RendererOGL()
@@ -527,6 +539,11 @@ bool RendererOGL::DrawTriangles(const VertexArray *v, RenderState *rs, Material 
 		vbd.attrib[attribIdx].format	= ATTRIB_FORMAT_FLOAT2;
 		++attribIdx;
 	}
+	if (v->HasAttrib(ATTRIB_TANGENT)) {
+		vbd.attrib[attribIdx].semantic = ATTRIB_TANGENT;
+		vbd.attrib[attribIdx].format = ATTRIB_FORMAT_FLOAT3;
+		++attribIdx;
+	}
 	vbd.numVertices = v->position.size();
 	vbd.usage = BUFFER_USAGE_STATIC;
 	
@@ -698,6 +715,9 @@ Material *RendererOGL::CreateMaterial(const MaterialDescriptor &d)
 		break;
 	case EFFECT_GEOSPHERE_SKY:
 		mat = new OGL::GeoSphereSkyMaterial();
+		break;
+	case EFFECT_GEOSPHERE_STAR:
+		mat = new OGL::GeoSphereStarMaterial();
 		break;
 	case EFFECT_FRESNEL_SPHERE:
 		mat = new OGL::FresnelColourMaterial();

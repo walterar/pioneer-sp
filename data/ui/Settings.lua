@@ -121,9 +121,14 @@ ui.templates.Settings = function (args)
 			Engine.GetCockpitEnabled, Engine.SetCockpitEnabled,
 			l.ENABLE_COCKPIT)
 
+		local enableAutosave = optionCheckBox(
+			Engine.GetAutosaveEnabled, Engine.SetAutosaveEnabled,
+			l.ENABLE_AUTOSAVE)
+
 		local fullScreenCheckBox = optionCheckBox(
 			Engine.GetFullscreen, Engine.SetFullscreen,
 			l.FULL_SCREEN)
+
 		local capt = l.STAR_FIELD_DENSITY or "Density of Star field"
 		local starDensity = function (caption, getter, setter)
 			local initial_value = getter()
@@ -154,6 +159,7 @@ ui.templates.Settings = function (args)
 				speedLinesCheckBox,
 				hudTrailsCheckBox,
 				cockpitCheckBox,
+				enableAutosave,
 				compactScannerCheckBox,
 				confirmQuit,
 				starDensity(capt, Engine.GetAmountStars, Engine.SetAmountStars),

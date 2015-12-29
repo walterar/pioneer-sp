@@ -8,7 +8,8 @@
 "message":"Before this date:"
 },
 "CONTACT":{
-"description":"agent of contractor","message":"Contact:"
+"description":"agent of contractor",
+"message":"Contact:"
 },
 "CONTRACTOR":{
 "description":"",
@@ -41,6 +42,10 @@
 "FAILURE_3":{
 "description":"",
 "message":"{org} laments his failure in the case {target}, you have lost {cash}."
+},
+"HOSTILE_SHIPS_APPROACHING":{
+"description":"",
+"message":" hostile ships approaching."
 },
 "HOW_SOON_MUST_IT_BE_DONE":{
 "description":"",
@@ -103,7 +108,8 @@
 "message":"Cleaning Galactic Ltd."
 },
 "ORG_5":{
-"description":"Hitman & Hitman Inc.","message":"Hitman & Hitman Inc."
+"description":"Hitman & Hitman Inc.",
+"message":"Hitman & Hitman Inc."
 },
 "PAID_SITE":{
 "description":"",
@@ -280,6 +286,10 @@
 "TITLE_9":{
 "description":"",
 "message":"Lawyer"
+},
+"WARNING":{
+"description":"",
+"message":"Warning! "
 },
 "WHERE_CAN_I_FIND_X":{
 "description":"",

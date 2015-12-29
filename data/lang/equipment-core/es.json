@@ -31,6 +31,14 @@
 "description":"",
 "message":"Computadora de combate de a bordo."
 },
+"BEACON_RECEIVER":{
+"description":"",
+"message":"Receptor de Radiobaliza"
+},
+"BEACON_RECEIVER_DESCRIPTION":{
+"description":"",
+"message":"Ampliación por software para Radar Mapeador o Radar Mapeador Extendido, de gran ayuda en misiones de rescate."
+},
 "CARGO_LIFE_SUPPORT":{
 "description":"",
 "message":"Soporte Vital"
@@ -208,19 +216,12 @@
 "message":"Cabina de Pasajeros Ocupada"
 },
 "PLANETSCANNER":{
-"description":"Scans the nearest body for resources","message":"Escáner de cuerpo"
+"description":"Scans the nearest body for resources",
+"message":"Escáner de cuerpo"
 },
 "PLANETSCANNER_DESCRIPTION":{
 "description":"",
 "message":"Escanea el cuerpo más cercano en busca de recursos."
-},
-"PROP_CONVERTER":{
-"description":"",
-"message":"Conversor de propelente"
-},
-"PROP_CONVERTER_DESCRIPTION":{
-"description":"",
-"message":"Convertidor que permite el uso de hidrógeno en lugar de agua como propelente"
 },
 "PULSECANNON_10MW":{
 "description":"",

@@ -84,8 +84,8 @@
 "message":"自动飞行已打开"
 },
 "AUTO_COMBAT":{
-"description":"An autopilot of combat",
-"message":"Auto Combat Yes/No"
+"description":"",
+"message":"开启/关闭自动战斗"
 },
 "AXIAL_TILT":{
 "description":"",
@@ -291,6 +291,10 @@
 "description":"",
 "message":"减小设定速度"
 },
+"DECREASE_TIME_ACCELERATION":{
+"description":"",
+"message":"Decrease Time Acceleration"
+},
 "DEMOGRAPHICS":{
 "description":"",
 "message":"人口统计"
@@ -325,7 +329,7 @@
 },
 "DOWNGRADING_ALERT_STATUS":{
 "description":"",
-"message":"60秒内未检测到开火,警报等级下降."
+"message":"30秒内未检测到开火,警报等级下降."
 },
 "DRAW_OUT_RANGE_LABELS":{
 "description":"",
@@ -433,7 +437,7 @@
 },
 "GAME_LOAD_CANNOT_OPEN":{
 "description":"",
-"message":"此游戏文件由于权限或其它问题无法打开..."
+"message":"'%filename' 此游戏文件由于权限或其它问题无法打开..."
 },
 "GAME_LOAD_CORRUPT":{
 "description":"",
@@ -551,17 +555,17 @@
 "description":"",
 "message":"超空间出发云"
 },
-"HYPERSPACE_JUMP_ABORT" : {
-"description" : "Mouse over text for hyperdrive button on ship control panel",
-"message" : "Abort Hyperjump"
-},
-"HYPERSPACE_JUMP_ENGAGE" : {
-"description" : "Mouse over text for hyperdrive button on ship control panel",
-"message" : "Start Hyperjump"
+"HYPERSPACE_JUMP_ABORT":{
+"description":"Mouse over text for hyperdrive button on ship control panel",
+"message":"Disengage Hyperdrive"
 },
 "HYPERSPACE_JUMP_ABORTED":{
 "description":"",
 "message":"超空间跳跃中止."
+},
+"HYPERSPACE_JUMP_ENGAGE":{
+"description":"Mouse over text for hyperdrive button on ship control panel",
+"message":"Engage Hyperdrive"
 },
 "HYPERSPACE_TARGET":{
 "description":"",
@@ -598,6 +602,10 @@
 "INCREASE_SET_SPEED":{
 "description":"",
 "message":"增加设定速度"
+},
+"INCREASE_TIME_ACCELERATION":{
+"description":"",
+"message":"Increase Time Acceleration"
 },
 "INDUSTRIAL_COLONY":{
 "description":"",
@@ -643,6 +651,10 @@
 "description":"",
 "message":"%speed{f.2} km/s 相对于 %frame"
 },
+"L4L5_DISPLAY_MODE_TOGGLE":{
+"description":"Either show L4/L5 points or don't",
+"message":"Switch between Lagrange L4/L5 point display modes."
+},
 "LANDED":{
 "description":"",
 "message":"着陆"
@@ -662,6 +674,10 @@
 "LASER_FIRE_DETECTED":{
 "description":"",
 "message":"侦测到激光发射."
+},
+"LATITUDE":{
+"description":"Latitude",
+"message":"纬度: %latitude"
 },
 "LEGAL_CURRENT_SYSTEM":{
 "description":"Short (tooltip) description of commodity (singular) status in the system the player is currently in",
@@ -687,13 +703,13 @@
 "description":"",
 "message":"活动物"
 },
-"LOCAL_ARM":{
-"description":"Arm of the Milky Way galaxy",
-"message":"猎户臂"
-},
 "LOCKED":{
 "description":"to lock a hyperspace target",
 "message":"锁定"
+},
+"LONGITUDE":{
+"description":"Longitude",
+"message":"经度: %longitude"
 },
 "MAJOR_EXPORTS":{
 "description":"",
@@ -911,18 +927,6 @@
 "description":"",
 "message":"九月"
 },
-"MULTI_SCOOP":{
-"description":"A ship equipment: a cargo scoop and fuel scoop combined to one",
-"message":"联合收集器"
-},
-"MULTI_SCOOP_DESCRIPTION":{
-"description":"",
-"message":"虽然收集效率不及燃料收集器, 但它却可以同时收集燃料和货物"
-},
-"MURDER":{
-"description":"",
-"message":"谋杀"
-},
 "M_S_RELATIVE_TO":{
 "description":"",
 "message":"%speed{f.0} m/s 相对于 %frame"
@@ -951,10 +955,6 @@
 "description":"",
 "message":"神经毒气"
 },
-"NORMA_ARM":{
-"description":"Arm of the Milky Way galaxy",
-"message":"天鹅臂"
-},
 "NOT_FOUND":{
 "description":"searching star system in sector view",
 "message":"未找到"
@@ -962,6 +962,10 @@
 "NOT_FOUND_BEST_MATCH_X":{
 "description":"",
 "message":"未找到,最相近的匹配: %system"
+},
+"NOW":{
+"description":"In System Orbit View",
+"message":"Now"
 },
 "NO_ALERT":{
 "description":"",
@@ -1079,10 +1083,6 @@
 "description":"",
 "message":"可在户外活动的农业星球."
 },
-"OUTER_ARM":{
-"description":"Arm of the Milky Way galaxy",
-"message":"外部臂"
-},
 "OVER_N_BILLION":{
 "description":"",
 "message":"超过 %population 000000000"
@@ -1107,17 +1107,9 @@
 "description":"",
 "message":"近拱点距离"
 },
-"PERSEUS_ARM":{
-"description":"Arm of the Milky Way galaxy",
-"message":"英仙臂"
-},
 "PIONEER":{
 "description":"",
 "message":"先锋"
-},
-"PIRACY":{
-"description":"",
-"message":"海盗行为"
 },
 "PITCH":{
 "description":"",
@@ -1164,7 +1156,8 @@
 "message":"径向delta-v. 单击重置为零."
 },
 "PLANNER_RESET_START":{
-"description":"For system orbit view","message":"Maneuver start. Click to reset to default."
+"description":"For system orbit view",
+"message":"Maneuver start. Click to reset to default."
 },
 "PLASTICS":{
 "description":"",
@@ -1173,10 +1166,6 @@
 "PLUTOCRATIC_DICTATORSHIP":{
 "description":"",
 "message":"富商独裁"
-},
-"POLICE_SHIP_REGISTRATION":{
-"description":"",
-"message":"警察"
 },
 "POPULATION":{
 "description":"",
@@ -1278,10 +1267,6 @@
 "description":"",
 "message":"废料"
 },
-"SAGITTARIUS_ARM":{
-"description":"Arm of the Milky Way galaxy",
-"message":"射手臂"
-},
 "SCANNER_CONTROL":{
 "description":"",
 "message":"扫描仪控制"
@@ -1293,10 +1278,6 @@
 "SCREENSHOT_FILENAME_TEMPLATE":{
 "description":"",
 "message":"截图 %index{d08}.png"
-},
-"SCUTUM_CENTAURUS_ARM":{
-"description":"Arm of the Milky Way galaxy",
-"message":"半人马臂"
 },
 "SEARCH":{
 "description":"",
@@ -1385,6 +1366,10 @@
 "SHIP_DETECTED_NEARBY":{
 "description":"",
 "message":"在附近探测到飞船."
+},
+"SHIP_GEOGRAPHIC_POSITION":{
+"description":"",
+"message":"船舶地理定位"
 },
 "SHIP_INFORMATION":{
 "description":"",
@@ -1658,10 +1643,6 @@
 "description":"",
 "message":"较薄的"
 },
-"THREE_KPC_ARM":{
-"description":"Arm of the Milky Way galaxy",
-"message":"3k秒差距旋臂"
-},
 "THRIVING_OUTDOOR_WORLD":{
 "description":"",
 "message":"可在户外活动的繁荣星球."
@@ -1698,6 +1679,10 @@
 "description":"",
 "message":"微小的"
 },
+"TOGGLE_EQUIPMENT_VIEW":{
+"description":"Tooltip for the Equipment View button",
+"message":"Equipment View"
+},
 "TOGGLE_HUD_MODE":{
 "description":"",
 "message":"切换 HUD 模式"
@@ -1709,6 +1694,10 @@
 "TOGGLE_ROTATION_DAMPING":{
 "description":"",
 "message":"切换旋转消除"
+},
+"TOGGLE_SCANNER_VIEW":{
+"description":"Tooltip for the Scanner View button",
+"message":"Scanner View"
 },
 "TOGGLE_SCAN_MODE":{
 "description":"",
@@ -1726,6 +1715,10 @@
 "description":"",
 "message":"三星系统"
 },
+"UNDOCKING":{
+"description":"Flight state of ship when leaving station",
+"message":"Undocking"
+},
 "UNEXPLORED_SYSTEM_NO_DATA":{
 "description":"",
 "message":"未探索的星系.无可用数据."
@@ -1741,10 +1734,6 @@
 "UNKNOWN":{
 "description":"",
 "message":"<unknown>"
-},
-"UNLAWFUL_WEAPONS_DISCHARGE":{
-"description":"",
-"message":"违法武器发射"
 },
 "UNSET_NAVTARGET":{
 "description":"",
@@ -1809,10 +1798,6 @@
 "X":{
 "description":"keybinding: x axis",
 "message":"X"
-},
-"X_CANNOT_BE_TOLERATED_HERE":{
-"description":"",
-"message":"%crime 在这里是无法容忍的."
 },
 "Y":{
 "description":"keybinding: y axis",

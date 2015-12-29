@@ -128,7 +128,7 @@ static bool ReadToTok(char tok, const char **p, char *bufOut, size_t buflen) {
 		}
 		bufOut[idx] = *((*p)++);
 	}
-	// if, after that, we're not pointing at the tok, we must have hit 
+	// if, after that, we're not pointing at the tok, we must have hit
 	// the terminal or run out of buffer.
 	if (**p != tok) {
 		return false;
@@ -180,7 +180,7 @@ bool KeyBinding::FromString(const char *str, KeyBinding &kb)
 		}
 		// force terminate
 		joyUUIDBuf[JoyUUIDLength-1] = '\0';
-		// now, locate the internal ID.		
+		// now, locate the internal ID.
 		int joy = Pi::JoystickFromGUIDString(joyUUIDBuf);
 		if (joy == -1) {
 			return false;
@@ -229,7 +229,7 @@ std::ostream &operator<<(std::ostream &oss, const KeyBinding &kb)
 		oss << "Joy" << Pi::JoystickGUIDString(kb.u.joystickButton.joystick);
 		oss << "/Button" << int(kb.u.joystickButton.button);
 	} else if (kb.type == JOYSTICK_HAT) {
-		oss << "Joy" << Pi::JoystickGUIDString(kb.u.joystickButton.joystick); 
+		oss << "Joy" << Pi::JoystickGUIDString(kb.u.joystickButton.joystick);
 		oss << "/Hat" << int(kb.u.joystickHat.hat);
 		oss << "Dir" << int(kb.u.joystickHat.direction);
 	} else {
@@ -433,10 +433,13 @@ bool AxisBinding::FromString(const char *str, AxisBinding &ab) {
 	// force terminate
 	joyUUIDBuf[JoyUUIDLength-1] = '\0';
 	// now, map the GUID to a joystick number
-	ab.joystick = Pi::JoystickFromGUIDString(joyUUIDBuf);
-	if (ab.joystick == -1) {
+	const int joystick = Pi::JoystickFromGUIDString(joyUUIDBuf);
+	if (joystick == -1) {
 		return false;
 	}
+	// found a joystick
+	assert(joystick < 256);
+	ab.joystick = Uint8(joystick);
 
 	if (strncmp(p, "Axis", 4) != 0)
 		return false;
@@ -512,7 +515,8 @@ void InitAxisBinding(AxisBinding &ab, const std::string &bindName, const std::st
 
 	// set the binding from the configured or default value
 	if (!AxisBinding::FromString(axisName.c_str(), ab)) {
-		Output("invalid axis binding '%s' in config file for %s\n", axisName.c_str(), bindName.c_str());
+		Output(">");
+//		Output("invalid axis binding '%s' in config file for %s\n", axisName.c_str(), bindName.c_str());
 		ab.Clear();
 	}
 }

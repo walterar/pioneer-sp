@@ -6,7 +6,7 @@
 /*
  * Programs & Materials used by terrain
  */
-#include "libs.h"
+#include "OpenGLLibs.h"
 #include "MaterialGL.h"
 #include "Program.h"
 #include "galaxy/StarSystem.h"
@@ -54,6 +54,17 @@ namespace Graphics {
 			virtual Program *CreateProgram(const MaterialDescriptor &);
 			virtual void Apply();
 		};
+
+
+		class GeoSphereStarMaterial : public Material {
+			virtual Program *CreateProgram(const MaterialDescriptor &);
+			virtual void Apply();
+			virtual void Unapply();
+
+		protected:
+			void SetGSUniforms();
+		};
+		
 	}
 }
 #endif

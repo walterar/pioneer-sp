@@ -151,6 +151,14 @@
 "COMPRESS_TEXTURES":{
 "description":"graphics option in game settings menu ","message":"Compress Textures"
 },
+"CONFIRM_PURCHASE":{
+"description":"",
+"message":"Confirm purchase"
+},
+"CONFIRM_SALE":{
+"description":"",
+"message":"Confirm sale"
+},
 "CONSTABLE":{
 "description":"",
 "message":"Constable"
@@ -183,8 +191,7 @@
 "message":"Crew Roster"
 },
 "CRIMINAL_RECORD":{
-"description":"",
-"message":"Criminal record"
+"description":"Past crimes / crime history of character","message":"Criminal record"
 },
 "DANGEROUS":{
 "description":"Player combat rating","message":"Dangerous"
@@ -254,6 +261,9 @@
 "EMPLOYMENT":{
 "description":"",
 "message":"Employment"
+},
+"ENABLE_AUTOSAVE":{
+"description":"Allow the game to autosave when docking","message":"Enable Autosave"
 },
 "ENABLE_COCKPIT":{
 "description":"Game settings option: to use a cockpit 3D model","message":"Enable cockpit (EXPERIMENTAL)"
@@ -429,6 +439,10 @@
 "INEXPERIENCED":{
 "description":"For player reputation","message":"Inexperienced"
 },
+"INSUFFICIENT_FUNDS":{
+"description":"",
+"message":"Insufficient funds."
+},
 "INVERT_MOUSE_Y":{
 "description":"",
 "message":"Invert Mouse Y"
@@ -471,7 +485,7 @@
 },
 "LAUNCH_PERMISSION_DENIED_CREW":{
 "description":"",
-"message":"Permission to launch denied: not enough crew too handle this ship."
+"message":"Permission to launch denied: not enough crew to handle this ship."
 },
 "LAUNCH_PERMISSION_DENIED_FINED":{
 "description":"",
@@ -517,6 +531,9 @@
 "description":"",
 "message":"Lobby"
 },
+"LOCAL_ARM":{
+"description":"Arm of the Milky Way galaxy","message":"Local arm"
+},
 "LOCATED_N_KM_FROM_THE_CENTRE_OF_NAME":{
 "description":"",
 "message":"Located {distance}km from the centre of {name}:"
@@ -539,6 +556,14 @@
 "MALE":{
 "description":"",
 "message":"Male"
+},
+"MARKET_BUYLINE":{
+"description":"",
+"message":"Buy {amount} units for {price}"
+},
+"MARKET_SELLINE":{
+"description":"",
+"message":"Sell {amount} units for {price}"
 },
 "MASS":{
 "description":"",
@@ -643,6 +668,10 @@
 "description":"",
 "message":"Navigation:"
 },
+"NAVIGATOR":{
+"description":"",
+"message":"Navigator"
+},
 "NEGOTIATE":{
 "description":"",
 "message":"Negotiate"
@@ -660,6 +689,13 @@
 "NONE":{
 "description":"",
 "message":"None"
+},
+"NONE_FOR_SALE_IN_THIS_STATION":{
+"description":"",
+"message":"None for sale in this station."
+},
+"NORMA_ARM":{
+"description":"Arm of the Milky Way galaxy","message":"Norma arm"
 },
 "NOTES":{
 "description":"",
@@ -717,6 +753,12 @@
 "description":"",
 "message":"Circular orbit speed is given for a tangential velocity. The ship should be moving in a direction at 90° to the ship/{name} axis.\n\nDescent speed is an absolute minimum, and is also tangential. A slower speed or a lower angle will result in a course which intersects with the surface of {name}.\n\nEscape speed will in theory work in any direction, as long as the ship does not collide with {name} on the way.\n\t\t"
 },
+"OUTER_ARM":{
+"description":"Arm of the Milky Way galaxy","message":"Outer arm"
+},
+"OUTSTANDING_FINES":{
+"description":"Unpaid fines for crimes committed","message":"Outstanding fines"
+},
 "OWED":{
 "description":"Player owing money to crew members","message":"Owed"
 },
@@ -724,9 +766,16 @@
 "description":"",
 "message":"Pay fine of {amount}"
 },
+"PERSEUS_ARM":{
+"description":"Arm of the Milky Way galaxy","message":"Perseus arm"
+},
 "PERSONAL_INFORMATION":{
 "description":"",
 "message":"Personal Information"
+},
+"PILOT":{
+"description":"",
+"message":"Pilot"
 },
 "PILOTING":{
 "description":"",
@@ -768,6 +817,9 @@
 },
 "PROFESSIONAL":{
 "description":"For player reputation","message":"Professional"
+},
+"PUMP_DOWN":{
+"description":"Drain the fuel tank","message":"Pump down"
 },
 "QUALIFICATION_SCORES":{
 "description":"",
@@ -815,6 +867,10 @@
 "description":"",
 "message":"Request Launch"
 },
+"RESET":{
+"description":"",
+"message":"Reset"
+},
 "RETURN_TO_GAME":{
 "description":"",
 "message":"Return to game"
@@ -835,12 +891,18 @@
 "description":"",
 "message":"Reward"
 },
+"SAGITTARIUS_ARM":{
+"description":"Arm of the Milky Way galaxy","message":"Sagittarius arm"
+},
 "SAVE":{
 "description":"",
 "message":"Save"
 },
 "SCOOP_MOUNTS":{
 "description":"How many slots or mounts exist on the ship for fitting SCOOPS (e.g. cargo scoop, fuel scoop, multi-scoop) ","message":"Scoop mounts"
+},
+"SCUTUM_CENTAURUS_ARM":{
+"description":"Arm of the Milky Way galaxy","message":"Scutum-Centaurus arm"
 },
 "SELECT":{
 "description":"",
@@ -865,9 +927,17 @@
 "description":"",
 "message":"Sensors:"
 },
+"SENSORS_AND_DEFENCE":{
+"description":"",
+"message":"Sensors and defence"
+},
 "SHIP":{
 "description":"",
 "message":"Ship"
+},
+"SHIPS_ENGINEER":{
+"description":"",
+"message":"Ship's Engineer"
 },
 "SHIP_INFORMATION":{
 "description":"",
@@ -901,10 +971,6 @@
 "description":"",
 "message":"Sound"
 },
-"STAR_FIELD_DENSITY" : {
-"description" : "",
-"message" : "Density of Star field"
-},
 "START_AT_BARNARDS_STAR":{
 "description":"",
 "message":"Start at Barnard's Star"
@@ -916,6 +982,10 @@
 "START_AT_NEW_HOPE":{
 "description":"New Hope is an in game location","message":"Start at New Hope"
 },
+"STAR_FIELD_DENSITY":{
+"description":"",
+"message":"Density of Star field"
+},
 "STATION_MANAGER":{
 "description":"",
 "message":"Station manager"
@@ -923,6 +993,12 @@
 "STATUS":{
 "description":"",
 "message":"Status"
+},
+"TECH_CERTIFIED":{
+"description":"Lobby screen shows the tech level (an integer number) of the station","message":"This station holds a level {tech_level} technology certificate."
+},
+"TECH_CERTIFIED_MILITARY":{
+"description":"Lobby screen shows the tech level of the station","message":"This installation holds a military technology clearance."
 },
 "THANKS_AND_REMEMBER_TO_BUY_FUEL":{
 "description":"",
@@ -935,6 +1011,9 @@
 "THE_SHIP_IS_UNDER_STATION_CONTROL_COMMANDER":{
 "description":"",
 "message":"The ship is under station control, Commander."
+},
+"THREE_KPC_ARM":{
+"description":"Arm of the Milky Way galaxy","message":"3kpc arm"
 },
 "TOGGLE_MALE_FEMALE":{
 "description":"player gender","message":"Toggle male/female"
@@ -1015,8 +1094,10 @@
 "message":"We are in hyperspace, Commander."
 },
 "WE_HAVE_NO_BUSINESS_WITH_YOU":{
-"description":"",
-"message":"We have no business with you at the moment.\nHowever, remember to respect the local rules:\n\n* Move at least 5Km from the station to hyperjump.\n* Do not fire your cannons within 100km of the station.\n* Do not trade in illegal products.\n* Do not dispose of any product in the station,\n especially if it is hazardous to the environment.\n* Do not jettison radioactive waste into space\nin inhabited systems.\n* Shooting at or ramming another ship within 100km of station\n will be considered Piracy.\n* Do not carry local information to another faction.\n* Comply with the agreed missions, avoid being fined\n for Fraud or Abduction\n* Do not take off manually to avoid paying your fines,\n this is serious and will be treated as an Escape.\n* And... please... do not kill anyone."
+"description":"Said by the police to law abiding player","message":"We have no business with you at the moment."
+},
+"X_CANNOT_BE_TOLERATED_HERE":{
+"description":"Message to be sent over comms by police when crime is committed by player","message":"{crime} cannot be tolerated here!"
 },
 "YES":{
 "description":"Positive answer to a question","message":"Yes"
@@ -1032,6 +1113,10 @@
 "YOU_DONT_HAVE_ENOUGH_MONEY_FOR_THAT_OPTION":{
 "description":"",
 "message":"You don't have enough money for that option."
+},
+"YOU_HAVE_X_UNITS_IN_YOUR_CARGOHOLD":{
+"description":"",
+"message":"You have {units} units in your cargohold"
 },
 "YOU_MUST_FIRST_SELECT_A_COMBAT_TARGET_COMMANDER":{
 "description":"",
@@ -1052,5 +1137,8 @@
 "YOU_NOT_ENOUGH_MONEY":{
 "description":"",
 "message":"You do not have enough money"
+},
+"ZOOM":{
+"description":"Label for a zoom (magnification) control bar.","message":"Zoom"
 }
 }

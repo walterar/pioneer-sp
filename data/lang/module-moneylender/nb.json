@@ -1,0 +1,82 @@
+{
+"AGENCY":{
+"description":"",
+"message":"Agency: "
+},
+"FLAVOUR_0_TITLE":{
+"description":"",
+"message":"You NEED MONEY? Take what you want now, and pay it in 12 installments!"
+},
+"FLAVOUR_1_TITLE":{
+"description":"",
+"message":"CASH ADVANCES Perform your dream now, and pay later!"
+},
+"FLAVOUR_2_TITLE":{
+"description":"",
+"message":"CASH ADVANCES WITHOUT A GUARANTOR Request your loan here."
+},
+"FLAVOUR_3_TITLE":{
+"description":"",
+"message":"PERSONAL LOANS WITHOUT A GUARANTOR Request your loan here."
+},
+"FLAVOUR_4_TITLE":{
+"description":"",
+"message":"YOU NEED MONEY? Request your loan here."
+},
+"FLAVOUR_5_TITLE":{
+"description":"",
+"message":"CASH ADVANCES? Request your loan here!"
+},
+"GALACTIC_PILOTS_UNION":{
+"description":"",
+"message":"GALACTIC PILOTS UNION"
+},
+"REQUEST_DENIED":{
+"description":"",
+"message":"\nREQUEST DENIED!\n\nYou have a debit balance of {deuda}\nStart date of the loan: {fecha}\nPending Payments: {cuotas}\nPay installments: {resto}"
+},
+"TRANSFER":{
+"description":"",
+"message":"\nAs of {fecha} we have transferred {deuda} to his account.\nAutomatically will deduct {cuotas} monthly installments of {valor}\n\nWe hope your investment profitable.\n"
+},
+"MESSAGE_3":{
+"description":"",
+"message":"Enter the desired amount, repayable in monthly installments.\nej. We pay $100,000 and you pay us 12 monthly installments of $25,000\nNOTICE! If not paid on time, you can be bothered."
+},
+"NEXT_PAYMENT":{
+"description":"",
+"message":"Next payment: "
+},
+"INSTALLMENT_VALUE":{
+"description":"",
+"message":"Installment value: "
+},
+"PERSONAL_LOANS_NO_GUARANTOR":{
+"description":"",
+"message":"Personal Loans without guarantor..."
+},
+"PENDING_DEBT":{
+"description":"",
+"message":"Pending debt: "
+},
+"PENDING_PAYMENTS":{
+"description":"",
+"message":"Pending payments: "
+},
+"THANK_YOU":{
+"description":"",
+"message":"Thank you for doing business with us.\nKeep us in touch."
+},
+"VERY_PROFITABLE":{
+"description":"",
+"message":"Oops! Your investment must be very profitable."
+},
+"YOU_DO_NOT_HAVE_ENOUGH_MONEY":{
+"description":"",
+"message":"You do not have enough money."
+},
+"FINANCES":{
+"description":"",
+"message":"Finances"
+}
+}

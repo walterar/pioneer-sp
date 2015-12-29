@@ -1,0 +1,102 @@
+{
+"ACTIVE":{
+"description":"",
+"message":"Activa"
+},
+"ALERT_BRS":{
+"description":"",
+"message":"¡Alerta! BRS ha detectado la nave {target_label} en estado de emergencia."
+},
+"AU":{
+"description":"",
+"message":"Au"
+},
+"COMPLETED":{
+"description":"",
+"message":"Completa"
+},
+"CREWS_TO_BE_SENT":{
+"description":"",
+"message":"Tripulantes a enviar:"
+},
+"CREWS_TO_PICK_UP":{
+"description":"",
+"message":"Tripulantes a recoger:"
+},
+"KM":{
+"description":"sar",
+"message":"Km"
+},
+"LAST_KNOWN_LOCATION":{
+"description":"",
+"message":"Ultima ubicación conocida:"
+},
+"LAT":{
+"description":"short latitude",
+"message":"Lat:"
+},
+"LON":{
+"description":"short latitude",
+"message":"Lon:"
+},
+"LY":{
+"description":"",
+"message":"Ly"
+},
+"COMMODITY_TO_DELIVERY":{
+"description":"",
+"message":"Producto a entregar:"
+},
+"COMMODITY":{
+"description":"",
+"message":"{quantity} Ton de {product}"
+},
+"MISSION_ACCOMPLISHED":{
+"description":"",
+"message":"¡Misión cumplida!"
+},
+"PASSENGERS_TO_BE_SENT":{
+"description":"",
+"message":"Pasajeros a enviar:"
+},
+"PASSENGERS_TO_PICK_UP":{
+"description":"",
+"message":"Pasajeros a recoger:"
+},
+"REWARD":{
+"description":"ui-core",
+"message":"Recompensa:"
+},
+"TARGET_SHIP":{
+"description":"",
+"message":"ID de la nave en emergencia:"
+},
+"THE_PLACE_OF_ASSISTANCE":{
+"description":"",
+"message":"El lugar de la asistencia."
+},
+"THE_REWARD_IS_PAID_IN":{
+"description":"",
+"message":"La recompensa se paga en:"
+},
+"TRIP_BACK":{
+"description":"",
+"message":"Retorno"
+},
+"UNKNOWN":{
+"description":"sar",
+"message":"Desconocida"
+},
+"ORBIT":{
+"description":"",
+"message":"Órbita"
+},
+"DANGER":{
+"description":"",
+"message":"Riesgo:"
+},
+"have_enough_experience":{
+"description":"",
+"message":"Usted no tiene suficiente experiencia para esta misión."
+}
+}

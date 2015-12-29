@@ -27,6 +27,12 @@ enum ShipDrawing {
 	OFF
 };
 
+enum ShowLagrange {
+	LAG_ICON,
+	LAG_ICONTEXT,
+	LAG_OFF
+};
+
 class TransferPlanner {
 public:
 	TransferPlanner();
@@ -63,18 +69,21 @@ public:
 	virtual void Draw3D();
 private:
 	static const double PICK_OBJECT_RECT_SIZE;
-	void PutOrbit(const Orbit *orb, const vector3d &offset, const Color &color, double planetRadius = 0.0);
+	static const Uint16 N_VERTICES_MAX;
+	void PutOrbit(const Orbit *orb, const vector3d &offset, const Color &color, const double planetRadius = 0.0, const bool showLagrange = false);
 	void PutBody(const SystemBody *b, const vector3d &offset, const matrix4x4f &trans);
 	void PutLabel(const SystemBody *b, const vector3d &offset);
 	void PutSelectionBox(const SystemBody *b, const vector3d &rootPos, const Color &col);
 	void PutSelectionBox(const vector3d &worldPos, const Color &col);
 	void GetTransformTo(const SystemBody *b, vector3d &pos);
 	void OnClickObject(const SystemBody *b);
+	void OnClickLagrange();
 	void OnClickAccel(float step);
 	void OnClickRealt();
 	void OnIncreaseFactorButtonClick(void), OnResetFactorButtonClick(void), OnDecreaseFactorButtonClick(void);
 	void OnIncreaseStartTimeButtonClick(void), OnResetStartTimeButtonClick(void), OnDecreaseStartTimeButtonClick(void);
 	void OnToggleShipsButtonClick(void);
+	void OnToggleL4L5ButtonClick(Gui::MultiStateImageButton *);
 	void ResetViewpoint();
 	void MouseWheel(bool up);
 	void RefreshShips(void);
@@ -86,6 +95,7 @@ private:
 	RefCountedPtr<StarSystem> m_system;
 	const SystemBody *m_selectedObject;
 	bool m_unexplored;
+	ShowLagrange m_showL4L5;
 	TransferPlanner *m_planner;
 	std::list<std::pair<Ship*, Orbit>> m_contacts;
 	Gui::LabelSet *m_shipLabels;
@@ -98,6 +108,7 @@ private:
 	Gui::ImageButton *m_zoomInButton;
 	Gui::ImageButton *m_zoomOutButton;
 	Gui::ImageButton *m_toggleShipsButton;
+	Gui::MultiStateImageButton *m_toggleL4L5Button;
 	Gui::ImageButton *m_plannerIncreaseStartTimeButton, *m_plannerResetStartTimeButton, *m_plannerDecreaseStartTimeButton;
 	Gui::ImageButton *m_plannerIncreaseFactorButton, *m_plannerResetFactorButton, *m_plannerDecreaseFactorButton;
 	Gui::ImageButton *m_plannerAddProgradeVelButton;
@@ -115,11 +126,16 @@ private:
 	sigc::connection m_onMouseWheelCon;
 
 	std::unique_ptr<Graphics::Drawables::Disk> m_bodyIcon;
+	std::unique_ptr<Gui::TexturedQuad> m_l4Icon;
+	std::unique_ptr<Gui::TexturedQuad> m_l5Icon;
 	std::unique_ptr<Gui::TexturedQuad> m_periapsisIcon;
 	std::unique_ptr<Gui::TexturedQuad> m_apoapsisIcon;
 	Graphics::RenderState *m_lineState;
 	Graphics::Drawables::Lines m_orbits;
 	Graphics::Drawables::Lines m_selectBox;
+
+	std::unique_ptr<vector3f[]> m_orbitVts;
+	std::unique_ptr<Color[]> m_orbitColors;
 };
 
 #endif /* _SYSTEMVIEW_H */

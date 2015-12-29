@@ -4,18 +4,23 @@
 -- Work in progress.--
 
 local Game  = import("Game")
+local Engine = import("Engine")
 local Event = import("Event")
 local Timer = import("Timer")
 
 local function Saver(savename)
 	return function (ship)
-		if ship and ship:IsPlayer() then
+		if ship and ship:IsPlayer() and Engine.GetAutosaveEnabled() then
 			Timer:CallAt(Game.time+4, function ()--XXX
 			Game.SaveGame(savename)
 			end)
 		end
 	end
 end
+
+--	if Engine.GetAutosaveEnable == 0 then
+--		return
+--	end
 
 local SaveDocked   = Saver('_last-docked')
 

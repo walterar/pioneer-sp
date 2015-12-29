@@ -119,9 +119,11 @@ _G.ship_hostil = function (risk)
 			local laserdef = laserdefs[Engine.rand:Integer(1,#laserdefs)]
 			local target = Game.player:GetNavTarget()
 			if target and target.type == 'STARPORT_ORBITAL' then
-				hostil = Space.SpawnShipNear(hostile.id, target,20,30)
+				hostil = Space.SpawnShipNear(hostile.id, target,15,20)
 			elseif target and target.type == 'STARPORT_SURFACE' then
 				hostil = Space.SpawnShipLandedNear(hostile.id, target,1,1)
+			elseif target and target:isa("Ship") then
+				hostil = Space.SpawnShipNear(hostile.id, target,15,15)
 			else
 				hostil = Space.SpawnShipNear(hostile.id, Game.player,30,30)
 			end

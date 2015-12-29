@@ -10,7 +10,7 @@ local Format       = import("Format")
 local Lang         = import("Lang")
 local ShipDef      = import("ShipDef")
 local Space        = import("Space")
-local equipment    = import("Equipment")
+local Equipment    = import("Equipment")
 
 local Model        = import("SceneGraph.Model")
 local ModelSkin    = import("SceneGraph.ModelSkin")
@@ -108,7 +108,7 @@ local function buyShip (sos)
 	if sos.pattern then player.model:SetPattern(sos.pattern) end
 	player:SetLabel(sos.label)
 	if def.hyperdriveClass > 0 then
-		player:AddEquip(equipment.hyperspace['hyperdrive_'..tostring(def.hyperdriveClass)])
+		player:AddEquip(Equipment.hyperspace['hyperdrive_'..tostring(def.hyperdriveClass)])
 	end
 	player:SetFuelPercent()
 
@@ -133,7 +133,8 @@ shipTable.onRowClicked:Connect(function (row)
 	currentShipOnSale = station:GetShipsOnSale()[row+1]
 	local def = currentShipOnSale.def
 
-	local hyperdrive_str = (def.hyperdriveClass > 0 and equipment.hyperspace["hyperdrive_" .. def.hyperdriveClass]:GetName()) or l.NONE
+	local hyperdrive_str = def.hyperdriveClass > 0 and
+		Equipment.hyperspace["hyperdrive_" .. def.hyperdriveClass]:GetName() or l.NONE
 
 	local forwardAccelEmpty =  def.linearThrust.FORWARD / (-9.81*1000*(def.hullMass+def.fuelTankMass))
 	local forwardAccelFull  =  def.linearThrust.FORWARD / (-9.81*1000*(def.hullMass+def.capacity+def.fuelTankMass))
@@ -194,7 +195,6 @@ shipTable.onRowClicked:Connect(function (row)
 							:AddRow({lc.AUTO_COMBAT,        yes_no(def.equipSlotCapacity["autocombat"])})
 							:AddRow({lc.DEMP,               yes_no(def.equipSlotCapacity["demp"])})
 							:AddRow({lc.MATTER_CAPACITOR,   yes_no(def.equipSlotCapacity["capacitor"])})
-							:AddRow({lc.PROP_CONVERTER,     yes_no(def.equipSlotCapacity["converter"])})
 					})
 			),
 		})

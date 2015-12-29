@@ -13,13 +13,10 @@ local lp = Lang.GetResource("module-00-player") or Lang.GetResource("module-00-p
 
 local calculateFee = function (station)
 	local fee = math.ceil(4 * (2.0-Game.system.lawlessness))
-	local propeller = Equipment.cargo.water
-	if fuelConvert then propeller = Equipment.cargo.hydrogen end
 	local recharge = math.ceil(((Game.player.fuelMassLeft/Game.player.fuel)*100)-Game.player.fuelMassLeft)
-	fee = fee+(recharge*station:GetEquipmentPrice(propeller))
+	fee = fee+(recharge*station:GetEquipmentPrice(Equipment.cargo.hydrogen))
 	return fee
 end
-
 
 local onShipDocked = function (ship, station)
 	if not ship:IsPlayer() then

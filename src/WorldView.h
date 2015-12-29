@@ -132,6 +132,10 @@ private:
 	void OnPlayerDockOrUndock();
 	void OnPlayerChangeTarget();
 	void OnPlayerChangeFlightControlState();
+	/// Handler for "requestTimeAccelerationInc" event
+	void OnRequestTimeAccelInc();
+	/// Handler for "requestTimeAccelerationDec" event
+	void OnRequestTimeAccelDec();
 	void SelectBody(Body *, bool reselectIsDeselect);
 	Body* PickBody(const double screenX, const double screenY) const;
 	void MouseWheel(bool up);
@@ -218,7 +222,6 @@ private:
 	Graphics::RenderState *m_blendState;
 
 	Graphics::Drawables::Line3D m_edgeMarker;
-	Graphics::Drawables::Lines m_crossHair;
 	Graphics::Drawables::Lines m_indicator;
 };
 

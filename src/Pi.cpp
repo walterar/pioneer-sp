@@ -11,7 +11,6 @@
 #include "Factions.h"
 #include "FileSystem.h"
 #include "Frame.h"
-#include "GalacticView.h"
 #include "Game.h"
 #include "BaseSphere.h"
 #include "Intro.h"
@@ -81,6 +80,13 @@
 #include <algorithm>
 #include <sstream>
 
+#if defined(_MSC_VER) || defined(__MINGW32__)
+	// RegisterClassA and RegisterClassW are defined as macros in WinUser.h
+	#ifdef RegisterClass
+	#undef RegisterClass
+	#endif
+#endif
+
 float Pi::gameTickAlpha;
 sigc::signal<void, SDL_Keysym*> Pi::onKeyPress;
 sigc::signal<void, SDL_Keysym*> Pi::onKeyRelease;
@@ -118,7 +124,7 @@ bool Pi::doProfileOne = false;
 int Pi::statSceneTris = 0;
 int Pi::statNumPatches = 0;
 GameConfig *Pi::config;
-struct DetailLevel Pi::detail = { 0, 0 };
+DetailLevel Pi::detail;
 bool Pi::joystickEnabled;
 bool Pi::mouseYInvert;
 bool Pi::compactScanner;
@@ -172,8 +178,8 @@ void Pi::CreateRenderTarget(const Uint16 width, const Uint16 height) {
 		Graphics::LINEAR_CLAMP, false, false, 0);
 	Pi::renderTexture.Reset(Pi::renderer->CreateTexture(texDesc));
 	Pi::renderQuad.reset(new Graphics::Drawables::TexturedQuad(
-		Pi::renderer, Pi::renderTexture.Get(), 
-		vector2f(0.0f,0.0f), vector2f(float(Graphics::GetScreenWidth()), float(Graphics::GetScreenHeight())), 
+		Pi::renderer, Pi::renderTexture.Get(),
+		vector2f(0.0f,0.0f), vector2f(float(Graphics::GetScreenWidth()), float(Graphics::GetScreenHeight())),
 		quadRenderState));
 
 	// Complete the RT description so we can request a buffer.
@@ -194,7 +200,7 @@ void Pi::CreateRenderTarget(const Uint16 width, const Uint16 height) {
 void Pi::DrawRenderTarget() {
 #if USE_RTT
 	Pi::renderer->BeginFrame();
-	Pi::renderer->SetViewport(0, 0, Graphics::GetScreenWidth(), Graphics::GetScreenHeight());	
+	Pi::renderer->SetViewport(0, 0, Graphics::GetScreenWidth(), Graphics::GetScreenHeight());
 	Pi::renderer->SetTransform(matrix4x4f::Identity());
 
 	{
@@ -205,7 +211,7 @@ void Pi::DrawRenderTarget() {
 		Pi::renderer->PushMatrix();
 		Pi::renderer->LoadIdentity();
 	}
-	
+
 	Pi::renderQuad->Draw( Pi::renderer );
 
 	{
@@ -366,9 +372,9 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	if (strlen(PIONEERSP_EXTRAVERSION)) version += " (" PIONEERSP_EXTRAVERSION ")";
 	const char* platformName = SDL_GetPlatform();
 	if(platformName)
-		Output("Pioneer Scout Plus G24f %s on: %s\n\n", version.c_str(), platformName);
+		Output("Pioneer Scout Plus G25f %s on: %s\n\n", version.c_str(), platformName);
 	else
-		Output("Pioneer Scout Plus G24f %s but could not detect platform name.\n\n", version.c_str());
+		Output("Pioneer Scout Plus G25f %s but could not detect platform name.\n\n", version.c_str());
 
 	Output("%s\n", OS::GetOSInfoString().c_str());
 
@@ -418,7 +424,7 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	Pi::rng.seed(time(0));
 
 	InitJoysticks();
-	
+
 	// we can only do bindings once joysticks are initialised.
 	if (!no_gui) // This re-saves the config file. With no GUI we want to allow multiple instances in parallel.
 		KeyBindings::InitBindings();
@@ -441,7 +447,7 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	asyncJobQueue.reset(new AsyncJobQueue(numThreads));
 	Output("started %d worker threads\n", numThreads);
 	syncJobQueue.reset(new SyncJobQueue);
-	
+
 	Output("ShipType::Init()\n");
 	// XXX early, Lua init needs it
 	ShipType::Init();
@@ -451,7 +457,17 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	Output("Lua::Init()\n");
 	Lua::Init();
 
-	Pi::ui.Reset(new UI::Context(Lua::manager, Pi::renderer, Graphics::GetScreenWidth(), Graphics::GetScreenHeight()));
+	float ui_scale = config->Float("UIScaleFactor", 1.0f);
+	if (Graphics::GetScreenHeight() < 768) {
+		ui_scale = float(Graphics::GetScreenHeight()) / 768.0f;
+	}
+
+	Pi::ui.Reset(new UI::Context(
+		Lua::manager,
+		Pi::renderer,
+		Graphics::GetScreenWidth(),
+		Graphics::GetScreenHeight(),
+		ui_scale));
 
 	Pi::serverAgent = 0;
 	if (config->Int("EnableServerAgent")) {
@@ -474,20 +490,26 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 
 	UI::Box *box = Pi::ui->VBox(5);
 	UI::Label *label = Pi::ui->Label("");
-	label->SetFont(UI::Widget::FONT_HEADING_NORMAL);
 	UI::Gauge *gauge = Pi::ui->Gauge();
+
+	label->SetFont(UI::Widget::FONT_HEADING_NORMAL);
+
 	Pi::ui->GetTopLayer()->SetInnerWidget(
-		Pi::ui->Margin(10, UI::Margin::HORIZONTAL)->SetInnerWidget(
-			Pi::ui->Expand()->SetInnerWidget(
-				Pi::ui->Align(UI::Align::MIDDLE)->SetInnerWidget(
-					box->PackEnd(UI::WidgetSet(
-						label,
-						gauge
-					))
+		// expand the box to cover the whole screen
+		Pi::ui->Expand()->SetInnerWidget(
+			// align the box with label+gauge to the middle of the screen (horizontally AND vertically)
+			Pi::ui->Align(UI::Align::MIDDLE)->SetInnerWidget(
+				// put label and gauge into one combined box
+				box->PackEnd(UI::WidgetSet(
+					// center the label in the inner box
+					Pi::ui->Align(UI::Align::MIDDLE)->SetInnerWidget(label),
+					// limit the gauge by adding a margin on both sides of (0.1666*screensize) effectively centering it on the screen
+					Pi::ui->Margin(0.1666*Graphics::GetScreenWidth(), UI::Margin::HORIZONTAL)->SetInnerWidget(gauge)
+					)
 				)
 			)
 		)
-    );
+	);
 
 	draw_progress(gauge, label, 0.0f);
 
@@ -524,11 +546,11 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	Output("CityOnPlanet::Init\n");
 	CityOnPlanet::Init();
 	draw_progress(gauge, label, 0.6f);
-	
+
 	Output("SpaceStation::Init\n");
 	SpaceStation::Init();
 	draw_progress(gauge, label, 0.7f);
-	
+
 	Output("NavLights::Init\n");
 	NavLights::Init(Pi::renderer);
 	draw_progress(gauge, label, 0.75f);
@@ -1193,7 +1215,8 @@ void Pi::MainLoop()
 			}
 			// rendering interpolation between frames: don't use when docked
 			int pstate = Pi::game->GetPlayer()->GetFlightState();
-			if (pstate == Ship::DOCKED || pstate == Ship::DOCKING) Pi::gameTickAlpha = 1.0;
+			if (pstate == Ship::DOCKED || pstate == Ship::DOCKING || pstate == Ship::UNDOCKING)
+				Pi::gameTickAlpha = 1.0;
 			else Pi::gameTickAlpha = accumulator / step;
 
 #if WITH_DEVKEYS
@@ -1229,7 +1252,7 @@ void Pi::MainLoop()
 		Pi::renderer->SetTransform(matrix4x4f::Identity());
 
 		/* Calculate position for this rendered frame (interpolated between two physics ticks */
-        // XXX should this be here? what is this anyway?
+		  // XXX should this be here? what is this anyway?
 		for (Body* b : game->GetSpace()->GetBodies()) {
 			b->UpdateInterpTransform(Pi::GetGameTickAlpha());
 		}
@@ -1411,7 +1434,7 @@ std::string Pi::JoystickName(int joystick) {
 
 std::string Pi::JoystickGUIDString(int joystick) {
 	const int guidBufferLen = 33; // as documented by SDL
-	char	guidBuffer[guidBufferLen]; 
+	char	guidBuffer[guidBufferLen];
 
 	SDL_JoystickGetGUIDString(joysticks[joystick].guid, guidBuffer, guidBufferLen);
 	return std::string(guidBuffer);

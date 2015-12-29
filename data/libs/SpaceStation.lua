@@ -193,7 +193,7 @@ function SpaceStation:ReplaceShipOnSale (old, new)
 			def     = new.def,
 			skin    = new.skin,
 			pattern = new.pattern,
-			label   = new.label,
+			label   = new.label
 		}
 	end
 	Event.Queue("onShipMarketUpdate", self, shipsOnSale[self])
@@ -241,7 +241,7 @@ local function addRandomShipAdvert(station, num)
 			def     = def,
 			skin    = ModelSkin.New():SetRandomColors(Engine.rand):SetDecal(def.manufacturer),
 			pattern = pattern,
-			label   = Ship.MakeRandomLabel(),
+			label   = Ship.MakeRandomLabel()
 		})
 	end
 end
@@ -362,7 +362,7 @@ function SpaceStation:AddAdvert (description, onChat, onDelete)
 		args = {
 			description = description,
 			onChat      = onChat,
-			onDelete    = onDelete,
+			onDelete    = onDelete
 		}
 	end
 
@@ -374,7 +374,7 @@ function SpaceStation:AddAdvert (description, onChat, onDelete)
 		icon        = args.icon,
 		onChat      = args.onChat,
 		onDelete    = args.onDelete,
-		isEnabled   = args.isEnabled,
+		isEnabled   = args.isEnabled
 	}
 	Event.Queue("onAdvertAdded", self, nextRef)
 	return nextRef
@@ -548,7 +548,7 @@ Event.Register("onGameStart", function ()
 						def     = def,
 						skin    = entry.skin,
 						pattern = entry.pattern,
-						label   = entry.label,
+						label   = entry.label
 					}
 				end
 			end
@@ -586,7 +586,7 @@ Serializer:Register("SpaceStation",
 		local data = {
 			equipmentStock = equipmentStock,
 			equipmentPrice = equipmentPrice,
-			shipsOnSale = {},
+			shipsOnSale = {}
 		}
 		for station,list in pairs(shipsOnSale) do
 			data.shipsOnSale[station] = {}
@@ -595,7 +595,7 @@ Serializer:Register("SpaceStation",
 					id      = entry.def.id,
 					skin    = entry.skin,
 					pattern = entry.pattern,
-					label   = entry.label,
+					label   = entry.label
 				}
 			end
 		end

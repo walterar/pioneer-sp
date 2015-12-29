@@ -21,6 +21,7 @@ local StarSystem = import("StarSystem")
 local l  = Lang.GetResource("module-00-player") or Lang.GetResource("module-00-player","en")
 local le = Lang.GetResource("equipment-core") or Lang.GetResource("equipment-core","en")
 local lc = Lang.GetResource("core") or Lang.GetResource("core","en")
+local lu = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
 
 local shipData = {}
 local loaded_data
@@ -44,8 +45,12 @@ _G.DEMPsystem        = false
 _G.MATTcapacitor     = false
 _G.playerAlert       = "NONE"
 _G.damageControl     = ""
-_G.fuelConvert       = false
+_G.beaconReceiver    = false
 
+_G.deuda_total        = nil
+_G.deuda_valor_cuota  = nil
+_G.deuda_fecha_p_pago = nil
+_G.deuda_resto_cuotas = nil
 
 local danger_level = function ()
 	local lawlessness = Game.system.lawlessness
@@ -57,7 +62,6 @@ local danger_level = function ()
 		_G.DangerLevel = 2-- red
 	end
 end
-
 
 local welcome = function ()
 	if (not Game.system) then return end
@@ -81,6 +85,7 @@ local onLeaveSystem = function (player)
 	if player:IsPlayer() then
 		_G._nearbystationsRemotes = nil
 		_G._nearbystationsLocals = nil
+		_G._localPlanetsWithoutStations = nil
 	end
 end
 Event.Register("onLeaveSystem", onLeaveSystem)
@@ -90,6 +95,23 @@ local onEnterSystem = function (player)
 		_G._nearbystationsRemotes = StarSystem:GetNearbyStationPaths(max_dist, nil,function (s) return
 		(s.type ~= 'STARPORT_SURFACE') or (s.parent.type ~= 'PLANET_ASTEROID') end)
 		_G._nearbystationsLocals = Game.system:GetStationPaths()
+		local nearbystations = Space.GetBodies(function (body)
+			return body.superType == 'STARPORT'
+		end)
+		local localplanets = {}
+		for _,path in pairs(Game.system:GetBodyPaths()) do
+			local sbody = path:GetSystemBody()
+			if sbody.superType == "ROCKY_PLANET"
+				and sbody.type ~= "PLANET_ASTEROID" then
+				for _=1, #nearbystations do
+					if nearbystations[_].path:GetSystemBody().parent == sbody then
+						sbody = nil
+					break end
+				end
+				if sbody then table.insert(localplanets, Space.GetBody(sbody.index).path) end
+			end
+		end
+		_G._localPlanetsWithoutStations = localplanets
 		shipNeutralized = false
 		welcome()
 	end
@@ -97,22 +119,26 @@ end
 Event.Register("onEnterSystem", onEnterSystem)
 
 
-local onShipUndocked = function (player, station)
-	if player:IsPlayer() then
+local onShipUndocked = function (ship, station)
+	if ship:IsPlayer() then
 		_G.PrevFac = Game.system.faction.name
 		_G.PrevPos = ((station.label)..", "..
 			Game.system.name.." ("..
 			(station.path.sectorX)..","..
 			(station.path.sectorY)..","..
 			(station.path.sectorZ)..")")
-		local target = player:FindNearestTo("PLANET") or player:FindNearestTo("STAR")
+		local target = ship:FindNearestTo("PLANET") or ship:FindNearestTo("STAR")
 		local timeundock = 8
 		if station.isGroundStation then timeundock = 3 end
 		local trueSystem = Game.system
 		Timer:CallAt(Game.time + timeundock, function ()
-			local current_target = player:GetNavTarget()
-			if trueSystem == Game.system and (not current_target or current_target==station) then
-				player:AIEnterLowOrbit(target)
+			if trueSystem ~= Game.system then return end
+			local current_nav_target = ship:GetNavTarget()
+--			if not current_nav_target then current_nav_target = ship:GetCombatTarget() end
+			if not current_nav_target or current_nav_target==station then
+				ship:AIEnterLowOrbit(target)
+			elseif current_nav_target:isa("Ship") then
+				ship:AIFlyTo(current_nav_target)
 			end
 		end)
 	end
@@ -142,7 +168,12 @@ local onGameStart = function ()
 		_G.MATTcapacitor     = shipData.matt_capacitor or false
 		_G.playerAlert       = shipData.player_alert or "NONE"
 		_G.damageControl     = shipData.damage_control or ""
-		_G.fuelConvert       = shipData.fuel_convert or false
+		_G.beaconReceiver    = shipData.beacon_receiver or false
+
+		_G.deuda_total        = shipData.deuda_total or nil
+		_G.deuda_valor_cuota  = shipData.deuda_valor_cuota or nil
+		_G.deuda_fecha_p_pago = shipData.deuda_fecha_p_pago or nil
+		_G.deuda_resto_cuotas = shipData.deuda_resto_cuotas or nil
 
 	else
 
@@ -158,21 +189,67 @@ local onGameStart = function ()
 		_G.MATTcapacitor     = false
 		_G.playerAlert       = "NONE"
 		_G.damageControl     = ""
-		_G.fuelConvert       = false
+		_G.beaconReceiver    = false
 
 		_G.ShipFaction       = Game.system.faction.name
 		_G.OriginFaction     = ShipFaction
 
+		_G.deuda_total        = nil
+		_G.deuda_valor_cuota  = nil
+		_G.deuda_fecha_p_pago = nil
+		_G.deuda_resto_cuotas = nil
+
 		danger_level()
 
-		Comms.Message(l.YOUR_SHIP.." < "..Game.player.label.." > "..l.IS_REGISTERED_IN_OUR_DOMAIN,
-			Game.system.faction.militaryName)
-		welcome()
 	end
+
 	_G._nearbystationsRemotes = StarSystem:GetNearbyStationPaths(max_dist, nil,function (s) return
 					(s.type ~= 'STARPORT_SURFACE') or (s.parent.type ~= 'PLANET_ASTEROID') end)
 	_G._nearbystationsLocals = Game.system:GetStationPaths()
+
+	local nearbystations = Space.GetBodies(function (body)
+		return body.superType == 'STARPORT'
+	end)
+	local localplanets = {}
+	for _,path in pairs(Game.system:GetBodyPaths()) do
+		local sbody = path:GetSystemBody()
+		if sbody.superType == "ROCKY_PLANET"
+			and sbody.type ~= "PLANET_ASTEROID" then
+			for _=1, #nearbystations do
+				if nearbystations[_].path:GetSystemBody().parent == sbody then
+					sbody = nil
+				break end
+			end
+			if sbody then table.insert(localplanets, Space.GetBody(sbody.index).path) end
+		end
+	end
+	_G._localPlanetsWithoutStations = localplanets
+
 	loaded_data = nil
+
+	Timer:CallAt(Game.time + 1, function ()
+		Comms.Message(l.YOUR_SHIP.." < "..Game.player.label.." > "..l.IS_REGISTERED_IN_OUR_DOMAIN,
+			Game.system.faction.militaryName)
+--		welcome()
+
+		if Game.player:GetEquipFree("autocombat") < 1 then
+			if autoCombat then
+				Comms.Message(l.AutoCombatON)
+				songOk()
+			else
+				Comms.Message(l.AutoCombatOFF)
+				songOk()
+			end
+		end
+	end)
+
+	if Game.player:GetEquipCountOccupied("beacon_receiver") > 0
+			and Game.player:GetEquipCountOccupied("radar") > 0 then
+		_G.beaconReceiver=true
+	else
+		_G.beaconReceiver=false
+	end
+
 end
 Event.Register("onGameStart", onGameStart)
 
@@ -309,7 +386,7 @@ local onShipFiring = function (ship)
 		or not ship:exists()
 		or ship:IsPlayer()--XXX si player disparó, return
 		or player.flightState ~= "FLYING"
-		or ship.label == lc.POLICE_SHIP_REGISTRATION--XXX
+		or ship.label == lu.POLICE--XXX
 	then return end
 
 	local target = player:GetCombatTarget()
@@ -357,10 +434,11 @@ Event.Register("onShipEquipmentChanged", function(ship, equipType)
 		_G.MATTcapacitor=false
 	end
 
-	if ship:GetEquipFree("convert") < 1 then
-		_G.fuelConvert=true
+	if Game.player:GetEquipCountOccupied("beacon_receiver") > 0
+			and Game.player:GetEquipCountOccupied("radar") > 0 then
+		_G.beaconReceiver=true
 	else
-		_G.fuelConvert=false
+		_G.beaconReceiver=false
 	end
 
 	if (damageControl == l.Damage_Control_Scanner and ship:GetEquipFree("scanner") < 1)
@@ -381,7 +459,7 @@ Event.Register("onAutoCombatON",function()
 		Comms.Message(l.AutoCombatON)
 		songOk()
 		local target = Game.player:GetCombatTarget()
-		if (target and target:exists()) then
+		if (target and target:exists()) and Game.player.flightState == "FLYING" then
 			if Game.player:DistanceTo(target) > 10000 then
 				Game.player:AIKamikaze(target)
 				Timer:CallEvery(1, function ()
@@ -431,7 +509,12 @@ local serialize = function ()
 			matt_capacitor     = MATTcapacitor,
 			player_alert       = playerAlert,
 			damage_control     = damageControl,
-			fuel_convert       = fuelConvert
+			beacon_eceiver     = beaconReceiver,
+			deuda_total        = deuda_total,
+			deuda_valor_cuota  = deuda_valor_cuota,
+			deuda_fecha_p_pago = deuda_fecha_p_pago,
+			deuda_resto_cuotas = deuda_resto_cuotas
+
 			}
 	return {shipData = shipData}
 end
@@ -459,7 +542,13 @@ local onGameEnd = function ()
 	_G.MATTcapacitor     = nil
 	_G.playerAlert       = nil
 	_G.damageControl     = nil
-	_G.fuelConvert       = nil
+	_G.beaconReceiver    = nil
+
+	_G.deuda_total        = nil
+	_G.deuda_valor_cuota  = nil
+	_G.deuda_fecha_p_pago = nil
+	_G.deuda_resto_cuotas = nil
+
 end
 Event.Register("onGameEnd", onGameEnd)
 

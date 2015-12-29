@@ -230,8 +230,9 @@ end
 local makeAdvert = function (station)
 	local reward, due, location
 	local flavour = Engine.rand:Integer(1,#flavours)
-
-	location = _nearbystationsRemotes[Engine.rand:Integer(1,#_nearbystationsRemotes)]
+	if _nearbystationsRemotes and #_nearbystationsRemotes > 0 then
+		location = _nearbystationsRemotes[Engine.rand:Integer(1,#_nearbystationsRemotes)]
+	end
 	if location == nil then return end
 
 	local client  = Character.New()
@@ -276,6 +277,7 @@ end
 
 local onCreateBB = function (station)
 	local num = Engine.rand:Integer(0, math.ceil(Game.system.population))
+	if num > 3 then num = 3 end
 	for i = 1,num do
 		makeAdvert(station)
 	end
@@ -374,6 +376,7 @@ local onShipUndocked = function (player, station)
 
 	for ref,mission in pairs(missions) do
 		remove_passengers(mission.group)
+		_G.MissionsFailures = MissionsFailures + 1
 		Comms.ImportantMessage(l.HEY_YOU_ARE_GOING_TO_PAY_FOR_THIS, mission.client.name)
 		mission:Remove()
 		missions[ref] = nil

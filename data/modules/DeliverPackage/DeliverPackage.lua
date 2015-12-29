@@ -182,8 +182,9 @@ local makeAdvert = function (station)
 	local risk = flavours[flavour].risk
 
 	if flavours[flavour].localdelivery == true then
-
-		location = _nearbystationsLocals[Engine.rand:Integer(1,#_nearbystationsLocals)]
+		if _nearbystationsLocals and #_nearbystationsLocals > 0 then
+			location = _nearbystationsLocals[Engine.rand:Integer(1,#_nearbystationsLocals)]
+		end
 		if not location or location == station.path then return end
 
 		dist = station:DistanceTo(Space.GetBody(location.bodyIndex))
@@ -193,8 +194,9 @@ local makeAdvert = function (station)
 		due = Game.time + ((4*24*60*60) * (Engine.rand:Number(1.5,3.5) - urgency))
 
 	else
-
-		location = _nearbystationsRemotes[Engine.rand:Integer(1,#_nearbystationsRemotes)]
+		if _nearbystationsRemotes and #_nearbystationsRemotes > 0 then
+			location = _nearbystationsRemotes[Engine.rand:Integer(1,#_nearbystationsRemotes)]
+		end
 		if location == nil then return end
 
 		dist = Game.system:DistanceTo(location)
@@ -232,6 +234,7 @@ end
 
 local onCreateBB = function (station)
 	local num = Engine.rand:Integer(0, math.ceil(Game.system.population))
+	if num > 3 then num = 3 end
 	for i = 1,num do
 		makeAdvert(station)
 	end

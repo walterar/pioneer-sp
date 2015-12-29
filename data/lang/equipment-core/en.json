@@ -31,6 +31,14 @@
 "description":"",
 "message":"An autopilot of combat"
 },
+"BEACON_RECEIVER":{
+"description":"Software for Radar Mapper",
+"message":"Beacon Receiver"
+},
+"BEACON_RECEIVER_DESCRIPTION":{
+"description":"",
+"message":"Software expansion for Radar Mapper or Extended Radar Mapper, a great help in search and rescue missions."
+},
 "CARGO_LIFE_SUPPORT":{
 "description":"",
 "message":"Cargo Bay Life Support"
@@ -48,7 +56,8 @@
 "message":"Permits scooping cargo pods from space."
 },
 "DEMP":{
-"description":"Directional electro magnetic pulse.","message":"DEMP System"
+"description":"Directional electro magnetic pulse.",
+"message":"DEMP System"
 },
 "DEMP_DESCRIPTION":{
 "description":"",
@@ -191,7 +200,8 @@
 "message":"R40 Unguided Rocket"
 },
 "MULTI_SCOOP":{
-"description":"A ship equipment: a cargo scoop and fuel scoop combined to one","message":"Multi Scoop"
+"description":"A ship equipment: a cargo scoop and fuel scoop combined to one",
+"message":"Multi Scoop"
 },
 "MULTI_SCOOP_DESCRIPTION":{
 "description":"",
@@ -206,19 +216,12 @@
 "message":"Occupied Passenger Cabin"
 },
 "PLANETSCANNER":{
-"description":"Scans the nearest body for resources","message":"Body scan"
+"description":"Scans the nearest body for resources",
+"message":"Body scan"
 },
 "PLANETSCANNER_DESCRIPTION":{
 "description":"",
 "message":"Scan nearest body for resources."
-},
-"PROP_CONVERTER":{
-"description":"",
-"message":"Propellant Converter"
-},
-"PROP_CONVERTER_DESCRIPTION":{
-"description":"",
-"message":"Converter that allows use hydrogen instead of water in propellant engine"
 },
 "PULSECANNON_10MW":{
 "description":"",
@@ -301,7 +304,8 @@
 "message":"Starting scan, target distance is"
 },
 "TRADE_ANALYZER":{
-"description":"Ship equipment computing profitable commodities to trade between two systems","message":"Trade analyzer"
+"description":"Ship equipment computing profitable commodities to trade between two systems",
+"message":"Trade analyzer"
 },
 "TRADE_ANALYZER_DESCRIPTION":{
 "description":"",

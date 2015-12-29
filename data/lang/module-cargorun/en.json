@@ -336,7 +336,7 @@
 },
 "PIRATE_TAUNTS_2":{
 "description":"",
-"message":"He works for {client} and carries {cargoname}? This is too much!"
+"message":"You work for {client}? This will be the end of you!"
 },
 "PIRATE_TAUNTS_3":{
 "description":"",

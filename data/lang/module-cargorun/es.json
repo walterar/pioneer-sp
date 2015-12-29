@@ -91,10 +91,6 @@
 "description":"",
 "message":"¿Puede repetirme el requerimiento original?"
 },
-"CRIMINAL_RECORD":{
-"description":"",
-"message":"Lo lamento Comandante. Sus antecedentes criminales son incompatibles con este tipo de tarea. Por favor, vuelva cuando resuelva ese tema."
-},
 "DANGER":{
 "description":"",
 "message":"Riesgo:"

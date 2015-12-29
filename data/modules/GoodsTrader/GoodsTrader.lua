@@ -64,8 +64,9 @@ local onChat = function (form, ref, option)
 
 		-- do something when a "buy" button is clicked
 		onClickBuy = function (ref, commodity)
-			if commodity == Eq.cargo.slaves or commodity == Eq.cargo.live_animals then
-				MessageBox.Message(myl.You_must_install_the_Life_Support_for_Cargo_Bay)
+			if Game.player:GetEquipFree("cargo_life_support") > 0
+				and (commodity == Eq.cargo.slaves or commodity == Eq.cargo.live_animals) then
+					MessageBox.Message(myl.You_must_install_the_Life_Support_for_Cargo_Bay)
 				return false
 			else
 				return onClick(ref)

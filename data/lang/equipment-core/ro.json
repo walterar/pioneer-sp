@@ -31,6 +31,14 @@
 "description":"",
 "message":"An autopilot of combat"
 },
+"BEACON_RECEIVER":{
+"description":"Software for Radar Mapper",
+"message":"Beacon Receiver"
+},
+"BEACON_RECEIVER_DESCRIPTION":{
+"description":"",
+"message":"Software extension for radar mapper."
+},
 "CARGO_LIFE_SUPPORT":{
 "description":"",
 "message":"Sistem de Susținere a Vieții Hală"
@@ -199,26 +207,18 @@
 },
 "OUT_OF_SCANRANGE":{
 "description":"",
-"message":"Max scan range exceeded:"
+"message":"Raza maximă de acțiune a scanării a fost depășită:"
 },
 "PASSENGER_CABIN":{
 "description":"",
 "message":"Occupied Passenger Cabin"
 },
 "PLANETSCANNER":{
-"description":"Scans the nearest body for resources","message":"Body scan"
+"description":"Scans the nearest body for resources","message":"Scanare corp ceresc"
 },
 "PLANETSCANNER_DESCRIPTION":{
 "description":"",
-"message":"Scan nearest body for resources."
-},
-"PROP_CONVERTER":{
-"description":"",
-"message":"Propellant Converter"
-},
-"PROP_CONVERTER_DESCRIPTION":{
-"description":"",
-"message":"Converter that allows use hydrogen instead of water in propellant engine"
+"message":"Scanare cel mai apropiat corp ceresc pentru resurse."
 },
 "PULSECANNON_10MW":{
 "description":"",
@@ -246,7 +246,7 @@
 },
 "PULSECANNON_DUAL_2MW":{
 "description":"",
-"message":"2MW dual-fire pulse cannon"
+"message":"Tun dual intermitent 2MW"
 },
 "PULSECANNON_RAPID_2MW":{
 "description":"",
@@ -270,11 +270,11 @@
 },
 "SCAN_COMPLETED":{
 "description":"",
-"message":"Scanning completed"
+"message":"Scanare completă"
 },
 "SCAN_RESUMED":{
 "description":"",
-"message":"Scanning resumed"
+"message":"Scanarea reluată"
 },
 "SHIELD_ENERGY_BOOSTER":{
 "description":"",
@@ -298,7 +298,7 @@
 },
 "STARTING_SCAN":{
 "description":"",
-"message":"Starting scan, target distance is"
+"message":"Incepe scanarea, distanta la tinta e"
 },
 "TRADE_ANALYZER":{
 "description":"Ship equipment computing profitable commodities to trade between two systems","message":"Analizator comercial"

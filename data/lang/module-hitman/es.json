@@ -41,6 +41,10 @@
 "description":"",
 "message":"{org} lamenta su fracaso en el caso {target}, ha perdido sus {cash}."
 },
+"HOSTILE_SHIPS_APPROACHING":{
+"description":"",
+"message":" naves hostiles se aproximan."
+},
 "HOW_SOON_MUST_IT_BE_DONE":{
 "description":"",
 "message":"¿De cuanto tiempo dispongo?"
@@ -266,6 +270,10 @@
 "TITLE_9":{
 "description":"",
 "message":"Abogado"
+},
+"WARNING":{
+"description":"",
+"message":"¡Alerta! "
 },
 "WHERE_CAN_I_FIND_X":{
 "description":"",

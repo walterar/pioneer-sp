@@ -27,8 +27,6 @@ local TrueJoust  = false
 local onShipHit = function (ship, attacker)
 	if TrueJoust == true and ship:IsPlayer() then
 		killcount = Character.persistent.player.killcount
-		multiplier = 100 - (100 * Game.system.lawlessness)
-		money = math.floor(ship:GetMoney() * (multiplier/1000))
 	end
 end
 
@@ -84,8 +82,6 @@ local joust = function (player)
 			else
 				TrueJoust = false
 				hostil:CancelAI()
-				multiplier = 100 - (100 * Game.system.lawlessness)
-				money = math.floor(player:GetMoney() * (multiplier/1000))
 				player:AddMoney(-money)
 				local nmsg = Engine.rand:Integer(1,3)
 				msg = l["I_have_taken"..nmsg].." $"..money.." "..l["of_your_money"..nmsg]
@@ -99,6 +95,8 @@ local onEnterSystem = function (player)
 	if player:IsPlayer()
 		and Game.system.population == 0
 		and Engine.rand:Integer(3) < 1 then--XXX
+		multiplier = 100 - (100 * Game.system.lawlessness)
+		money = math.floor(player:GetMoney() * (multiplier/1000))
 		Event.Register("onShipHit", onShipHit)
 		Event.Register("onShipDestroyed", onShipDestroyed)
 		joust(player)

@@ -192,14 +192,14 @@ end
 local HyperdriveType = utils.inherits(EquipType, "HyperdriveType")
 
 HyperdriveType.GetMaximumRange = function (self, ship)
-	return 505.0*(self.capabilities.hyperclass ^ 2) / ship.totalMass
+	return 625.0*(self.capabilities.hyperclass ^ 2) / (ship.staticMass + ship.fuelMassLeft)
 end
 
 -- range_max is as usual optional
 HyperdriveType.GetDuration = function (self, ship, distance, range_max)
 	range_max = range_max or self:GetMaximumRange(ship)
 	local hyperclass = self.capabilities.hyperclass
-	return 0.36*distance^2/(range_max*hyperclass) * (3600*24*math.sqrt(ship.totalMass))
+	return 0.36*distance^2/(range_max*hyperclass) * (3600*24*math.sqrt(ship.staticMass + ship.fuelMassLeft))
 end
 
 -- range_max is optional, distance defaults to the maximal range.
@@ -459,7 +459,6 @@ end
 -- trade_analyzer - commodity trade analyzer computer module
 -- demp - Directional Electro Magnetic Pulse
 -- matter_capacitor - Virtually inexhaustible source of propellant
--- prop_converter - Converter that allows use hydrogen instead of water in propellant engine
 
 local cargo = {
 	hydrogen = EquipType.New({
@@ -647,11 +646,11 @@ cargo.consumer_goods.requirements = { cargo.plastics, cargo.textiles }
 
 local misc = {}
 misc.matter_capacitor = EquipType.New({
-	l10n_key="MATTER_CAPACITOR", slots="capacitor", price=2500,
+	l10n_key="MATTER_CAPACITOR", l10n_resource = "equipment-core", slots="capacitor", price=2500,
 	capabilities={mass=1, capacitor=1}, purchasable=true
 })
 misc.auto_combat = EquipType.New({
-	l10n_key="AUTO_COMBAT", slots="autocombat", price=2500,
+	l10n_key="AUTO_COMBAT", l10n_resource = "equipment-core", slots="autocombat", price=2500,
 	capabilities={mass=1, autocombat=1}, purchasable=true
 })
 misc.missile_unguided = EquipType.New({
@@ -683,7 +682,7 @@ misc.atmospheric_shielding = EquipType.New({
 	capabilities={mass=1, atmo_shield=1}, purchasable=true
 })
 misc.demp = EquipType.New({
-	l10n_key="DEMP", slots="demp", price=6700,
+	l10n_key="DEMP", l10n_resource = "equipment-core", slots="demp", price=6700,
 	capabilities={mass=1,}, purchasable=true
 })
 misc.ecm_basic = EquipType.New({
@@ -730,6 +729,11 @@ misc.advanced_radar_mapper = EquipType.New({
 	l10n_key="ADVANCED_RADAR_MAPPER", slots="radar", price=1200,
 	capabilities={mass=1, radar_mapper_level=2}, purchasable=true
 })
+misc.beacon_receiver = EquipType.New({
+	l10n_key="BEACON_RECEIVER", l10n_resource = "equipment-core", slots="beacon_receiver", price=200,
+	capabilities= {mass=0, beacon_receiver=1, software=1}, purchasable=true
+--	capabilities= {mass=0, beacon_receiver=1, software=1, hardware="radar"}, purchasable=true
+})
 misc.fuel_scoop = EquipType.New({
 	l10n_key="FUEL_SCOOP", slots="scoop", price=3500,
 	capabilities={mass=6, fuel_scoop=3}, purchasable=true
@@ -755,8 +759,8 @@ misc.hull_autorepair = EquipType.New({
 	capabilities={mass=40, hull_autorepair=1}, purchasable=true
 })
 misc.trade_analyzer = EquipType.New({
-	l10n_key="TRADE_ANALYZER", slots="trade_analyzer", price=400,
-	capabilities={mass=0, trade_analyzer=1}, purchasable=true
+	l10n_key="TRADE_ANALYZER", slots="trade_analyzer", price=50,
+	capabilities={mass=0, trade_analyzer=1, software=1}, purchasable=true
 })
 misc.planetscanner = BodyScannerType.New({
 	l10n_key = 'PLANETSCANNER', slots="sensor", price=15000,
@@ -764,10 +768,6 @@ misc.planetscanner = BodyScannerType.New({
 	icon_on_name="body_scanner_on", icon_off_name="body_scanner_off",
 	max_range=100000000, target_altitude=0, state="HALTED", progress=0,
 	bodyscanner_stats={scan_speed=3, scan_tolerance=0.05}
-})
-misc.prop_converter = EquipType.New({
-	l10n_key="PROP_CONVERTER", slots="converter", price=2400,
-	capabilities={mass=1, }, purchasable=true
 })
 
 local hyperspace = {}
@@ -840,7 +840,7 @@ laser.pulsecannon_dual_1mw = LaserType.New({
 	}, purchasable=true
 })
 laser.pulsecannon_dual_2mw = LaserType.New({
-	l10n_key="PULSECANNON_DUAL_2MW", price=1900, capabilities={mass=6},
+	l10n_key="PULSECANNON_DUAL_2MW", l10n_resource = "equipment-core", price=1900, capabilities={mass=6},
 	slots = {"laser_front", "laser_rear"}, laser_stats = {
 		lifespan=8, speed=1000, damage=2000, rechargeTime=0.25, length=30,
 		width=6, dual=1, mining=0, rgba_r = 255, rgba_g = 127, rgba_b = 51, rgba_a = 255

@@ -1,0 +1,82 @@
+{
+"AGENCY":{
+"description":"",
+"message":"Agencia: "
+},
+"FLAVOUR_0_TITLE":{
+"description":"",
+"message":"NECESITA DINERO? Tenga lo que desea yá, y pague en 12 cuotas!"
+},
+"FLAVOUR_1_TITLE":{
+"description":"",
+"message":"ADELANTOS EN EFECTIVO Realice su sueño yá, y pague después!"
+},
+"FLAVOUR_2_TITLE":{
+"description":"",
+"message":"ADELANTOS EN EFECTIVO Solicite su crédito aquí."
+},
+"FLAVOUR_3_TITLE":{
+"description":"",
+"message":"PRESTAMOS A SOLA FIRMA Solicite su crédito aquí."
+},
+"FLAVOUR_4_TITLE":{
+"description":"",
+"message":"TENEMOS EL DINERO QUE NECESITA Solicite su crédito aquí."
+},
+"FLAVOUR_5_TITLE":{
+"description":"",
+"message":"ADELANTOS EN EFECTIVO Solicite su crédito aquí."
+},
+"GALACTIC_PILOTS_UNION":{
+"description":"",
+"message":"COOPERATIVA DE PILOTOS GALÁCTICOS"
+},
+"REQUEST_DENIED":{
+"description":"",
+"message":"\n¡SOLICITUD RECHAZADA!\n\nUsted posee un saldo deudor de {deuda}\nFecha inicial de deuda: {fecha}\nCuotas pendientes: {cuotas}\nCuotas pagas: {resto}"
+},
+"TRANSFER":{
+"description":"",
+"message":"\nEn fecha {fecha} hemos transferido {deuda} a su cuenta\nDebitaremos automáticamente {cuotas} cuotas mensuales de {valor}\n\nEsperamos que su inversión sea rentable.\n"
+},
+"MESSAGE_3":{
+"description":"",
+"message":"Indique la cantidad deseada, a devolver en cuotas mensuales.\nEj. Le damos $100.000 y usted nos paga 12 cuotas mensuales de $25.000.-\n¡AVISO! Si no paga en término, puede ser molestado."
+},
+"NEXT_PAYMENT":{
+"description":"",
+"message":"Próximo pago: "
+},
+"INSTALLMENT_VALUE":{
+"description":"",
+"message":"Valor de la cuota: "
+},
+"PERSONAL_LOANS_NO_GUARANTOR":{
+"description":"",
+"message":"Préstamos personales a sola firma..."
+},
+"PENDING_DEBT":{
+"description":"",
+"message":"Deuda pendiente: "
+},
+"PENDING_PAYMENTS":{
+"description":"",
+"message":"Pagos pendientes: "
+},
+"THANK_YOU":{
+"description":"",
+"message":"Gracias por operar con nosotros.\nNos mantendremos en contacto."
+},
+"VERY_PROFITABLE":{
+"description":"",
+"message":"¡Vaya! ¡Su inversión debe ser muy rentable!"
+},
+"YOU_DO_NOT_HAVE_ENOUGH_MONEY":{
+"description":"",
+"message":"Usted no dispone de fondos suficientes."
+},
+"FINANCES":{
+"description":"",
+"message":"Finanzas"
+}
+}

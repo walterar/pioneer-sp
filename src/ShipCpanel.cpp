@@ -11,7 +11,6 @@
 #include "SectorView.h"
 #include "SystemView.h"
 #include "SystemInfoView.h"
-#include "GalacticView.h"
 #include "UIView.h"
 #include "Lang.h"
 #include "Game.h"
@@ -59,10 +58,14 @@ void ShipCpanel::InitObject()
 	m_scanner->onUngrabFocus.connect(sigc::bind(sigc::mem_fun(this, &ShipCpanel::OnMultiFuncUngrabFocus), MFUNC_SCANNER));
 	m_useEquipWidget->onUngrabFocus.connect(sigc::bind(sigc::mem_fun(this, &ShipCpanel::OnMultiFuncUngrabFocus), MFUNC_EQUIPMENT));
 
-	// where the scanner is
-	m_mfsel = new MultiFuncSelectorWidget();
-	m_mfsel->onSelect.connect(sigc::mem_fun(this, &ShipCpanel::OnUserChangeMultiFunctionDisplay));
-	Add(m_mfsel, 656, 18);
+	// Toggle Scanner / Equipment View
+	m_scannerEquipButton = new Gui::MultiStateImageButton();
+	m_scannerEquipButton->SetShortcut(SDLK_F9, KMOD_NONE);
+	m_scannerEquipButton->AddState(0, "icons/multifunc_scanner.png", Lang::TOGGLE_SCANNER_VIEW);
+	m_scannerEquipButton->AddState(1, "icons/multifunc_equip.png", Lang::TOGGLE_EQUIPMENT_VIEW);
+	m_scannerEquipButton->onClick.connect(sigc::mem_fun(this, &ShipCpanel::OnClickScannerEquip));
+	m_scannerEquipButton->SetRenderDimensions(34, 17);
+	Add(m_scannerEquipButton, 675, 18);
 	ChangeMultiFunctionDisplay(MFUNC_SCANNER);
 
 //	Gui::RadioGroup *g = new Gui::RadioGroup();
@@ -189,34 +192,40 @@ void ShipCpanel::InitObject()
 	m_rotationDampingButton->onClick.connect(sigc::mem_fun(this, &ShipCpanel::OnClickRotationDamping));
 	m_rotationDampingButton->SetRenderDimensions(20, 13);
 	m_rotationDampingButton->SetActiveState(Pi::player->GetPlayerController()->GetRotationDamping());
-	Add(m_rotationDampingButton, 760, 37);
+	Add(m_rotationDampingButton, 760, 18);
 	m_connOnRotationDampingChanged = Pi::player->GetPlayerController()->onRotationDampingChanged.connect(
 			sigc::mem_fun(this, &ShipCpanel::OnRotationDampingChanged));
 
 	img = new Gui::Image("icons/alert_green.png");
 	img->SetToolTip(Lang::NO_ALERT);
 	img->SetRenderDimensions(20, 13);
-	Add(img, 780, 37);
+	Add(img, 780, 18);
 	m_alertLights[0] = img;
 	img = new Gui::Image("icons/alert_yellow.png");
 	img->SetToolTip(Lang::SHIP_NEARBY);
 	img->SetRenderDimensions(20, 13);
-	Add(img, 780, 37);
+	Add(img, 780, 18);
 	m_alertLights[1] = img;
 	img = new Gui::Image("icons/alert_red.png");
 	img->SetToolTip(Lang::LASER_FIRE_DETECTED);
 	img->SetRenderDimensions(20, 13);
-	Add(img, 780, 37);
+	Add(img, 780, 18);
 	m_alertLights[2] = img;
 
-	m_overlay[OVERLAY_TOP_LEFT]     = (new Gui::Label(""))->Color(s_hudTextColor);
-	m_overlay[OVERLAY_TOP_RIGHT]    = (new Gui::Label(""))->Color(s_hudTextColor);
-	m_overlay[OVERLAY_BOTTOM_LEFT]  = (new Gui::Label(""))->Color(s_hudTextColor);
-	m_overlay[OVERLAY_BOTTOM_RIGHT] = (new Gui::Label(""))->Color(s_hudTextColor);
-	Add(m_overlay[OVERLAY_TOP_LEFT],     178.0f, 2.0f);
-	Add(m_overlay[OVERLAY_TOP_RIGHT],    500.0f, 2.0f);
-	Add(m_overlay[OVERLAY_BOTTOM_LEFT],  150.0f, 62.0f);
-	Add(m_overlay[OVERLAY_BOTTOM_RIGHT], 520.0f, 62.0f);
+	m_overlay[OVERLAY_TOP_LEFT]        = (new Gui::Label(""))->Color(s_hudTextColor);
+	m_overlay[OVERLAY_TOP_RIGHT]       = (new Gui::Label(""))->Color(s_hudTextColor);
+	m_overlay[OVERLAY_BOTTOM_LEFT]     = (new Gui::Label(""))->Color(s_hudTextColor);
+	m_overlay[OVERLAY_BOTTOM_RIGHT]    = (new Gui::Label(""))->Color(s_hudTextColor);
+	m_overlay[OVERLAY_BOTTOM_CENTER_1] = (new Gui::Label(""))->Color(s_hudTextColor);
+	m_overlay[OVERLAY_BOTTOM_CENTER_2] = (new Gui::Label(""))->Color(s_hudTextColor);
+
+	Add(m_overlay[OVERLAY_TOP_LEFT],           178.0f,   2.0f);
+	Add(m_overlay[OVERLAY_TOP_RIGHT],          500.0f,   2.0f);
+	Add(m_overlay[OVERLAY_BOTTOM_LEFT],        150.0f,  62.0f);
+	Add(m_overlay[OVERLAY_BOTTOM_RIGHT],       520.0f,  62.0f);
+
+	Add(m_overlay[OVERLAY_BOTTOM_CENTER_1], 320.0f, 62.0f);
+	Add(m_overlay[OVERLAY_BOTTOM_CENTER_2], 415.0f,  62.0f);
 
 	View::SetCpanel(this);
 }
@@ -228,10 +237,10 @@ ShipCpanel::~ShipCpanel()
 	delete m_rightButtonGroup;
 	Remove(m_scanner);
 	Remove(m_useEquipWidget);
-	Remove(m_mfsel);
+	Remove(m_scannerEquipButton);
 	delete m_scanner;
 	delete m_useEquipWidget;
-	delete m_mfsel;
+	delete m_scannerEquipButton;
 	m_connOnRotationDampingChanged.disconnect();
 }
 
@@ -250,8 +259,7 @@ void ShipCpanel::ChangeMultiFunctionDisplay(multifuncfunc_t f)
 	Remove(m_scanner);
 	Remove(m_useEquipWidget);
 	if (selected) {
-		m_mfsel->SetSelected(f);
-		Add(selected, 200, 14);
+		Add(selected, 200, 14);//XXX
 		selected->ShowAll();
 	}
 }
@@ -272,7 +280,7 @@ void ShipCpanel::Update()
 	int timeAccel = m_game->GetTimeAccel();
 	int requested = m_game->GetRequestedTimeAccel();
 
-	for (int i=0; i<6; i++) {
+	for (int i=0; i<Game::TimeAccel::TIMEACCEL_HYPERSPACE; i++) {
 		m_timeAccelButtons[i]->SetSelected(timeAccel == i);
 	}
 	// make requested but not selected icon blink
@@ -285,7 +293,7 @@ void ShipCpanel::Update()
 
 	View *cur = Pi::GetView();
 	if ((cur != m_game->GetSectorView()) && (cur != m_game->GetSystemView()) &&
-	    (cur != m_game->GetSystemInfoView()) && (cur != m_game->GetGalacticView())) {
+		(cur != m_game->GetSystemInfoView()) && (cur != m_game->GetGalacticView())) {
 		HideMapviewButtons();
 	}
 }
@@ -379,6 +387,12 @@ void ShipCpanel::OnClickRotationDamping(Gui::MultiStateImageButton *b)
 	Pi::player->GetPlayerController()->ToggleRotationDamping();
 }
 
+void ShipCpanel::OnClickScannerEquip(Gui::MultiStateImageButton *b)
+{
+	int state = m_scannerEquipButton->GetState();
+	ChangeMultiFunctionDisplay((0==state) ? MFUNC_SCANNER : MFUNC_EQUIPMENT);
+}
+
 void ShipCpanel::OnRotationDampingChanged()
 {
 	m_rotationDampingButton->SetActiveState(Pi::player->GetPlayerController()->GetRotationDamping());
@@ -435,7 +449,7 @@ void ShipCpanel::SetOverlayToolTip(OverlayTextPos pos, const std::string &text)
 
 void ShipCpanel::ClearOverlay()
 {
-	for (int i = 0; i < 4; i++) {
+	for (int i = 0; i < 6; i++) {
 		m_overlay[i]->SetText("");
 		m_overlay[i]->SetToolTip("");
 	}

@@ -31,6 +31,14 @@
 "description":"",
 "message":"На борту боевой компьютер."
 },
+"BEACON_RECEIVER":{
+"description":"Software for Radar Mapper",
+"message":"Маяк приемник"
+},
+"BEACON_RECEIVER_DESCRIPTION":{
+"description":"",
+"message":"Расширение программного обеспечения для радара картографа."
+},
 "CARGO_LIFE_SUPPORT":{
 "description":"",
 "message":"Система жизнеобеспечения"
@@ -48,7 +56,8 @@
 "message":"Предназначен для сбора грузовых контейнеров в космическом пространстве."
 },
 "DEMP":{
-"description":"Направленная электромагнитный импульс.","message":"DEMP система"
+"description":"Направленная электромагнитный импульс.",
+"message":"DEMP система"
 },
 "DEMP_DESCRIPTION":{
 "description":"",
@@ -191,7 +200,8 @@
 "message":"Неуправляемая ракета R40"
 },
 "MULTI_SCOOP":{
-"description":"A ship equipment: a cargo scoop and fuel scoop combined to one","message":"Мультисборник"
+"description":"A ship equipment: a cargo scoop and fuel scoop combined to one",
+"message":"Мультисборник"
 },
 "MULTI_SCOOP_DESCRIPTION":{
 "description":"",
@@ -206,19 +216,12 @@
 "message":"Occupied Passenger Cabin"
 },
 "PLANETSCANNER":{
-"description":"Scans the nearest body for resources","message":"Body scan"
+"description":"Scans the nearest body for resources",
+"message":"Body scan"
 },
 "PLANETSCANNER_DESCRIPTION":{
 "description":"",
 "message":"Scan nearest body for resources."
-},
-"PROP_CONVERTER":{
-"description":"",
-"message":"Ракетного топлива Конвертор"
-},
-"PROP_CONVERTER_DESCRIPTION":{
-"description":"",
-"message":"Конвертер, который позволяет использовать водород вместо воды в двигателя ракеты"
 },
 "PULSECANNON_10MW":{
 "description":"",
@@ -246,7 +249,7 @@
 },
 "PULSECANNON_DUAL_2MW":{
 "description":"",
-"message":"2MW  сдвоенное имп.орудие"
+"message":"2MW сдвоенное имп.орудие"
 },
 "PULSECANNON_RAPID_2MW":{
 "description":"",
@@ -301,7 +304,8 @@
 "message":"Начинаю сканирование, расстояние до цели"
 },
 "TRADE_ANALYZER":{
-"description":"Ship equipment computing profitable commodities to trade between two systems","message":"Анализатор торговли"
+"description":"Ship equipment computing profitable commodities to trade between two systems",
+"message":"Анализатор торговли"
 },
 "TRADE_ANALYZER_DESCRIPTION":{
 "description":"",

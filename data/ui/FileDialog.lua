@@ -47,7 +47,6 @@ ui.templates.FileDialog = function (args)
 
 	local fileEntry
 	if args.allowNewFile then
-
 		fileEntry = ui:TextEntry()
 --		if #files > 0 then
 --			fileEntry:SetText(files[1].name)

@@ -18,10 +18,6 @@
 "description":"",
 "message":"Capacity"
 },
-"COMPLETED":{
-"description":"",
-"message":"Completed"
-},
 "CREW":{
 "description":"",
 "message":"Crew"
@@ -29,6 +25,10 @@
 "CREW_VACANCIES":{
 "description":"",
 "message":"Crew vacancies"
+},
+"CRIMINAL_RECORD":{
+"description":"police",
+"message":"Lo lamento Comandante. Sus antecedentes criminales son incompatibles con este tipo de tarea. Por favor, vuelva cuando resuelva ese tema."
 },
 "Check_with_the_police":{
 "description":"",
@@ -114,6 +114,10 @@
 "description":"",
 "message":"Light Scout"
 },
+"LY":{
+"description":"",
+"message":"Ly"
+},
 "Landed_in":{
 "description":"",
 "message":"Landed in "
@@ -142,6 +146,10 @@
 "description":"",
 "message":"Market of New Ships without stock\nin the entire system: "
 },
+"ORBIT":{
+"description":"ui-core",
+"message":"Orbit"
+},
 "Origin":{
 "description":"",
 "message":"Origin:"
@@ -153,6 +161,10 @@
 "Previous_Position":{
 "description":"",
 "message":"Previous Position:"
+},
+"REWARD":{
+"description":"ui-core",
+"message":"Reward:"
 },
 "Registration":{
 "description":"",
@@ -188,6 +200,10 @@
 "Successful_Missions":{
 "description":"",
 "message":"Successful Missions:"
+},
+"TONS_AVAILABLE_FOR":{
+"description":"ui-scout",
+"message":"  Tons available for"
 },
 "UNDOCK_AND_ENTER_LOW_ORBIT":{
 "description":"",

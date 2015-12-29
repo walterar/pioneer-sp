@@ -91,7 +91,7 @@
 "message":"Sorry, Commander. His criminal record is inconsistent with this type of task. Please, return when you resolved this issue."
 },
 "DANGER":{
-"description":"the risk level","message":"Danger:"
+"description":"the risk level","message":"Pavojus:"
 },
 "DEADLINE":{
 "description":"Must be delivered by","message":"Deadline:"
@@ -130,7 +130,7 @@
 "description":"custom cargo","message":"Digesters"
 },
 "DISTANCE":{
-"description":"distance in space, between two locations","message":"Distance:"
+"description":"distance in space, between two locations","message":"Atstumas:"
 },
 "ELECTRICAL_APPLIANCES":{
 "description":"custom cargo","message":"Electrical appliances"
@@ -317,7 +317,7 @@
 "message":"Picked cargo in..."
 },
 "PICKUP_FROM":{
-"description":"from a location","message":"Pickup cargo from:"
+"description":"from a location","message":"Pickup cargo from..."
 },
 "PIRATE_GRIPES_1":{
 "description":"",
@@ -571,11 +571,11 @@
 },
 "WHY_SO_MUCH_MONEY":{
 "description":"",
-"message":"Why so much money?"
+"message":"Kodėl tiek daug pinigų?"
 },
 "WILL_I_BE_IN_ANY_DANGER":{
 "description":"",
-"message":"Will I be in any danger?"
+"message":"Ar aš būsiu pavojuje?"
 },
 "YOU_DO_NOT_HAVE_ENOUGH_CARGO_SPACE_ON_YOUR_SHIP":{
 "description":"",

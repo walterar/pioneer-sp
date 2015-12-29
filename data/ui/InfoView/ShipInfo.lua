@@ -44,7 +44,7 @@ local shipInfo = function (args)
 		player:SetShipName(newName)
 	end )
 
-	local mass_with_fuel = player.totalMass + player.fuelMassLeft
+	local mass_with_fuel = player.staticMass + player.fuelMassLeft
 	local mass_with_fuel_kg = 1000 * mass_with_fuel
 
 	-- ship stats mass is in tonnes; scale by 1000 to convert to kg
@@ -53,7 +53,7 @@ local shipInfo = function (args)
 	local up_acc = shipDef.linearThrust.UP / mass_with_fuel_kg
 
 	-- delta-v calculation according to http://en.wikipedia.org/wiki/Tsiolkovsky_rocket_equation
-	local deltav = shipDef.effectiveExhaustVelocity * math.log((player.totalMass + player.fuelMassLeft) / player.totalMass)
+	local deltav = shipDef.effectiveExhaustVelocity * math.log((player.staticMass + player.fuelMassLeft) / player.staticMass)
 
 	local equipItems = {}
 	local equips = {Equip.cargo, Equip.misc, Equip.hyperspace, Equip.laser}
@@ -101,7 +101,7 @@ local shipInfo = function (args)
 							),
 						},
 						"",
-						{ l.WEIGHT_EMPTY..":",  string.format("%dt", player.totalMass - player.usedCapacity) },
+						{ l.WEIGHT_EMPTY..":",  string.format("%dt", player.staticMass - player.usedCapacity) },
 						{ l.CAPACITY_USED..":", string.format("%dt (%dt "..l.FREE..")", player.usedCapacity,  player.freeCapacity) },
 						{ l.FUEL_WEIGHT..":",   string.format("%dt (%dt "..l.MAX..")", player.fuelMassLeft, shipDef.fuelTankMass ) },
 						{ l.ALL_UP_WEIGHT..":", string.format("%dt", mass_with_fuel ) },
@@ -119,7 +119,6 @@ local shipInfo = function (args)
 						{ lc.AUTO_COMBAT..":",           yes_no(shipDef.equipSlotCapacity.autocombat)},
 						{ lc.DEMP..":",                  yes_no(shipDef.equipSlotCapacity.demp)},
 						{ lc.MATTER_CAPACITOR..":",      yes_no(shipDef.equipSlotCapacity.capacitor)},
-						{ lc.PROP_CONVERTER..":",        yes_no(shipDef.equipSlotCapacity.converter)},
 						"",
 						ui:Label(myl.CREW):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
 						{ myl.CREW_VACANCIES..":", shipDef.maxCrew-shipDef.minCrew},

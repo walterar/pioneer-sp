@@ -82,7 +82,7 @@
 },
 "AUTO_COMBAT":{
 "description":"",
-"message":"Auto Combat Yes/No"
+"message":"AutoCombat on/off"
 },
 "AXIAL_TILT":{
 "description":"",
@@ -283,6 +283,10 @@
 "description":"",
 "message":"Disminuir velocitat"
 },
+"DECREASE_TIME_ACCELERATION":{
+"description":"",
+"message":"Decrease Time Acceleration"
+},
 "DEMOGRAPHICS":{
 "description":"",
 "message":"Població"
@@ -316,7 +320,7 @@
 },
 "DOWNGRADING_ALERT_STATUS":{
 "description":"",
-"message":"No s'ha detectat foc durant els últims seixanta segons, per tant s'ha abaixat el nivell d'alerta."
+"message":"No s'ha detectat foc durant els últims 30 segons, per tant s'ha abaixat el nivell d'alerta."
 },
 "DRAW_OUT_RANGE_LABELS":{
 "description":"",
@@ -423,7 +427,7 @@
 },
 "GAME_LOAD_CANNOT_OPEN":{
 "description":"",
-"message":"Aquesta partida no es pot carregar ja que s'hi ha denegat l'accés."
+"message":"Save file '%filename' could not be found (or the game does not have access to open it)."
 },
 "GAME_LOAD_CORRUPT":{
 "description":"",
@@ -533,17 +537,15 @@
 "description":"",
 "message":"Núvol de sortida d'hiperespai"
 },
-"HYPERSPACE_JUMP_ABORT" : {
-"description" : "Mouse over text for hyperdrive button on ship control panel",
-"message" : "Abort Hyperjump"
-},
-"HYPERSPACE_JUMP_ENGAGE" : {
-"description" : "Mouse over text for hyperdrive button on ship control panel",
-"message" : "Start Hyperjump"
+"HYPERSPACE_JUMP_ABORT":{
+"description":"Mouse over text for hyperdrive button on ship control panel","message":"Disengage Hyperdrive"
 },
 "HYPERSPACE_JUMP_ABORTED":{
 "description":"",
 "message":"S'ha avortat el salt hiperespacial."
+},
+"HYPERSPACE_JUMP_ENGAGE":{
+"description":"Mouse over text for hyperdrive button on ship control panel","message":"Engage Hyperdrive"
 },
 "HYPERSPACE_TARGET":{
 "description":"",
@@ -579,6 +581,10 @@
 "INCREASE_SET_SPEED":{
 "description":"",
 "message":"Incrementar velocitat"
+},
+"INCREASE_TIME_ACCELERATION":{
+"description":"",
+"message":"Increase Time Acceleration"
 },
 "INDUSTRIAL_COLONY":{
 "description":"",
@@ -621,6 +627,9 @@
 "description":"",
 "message":"%speed{f.2} km/s en rel. a %frame"
 },
+"L4L5_DISPLAY_MODE_TOGGLE":{
+"description":"Either show L4/L5 points or don't","message":"Switch between Lagrange L4/L5 point display modes."
+},
 "LANDED":{
 "description":"",
 "message":"Aterrat"
@@ -638,6 +647,10 @@
 "LASER_FIRE_DETECTED":{
 "description":"",
 "message":"S'ha detectat foc de làser."
+},
+"LATITUDE":{
+"description":"Latitude",
+"message":"Lat: %latitude"
 },
 "LEGAL_CURRENT_SYSTEM":{
 "description":"Short (tooltip) description of commodity (singular) status in the system the player is currently in","message":"Legal (current system):"
@@ -662,11 +675,12 @@
 "description":"",
 "message":"Animals vius"
 },
-"LOCAL_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Local arm"
-},
 "LOCKED":{
 "description":"to lock a hyperspace target","message":"bloquejat"
+},
+"LONGITUDE":{
+"description":"Longitude",
+"message":"Lon: %longitude"
 },
 "MAJOR_EXPORTS":{
 "description":"",
@@ -879,17 +893,6 @@
 "description":"",
 "message":"Set."
 },
-"MULTI_SCOOP":{
-"description":"A ship equipment: a cargo scoop and fuel scoop combined to one","message":"Multi Scoop"
-},
-"MULTI_SCOOP_DESCRIPTION":{
-"description":"",
-"message":"Although less effective than a fuel scoop it permits scooping of both cargo and fuel"
-},
-"MURDER":{
-"description":"",
-"message":"Assassinat"
-},
 "M_S_RELATIVE_TO":{
 "description":"",
 "message":"%speed{f.0} m/s en rel. a %frame"
@@ -916,15 +919,15 @@
 "description":"",
 "message":"Gas lacrimogen"
 },
-"NORMA_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Anell de Norma"
-},
 "NOT_FOUND":{
 "description":"searching star system in sector view","message":"No s'ha trobat"
 },
 "NOT_FOUND_BEST_MATCH_X":{
 "description":"",
 "message":"No s'ha trobat. Suggeriment: %system"
+},
+"NOW":{
+"description":"In System Orbit View","message":"Now"
 },
 "NO_ALERT":{
 "description":"",
@@ -1037,9 +1040,6 @@
 "description":"",
 "message":"Món rural a l'aire lliure."
 },
-"OUTER_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Anell Exterior"
-},
 "OVER_N_BILLION":{
 "description":"",
 "message":"Més de %population.000 milions"
@@ -1064,16 +1064,9 @@
 "description":"",
 "message":"Periàpsis"
 },
-"PERSEUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Anell de Perseus"
-},
 "PIONEER":{
 "description":"",
 "message":"PIONEER"
-},
-"PIRACY":{
-"description":"",
-"message":"Pirateria"
 },
 "PITCH":{
 "description":"",
@@ -1125,10 +1118,6 @@
 "PLUTOCRATIC_DICTATORSHIP":{
 "description":"",
 "message":"Plutocràcia dictatorial"
-},
-"POLICE_SHIP_REGISTRATION":{
-"description":"",
-"message":"POLICIA"
 },
 "POPULATION":{
 "description":"",
@@ -1230,9 +1219,6 @@
 "description":"",
 "message":"Deixalles"
 },
-"SAGITTARIUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Anell de Sagitari"
-},
 "SCANNER_CONTROL":{
 "description":"",
 "message":"Mode d'escaneig"
@@ -1243,9 +1229,6 @@
 "SCREENSHOT_FILENAME_TEMPLATE":{
 "description":"",
 "message":"captura%index{d08}.png"
-},
-"SCUTUM_CENTAURUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Anell de Scutum-Centaure"
 },
 "SEARCH":{
 "description":"",
@@ -1332,6 +1315,10 @@
 "SHIP_DETECTED_NEARBY":{
 "description":"",
 "message":"S'ha detectat una nau propera."
+},
+"SHIP_GEOGRAPHIC_POSITION":{
+"description":"",
+"message":"Ship Geographic Position"
 },
 "SHIP_INFORMATION":{
 "description":"",
@@ -1599,9 +1586,6 @@
 "description":"",
 "message":"prim"
 },
-"THREE_KPC_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"3kpc arm"
-},
 "THRIVING_OUTDOOR_WORLD":{
 "description":"",
 "message":"Món exterior actiu."
@@ -1638,6 +1622,9 @@
 "description":"",
 "message":"Minúscul"
 },
+"TOGGLE_EQUIPMENT_VIEW":{
+"description":"Tooltip for the Equipment View button","message":"Equipment View"
+},
 "TOGGLE_HUD_MODE":{
 "description":"",
 "message":"Canvia el mode del HUD"
@@ -1649,6 +1636,9 @@
 "TOGGLE_ROTATION_DAMPING":{
 "description":"",
 "message":"Toggle rotation damping"
+},
+"TOGGLE_SCANNER_VIEW":{
+"description":"Tooltip for the Scanner View button","message":"Scanner View"
 },
 "TOGGLE_SCAN_MODE":{
 "description":"",
@@ -1665,6 +1655,9 @@
 "description":"",
 "message":"Sistema triple"
 },
+"UNDOCKING":{
+"description":"Flight state of ship when leaving station","message":"Undocking"
+},
 "UNEXPLORED_SYSTEM_NO_DATA":{
 "description":"",
 "message":"Sistema inexplorat. No se'n coneix informació."
@@ -1680,10 +1673,6 @@
 "UNKNOWN":{
 "description":"",
 "message":"<desconegut>"
-},
-"UNLAWFUL_WEAPONS_DISCHARGE":{
-"description":"",
-"message":"Disparar armes il·legals"
 },
 "UNSET_NAVTARGET":{
 "description":"",
@@ -1747,10 +1736,6 @@
 },
 "X":{
 "description":"keybinding: x axis","message":"X"
-},
-"X_CANNOT_BE_TOLERATED_HERE":{
-"description":"",
-"message":"%crime no és tolerat aqui"
 },
 "Y":{
 "description":"keybinding: y axis","message":"Y"

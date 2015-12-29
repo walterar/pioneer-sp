@@ -1,0 +1,42 @@
+{
+"AUTO_COMBAT":{
+"description":"",
+"message":"АвтоБорьба"
+},
+"AUTO_COMBAT_DESCRIPTION":{
+"description":"",
+"message":"На борту боевой компьютер."
+},
+"BEACON_RECEIVER":{
+"description":"Software for Radar Mapper",
+"message":"Маяк приемник"
+},
+"BEACON_RECEIVER_DESCRIPTION":{
+"description":"",
+"message":"Расширение программного обеспечения для радара картографа."
+},
+"DEMP":{
+"description":"Направленная электромагнитный импульс.",
+"message":"DEMP система"
+},
+"DEMP_DESCRIPTION":{
+"description":"",
+"message":"Временно переопределяет электронику злоумышленника."
+},
+"MATTER_CAPACITOR":{
+"description":"",
+"message":"Материя Конденсатор"
+},
+"MATTER_CAPACITOR_DESCRIPTION":{
+"description":"",
+"message":"Обеспечивает неограниченное топливной системы."
+},
+"PULSECANNON_DUAL_2MW":{
+"description":"",
+"message":"2MW сдвоенное имп.орудие"
+},
+"PULSECANNON_RAPID_2MW":{
+"description":"",
+"message":"2MW скоростное имп.орудие"
+}
+}

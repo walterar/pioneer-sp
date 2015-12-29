@@ -384,6 +384,30 @@ Ship.RemoveEquip = function (self, item, count, slot)
 	return ret
 end
 
+--
+-- Method: HyperjumpTo
+--
+-- Hyperjump To path
+--
+-- Parameters:
+--
+--   status - true if ok
+--
+--   system_target - system path
+--
+-- Example:
+--
+-- status = ship:HyperjumpTo(system_target)
+--
+-- Availability:
+--
+--  alpha 10
+--
+-- Status:
+--
+--  experimental
+--
+
 Ship.HyperjumpTo = function (self, path)
 	local engine = self:GetEquip("engine", 1)
 	if not engine then
@@ -581,31 +605,34 @@ function Ship:FireMissileAt(which_missile, target)
 	end
 
 	if missile_object then
+
 		if target and target:exists() then
 			missile_object:AIKamikaze(target)
 			_G.MissileActive = MissileActive +1
 		end
+
 		Timer:CallEvery(1, function ()
+
+			if not missile_object
+				or not missile_object:exists()
+			then return true end
+
 			if not target or not target:exists() then
-				if missile_object and missile_object:exists() then
-					missile_object:Explode()
-					_G.MissileActive = MissileActive -1
-					return true
-				end
-			else
-				if missile_object and missile_object:exists() then
-					if missile_object:DistanceTo(self) < 500 then
-						return false
-					end
-					if MissileNaval then
-						MissileNaval = false
-						target:SetInvulnerable(false)
-						target:SetHullPercent(0)
-					end
-					missile_object:Arm()
-					return true
-				end
+				missile_object:Explode()
+				_G.MissileActive = MissileActive -1
+			return true end
+
+			if missile_object:DistanceTo(self) < 500 then
+			return false end
+
+			if MissileNaval then
+				MissileNaval = false
+				target:SetInvulnerable(false)
+				target:SetHullPercent(0)
 			end
+
+			missile_object:Arm()
+			return false
 		end)
 	end
 
@@ -685,11 +712,7 @@ Ship.Refuel = function (self,amount)
 	end
 	local fuelTankMass = ShipDef[self.shipId].fuelTankMass
 	local needed = math.clamp(math.ceil(fuelTankMass - self.fuelMassLeft), 0, amount)
-	if fuelConvert then
-		removed = self:RemoveEquip(Equipment.cargo.hydrogen, needed)
-	else
-		removed = self:RemoveEquip(Equipment.cargo.water, needed)
-	end
+	removed = self:RemoveEquip(Equipment.cargo.hydrogen, needed)
 	self:SetFuelPercent(math.clamp(self.fuel + removed * 100 / fuelTankMass, 0, 100))
 	return removed
 end

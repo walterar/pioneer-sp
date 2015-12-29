@@ -24,9 +24,7 @@ local lobby = function (tab)
 
 	local launchButton = ui:Button(l.REQUEST_LAUNCH):SetFont("HEADING_NORMAL")
 	launchButton.onClick:Connect(function ()
-		Game.SaveGame("_last-undock")
 		local crimes, fine = Game.player:GetCrime()
-
 		if not Game.player:HasCorrectCrew() then
 			MessageBox.Message(l.LAUNCH_PERMISSION_DENIED_CREW)
 		elseif fine > 0 then
@@ -35,6 +33,9 @@ local lobby = function (tab)
 			MessageBox.Message(l.LAUNCH_PERMISSION_DENIED_BUSY)
 		else
 			Game.SwitchView()
+		end
+		if Engine.GetAutosaveEnabled() then
+			Game.SaveGame("_last-undock")
 		end
 	end)
 

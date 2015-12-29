@@ -31,6 +31,14 @@
 "description":"",
 "message":"An autopilot of combat"
 },
+"BEACON_RECEIVER":{
+"description":"Software for Radar Mapper",
+"message":"Beacon Receiver"
+},
+"BEACON_RECEIVER_DESCRIPTION":{
+"description":"",
+"message":"Software extension for radar mapper."
+},
 "CARGO_LIFE_SUPPORT":{
 "description":"",
 "message":"Podpora života v nákladovém prostoru"
@@ -212,14 +220,6 @@
 "description":"",
 "message":"Scan nearest body for resources."
 },
-"PROP_CONVERTER":{
-"description":"",
-"message":"Propellant Converter"
-},
-"PROP_CONVERTER_DESCRIPTION":{
-"description":"",
-"message":"Converter that allows use hydrogen instead of water in propellant engine"
-},
 "PULSECANNON_10MW":{
 "description":"",
 "message":"10MW pulsní kanón"
@@ -243,6 +243,10 @@
 "PULSECANNON_DUAL_1MW":{
 "description":"",
 "message":"1MW dvojitý pulsní kanón"
+},
+"PULSECANNON_DUAL_2MW":{
+"description":"",
+"message":"2MW dvojitý pulsní kanón"
 },
 "PULSECANNON_RAPID_2MW":{
 "description":"",

@@ -81,9 +81,8 @@ local shipRepairs = function (args)
 
 		local in_progress_repair = false
 	local tryRepair = function (damage, price)
-		if in_progress_repair then return end
+		if in_progress_repair or Game.paused then return end
 		if Game.player:GetMoney() >= price then
-			Game.player:AddMoney(-price)
 			in_progress_repair = true
 			local song
 			if Music.IsPlaying then song = Music.GetSongName() end
@@ -91,16 +90,20 @@ local shipRepairs = function (args)
 			Timer:CallAt(Game.time + 10, function ()
 				Music.Stop()
 				if song then Music.Play(song, false) end
-				Game.player:SetHullPercent()
 				in_progress_repair = false
+				Game.player:AddMoney(-price)
 				update('')
 			end)
 			local x = damage/10
 			local i = 10
+			local h
 			Timer:CallEvery(1, function ()
-				Game.player:SetHullPercent(Game.player.hullPercent + x)
+				h = Game.player.hullPercent + x
+				if h > 100 then h = 100 end
+				Game.player:SetHullPercent(h)
 				i=i-1
-				if i < 2 then
+				if i < 1 then
+					update('')
 					return true
 				end
 			end)

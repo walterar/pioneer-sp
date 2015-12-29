@@ -226,6 +226,35 @@ static int l_ship_explode(lua_State *l)
 	return 0;
 }
 
+/*
+ * Method: Disappear
+ *
+ * Destroys the ship without explosion
+ *
+ * > ship:Disappear()
+ *
+ * Availability:
+ *
+ *  September 2015
+ *
+ * Status:
+ *
+ * 	experimental
+ */
+
+static int l_ship_disappear(lua_State *l)
+{
+	LUA_DEBUG_START(l);
+
+	Ship *s = LuaObject<Ship>::CheckFromLua(1);
+	if (s->GetFlightState() == Ship::HYPERSPACE)
+		return luaL_error(l, "Ship:Disappear() cannot be called on a ship in hyperspace");
+	s->Disappear();
+
+	LUA_DEBUG_END(l, 0);
+	return 0;
+}
+
 static int l_ship_get_skin(lua_State *l)
 {
 	Ship *s = LuaObject<Ship>::CheckFromLua(1);
@@ -276,7 +305,7 @@ static int l_ship_set_label(lua_State *l)
 /*
  * Method: SetShipName
  *
- * Changes the ship's name text. 
+ * Changes the ship's name text.
  * This is the name text that appears beside the ship in the HUD.
  *
  * > ship:SetShipName(newShipName)
@@ -387,7 +416,7 @@ static int l_ship_get_docked_with(lua_State *l)
 /*
  * Method: Undock
  *
- * Undock from the station currently docked with
+ * Undock from the station currently docked with, and retract landingear
  *
  * > success = ship:Undock()
  *
@@ -413,6 +442,31 @@ static int l_ship_undock(lua_State *l)
 		luaL_error(l, "Can't undock if not already docked");
 	bool undocking = s->Undock();
 	lua_pushboolean(l, undocking);
+	return 1;
+}
+
+/*
+ * Method: BlastOff
+ *
+ * Blast off, in normal direction to the ground, and retract landingear
+ *
+ * > success = ship:BlastOff()
+ *
+ * Availability:
+ *
+ *  20151015
+ *
+ * Status:
+ *
+ *  experimental
+ */
+static int l_ship_blastoff(lua_State *l)
+{
+	Ship *s = LuaObject<Ship>::CheckFromLua(1);
+	if (s->GetFlightState() != Ship::LANDED)
+		luaL_error(l, "Can't BlastOff if not landed");
+	s->Blastoff();
+	s->SetWheelState(false);
 	return 1;
 }
 
@@ -943,8 +997,10 @@ template <> void LuaObject<Ship>::RegisterClass()
 
 		{ "GetDockedWith", l_ship_get_docked_with },
 		{ "Undock",        l_ship_undock          },
+		{ "BlastOff",      l_ship_blastoff        },
 
-		{ "Explode", l_ship_explode },
+		{ "Explode"  , l_ship_explode   },
+		{ "Disappear", l_ship_disappear },
 
 		{ "AIKill",             l_ship_ai_kill               },
 		{ "AIKamikaze",         l_ship_ai_kamikaze           },
@@ -1110,7 +1166,7 @@ template <> void LuaObject<Ship>::RegisterClass()
  *   experimental
  *
  *
- * Attribute: totalMass
+ * Attribute: staticMass
  *
  * Mass of the ship including hull, equipment and cargo, but excluding
  * thruster fuel mass. Measured in tonnes.

@@ -62,11 +62,11 @@ void HudTrail::Render(Graphics::Renderer *r)
 		tvts.reserve(MAX_POINTS);
 		colors.reserve(MAX_POINTS);
 		tvts.push_back(vector3f(0.f));
-		colors.push_back(Color(0.f));
+		colors.push_back(Color::BLANK);
 		float alpha = 1.f;
 		const float decrement = 1.f / m_trailPoints.size();
 		const Color tcolor = m_color;
-		for (Uint16 i = m_trailPoints.size()-1; i > 0; i--) {
+		for (size_t i = m_trailPoints.size()-1; i > 0; i--) {
 			tvts.push_back(-vector3f(curpos - m_trailPoints[i]));
 			alpha -= decrement;
 			colors.push_back(tcolor);

@@ -127,7 +127,10 @@ end
 
 
 local makeAdvert = function (station)
-	location = _nearbystationsRemotes[Engine.rand:Integer(1,#_nearbystationsRemotes)]
+	if _nearbystationsRemotes
+		and #_nearbystationsRemotes > 0 then
+		location = _nearbystationsRemotes[Engine.rand:Integer(1,#_nearbystationsRemotes)]
+	end
 	if location == nil then return end
 	local client = Character.New()
 	local targetIsfemale = Engine.rand:Integer(1) > 0
@@ -182,6 +185,7 @@ end
 
 local onCreateBB = function (station)
 	local num = Engine.rand:Integer(math.ceil(Game.system.lawlessness*10))
+	if num > 3 then num = 3 end
 	for i = 1, num do
 		makeAdvert(station)
 	end
@@ -218,25 +222,26 @@ local _start_launch_sequence = function (mission)
 		and mission.ship:exists()
 		and mission.due >= Game.time
 		and (mission.ship.flightState == "DOCKED"
-		or mission.ship.flightState == "LANDED")
+			or mission.ship.flightState == "LANDED")
 	then
 		Timer:CallAt(mission.due, function ()
-			if mission.status == 'COMPLETED' then return end
-			if mission.ship and mission.ship:exists() then
-				mission.ship:Undock()
-				Timer:CallEvery(10, function ()
-					if mission.ship
-						and mission.ship:exists()
-						and mission.ship.flightState ~= "DOCKED"
-						and mission.ship.flightState ~= "LANDED"
-					then
-						return true
-					else
-						mission.ship:Undock()
-						return false
-					end
-				end)
-			end
+			if mission.status == 'COMPLETED'
+				or not mission.ship
+				or not mission.ship:exists()then
+			return end
+			if mission.ship.alertStatus == "NONE" then mission.ship:Undock() end
+			Timer:CallEvery(10, function ()
+				if mission.ship
+					and mission.ship:exists()
+					and mission.ship.flightState ~= "DOCKED"
+					and mission.ship.flightState ~= "LANDED"
+				then
+					return true
+				else
+					mission.ship:Undock()
+					return false
+				end
+			end)
 		end)
 	end
 end
@@ -336,40 +341,35 @@ local onShipDocked = function (ship, station)
 	end
 end
 
+	local escort
 local onShipUndocked = function (ship, station)
 	for ref,mission in pairs(missions) do
-		if mission.status == 'ACTIVE' and ship == mission.ship then
-			local target = Game.player:FindNearestTo("PLANET") or Game.player:FindNearestTo("STAR")
-			mission.ship:AIEnterLowOrbit(target)
-			local taunt = string.interp(l["TAUNT_"..Engine.rand:Integer(1, 3)], {org = mission.org})
-			Timer:CallAt(Game.time+90, function ()
-				if mission.ship and mission.ship:exists()
-					and Game.player:GetCombatTarget() == mission.ship
-					and Game.player.flightState == "FLYING" then
+		if mission.status ~= 'ACTIVE'
+			or (ship ~= mission.ship and ship ~= Game.player)
+		then return end
+		if ship == mission.ship then
+			ship:AIEnterMediumOrbit(ship:FindNearestTo("STAR"))
+		end
+		local taunt = string.interp(l["TAUNT_"..Engine.rand:Integer(1, 3)], {org = mission.org})
+		Timer:CallAt(Game.time+60, function ()
+			if escort then escort = nil return end
+			if mission.ship and mission.ship:exists() then
+				if Game.player:GetCombatTarget() == mission.ship
+					and Game.player.flightState == "FLYING"
+					and mission.ship.flightState == "FLYING"
+				then
 					Music.Play("music/core/fx/escalating-danger",false)
 					Comms.ImportantMessage(taunt)
 					mission.ship:AIKill(Game.player)
-				return true end
-			end)
-		end
-	end
-end
-
-local onAICompleted = function (ship, ai_error)
-	for ref,mission in pairs(missions) do
-		if ship and mission.ship == ship
-		and mission.status == 'ACTIVE' then
-			if Game.player:GetCombatTarget() == ship and Game.player.flightState == "FLYING" then
-				ship:AIKill(Game.player)
-			return end
-			mission.ship:AIDockWith(mission.ship:FindNearestTo("SPACESTATION"))
---[[-- XXX TODO
-			local systems = Game.system:GetNearbySystems(max_dist, function (s) return #s:GetStationPaths() > 0 end)
-			if #systems == 0 then return end
-			local target = systems[Engine.rand:Integer(1,#systems)]
-			ship:HyperjumpTo(target.path)
---]]
-		end
+					escort = ship_hostil(mission.danger)
+					if escort then
+						Comms.ImportantMessage(l.WARNING..mission.danger..l.HOSTILE_SHIPS_APPROACHING)
+					end
+				else
+					mission.ship:AIDockWith(station)
+				end
+			end
+		end)
 	end
 end
 
@@ -563,7 +563,6 @@ Event.Register("onUpdateBB", onUpdateBB)
 Event.Register("onEnterSystem", onEnterSystem)
 Event.Register("onShipDestroyed", onShipDestroyed)
 Event.Register("onShipUndocked", onShipUndocked)
-Event.Register("onAICompleted", onAICompleted)
 Event.Register("onShipDocked", onShipDocked)
 
 Mission.RegisterType('hitman',l.hitman,onClick)

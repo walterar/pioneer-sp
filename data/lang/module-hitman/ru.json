@@ -8,7 +8,8 @@
 "message":"Before this date:"
 },
 "CONTACT":{
-"description":"agent of contractor","message":"Contact:"
+"description":"agent of contractor",
+"message":"Contact:"
 },
 "CONTRACTOR":{
 "description":"",
@@ -24,11 +25,11 @@
 },
 "DISTANCE":{
 "description":"",
-"message":"Расстояние:"
+"message":"Distance:"
 },
 "EXCELLENT":{
 "description":"",
-"message":"Отлично."
+"message":"Excellent!"
 },
 "FAILURE_1":{
 "description":"",
@@ -41,6 +42,10 @@
 "FAILURE_3":{
 "description":"",
 "message":"{org} laments his failure in the case {target}, you have lost {cash}."
+},
+"HOSTILE_SHIPS_APPROACHING":{
+"description":"",
+"message":" hostile ships approaching."
 },
 "HOW_SOON_MUST_IT_BE_DONE":{
 "description":"",
@@ -80,11 +85,11 @@
 },
 "LY":{
 "description":"",
-"message":"св.лет"
+"message":"ly"
 },
 "OK_AGREED":{
 "description":"",
-"message":"Согласен, подписываю контракт."
+"message":"OK. Agreed."
 },
 "ORG_1":{
 "description":"",
@@ -103,7 +108,8 @@
 "message":"Cleaning Galactic Ltd."
 },
 "ORG_5":{
-"description":"Hitman & Hitman Inc.","message":"Hitman & Hitman Inc."
+"description":"Hitman & Hitman Inc.",
+"message":"Hitman & Hitman Inc."
 },
 "PAID_SITE":{
 "description":"",
@@ -135,11 +141,11 @@
 },
 "SHIP":{
 "description":"",
-"message":"Тип корабля:"
+"message":"Ship:"
 },
 "SHIP_ID":{
 "description":"",
-"message":"Номер корабля:"
+"message":"Ship Id:"
 },
 "SPACEPORT1":{
 "description":"",
@@ -167,7 +173,7 @@
 },
 "TARGET_NAME":{
 "description":"",
-"message":"Цель:"
+"message":"Target:"
 },
 "TAUNT_1":{
 "description":"",
@@ -280,6 +286,10 @@
 "TITLE_9":{
 "description":"",
 "message":"Lawyer"
+},
+"WARNING":{
+"description":"",
+"message":"Warning! "
 },
 "WHERE_CAN_I_FIND_X":{
 "description":"",

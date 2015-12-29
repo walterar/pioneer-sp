@@ -15,12 +15,13 @@ GameConfig::GameConfig(const std::map<std::string,std::string> &override_)
 	map["StartFullscreen"] = "0";
 	map["ScrWidth"] = "800";
 	map["ScrHeight"] = "600";
+	map["UIScaleFactor"] = "1";
 	map["DetailCities"] = "1";
 	map["DetailPlanets"] = "1";
 	map["SfxVolume"] = "0.8";
 	map["EnableJoystick"] = "1";
 	map["InvertMouseY"] = "0";
-	map["FOVVertical"] = "65";
+	map["FOVVertical"] = "40";
 	map["DisplayNavTunnel"] = "0";
 	map["CompactScanner"] = "0";
 	map["ConfirmQuit"] = "1";
@@ -35,7 +36,7 @@ GameConfig::GameConfig(const std::map<std::string,std::string> &override_)
 	map["MaxPhysicsCyclesPerRender"] = "4";
 	map["AntiAliasingMode"] = "2";
 	map["JoystickDeadzone"] = "0.2"; // 20% deadzone is common
-	map["DefaultLowThrustPower"] = "0.25";
+	map["DefaultLowThrustPower"] = "0.005";
 	map["VSync"] = "1";
 	map["UseTextureCompression"] = "1";
 	map["WorkerThreads"] = "0";
@@ -43,7 +44,7 @@ GameConfig::GameConfig(const std::map<std::string,std::string> &override_)
 	map["EnableCockpit"] = "0";
 	map["HudTrails"] = "1";
 	map["EnableServerAgent"] = "0";
-	map["AmountOfBackgroundStars"] = "0.25";
+	map["AmountOfBackgroundStars"] = "0.50";
 
 #ifdef _WIN32
 	map["RedirectStdio"] = "1";

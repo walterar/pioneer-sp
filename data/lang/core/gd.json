@@ -12,7 +12,8 @@
 "message":"Dìlseachd:"
 },
 "ALT":{
-"description":"Alt key on keyboard","message":"Alt"
+"description":"Alt key on keyboard",
+"message":"Alt"
 },
 "ALT_IN_KM":{
 "description":"",
@@ -28,11 +29,11 @@
 },
 "AND_INDIGENOUS_MICROBIAL_LIFE":{
 "description":"",
-"message":"\" and indigenous microbial life.\""
+"message":"\" is tùs-bhitheagan.\""
 },
 "AND_INDIGENOUS_PLANT_LIFE":{
 "description":"",
-"message":"\" and indigenous plant life.\""
+"message":"\" is tùs-lusan.\""
 },
 "ANIMAL_MEAT":{
 "description":"",
@@ -40,7 +41,7 @@
 },
 "APOAPSIS_DISTANCE":{
 "description":"",
-"message":"Apoapsis distance"
+"message":"Astar an apoapsis"
 },
 "AR_ATMOSPHERE":{
 "description":"",
@@ -51,10 +52,12 @@
 "message":"Dreag"
 },
 "AUTOMATIC_SYSTEM_SELECTION":{
-"description":"for star map, select star system when mouse close to it","message":"Taghadh fèin-obrachail an t-siostaim"
+"description":"for star map, select star system when mouse close to it",
+"message":"Taghadh fèin-obrachail an t-siostaim"
 },
 "AUTOPILOT_CONTROL":{
-"description":"Indicating that ship is flying under autopilot control","message":"Smachd fèin-stiùiridh"
+"description":"Indicating that ship is flying under autopilot control",
+"message":"Smachd fèin-stiùiridh"
 },
 "AUTOPILOT_DOCK_WITH_STATION":{
 "description":"",
@@ -82,14 +85,15 @@
 },
 "AUTO_COMBAT":{
 "description":"",
-"message":"Auto Combat Yes/No"
+"message":"AutoCombat on/off"
 },
 "AXIAL_TILT":{
 "description":"",
 "message":"Claonadh aisealach"
 },
 "A_FEW_THOUSAND":{
-"description":"regarding population","message":"Mìle no dhà"
+"description":"regarding population",
+"message":"Mìle no dhà"
 },
 "BATTLE_WEAPONS":{
 "description":"",
@@ -100,7 +104,8 @@
 "message":"Siostam càraideach"
 },
 "BODIES":{
-"description":"space bodies","message":"bodhaigean"
+"description":"space bodies",
+"message":"bodhaigean"
 },
 "BODY":{
 "description":"",
@@ -108,7 +113,7 @@
 },
 "BROWN_DWARF":{
 "description":"",
-"message":"Brown dwarf sub-stellar object"
+"message":"Troich dhonn - nì fo-reultach"
 },
 "BUTTON":{
 "description":"",
@@ -116,7 +121,7 @@
 },
 "CAMERA_BOTTOM_VIEW":{
 "description":"",
-"message":"Camara buinn"
+"message":"Camara a' bhuinn"
 },
 "CAMERA_FRONT_VIEW":{
 "description":"",
@@ -124,19 +129,19 @@
 },
 "CAMERA_LEFT_VIEW":{
 "description":"",
-"message":"Camara clì"
+"message":"Camara taobh clì"
 },
 "CAMERA_REAR_VIEW":{
 "description":"",
-"message":"Camara cùlaibh"
+"message":"Camara a' chùlaibh"
 },
 "CAMERA_RIGHT_VIEW":{
 "description":"",
-"message":"Camara deas"
+"message":"Camara taobh deas"
 },
 "CAMERA_TOP_VIEW":{
 "description":"",
-"message":"Camara barra"
+"message":"Camara a' bharra"
 },
 "CANT_SAVE_DEAD_PLAYER":{
 "description":"",
@@ -156,7 +161,7 @@
 },
 "CARBON_ORE_DESCRIPTION":{
 "description":"",
-"message":"Carbon ores (coal and oil) are required for the synthesis of many useful chemicals, including plastics, synthetic foodstuffs, medicines and textiles"
+"message":"Tha feum air clach-charboin (gual is ola) gus iomadh co-thàthadh ceimigeach feumail a dhèanamh, a' gabhail a-steach plastaig, biadh co-thàthte, leigheas is clò "
 },
 "CARGO":{
 "description":"",
@@ -203,7 +208,8 @@
 "message":", glè bheinn-theinnteach"
 },
 "COMMODITY_NONE":{
-"description":"When no commodities exist","message":"Chan eil gin"
+"description":"When no commodities exist",
+"message":"Chan eil gin"
 },
 "COMMODITY_TRADE_ANALYSIS_COMPARE":{
 "description":"",
@@ -262,10 +268,12 @@
 "message":"\" àile aon-ogsaid carboin\""
 },
 "CTRL":{
-"description":"Ctrl key on keyboard","message":"Ctrl"
+"description":"Ctrl key on keyboard",
+"message":"Ctrl"
 },
 "CURRENT_SYSTEM":{
-"description":"selected current star system","message":"An t-siostam làithreach"
+"description":"selected current star system",
+"message":"An siostam làithreach"
 },
 "DATE_DUE_N":{
 "description":"",
@@ -283,6 +291,10 @@
 "description":"",
 "message":"Ìslich an luaths suidhichte"
 },
+"DECREASE_TIME_ACCELERATION":{
+"description":"",
+"message":"Lùghdaich luathachadh an ama"
+},
 "DEMOGRAPHICS":{
 "description":"",
 "message":"Eòlas-sluaigh"
@@ -292,15 +304,16 @@
 "message":"Ceann-uidhe"
 },
 "DIRECTION":{
-"description":"Direction","message":"\"Comhair\""
+"description":"Direction",
+"message":"\"Comhair\""
 },
 "DISTANCE_FROM_SHIP_TO_NAV_TARGET":{
 "description":"",
-"message":"Astar eadar an long agus an ceann-uidhe"
+"message":"Astar eadar an soitheach agus an ceann-uidhe"
 },
 "DISTANCE_LY":{
 "description":"",
-"message":"Astar: %distance{f.2} ly"
+"message":"Astar: %distance{f.2} bl-shol"
 },
 "DOCKED":{
 "description":"",
@@ -316,15 +329,15 @@
 },
 "DOWNGRADING_ALERT_STATUS":{
 "description":"",
-"message":"No fire detected for 60 seconds, downgrading alert status."
+"message":"Cha deach mothachadh do theine fad 30 diog, ag ìsleachadh ìre an rabhaidh."
 },
 "DRAW_OUT_RANGE_LABELS":{
 "description":"",
-"message":"Cuir leubail ri siostaman nach gabh ruigsinn"
+"message":"Seall leubailean nan siostaman nach gabh ruigsinn"
 },
 "DRAW_UNINHABITED_LABELS":{
 "description":"",
-"message":"Cuir leubail air siostaman gun chòmhnadh"
+"message":"Seall leubailean nan siostaman gun chòmhnadh"
 },
 "DRAW_VERTICAL_LINES":{
 "description":"",
@@ -356,7 +369,7 @@
 },
 "EQUATORIAL_RADIUS_TO_POLAR_RADIUS_RATIO":{
 "description":"",
-"message":"Equatorial to polar radius ratio"
+"message":"Co-rèir an rèideas meadhan-chriosach 's pòlarach"
 },
 "EXACT_MATCH_X":{
 "description":"",
@@ -368,7 +381,7 @@
 },
 "EXTERNAL_ATMOSPHERIC_PRESSURE":{
 "description":"",
-"message":"External atmospheric pressure"
+"message":"Brùthadh an àile a-muigh"
 },
 "EXTERNAL_VIEW":{
 "description":"",
@@ -388,11 +401,11 @@
 },
 "FINE_PAID_N_BUT_N_REMAINING":{
 "description":"",
-"message":"You have paid %paid but still have an outstanding fine of %fine."
+"message":"Tha thu air %paid a phàigheadh ach tha càin dhe %fine ri a pàigheadh ann fhathast."
 },
 "FIRE_LASER":{
 "description":"",
-"message":"Fire laser"
+"message":"Loisg an leusair"
 },
 "FIRE_MISSILE":{
 "description":"",
@@ -400,7 +413,7 @@
 },
 "FOLLOWING_SELECTION":{
 "description":"",
-"message":"an taghadh a leanas"
+"message":"an t-ath-taghadh"
 },
 "FRUIT_AND_VEG":{
 "description":"",
@@ -415,7 +428,8 @@
 "message":"Tha sgiob a' chonnaidh gnìomhach. Tha %quantity tunna a hàidhdreaidean agad a-nis."
 },
 "GALACTIC_VIEW":{
-"description":"view galactic map","message":"Sealladh an reul-chriosa"
+"description":"view galactic map",
+"message":"Sealladh an reul-chriosa"
 },
 "GALAXY_SECTOR_VIEW":{
 "description":"",
@@ -423,7 +437,7 @@
 },
 "GAME_LOAD_CANNOT_OPEN":{
 "description":"",
-"message":"Cha b' urrainn dhuinn faidhle a' gheama air a shàbhaladh fhosgladh ri linn dìth cead no rud dhen leithid..."
+"message":"Cha do lorg sinn am faidhle air a shàbhaladh \"%filename\" (no chan eil inntrigeadh aig a' gheama dha gus fhosgladh)."
 },
 "GAME_LOAD_CORRUPT":{
 "description":"",
@@ -439,18 +453,19 @@
 },
 "GAME_SAVE_CANNOT_WRITE":{
 "description":"",
-"message":"Cha b' urrainn dhuinn faidhle sàbhaladh a' gheama a sgrìobhadh air sàilleibh mearachd an t-siostaim."
+"message":"Cha b' urrainn dhuinn am faidhle a sgrìobhadh ri linn mearachd an t-siostaim."
 },
 "GENERAL_VIEW_CONTROLS":{
 "description":"",
-"message":"Uidheaman-smachd coitcheann an t-seallaidh"
+"message":"Uidheaman-smachd coitcheann"
 },
 "GOVERNMENT_TYPE":{
 "description":"",
 "message":"Seòrsa an riaghaltais:"
 },
 "GRAIN":{
-"description":"like wheat or barley","message":"Gràn"
+"description":"like wheat or barley",
+"message":"Gràn"
 },
 "HAND_WEAPONS":{
 "description":"",
@@ -461,29 +476,36 @@
 "message":"Calpach gu tur - gun riaghaltas no sochair"
 },
 "HAT":{
-"description":"Hat switch: Is the top button on a joystick","message":"\" Ad\""
+"description":"Hat switch: Is the top button on a joystick",
+"message":"\" Ad\""
 },
 "HEADING_LOCK_ANTINORMAL":{
-"description":"Autopilot direction (perpendicular, down), relative to plane of orbit","message":"Hold anti-normal"
+"description":"Autopilot direction (perpendicular, down), relative to plane of orbit",
+"message":"Cumail an-àbhaisteach"
 },
 "HEADING_LOCK_BACKWARD":{
-"description":"Autopilot points/holds/faces you retrograde (backwards rel. orbital direction)","message":"Hold retrograde"
+"description":"Autopilot points/holds/faces you retrograde (backwards rel. orbital direction)",
+"message":"Cumail ais-cheumach"
 },
 "HEADING_LOCK_FORWARD":{
-"description":"Autopilot points/holds/faces you prograde (tangent to the orbit, i.e. forward), http://wiki.kerbalspaceprogram.com/wiki/Maneuver_node","message":"Hold prograde"
+"description":"Autopilot points/holds/faces you prograde (tangent to the orbit, i.e. forward), http://wiki.kerbalspaceprogram.com/wiki/Maneuver_node",
+"message":"Cumail air adhart"
 },
 "HEADING_LOCK_KILLROT":{
 "description":"",
-"message":"Kill rotation"
+"message":"Stad an cuairteachadh"
 },
 "HEADING_LOCK_NORMAL":{
-"description":"Autopilot direction (perpendicular, up), relative to plane of orbit. ","message":"Hold normal"
+"description":"Autopilot direction (perpendicular, up), relative to plane of orbit. ",
+"message":"Cumail àbhaisteach"
 },
 "HEADING_LOCK_RADIALLY_INWARD":{
-"description":"Autopilot direction, relative to orbit (face towards planet)","message":"Hold radially in"
+"description":"Autopilot direction, relative to orbit (face towards planet)",
+"message":"Cumail rèideal a-steach"
 },
 "HEADING_LOCK_RADIALLY_OUTWARD":{
-"description":"Autopilot direction, relative to orbit (face away from palent)","message":"Hold radially out"
+"description":"Autopilot direction, relative to orbit (face away from palent)",
+"message":"Cumail rèideal a-mach"
 },
 "HEAVY_INDUSTRY":{
 "description":"",
@@ -503,7 +525,7 @@
 },
 "HULL_INTEGRITY":{
 "description":"",
-"message":"Iomlanachd na slige"
+"message":"Cor na slige"
 },
 "HULL_TEMP":{
 "description":"",
@@ -527,23 +549,23 @@
 },
 "HYPERSPACE_ARRIVAL_CLOUD_REMNANT":{
 "description":"",
-"message":"Hyperspace arrival cloud remnant"
+"message":"Iarsmadh neòil ruigsinn os-fhànais"
 },
 "HYPERSPACE_DEPARTURE_CLOUD":{
 "description":"",
 "message":"Neul falbh os-fhànais"
 },
-"HYPERSPACE_JUMP_ABORT" : {
-"description" : "Mouse over text for hyperdrive button on ship control panel",
-"message" : "Abort Hyperjump"
-},
-"HYPERSPACE_JUMP_ENGAGE" : {
-"description" : "Mouse over text for hyperdrive button on ship control panel",
-"message" : "Start Hyperjump"
+"HYPERSPACE_JUMP_ABORT":{
+"description":"Mouse over text for hyperdrive button on ship control panel",
+"message":"Cuir an draibh os-fhànais dheth"
 },
 "HYPERSPACE_JUMP_ABORTED":{
 "description":"",
 "message":"Chaidh sgur dhen leum os-fhànais."
+},
+"HYPERSPACE_JUMP_ENGAGE":{
+"description":"Mouse over text for hyperdrive button on ship control panel",
+"message":"Cuir an draibh os-fhànais air"
 },
 "HYPERSPACE_TARGET":{
 "description":"",
@@ -562,7 +584,8 @@
 "message":"\" saoghal deighe\""
 },
 "ILLEGAL_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of commodity (singular) status in the system the player is currently in","message":"Mì-laghail (far a bheil thu):"
+"description":"Short (tooltip) description of commodity (singular) status in the system the player is currently in",
+"message":"Mì-laghail (far a bheil thu):"
 },
 "ILLEGAL_GOODS":{
 "description":"",
@@ -580,13 +603,17 @@
 "description":"",
 "message":"Suidhich luaths nas àirde"
 },
+"INCREASE_TIME_ACCELERATION":{
+"description":"",
+"message":"Meudaich luathachadh an ama"
+},
 "INDUSTRIAL_COLONY":{
 "description":"",
 "message":"Tuineachadh gnìomhachail."
 },
 "INDUSTRIAL_HUB_SYSTEM":{
 "description":"",
-"message":"Industrial hub system."
+"message":"Siostam ionaid ghnìomhachail."
 },
 "INDUSTRIAL_MACHINERY":{
 "description":"",
@@ -597,7 +624,8 @@
 "message":"Sealladh taobh a-staigh"
 },
 "INT_LY":{
-"description":"integer number of light years","message":"%scale ly"
+"description":"integer number of light years",
+"message":"%scale bl-shol"
 },
 "IN_TRANSIT":{
 "description":"",
@@ -608,28 +636,36 @@
 "message":"A' siubhal gu %system [%x,%y,%z]"
 },
 "JOY":{
-"description":"Short for Joystick","message":"Joy"
+"description":"Short for Joystick",
+"message":"Joy"
 },
 "JOYSTICK_INPUT":{
 "description":"",
-"message":"Ion-chuir a' joystick"
+"message":"Ion-chur a' joystick"
 },
 "JOY_AXIS":{
-"description":"Regarding joystick","message":"%{sign}%joyname aiseal %axis"
+"description":"Regarding joystick",
+"message":"%{sign}%joyname aiseal %axis"
 },
 "KM_S_RELATIVE_TO":{
 "description":"",
-"message":"%speed{f.2} km/s rel-to %frame"
+"message":"%speed{f.2} km/s an taca ri %frame"
+},
+"L4L5_DISPLAY_MODE_TOGGLE":{
+"description":"Either show L4/L5 points or don't",
+"message":"Gearr leum eadar modhan sealltainn puing Lagrange L4/L5."
 },
 "LANDED":{
 "description":"",
 "message":"Air tìr"
 },
 "LANG_NAME":{
-"description":"The name that native speakers use for this language. This will be used in the language selection screen.","message":"Gàidhlig"
+"description":"The name that native speakers use for this language. This will be used in the language selection screen.",
+"message":"Gàidhlig"
 },
 "LARGE":{
-"description":"regarding terrestrial planet size (mass actually)","message":"Mòr"
+"description":"regarding terrestrial planet size (mass actually)",
+"message":"Mòr"
 },
 "LARGE_GAS_GIANT":{
 "description":"",
@@ -639,8 +675,13 @@
 "description":"",
 "message":"Mhothaich sinn air losgadh leusair."
 },
+"LATITUDE":{
+"description":"Latitude",
+"message":"Lat: %latitude"
+},
 "LEGAL_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of commodity (singular) status in the system the player is currently in","message":"Laghail (far a bheil thu):"
+"description":"Short (tooltip) description of commodity (singular) status in the system the player is currently in",
+"message":"Laghail (far a bheil thu):"
 },
 "LIBERAL_DEMOCRACY":{
 "description":"",
@@ -648,11 +689,11 @@
 },
 "LIQUID_OXYGEN":{
 "description":"",
-"message":"Liquid Oxygen"
+"message":"Ogsaidean leannach"
 },
 "LIQUID_OXYGEN_DESCRIPTION":{
 "description":"",
-"message":"Oxygen is required for life support systems and some industrial processes"
+"message":"Tha feum air ogsaidean aig siostaman taice-beatha is cuid a phròiseasan gnìomhachail"
 },
 "LIQUOR":{
 "description":"",
@@ -662,25 +703,29 @@
 "description":"",
 "message":"Beathaichean beò"
 },
-"LOCAL_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Local arm"
-},
 "LOCKED":{
-"description":"to lock a hyperspace target","message":"glaiste"
+"description":"to lock a hyperspace target",
+"message":"glaiste"
+},
+"LONGITUDE":{
+"description":"Longitude",
+"message":"Lon: %longitude"
 },
 "MAJOR_EXPORTS":{
 "description":"",
 "message":"Prìomh às-phortachadh:"
 },
 "MAJOR_EXPORT_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in","message":"Prìomh às-phortachadh (far a bheil thu):"
+"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+"message":"Prìomh às-phortachadh (far a bheil thu):"
 },
 "MAJOR_IMPORTS":{
 "description":"",
 "message":"Prìomh ion-phortachadh:"
 },
 "MAJOR_IMPORT_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in","message":"Prìomh ion-phortachadh (far a bheil thu):"
+"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+"message":"Prìomh ion-phortachadh (far a bheil thu):"
 },
 "MANUAL_CONTROL":{
 "description":"",
@@ -700,7 +745,7 @@
 },
 "MAP_TOGGLE_SELECTION_FOLLOW_VIEW":{
 "description":"",
-"message":"Toggle Selection Following View"
+"message":"Toglaich sealladh leantainneach an taghaidh"
 },
 "MAP_VIEW_ROTATE_DOWN":{
 "description":"",
@@ -779,7 +824,8 @@
 "message":"Teachdaireachd o %sender:"
 },
 "META":{
-"description":"'Meta' key on keyboard","message":"Meta"
+"description":"'Meta' key on keyboard",
+"message":"Meta"
 },
 "METAL_ALLOYS":{
 "description":"",
@@ -810,14 +856,16 @@
 "message":"Beagan às-phortachaidh:"
 },
 "MINOR_EXPORT_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in","message":"Beagan às-phortachaidh (far a bheil thu):"
+"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+"message":"Beagan às-phortachaidh (far a bheil thu):"
 },
 "MINOR_IMPORTS":{
 "description":"",
 "message":"Beagan ion-phortachaidh:"
 },
 "MINOR_IMPORT_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in","message":"Beagan ion-phortachaidh (far a bheil thu):"
+"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+"message":"Beagan ion-phortachaidh (far a bheil thu):"
 },
 "MISCELLANEOUS":{
 "description":"",
@@ -879,26 +927,17 @@
 "description":"",
 "message":"Sult"
 },
-"MULTI_SCOOP":{
-"description":"A ship equipment: a cargo scoop and fuel scoop combined to one","message":"Iomadh sgiob"
-},
-"MULTI_SCOOP_DESCRIPTION":{
-"description":"",
-"message":"Ged nach eil e cho èifeachdach 's a tha sgiob connaidh, 's urrainn dhut an dà chuid carago is connadh a sgobadh leis."
-},
-"MURDER":{
-"description":"",
-"message":"Murt"
-},
 "M_S_RELATIVE_TO":{
 "description":"",
-"message":"%speed{f.0} m/s rel-to %frame"
+"message":"%speed{f.0} m/s an taca ri %frame"
 },
 "NAME_OBJECT":{
-"description":"For an item or object","message":"Ainm"
+"description":"For an item or object",
+"message":"Ainm"
 },
 "NAME_PERSON":{
-"description":"For a person","message":"Ainm"
+"description":"For a person",
+"message":"Ainm"
 },
 "NARCOTICS":{
 "description":"",
@@ -914,17 +953,19 @@
 },
 "NERVE_GAS":{
 "description":"",
-"message":"Nerve Gas"
-},
-"NORMA_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Norma arm"
+"message":"Nearbh-ghas"
 },
 "NOT_FOUND":{
-"description":"searching star system in sector view","message":"Cha deach a lorg"
+"description":"searching star system in sector view",
+"message":"Cha deach a lorg"
 },
 "NOT_FOUND_BEST_MATCH_X":{
 "description":"",
 "message":"Cha deach a lorg, am maids as fearr: %system"
+},
+"NOW":{
+"description":"In System Orbit View",
+"message":"An-dràsta"
 },
 "NO_ALERT":{
 "description":"",
@@ -948,27 +989,31 @@
 },
 "NO_TARGET_SELECTED":{
 "description":"",
-"message":"Coimpiutair na luinge: Cha deach ceann-uidhe a thaghadh"
+"message":"Coimpiutair an t-soithich: Cha deach ceann-uidhe a thaghadh"
 },
 "NUMBER_DAYS":{
 "description":"",
 "message":"%days{f.0} latha"
 },
 "NUMBER_DECIMAL_POINT":{
-"description":"Decimal delimiter used in numbers.","message":"."
+"description":"Decimal delimiter used in numbers.",
+"message":"."
 },
 "NUMBER_G":{
 "description":"",
 "message":"%acceleration{f.1} G"
 },
 "NUMBER_GROUP_MIN":{
-"description":"Smallest number to start grouping of digits for. (E.g. if \"10000\" start grouping thousands with 10,000, and not 1,000).","message":"1000"
+"description":"Smallest number to start grouping of digits for. (E.g. if \"10000\" start grouping thousands with 10,000, and not 1,000).",
+"message":"1000"
 },
 "NUMBER_GROUP_NUM":{
-"description":"For large number, group digits by this many. European languages use 3 (group thousands). 0 means no grouping.","message":"3"
+"description":"For large number, group digits by this many. European languages use 3 (group thousands). 0 means no grouping.",
+"message":"3"
 },
 "NUMBER_GROUP_SEP":{
-"description":"For large number, separator used when grouping digits. E.g. 1,000 or 1 000 or 1'000.","message":","
+"description":"For large number, separator used when grouping digits. E.g. 1,000 or 1 000 or 1'000.",
+"message":","
 },
 "NUMBER_HOURS":{
 "description":"",
@@ -976,7 +1021,7 @@
 },
 "NUMBER_LY":{
 "description":"",
-"message":"%distance{f.2} ly"
+"message":"%distance{f.2} bl-shol"
 },
 "NUMBER_TONNES":{
 "description":"",
@@ -1011,7 +1056,8 @@
 "message":"%mass{f.3} %units tomadan"
 },
 "N_WHATEVER_RADII":{
-"description":"Used in system info view. E.g. for Barnard's star: \"0.17 Solar radii (118235 km)\"","message":"%radius{f.3} %units rèideas (%radkm{f.0} km)"
+"description":"Used in system info view. E.g. for Barnard's star: \"0.17 Solar radii (118235 km)\"",
+"message":"%radius{f.3} %units rèideas (%radkm{f.0} km)"
 },
 "N_YEARS":{
 "description":"",
@@ -1035,10 +1081,7 @@
 },
 "OUTDOOR_AGRICULTURAL_WORLD":{
 "description":"",
-"message":"Outdoor agricultural world."
-},
-"OUTER_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Outer arm"
+"message":"Saoghal àiteachais le sluagh a' fuireach a-muigh."
 },
 "OVER_N_BILLION":{
 "description":"",
@@ -1062,18 +1105,11 @@
 },
 "PERIAPSIS_DISTANCE":{
 "description":"",
-"message":"Periapsis distance"
-},
-"PERSEUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Perseus arm"
+"message":"Astar a' pheriapsis"
 },
 "PIONEER":{
 "description":"",
 "message":"PIONEER"
-},
-"PIRACY":{
-"description":"",
-"message":"Spùinneadaireachd"
 },
 "PITCH":{
 "description":"",
@@ -1093,7 +1129,7 @@
 },
 "PLANET_CONTAINING_LIQUID_WATER":{
 "description":"",
-"message":"\" planet containing liquid water\""
+"message":"\" planaid aig a bheil uisge leannach\""
 },
 "PLANET_WITH_SOME_ICE":{
 "description":"",
@@ -1104,19 +1140,24 @@
 "message":"Àrd-riaghaltas le plana-eaconamaidh "
 },
 "PLANNER_RESET_FACTOR":{
-"description":"For system orbit view","message":"Rate of increase of delta-v values. Click to reset to default."
+"description":"For system orbit view",
+"message":"Reat meudachaidh nan luachan delta-v. Brig gus a shuidheachadh air a' bhun-roghainn."
 },
 "PLANNER_RESET_NORMAL":{
-"description":"For system orbit view","message":"Normal delta-v. Click to reset to zero."
+"description":"For system orbit view",
+"message":"Delta-v àbhaisteach. Briog gus a shuidheachadh air neoni."
 },
 "PLANNER_RESET_PROGRADE":{
-"description":"For system orbit view","message":"Prograde delta-v. Click to reset to zero."
+"description":"For system orbit view",
+"message":"Delta-v air adhart. Briog gus a shuidheachadh air neoni."
 },
 "PLANNER_RESET_RADIAL":{
-"description":"For system orbit view","message":"Radial delta-v. Click to reset to zero."
+"description":"For system orbit view",
+"message":"Delta-v rèideal. Briog gus a shuidheachadh air neoni."
 },
 "PLANNER_RESET_START":{
-"description":"For system orbit view","message":"Maneuver start. Click to reset to default."
+"description":"For system orbit view",
+"message":"Toiseach an obrachaidh. Briog gus a shuidheachadh air a' bhun-roghainn."
 },
 "PLASTICS":{
 "description":"",
@@ -1124,11 +1165,7 @@
 },
 "PLUTOCRATIC_DICTATORSHIP":{
 "description":"",
-"message":"Plutocratic dictatorship"
-},
-"POLICE_SHIP_REGISTRATION":{
-"description":"",
-"message":"POILEAS"
+"message":"Deachdaireachd maoin-fhlaitheasach"
 },
 "POPULATION":{
 "description":"",
@@ -1172,7 +1209,7 @@
 },
 "RESET_ORIENTATION_AND_ZOOM":{
 "description":"",
-"message":"Ath-shuidhich comhair 's sùm"
+"message":"Ath-shuidhich a' chomhair agus an sùm"
 },
 "ROBOTS":{
 "description":"",
@@ -1230,22 +1267,17 @@
 "description":"",
 "message":"Sgudal"
 },
-"SAGITTARIUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Sagittarius arm"
-},
 "SCANNER_CONTROL":{
 "description":"",
 "message":"Smachd an sganair"
 },
 "SCOOP":{
-"description":"Is followed by a number, repersenting scoop mounts/slots available to fit cargo scoop and/or fuel scoop","message":"Sgiob"
+"description":"Is followed by a number, repersenting scoop mounts/slots available to fit cargo scoop and/or fuel scoop",
+"message":"Sgiob"
 },
 "SCREENSHOT_FILENAME_TEMPLATE":{
 "description":"",
 "message":"glacadh-sgrìn%index{d08}.png"
-},
-"SCUTUM_CENTAURUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Scutum-Centaurus arm"
 },
 "SEARCH":{
 "description":"",
@@ -1253,11 +1285,11 @@
 },
 "SEARCH_MAP":{
 "description":"",
-"message":"Lorg sa mhapa"
+"message":"Lorg air a' mhapa"
 },
 "SECTOR_COORDINATES":{
 "description":"",
-"message":"Co-chomharran na roinne:"
+"message":"Co-chomharran na h-earrainn:"
 },
 "SECTOR_MAP_VIEW":{
 "description":"",
@@ -1265,7 +1297,7 @@
 },
 "SECTOR_X_Y_Z":{
 "description":"",
-"message":"Roinn: %x,%y,%z"
+"message":"Earrann: %x,%y,%z"
 },
 "SELECTED_SYSTEM":{
 "description":"",
@@ -1289,7 +1321,7 @@
 },
 "SET_HYPERSPACE_TARGET_TO_FOLLOW_THIS_DEPARTURE":{
 "description":"",
-"message":"Hyperspace cloud analyzer: Set hyperspace target to follow this departure"
+"message":"Sgrùdaiche neul os-fhànais: suidhich amas os-fhanais a leanas tu às dèidh fhàgail"
 },
 "SET_LOW_THRUST_POWER_LEVEL_TO_X_PERCENT":{
 "description":"",
@@ -1309,37 +1341,43 @@
 },
 "SHIELD_INTEGRITY":{
 "description":"",
-"message":"Shield integrity"
+"message":"Cor na sgèithe"
 },
 "SHIELD_STRENGTH_N":{
 "description":"",
 "message":"Neart na sgèithe: %shields{f.2}"
 },
 "SHIFT":{
-"description":"Shift key on keyboard","message":"Shift"
+"description":"Shift key on keyboard",
+"message":"Shift"
 },
 "SHIP":{
 "description":"",
 "message":"Soitheach"
 },
 "SHIPS_DISPLAY_MODE_TOGGLE":{
-"description":"Either show no ships, show ships, or show ships + their orbits","message":"Gearr leum eadar modhan sealltainn na luinge."
+"description":"Either show no ships, show ships, or show ships + their orbits",
+"message":"Gearr leum eadar modhan sealltainn an t-soithich."
 },
 "SHIP_ALTITUDE_ABOVE_TERRAIN":{
 "description":"",
-"message":"Àirde na luinge os cionn na tìre"
+"message":"Àirde an t-soithich os cionn na tìre"
 },
 "SHIP_DETECTED_NEARBY":{
 "description":"",
 "message":"Mhothaich sinn air soitheach am fagas."
 },
+"SHIP_GEOGRAPHIC_POSITION":{
+"description":"",
+"message":"Ship Geographic Position"
+},
 "SHIP_INFORMATION":{
 "description":"",
-"message":"Fiosrachadh na luinge"
+"message":"Fiosrachadh an t-soithich"
 },
 "SHIP_MASS_N_TONNES":{
 "description":"",
-"message":"Tomad luinge: %{mass}t"
+"message":"Tomad soithich: %{mass}t"
 },
 "SHIP_NEARBY":{
 "description":"",
@@ -1347,14 +1385,15 @@
 },
 "SHIP_ORIENTATION":{
 "description":"",
-"message":"Comhair na luinge"
+"message":"Comhair an t-soithich"
 },
 "SHIP_VELOCITY_BY_REFERENCE_OBJECT":{
 "description":"",
-"message":"Ship velocity by reference object"
+"message":"Luaths an t-soithich a-rèir oibseact lorgaidh"
 },
 "SIDEREAL_VIEW":{
-"description":"camera view setting","message":"Sealladh ùine nan reul"
+"description":"camera view setting",
+"message":"Sealladh ùine nan reul"
 },
 "SIMULATING_UNIVERSE_EVOLUTION_N_BYEARS":{
 "description":"",
@@ -1378,7 +1417,7 @@
 },
 "SMALL_SCALE_PROSPECTING_NO_SETTLEMENTS":{
 "description":"",
-"message":"Small-scale prospecting. No registered settlements."
+"message":"Tochladh air ìre bheag. Gun tuineachadh clàraichte."
 },
 "SOCIAL_DEMOCRACY":{
 "description":"",
@@ -1393,7 +1432,8 @@
 "message":"Beagan mèinnearachd seasmhaich."
 },
 "SOURCE":{
-"description":"tell source system of hyperjump entry cloud","message":"Tùs"
+"description":"tell source system of hyperjump entry cloud",
+"message":"Tùs"
 },
 "SPEED_CONTROL_MODE":{
 "description":"",
@@ -1401,7 +1441,7 @@
 },
 "STABLE_SYSTEM_WITH_N_MAJOR_BODIES_STARPORTS":{
 "description":"",
-"message":"Stable system with %bodycount major %{body(s)} and %portcount %{starport(s)}"
+"message":"Siostam seasmhach le %bodycount %{body(s)} mòra agus %portcount %{starport(s)}"
 },
 "STARPORT":{
 "description":"",
@@ -1445,7 +1485,7 @@
 },
 "STAR_B_WF":{
 "description":"",
-"message":"Wolf-Rayet star - Risk of collapse"
+"message":"Reul Wolf-Rayet - cunnart teannachaidh"
 },
 "STAR_F":{
 "description":"",
@@ -1505,7 +1545,7 @@
 },
 "STAR_M_WF":{
 "description":"",
-"message":"Wolf-Rayet star - Unstable"
+"message":"Reul Wolf-Rayet - neo-sheasmhach"
 },
 "STAR_O":{
 "description":"",
@@ -1525,11 +1565,11 @@
 },
 "STAR_O_WF":{
 "description":"",
-"message":"Wolf-Rayet star - Imminent collapse"
+"message":"Reul Wolf-Rayet - gu bhith teannachadh"
 },
 "STAR_SM_BH":{
 "description":"",
-"message":"Our galactic anchor"
+"message":"Acair ar reul-chriosa"
 },
 "STAR_SYSTEM_INFORMATION":{
 "description":"",
@@ -1552,13 +1592,16 @@
 "message":"Teothachd an uachdair"
 },
 "SWITCHED_TO_PARENT":{
-"description":"Show ship's heading, coordinates are on the celestial sphere (defined by the ecliptic).","message":"Switched heading display to system-wide coordinates."
+"description":"Show ship's heading, coordinates are on the celestial sphere (defined by the ecliptic).",
+"message":"Chaidh taisbeanadh na comhair atharrachadh gu co-chomharradh coitcheann an t-siostaim."
 },
 "SWITCHED_TO_ROTATIONAL":{
-"description":"Show ship's heading in planetary coordinates. heading 0 = north, 90 = east, 180 = south, 270 = west.","message":"Switched heading display to planetary coordinates."
+"description":"Show ship's heading in planetary coordinates. heading 0 = north, 90 = east, 180 = south, 270 = west.",
+"message":"Chaidh taisbeanadh na comhair atharrachadh gu co-chomharradh na planaide."
 },
 "SYSTEM":{
-"description":"star system","message":"Siostam"
+"description":"star system",
+"message":"Siostam"
 },
 "SYSTEM_NUMBER":{
 "description":"",
@@ -1582,10 +1625,11 @@
 },
 "TARGET_OBJECT_IN_SIGHTS":{
 "description":"",
-"message":"Target object in cross-hairs"
+"message":"Tha an t-amas sa chrois-ribe"
 },
 "TENUOUS":{
-"description":"atmosphere thickness","message":"tenuous"
+"description":"atmosphere thickness",
+"message":"tana"
 },
 "TEXTILES":{
 "description":"",
@@ -1599,12 +1643,9 @@
 "description":"",
 "message":"tana"
 },
-"THREE_KPC_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"3kpc arm"
-},
 "THRIVING_OUTDOOR_WORLD":{
 "description":"",
-"message":"Thriving outdoor world."
+"message":"Saoghal soirbheachail le sluagh a' fuireach a-muigh."
 },
 "THRUSTER_DORSAL":{
 "description":"",
@@ -1638,6 +1679,10 @@
 "description":"",
 "message":"Beag bìodach"
 },
+"TOGGLE_EQUIPMENT_VIEW":{
+"description":"Tooltip for the Equipment View button",
+"message":"Sealladh na h-uidheamachd"
+},
 "TOGGLE_HUD_MODE":{
 "description":"",
 "message":"Toglaich modh a' HUD"
@@ -1650,12 +1695,17 @@
 "description":"",
 "message":"Toglaich lasachadh a' chuairteachaidh"
 },
+"TOGGLE_SCANNER_VIEW":{
+"description":"Tooltip for the Scanner View button",
+"message":"Sealladh an sganair"
+},
 "TOGGLE_SCAN_MODE":{
 "description":"",
 "message":"Toglaich modh an sganair"
 },
 "TOMBSTONE_EPITAPH":{
-"description":"shown on tombstone when player dies","message":"RIP OLD BEAN"
+"description":"shown on tombstone when player dies",
+"message":"AIG FOIS SÌORRAIDH"
 },
 "TRADING_ILLEGAL_GOODS":{
 "description":"",
@@ -1664,6 +1714,10 @@
 "TRIPLE_SYSTEM":{
 "description":"",
 "message":"Siostam trì-fillteach"
+},
+"UNDOCKING":{
+"description":"Flight state of ship when leaving station",
+"message":"A' neo-dhocachadh"
 },
 "UNEXPLORED_SYSTEM_NO_DATA":{
 "description":"",
@@ -1681,10 +1735,6 @@
 "description":"",
 "message":"<chan eil fhios>"
 },
-"UNLAWFUL_WEAPONS_DISCHARGE":{
-"description":"",
-"message":"Losgadh airm mì-laghail"
-},
 "UNSET_NAVTARGET":{
 "description":"",
 "message":"Neo-shuidhich ceann-uidhe na seòladaireachd."
@@ -1695,11 +1745,11 @@
 },
 "VAST_STRIP_MINE":{
 "description":"",
-"message":"Vast strip-mining colony."
+"message":"Tuineachadh le mòr-mhèinnearachd."
 },
 "VERY_DENSE":{
 "description":"",
-"message":"glè thiugh"
+"message":"glè dhùmhail"
 },
 "VERY_LARGE_GAS_GIANT":{
 "description":"",
@@ -1707,7 +1757,7 @@
 },
 "VIEW":{
 "description":"",
-"message":"Seall"
+"message":"Sealladh"
 },
 "VIOLENT_ANARCHY":{
 "description":"",
@@ -1735,7 +1785,7 @@
 },
 "WHITE_DWARF":{
 "description":"",
-"message":"White dwarf stellar remnant"
+"message":"Throich bhàn - iarsmadh rèile"
 },
 "WITH_A":{
 "description":"",
@@ -1746,14 +1796,12 @@
 "message":"\" gun àile ceart\""
 },
 "X":{
-"description":"keybinding: x axis","message":"X"
-},
-"X_CANNOT_BE_TOLERATED_HERE":{
-"description":"",
-"message":"Chan fhulaing sinn %crime an-seo."
+"description":"keybinding: x axis",
+"message":"X"
 },
 "Y":{
-"description":"keybinding: y axis","message":"Y"
+"description":"keybinding: y axis",
+"message":"Y"
 },
 "YAW":{
 "description":"",
@@ -1776,7 +1824,8 @@
 "message":"Chan eil airgead agad."
 },
 "Z":{
-"description":"keybinding: z axis","message":"Z"
+"description":"keybinding: z axis",
+"message":"Z"
 },
 "ZOOM_IN":{
 "description":"",

@@ -11,6 +11,7 @@ local Comms      = import("Comms")
 local MessageBox = import("ui/MessageBox")
 local Laws       = import("Laws")
 local Music      = import("Music")
+local Format     = import("Format")
 
 local SmallLabeledButton = import("ui/SmallLabeledButton")
 local InfoGauge          = import("ui/InfoGauge")
@@ -18,6 +19,7 @@ local InfoGauge          = import("ui/InfoGauge")
 local ui = Engine.ui
 
 local l = Lang.GetResource("ui-core");
+local lm = Lang.GetResource("module-moneylender");
 local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
 
 local function trim(s) return s:find'^%s*$' and '' or s:match'^%s*(.*%S)' end
@@ -150,27 +152,58 @@ local econTrade = function ()
 	refuelButton.button.onClick:Connect(refuel)
 	refuelMaxButton.button.onClick:Connect(refuelMax)
 
+	local deudaPendiente = l.NO
+	if deuda_total and deuda_total > 0 then deudaPendiente = showCurrency(deuda_total,2) end
+
+	local cuotasPendientes = deuda_resto_cuotas or l.NO
+
+	local proximoPago = deuda_fecha_p_pago or 0
+	if proximoPago < 1 then
+		proximoPago = l.NO
+	else
+		proximoPago = string.sub(Format.Date(deuda_fecha_p_pago),1,11)
+	end
+
+	local valorCuota = deuda_valor_cuota or 0
+	if valorCuota < 1 then
+		valorCuota = l.NO
+	else
+		valorCuota = showCurrency(deuda_valor_cuota)
+	end
+
 	return ui:Expand():SetInnerWidget(
-		ui:Grid({48,4,48},1)
+		ui:Grid({50,2,48},1)
 			:SetColumn(0, {
 				ui:Margin(5, "HORIZONTAL",
 					ui:VBox(20):PackEnd({
 						ui:Grid(2,1)
 							:SetColumn(0, {
 								ui:VBox():PackEnd({
-									"",
-									ui:Label(l.CASH..": "..showCurrency(cash,2)):SetFont('HEADING_NORMAL'),
---										:SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
 									ui:Margin(10),
 									ui:Label(l.CARGO_SPACE..":"),
 									"",
 									ui:Margin(10),
+									ui:Label(lm.FINANCES):SetFont('HEADING_NORMAL')
+										:SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
+									ui:Margin(10),
+									ui:Label(l.CASH..": "..showCurrency(cash,2)):SetFont('NORMAL'),
+									"",
+									ui:Label(lm.PENDING_DEBT..deudaPendiente):SetFont('NORMAL'),
+									"",
+									ui:Label(lm.PENDING_PAYMENTS..cuotasPendientes):SetFont('NORMAL'),
+									"",
+									ui:Label(lm.INSTALLMENT_VALUE..valorCuota):SetFont('NORMAL'),
+									"",
+									ui:Label(lm.NEXT_PAYMENT..proximoPago):SetFont('NORMAL'),
+									ui:Margin(10),
+									"",
+									"",
 								})
 							})
 							:SetColumn(1, {
 								ui:VBox():PackEnd({
-									"",
-									"",
+--									"",
+--									"",
 									ui:Margin(10),
 									ui:Margin(0, "HORIZONTAL",
 										ui:HBox(10):PackEnd({
@@ -186,7 +219,6 @@ local econTrade = function ()
 										})
 									),
 									"",
---									ui:Grid(2,1):SetRow(0, { ui:Label(l.TOTAL..totalCabins), ui:Label(l.USED..": "..usedCabins) }),
 									ui:Margin(10),
 								})
 							}),

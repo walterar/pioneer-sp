@@ -429,8 +429,9 @@ local makeAdvert = function (station)
 
 	branch, cargotype = randomCargo()
 	if localdelivery then
-
-		location = _nearbystationsLocals[Engine.rand:Integer(1,#_nearbystationsLocals)]
+		if _nearbystationsLocals and #_nearbystationsLocals > 0 then
+			location = _nearbystationsLocals[Engine.rand:Integer(1,#_nearbystationsLocals)]
+		end
 		if not location or location == station.path then return end
 
 		dist = station:DistanceTo(Space.GetBody(location.bodyIndex))
@@ -453,7 +454,9 @@ local makeAdvert = function (station)
 			due = due + Game.time
 		end
 	else
-		location = _nearbystationsRemotes[Engine.rand:Integer(1,#_nearbystationsRemotes)]
+		if _nearbystationsRemotes and #_nearbystationsRemotes > 0 then
+			location = _nearbystationsRemotes[Engine.rand:Integer(1,#_nearbystationsRemotes)]
+		end
 		if location == nil then return end
 		dist = location:DistanceTo(Game.system)
 		wholesaler = Engine.rand:Number(0, 1) > 0.75 and true or false
@@ -543,6 +546,7 @@ end
 
 local onCreateBB = function (station)
 	local num = Engine.rand:Integer(math.ceil(Game.system.population))
+	if num > 3 then num = 3 end
 	for i = 1,num do
 		makeAdvert(station)
 	end
@@ -650,6 +654,7 @@ local onShipDocked = function (player, station)
 					end
 				end
 			end
+			_G.MissionsFailures = MissionsFailures + 1
 			mission:Remove()
 			missions[ref] = nil
 		elseif mission.location == station.path and mission.pickup and not mission.cargo_picked_up then
@@ -666,7 +671,6 @@ local onShipDocked = function (player, station)
 			end
 		elseif mission.status == "ACTIVE" and Game.time > mission.due then
 			mission.status = 'FAILED'
-			_G.MissionsFailures = MissionsFailures + 1
 		end
 		if check_crime(mission,"FRAUD") then
 			Comms.ImportantMessage(l.WHAT_IS_THIS, mission.client.name)

@@ -1,0 +1,41 @@
+{
+"AUTO_COMBAT":{
+"description":"",
+"message":"AutoCombat"
+},
+"AUTO_COMBAT_DESCRIPTION":{
+"description":"",
+"message":"An on-board combat computer."
+},
+"BEACON_RECEIVER":{
+"description":"Software for Radar Mapper",
+"message":"Beacon Receiver"
+},
+"BEACON_RECEIVER_DESCRIPTION":{
+"description":"",
+"message":"Software extension for radar mapper."
+},
+"DEMP":{
+"description":"Directional electro magnetic pulse.","message":"DEMP System"
+},
+"DEMP_DESCRIPTION":{
+"description":"",
+"message":"Temporarily overrides the electronics of the attacker.."
+},
+"MATTER_CAPACITOR":{
+"description":"",
+"message":"Matter Capacitor"
+},
+"MATTER_CAPACITOR_DESCRIPTION":{
+"description":"",
+"message":"Provides unlimited system fuel."
+},
+"PULSECANNON_DUAL_2MW":{
+"description":"",
+"message":"Laser a doppio impulso da 2MW"
+},
+"PULSECANNON_RAPID_2MW":{
+"description":"",
+"message":"Laser a impulsi rapidi da 2MW"
+}
+}

@@ -78,7 +78,7 @@ Event.Register("onShipHit",  function (ship, attacker)
 		or ship:IsPlayer()
 		or attacker:IsPlayer() then
 	return end
-	ship:SetHullPercent()
+--	ship:SetHullPercent()
 	ship:AIKill(attacker)
 end)
 
@@ -87,14 +87,14 @@ Event.Register("onFrameChanged", function (body)
 		and body:IsPlayer()
 		and battle_active
 	then
-		battle_active = false
 		for i = 1, max_hostiles do
 			if hostil[i] and hostil[i]:exists() then
 --				print(hostil[i].label.." (RESTO DE BATTLE) ELIMINADA")
-				hostil[i]:Explode()
+				hostil[i]:Disappear()
 				hostil[i] = nil
 			end
 		end
+		battle_active = false
 		hostil = {}
 	end
 end)

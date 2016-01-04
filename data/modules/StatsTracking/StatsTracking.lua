@@ -14,6 +14,7 @@ local Lang = import("Lang")
 
 local l  = Lang.GetResource("module-statstracking") or Lang.GetResource("module-statstracking","en")
 local lc = Lang.GetResource("core") or Lang.GetResource("core","en")
+local lu = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
 
 -- Stats-gathering module. Initially, gathers kill statistics for the player.
 -- Can (and should) be expanded in the future to gather other information.
@@ -39,7 +40,7 @@ local onShipDestroyed = function (ship, attacker)
 		PlayerDamagedShips[ship]=nil
 		if policingArea() and playerAlert ~= "SHIP_FIRING" then
 			local crime = "MURDER"
-			Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE, {crime=Laws.CrimeType[crime].name}), Game.system.faction.policeName)
+			Comms.ImportantMessage(string.interp(lu.X_CANNOT_BE_TOLERATED_HERE, {crime=Laws.CrimeType[crime].name}), Game.system.faction.policeName)
 			Game.player:AddCrime(crime, crime_fine(crime))
 		else
 			if   kills == 1--    level 0 HARMLESS
@@ -73,7 +74,7 @@ local onShipCollided = function (ship, other)
 		if policingArea() and not penalizedCollided then
 			penalizedCollided=true
 			local crime = "PIRACY"
-			Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE, {crime=Laws.CrimeType[crime].name}), Game.system.faction.policeName)
+			Comms.ImportantMessage(string.interp(lu.X_CANNOT_BE_TOLERATED_HERE, {crime=Laws.CrimeType[crime].name}), Game.system.faction.policeName)
 			Game.player:AddCrime(crime, crime_fine(crime))
 			Timer:CallAt(Game.time + 5, function ()
 				penalizedCollided = false

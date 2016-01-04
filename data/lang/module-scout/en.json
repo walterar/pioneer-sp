@@ -33,7 +33,7 @@
 },
 "COMPLETE_MAPPING":{
 "description":"",
-"message":"COMPLETE MAPPING. Data saved. Check delivery destination."
+"message":"MAPPING COMPLETED. Data saved. Check delivery destination."
 },
 "Danger":{
 "description":"",
@@ -77,7 +77,7 @@
 },
 "INTROTEXT1_4":{
 "description":"",
-"message":"My name is {name}, I am a journalist and I'm writing a story about the system {system} ({sectorx}, {sectory}, {sectorz}) at a distance of {dist} ly. There are some data that I need to check, in < {systembody} >. I will pay {cash} to whom I can get this information in time."
+"message":"My name is {name}, I am a journalist and I'm writing a story about the system {system} ({sectorx}, {sectory}, {sectorz}) at a distance of {dist} ly. There are some data that I need to check, in < {systembody} >. I will pay {cash} to whom I can get this information from in time."
 },
 "INTROTEXT1_5":{
 "description":"",
@@ -85,7 +85,7 @@
 },
 "INTROTEXT1_6":{
 "description":"",
-"message":"Nice to meet you, I'm {name}, administration of {system}, and are willing to pay {cash} for current < {systembody} > data. No rush, just need to keep our files updated."
+"message":"Nice to meet you, I'm {name}, administration of {system}. We are willing to pay {cash} for current < {systembody} > data. No rush, just need to keep our files updated."
 },
 "INTROTEXT1_7":{
 "description":"",
@@ -93,11 +93,11 @@
 },
 "INTROTEXT2_1":{
 "description":"",
-"message":"Hello. If you are seeing this is because the data were obtained and confirmed what we suspected.\nSee you at:"
+"message":"Hello. If you are seeing this it's because the data were obtained and confirmed what we suspected.\nSee you at:"
 },
 "INTROTEXT2_2":{
 "description":"",
-"message":"Hello. If you are seeing this is because the data were successfully mapped. Will be very useful to my friends.\n To complete the mission, you must go to:"
+"message":"Hello. If you are seeing this it's because the data were successfully mapped. Will be very useful to my friends.\n To complete the mission, you must go to:"
 },
 "INTROTEXT2_3":{
 "description":"",
@@ -105,19 +105,19 @@
 },
 "INTROTEXT2_4":{
 "description":"",
-"message":"Hello. What you are seeing this means that the data collected are very interesting and will be very useful to my editor.\n The delivery shall be in:"
+"message":"Hello. What you are seeing this means is that the data collected are very interesting and will be very useful to my editor.\n The delivery shall be in:"
 },
 "INTROTEXT2_5":{
 "description":"",
-"message":"Hello. If you are seeing this is that the mission is successful now. The data will be very useful.\n Your reward awaits you in:"
+"message":"Hello. If you are seeing this the mission is now successful. The data will be very useful.\n Your reward awaits you in:"
 },
 "INTROTEXT2_6":{
 "description":"",
-"message":"You are viewing this because, surely, the first part of mission has been successful.\n To complete it should be directed to:"
+"message":"You are viewing this because, surely, the first part of mission has been successful.\n To complete it you should travel to:"
 },
 "INTROTEXT2_7":{
 "description":"",
-"message":"If you are seeing this, the first part of mission seems to have been successful. To complete it you directed to:"
+"message":"If you are seeing this, the first part of mission seems to have been successful. To complete it you are directed to:"
 },
 "I_need_the_information_by":{
 "description":"",
@@ -137,7 +137,7 @@
 },
 "MessageRisk0_2":{
 "description":"",
-"message":"I have not heard of attacks, seems to be a quiet, but really I can not guarantee your safety."
+"message":"I have not heard of attacks, seems to be a quiet place, but really I can not guarantee your safety."
 },
 "MessageRisk1":{
 "description":"",
@@ -221,7 +221,7 @@
 },
 "WHYSOMUCHTEXT_2":{
 "description":"",
-"message":"I thought it was only fair. Could offer less?"
+"message":"I thought it was only fair. Could I offer less?"
 },
 "WHYSOMUCHTEXT_3":{
 "description":"",
@@ -293,11 +293,11 @@
 },
 "hostilemessage3":{
 "description":"",
-"message":"Are you going to die  by your data mapper?"
+"message":"Are you going to die by your data mapper?"
 },
 "hostilemessage4":{
 "description":"",
-"message":"We do not want strangers here! Go back to your cave fucking asshole!"
+"message":"We do not want strangers here! Go back to your cave you fucking asshole!"
 },
 "ly":{
 "description":"",

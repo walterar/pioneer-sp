@@ -13,7 +13,7 @@
 },
 "ATMOSPHERIC_SHIELDING_DESCRIPTION":{
 "description":"",
-"message":"Shields your spaceship from the heat of atmospheric re-entry."
+"message":"Shields your spaceship from the heat of atmospheric entry."
 },
 "AUTOPILOT":{
 "description":"",
@@ -29,7 +29,7 @@
 },
 "AUTO_COMBAT_DESCRIPTION":{
 "description":"",
-"message":"An autopilot of combat"
+"message":"A combat autopilot."
 },
 "BEACON_RECEIVER":{
 "description":"Software for Radar Mapper",
@@ -129,7 +129,7 @@
 },
 "ECM_BASIC_DESCRIPTION":{
 "description":"",
-"message":"An electronic countermeasure missile defence system, capable of destroying some homing missiles."
+"message":"An electronic countermeasure missile defence system, capable of destroying some types of homing missiles."
 },
 "FUEL_SCOOP":{
 "description":"",
@@ -137,7 +137,7 @@
 },
 "FUEL_SCOOP_DESCRIPTION":{
 "description":"",
-"message":"Permits scooping hydrogen fuel from gas giant planets."
+"message":"Scoops hydrogen fuel from gas giant planets."
 },
 "HULL_AUTOREPAIR":{
 "description":"",
@@ -153,7 +153,7 @@
 },
 "HYPERCLOUD_ANALYZER_DESCRIPTION":{
 "description":"",
-"message":"Analyze hyperspace clouds to determine destination and time of arrival or departure."
+"message":"Analyzes hyperspace clouds to determine destination and time of arrival or departure."
 },
 "LARGE_PLASMA_ACCEL":{
 "description":"",
@@ -173,7 +173,7 @@
 },
 "MATTER_CAPACITOR_DESCRIPTION":{
 "description":"",
-"message":"Provides unlimited system fuel."
+"message":"Converts energy into mass providing unlimited propellant."
 },
 "MININGCANNON_17MW":{
 "description":"",

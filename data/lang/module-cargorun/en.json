@@ -37,7 +37,7 @@
 },
 "ADTEXT_LOCAL_1":{
 "description":"",
-"message":"LOCAL DELIVERY. Move of goods to {starport}."
+"message":"LOCAL DELIVERY. Move goods to {starport}."
 },
 "ADTEXT_LOCAL_2":{
 "description":"",
@@ -53,11 +53,11 @@
 },
 "ADTEXT_PICKUP_LOCAL_1":{
 "description":"",
-"message":"RELOCATION. Move of cargo from {starport} required."
+"message":"RELOCATION. Pickup of cargo from {starport} required."
 },
 "ADTEXT_WHOLESALER_1":{
 "description":"",
-"message":"CARGO SERVICE. We require a ship for a delivery to {system} system."
+"message":"CARGO SERVICE. We require a ship for a delivery to the {system} system."
 },
 "ALUMINIUM_TUBES":{
 "description":"custom cargo","message":"Aluminium tubes"
@@ -88,7 +88,7 @@
 },
 "CRIMINAL_RECORD":{
 "description":"",
-"message":"Sorry, Commander. His criminal record is inconsistent with this type of task. Please, return when you resolved this issue."
+"message":"Sorry, Commander. Your criminal record is inconsistent with this type of task. Please, return when you resolved this issue."
 },
 "DANGER":{
 "description":"the risk level","message":"Danger:"
@@ -117,7 +117,7 @@
 },
 "DENY_5":{
 "description":"",
-"message":"Don't waste my time! You are too wet behind the ears."
+"message":"Don't waste my time! You're too wet behind the ears."
 },
 "DENY_6":{
 "description":"",
@@ -137,11 +137,11 @@
 },
 "ESCORT_CHATTER_1":{
 "description":"",
-"message":"Hostile craft detected. Let us attack it together."
+"message":"Hostile craft detected. Let's us attack it together."
 },
 "ESCORT_CHATTER_2":{
 "description":"",
-"message":"Great. This pirate will be my first kill."
+"message":"Great! This pirate will be my first kill."
 },
 "ESCORT_CHATTER_3":{
 "description":"",
@@ -153,7 +153,7 @@
 },
 "ESCORT_CHATTER_5":{
 "description":"",
-"message":"Tally ho. This will be my first catch today."
+"message":"Tally ho! This will be my first catch today."
 },
 "EXPLOSIVES":{
 "description":"custom cargo","message":"Explosives"
@@ -164,11 +164,11 @@
 },
 "FAILUREMSG_2":{
 "description":"",
-"message":"You are too late! What should I do with this now, it's worthless!"
+"message":"You are too late! What should I do with this now? It's worthless!"
 },
 "FAILUREMSG_3":{
 "description":"",
-"message":"Listen, we were clear about the deadline. You can forget about getting payed."
+"message":"Listen, we were clear about the deadline. You can forget about getting paid."
 },
 "FAILUREMSG_4":{
 "description":"",
@@ -264,7 +264,7 @@
 },
 "INTROTEXT_PICKUP_2":{
 "description":"",
-"message":"How are you? I'm {name}. One of my clients wants to import {cargoname} from the {starport} in the {system} ({sectorx}, {sectory}, {sectorz}) system, {dist} ly distant. He pays {cash} for this cargo run. Return here to {dom_starport} in the {dom_system} ({dom_sectorx}, {dom_sectory}, {dom_sectorz}) system to unload the cargo."
+"message":"How are you? I'm {name}. One of my clients wants to import {cargoname} from {starport} in the {system} ({sectorx}, {sectory}, {sectorz}) system, {dist} ly distant. He pays {cash} for this cargo run. Return here to {dom_starport} in the {dom_system} ({dom_sectorx}, {dom_sectory}, {dom_sectorz}) system to unload the cargo."
 },
 "INTROTEXT_PICKUP_LOCAL_1":{
 "description":"",
@@ -340,7 +340,7 @@
 },
 "PIRATE_TAUNTS_3":{
 "description":"",
-"message":"Hey buddy, hand over {cargoname}. Now!"
+"message":"Hey buddy, hand over the {cargoname}. Now!"
 },
 "PIRATE_TAUNTS_4":{
 "description":"",
@@ -356,7 +356,7 @@
 },
 "PIRATE_TAUNTS_7":{
 "description":"",
-"message":"Your luck has run out! That burden of {cargoname} will be mine!"
+"message":"Your luck has run out! That load of {cargoname} will be mine!"
 },
 "PLUTONIUM":{
 "description":"custom cargo","message":"Plutonium"
@@ -443,7 +443,7 @@
 "message":"Thanks! I will definitely recommend you. Money has been transferred."
 },
 "SUCCESSMSG_FLUFFY_1":{
-"description":"Said when receiving a shipment of Quibbles (see wikipedia Tribble)","message":"Oh dear, what to do with so many fluffy beings. Either way, money has been sent."
+"description":"Said when receiving a shipment of Quibbles (see wikipedia Tribble)","message":"Oh dear, what to do with so many fluffy beings? Either way, the money has been sent."
 },
 "SYSTEM":{
 "description":"",
@@ -484,7 +484,7 @@
 },
 "URGENCY_FLUFFY_1":{
 "description":"",
-"message":"Because of the reproduction rate of the little animals and the limited food in the container, the delivery must be completed until {date}."
+"message":"Because of the reproduction rate of the little animals and the limited food in the container, the delivery must be completed by {date}."
 },
 "URGENCY_RADIOACTIVE_1":{
 "description":"",
@@ -547,7 +547,7 @@
 },
 "WHYSOMUCH_INFRASTRUCTURE_1":{
 "description":"",
-"message":"These goods crucial for a construction project."
+"message":"These goods are crucial for a construction project."
 },
 "WHYSOMUCH_MINING_1":{
 "description":"",
@@ -567,7 +567,7 @@
 },
 "WHYSOMUCH_WEDDING_1":{
 "description":"",
-"message":"So far I could not find anyone to perform this transport. When the season is over, my merchandise is worthless."
+"message":"So far I could not find anyone to perform this delivery. When the season is over, my merchandise is worthless."
 },
 "WHY_SO_MUCH_MONEY":{
 "description":"",

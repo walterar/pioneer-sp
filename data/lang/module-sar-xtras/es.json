@@ -55,6 +55,10 @@
 "description":"",
 "message":"¡Misión cumplida!"
 },
+"NONE":{
+"description":"",
+"message":"No"
+},
 "PASSENGERS_TO_BE_SENT":{
 "description":"",
 "message":"Pasajeros a enviar:"

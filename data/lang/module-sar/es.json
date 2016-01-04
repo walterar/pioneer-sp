@@ -145,7 +145,7 @@
 },
 "EQUIPMENT":{
 "description":"",
-"message":"Usted no está equipado pera esta misión. Instale {unit} {equipment}"
+"message":"Usted no está equipado para esta misión.\nNecesita instalar {unit} {equipment}"
 },
 "FLAVOUR_1_ADTEXT":{
 "description":"",
@@ -225,7 +225,7 @@
 },
 "FLAVOUR_3_INTROTEXT":{
 "description":"",
-"message":"Mi nombre es {name} Control de Tráfico Aéreo de {starport}. Ha habido una emergencia médica con el piloto de < {shiplabel} > volando rumbo a {starport}. Se pagará una recompensa {cash} por esta misión"
+"message":"Mi nombre es {name} Control de Tráfico Aéreo de {starport}. Ha habido una emergencia médica con el piloto de < {shiplabel} > volando rumbo a {starport}. Se pagará una recompensa {cash} por esta mision"
 },
 "FLAVOUR_3_LOCATIONTEXT":{
 "description":"",

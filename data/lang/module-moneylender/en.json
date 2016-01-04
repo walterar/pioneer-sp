@@ -37,11 +37,11 @@
 },
 "TRANSFER":{
 "description":"",
-"message":"\nAs of {fecha} we have transferred {deuda} to his account.\nAutomatically will deduct {cuotas} monthly installments of {valor}\n\nWe hope your investment profitable.\n"
+"message":"\nAs of {fecha} we have transferred {deuda} to his account.\nAutomatically will deduct {cuotas} monthly installments of {valor}\n\nWe hope your investment is profitable.\n"
 },
 "MESSAGE_3":{
 "description":"",
-"message":"Enter the desired amount, repayable in monthly installments.\nej. We pay $100,000 and you pay us 12 monthly installments of $25,000\nNOTICE! If not paid on time, you can be bothered."
+"message":"Enter the desired amount, repayable in monthly installments.\nej. We pay $100,000 and you pay us 12 monthly installments of $25,000\nNOTICE! If not paid on time, you may suffer."
 },
 "NEXT_PAYMENT":{
 "description":"",

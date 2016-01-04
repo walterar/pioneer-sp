@@ -21,7 +21,7 @@
 },
 "CRIMINAL_RECORD":{
 "description":"",
-"message":"Sorry, Commander. I have been informed that criminal record has incompatible with this task. Please check back when you resolve the issue."
+"message":"Sorry, Commander. I have been informed that your criminal record is incompatible with this task. Please check back when you resolve this issue."
 },
 "DISTANCE":{
 "description":"",
@@ -33,15 +33,15 @@
 },
 "FAILURE_1":{
 "description":"",
-"message":"Hello {you} Am {name} again. - If you are viewing this is that the mission has failed -. All trace of this mission will be eliminated. - This has never happened."
+"message":"Hello {you} It's {name} again. - If you are viewing this it's because the mission has failed -. All trace of this mission will be eliminated. - This has never happened."
 },
 "FAILURE_2":{
 "description":"",
-"message":"{org} says the case {target} was solved by another, the {cash} are not yours"
+"message":"{org} says the case {target} was solved by another, the {cash} is not yours"
 },
 "FAILURE_3":{
 "description":"",
-"message":"{org} laments his failure in the case {target}, you have lost {cash}."
+"message":"{org} laments your failure in the case {target}, you have lost {cash}."
 },
 "HOSTILE_SHIPS_APPROACHING":{
 "description":"",
@@ -53,19 +53,19 @@
 },
 "HOW_WILL_I_BE_PAID":{
 "description":"",
-"message":"How will the payment?"
+"message":"How will the payment happen?"
 },
 "INSUFFICIENT_LEVEL_COMBAT":{
 "description":"",
-"message":"Sorry, Commander. Rating greater than 0 is required for this task. Please check back when you resolve the issue."
+"message":"Sorry, Commander. A rating greater than 0 is required for this task. Please check back when you resolve the issue."
 },
 "INTROTEXT":{
 "description":"",
-"message":"Hello, I am {name}, agent of {org} - The existence of {target} has become {reason} for one of our clients - We offer a reward of {cash} to one who definitely solve this problem."
+"message":"Hello, I am {name}, agent of {org} - The existence of {target} has become {reason} for one of our clients - We offer a reward of {cash} to the one who definitely solves this problem."
 },
 "IT_MUST_BE_DONE_AFTER":{
 "description":"",
-"message":"You must act when the target leaves the space station and prevent return. It is very important avoid any problems with local authorities, it is advisable to act outside the radius of policing, that is, in general, more than 100 km from the station."
+"message":"You must act when the target leaves the space station and prevent return. It is very important avoid any problems with local authorities. It is advisable to act outside the radius of policing, that is, in general, more than 100 km from the station."
 },
 "KILLED_1":{
 "description":"",
@@ -113,7 +113,7 @@
 },
 "PAID_SITE":{
 "description":"",
-"message":"If the contract is executed successfully, you will immediately inform the place where you must go to receive their reward. In case of failure, all traces of this mission will be removed and this has never happened."
+"message":"If the contract is executed successfully, you will immediately be  informed of the place where you must go to receive their reward. In case of failure, all traces of this mission will be removed and this has never happened."
 },
 "REASON_1":{
 "description":"",
@@ -157,11 +157,11 @@
 },
 "SUCCESS":{
 "description":"",
-"message":"{org} closes the case {target}. His {cash} were transferred."
+"message":"{org} closes the case {target}. His {cash} was transferred."
 },
 "SUCCESSMSG":{
 "description":"",
-"message":"Hi {you}. {name} again. - If you are viewing this it is that {target} {dead} and the mission has been accomplished successfully. - An reward of {cash} waiting for you just {dist} away, not delay."
+"message":"Hi {you}. {name} again. - If you are viewing this its because {target} {dead} and the mission has been accomplished successfully. - A reward of {cash} is waiting for you just {dist} away, don't delay."
 },
 "SYSTEM":{
 "description":"",
@@ -297,7 +297,7 @@
 },
 "X_WILL_BE_LEAVING":{
 "description":"",
-"message":"Reliable information ensures that develops certain activities at {system} ({sectorX}, {sectorY}, {sectorZ}) Our local agents will make need to take off from {spaceport} on this date and time exactly: {date}. You must do their work quickly, but without attracting the attention of local police. {target} traveling in a {shipname} {shipregid}, heavily armed."
+"message":"Reliable information ensures us of certain activities at {system} ({sectorX}, {sectorY}, {sectorZ}) Our local agents will ensure take off from {spaceport} on this date and time exactly: {date}. You must do their work quickly, but without attracting the attention of local police. {target} is traveling in a {shipname} {shipregid}, heavily armed."
 },
 "hitman":{
 "description":"",

@@ -9,7 +9,7 @@
 },
 "AU":{
 "description":"",
-"message":"Au"
+"message":"AU"
 },
 "COMPLETED":{
 "description":"",
@@ -89,7 +89,7 @@
 },
 "UNKNOWN":{
 "description":"sar",
-"message":"Desconocida"
+"message":"Unknown"
 },
 "ORBIT":{
 "description":"",

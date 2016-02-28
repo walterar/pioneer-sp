@@ -1,4 +1,4 @@
--- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 local Game    = import("Game")
@@ -9,8 +9,8 @@ local Event   = import("Event")
 local TabView   = import("ui/TabView")
 local InfoGauge = import("ui/InfoGauge")
 
-local l = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
+local l  = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
+local ls = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous","en")
 
 local lobby           = import("StationView/Lobby")
 local bulletinBoard   = import("StationView/BulletinBoard")
@@ -74,7 +74,7 @@ ui.templates.StationView = function (args)
 					),
 					ui:Margin(10, "HORIZONTAL",
 						ui:Align("RIGHT",
-							l.LEGAL_STATUS..": "..myl.Check_with_the_police
+							l.LEGAL_STATUS..": "..ls.CHECK_WITH_THE_POLICE
 						)
 					),
 				})

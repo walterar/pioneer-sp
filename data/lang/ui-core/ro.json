@@ -262,6 +262,9 @@
 "description":"",
 "message":"Ocupație"
 },
+"ENABLE_ANISOTROPIC_FILTERING":{
+"description":"Use Anisotropic Filtering","message":"Filtrare Anizotropă"
+},
 "ENABLE_AUTOSAVE":{
 "description":"Allow the game to autosave when docking","message":"Activează salvarea automată"
 },
@@ -819,7 +822,7 @@
 "description":"For player reputation","message":"Profesionist"
 },
 "PUMP_DOWN":{
-"description":"Drain the fuel tank","message":"Pump down"
+"description":"Drain the fuel tank","message":"Golește rezervorul"
 },
 "QUALIFICATION_SCORES":{
 "description":"",

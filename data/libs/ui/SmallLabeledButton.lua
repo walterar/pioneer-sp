@@ -1,4 +1,4 @@
--- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 local Engine = import("Engine")
@@ -7,11 +7,12 @@ local ui = Engine.ui
 
 local SmallLabeledButton = {}
 
-function SmallLabeledButton.New (text)
+function SmallLabeledButton.New (text,font)
 	local self = {
 		button = ui:SmallButton(),
 		label  = ui:Label(text or "error"),
 	}
+	if font and type(font) == "string" then self.label = ui:Label(text):SetFont(font) end
 	self.widget = ui:HBox(10):PackEnd({ self.button, self.label })
 
 	setmetatable(self, {

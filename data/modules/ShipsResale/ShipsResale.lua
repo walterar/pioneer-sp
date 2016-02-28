@@ -11,7 +11,6 @@ local utils      = import("utils")
 local ShipDef    = import("ShipDef")
 local Lang       = import("Lang")
 local Eq         = import("Equipment")
-local MessageBox = import("ui/MessageBox")
 
 local l = Lang.GetResource("module-shipsresale") or Lang.GetResource("module-shipsresale","en")
 

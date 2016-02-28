@@ -313,7 +313,7 @@
 },
 "DISTANCE_LY":{
 "description":"",
-"message":"Distance: %distance{f.2} ly"
+"message":"Distance: %distance{f.2} Ly"
 },
 "DOCKED":{
 "description":"",
@@ -649,7 +649,7 @@
 },
 "KM_S_RELATIVE_TO":{
 "description":"",
-"message":"%speed{f.2} km/s rel-to %frame"
+"message":"%speed{f.2} Km/s rel-to %frame"
 },
 "L4L5_DISPLAY_MODE_TOGGLE":{
 "description":"Either show L4/L5 points or don't",

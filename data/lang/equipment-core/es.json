@@ -29,7 +29,7 @@
 },
 "AUTO_COMBAT_DESCRIPTION":{
 "description":"",
-"message":"Computadora de combate de a bordo."
+"message":"Piloto automático de combate."
 },
 "BEACON_RECEIVER":{
 "description":"",
@@ -37,7 +37,7 @@
 },
 "BEACON_RECEIVER_DESCRIPTION":{
 "description":"",
-"message":"Ampliación por software para Radar Mapeador o Radar Mapeador Extendido, de gran ayuda en misiones de rescate."
+"message":"Software que agrega la capacidad de localizar señales de naves en emergencia al Radar Mapeador o al Radar Mapeador Extendido, de gran ayuda en misiones de rescate."
 },
 "CARGO_LIFE_SUPPORT":{
 "description":"",
@@ -61,7 +61,7 @@
 },
 "DEMP_DESCRIPTION":{
 "description":"",
-"message":"Sistema de defensa electrónico que anula temporalmente la electronica del atacante. Actúa al recibir una secuencia de tres impactos."
+"message":"Directional Electro Magnetic Pulse. Sistema de defensa electrónica que anula temporalmente la electrónica de la nave atacante. Actúa cuando el jugador recibe una secuencia de tres disparos."
 },
 "DRIVE_CLASS1":{
 "description":"",
@@ -173,7 +173,7 @@
 },
 "MATTER_CAPACITOR_DESCRIPTION":{
 "description":"",
-"message":"Condensador de materia."
+"message":"Provee cantidad prácticamente ilimitada de propelente. Ideal para llegar a planetas muy lejanos, de hasta 1000 Au o más."
 },
 "MININGCANNON_17MW":{
 "description":"",
@@ -206,6 +206,14 @@
 "MULTI_SCOOP_DESCRIPTION":{
 "description":"",
 "message":"Aunque menos efectivo que un recolector dedicado, permite la recoger tanto carga como hidrógeno"
+},
+"NAV_ASSIST":{
+"description":"",
+"message":"Asistente de Navegación"
+},
+"NAV_ASSIST_DESCRIPTION":{
+"description":"",
+"message":"Software que agrega un asistente de navegación al piloto automático. Marca el siguiente objetivo."
 },
 "OUT_OF_SCANRANGE":{
 "description":"",

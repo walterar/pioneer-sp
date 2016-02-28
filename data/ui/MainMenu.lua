@@ -1,4 +1,4 @@
--- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- modified for Pioneer Scout+ (c)2012-2015 by walterar <walterar2@gmail.com>
 -- Work in progress.
@@ -20,8 +20,8 @@ local hyperspace = equipment.hyperspace
 
 local ui = Engine.ui
 
-local l   = Lang.GetResource("ui-core") or Lang.GetResource("ui-core", "en")
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl", "en")
+local l  = Lang.GetResource("ui-core") or Lang.GetResource("ui-core", "en")
+local ls = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous","en")
 
 local setupPlayer1 = function ()
 	Game.player:SetShipType('eagle_lrf')
@@ -85,6 +85,7 @@ local setupPlayer5 = function ()
 	Game.player:AddEquip(misc.radar_mapper)
 	Game.player:AddEquip(misc.scanner)
 	Game.player:AddEquip(misc.beacon_receiver)
+	Game.player:AddEquip(misc.fuel_scoop)
 	Game.player:AddEquip(misc.missile_naval, 2)
 	Game.player:AddEquip(misc.cabin, 5)
 	Game.player:SetMoney(100000)
@@ -146,11 +147,11 @@ local lave     = SystemPath.New(-2,1,90,0,2)
 local user     = SystemPath.New(0,0,0,0,4)---1562,0,0,0,1)--,v(-0.75,0.13,0.27))--(-13,23,11,1,3)
 
 local buttonDefs = {
-	{ l.START_AT_EARTH,      function () Game.StartGame(hearth,timehearth)   setupPlayer1() end },
-	{ l.START_AT_NEW_HOPE,   function () Game.StartGame(newhope,timenewhope)  setupPlayer2() end },
-	{ myl.START_AT_ACHERNAR, function () Game.StartGame(achernar,timeachernar) setupPlayer3() end },
-	{ myl.START_AT_LAVE,     function () Game.StartGame(lave,timelave)     setupPlayer4() end },
---	{ "User place",          function () Game.StartGame(user,timeuser)     setupPlayer5() end },
+	{  l.START_AT_EARTH,    function () Game.StartGame(hearth,timehearth)     setupPlayer1() end },
+	{  l.START_AT_NEW_HOPE, function () Game.StartGame(newhope,timenewhope)   setupPlayer2() end },
+	{ ls.START_AT_ACHERNAR, function () Game.StartGame(achernar,timeachernar) setupPlayer3() end },
+	{ ls.START_AT_LAVE,     function () Game.StartGame(lave,timelave)         setupPlayer4() end },
+--	{ "TEST",               function () Game.StartGame(user,timeuser)         setupPlayer5() end },
 
 	{ l.LOAD_GAME, doLoadDialog       },
 	{ l.OPTIONS,   doSettingsScreen   },
@@ -192,7 +193,7 @@ table.insert(anims, {
 	duration = 0.4,
 })
 
-local versionLabel = ui:Label("G25 full version"):SetFont("HEADING_XSMALL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 })
+local versionLabel = ui:Label("G26 full version"):SetFont("HEADING_XSMALL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 })
 table.insert(anims, {
 	widget = versionLabel,
 	type = "IN",

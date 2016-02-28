@@ -205,6 +205,14 @@
 "description":"",
 "message":"Apesar de menos efetivo que um coletor de combustível, permite coletar tanto carga como combustível."
 },
+"NAV_ASSIST":{
+"description":"",
+"message":"Navigation assistant"
+},
+"NAV_ASSIST_DESCRIPTION":{
+"description":"",
+"message":"Software that adds a navigation assistant to the autopilot. It marks the next target."
+},
 "OUT_OF_SCANRANGE":{
 "description":"",
 "message":"Alcance máximo de escaneamento ultrapassado:"

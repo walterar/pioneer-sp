@@ -1,4 +1,4 @@
--- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- modified for Pioneer Scout+ (c)2012-2015 by walterar <walterar2@gmail.com>
 -- Work in progress.
@@ -11,8 +11,8 @@ local InfoFace           = import("ui/InfoFace")
 local SmallLabeledButton = import("ui/SmallLabeledButton")
 
 local ui = Engine.ui
-local l   = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
+local l  = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
+local ls = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous","en")
 
 local personalInfo = function ()
 
@@ -22,30 +22,30 @@ local personalInfo = function ()
 
 	local CurrentDanger
 	if DangerLevel == 0 then
-		CurrentDanger = ui:Label(myl.Risk_Area)
+		CurrentDanger = ui:Label(ls.RISK_AREA)
 											:SetFont("HEADING_LARGE")
 											:SetColor({ r = 0.0, g = 1.0, b = 0.0 }) -- green
 	elseif DangerLevel == 1 then
-		CurrentDanger = ui:Label(myl.Risk_Area.." *")
+		CurrentDanger = ui:Label(ls.RISK_AREA.." *")
 											:SetFont("HEADING_LARGE")
 											:SetColor({ r = 1.0, g = 1.0, b = 0.0 }) -- yellow
 	elseif DangerLevel == 2 then
-		CurrentDanger = ui:Label(myl.Risk_Area.." **")
+		CurrentDanger = ui:Label(ls.RISK_AREA.." **")
 											:SetFont("HEADING_LARGE")
 											:SetColor({ r = 1.0, g = 0.0, b = 0.0 }) -- red
 	end
 
 	if Game.system == nil then
-		CurrentPosition = myl.Hyperspace
-		CurrentFaction  = myl.Hyperspace
+		CurrentPosition = ls.HYPERSPACE
+		CurrentFaction  = ls.HYPERSPACE
 	else
 		if Game.player.flightState == "DOCKED" then
 			StationName = Game.player:GetDockedWith().label..", "
 		else
 			if Game.player.flightState == "LANDED" then
-				StationName = myl.Landed_in..Game.player.frameBody.label..", "
+				StationName = ls.LANDED_IN..Game.player.frameBody.label..", "
 			else
-				StationName = myl.In_space_of
+				StationName = ls.IN_SPACE_OF
 			end
 		end
 		CurrentPosition = StationName
@@ -88,35 +88,35 @@ local personalInfo = function ()
 		ui:Grid({48,4,48},1)
 			:SetColumn(0, {
 				ui:Table():AddRows({
-					ui:Label(myl.Experience):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
+					ui:Label(ls.EXPERIENCE):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
 					ui:Table():SetColumnSpacing(10):AddRows({
-						{ myl.Successful_Missions, (MissionsSuccesses or 0)},
-						{ myl.Failed_Missions, (MissionsFailures or 0)},
+						{ ls.SUCCESSFUL_MISSIONS, (MissionsSuccesses or 0)},
+						{ ls.FAILED_MISSIONS, (MissionsFailures or 0)},
 					"",
 						{ l.RATING, player:GetCombatRating() },
-						{ myl.Shots_successful, (ShotsSuccessful or 0)},
-						{ myl.Shots_received, (ShotsReceived or 0)},
+						{ ls.SHOTS_SUCCESSFUL, (ShotsSuccessful or 0)},
+						{ ls.SHOTS_RECEIVED, (ShotsReceived or 0)},
 						{ l.KILLS,  string.format('%d',player.killcount) },
 					}),
 					"",
 					ui:Label(l.MILITARY):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
 					ui:Table():SetColumnSpacing(10):AddRows({
-						{ myl.Origin, OriginFaction },
+						{ ls.ORIGIN, OriginFaction },
 						{ l.ALLEGIANCE, ShipFaction },
-						{ myl.Registration, Game.player.label },
+						{ ls.REGISTRATION, Game.player.label },
 					}),
 					"",
 					ui:Label(l.NAVIGATION):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
 					ui:Table():SetColumnSpacing(10):AddRows({
-						{ myl.Previous_Position, PrevPos },
-						{ myl.Previous_Faction, PrevFac },
-						{ myl.Current_Position, CurrentPosition},
-						{ myl.Current_Faction, CurrentFaction },
+						{ ls.PREVIOUS_POSITION, PrevPos },
+						{ ls.PREVIOUS_FACTION, PrevFac },
+						{ ls.CURRENT_POSITION, CurrentPosition},
+						{ ls.CURRENT_FACTION, CurrentFaction },
 					}),
 					"",
-					ui:Label(myl.Damage_Report):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
-					ui:Table():SetColumnSpacing(10):AddRows({
-						{ l.HULL_INTEGRITY..": "..showCurrency(Game.player.hullPercent,0, "%",neg_prefix) },
+					ui:Label(ls.DAMAGE_REPORT):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
+					ui:Table():SetColumnSpacing(10):AddRows({--return string.format("%.f %%", z);
+						{ l.HULL_INTEGRITY..": "..string.format("%.1f %%",Game.player.hullPercent) },
 					damageControl,
 					"",
 					CurrentDanger,

@@ -45,7 +45,7 @@
 },
 "NO_CREW_AVAILABLE":{
 "description":"",
-"message":"Sorry, no candidates are currently seeking employment at {station}"
+"message":"Spiacente, nessun candidato è in cerca di lavoro a {station}"
 },
 "NO_EXPERIENCE":{
 "description":"",
@@ -101,7 +101,7 @@
 },
 "TIME_SERVED_CREW_MEMBER":{
 "description":"",
-"message":"Periodo di servizio come membro di equipaggio"
+"message":"Media esperienza come membro di equipaggio"
 },
 "VETERAN_TIME_SERVED_CREW_MEMBER":{
 "description":"",

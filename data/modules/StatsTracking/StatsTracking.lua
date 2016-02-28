@@ -1,4 +1,4 @@
--- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- modified for Pioneer Scout+ (c)2012-2015 by walterar <walterar2@gmail.com>
 -- Work in progress.
@@ -71,10 +71,13 @@ local onShipCollided = function (ship, other)
 	return end--XXX
 	if other==Game.player and ship and (ship:isa("Ship") or ship:isa("static")) then
 		PlayerDamagedShips[ship]=true
-		if policingArea() and not penalizedCollided then
+		if policingArea() and not penalizedCollided
+			and Game.player:DistanceTo(Game.player:FindNearestTo("SPACESTATION")) > 20e3
+		then
 			penalizedCollided=true
 			local crime = "PIRACY"
-			Comms.ImportantMessage(string.interp(lu.X_CANNOT_BE_TOLERATED_HERE, {crime=Laws.CrimeType[crime].name}), Game.system.faction.policeName)
+			Comms.ImportantMessage(string.interp(lu.X_CANNOT_BE_TOLERATED_HERE,
+					{crime=Laws.CrimeType[crime].name}), Game.system.faction.policeName)
 			Game.player:AddCrime(crime, crime_fine(crime))
 			Timer:CallAt(Game.time + 5, function ()
 				penalizedCollided = false
@@ -96,7 +99,7 @@ local onShipHit = function (ship, attacker)
 			if policingArea() and playerAlert ~= "SHIP_FIRING" then
 				penalizedHit = true
 				local crime = "PIRACY"
-				Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE, {crime=Laws.CrimeType[crime].name}), Game.system.faction.policeName)
+				Comms.ImportantMessage(string.interp(lu.X_CANNOT_BE_TOLERATED_HERE, {crime=Laws.CrimeType[crime].name}), Game.system.faction.policeName)
 				Game.player:AddCrime(crime, crime_fine(crime))
 				Timer:CallAt(Game.time + 5, function ()
 					penalizedHit = false

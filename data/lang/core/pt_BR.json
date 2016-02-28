@@ -437,7 +437,7 @@
 },
 "GAME_LOAD_CANNOT_OPEN":{
 "description":"",
-"message":"'%filename' não pôde ser aberto devido a permissões ou algo do tipo..."
+"message":"Save file '%filename' could not be found (or the game does not have access to open it)."
 },
 "GAME_LOAD_CORRUPT":{
 "description":"",

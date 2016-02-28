@@ -241,7 +241,7 @@
 "description":"mission deadline date","message":"Сроки"
 },
 "DUMPING":{
-"description":"The illegal act of dumping waste","message":"Незаконное демпинга"
+"description":"The illegal act of dumping waste","message":"Dumping"
 },
 "D_DAYS_LEFT":{
 "description":"",
@@ -261,6 +261,9 @@
 "EMPLOYMENT":{
 "description":"",
 "message":"Занятость"
+},
+"ENABLE_ANISOTROPIC_FILTERING":{
+"description":"Use Anisotropic Filtering","message":"Анизотропная фильтрация"
 },
 "ENABLE_AUTOSAVE":{
 "description":"Allow the game to autosave when docking","message":"Включить автосохранения"
@@ -819,7 +822,7 @@
 "description":"For player reputation","message":"Профессионал"
 },
 "PUMP_DOWN":{
-"description":"Drain the fuel tank","message":"Pump down"
+"description":"Drain the fuel tank","message":"Откачать"
 },
 "QUALIFICATION_SCORES":{
 "description":"",
@@ -846,7 +849,7 @@
 },
 "REFUEL":{
 "description":"",
-"message":"Дозаправить"
+"message":"Закачать"
 },
 "REFUEL_FULL":{
 "description":"",
@@ -1094,7 +1097,7 @@
 "message":"Мы в гиперпространстве, Командир."
 },
 "WE_HAVE_NO_BUSINESS_WITH_YOU":{
-"description":"Said by the police to law abiding player","message":"Мы не имеем ничего против вас на данный момент.\n Однако следует помнить, уважать местные законы:\n \n *Перед hyperjump, остаться по крайней мере в 5 км от станции.\n *Не стрелять из пушки пределах 100 км от станции.\n *Не торгуйте с незаконной продукции.\n *Не бросайте любой продукт на станции,\nand, менее опасны для окружающей среды.\n *Не выбросить за борт радиоактивные отходы\nв жилых человеческими систем.\n *Стрелять или ударил другого судна, в пределах 100 км\nот станции он будет считаться пиратством.\n *Не носите местную информацию на другой фракции.\n *Соблюдать согласованные заданий или будут штрафовать\n за мошенничества или похищения\n *Не используйте ручной взлета, за неуплату штрафы,\n это серьезно и будет рассматриваться утечки.\n *И ... пожалуйста ... не убить никого."
+"description":"Said by the police to law abiding player","message":"Ваш правовой статус чист. Всего доброго, Командир!"
 },
 "X_CANNOT_BE_TOLERATED_HERE":{
 "description":"Message to be sent over comms by police when crime is committed by player","message":"{crime} cannot be tolerated here!"

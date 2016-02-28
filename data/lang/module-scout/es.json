@@ -1,23 +1,23 @@
 {
 "ADTEXT_1":{
 "description":"",
-"message":"NECESITO EXPLORADOR. Sistema {system} distante {dist} ly. {cash}"
+"message":"NECESITO EXPLORADOR. Sistema {system} distante {dist}. {cash}"
 },
 "ADTEXT_2":{
 "description":"",
-"message":"NECESITO EXPLORAR {system} distante {dist} ly. {cash}"
+"message":"NECESITO EXPLORAR {system} distante {dist}. {cash}"
 },
 "ADTEXT_3":{
 "description":"",
-"message":"RECON en {system} distante {dist} ly. {cash} ¡Ayúdanos a mantener el sistema ordenado!"
+"message":"RECON en {system} distante {dist}. {cash} ¡Ayúdanos a mantener el sistema ordenado!"
 },
 "ADTEXT_4":{
 "description":"",
-"message":"RECON URGENTE en {system} distante {dist} ly. {cash} Necesito datos urgentes sobre el sistema."
+"message":"RECON URGENTE en {system} distante {dist}. {cash} Necesito datos urgentes sobre el sistema."
 },
 "ADTEXT_5":{
 "description":"",
-"message":"EXPLORACIÓN en {system} distante {dist} ly. {cash}.Solo para un piloto audaz y experimentado."
+"message":"EXPLORACIÓN en {system} distante {dist}. {cash}.Solo para un piloto audaz y experimentado."
 },
 "ADTEXT_6":{
 "description":"",
@@ -65,23 +65,23 @@
 },
 "INTROTEXT1_1":{
 "description":"",
-"message":"Hola. Soy {name}, ingeniero en minería exótica. Mis amigos y yo tenemos algunas dudas acerca de< {systembody} > en {system} ({sectorx}, {sectory}, {sectorz}) distante {dist} ly.Pagaremos {cash} por un mapeado de la zona."
+"message":"Hola. Soy {name}, ingeniero en minería exótica. Mis amigos y yo tenemos algunas dudas acerca de< {systembody} > en {system} ({sectorx}, {sectory}, {sectorz}) distante {dist}.Pagaremos {cash} por un mapeado de la zona."
 },
 "INTROTEXT1_2":{
 "description":"",
-"message":"Hola. Soy {name}. Dispongo de {cash} para un mapeado de < {systembody} > en {system} ({sectorx}, {sectory}, {sectorz}) a {dist} ly."
+"message":"Hola. Soy {name}. Dispongo de {cash} para un mapeado de < {systembody} > en {system} ({sectorx}, {sectory}, {sectorz}) a {dist}."
 },
 "INTROTEXT1_3":{
 "description":"",
-"message":"Saludos. Teniente {name}, {military}. Pagaremos {cash} por datos de < {systembody} > en {system} ({sectorx}, {sectory}, {sectorz}) a {dist} ly."
+"message":"Saludos. Teniente {name}, {military}. Pagaremos {cash} por datos de < {systembody} > en {system} ({sectorx}, {sectory}, {sectorz}) a {dist}."
 },
 "INTROTEXT1_4":{
 "description":"",
-"message":"Hola, mi nombre es {name}, soy periodista y estoy escribiendo una historia sobre el sistema  {system} ({sectorx}, {sectory}, {sectorz}) a {dist} ly de aquí. Hay algunos datos que necesito verificar en < {systembody} >. Le pagaré {cash} si usted me consigue esos datos dentro de la fecha límite."
+"message":"Hola, mi nombre es {name}, soy periodista y estoy escribiendo una historia sobre el sistema  {system} ({sectorx}, {sectory}, {sectorz}) a {dist} de aquí. Hay algunos datos que necesito verificar en < {systembody} >. Le pagaré {cash} si usted me consigue esos datos dentro de la fecha límite."
 },
 "INTROTEXT1_5":{
 "description":"",
-"message":"Hola. Soy {name}, mi negocio es la compra y venta de información. Le pagaré {cash} por un mapeado de < {systembody} > en {system} ({sectorx}, {sectory}, {sectorz}) a {dist} ly."
+"message":"Hola. Soy {name}, mi negocio es la compra y venta de información. Le pagaré {cash} por un mapeado de < {systembody} > en {system} ({sectorx}, {sectory}, {sectorz}) a {dist}."
 },
 "INTROTEXT1_6":{
 "description":"",
@@ -161,7 +161,7 @@
 },
 "Ok":{
 "description":"",
-"message":"Aceptar y marcar la ruta en el mapa galáctico."
+"message":"Aceptar."
 },
 "Repeat_the_original_request":{
 "description":"",
@@ -169,7 +169,7 @@
 },
 "SUCCESSMSG_1":{
 "description":"",
-"message":"Gracias por la información. Lo acordado fue transferido a su cuenta"
+"message":"Gracias por la información. Lo acordado fue transferido a su cuenta."
 },
 "SUCCESSMSG_2":{
 "description":"",
@@ -181,7 +181,7 @@
 },
 "SUCCESSMSG_4":{
 "description":"",
-"message":"¡Muchas gracias! ¡Lo pactado debería estar yá en su cuenta!"
+"message":"¡Muchas gracias por la rapidez! ¡Lo pactado está ya en su cuenta!"
 },
 "SUCCESSMSG_5":{
 "description":"",
@@ -245,7 +245,7 @@
 },
 "What_is_the_risk":{
 "description":"",
-"message":"¿Cual es el riesgo?"
+"message":"¿Cuál es el riesgo?"
 },
 "When_do_you_need_the_data":{
 "description":"",
@@ -267,7 +267,7 @@
 "description":"",
 "message":"Usted debe tener instalado un Radar Mapeador para realizar esta tarea.Por favor, diríjase al Astillero y podrá adquirirlo en la sección Equipamiento."
 },
-"You_will_be_paid_on_my_behalf_in_new_destination":{
+"CHANGE_LOCATION":{
 "description":"",
 "message":"Se le pagará en mi nombre en NUEVO DESTINO"
 },
@@ -281,7 +281,7 @@
 },
 "failed_mission":{
 "description":"",
-"message":"Esta misión ha fracasado por haber excedido la fecha de caducidad. Lo siento.Ha comenzado y terminará en breve, la limpieza de todos los rastros de este mapeado.Esto nunca ha sucedido, Comandante."
+"message":"Esta misión ha fracasado por haber excedido la fecha de caducidad. Lo siento. Ha comenzado y terminará en breve, la limpieza de todos los rastros de este mapeado.Esto nunca ha sucedido, Comandante."
 },
 "hostilemessage1":{
 "description":"",

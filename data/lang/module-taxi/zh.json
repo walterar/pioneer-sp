@@ -117,7 +117,7 @@
 },
 "FLAVOUR_0_INTROTEXT":{
 "description":"",
-"message":"嗨, 我是 {name}, 我需要将一些乘客接到 {system} ({sectorx}, {sectory}, {sectorz}) 星系, {dist} ly. 我会付给你 {cash}."
+"message":"嗨, 我是 {name}, 我需要将一些乘客接到 {system} ({sectorx}, {sectory}, {sectorz}) 星系, {dist}. 我会付给你 {cash}."
 },
 "FLAVOUR_0_SUCCESSMSG":{
 "description":"",
@@ -149,7 +149,7 @@
 },
 "FLAVOUR_10_INTROTEXT":{
 "description":"",
-"message":"我叫 {name}. 我想快点到 {system} ({sectorx}, {sectory}, {sectorz}) 星系, 离这里 {dist} ly. 报酬 {cash}."
+"message":"我叫 {name}. 我想快点到 {system} ({sectorx}, {sectory}, {sectorz}) 星系, 离这里 {dist}. 报酬 {cash}."
 },
 "FLAVOUR_10_SUCCESSMSG":{
 "description":"",
@@ -181,7 +181,7 @@
 },
 "FLAVOUR_11_INTROTEXT":{
 "description":"",
-"message":"我是 {name}. 我要尽快到达 {system} ({sectorx}, {sectory}, {sectorz}) 星系,距离 {dist} ly. 我会付你 {cash}."
+"message":"我是 {name}. 我要尽快到达 {system} ({sectorx}, {sectory}, {sectorz}) 星系,距离 {dist}. 我会付你 {cash}."
 },
 "FLAVOUR_11_SUCCESSMSG":{
 "description":"",
@@ -213,7 +213,7 @@
 },
 "FLAVOUR_12_INTROTEXT":{
 "description":"",
-"message":"我叫 {name}. 我需要到 {system} ({sectorx}, {sectory}, {sectorz}) 星系, 距离 {dist} ly. 我会支付 {cash}."
+"message":"我叫 {name}. 我需要到 {system} ({sectorx}, {sectory}, {sectorz}) 星系, 距离 {dist}. 我会支付 {cash}."
 },
 "FLAVOUR_12_SUCCESSMSG":{
 "description":"",
@@ -245,7 +245,7 @@
 },
 "FLAVOUR_1_INTROTEXT":{
 "description":"",
-"message":"嗨, 我是 {name}, 我需要运送一小队人到 {system} ({sectorx}, {sectory}, {sectorz}) 星系, 距离 {dist} ly.我将支付 {cash}."
+"message":"嗨, 我是 {name}, 我需要运送一小队人到 {system} ({sectorx}, {sectory}, {sectorz}) 星系, 距离 {dist}.我将支付 {cash}."
 },
 "FLAVOUR_1_SUCCESSMSG":{
 "description":"",
@@ -277,7 +277,7 @@
 },
 "FLAVOUR_2_INTROTEXT":{
 "description":"",
-"message":"嗨, 我是 {name} , 我需要运送一些乘客到 {system} ({sectorx}, {sectory}, {sectorz})星系, 距离{dist} ly. 我将支付 {cash}."
+"message":"嗨, 我是 {name} , 我需要运送一些乘客到 {system} ({sectorx}, {sectory}, {sectorz})星系, 距离{dist}. 我将支付 {cash}."
 },
 "FLAVOUR_2_SUCCESSMSG":{
 "description":"",
@@ -309,7 +309,7 @@
 },
 "FLAVOUR_3_INTROTEXT":{
 "description":"",
-"message":"嗨. 我是 {name}. 我需要去 {system} ({sectorx}, {sectory}, {sectorz}) 星系, 距离 {dist} ly. 我会付给你 {cash}."
+"message":"嗨. 我是 {name}. 我需要去 {system} ({sectorx}, {sectory}, {sectorz}) 星系, 距离 {dist}. 我会付给你 {cash}."
 },
 "FLAVOUR_3_SUCCESSMSG":{
 "description":"",
@@ -341,7 +341,7 @@
 },
 "FLAVOUR_4_INTROTEXT":{
 "description":"",
-"message":"嗨, 我是 {name}, 我需要到 {system} ({sectorx}, {sectory}, {sectorz}) 星系. 距离 {dist} ly. 我会付给你 {cash}."
+"message":"嗨, 我是 {name}, 我需要到 {system} ({sectorx}, {sectory}, {sectorz}) 星系. 距离 {dist}. 我会付给你 {cash}."
 },
 "FLAVOUR_4_SUCCESSMSG":{
 "description":"",
@@ -373,7 +373,7 @@
 },
 "FLAVOUR_5_INTROTEXT":{
 "description":"",
-"message":"嗨, 我是 {name}, 我需要到 {system} ({sectorx}, {sectory}, {sectorz}) 星系, 距离 {dist} ly. 我将支付 {cash}."
+"message":"嗨, 我是 {name}, 我需要到 {system} ({sectorx}, {sectory}, {sectorz}) 星系, 距离 {dist}. 我将支付 {cash}."
 },
 "FLAVOUR_5_SUCCESSMSG":{
 "description":"",
@@ -405,7 +405,7 @@
 },
 "FLAVOUR_6_INTROTEXT":{
 "description":"",
-"message":"嗨, 我是 {name}, 我要去 {system} ({sectorx}, {sectory}, {sectorz}) 星系, 离这儿 {dist} ly. 我出 {cash}."
+"message":"嗨, 我是 {name}, 我要去 {system} ({sectorx}, {sectory}, {sectorz}) 星系, 离这儿 {dist}. 我出 {cash}."
 },
 "FLAVOUR_6_SUCCESSMSG":{
 "description":"",
@@ -437,7 +437,7 @@
 },
 "FLAVOUR_7_INTROTEXT":{
 "description":"",
-"message":"嗨, 我叫 {name} ,我需要安全地到达 {system} ({sectorx}, {sectory}, {sectorz}) 星系, 距离本星系 {dist} ly. 我会支付 {cash}."
+"message":"嗨, 我叫 {name} ,我需要安全地到达 {system} ({sectorx}, {sectory}, {sectorz}) 星系, 距离本星系 {dist}. 我会支付 {cash}."
 },
 "FLAVOUR_7_SUCCESSMSG":{
 "description":"",
@@ -469,7 +469,7 @@
 },
 "FLAVOUR_8_INTROTEXT":{
 "description":"",
-"message":"我的名字是 {name}. 我需要尽快到达 {system} 星系 ({sectorx}, {sectory}, {sectorz}) 距离 {dist} ly. 酬金{cash}."
+"message":"我的名字是 {name}. 我需要尽快到达 {system} 星系 ({sectorx}, {sectory}, {sectorz}) 距离 {dist}. 酬金{cash}."
 },
 "FLAVOUR_8_SUCCESSMSG":{
 "description":"",
@@ -501,7 +501,7 @@
 },
 "FLAVOUR_9_INTROTEXT":{
 "description":"",
-"message":"我叫 {name}. 我现在急着去 {system} 星系 ({sectorx}, {sectory}, {sectorz}) 距离 {dist} ly. 我给你 {cash} 块钱, 你能帮帮我吗?"
+"message":"我叫 {name}. 我现在急着去 {system} 星系 ({sectorx}, {sectory}, {sectorz}) 距离 {dist}. 我给你 {cash} 块钱, 你能帮帮我吗?"
 },
 "FLAVOUR_9_SUCCESSMSG":{
 "description":"",

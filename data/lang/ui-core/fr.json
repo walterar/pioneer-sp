@@ -262,6 +262,9 @@
 "description":"",
 "message":"Fonction"
 },
+"ENABLE_ANISOTROPIC_FILTERING":{
+"description":"Use Anisotropic Filtering","message":"Filtrage Anisotropique"
+},
 "ENABLE_AUTOSAVE":{
 "description":"Allow the game to autosave when docking","message":"Activer la sauvegarde automatique"
 },
@@ -819,7 +822,7 @@
 "description":"For player reputation","message":"Professionel"
 },
 "PUMP_DOWN":{
-"description":"Drain the fuel tank","message":"Pump down"
+"description":"Drain the fuel tank","message":"Vidange"
 },
 "QUALIFICATION_SCORES":{
 "description":"",

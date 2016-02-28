@@ -1,4 +1,4 @@
--- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 local f = Faction:new('Federation')
@@ -7,7 +7,7 @@ local f = Faction:new('Federation')
 	:homeworld(0,0,0,0,4)
 	:foundingDate(3050.0)
 	:expansionRate(1.0)
-	:military_name('United Nations Space Force')
+	:military_name('FED Force')
 	:police_name('Police')
 	:colour(0,0.4,1)--(0.4,0.4,1.0)
 

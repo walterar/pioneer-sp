@@ -123,7 +123,7 @@
 "message":"NEWS {date}: Vegan lifestyle gains followers in the {system} system."
 },
 "FLAVOUR_3_NEWSBODY":{
-"description":"Imply high demand of FRUIT_AND_VEG.","message":"Administration in the {system} system ({sectorx}, {sectory}, {sectorz}) seek to increase imports to meet the surging demand of all things green ."
+"description":"Imply high demand of FRUIT_AND_VEG.","message":"Administration in the {system} system ({sectorx}, {sectory}, {sectorz}) seek to increase imports to meet the surging demand of all things green."
 },
 "FLAVOUR_4_HEADLINE":{
 "description":"About mob rivals competing for selling drugs","message":"NEWS {date}: Drug war in the {system} system. Law enforcers struggle to regain control."

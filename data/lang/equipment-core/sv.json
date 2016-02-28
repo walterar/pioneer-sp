@@ -205,6 +205,14 @@
 "description":"",
 "message":"Skopar både last containrar och bränsle, dock mindre effektiv än vanlig bränsleskopa"
 },
+"NAV_ASSIST":{
+"description":"",
+"message":"Navigation assistant"
+},
+"NAV_ASSIST_DESCRIPTION":{
+"description":"",
+"message":"Software that adds a navigation assistant to the autopilot. It marks the next target."
+},
 "OUT_OF_SCANRANGE":{
 "description":"",
 "message":"Max scan-avstånd överskridet."

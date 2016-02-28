@@ -1,15 +1,23 @@
 {
+"AU":{
+"description":"",
+"message":"Au"
+},
 "BOARDED_PASSENGER":{
 "description":"",
 "message":"{name} ha imbarcato la nave."
+},
+"COMMODITIES":{
+"description":"",
+"message":"Product"
 },
 "COULD_YOU_REPEAT_THE_ORIGINAL_REQUEST":{
 "description":"",
 "message":"Può ripetere la richiesta iniziale?"
 },
-"DANGER":{
+"CREW":{
 "description":"",
-"message":"Pericolo:"
+"message":"Crew"
 },
 "DEADLINE":{
 "description":"",
@@ -18,6 +26,10 @@
 "DELIVERED_PASSENGER":{
 "description":"",
 "message":"{name} ha lasciato la nave."
+},
+"DELIVERY":{
+"description":"",
+"message":"DELIVERY"
 },
 "DISTANCE":{
 "description":"",
@@ -209,7 +221,7 @@
 },
 "FLAVOUR_2_TYPEOFHELPTEXT":{
 "description":"",
-"message":"Il pilota richiede 1 ton. di idrogeno."
+"message":"Il pilota richiede {load} ton di {cargo}."
 },
 "FLAVOUR_3_ADTEXT":{
 "description":"",
@@ -273,7 +285,7 @@
 },
 "FLAVOUR_4_TYPEOFHELPTEXT":{
 "description":"",
-"message":"Il pilota richiede 1 ton. di idrogeno."
+"message":"Il pilota richiede {load} ton di {cargo}."
 },
 "FLAVOUR_5_ADTEXT":{
 "description":"",
@@ -293,7 +305,7 @@
 },
 "FLAVOUR_5_LOCATIONTEXT":{
 "description":"",
-"message":"L'obiettivo è attualmente alla deriva entro {dist} km da qui. Dovrà rintracciare personalmente l'esatta posizione."
+"message":"L'obiettivo è attualmente alla deriva entro {dist} da qui. Dovrà rintracciare personalmente l'esatta posizione."
 },
 "FLAVOUR_5_SUCCESSMSG":{
 "description":"",
@@ -325,7 +337,7 @@
 },
 "FLAVOUR_6_LOCATIONTEXT":{
 "description":"",
-"message":"L'ultima posizione era nelle vicinanze del pianeta {planet} nel sistema {system} [{sectorx},{sectory},{sectorz}], distante {dist} AL da qua."
+"message":"L'ultima posizione era nelle vicinanze del pianeta {planet} nel sistema {system} [{sectorx},{sectory},{sectorz}], distante {dist} da qua."
 },
 "FLAVOUR_6_SUCCESSMSG":{
 "description":"",
@@ -357,7 +369,7 @@
 },
 "FLAVOUR_7_LOCATIONTEXT":{
 "description":"",
-"message":"Troverà la nave nel sistema {system} [{sectorx},{sectory},{sectorz}], distante {dist} AL da qua. È mantenuta in orbita attorno a {planet}."
+"message":"Troverà la nave nel sistema {system} [{sectorx},{sectory},{sectorz}], distante {dist} da qua. È mantenuta in orbita attorno a {planet}."
 },
 "FLAVOUR_7_SUCCESSMSG":{
 "description":"",
@@ -370,6 +382,38 @@
 "FLAVOUR_7_TYPEOFHELPTEXT":{
 "description":"",
 "message":"Non possiamo riportare la nave senza la presenza di un equipaggio minimo. Sto cercando qualcuno disposto a trasportare immediatamente un equipaggio sostitutivo di {deliver_crew} membri sulla nostra astronave."
+},
+"FLAVOUR_8_ADTEXT":{
+"description":"",
+"message":"SHIP WITHOUT FUEL in system {system} to {dist}."
+},
+"FLAVOUR_8_FAILUREMSG":{
+"description":"",
+"message":"It's too late. Their services are no longer needed."
+},
+"FLAVOUR_8_HOWMUCHTIMETEXT":{
+"description":"",
+"message":"The pilot expects you to deliver the fuel before {due}."
+},
+"FLAVOUR_8_INTROTEXT":{
+"description":"",
+"message":"{starport} Air Traffic Control has been informed of a ship in distress in the system {system}. The ship <{ship} {shiplabel}> ran out of fuel. The pilot, pay {cash} for resupply."
+},
+"FLAVOUR_8_LOCATIONTEXT":{
+"description":"",
+"message":"The spacecraft is orbiting {planet} in {system} [{sectorx}, {sectory}, {sectorz}], {dist} from here."
+},
+"FLAVOUR_8_SUCCESSMSG":{
+"description":"",
+"message":"Good work! Count on our confidence in the future."
+},
+"FLAVOUR_8_TRANSFERMSG":{
+"description":"",
+"message":"{unit} ton of {fuel} has been transferred."
+},
+"FLAVOUR_8_TYPEOFHELPTEXT":{
+"description":"",
+"message":"The pilot requested {load} ton of {cargo}"
 },
 "FULL_CARGO":{
 "description":"",
@@ -399,21 +443,25 @@
 "description":"",
 "message":"Raggiunta la distanza d'interazione."
 },
-"IN_SYSTEM":{
-"description":"",
-"message":"Nel Sistema:"
-},
 "IT_MUST_BE_COMPLETED_BY":{
 "description":"",
-"message":"Dev'essere completato entro"
+"message":"Dev'essere completato entro "
 },
-"I_HIGHLY_DOUBT_IT":{
+"KM":{
 "description":"",
-"message":"Ne dubito fortemente."
+"message":"Km"
 },
-"LOCATION":{
+"LAST_KNOWN_LOCATION":{
 "description":"",
-"message":"Posizione:"
+"message":"Last known location:"
+},
+"LAT":{
+"description":"",
+"message":"Lat:"
+},
+"LON":{
+"description":"",
+"message":"Lon:"
 },
 "LY":{
 "description":"",
@@ -439,9 +487,29 @@
 "description":"",
 "message":"Ok, accordato."
 },
+"ORBIT":{
+"description":"",
+"message":"Orbit"
+},
 "PARTIAL":{
 "description":"",
 "message":"La ringrazio per le sue fatiche. Spero che tornerà per completare la missione!"
+},
+"PASSENGERS":{
+"description":"",
+"message":"Passengers"
+},
+"PAYMENT_LOCATION":{
+"description":"",
+"message":"Payment location:"
+},
+"PICKUP":{
+"description":"",
+"message":"PICKUP"
+},
+"PLACE_OF_ASSISTANCE":{
+"description":"",
+"message":"At the place of assistance"
 },
 "PLEASE_LAND":{
 "description":"",
@@ -595,6 +663,10 @@
 "description":"",
 "message":"Ritorna A:"
 },
+"REWARD":{
+"description":"",
+"message":"Reward:"
+},
 "SAR":{
 "description":"",
 "message":"Ricerca & Soccorso"
@@ -602,6 +674,14 @@
 "SHIP_UNRESPONSIVE":{
 "description":"",
 "message":"La nave bersaglio non risponde."
+},
+"SYSTEM":{
+"description":"",
+"message":"System:"
+},
+"TARGET_SHIP_ID":{
+"description":"",
+"message":"Target ship ID:"
 },
 "THANK_YOU_ACCEPTANCE_TXT":{
 "description":"",
@@ -625,7 +705,7 @@
 },
 "TRANSFER_TIME":{
 "description":"",
-"message":"Prego attendere {minutes} minuti per il trasferimento."
+"message":"Prego attendere {seconds} secondi per il trasferimento."
 },
 "TYPE_OF_HELP":{
 "description":"",

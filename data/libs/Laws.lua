@@ -1,12 +1,12 @@
--- Copyright © 2008-2015 Pioneer Developers. Author: Karl F (https://github.com/impaktor)
+-- Copyright © 2008-2016 Pioneer Developers. Author: Karl F (https://github.com/impaktor)
 -- Modified by Walter Arnolfo <walterar2@gmail.com> for Pioneer Scout Plus
 -- Licensed under the terms of the GPL v3. See http://en.wikipedia.org/wiki/GNU_General_Public_License
 
 
 local Lang = import("Lang")
 
-local l   = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
+local l  = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
+local ls = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous","en")
 
 --
 -- Namespace: Laws
@@ -40,17 +40,17 @@ local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en"
 local Laws = {}
 Laws.CrimeType = {}
 
-Laws.CrimeType["MURDER"]                     = {basefine = 10000, name =   l.MURDER}
-Laws.CrimeType["ENVIRONMENTAL_DAMAGE"]       = {basefine =  8500, name = myl.ENVIRONMENTAL_DAMAGE}
-Laws.CrimeType["ESPIONAGE"]                  = {basefine =  8000, name = myl.ESPIONAGE}
-Laws.CrimeType["ABDUCTION"]                  = {basefine =  5000, name = myl.ABDUCTION}
-Laws.CrimeType["FRAUD"]                      = {basefine =  3500, name = myl.FRAUD}
-Laws.CrimeType["TRADING_ILLEGAL_GOODS"]      = {basefine =  3000, name =   l.TRADING_ILLEGAL_GOODS}
-Laws.CrimeType["ESCAPE"]                     = {basefine =  2800, name = myl.ESCAPE}
-Laws.CrimeType["PIRACY"]                     = {basefine =  2500, name =   l.PIRACY}
-Laws.CrimeType["ILLEGAL_JUMP"]               = {basefine =  2200, name = myl.ILLEGAL_JUMP}
-Laws.CrimeType["DUMPING"]                    = {basefine =  1000, name =   l.DUMPING}
-Laws.CrimeType["UNLAWFUL_WEAPONS_DISCHARGE"] = {basefine =   200, name =   l.UNLAWFUL_WEAPONS_DISCHARGE}
+Laws.CrimeType["MURDER"]                     = {basefine = 10000, name =  l.MURDER}
+Laws.CrimeType["ENVIRONMENTAL_DAMAGE"]       = {basefine =  8500, name = ls.ENVIRONMENTAL_DAMAGE}
+Laws.CrimeType["ESPIONAGE"]                  = {basefine =  8000, name = ls.ESPIONAGE}
+Laws.CrimeType["ABDUCTION"]                  = {basefine =  5000, name = ls.ABDUCTION}
+Laws.CrimeType["FRAUD"]                      = {basefine =  3500, name = ls.FRAUD}
+Laws.CrimeType["TRADING_ILLEGAL_GOODS"]      = {basefine =  3000, name =  l.TRADING_ILLEGAL_GOODS}
+Laws.CrimeType["ESCAPE"]                     = {basefine =  2800, name = ls.ESCAPE}
+Laws.CrimeType["PIRACY"]                     = {basefine =  2500, name =  l.PIRACY}
+Laws.CrimeType["ILLEGAL_JUMP"]               = {basefine =  2200, name = ls.ILLEGAL_JUMP}
+Laws.CrimeType["DUMPING"]                    = {basefine =  1000, name =  l.DUMPING}
+Laws.CrimeType["UNLAWFUL_WEAPONS_DISCHARGE"] = {basefine =   200, name =  l.UNLAWFUL_WEAPONS_DISCHARGE}
 
 
 return Laws

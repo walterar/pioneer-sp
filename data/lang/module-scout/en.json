@@ -1,23 +1,23 @@
 {
 "ADTEXT_1":{
 "description":"",
-"message":"NEED EXPLORER. {system} System, a distance of {dist} ly. {cash}"
+"message":"NEED EXPLORER. {system} System, a distance of {dist}. {cash}"
 },
 "ADTEXT_2":{
 "description":"",
-"message":"NEED TO EXPLORE {system}, a distance of {dist} ly. {cash}"
+"message":"NEED TO EXPLORE {system}, a distance of {dist}. {cash}"
 },
 "ADTEXT_3":{
 "description":"",
-"message":"RECON in {system}, a distance of {dist} ly. {cash} Help us keep the system tidy!"
+"message":"RECON in {system}, a distance of {dist}. {cash} Help us keep the system tidy!"
 },
 "ADTEXT_4":{
 "description":"",
-"message":"RECON URGENT in {system}, a distance of {dist} ly. {cash} Need urgent data of the system."
+"message":"RECON URGENT in {system}, a distance of {dist}. {cash} Need urgent data of the system."
 },
 "ADTEXT_5":{
 "description":"",
-"message":"EXPLORATION in {system}, a distance of {dist} ly. {cash} Only for a bold and experienced pilot."
+"message":"EXPLORATION in {system}, a distance of {dist}. {cash} Only for a bold and experienced pilot."
 },
 "ADTEXT_6":{
 "description":"",
@@ -65,23 +65,23 @@
 },
 "INTROTEXT1_1":{
 "description":"",
-"message":"Hello, my name is {name}. We have some doubts about <{systembody}> in {system} ({sectorx}, {sectory}, {sectorz}) at a distance of {dist} ly. {cash} will pay for mapping the area."
+"message":"Hello, my name is {name}. We have some doubts about <{systembody}> in {system} ({sectorx}, {sectory}, {sectorz}) at a distance of {dist}. {cash} will pay for mapping the area."
 },
 "INTROTEXT1_2":{
 "description":"",
-"message":"Hello. I'm {name}. I'll pay {cash} for a mapping of < {systembody} > in {system} ({sectorx}, {sectory}, {sectorz}) at a distance of {dist} ly."
+"message":"Hello. I'm {name}. I'll pay {cash} for a mapping of < {systembody} > in {system} ({sectorx}, {sectory}, {sectorz}) at a distance of {dist}."
 },
 "INTROTEXT1_3":{
 "description":"",
-"message":"Greetings. Lieutenant {name}. We offer {cash} for a thorough scan of < {systembody} > in {system} ({sectorx}, {sectory}, {sectorz}) at a distance of {dist} ly."
+"message":"Greetings. Lieutenant {name}. We offer {cash} for a thorough scan of < {systembody} > in {system} ({sectorx}, {sectory}, {sectorz}) at a distance of {dist}."
 },
 "INTROTEXT1_4":{
 "description":"",
-"message":"My name is {name}, I am a journalist and I'm writing a story about the system {system} ({sectorx}, {sectory}, {sectorz}) at a distance of {dist} ly. There are some data that I need to check, in < {systembody} >. I will pay {cash} to whom I can get this information from in time."
+"message":"My name is {name}, I am a journalist and I'm writing a story about the system {system} ({sectorx}, {sectory}, {sectorz}) at a distance of {dist}. There are some data that I need to check, in < {systembody} >. I will pay {cash} to whom I can get this information from in time."
 },
 "INTROTEXT1_5":{
 "description":"",
-"message":"Hello. My name is {name}, the information is my business and I'll pay {cash} for a mapping of < {systembody} > in {system} ({sectorx}, {sectory}, {sectorz}) at a distance of {dist} ly."
+"message":"Hello. My name is {name}, the information is my business and I'll pay {cash} for a mapping of < {systembody} > in {system} ({sectorx}, {sectory}, {sectorz}) at a distance of {dist}."
 },
 "INTROTEXT1_6":{
 "description":"",
@@ -161,7 +161,7 @@
 },
 "Ok":{
 "description":"",
-"message":"Accept and set system target\nin the navigation chart."
+"message":"Accept."
 },
 "Repeat_the_original_request":{
 "description":"",
@@ -267,7 +267,7 @@
 "description":"",
 "message":"You must have a Radar Mapper to perform this task.\nPlease go to the Shipyard and you can purchase one in the equipment section."
 },
-"You_will_be_paid_on_my_behalf_in_new_destination":{
+"CHANGE_LOCATION":{
 "description":"",
 "message":"You will be paid on my behalf at the NEW DESTINATION"
 },

@@ -23,8 +23,8 @@ local laser      = Eq.laser
 local hyperspace = Eq.hyperspace
 local cargo      = Eq.cargo
 
-local l = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
+local l  = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
+local lm = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous","en")
 
 local TraffiShip   = {}
 local ShipsCount   = 0
@@ -46,6 +46,91 @@ local pol_ai_compl = false
 local warning      = false
 local fineDetect   = false
 local activateON   = false
+
+local Exists = function (ship)
+	local exists = false
+	if ship:exists() then
+		exists = true
+	end
+	return exists
+end
+local ShipExists = function (ship)
+	if ship then
+		ok,val = pcall(Exists, ship)
+		if ok then
+			return val
+		else
+--print("NO ES UNA NAVE ACTIVA")
+			return false
+		end
+	end
+end
+
+
+local ShipsAvailable = function ()
+	GroundShips = utils.build_array(utils.filter(function (k,def)
+		return def.tag == 'SHIP'
+			and def.capacity > 19
+			and def.capacity < 501
+			and def.hyperdriveClass > 0
+			and def.equipSlotCapacity.atmo_shield > 0
+			and def.id ~= ('ac33')
+			and def.id ~= ('amphiesma')
+			and def.id ~= ('nerodia')
+			and def.id ~= ('hullcutter')
+			and def.id ~= ('deneb')
+			and def.id ~= ('eagle_lrf')
+			and def.id ~= ('eagle_mk2')
+			and def.id ~= ('eagle_mk3')
+			and def.id ~= ('caiman')
+--			and def.id ~= ('constrictor_a')
+--			and def.id ~= ('constrictor_b')
+			and def.id ~= ('cobra_mk1_a')
+			and def.id ~= ('cobra_mk1_b')
+			and def.id ~= ('cobra_mk1_c')
+			and def.id ~= ('malabar')
+			and def.id ~= ('manta')
+--			and def.id ~= ('molamola')
+			and def.id ~= ('natrix')
+			and def.id ~= ('sidie_m')
+			and def.id ~= ('sinonatrix')
+			and def.id ~= ('venturestar')
+			and def.id ~= ('viper_hw')
+			and def.id ~= ('viper_lz')
+			and def.id ~= ('viper_mw')
+			and def.id ~= ('viper_tw')
+--			and def.id ~= ('vatakara')
+			and def.id ~= ('wave')
+	end, pairs(ShipDef)))
+	SpaceShips = utils.build_array(utils.filter(function (k,def)
+		return def.tag == 'SHIP'
+			and def.capacity > 19
+			and def.capacity < 501
+			and def.hyperdriveClass > 0
+			and def.id ~= ('pumpkinseed')
+			and def.id ~= ('pumpkinseed_x2')
+			and def.id ~= ('wave')
+			and def.id ~= ('nerodia')
+			and def.id ~= ('anax')
+			and def.id ~= ('ac33')
+			and def.id ~= ('sinonatrix')
+			and def.id ~= ('amphiesma')
+			and def.id ~= ('kanarascout')
+			and def.id ~= ('cobra_mk1_a')
+			and def.id ~= ('cobra_mk1_b')
+			and def.id ~= ('cobra_mk1_c')
+			and def.id ~= ('ladybird')
+			and def.id ~= ('malabar')
+			and def.id ~= ('natrix')
+			and def.id ~= ('viper_hw')
+			and def.id ~= ('viper_lz')
+			and def.id ~= ('viper_mw')
+			and def.id ~= ('viper_tw')
+			and def.id ~= ('vatakara')
+			and def.id ~= ('deneb')
+	end, pairs(ShipDef)))
+	return
+end
 
 
 local reinitialize = function ()
@@ -92,7 +177,7 @@ local erase_old_spawn = function ()
 
 	if Game.time > 10 then
 		for i = 1, ShipsCount do
-			if TraffiShip[i] and TraffiShip[i]:exists() then
+			if ShipExists(TraffiShip[i]) then--and TraffiShip[i]:exists() then
 				TraffiShip[i]:Disappear()
 				TraffiShip[i]=nil
 			end
@@ -101,7 +186,7 @@ local erase_old_spawn = function ()
 
 	if StaticCount and StaticCount > 0 then
 		for i = 1, StaticCount do
-			if ShipStatic[i] and ShipStatic[i]:exists() then
+			if ShipExists(ShipStatic[i]) then-- and ShipStatic[i]:exists() then
 				ShipStatic[i]:Disappear()
 				ShipStatic[i] = nil
 			end
@@ -189,12 +274,13 @@ print(TraffiShip[i].label.." NO DESPEGÓ")
 		if basePort.isGroundStation then timeundock = Game.time + 3 end
 		Timer:CallAt(timeundock, function ()
 			local target = Game.player:FindNearestTo("PLANET") or Game.player:FindNearestTo("STAR")
-			if not target or not TraffiShip[i] or not TraffiShip[i]:exists() then return end
+			if not target or not ShipExists(TraffiShip[i]) then return end
+--			if not target or not TraffiShip[i] or not TraffiShip[i]:exists() then return end
 			TraffiShip[i]:AIEnterLowOrbit(target)
 			if Engine.rand:Integer(1) > 0 then-- XXX hyperspace
 				Timer:CallAt(Game.time + 5, function ()
-					if not TraffiShip[i]
-						or not TraffiShip[i]:exists()
+					if not ShipExists(TraffiShip[i])
+--						or not TraffiShip[i]:exists()
 						or TraffiShip[i].flightState == "DOCKING"
 						or TraffiShip[i].flightState == "UNDOCKING"
 						or MissileActive > 0--XXX
@@ -202,8 +288,7 @@ print(TraffiShip[i].label.." NO DESPEGÓ")
 					local range = TraffiShip[i].hyperspaceRange
 					if range and range > 0 then
 						if range > 30 then range = 30 end
-						local nearbystations = StarSystem:GetNearbyStationPaths(range, nil,function (s) return
-							(s.type ~= 'STARPORT_SURFACE') or (s.parent.type ~= 'PLANET_ASTEROID') end)
+						local nearbystations = _nearbystationsRemotes
 						local system_target
 						if nearbystations and #nearbystations > 0 then
 							system_target = nearbystations[Engine.rand:Integer(1,#nearbystations)]
@@ -214,14 +299,14 @@ print(TraffiShip[i].label.." NO DESPEGÓ")
 						return end
 
 						local status
-						if TraffiShip[i] and TraffiShip[i]:exists() then
+						if ShipExists(TraffiShip[i]) then-- and TraffiShip[i]:exists() then
 							status = TraffiShip[i]:HyperjumpTo(system_target)
 						end
 
 						if status == "OK" then
 							replace_and_spawn(i)
 						else
-							if TraffiShip[i] and TraffiShip[i]:exists() then TraffiShip[i]:Explode() end
+							if ShipExists(TraffiShip[i]) then TraffiShip[i]:Explode() end
 							replace_and_spawn(i)
 						return end
 					end
@@ -237,7 +322,7 @@ local traffic_docked = function ()
 	return end
 	activateON = true
 	for i=1, ShipsCount do
-		if TraffiShip[i] and TraffiShip[i].flightState =="DOCKED" then
+		if ShipExists(TraffiShip[i]) and TraffiShip[i].flightState =="DOCKED" then
 			activate(i)
 		end
 	end
@@ -245,11 +330,9 @@ end
 
 
 local spawnShipsDocked = function ()
-	if spawnDocked == true then
-	return end
+	if spawnDocked == true then return end
 	if Game.time < 10 then basePort = Game.player:GetDockedWith() end
-	if not basePort then
-	return end
+	if not basePort then return end
 	spawnDocked = true
 	local free_police = 1
 	local posib = 5
@@ -289,8 +372,7 @@ local spawnShipsDocked = function ()
 	else
 		ships_traffic = SpaceShips
 	end
-	if not ships_traffic or ShipsCount == 0 then
-	return end
+	if not ships_traffic or ShipsCount == 0 then return end
 	if Game.time > 10 and ShipsCount > 2 then ShipsCount = Engine.rand:Integer(2,ShipsCount) end
 	ShipsCount = ShipsCount + free_police
 	local ships_traffic_count = #ships_traffic
@@ -469,7 +551,7 @@ local actionPolice = function ()
 	local police = system.faction.policeName.." "..basePort.label
 	warning = true
 	if fine > 0 then
-		Comms.ImportantMessage(myl.Warning_You_must_go_back_to_the_Station_now_or_you_will_die_soon, police)
+		Comms.ImportantMessage(lm.WARNING_YOU_MUST_GO_BACK, police)
 		if Police:GetEquipFree("laser_front") > 0 then
 			Police:AddEquip(laser.pulsecannon_dual_1mw)--XXX
 			Police:AddEquip(misc.laser_cooling_booster)
@@ -482,7 +564,7 @@ local actionPolice = function ()
 	end
 	Timer:CallEvery(4, function ()--XXX
 		if Game.system ~= system then return true end-- chequea no salto hiperespacial aquí
-		if not basePort or not Police or not Police:exists() then return true end
+		if not basePort or not ShipExists(Police) then return true end
 		if fine == 0 or player:GetNavTarget() == basePort then
 			policeStopFire()
 			pol_ai_compl = false
@@ -544,7 +626,7 @@ local onFrameChanged = function (body)
 	if body:isa("Ship") and not body:IsPlayer() then return end
 	local target = Game.player:GetNavTarget()
 	if not target then return end
-	if target ~= basePort then
+	if not basePort or target ~= basePort then
 		activateON = false
 	end
 	if activateON then return end
@@ -568,16 +650,13 @@ local onFrameChanged = function (body)
 end
 
 
-Event.Register("onShipFiring", function (ship)
-	if not ship
-		or not ship:exists()
+local onShipFiring = function (ship)
+	if not ShipExists(ship)
 		or ship:IsPlayer()
 		or ship == Police
 	then return end
-	if ship
-		and ship:exists()
-		and Police
-		and Police:exists()
+	if ShipExists(ship)
+		and ShipExists(Police)
 		and Police:DistanceTo(ship) < 100e3
 		and (Police:DistanceTo(Game.player) > 5000 or Game.player:GetDockedWith())
 	then
@@ -590,17 +669,17 @@ Event.Register("onShipFiring", function (ship)
 		ship:SetHullPercent(0)
 		ship:AIKill(Police)
 	end
-end)
+end
 
 
-Event.Register("onShipAlertChanged", function (ship, alert)
+local onShipAlertChanged = function (ship, alert)
 	if ship ~= Police then return end
 	if alert == "NONE" and Police.flightState == "FLYING" then
 		policeStopFire()
 		pol_ai_compl = false
 		Police:AIFlyTo(basePort)
 	end
-end)
+end
 
 
 local onShipUndocked = function (ship, station)
@@ -611,10 +690,24 @@ local onShipUndocked = function (ship, station)
 	if fine and fine > 0 then
 		fine = showCurrency(fine)
 		local police = Game.system.faction.policeName.." "..basePort.label
-		Comms.ImportantMessage(myl.You_have_committed_a_crime_and_must_pay..fine, police)
+		Comms.ImportantMessage(lm.YOU_HAVE_COMMITTED_A_CRIME_AND_MUST_PAY..fine, police)
 		fineDetect = true
 	end
 	sensorDistance()
+end
+
+local onEnterSystem = function (ship)
+	if Game.system.population == 0 then return end
+	Event.Register("onShipDocked", onShipDocked)
+	Event.Register("onShipUndocked", onShipUndocked)
+	Event.Register("onAICompleted", onAICompleted)
+	Event.Register("onShipAlertChanged", onShipAlertChanged)
+	Event.Register("onFrameChanged", onFrameChanged)
+	Event.Register("onShipFiring", onShipFiring)
+	Event.Register("onShipCollided", onShipCollided)
+	Event.Register("onShipDestroyed", onShipDestroyed)
+
+	ShipsAvailable()
 end
 
 
@@ -624,76 +717,34 @@ local onLeaveSystem = function (ship)
 		if distance and distance < 2500 then
 			local money = crime_fine("ILLEGAL_JUMP")
 			Game.player:AddCrime("ILLEGAL_JUMP", money)
-			Comms.ImportantMessage(myl.ILLEGAL_JUMP .."  ".. myl.You_has_been_fined .. showCurrency(money), Game.system.faction.policeName)
+			Comms.ImportantMessage(lm.ILLEGAL_JUMP .."  ".. lm.YOU_HAS_BEEN_FINED .. showCurrency(money), Game.system.faction.policeName)
 			distance = nil
 		end
 		reinitialize()
+		Event.Deregister("onShipDocked", onShipDocked)
+		Event.Deregister("onShipUndocked", onShipUndocked)
+		Event.Deregister("onAICompleted", onAICompleted)
+		Event.Deregister("onShipAlertChanged", onShipAlertChanged)
+		Event.Deregister("onFrameChanged", onFrameChanged)
+		Event.Deregister("onShipFiring", onShipFiring)
+		Event.Deregister("onShipCollided", onShipCollided)
+		Event.Deregister("onShipDestroyed", onShipDestroyed)
 	end
 end
 
 
 local onGameStart = function ()
-	GroundShips = utils.build_array(utils.filter(function (k,def)
-		return def.tag == 'SHIP'
-			and def.capacity > 19
-			and def.capacity < 501
-			and def.hyperdriveClass > 0
-			and def.equipSlotCapacity.atmo_shield > 0
-			and def.id ~= ('ac33')
-			and def.id ~= ('amphiesma')
-			and def.id ~= ('nerodia')
-			and def.id ~= ('hullcutter')
-			and def.id ~= ('deneb')
-			and def.id ~= ('eagle_lrf')
-			and def.id ~= ('eagle_mk2')
-			and def.id ~= ('eagle_mk3')
-			and def.id ~= ('caiman')
---			and def.id ~= ('constrictor_a')
---			and def.id ~= ('constrictor_b')
-			and def.id ~= ('cobra_mk1_a')
-			and def.id ~= ('cobra_mk1_b')
-			and def.id ~= ('cobra_mk1_c')
-			and def.id ~= ('malabar')
-			and def.id ~= ('manta')
---			and def.id ~= ('molamola')
-			and def.id ~= ('natrix')
-			and def.id ~= ('sidie_m')
-			and def.id ~= ('sinonatrix')
-			and def.id ~= ('venturestar')
-			and def.id ~= ('viper_hw')
-			and def.id ~= ('viper_lz')
-			and def.id ~= ('viper_mw')
-			and def.id ~= ('viper_tw')
---			and def.id ~= ('vatakara')
-			and def.id ~= ('wave')
-	end, pairs(ShipDef)))
-	SpaceShips = utils.build_array(utils.filter(function (k,def)
-		return def.tag == 'SHIP'
-			and def.capacity > 19
-			and def.capacity < 501
-			and def.hyperdriveClass > 0
-			and def.id ~= ('pumpkinseed')
-			and def.id ~= ('pumpkinseed_x2')
-			and def.id ~= ('wave')
-			and def.id ~= ('nerodia')
-			and def.id ~= ('anax')
-			and def.id ~= ('ac33')
-			and def.id ~= ('sinonatrix')
-			and def.id ~= ('amphiesma')
-			and def.id ~= ('kanarascout')
-			and def.id ~= ('cobra_mk1_a')
-			and def.id ~= ('cobra_mk1_b')
-			and def.id ~= ('cobra_mk1_c')
-			and def.id ~= ('ladybird')
-			and def.id ~= ('malabar')
-			and def.id ~= ('natrix')
-			and def.id ~= ('viper_hw')
-			and def.id ~= ('viper_lz')
-			and def.id ~= ('viper_mw')
-			and def.id ~= ('viper_tw')
-			and def.id ~= ('vatakara')
-			and def.id ~= ('deneb')
-	end, pairs(ShipDef)))
+	if Game.system.population == 0 then return end
+	Event.Register("onShipDocked", onShipDocked)
+	Event.Register("onShipUndocked", onShipUndocked)
+	Event.Register("onAICompleted", onAICompleted)
+	Event.Register("onShipAlertChanged", onShipAlertChanged)
+	Event.Register("onFrameChanged", onFrameChanged)
+	Event.Register("onShipFiring", onShipFiring)
+	Event.Register("onShipCollided", onShipCollided)
+	Event.Register("onShipDestroyed", onShipDestroyed)
+
+	ShipsAvailable()
 
 	if loaded_data then
 		TraffiShip   = loaded_data.TraffiShip
@@ -712,7 +763,7 @@ local onGameStart = function ()
 		fineDetect   = loaded_data.fineDetect
 
 		for i = 1, ShipsCount do
-			if not TraffiShip[i] then
+			if TraffiShip[i] == "nc" then
 				print("NOT EXIST TraffiShip["..i.."] at init, REPLACE")
 				replace_and_spawn(i)
 			end
@@ -730,11 +781,11 @@ local onGameStart = function ()
 end
 
 
+
 local serialize = function ()
 	for i = 1, ShipsCount do
-		if TraffiShip[i] and not TraffiShip[i]:exists() then
-			print("NOT EXIST TraffiShip["..i.."]:exists()")
-			TraffiShip[i]=nil
+		if not ShipExists(TraffiShip[i]) then
+			TraffiShip[i]="nc"
 		end
 	end
 
@@ -785,15 +836,9 @@ local onGameEnd = function ()
 	distance     = nil
 end
 
-
-Event.Register("onShipUndocked", onShipUndocked)
-Event.Register("onGameEnd", onGameEnd)
+Event.Register("onEnterSystem", onEnterSystem)
 Event.Register("onLeaveSystem", onLeaveSystem)
-Event.Register("onShipDocked", onShipDocked)
-Event.Register("onAICompleted", onAICompleted)
-Event.Register("onFrameChanged", onFrameChanged)
-Event.Register("onShipCollided", onShipCollided)
-Event.Register("onShipDestroyed", onShipDestroyed)
 Event.Register("onGameStart", onGameStart)
+Event.Register("onGameEnd", onGameEnd)
 
 Serializer:Register("Traffic", serialize, unserialize)

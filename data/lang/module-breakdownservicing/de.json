@@ -81,7 +81,7 @@
 },
 "FLAVOUR_5_INTRO":{
 "description":"",
-"message":"Vermeiden Sie die Unannehmlichkeiten eines kaputten Hyperraum-Antriebs. Lassen Sie Ihren heute noch überholen, von der offiziell zugelassenen {name} Triebwerksservice-Firma.\n\nAntrieb: {drive}\nKostenpunkt: {price}\nGarantie: 18 Monate\n{lasttime}"
+"message":"Vermeiden Sie die Unannehmlichkeiten eines kaputten Hyperraum-Antriebs. Lassen Sie Ihren heute noch überholen.\n\nAntrieb: {drive}\nKostenpunkt: {price}\n{lasttime}"
 },
 "FLAVOUR_5_RESPONSE":{
 "description":"",

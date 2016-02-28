@@ -205,6 +205,14 @@
 "description":"",
 "message":"Embora menos efeciente que um escavador de combustível, permite escavar combustível e mercadoria"
 },
+"NAV_ASSIST":{
+"description":"",
+"message":"Navigation assistant"
+},
+"NAV_ASSIST_DESCRIPTION":{
+"description":"",
+"message":"Software that adds a navigation assistant to the autopilot. It marks the next target."
+},
 "OUT_OF_SCANRANGE":{
 "description":"",
 "message":"Distância máxima de pesquisa excedida:"

@@ -65,7 +65,7 @@
 },
 "FLAVOUR_0_INTROTEXT":{
 "description":"",
-"message":"Qué hay, Soy {name}. Le pagaré {cash} si entrega un pequeño paquete en {starport} en el sistema {system} ({sectorx}, {sectory}, {sectorz}) ({dist} ly)."
+"message":"Qué hay, Soy {name}. Le pagaré {cash} si entrega un pequeño paquete en {starport} en el sistema {system} ({sectorx}, {sectory}, {sectorz}) ({dist})."
 },
 "FLAVOUR_0_SUCCESSMSG":{
 "description":"",
@@ -85,7 +85,7 @@
 },
 "FLAVOUR_1_INTROTEXT":{
 "description":"",
-"message":"Hola. Soy {name}. Tengo intención de pagar {cash} por una nave que transporte un paquete a {starport} en el sistema {system} ({sectorx}, {sectory}, {sectorz})) ({dist} ly)."
+"message":"Hola. Soy {name}. Tengo intención de pagar {cash} por una nave que transporte un paquete a {starport} en el sistema {system} ({sectorx}, {sectory}, {sectorz})) ({dist})."
 },
 "FLAVOUR_1_SUCCESSMSG":{
 "description":"",
@@ -105,7 +105,7 @@
 },
 "FLAVOUR_2_INTROTEXT":{
 "description":"",
-"message":"Hola. Soy {name}. Y mi intención es pagar {cash} por una nave que transporte un paquete a {starport} en el sistema {system} ({sectorx}, {sectory}, {sectorz})) ({dist} ly)."
+"message":"Hola. Soy {name}. Y mi intención es pagar {cash} por una nave que transporte un paquete a {starport} en el sistema {system} ({sectorx}, {sectory}, {sectorz})) ({dist})."
 },
 "FLAVOUR_2_SUCCESSMSG":{
 "description":"",
@@ -125,7 +125,7 @@
 },
 "FLAVOUR_3_INTROTEXT":{
 "description":"",
-"message":"Hola. Soy {name}. Tengo la intención de pagar {cash} por una nave que transporte una carga a {starport} en el sistema {system} ({sectorx}, {sectory}, {sectorz})) ({dist} ly)."
+"message":"Hola. Soy {name}. Tengo la intención de pagar {cash} por una nave que transporte una carga a {starport} en el sistema {system} ({sectorx}, {sectory}, {sectorz})) ({dist})."
 },
 "FLAVOUR_3_SUCCESSMSG":{
 "description":"",
@@ -145,7 +145,7 @@
 },
 "FLAVOUR_4_INTROTEXT":{
 "description":"",
-"message":"Saludos. Este es un mensaje automatizado de los Servicios de Mensajería Bedford y {name}. Pagamos {cash} por una carrera a {starport} en el sistema {system} ({sectorx}, {sectory}, {sectorz})) ({dist} ly)."
+"message":"Saludos. Este es un mensaje automatizado de los Servicios de Mensajería Bedford y {name}. Pagamos {cash} por una carrera a {starport} en el sistema {system} ({sectorx}, {sectory}, {sectorz})) ({dist})."
 },
 "FLAVOUR_4_SUCCESSMSG":{
 "description":"",

@@ -161,7 +161,7 @@
 },
 "Ok":{
 "description":"",
-"message":"Accetta ed imposta il sistema di destinazione\nsulla mappa di navigazione."
+"message":"Accetta."
 },
 "Repeat_the_original_request":{
 "description":"",
@@ -267,7 +267,7 @@
 "description":"",
 "message":"Deve avere un Idetificatore Radar per svolgere questo lavoro.\nÈ pregato di acquistarne uno alla sezione equipaggiamento."
 },
-"You_will_be_paid_on_my_behalf_in_new_destination":{
+"CHANGE_LOCATION":{
 "description":"",
 "message":"Verrai pagato per mio conto alla NUOVA DESTINAZIONE"
 },

@@ -1,0 +1,306 @@
+{
+"ABDUCTION":{
+"description":"Laws Taxi",
+"message":"Secuestro"
+},
+"ACTIVE":{
+"description":"ui-core",
+"message":"Activa"
+},
+"AU":{
+"description":"ui-core",
+"message":"Au"
+},
+"AUTO_COMBAT_DEACTIVATE":{
+"description":"ui-core",
+"message":"¡ATENCIÓN! Se ha desactivado AutoCombate"
+},
+"ATTENTION_THIS_CAN_PROVE_COSTLY_YOUR_LIFE_IS_NOT_WORTH":{
+"description":"Traffic",
+"message":"¡Atención! Esto puede costarle caro. Su vida no vale "
+},
+"BUY":{
+"description":"Commodities and equipment prices",
+"message":"COMPRA"
+},
+"CAPACITY":{
+"description":"ShipInfo",
+"message":"Capacidad"
+},
+"CREW":{
+"description":"ShipInfo",
+"message":"Tripulación"
+},
+"CREW_VACANCIES":{
+"description":"ShipInfo",
+"message":"Vacantes tripulación"
+},
+"CRIMINAL_RECORD":{
+"description":"Police Hitman CargoRun",
+"message":"Lo lamento Comandante. Sus antecedentes criminales son incompatibles con este tipo de tarea. Por favor, vuelva cuando resuelva ese tema."
+},
+"CHECK_WITH_THE_POLICE":{
+"description":"ui-scout",
+"message":"Consulte con la policía"
+},
+"CURRENT_FACTION":{
+"description":"ui-scout",
+"message":"Facción actual:"
+},
+"CURRENT_POSITION":{
+"description":"ui-scout",
+"message":"Posición actual:"
+},
+"DAMAGE_REPORT":{
+"description":"ui-scout",
+"message":"Informe de Daños"
+},
+"ENTER_HIGH_ORBIT_AT_CURRENT_TARGET":{
+"description":"ui-scout",
+"message":"Establecer Órbita Alta"
+},
+"ENTER_LOW_ORBIT_AT_CURRENT_TARGET":{
+"description":"ui-scout",
+"message":"Establecer Órbita Baja"
+},
+"ENTER_MEDIUM_ORBIT_AT_CURRENT_TARGET":{
+"description":"ui-scout",
+"message":"Establecer Órbita Media"
+},
+"ENVIRONMENTAL_DAMAGE":{
+"description":"Laws",
+"message":"Daño ambiental"
+},
+"ESCAPE":{
+"description":"Laws Traffic",
+"message":"Fuga"
+},
+"ESPIONAGE":{
+"description":"Laws Scout Scooping",
+"message":"Espionaje"
+},
+"EXPERIENCE":{
+"description":"ui-scout",
+"message":"Experiencia"
+},
+"FAILED":{
+"description":"ui-core",
+"message":"Fallida"
+},
+"FEATURES":{
+"description":"ui-scout",
+"message":"Características"
+},
+"FOR_JETTISON":{
+"description":"EconTrade",
+"message":" por arrojar "
+},
+"FRAUD":{
+"description":"police",
+"message":"Estafa"
+},
+"FAILED_MISSIONS":{
+"description":"ui-scout",
+"message":"Misiones Fallidas:"
+},
+"HEAVY_SCOUT":{
+"description":"ui-scout",
+"message":"Explorador pesado"
+},
+"HYPERSPACE":{
+"description":"core",
+"message":"Hiperespacio"
+},
+"ILLEGAL_JUMP":{
+"description":"police",
+"message":"Salto ilegal"
+},
+"INACTIVE":{
+"description":"ui-core",
+"message":"Inactiva"
+},
+"IN_SPACE_OF":{
+"description":"ui.scout",
+"message":"En espacio de "
+},
+"KM":{
+"description":"ui-core",
+"message":"Km"
+},
+"LIGHT_SCOUT":{
+"description":"ui-scout",
+"message":"Explorador liviano"
+},
+"LIGHT_YEAR":{
+"description":"light_year",
+"message":" años luz"
+},
+"LY":{
+"description":"common",
+"message":"Ly"
+},
+"LANDED_IN":{
+"description":"ui-scout",
+"message":"Posado en "
+},
+"LOCAL":{
+"description":"ui-scout",
+"message":"Local"
+},
+"MAPPING":{
+"description":"Scout",
+"message":"Mapeando"
+},
+"MAPPING_INTERRUPTED":{
+"description":"Scout",
+"message":"MAPEADO INTERRUMPIDO. ¡Muy lejos del objetivo! Corrija órbita"
+},
+"MEDIUM_SCOUT":{
+"description":"ui-scout",
+"message":"Explorador mediano"
+},
+"MISSILE_BAYS":{
+"description":"ui-scout",
+"message":"Bahías de Misiles"
+},
+"NEW_SHIPS_WITHOUT_STOCK":{
+"description":"ui-scout",
+"message":"Mercado de Naves Nuevas sin stock\nen todo el sistema: "
+},
+"NOT_NAV_ASSIST":{
+"description":"ui-scout",
+"message":"Para activar esta función deberá instalar el Asistente de Navegación"
+},
+"ORBIT":{
+"description":"ui-core",
+"message":"Órbita"
+},
+"ORIGIN":{
+"description":"ui-scout",
+"message":"Origen:"
+},
+"PARTIAL":{
+"description":"",
+"message":"Parcial"
+},
+"PORT_OR_VECINITY":{
+"description":"EconTrade",
+"message":" en puerto o cercanías."
+},
+"PREVIOUS_FACTION":{
+"description":"ui-scout",
+"message":"Facción previa:"
+},
+"PREVIOUS_POSITION":{
+"description":"ui-scout",
+"message":"Posición previa:"
+},
+"REGISTRATION":{
+"description":"",
+"message":"Registro:"
+},
+"REWARD":{
+"description":"ui-core",
+"message":"Recompensa:"
+},
+"RISK_AREA":{
+"description":"ui-core",
+"message":"Riesgo Zonal"
+},
+"SELL":{
+"description":"ui-scout",
+"message":"VENTA"
+},
+"SET_TARGET":{
+"description":"",
+"message":"Marcar Destino de Navegación"
+},
+"START_AT_ACHERNAR":{
+"description":"ui-scout",
+"message":"Comenzar en Achernar"
+},
+"START_AT_LAVE":{
+"description":"ui-scout",
+"message":"Comenzar en Lave"
+},
+"SUSPENDED":{
+"description":"ui-scout",
+"message":"Suspendida"
+},
+"SHOTS_RECEIVED":{
+"description":"ui-scout",
+"message":"Disparos Recibidos:"
+},
+"SHOTS_SUCCESSFUL":{
+"description":"ui-scout",
+"message":"Disparos Acertados:"
+},
+"SUCCESSFUL_MISSIONS":{
+"description":"ui-scout",
+"message":"Misiones Cumplidas:"
+},
+"SPACESHIP_PARTS":{
+"description":"",
+"message":"Componentes de Naves"
+},
+"TONS_AVAILABLE_FOR":{
+"description":"ui-scout",
+"message":"  Tons disponibles para"
+},
+"TRIP_BACK":{
+"description":"",
+"message":"Retorno"
+},
+"UNDOCK_AND_ENTER_LOW_ORBIT":{
+"description":"ui-scout",
+"message":"Despegar y Establecer Órbita Baja"
+},
+"WARNING_YOU_MUST_GO_BACK":{
+"description":"Traffic",
+"message":"¡Advertencia! Debes volver a la estación ahora o morirás."
+},
+"WEAPONS":{
+"description":"ui-scout",
+"message":"Armamento"
+},
+"YOU_DESERVE_TO_BE_IMMORTAL":{
+"description":"ui-scout",
+"message":"¡Tú mereces ser inmortal!"
+},
+"YOU_HAS_BEEN_FINED":{
+"description":"EconTrade Traffic",
+"message":"Usted ha sido multado con "
+},
+"YOU_HAVE_COMMITTED_A_CRIME_AND_MUST_PAY":{
+"description":"Traffic",
+"message":"Usted ha cometido un delito y debe pagar "
+},
+"YOU_MUST_INSTALL_THE_LIFE_SUPPORT_FOR_CARGO_BAY":{
+"description":"ui-scout",
+"message":"Usted debe instalar el Soporte Vital para Carga"
+},
+"FOR_JETTISON":{
+"description":"ui-scout",
+"message":" por arrojar "
+},
+"HAVE_ENOUGH_EXPERIENCE":{
+"description":"sar & other",
+"message":"Usted no tiene suficiente experiencia para esta misión."
+},
+"LIGHT_YEAR":{
+"description":"ui-scout",
+"message":" años luz"
+},
+"WARNING":{
+"description":"",
+"message":"¡ADVERTENCIA! ¡Atención Comandante, {hostile} naves hostiles se acercan!"
+},
+"WORKING":{
+"description":"ui-scout",
+"message":"Trabajando"
+},
+"PORT_OR_VECINITY":{
+"description":"police",
+"message":" en puerto o cercanías."
+}
+}

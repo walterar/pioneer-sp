@@ -161,7 +161,7 @@
 },
 "Ok":{
 "description":"",
-"message":"Хорошо, и пометить цель\nна навигационной карте."
+"message":"Хорошо."
 },
 "Repeat_the_original_request":{
 "description":"",
@@ -267,7 +267,7 @@
 "description":"",
 "message":"Необходима установка улучшенного сканера для выполнения этого задания.\n Его можно приобрести на верфи, в отделе оборудования."
 },
-"You_will_be_paid_on_my_behalf_in_new_destination":{
+"CHANGE_LOCATION":{
 "description":"",
 "message":"Вам заплатят от моего имени в новом месте назначения."
 },

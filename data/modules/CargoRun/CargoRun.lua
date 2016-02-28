@@ -1,4 +1,4 @@
--- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- Modified for Pioneer Scout Plus by Walter Arnolfo
 
@@ -18,16 +18,18 @@ local Ship       = import("Ship")
 local utils      = import("utils")
 local Timer      = import("Timer")
 
-local InfoFace = import("ui/InfoFace")
+local MsgBox    = import("ui/MessageBox")
+local InfoFace  = import("ui/InfoFace")
+local SLButton  = import("ui/SmallLabeledButton")
 
-local l   = Lang.GetResource("module-cargorun") or Lang.GetResource("module-cargorun","en")
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
+local l  = Lang.GetResource("module-cargorun") or Lang.GetResource("module-cargorun","en")
+local lm = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous","en")
 
 local ui = Engine.ui
 local max_delivery_dist = 30
 local typical_travel_time = (2.5 * max_delivery_dist + 8) * 24 * 60 * 60
 local typical_reward = 75 * max_delivery_dist
-local typical_reward_local = 250
+local typical_reward_local = 450
 local max_cargo = 10
 local max_cargo_wholesaler = 100
 local pickup_factor = 2
@@ -288,7 +290,7 @@ local onChat = function (form, ref, option)
 			dom_sectorx  = ad.domicile.sectorX,
 			dom_sectory  = ad.domicile.sectorY,
 			dom_sectorz  = ad.domicile.sectorZ,
-			dist         = string.format("%.2f", ad.dist),
+			dist         = ad.dist
 		})
 		form:SetMessage(introtext)
 
@@ -334,7 +336,7 @@ local onChat = function (form, ref, option)
 		end
 
 		if Game.player:CriminalRecord() and ad.cargotype.price >= 150 then
-			form:SetMessage(l.CRIMINAL_RECORD)
+			form:SetMessage(lm.CRIMINAL_RECORD)
 			return
 		end
 
@@ -345,7 +347,9 @@ local onChat = function (form, ref, option)
 		else
 			cargo_picked_up = false
 		end
+
 		form:RemoveAdvertOnClose()
+
 		ads[ref] = nil
 		local mission = {
 			type            = "CargoRun",
@@ -366,15 +370,18 @@ local onChat = function (form, ref, option)
 			way_trip        = ad.location,
 			return_trip     = ad.domicile,
 		}
+
 		table.insert(missions,Mission.New(mission))
+
 		if ad.pickup then
 			form:SetMessage(l["ACCEPTED_PICKUP_" .. Engine.rand:Integer(1, getNumberOfFlavours("ACCEPTED_PICKUP"))])
 		else
 			form:SetMessage(l["ACCEPTED_" .. Engine.rand:Integer(1, getNumberOfFlavours("ACCEPTED"))])
 		end
-		if Game.system.path ~= mission.location:GetStarSystem().path then
-			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
-		end
+--		if Game.system.path ~= mission.location:GetStarSystem().path then
+--			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
+--		end
+		switchEvents()
 		return
 
 	elseif option == 4 then
@@ -424,7 +431,7 @@ local makeAdvert = function (station)
 	local reward, due, location, way_trip, return_trip, dist, amount
 	local risk, wholesaler, pickup, branch, cargotype, missiontype
 	local client = Character.New()
-	local urgency = Engine.rand:Number(0.8, 1)
+	local urgency = Engine.rand:Number(1)
 	local localdelivery = Engine.rand:Number(0, 1) > 0.5 and true or false
 
 	branch, cargotype = randomCargo()
@@ -434,25 +441,24 @@ local makeAdvert = function (station)
 		end
 		if not location or location == station.path then return end
 
-		dist = station:DistanceTo(Space.GetBody(location.bodyIndex))
-		if dist < 1000 then return end
+--		dist = station:DistanceTo(Space.GetBody(location.bodyIndex))
+--		if dist < 1000 then return end
 
 		amount = Engine.rand:Integer(1, max_cargo)
 		risk = 0 -- no risk for local delivery
 		wholesaler = false -- no local wholesaler delivery
 		pickup = Engine.rand:Number(0, 1) > 0.75 and true or false
 
-		reward = typical_reward_local + (math.sqrt(dist) / 15000) * (1+urgency) * (1+amount/max_cargo)
-		due = (4*24*60*60) + (24*60*60 * (dist / (1.49*10^11))) * (1.5 - urgency)
+		local AU = 149597870700
+		local dist = station:DistanceTo(Space.GetBody(location.bodyIndex))/AU
+		local reward_base = 350
 
-		if pickup then
-			missiontype = "PICKUP_LOCAL"
-			reward = reward * pickup_factor
-			due = due * pickup_factor
-		else
-			missiontype = "LOCAL"
-			due = due + Game.time
-		end
+		missiontype = "LOCAL"
+		if pickup then missiontype = "PICKUP_LOCAL" end
+
+		due    = _local_due(station,location,urgency,pickup)
+		reward = reward_base+(reward_base*(1+math.sqrt(dist))*(1+urgency)*(1+Game.system.lawlessness))
+
 	else
 		if _nearbystationsRemotes and #_nearbystationsRemotes > 0 then
 			location = _nearbystationsRemotes[Engine.rand:Integer(1,#_nearbystationsRemotes)]
@@ -482,14 +488,9 @@ local makeAdvert = function (station)
 		else   risk = 0
 		end
 
-		reward = (dist / max_delivery_dist) * typical_reward * (1+risk/3) * (1.5+urgency) * (1+amount/max_cargo_wholesaler) * Engine.rand:Number(0.8,1.2)
+		reward = 1000+(tariff(dist,risk,urgency,location)*(1+amount/max_cargo_wholesaler))
+		due    = _remote_due(dist,urgency,pickup)
 
-		due = term(dist,urgency)
-
-		if pickup then
-			reward = reward * pickup_factor
-			due = term(dist * pickup_factor,urgency * 0.8)
-		end
 	end
 
 	local n = getNumberOfFlavours("INTROTEXT_" .. missiontype)
@@ -499,6 +500,9 @@ local makeAdvert = function (station)
 	else
 		introtext = l["INTROTEXT_" .. Engine.rand:Integer(1, getNumberOfFlavours("INTROTEXT"))]
 	end
+
+	local dist_txt = _distTxt(location)--,localdelivery)
+
 	local ad = {
 		station       = station,
 		domicile      = station.path,
@@ -508,7 +512,7 @@ local makeAdvert = function (station)
 		wholesaler    = wholesaler,
 		pickup        = pickup,
 		introtext     = introtext,
-		dist          = dist,
+		dist          = dist_txt,
 		due           = due,
 		amount        = amount,
 		branch        = branch,
@@ -545,32 +549,33 @@ local makeAdvert = function (station)
 end
 
 local onCreateBB = function (station)
-	local num = Engine.rand:Integer(math.ceil(Game.system.population))
-	if num > 3 then num = 3 end
-	for i = 1,num do
-		makeAdvert(station)
+	local num = math.ceil(Game.system.population)
+	num = Engine.rand:Integer(0,num and num < 3 or 3)
+	if num > 0 then
+		for i = 1,num do
+			makeAdvert(station)
+		end
 	end
 end
 
 local onUpdateBB = function (station)
 	for ref,ad in pairs(ads) do
 		if ad.localdelivery then
-			if ad.due < Game.time + 2*60*60*24 then -- two day timeout for locals
+			if ad.due < Game.time + 24*60*60 then -- 1 day timeout for locals
 				ad.station:RemoveAdvert(ref)
 			end
 		else
-			if ad.due < Game.time + 5*60*60*24 then -- five day timeout for inter-system
+			if ad.due < Game.time + 2*24*60*60 then -- 2 day timeout for inter-system
 				ad.station:RemoveAdvert(ref)
 			end
 		end
 	end
-	if Engine.rand:Integer(12*60*60) < 60*60 then -- roughly once every twelve hours
-		makeAdvert(station)
-	end
+	if Engine.rand:Integer(50) < 1 then makeAdvert(station) end
 end
 
 	local hostilactive = false
 local onFrameChanged = function (body)
+----print("CargoRun onFrameChanged body="..body.label)
 	if hostilactive then return end
 	if body:isa("Ship") and body:IsPlayer() and body.frameBody ~= nil then
 		for ref,mission in pairs(missions) do
@@ -630,31 +635,34 @@ local onShipDocked = function (player, station)
 		if (mission.location == station.path and not mission.pickup)
 		or (mission.domicile == station.path and mission.pickup and mission.cargo_picked_up)
 		then
-			local amount = Game.player:RemoveEquip(mission.cargotype, mission.amount, "cargo")
-			if Game.time <= mission.due and amount == mission.amount then
+			if Game.time <= mission.due then-- dentro de fecha
+				_G.MissionsSuccesses = MissionsSuccesses + 1
 				local n = getNumberOfFlavours("SUCCESSMSG_" .. mission.branch)
 				if n >= 1 then
 					Comms.ImportantMessage(l["SUCCESSMSG_" .. mission.branch .. "_" .. Engine.rand:Integer(1, n)], mission.client.name)
 				else
 					Comms.ImportantMessage(l["SUCCESSMSG_" .. Engine.rand:Integer(1, getNumberOfFlavours("SUCCESSMSG"))], mission.client.name)
 				end
-				_G.MissionsSuccesses = MissionsSuccesses + 1
 				player:AddMoney(mission.reward)
-			else
-				if amount < mission.amount then
-					Comms.ImportantMessage(l.WHAT_IS_THIS, mission.client.name)
-					player:AddMoney((amount - mission.amount) * mission.cargotype.price) -- pay for the missing
-					Comms.ImportantMessage(l.I_HAVE_DEBITED_YOUR_ACCOUNT, mission.client.name)
+			else-- fuera de fecha
+				_G.MissionsFailures = MissionsFailures + 1
+				local n = getNumberOfFlavours("FAILUREMSG_" .. mission.branch)
+				if n >= 1 then
+					Comms.ImportantMessage(l["FAILUREMSG_" .. mission.branch .. "_" .. Engine.rand:Integer(1, n)], mission.client.name)
 				else
-					local n = getNumberOfFlavours("FAILUREMSG_" .. mission.branch)
-					if n >= 1 then
-						Comms.ImportantMessage(l["FAILUREMSG_" .. mission.branch .. "_" .. Engine.rand:Integer(1, n)], mission.client.name)
-					else
-						Comms.ImportantMessage(l["FAILUREMSG_" .. Engine.rand:Integer(1, getNumberOfFlavours("FAILUREMSG"))], mission.client.name)
-					end
+					Comms.ImportantMessage(l["FAILUREMSG_" .. Engine.rand:Integer(1, getNumberOfFlavours("FAILUREMSG"))], mission.client.name)
 				end
 			end
-			_G.MissionsFailures = MissionsFailures + 1
+			local amount = Game.player:RemoveEquip(mission.cargotype, mission.amount, "cargo")
+			if amount < mission.amount then
+				_G.MissionsSuccesses = MissionsSuccesses - 1
+				if player:GetMoney() < (amount - mission.amount) * mission.cargotype.price then
+					_G.MissionsFailures = MissionsFailures + 1
+				end
+				Comms.ImportantMessage(l.WHAT_IS_THIS, mission.client.name)
+				player:AddMoney((amount - mission.amount) * mission.cargotype.price) -- pay for the missing
+				Comms.ImportantMessage(l.I_HAVE_DEBITED_YOUR_ACCOUNT, mission.client.name)
+			end
 			mission:Remove()
 			missions[ref] = nil
 		elseif mission.location == station.path and mission.pickup and not mission.cargo_picked_up then
@@ -672,7 +680,8 @@ local onShipDocked = function (player, station)
 		elseif mission.status == "ACTIVE" and Game.time > mission.due then
 			mission.status = 'FAILED'
 		end
-		if check_crime(mission,"FRAUD") then
+
+		if check_crime(mission,"FRAUD") then--XXX
 			Comms.ImportantMessage(l.WHAT_IS_THIS, mission.client.name)
 			local amount = Game.player:RemoveEquip(mission.cargotype, mission.amount, "cargo")
 			if amount < mission.amount then
@@ -683,6 +692,7 @@ local onShipDocked = function (player, station)
 			missions[ref] = nil
 		end
 	end
+	switchEvents()
 end
 
 
@@ -709,15 +719,28 @@ local onGameStart = function ()
 		hostilactive            = loaded_data.hostilactive or false
 		way_trip                = loaded_data.way_trip
 		return_trip             = loaded_data.return_trip
-
+		switchEvents()
 		loaded_data = nil
 	end
 end
 
 
 local onClick = function (mission)
+
+	local dist_txt = _distTxt(mission.location)
+
+	local setTargetButton = SLButton.New(lm.SET_TARGET, 'NORMAL')
+	setTargetButton.button.onClick:Connect(function ()
+		if not NavAssist then MsgBox.Message(lm.NOT_NAV_ASSIST) return end
+		if Game.system.path ~= mission.location:GetStarSystem().path then
+			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
+		else
+			Game.player:SetNavTarget(Space.GetBody(mission.location.bodyIndex))
+		end
+	end)
+
 	local danger
-	local dist = Game.system and string.format("%.2f", Game.system:DistanceTo(mission.location)) or "???"
+
 	if mission.localdelivery then
 		danger = l.RISK_1
 	else
@@ -740,7 +763,7 @@ local onClick = function (mission)
 											sectory   = mission.location.sectorY,
 											sectorz   = mission.location.sectorZ,
 											cash      = showCurrency(mission.reward),
-											dist      = dist
+											dist      = dist_txt
 											})
 										),
 										ui:Margin(5),
@@ -778,7 +801,9 @@ local onClick = function (mission)
 											})
 											:SetColumn(1, {
 												ui:VBox():PackEnd({
-													ui:Label(dist.." "..l.LY)
+													ui:Label(dist_txt),
+													"",
+													setTargetButton.widget
 												})
 											}),
 										ui:Grid(2,1)
@@ -831,35 +856,6 @@ local onClick = function (mission)
 		})
 	else-- mission.pickup
 
-		local distLabel_way_trip
-		local dist1 = Game.system and Game.system:DistanceTo(mission.way_trip) or 0
-		if Game.system == nil then-- mi chequeo de hiperespacio favorito
-			distLabel_way_trip = ui:Label(myl.Hyperspace):SetColor({ r = 1.0, g = 0.0, b = 0.0 }) -- red
-		elseif dist1 == 0 then
-			distLabel_way_trip = ui:Label(myl.Local):SetColor({ r = 0.0, g = 1.0, b = 0.2 }) -- green
-		else
-			distLabel_way_trip = ui:Label(string.format('%.2f %s', dist1, myl.light_year))
-			if Game.player:GetHyperspaceDetails(mission.way_trip) == 'OK' then
-				distLabel_way_trip:SetColor({ r = 0.0, g = 1.0, b = 0.2 }) -- green
-			else
-				distLabel_way_trip:SetColor({ r = 1.0, g = 0.0, b = 0.0 }) -- red
-			end
-		end
-		local distLabel_return_trip
-		local dist2 = Game.system and Game.system:DistanceTo(mission.return_trip) or 0
-		if Game.system == nil then-- mi chequeo de hiperespacio favorito
-			distLabel_return_trip = ui:Label(myl.Hyperspace):SetColor({ r = 1.0, g = 0.0, b = 0.0 }) -- red
-		elseif dist2 == 0 then
-			distLabel_return_trip = ui:Label(myl.Local):SetColor({ r = 0.0, g = 1.0, b = 0.2 }) -- green
-		else
-			distLabel_return_trip = ui:Label(string.format('%.2f %s', dist2, myl.light_year))
-			if Game.player:GetHyperspaceDetails(mission.return_trip) == 'OK' then
-				distLabel_return_trip:SetColor({ r = 0.0, g = 1.0, b = 0.2 }) -- green
-			else
-				distLabel_return_trip:SetColor({ r = 1.0, g = 0.0, b = 0.0 }) -- red
-			end
-		end
-
 		if mission.cargo_picked_up then
 			pickLabel=ui:Label(l.PICKED_UP_IN):SetColor({ r = 1.0, g = 1.0, b = 0.2 }) -- yellow
 		else
@@ -885,7 +881,7 @@ local onClick = function (mission)
 									dom_sectory  = mission.return_trip.sectorY,
 									dom_sectorz  = mission.return_trip.sectorZ,
 									cash         = showCurrency(mission.reward),
-									dist         = dist})
+									dist         = dist_txt})
 										),
 										ui:Margin(10),
 										ui:Grid(1,1)
@@ -927,13 +923,13 @@ local onClick = function (mission)
 											})
 											:SetColumn(1, {
 												ui:VBox():PackEnd({
-													distLabel_way_trip
+													_distTxt(mission.way_trip)
 												})
 											}),
 										ui:Grid(1,1)
 											:SetColumn(0, {
 												ui:VBox():PackEnd({
-													ui:Label(l.DELIVER_TO):SetColor({ r = 0.0, g = 1.0, b = 0.2 }) -- green
+												ui:Label(l.DELIVER_TO):SetColor({ r = 0.0, g = 1.0, b = 0.2 }) -- green
 												})
 											}),
 										ui:Grid(2,1)
@@ -969,7 +965,9 @@ local onClick = function (mission)
 											})
 											:SetColumn(1, {
 												ui:VBox():PackEnd({
-													distLabel_return_trip
+													_distTxt(mission.return_trip),
+													"",
+													setTargetButton.widget
 												})
 											}),
 										ui:Grid(2,1)
@@ -1023,6 +1021,10 @@ local onClick = function (mission)
 	end
 end
 
+local onEnterSystem = function (ship)
+	if not ship:IsPlayer() or not switchEvents() then return end
+end
+
 local serialize = function ()
 	return {
 					ads                     = ads,
@@ -1037,11 +1039,28 @@ local unserialize = function (data)
 	loaded_data = data
 end
 
+switchEvents = function()
+	local status = false
+--print("CargoRun Events deactivated")
+	Event.Deregister("onFrameChanged", onFrameChanged)
+	Event.Deregister("onShipDocked", onShipDocked)
+--	Event.Deregister("onShipLanded", onShipLanded)
+	for ref,mission in pairs(missions) do
+		if mission.location:IsSameSystem(Game.system.path) then
+--print("CargoRun Events activate")
+			Event.Register("onFrameChanged", onFrameChanged)
+			Event.Register("onShipDocked", onShipDocked)
+--			Event.Register("onShipLanded", onShipLanded)
+			status = true
+		end
+	end
+	return status
+end
+
 Event.Register("onCreateBB", onCreateBB)
 Event.Register("onUpdateBB", onUpdateBB)
-Event.Register("onShipDocked", onShipDocked)
+Event.Register("onEnterSystem", onEnterSystem)
 Event.Register("onGameStart", onGameStart)
-Event.Register("onFrameChanged", onFrameChanged)
 
 Mission.RegisterType('CargoRun',l.CARGORUN,onClick)
 

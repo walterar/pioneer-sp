@@ -61,7 +61,7 @@
 },
 "DEMP_DESCRIPTION":{
 "description":"",
-"message":"Temporarily overrides the electronics of the attacker.."
+"message":"Directional Electro Magnetic Pulse. Electronic defense system that cancels temporarily the electronics of the attacking ship. It acts when the player receives a sequence of three shots."
 },
 "DRIVE_CLASS1":{
 "description":"",
@@ -206,6 +206,14 @@
 "MULTI_SCOOP_DESCRIPTION":{
 "description":"",
 "message":"Although less effective than a fuel scoop it permits scooping of both cargo and fuel"
+},
+"NAV_ASSIST":{
+"description":"",
+"message":"Navigation assistant"
+},
+"NAV_ASSIST_DESCRIPTION":{
+"description":"",
+"message":"Software that adds a navigation assistant to the autopilot. It marks the next target."
 },
 "OUT_OF_SCANRANGE":{
 "description":"",

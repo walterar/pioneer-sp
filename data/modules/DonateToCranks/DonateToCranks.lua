@@ -1,4 +1,4 @@
--- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- modified for Pioneer Scout+ (c)2012-2015 by walterar <walterar2@gmail.com>
 
@@ -9,8 +9,8 @@ local Comms      = import("Comms")
 local Event      = import("Event")
 local Serializer = import("Serializer")
 
-local l = Lang.GetResource("module-donatetocranks") or Lang.GetResource("module-donatetocranks","en")
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
+local l  = Lang.GetResource("module-donatetocranks") or Lang.GetResource("module-donatetocranks","en")
+local ls = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous","en")
 
 local crank_flavours = {}
 for i = 0,5 do
@@ -52,7 +52,7 @@ local onChat = function (form, ref, option)
 	elseif option == 1000 and DangerLevel > 0 then _G.DangerLevel = DangerLevel - 1
 			Comms.Message(l.WOW_THAT_WAS_VERY_GENEROUS)
 	elseif option == 10000 then Game.player:SetInvulnerable(1)
-			Comms.Message(myl.YOU_DESERVE_TO_BE_IMMORTAL)
+			Comms.Message(ls.YOU_DESERVE_TO_BE_IMMORTAL)
 	else
 		Comms.Message(l.THANK_YOU_ALL_DONATIONS_ARE_WELCOME)
 	end

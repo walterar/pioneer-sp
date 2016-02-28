@@ -1,0 +1,304 @@
+{
+"ABDUCTION":{
+"description":"",
+"message":"Rapimento"
+},
+"ACTIVE":{
+"description":"",
+"message":"Attiva"
+},
+"AU":{
+"description":"ui-core",
+"message":"Au"
+},
+"AUTO_COMBAT_DEACTIVATE":{
+"description":"ui-core",
+"message":"WARNING! is disabled AutoCombat"
+},
+"ATTENTION_THIS_CAN_PROVE_COSTLY_YOUR_LIFE_IS_NOT_WORTH":{
+"description":"",
+"message":"Attenzione! Questo può rivelarsi costoso. La tua vita non vale "
+},
+"BUY":{
+"description":"Commodities and equipment prices","message":"Acquisto"
+},
+"CAPACITY":{
+"description":"",
+"message":"Capacità"
+},
+"CREW":{
+"description":"",
+"message":"Equipaggio"
+},
+"CREW_VACANCIES":{
+"description":"",
+"message":"Equipaggio vacanti"
+},
+"CRIMINAL_RECORD":{
+"description":"police",
+"message":"Lo lamento Comandante. Sus antecedentes criminales son incompatibles con este tipo de tarea. Por favor, vuelva cuando resuelva ese tema."
+},
+"CHECK_WITH_THE_POLICE":{
+"description":"",
+"message":"Verificare con la polizia"
+},
+"CURRENT_FACTION":{
+"description":"",
+"message":"Fazione Corrrente:"
+},
+"CURRENT_POSITION":{
+"description":"",
+"message":"Posizione Corrente:"
+},
+"DAMAGE_REPORT":{
+"description":"",
+"message":"Rapporto Danni"
+},
+"ENTER_HIGH_ORBIT_AT_CURRENT_TARGET":{
+"description":"",
+"message":"Stabilire Orbita Alta"
+},
+"ENTER_LOW_ORBIT_AT_CURRENT_TARGET":{
+"description":"",
+"message":"Stabilire Orbita Bassa"
+},
+"ENTER_MEDIUM_ORBIT_AT_CURRENT_TARGET":{
+"description":"",
+"message":"Stabilire Orbita Media"
+},
+"ENVIRONMENTAL_DAMAGE":{
+"description":"",
+"message":"Danno Ambientale"
+},
+"ESCAPE":{
+"description":"",
+"message":"Sfuggire"
+},
+"ESPIONAGE":{
+"description":"",
+"message":"Spionaggio"
+},
+"EXPERIENCE":{
+"description":"",
+"message":"Esperienza"
+},
+"FAILED":{
+"description":"",
+"message":"Fallita"
+},
+"FEATURES":{
+"description":"",
+"message":"Caratteristiche"
+},
+"FOR_JETTISON":{
+"description":"EconTrade",
+"message":" por arrojar "
+},
+"FRAUD":{
+"description":"",
+"message":"Truffa"
+},
+"FAILED_MISSIONS":{
+"description":"",
+"message":"Missioni fallite:"
+},
+"HEAVY_SCOUT":{
+"description":"",
+"message":"Esploratore pesante"
+},
+"HYPERSPACE":{
+"description":"",
+"message":"Iperspazio"
+},
+"ILLEGAL_JUMP":{
+"description":"",
+"message":"Salto illegale"
+},
+"INACTIVE":{
+"description":"",
+"message":"Inattiva"
+},
+"IN_SPACE_OF":{
+"description":"",
+"message":"Nello spazio di "
+},
+"KM":{
+"description":"ui-core",
+"message":"Km"
+},
+"LIGHT_SCOUT":{
+"description":"",
+"message":"Esploratore luce"
+},
+"LIGHT_YEAR":{
+"description":"light_year",
+"message":" años luz"
+},
+"LY":{
+"description":"",
+"message":"Ly"
+},
+"LANDED_IN":{
+"description":"",
+"message":"Atterrato a "
+},
+"LOCAL":{
+"description":"",
+"message":"Locale"
+},
+"MAPPING":{
+"description":"",
+"message":"Mappatura"
+},
+"MAPPING_INTERRUPTED":{
+"description":"",
+"message":"MAPPATURA INTERROTTA. Troppo distante dal bersaglio! Correggere l'orbita."
+},
+"MEDIUM_SCOUT":{
+"description":"",
+"message":"Esploratore medio"
+},
+"MISSILE_BAYS":{
+"description":"",
+"message":"Baia di Missili"
+},
+"NEW_SHIPS_WITHOUT_STOCK":{
+"description":"",
+"message":"Mercato di Nuove Navi senza scorta\nin tutto il sistema: "
+},
+"NOT_NAV_ASSIST":{
+"description":"ui-scout",
+"message":"To enable this feature you must install the Navigation Assistant"
+},
+"ORBIT":{
+"description":"ui-core",
+"message":"Orbit"
+},
+"ORIGIN":{
+"description":"",
+"message":"Origine:"
+},
+"PARTIAL":{
+"description":"",
+"message":"Partial"
+},
+"PORT_OR_VECINITY":{
+"description":"EconTrade",
+"message":" en puerto o cercanías."
+},
+"PREVIOUS_FACTION":{
+"description":"",
+"message":"Fazione Precedente:"
+},
+"PREVIOUS_POSITION":{
+"description":"",
+"message":"Posizione Precedente:"
+},
+"REGISTRATION":{
+"description":"",
+"message":"Registrazione:"
+},
+"REWARD":{
+"description":"ui-core",
+"message":"Reward:"
+},
+"RISK_AREA":{
+"description":"",
+"message":"Area a Rischio"
+},
+"SELL":{
+"description":"Commodities and equipment prices","message":"Vendita"
+},
+"SET_TARGET":{
+"description":"",
+"message":"Set Navigation Target"
+},
+"START_AT_ACHERNAR":{
+"description":"",
+"message":"Parti da Achernar"
+},
+"START_AT_LAVE":{
+"description":"",
+"message":"Parti da Lave"
+},
+"SUSPENDED":{
+"description":"",
+"message":"Sospesa"
+},
+"SHOTS_RECEIVED":{
+"description":"",
+"message":"Colpi subiti:"
+},
+"SHOTS_SUCCESSFUL":{
+"description":"",
+"message":"Colpi inferti:"
+},
+"SUCCESSFUL_MISSIONS":{
+"description":"",
+"message":"Missioni completate:"
+},
+"SPACESHIP_PARTS":{
+"description":"",
+"message":"Spaceship Parts"
+},
+"TONS_AVAILABLE_FOR":{
+"description":"ui-scout",
+"message":"  Tons disponibles para"
+},
+"TRIP_BACK":{
+"description":"",
+"message":"Return"
+},
+"UNDOCK_AND_ENTER_LOW_ORBIT":{
+"description":"",
+"message":"Decolla ed entra in Orbita Bassa"
+},
+"WARNING_YOU_MUST_GO_BACK":{
+"description":"",
+"message":"Attenzione! Devi tornare alla stazione di adesso o morirai presto."
+},
+"WEAPONS":{
+"description":"",
+"message":"Armi"
+},
+"YOU_DESERVE_TO_BE_IMMORTAL":{
+"description":"",
+"message":"Hai guadagnato l'immortalità!"
+},
+"YOU_HAS_BEEN_FINED":{
+"description":"",
+"message":"Lei è stato multato di "
+},
+"YOU_HAVE_COMMITTED_A_CRIME_AND_MUST_PAY":{
+"description":"",
+"message":"Tu aver commesso un delitto e deve pagare "
+},
+"YOU_MUST_INSTALL_THE_LIFE_SUPPORT_FOR_CARGO_BAY":{
+"description":"",
+"message":"Deve installare i Supporti vitali per la stiva"
+},
+"FOR_JETTISON":{
+"description":"",
+"message":" per aver scaricato "
+},
+"HAVE_ENOUGH_EXPERIENCE":{
+"description":"",
+"message":"Non hai abbastanza esperienza per questa missione."
+},
+"LIGHT_YEAR":{
+"description":"",
+"message":" anno luce"
+},
+"WARNING":{
+"description":"",
+"message":"WARNING! Attention Commander, {hostile} hostile ships are coming!"
+},
+"WORKING":{
+"description":"ui-scout",
+"message":"Working"
+},
+"PORT_OR_VECINITY":{
+"description":"",
+"message":" in porto o nelle vicinanze."
+}
+}

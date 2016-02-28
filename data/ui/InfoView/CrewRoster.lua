@@ -1,4 +1,4 @@
--- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 local Lang      = import("Lang")
@@ -15,8 +15,8 @@ local SmallLabeledButton = import("ui/SmallLabeledButton")
 
 local ui = Engine.ui
 
-local l   = Lang.GetResource("ui-core")
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
+local l  = Lang.GetResource("ui-core")
+local ls = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous","en")
 
 -- Anti-abuse feature - this locks out the piloting commands based on a timer.
 -- It knows when the crew were last checked for a piloting skill, and prevents
@@ -231,7 +231,7 @@ local crewRoster = function ()
 
 		for label,task in pairs(crewTasks) do
 			local labelok = l[label]
-			if not labelok then labelok = myl[label] end
+			if not labelok then labelok = ls[label] end
 			local taskButton = SmallLabeledButton.New(labelok)
 			taskButton.button.onClick:Connect(task)
 			taskList:PackEnd(taskButton)

@@ -261,7 +261,7 @@
 },
 "INTROTEXT_FLUFFY_1":{
 "description":"this is used for the delivery of Quibbles, which is a nod to Tribble (star trek ref. see wikipedia)",
-"message":"Hi, my name is {name}. I have a fluffy shipment of {cargoname} for delivery to {starport} in the {system} ({sectorx}, {sectory}, {sectorz}) system. The distance is {dist} ly. For this delivery I will pay you {cash}."
+"message":"Hi, my name is {name}. I have a fluffy shipment of {cargoname} for delivery to {starport} in the {system} ({sectorx}, {sectory}, {sectorz}) system. The distance is {dist}. For this delivery I will pay you {cash}."
 },
 "INTROTEXT_INFRASTRUCTURE_1":{
 "description":"",

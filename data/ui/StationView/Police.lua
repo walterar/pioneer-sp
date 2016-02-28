@@ -1,4 +1,4 @@
--- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 local Engine     = import("Engine")
@@ -16,8 +16,9 @@ local SmallLabeledButton = import("ui/SmallLabeledButton")
 local MessageBox         = import("ui/MessageBox")
 
 local ui = Engine.ui
-local l = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
 
+local l  = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
+local ls = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous","en")
 
 local police = function (tab)
 	local station = Game.player:GetDockedWith()
@@ -44,7 +45,7 @@ local police = function (tab)
 
 	if #utils.build_array(pairs(crimes)) > 0 then
 		infoBox:PackEnd({
-			ui:Label(l.CRIMINAL_RECORD):SetFont("HEADING_LARGE"),
+			ui:Label(ls.CRIMINAL_RECORD):SetFont("HEADING_LARGE"),
 			ui:VBox():PackEnd(
 				utils.build_table(utils.map(crimeStat, pairs(tmp_table)))
 			),

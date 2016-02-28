@@ -17,11 +17,11 @@
 },
 "ALT_IN_KM":{
 "description":"",
-"message":"Alt: %altitude{f.0}km %vspeed{f.1}km/s"
+"message":"Alt: %altitude{f.0} Km %vspeed{f.1} Km/s"
 },
 "ALT_IN_METRES":{
 "description":"",
-"message":"Alt: %altitude{f.0}m %vspeed{f.1}m/s"
+"message":"Alt: %altitude{f.0} m (%vspeed{f.1} m/s)"
 },
 "AND_HIGHLY_COMPLEX_ECOSYSTEM":{
 "description":"",
@@ -157,7 +157,7 @@
 },
 "CARBON_ORE":{
 "description":"",
-"message":"Carbón mineral (mena)"
+"message":"Carbón mineral"
 },
 "CARBON_ORE_DESCRIPTION":{
 "description":"",
@@ -313,7 +313,7 @@
 },
 "DISTANCE_LY":{
 "description":"",
-"message":"Distancia: %distance{f.2} ly"
+"message":"Distancia: %distance{f.2} Ly"
 },
 "DOCKED":{
 "description":"",
@@ -625,7 +625,7 @@
 },
 "INT_LY":{
 "description":"integer number of light years",
-"message":"%scale ly"
+"message":"%scale Ly"
 },
 "IN_TRANSIT":{
 "description":"",
@@ -649,7 +649,7 @@
 },
 "KM_S_RELATIVE_TO":{
 "description":"",
-"message":"V-Rel: %frame %speed{f.2} km/s"
+"message":"V-Rel: %frame %speed{f.2} Km/s"
 },
 "L4L5_DISPLAY_MODE_TOGGLE":{
 "description":"",
@@ -1021,7 +1021,7 @@
 },
 "NUMBER_LY":{
 "description":"",
-"message":"%distance{f.2} ly"
+"message":"%distance{f.2} Ly"
 },
 "NUMBER_TONNES":{
 "description":"",
@@ -1056,8 +1056,8 @@
 "message":"%mass{f.3} masa %units"
 },
 "N_WHATEVER_RADII":{
-"description":"Used in system info view. E.g. for Barnard's star: \"0.17 Solar radii (118235 km)\"",
-"message":"%radius{f.3} radio %units (%radkm{f.0} km)"
+"description":"Used in system info view. E.g. for Barnard's star: \"0.17 Solar radii (118235 Km)\"",
+"message":"%radius{f.3} radio %units (%radkm{f.0} Km)"
 },
 "N_YEARS":{
 "description":"",
@@ -1333,7 +1333,7 @@
 },
 "SET_SPEED_KM_S":{
 "description":"",
-"message":"V: %speed{f.2} km/s"
+"message":"V: %speed{f.2} Km/s"
 },
 "SET_SPEED_M_S":{
 "description":"",

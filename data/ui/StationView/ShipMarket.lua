@@ -1,4 +1,4 @@
--- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- modified for Pioneer Scout+ (c)2012-2015 by walterar <walterar2@gmail.com>
 -- Work in progress.
@@ -21,32 +21,32 @@ local MessageBox         = import("ui/MessageBox")
 
 local ui = Engine.ui
 
-local l   = Lang.GetResource("ui-core");
-local lc  = Lang.GetResource("equipment-core") or Lang.GetResource("equipment-core","en");
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl", "en")
+local l  = Lang.GetResource("ui-core");
+local lc = Lang.GetResource("equipment-core") or Lang.GetResource("equipment-core","en");
+local ls = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous","en")
 
 local shipClassString = {
-	light_scout                = myl.LIGHT_SCOUT,
-	medium_scout               = myl.MEDIUM_SCOUT,
-	heavy_scout                = myl.HEAVY_SCOUT,
-	light_cargo_shuttle        = l.LIGHT_CARGO_SHUTTLE,
-	light_courier              = l.LIGHT_COURIER,
-	light_fighter              = l.LIGHT_FIGHTER,
-	light_freighter            = l.LIGHT_FREIGHTER,
-	light_passenger_shuttle    = l.LIGHT_PASSENGER_SHUTTLE,
-	light_passenger_transport  = l.LIGHT_PASSENGER_TRANSPORT,
-	medium_cargo_shuttle       = l.MEDIUM_CARGO_SHUTTLE,
-	medium_courier             = l.MEDIUM_COURIER,
-	medium_fighter             = l.MEDIUM_FIGHTER,
-	medium_freighter           = l.MEDIUM_FREIGHTER,
-	medium_passenger_shuttle   = l.MEDIUM_PASSENGER_SHUTTLE,
-	medium_passenger_transport = l.MEDIUM_PASSENGER_TRANSPORT,
-	heavy_cargo_shuttle        = l.HEAVY_CARGO_SHUTTLE,
-	heavy_courier              = l.HEAVY_COURIER,
-	heavy_fighter              = l.HEAVY_FIGHTER,
-	heavy_freighter            = l.HEAVY_FREIGHTER,
-	heavy_passenger_shuttle    = l.HEAVY_PASSENGER_SHUTTLE,
-	heavy_passenger_transport  = l.HEAVY_PASSENGER_TRANSPORT,
+	light_scout                = ls.LIGHT_SCOUT,
+	medium_scout               = ls.MEDIUM_SCOUT,
+	heavy_scout                = ls.HEAVY_SCOUT,
+	light_cargo_shuttle        =  l.LIGHT_CARGO_SHUTTLE,
+	light_courier              =  l.LIGHT_COURIER,
+	light_fighter              =  l.LIGHT_FIGHTER,
+	light_freighter            =  l.LIGHT_FREIGHTER,
+	light_passenger_shuttle    =  l.LIGHT_PASSENGER_SHUTTLE,
+	light_passenger_transport  =  l.LIGHT_PASSENGER_TRANSPORT,
+	medium_cargo_shuttle       =  l.MEDIUM_CARGO_SHUTTLE,
+	medium_courier             =  l.MEDIUM_COURIER,
+	medium_fighter             =  l.MEDIUM_FIGHTER,
+	medium_freighter           =  l.MEDIUM_FREIGHTER,
+	medium_passenger_shuttle   =  l.MEDIUM_PASSENGER_SHUTTLE,
+	medium_passenger_transport =  l.MEDIUM_PASSENGER_TRANSPORT,
+	heavy_cargo_shuttle        =  l.HEAVY_CARGO_SHUTTLE,
+	heavy_courier              =  l.HEAVY_COURIER,
+	heavy_fighter              =  l.HEAVY_FIGHTER,
+	heavy_freighter            =  l.HEAVY_FREIGHTER,
+	heavy_passenger_shuttle    =  l.HEAVY_PASSENGER_SHUTTLE,
+	heavy_passenger_transport  =  l.HEAVY_PASSENGER_TRANSPORT,
 
 	unknown                    = "",
 }
@@ -234,7 +234,7 @@ local shipMarket = function (args)
 	currentShipOnSale = nil
 	updateStation(station, station:GetShipsOnSale())
 	if #Space.GetBodies(function (body) return body.superType == 'STARPORT' end) < 5 then
-		MessageBox.Message(myl.New_Ships_without_stock..Game.system.name)
+		MessageBox.Message(ls.NEW_SHIPS_WITHOUT_STOCK..Game.system.name)
 		return
 			ui:Grid({38,4,58},1)
 				:SetColumn(0, {})

@@ -132,7 +132,7 @@
 },
 "FUEL_SCOOP":{
 "description":"",
-"message":"Fuel Scoop"
+"message":"Sgiob connaidh"
 },
 "FUEL_SCOOP_DESCRIPTION":{
 "description":"",
@@ -204,6 +204,14 @@
 "MULTI_SCOOP_DESCRIPTION":{
 "description":"",
 "message":"Ged nach eil e cho èifeachdach 's a tha sgiob connaidh, 's urrainn dhut an dà chuid carago is connadh a sgobadh leis."
+},
+"NAV_ASSIST":{
+"description":"",
+"message":"Navigation assistant"
+},
+"NAV_ASSIST_DESCRIPTION":{
+"description":"",
+"message":"Software that adds a navigation assistant to the autopilot. It marks the next target."
 },
 "OUT_OF_SCANRANGE":{
 "description":"",

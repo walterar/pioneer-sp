@@ -262,6 +262,9 @@
 "description":"",
 "message":"Impiego"
 },
+"ENABLE_ANISOTROPIC_FILTERING":{
+"description":"Use Anisotropic Filtering","message":"Filtro Anisotropico"
+},
 "ENABLE_AUTOSAVE":{
 "description":"Allow the game to autosave when docking","message":"Abilita salvataggio automatico"
 },
@@ -869,7 +872,7 @@
 },
 "RESET":{
 "description":"",
-"message":"Azzera Zoom"
+"message":"Azzera"
 },
 "RETURN_TO_GAME":{
 "description":"",
@@ -1094,8 +1097,7 @@
 "message":"Siamo nell'iperspazio, Comandante."
 },
 "WE_HAVE_NO_BUSINESS_WITH_YOU":{
-"description":"",
-"message":"Non abbiamo alcun affari con voi in questo momento \nTuttavia, ricordarsi di rispettare le regole locali:.\n \n * Spostare almeno 5 km dalla stazione per HyperJump.\n * Non sparare i cannoni entro 100 km dalla stazione.\n * Non commercio di prodotti illegali.\n * Non scartare qualsiasi prodotto nella stazione,\n soprattutto se è pericoloso per l'ambiente.\n * Non scartare rifiuti radioattivi nello spazio in sistemi abitati.\n * Sparare o colpire un'altra nave entro 100 km di stazione\n  sarà considerato pirateria.\n * Non trasportare informazioni locale ad un'altra fazione.\n * Rispettare le missioni concordate, evitare di essere multato\n per Frode o Abduction\n * Non decollare manualmente per evitare di pagare le vostre multe,\n questo è grave e sarà trattata come una Fuga.\n * E ... per favore ... non uccidere nessuno ."
+"description":"Said by the police to law abiding player","message":"Al momento non ha pendenze con la Polizia."
 },
 "X_CANNOT_BE_TOLERATED_HERE":{
 "description":"Message to be sent over comms by police when crime is committed by player","message":"{crime} non è tollerato qui!"

@@ -17,7 +17,7 @@
 },
 "AUTOPILOT":{
 "description":"",
-"message":"自动飞行仪"
+"message":"自动驾驶"
 },
 "AUTOPILOT_DESCRIPTION":{
 "description":"",
@@ -204,6 +204,14 @@
 "MULTI_SCOOP_DESCRIPTION":{
 "description":"",
 "message":"虽然收集效率不及燃料收集器, 但它却可以同时收集燃料和货物"
+},
+"NAV_ASSIST":{
+"description":"",
+"message":"Navigation assistant"
+},
+"NAV_ASSIST_DESCRIPTION":{
+"description":"",
+"message":"Software that adds a navigation assistant to the autopilot. It marks the next target."
 },
 "OUT_OF_SCANRANGE":{
 "description":"",

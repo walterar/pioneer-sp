@@ -168,11 +168,11 @@
 },
 "MATTER_CAPACITOR":{
 "description":"",
-"message":"Matter Capacitor"
+"message":"Materia Condensatore."
 },
 "MATTER_CAPACITOR_DESCRIPTION":{
 "description":"",
-"message":"Provides unlimited system fuel."
+"message":"Fornisce combustibile sistema illimitato."
 },
 "MININGCANNON_17MW":{
 "description":"",
@@ -204,6 +204,14 @@
 "MULTI_SCOOP_DESCRIPTION":{
 "description":"",
 "message":"Seppur meno efficace di un raccoglitore di carburante, permette di raccogliere sia cargo che carburante"
+},
+"NAV_ASSIST":{
+"description":"",
+"message":"Navigation assistant"
+},
+"NAV_ASSIST_DESCRIPTION":{
+"description":"",
+"message":"Software that adds a navigation assistant to the autopilot. It marks the next target."
 },
 "OUT_OF_SCANRANGE":{
 "description":"",

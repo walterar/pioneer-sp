@@ -241,27 +241,27 @@
 },
 "INTROTEXT_1":{
 "description":"",
-"message":"Hola, soy {name}. Pagaré {cash} para transportar {cargoname} a {starport} en {system} ({sectorx}, {sectory}, {sectorz}), distancia {dist} ly."
+"message":"Hola, soy {name}. Pagaré {cash} para transportar {cargoname} a {starport} en {system} ({sectorx}, {sectory}, {sectorz}), distancia {dist}."
 },
 "INTROTEXT_2":{
 "description":"",
-"message":"Saludos. {name} Servicios de transporte necesita entregar {cargoname} a {starport} en {system} ({sectorx}, {sectory}, {sectorz}), {dist} ly. Hay {cash} para usted."
+"message":"Saludos. {name} Servicios de transporte necesita entregar {cargoname} a {starport} en {system} ({sectorx}, {sectory}, {sectorz}), {dist}. Hay {cash} para usted."
 },
 "INTROTEXT_3":{
 "description":"",
-"message":"Saludos. Soy {name}, gerente de {name} Ltd. Necesito a alguien de confianza para entregar {cargoname} a {starport} en {system} ({sectorx}, {sectory}, {sectorz}) Pagaré {cash} por {dist}ly."
+"message":"Saludos. Soy {name}, gerente de {name} Ltd. Necesito a alguien de confianza para entregar {cargoname} a {starport} en {system} ({sectorx}, {sectory}, {sectorz}) Pagaré {cash} por {dist}."
 },
 "INTROTEXT_EXPENSIVE_1":{
 "description":"",
-"message":"Hola. Necesitamos a alguien con experiencia para un viaje a  {starport} en {system} ({sectorx}, {sectory}, {sectorz}). Pagaremos {cash} por {dist}ly."
+"message":"Hola. Necesitamos a alguien con experiencia para un viaje a  {starport} en {system} ({sectorx}, {sectory}, {sectorz}). Pagaremos {cash} por {dist}."
 },
 "INTROTEXT_FLUFFY_1":{
 "description":"",
-"message":"Hey, mi nombre es {name}. Busco transportar {cargoname} a {starport} en {system} ({sectorx}, {sectory}, {sectorz}). Tú sabes, esas pequeñas criaturas que ningún humano puede resistir. La distancia es de {dist} ly y el pago {cash}."
+"message":"Hey, mi nombre es {name}. Busco transportar {cargoname} a {starport} en {system} ({sectorx}, {sectory}, {sectorz}). Tú sabes, esas pequeñas criaturas que ningún humano puede resistir. La distancia es de {dist} y el pago {cash}."
 },
 "INTROTEXT_INFRASTRUCTURE_1":{
 "description":"",
-"message":"Saludos. Soy {name}. El gobierno de {system} necesita transportar {cargoname} a {starport} en {system} ({sectorx}, {sectory}, {sectorz}). EL pago es de {cash} por {dist}ly."
+"message":"Saludos. Soy {name}. El gobierno de {system} necesita transportar {cargoname} a {starport} en {system} ({sectorx}, {sectory}, {sectorz}). EL pago es de {cash} por {dist}."
 },
 "INTROTEXT_LOCAL_1":{
 "description":"",
@@ -277,11 +277,11 @@
 },
 "INTROTEXT_MINING_1":{
 "description":"",
-"message":"Hola. Companía Minera {name} busca transportar {cargoname} a {starport} en {system} ({sectorx}, {sectory}, {sectorz}), {dist} ly, para la construcción de una nueva mina. El pago es de {cash}."
+"message":"Hola. Companía Minera {name} busca transportar {cargoname} a {starport} en {system} ({sectorx}, {sectory}, {sectorz}), {dist}, para la construcción de una nueva mina. El pago es de {cash}."
 },
 "INTROTEXT_PICKUP_1":{
 "description":"",
-"message":"¿Cómo está usted? Mi nombre es {name}. Necesito una nave capaz de volar a {starport}, en {system} ({sectorx}, {sectory}, {sectorz}), recoger una carga de {cargoname} y traerla a {dom_starport}, por {cash} La distancia a {system} es de {dist}ly."
+"message":"¿Cómo está usted? Mi nombre es {name}. Necesito una nave capaz de volar a {starport}, en {system} ({sectorx}, {sectory}, {sectorz}), recoger una carga de {cargoname} y traerla a {dom_starport}, por {cash} La distancia a {system} es de {dist}."
 },
 "INTROTEXT_PICKUP_2":{
 "description":"",
@@ -297,15 +297,15 @@
 },
 "INTROTEXT_WEDDING_1":{
 "description":"",
-"message":"Saludos. ¿Has oido hablar de la Temporada de Bodas de {starport} en {system} ({sectorx}, {sectory}, {sectorz})? Pues necesito transportar {cargoname} ahí, a sólo {dist}ly de aquí. El pago es de {cash}. ¿Qué te parece?"
+"message":"Saludos. ¿Has oido hablar de la Temporada de Bodas de {starport} en {system} ({sectorx}, {sectory}, {sectorz})? Pues necesito transportar {cargoname} ahí, a sólo {dist} de aquí. El pago es de {cash}. ¿Qué te parece?"
 },
 "INTROTEXT_WHOLESALER_1":{
 "description":"",
-"message":"Hola, mi nombre es {name} y me dedico a la venta mayorista en {system}. Le pagaré {cash} por un viaje a {starport}, {system} ({sectorx}, {sectory}, {sectorz}), a {dist}ly de aquí."
+"message":"Hola, mi nombre es {name} y me dedico a la venta mayorista en {system}. Le pagaré {cash} por un viaje a {starport}, {system} ({sectorx}, {sectory}, {sectorz}), a {dist} de aquí."
 },
 "INTROTEXT_WHOLESALER_2":{
 "description":"",
-"message":"¡Saludos! Mi nombre es {name} y trabajo para Haber Corp. Pagaré {cash} por un viaje a {starport} en {system} ({sectorx}, {sectory}, {sectorz}), a sólo {dist}ly."
+"message":"¡Saludos! Mi nombre es {name} y trabajo para Haber Corp. Pagaré {cash} por un viaje a {starport} en {system} ({sectorx}, {sectory}, {sectorz}), a sólo {dist}."
 },
 "I_AM_ON_MY_WAY":{
 "description":"",

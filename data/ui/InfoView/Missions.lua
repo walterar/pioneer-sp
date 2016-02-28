@@ -1,4 +1,4 @@
--- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- modified for Pioneer Scout+ (c)2012-2015 by walterar <walterar2@gmail.com>
 -- Work in progress.
@@ -8,14 +8,36 @@ local Engine    = import("Engine")
 local Game      = import("Game")
 local Format    = import("Format")
 local Character = import("Character")
+local Space     = import("Space")
 
 local SmallLabeledButton = import("ui/SmallLabeledButton")
 local SmartTable         = import("ui/SmartTable")
 
 local ui = Engine.ui
 
-local l   = Lang.GetResource("ui-core")
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
+local l  = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
+local lm = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous","en")
+
+local AU = 149597870700
+
+local Exists = function (ship)
+	local exists = false
+	if ship:exists() then
+		exists = true
+	end
+	return exists
+end
+local ShipExists = function (ship)
+	if ship then
+		ok,val = pcall(Exists, ship)
+		if ok then
+			return val
+		else
+--print("NO ES UNA NAVE ACTIVA")
+			return false
+		end
+	end
+end
 
 -- we keep MissionList to remember players preferences
 -- (now it is column he wants to sort by)
@@ -55,7 +77,7 @@ local missions = function (tabGroup)
 		end
 		local comparators =
 		{ -- by column num
-			[5]	= cmpByReward,
+			[5] = cmpByReward,
 		}
 		misList:defaultSortFunction(comparators[col])
 	end
@@ -69,21 +91,43 @@ local missions = function (tabGroup)
 		else
 			missionLocationName = string.format('%s\n[%d,%d,%d]', mission.location:GetStarSystem().name, mission.location.sectorX, mission.location.sectorY, mission.location.sectorZ)
 		end
+
 		-- Format the distance or position label
 		local distLabel
 		local dist = Game.system and Game.system:DistanceTo(mission.location) or 0
-		if Game.system == nil then-- mi chequeo de hiperespacio favorito
-			distLabel = ui:Label(myl.Hyperspace):SetColor({ r = 1.0, g = 0.0, b = 0.0 }) -- red
-		elseif dist == 0 then
-			distLabel = ui:Label(myl.Local):SetColor({ r = 0.0, g = 1.0, b = 0.2 }) -- green
-		else
-			distLabel = ui:Label(string.format('%.2f %s', dist, myl.light_year))
-			if Game.player:GetHyperspaceDetails(mission.location) == 'OK' then
-				distLabel:SetColor({ r = 0.0, g = 1.0, b = 0.2 }) -- green
+
+		if Game.system then-- mi chequeo de hiperespacio favorito
+			if ShipExists(mission.target) then
+				dist =  Game.player:DistanceTo(mission.target)/1000
+				if dist < 1495978 then
+					distLabel = ui:Label(string.format('%.2f %s', dist, lm.KM))
+					distLabel:SetColor({ r = 0.0, g = 1.0, b = 0.2 }) -- green
+				else
+					distLabel = ui:Label(string.format('%.2f %s', dist/149597870, lm.AU))
+					distLabel:SetColor({ r = 1.0, g = 1.0, b = 0.2 }) -- yellow
+				end
+			elseif dist == 0 then
+				dist = Game.player:DistanceTo(Space.GetBody(mission.location.bodyIndex))/AU
+				if dist < 0.01 then
+					dist =  Game.player:DistanceTo(Space.GetBody(mission.location.bodyIndex))/1000
+					distLabel = ui:Label(string.format('%.2f %s', dist, lm.KM))
+					distLabel:SetColor({ r = 0.0, g = 1.0, b = 0.2 }) -- green
+				else
+					distLabel = ui:Label(string.format('%.2f %s', dist, lm.AU))
+					distLabel:SetColor({ r = 1.0, g = 1.0, b = 0.2 }) -- yellow
+				end
 			else
-				distLabel:SetColor({ r = 1.0, g = 0.0, b = 0.0 }) -- red
+				distLabel = ui:Label(string.format('%.2f %s', dist, lm.LY))
+				if Game.player:GetHyperspaceDetails(mission.location) == 'OK' then
+					distLabel:SetColor({ r = 0.0, g = 1.0, b = 0.2 }) -- green
+				else
+					distLabel:SetColor({ r = 1.0, g = 0.0, b = 0.0 }) -- red
+				end
 			end
+		else
+			distLabel = ui:Label(lm.HYPERSPACE):SetColor({ r = 1.0, g = 0.0, b = 0.0 }) -- red
 		end
+
 		-- Pack location and distance
 		local locationBox = ui:VBox(2):PackEnd(ui:MultiLineText(missionLocationName))
 									:PackEnd(distLabel)
@@ -110,7 +154,7 @@ local missions = function (tabGroup)
 			{data = mission.due, widget = dueBox},
 			{data = mission.reward, widget = ui:Label(showCurrency(mission.reward)):SetColor({ r = 0.0, g = 1.0, b = 0.2 })}, -- green
 			-- nil description means mission type isn't registered.
-			{data = (description and myl[mission.status]) or l.INACTIVE},
+			{data = (description and lm[mission.status]) or l.INACTIVE},
 			{widget = moreButton.widget}
 		}
 		MissionList:AddRow(row)

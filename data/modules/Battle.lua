@@ -27,7 +27,7 @@ local shipWithCannon = function (ship)
 end
 
 Event.Register("onEnterSystem", function (ship)
-	if not ship:IsPlayer() or Game.system.population == 0 then return end
+	if not ship:IsPlayer() or Game.system.population == 0 or DangerLevel < 1 then return end
 	if Engine.rand:Integer(3) < 1 then--XXX
 		battle_active = true
 		Timer:CallAt(Game.time+Engine.rand:Integer(2,5), function ()

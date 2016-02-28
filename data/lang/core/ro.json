@@ -293,7 +293,7 @@
 },
 "DECREASE_TIME_ACCELERATION":{
 "description":"",
-"message":"Decrease Time Acceleration"
+"message":"Scade Accelerarea Timpului"
 },
 "DEMOGRAPHICS":{
 "description":"",
@@ -437,7 +437,7 @@
 },
 "GAME_LOAD_CANNOT_OPEN":{
 "description":"",
-"message":"'%filename' nu poate fi deschis din cauza lipsei permisiunilor sau ceva asemănător..."
+"message":"Salvarea '%filename' nu a putut fi găsită (sau jocul nu are acces să o deschidă)."
 },
 "GAME_LOAD_CORRUPT":{
 "description":"",
@@ -605,7 +605,7 @@
 },
 "INCREASE_TIME_ACCELERATION":{
 "description":"",
-"message":"Increase Time Acceleration"
+"message":"Crește Accelerarea Timpului"
 },
 "INDUSTRIAL_COLONY":{
 "description":"",
@@ -965,7 +965,7 @@
 },
 "NOW":{
 "description":"In System Orbit View",
-"message":"Now"
+"message":"Acum"
 },
 "NO_ALERT":{
 "description":"",
@@ -1681,7 +1681,7 @@
 },
 "TOGGLE_EQUIPMENT_VIEW":{
 "description":"Tooltip for the Equipment View button",
-"message":"Equipment View"
+"message":"Vezi Echipament"
 },
 "TOGGLE_HUD_MODE":{
 "description":"",
@@ -1697,7 +1697,7 @@
 },
 "TOGGLE_SCANNER_VIEW":{
 "description":"Tooltip for the Scanner View button",
-"message":"Scanner View"
+"message":"Vezi Scanner"
 },
 "TOGGLE_SCAN_MODE":{
 "description":"",

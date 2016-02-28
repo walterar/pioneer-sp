@@ -1,6 +1,6 @@
--- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
--- Ship.lua modified to Pioneer Scout + (c)2012-2015 by walterar <walterar2@gmail.com>
+-- Ship.lua modified to Pioneer Scout + (c)2008-2016 by walterar <walterar2@gmail.com>
 
 local Ship       = import_core("Ship")
 local Game       = import_core("Game")
@@ -12,6 +12,7 @@ local Equipment  = import("Equipment")
 local Timer      = import("Timer")
 local Lang       = import("Lang")
 local Comms      = import("Comms")
+local Character  = import("Character")
 
 local l   = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
 
@@ -604,38 +605,32 @@ function Ship:FireMissileAt(which_missile, target)
 		end
 	end
 
-	if missile_object then
+	if not missile_object or not missile_object:exists() then return end
 
-		if target and target:exists() then
-			missile_object:AIKamikaze(target)
-			_G.MissileActive = MissileActive +1
-		end
-
-		Timer:CallEvery(1, function ()
-
-			if not missile_object
-				or not missile_object:exists()
-			then return true end
-
-			if not target or not target:exists() then
-				missile_object:Explode()
-				_G.MissileActive = MissileActive -1
-			return true end
-
-			if missile_object:DistanceTo(self) < 500 then
-			return false end
-
-			if MissileNaval then
-				MissileNaval = false
-				target:SetInvulnerable(false)
-				target:SetHullPercent(0)
-			end
-
-			missile_object:Arm()
-			return false
-		end)
+	if target and target:exists() then
+		missile_object:AIKamikaze(target)
+		_G.MissileActive = MissileActive +1
 	end
 
+	Timer:CallEvery(1, function ()
+		if not missile_object or not missile_object:exists()
+		then return true end
+		if missile_object:DistanceTo(self) < 500 then
+		return false end
+		if missile_object and(not target or not target:exists()) then
+			missile_object:Explode()
+			if _G.MissileActive > 0 then _G.MissileActive = MissileActive -1 end
+		return true end
+		if MissileNaval then
+			MissileNaval = false
+			target:SetInvulnerable(false)
+			target:SetHullPercent(0)
+		end
+		if missile_object then
+			missile_object:Arm()
+			return false
+		end
+	end)
 	return missile_object
 end
 

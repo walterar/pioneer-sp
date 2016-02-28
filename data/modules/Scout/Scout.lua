@@ -19,7 +19,12 @@ local InfoFace   = import("ui/InfoFace")
 local Timer      = import("Timer")
 local Eq         = import("Equipment")
 
-local l = Lang.GetResource("module-scout") or Lang.GetResource("module-scout","en")
+local MsgBox   = import("ui/MessageBox")
+local InfoFace = import("ui/InfoFace")
+local SLButton = import("ui/SmallLabeledButton")
+
+local l  = Lang.GetResource("module-scout") or Lang.GetResource("module-scout","en")
+local lm = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous","en")
 
  -- don't produce missions for further than this many light years away
 local max_dist = 30
@@ -31,40 +36,37 @@ local xTimeUp = 10
 local radius_min = 1.5
 local radius_max = 1.6
 
--- minimum $350 reward in local missions
-local local_reward = 350
-
 local ui = Engine.ui
 
 local flavours = {
 	{
 		localscout = false,-- 1
-		urgency    = 0.0,
-		risk       = 0
+		urgency    = false,
+		risk       = false
 	}, {
 		localscout = false,-- 2
-		urgency    = 0.0,
-		risk       = 0
+		urgency    = false,
+		risk       = false
 	}, {
 		localscout = false,-- 3
-		urgency    = 0.1,
-		risk       = 2
+		urgency    = false,
+		risk       = true
 	}, {
 		localscout = false,-- 4
-		urgency    = 1.0,
-		risk       = 2
+		urgency    = true,
+		risk       = true
 	}, {
 		localscout = false,-- 5
-		urgency    = 0.4,
-		risk       = 3
+		urgency    = false,
+		risk       = true
 	}, {
 		localscout = true,-- 6
-		urgency    = 0.1,
-		risk       = 0
+		urgency    = false,
+		risk       = false
 	}, {
 		localscout = true,-- 7
-		urgency    = 0.8,
-		risk       = 1
+		urgency    = true,
+		risk       = true
 	}
 }
 
@@ -110,7 +112,7 @@ local onChat = function (form, ref, option)
 			sectorx    = ad.location.sectorX,
 			sectory    = ad.location.sectorY,
 			sectorz    = ad.location.sectorZ,
-			dist       = string.format("%.2f", ad.dist)
+			dist       = ad.dist
 		})
 		form:SetMessage(introtext1)
 
@@ -175,10 +177,15 @@ local onChat = function (form, ref, option)
 		}
 
 		table.insert(missions,Mission.New(mission))
-		if Game.system.path ~= mission.location:GetStarSystem().path then
-			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
-		end
+
+--		if Game.system.path ~= mission.location:GetStarSystem().path then
+--			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
+--		else
+--			Game.player:SetNavTarget(Space.GetBody(mission.location.bodyIndex))
+--		end
+
 		form:SetMessage(l.Excellent_I_await_your_report)
+		switchEvents()
 		return
 	end
 
@@ -197,30 +204,38 @@ end
 local makeAdvert = function (station)
 	local reward, due, location, remotesystem
 	local client = Character.New()
+--	local flavour = Engine.rand:Integer(6,7)
 	local flavour = Engine.rand:Integer(1,#flavours)
-	local urgency = flavours[flavour].urgency
-	local risk = flavours[flavour].risk
+	local urgency = flavours[flavour].urgency and Engine.rand:Number(0.2,1) or 0
+	local risk = flavours[flavour].risk and Engine.rand:Integer(1,3) or 0
 	local	faction = Game.system.faction
 	local currentBody
+
 -- local system
-	if flavours[flavour].localscout == true then
+	if flavours[flavour].localscout then
 
 		local localbodies = _localPlanetsWithoutStations
 		if #localbodies == 0 then return end
 		location = localbodies[Engine.rand:Integer(1,#localbodies)]
 		currentBody = location:GetSystemBody()
 		if not currentBody or currentBody.superType ~= "ROCKY_PLANET" then return end
-		local dist = station:DistanceTo(Space.GetBody(location.bodyIndex))
-		if dist < 1000 then return end
-		reward = local_reward + (math.sqrt(dist) / 15000) * (1.5+urgency) * (1+Game.system.lawlessness)
-		due = Game.time + ((4*24*60*60) * (Engine.rand:Number(1.5,3.5) - urgency))
+
+		local AU = 149597870700
+		local dist = station:DistanceTo(Space.GetBody(location.bodyIndex))/AU
+		due =_local_due(station,location,urgency,true)
+
+--		due    = Game.time + (((dist/3)*24*60*60)+(4*(1.9-urgency)*24*60*60))
+		local reward_base = 250
+		reward = reward_base*math.sqrt(dist)*(1+urgency)*(1+Game.system.lawlessness)
+
 	else
+
 -- remote system
 		local remotesystems = Game.system:GetNearbySystems(max_dist,
 			function (s) return #s:GetBodyPaths() > 0 and s.population == 0 end)
 		if #remotesystems == 0 then return end
 		remotesystem = remotesystems[Engine.rand:Integer(1,#remotesystems)]
-		local dist = remotesystem:DistanceTo(Game.system)
+		local dist = Game.system:DistanceTo(remotesystem)
 		local remotebodies = remotesystem:GetBodyPaths()
 		local checkedBodies = 0
 		while checkedBodies <= #remotebodies do
@@ -230,22 +245,29 @@ local makeAdvert = function (station)
 				and currentBody.type ~= "PLANET_ASTEROID"
 			then break end
 			checkedBodies = checkedBodies + 1
+			location = nil
+			currentBody = nil
 		end
-		if not currentBody or currentBody.superType ~= "ROCKY_PLANET" then return end
+		if not location then return end
 		local multiplier = Engine.rand:Number(1.5,1.6)
 		if Game.system.faction ~= location:GetStarSystem().faction then
 			multiplier = multiplier * Engine.rand:Number(1.3,1.5)
 		end
-		reward = tariff(dist,risk,urgency,location)*2*multiplier
-		due = term(dist*2,urgency)
+		local reward_base = 450
+		reward = reward_base+(tariff(dist,risk,urgency,location)*2*multiplier)
+		due    = _remote_due(dist,urgency,true)
 	end
+
+	if not location then return end
+
+	local dist_txt = _distTxt(location)
 
 	local ad = {
 		station  = station,
 		flavour  = flavour,
 		client   = client,
 		location = location,
-		dist     = Game.system:DistanceTo(location),
+		dist     = dist_txt,
 		due      = due,
 		risk     = risk,
 		urgency  = urgency,
@@ -260,13 +282,13 @@ local makeAdvert = function (station)
 		military   = faction.militaryName,
 		system     = ad.location:GetStarSystem().name,
 		cash       = showCurrency(ad.reward),
-		dist       = string.format("%.2f", ad.dist),
+		dist       = ad.dist,
 		systembody = ad.location:GetSystemBody().name
 	})
 
 	local ref = station:AddAdvert({
 		description = ad.desc,
-		icon        = ad.risk > 0 and "scout_danger" or "scout",
+		icon        = ad.risk and "scout_danger" or "scout",
 		onChat      = onChat,
 		onDelete    = onDelete})
 
@@ -274,32 +296,32 @@ local makeAdvert = function (station)
 end
 
 local onCreateBB = function (station)
-	local num = Engine.rand:Integer(math.ceil(Game.system.population))
-	if num > 3 then num = 3 end
-	for i = 1,num do
-		makeAdvert(station)
+	local num = math.ceil(Game.system.population)
+	num = Engine.rand:Integer(0,num and num < 3 or 2)
+	if num > 0 then
+		for i = 1,num do
+			makeAdvert(station)
+		end
 	end
 end
 
 local onUpdateBB = function (station)
-		for ref,ad in pairs(ads) do
-			if ad.localscout == false
-				and ad.due < Game.time + 5*60*60*24 then
-				ad.station:RemoveAdvert(ref)
-			elseif ad.localscout == true
-				and ad.due < Game.time + 2*60*60*24 then
-				ad.station:RemoveAdvert(ref)
-			end
+	for ref,ad in pairs(ads) do
+		if flavours[ad.flavour].localscout == false
+			and ad.due < Game.time+(2*24*60*60) then
+			ad.station:RemoveAdvert(ref)
+		elseif flavours[ad.flavour].localscout == true
+			and ad.due < Game.time+(24*60*60) then
+			ad.station:RemoveAdvert(ref)
 		end
-		if Engine.rand:Integer(12*60*60) < 60*60 then
-			makeAdvert(station)
-		end
+	end
+	if Engine.rand:Integer(50) < 1 then makeAdvert(station) end
 end
 
 
+	local outhostiles = false
 local start_mapping = function(mission)
 	local suspended = 0
-	local outhostiles = false
 	local CurBody = Game.player.frameBody
 	if not CurBody then return end
 	local faction = Game.system.faction
@@ -314,7 +336,7 @@ local start_mapping = function(mission)
 	end
 	local count = Engine.rand:Integer(15,40)
 	Timer:CallEvery(xTimeUp, function ()
-		if mission.status == "COMPLETED" then return true end
+		if mission.status == "TRIP_BACK" then return true end
 		local Dist = CurBody:DistanceTo(Game.player)
 		if Dist < PhysBody.radius * radius_min
 			and (mission.status == 'ACTIVE'
@@ -332,7 +354,7 @@ local start_mapping = function(mission)
 		end
 		if mission.status == "MAPPING" then
 			TimeUp = TimeUp + xTimeUp
-			if count == 55 then
+			if count == 55 and mission.risk > 0 and not outhostiles then
 				count = 0
 				local ship = ship_hostil(mission.risk)
 				if ship then
@@ -341,9 +363,8 @@ local start_mapping = function(mission)
 				end
 			end
 			if outhostiles == false then count = count + 1 end
-
 			if TimeUp >= scan_time then
-				mission.status = "COMPLETED"
+				mission.status = "TRIP_BACK"
 				Music.Play("music/core/fx/mapping-off",false)
 				Comms.ImportantMessage(l.COMPLETE_MAPPING, l.computer)
 
@@ -355,19 +376,17 @@ local start_mapping = function(mission)
 				then
 					local remotestations =
 						StarSystem:GetNearbyStationPaths(Engine.rand:Integer(10,20), nil,function (s) return
-							(s.type ~= 'STARPORT_SURFACE')
-							or (s.parent.type ~= 'PLANET_ASTEROID')
+							(s.type ~= 'STARPORT_SURFACE') or (s.parent.type ~= 'PLANET_ASTEROID')
 						end)
 					if remotestations and #remotestations > 0 then
 						mission.backstation = remotestations[Engine.rand:Integer(1,#remotestations)]
-						Comms.ImportantMessage(l.You_will_be_paid_on_my_behalf_in_new_destination,
-									mission.client.name)
+						Comms.ImportantMessage(l.CHANGE_LOCATION, mission.client.name)
 					end
 				end
 				mission.location = mission.backstation
-				if Game.system.path ~= mission.location:GetStarSystem().path then
-					Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
-				end
+--				if Game.system.path ~= mission.location:GetStarSystem().path then
+--					Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
+--				end
 				return true
 			end
 		end
@@ -384,6 +403,7 @@ local start_mapping = function(mission)
 end
 
 local onFrameChanged = function (body)
+--print("Scout onFrameChanged body="..body.label)
 	if not body:isa("Ship") or not body:IsPlayer() then return end
 	if body.frameBody == nil then return end
 	if body.frameBody ~= Game.player:GetNavTarget()
@@ -401,6 +421,7 @@ end
 
 local onShipDocked = function (player, station)
 	if not player:IsPlayer() then return end
+	outhostiles = false
 	local faction = Game.system.faction
 	for ref, mission in pairs(missions) do
 		if Game.time > mission.due then
@@ -408,7 +429,7 @@ local onShipDocked = function (player, station)
 				mission:Remove()
 				missions[ref] = nil
 		end
-		if mission.status == "COMPLETED" then
+		if mission.status == "TRIP_BACK" then
 			if mission.faction == faction.name then
 				if station.path == mission.location then
 					Comms.ImportantMessage((flavours[mission.flavour].successmsg), mission.client.name)
@@ -427,10 +448,12 @@ local onShipDocked = function (player, station)
 			end
 		end
 	end
+	switchEvents()
 end
 
 local onShipLanded = function (player, body)
 	if not player:IsPlayer() then return end
+	outhostiles = false
 	local mission
 	local faction = Game.system.faction
 	for ref, mission in pairs(missions) do
@@ -439,7 +462,7 @@ local onShipLanded = function (player, body)
 			mission:Remove()
 			missions[ref] = nil
 		end
-		if mission.status == "COMPLETED" then
+		if mission.status == "TRIP_BACK" then
 			if mission.faction == faction.name then
 				if mission.location == Game.player:FindNearestTo("SPACESTATION").path then
 					Comms.ImportantMessage((flavours[mission.flavour].successmsg), mission.client.name)
@@ -458,45 +481,22 @@ local onShipLanded = function (player, body)
 			end
 		end
 	end
+	switchEvents()
 end
 
-
-	local loaded_data
-local onGameStart = function ()
-	ads = {}
-	missions = {}
-
-	if loaded_data then
-		for k,ad in pairs(loaded_data.ads) do
-			ads[ad.station:AddAdvert({
-				description = ad.desc,
-				icon        = ad.risk > 0 and "scout_danger" or "scout",
-				onChat      = onChat,
-				onDelete    = onDelete})] = ad
-		end
-		missions = loaded_data.missions
-		loaded_data = nil
-	end
-
-	if not Game.player.frameBody then return end
-
-	for ref,mission in pairs(missions) do
-		if mission.location == Game.player.frameBody.path then
-			if Game.time > mission.due then
-				_G.MissionsFailures = MissionsFailures + 1
-				mission:Remove()
-				missions[ref] = nil
-			else
-				mission.status = 'ACTIVE'
-				start_mapping(mission)
-			end
-		end
-	end
-
-end
 
 local onClick = function (mission)
-	local dist = Game.system and string.format("%.2f", Game.system:DistanceTo(mission.location)) or "zzz"
+
+	local setTargetButton = SLButton.New(lm.SET_TARGET, 'NORMAL')
+	setTargetButton.button.onClick:Connect(function ()
+		if Game.system.path ~= mission.location:GetStarSystem().path then
+			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
+		else
+			Game.player:SetNavTarget(Space.GetBody(mission.location.bodyIndex))
+		end
+	end)
+
+	local dist_txt = _distTxt(mission.location)--,flavours[mission.flavour].localscout)
 
 	local danger
 	if mission.risk == 0 then
@@ -522,7 +522,7 @@ local onClick = function (mission)
 							sectorx    = mission.location.sectorX,
 							sectory    = mission.location.sectorY,
 							sectorz    = mission.location.sectorZ,
-							dist       = dist,
+							dist       = dist_txt,
 							cash       = showCurrency(mission.reward)
 						})
 					),
@@ -583,14 +583,16 @@ local onClick = function (mission)
 											})
 											:SetColumn(1, {
 												ui:VBox():PackEnd({
-													ui:Label(dist.." ly")
+													ui:Label(dist_txt),
+													"",
+													setTargetButton.widget
 												})
 											}),
 		})})
 		:SetColumn(1, {
 			ui:VBox(10):PackEnd(InfoFace.New(mission.client))
 		})
-	elseif mission.status =="COMPLETED" then
+	elseif mission.status =="TRIP_BACK" then
 		return ui:Grid({68,32},1)
 		:SetColumn(0,{ui:VBox(10):PackEnd({ui:MultiLineText((flavours[mission.flavour].introtext2):interp(
 						{
@@ -604,7 +606,7 @@ local onClick = function (mission)
 							sectory    = mission.location.sectorY,
 							sectorz    = mission.location.sectorZ,
 							cash       = showCurrency(mission.reward),
-							dist       = dist})
+							dist       = dist_txt})
 					),
 					"",
 						ui:Grid(2,1)
@@ -651,7 +653,9 @@ local onClick = function (mission)
 											})
 											:SetColumn(1, {
 												ui:VBox():PackEnd({
-													ui:Label(dist.." ly")
+													ui:Label(dist_txt),
+													"",
+													setTargetButton.widget
 												})
 											}),
 		})})
@@ -670,6 +674,44 @@ local onClick = function (mission)
 	end
 end
 
+local onEnterSystem = function (ship)
+	if not ship:IsPlayer() or not switchEvents() then return end
+end
+
+	local loaded_data
+local onGameStart = function ()
+	ads = {}
+	missions = {}
+	if loaded_data then
+		for k,ad in pairs(loaded_data.ads) do
+			ads[ad.station:AddAdvert({
+				description = ad.desc,
+				icon        = ad.risk > 0 and "scout_danger" or "scout",
+				onChat      = onChat,
+				onDelete    = onDelete})] = ad
+		end
+		missions = loaded_data.missions
+		loaded_data = nil
+	end
+	if not Game.player.frameBody then return end
+	outhostiles = false
+	for ref,mission in pairs(missions) do
+		if mission.location:IsSameSystem(Game.system.path) then
+			if Game.time > mission.due then
+				_G.MissionsFailures = MissionsFailures + 1
+				mission:Remove()
+				missions[ref] = nil
+			else
+				mission.status = 'ACTIVE'
+				if mission.location == Game.player.frameBody.path then
+					start_mapping(mission)
+				end
+			end
+		end
+	end
+	switchEvents()
+end
+
 local serialize = function ()
 	return { ads = ads, missions = missions }
 end
@@ -678,11 +720,27 @@ local unserialize = function (data)
 	loaded_data = data
 end
 
+switchEvents = function()
+	local status = false
+--print("Scout Events deactivated")
+	Event.Deregister("onFrameChanged", onFrameChanged)
+	Event.Deregister("onShipDocked", onShipDocked)
+	Event.Deregister("onShipLanded", onShipLanded)
+	for ref,mission in pairs(missions) do
+		if mission.location:IsSameSystem(Game.system.path) then
+--print("Scout Events activate")
+			Event.Register("onFrameChanged", onFrameChanged)
+			Event.Register("onShipDocked", onShipDocked)
+			Event.Register("onShipLanded", onShipLanded)
+			status = true
+		end
+	end
+	return status
+end
+
 Event.Register("onCreateBB", onCreateBB)
 Event.Register("onUpdateBB", onUpdateBB)
-Event.Register("onFrameChanged", onFrameChanged)
-Event.Register("onShipDocked", onShipDocked)
-Event.Register("onShipLanded", onShipLanded)
+Event.Register("onEnterSystem", onEnterSystem)
 Event.Register("onGameStart", onGameStart)
 
 Mission.RegisterType('Scout','Scout',onClick)

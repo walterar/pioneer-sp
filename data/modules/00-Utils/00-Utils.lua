@@ -16,7 +16,11 @@ local Music      = import("Music")
 local Comms      = import("Comms")
 local Format     = import("Format")
 
-local l = Lang.GetResource("core") or Lang.GetResource("core","en")
+local lc = Lang.GetResource("core") or Lang.GetResource("core","en")
+local lu = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
+local lm = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous","en")
+
+local AU = 149597870700
 
 _G.songOk = function ()
 --	local SongName = Music.GetSongName()
@@ -52,7 +56,7 @@ end
 
 _G.check_crime = function (mission,crime)
 	if Game.time > (mission.due + (60*60*24*30)) then-- 30 dias de demora = fraude
-		Comms.ImportantMessage(string.interp(l.X_CANNOT_BE_TOLERATED_HERE,
+		Comms.ImportantMessage(string.interp(lu.X_CANNOT_BE_TOLERATED_HERE,
 						{ crime = Laws.CrimeType[crime].name,
 							fine  = crime_fine(crime)
 						}), Game.system.faction.policeName)
@@ -61,8 +65,12 @@ _G.check_crime = function (mission,crime)
 	end
 end
 
+
+
+--_G._reward_time(mission,base)
 -- a tariff (reward) calculator
-_G.tariff = function (dist,risk,urgency,locate)
+_G.tariff = function (dist,risk,urgency,locate)--,base)
+
 	local typ = 70 -- $70 * light year, basic.(+risk+urgency+lawlessness-population)*multiplier
 
 	local sectorz = math.abs(locate.sectorZ)
@@ -87,9 +95,26 @@ _G.tariff = function (dist,risk,urgency,locate)
 		* multiplier * Engine.rand:Number(1,1.3)
 end
 
+_G._local_due = function (station,location,urgency,round_trip)
+	local AU = 149597870700
+	local dist = station:DistanceTo(Space.GetBody(location.bodyIndex))/AU
+	local double=1
+	if round_trip then double=2 end
+	local dist = dist*double
+	local due
+	if dist < 1 then
+		due = Game.time + ((dist/3)*24*60*60)+(3*60*60*(2-urgency))
+	else
+		due = Game.time + ((dist/3)*24*60*60)+((2*double*(2-urgency))*24*60*60)
+	end
+	return due
+end
+
 -- a time limit (due) calculator
-_G.term = function (dist,urgency)
-	return Game.time + ((dist * 86400)/(1 + urgency))
+_G._remote_due = function (dist,urgency,round_trip)
+	local round=1
+	if round_trip then round=2 end
+	return Game.time + (math.sqrt(dist)*24*60*60)+((4*round*(2-urgency))*24*60*60)
 end
 
 -- a attackers (hostile - pirates) generator
@@ -195,8 +220,8 @@ end
 -- modified for Pioneer Scout+ by walterar
 ---===================================================================
 --
-local thousands_separator = "%1"..l.NUMBER_GROUP_SEP.."%2"
-local decimal_separator = l.NUMBER_DECIMAL_POINT
+local thousands_separator = "%1"..lc.NUMBER_GROUP_SEP.."%2"
+local decimal_separator = lc.NUMBER_DECIMAL_POINT
 
 local function comma_value(amount)
 	local formatted = amount
@@ -287,4 +312,24 @@ function _G.policingArea(ship)
 		policingArea = true
 	end
 	return policingArea
+end
+
+function _G._distTxt(location)
+	local dist_txt, dist
+	if Game.system then
+		if location:GetStarSystem() == Game.system then
+			dist = Game.player:DistanceTo(Space.GetBody(location.bodyIndex))/AU
+			if dist < 0.01 then
+				dist =  Game.player:DistanceTo(Space.GetBody(location.bodyIndex))/1000
+				dist_txt = string.format('%.2f %s', dist, lm.KM)
+			else
+				dist_txt = string.format('%.2f %s', dist, lm.AU)
+			end
+		else
+			dist_txt = Game.system and string.format('%.2f %s', Game.system:DistanceTo(location), lm.LY)
+		end
+	else
+		dist_txt = lm.HYPERSPACE
+	end
+	return dist_txt
 end

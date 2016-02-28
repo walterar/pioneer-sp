@@ -17,7 +17,7 @@
 },
 "AUTOPILOT":{
 "description":"",
-"message":"Autopilot"
+"message":"الطيار الالي"
 },
 "AUTOPILOT_DESCRIPTION":{
 "description":"",
@@ -204,6 +204,14 @@
 "MULTI_SCOOP_DESCRIPTION":{
 "description":"",
 "message":"على الرغم من ضعف مغرفة الوقودة الى انها تغرف الوقود و البضاعة"
+},
+"NAV_ASSIST":{
+"description":"",
+"message":"Navigation assistant"
+},
+"NAV_ASSIST_DESCRIPTION":{
+"description":"",
+"message":"Software that adds a navigation assistant to the autopilot. It marks the next target."
 },
 "OUT_OF_SCANRANGE":{
 "description":"",

@@ -205,6 +205,14 @@
 "description":"",
 "message":"Ist zwar weniger effizient als die Treibstoffschaufel, kann aber sowohl Fracht als auch Treibstoff aufnehmen"
 },
+"NAV_ASSIST":{
+"description":"",
+"message":"Navigation assistant"
+},
+"NAV_ASSIST_DESCRIPTION":{
+"description":"",
+"message":"Software that adds a navigation assistant to the autopilot. It marks the next target."
+},
 "OUT_OF_SCANRANGE":{
 "description":"",
 "message":"Max. Scan-Reichweite überschritten:"

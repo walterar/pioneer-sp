@@ -313,7 +313,7 @@
 },
 "DISTANCE_LY":{
 "description":"",
-"message":"Distance: %distance{f.2} ly"
+"message":"Distance: %distance{f.2} Ly"
 },
 "DOCKED":{
 "description":"",

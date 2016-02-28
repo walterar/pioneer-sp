@@ -1,4 +1,4 @@
--- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 -- Create a news event on the BBS (to do: place it on
@@ -27,12 +27,10 @@ local Comms      = import("Comms")
 local Engine     = import("Engine")
 local Lang       = import("Lang")
 local Game       = import("Game")
---local Space      = import("Space")
 local Event      = import("Event")
 local Format     = import("Format")
 local Serializer = import("Serializer")
---local utils      = import("utils")
-local Equipment  = import ("Equipment")
+local Eq         = import ("Equipment")
 
 local l = Lang.GetResource("module-newseventcommodity") or Lang.GetResource("module-newseventcommodity","en")
 
@@ -49,76 +47,76 @@ local maxIndexOfGreetings = 5
 
 local flavours = {
 	{                                      -- flavour 0 in en.json
-		cargo = Equipment.cargo.medicines, -- which commodity is affected
+		cargo = Eq.cargo.medicines, -- which commodity is affected
 		demand = 4,                        -- change in price (and stock)
 	}, {
-		cargo = Equipment.cargo.battle_weapons,       --1
+		cargo = Eq.cargo.battle_weapons,       --1
 		demand = 4,
 	}, {
-		cargo = Equipment.cargo.grain,                --2
+		cargo = Eq.cargo.grain,                --2
 		demand = 10,
 	}, {
-		cargo = Equipment.cargo.fruit_and_veg,        --3
+		cargo = Eq.cargo.fruit_and_veg,        --3
 		demand = 6,
 	}, {
-		cargo = Equipment.cargo.narcotics,            --4
+		cargo = Eq.cargo.narcotics,            --4
 		demand = -4,
 	}, {
-		cargo = Equipment.cargo.slaves,               --5
+		cargo = Eq.cargo.slaves,               --5
 		demand = 7,
 	}, {
-		cargo = Equipment.cargo.liquor,               --6
+		cargo = Eq.cargo.liquor,               --6
 		demand = 3,
 	}, {
-		cargo = Equipment.cargo.industrial_machinery, --7
+		cargo = Eq.cargo.industrial_machinery, --7
 		demand = 6,
 	}, {
-		cargo = Equipment.cargo.mining_machinery,     --8
+		cargo = Eq.cargo.mining_machinery,     --8
 		demand = 6,
 	}, {
-		cargo = Equipment.cargo.live_animals,         --9
+		cargo = Eq.cargo.live_animals,         --9
 		demand = 3,
 	}, {
-		cargo = Equipment.cargo.air_processors,       --10
+		cargo = Eq.cargo.air_processors,       --10
 		demand = 5,
 	}, {
-		cargo = Equipment.cargo.animal_meat,          --11
+		cargo = Eq.cargo.animal_meat,          --11
 		demand = 3,
 	}, {
-		cargo = Equipment.cargo.computers,            --12
+		cargo = Eq.cargo.computers,            --12
 		demand = 3,
 	}, {
-		cargo = Equipment.cargo.robots,               --13
+		cargo = Eq.cargo.robots,               --13
 		demand = -4,
 	}, {
-		cargo = Equipment.cargo.plastics,             --14
+		cargo = Eq.cargo.plastics,             --14
 		demand = 3,
 	}, {
-		cargo = Equipment.cargo.narcotics,            --15
+		cargo = Eq.cargo.narcotics,            --15
 		demand = 4,
 	}, {
-		cargo = Equipment.cargo.farm_machinery,       --16
+		cargo = Eq.cargo.farm_machinery,       --16
 		demand = 5,
 	}, {
-		cargo = Equipment.cargo.metal_ore,            --17
+		cargo = Eq.cargo.metal_ore,            --17
 		demand = -10,
 	}, {
-		cargo = Equipment.cargo.consumer_goods,       --18
+		cargo = Eq.cargo.consumer_goods,       --18
 		demand = 3,
 	}, {
-		cargo = Equipment.cargo.precious_metals,      --19
+		cargo = Eq.cargo.precious_metals,      --19
 		demand = -3,
 	}, {
-		cargo = Equipment.cargo.fertilizer,           --20
+		cargo = Eq.cargo.fertilizer,           --20
 		demand = -3,
 	}, {
-		cargo = Equipment.cargo.nerve_gas,            --21
+		cargo = Eq.cargo.nerve_gas,            --21
 		demand = -4,
 	}, {
-		cargo = Equipment.cargo.hand_weapons,         --22
+		cargo = Eq.cargo.hand_weapons,         --22
 		demand = 3,
 	}, {
-		cargo = Equipment.cargo.metal_alloys,         --23
+		cargo = Eq.cargo.metal_alloys,         --23
 		demand = 3,
 	}
 }
@@ -229,7 +227,7 @@ local createNewsEvent = function (timeInHyper)
 	local distance = system:DistanceTo(Game.system)  -- from here to there
 --	local hyperTime = 6200*distance^2                -- hyperspace time to get there
 --	local inSystemTime = 5*86400                     -- in system time to get there
-	local expires = Game.time + (60*60*24*30)--hyperTime*Engine.rand:Number(0.9,1.6) + inSystemTime
+	local expires = Game.time + (15*24*60*60)--hyperTime*Engine.rand:Number(0.9,1.6) + inSystemTime
 
 	local newsEvent = {
 		syspath = system.path,   -- SystemPath object of the news event
@@ -298,10 +296,9 @@ end
 
 -- when we enter system, create all ads we need on all BBS
 local onCreateBB = function (station)
-
 	-- create ads
+--	if Engine.rand:Integer(3) < 1 then checkAdvertsAdd(station) end
 	checkAdvertsAdd(station)
-
 end
 
 

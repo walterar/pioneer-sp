@@ -181,7 +181,7 @@
 },
 "CONTINUE_GAME":{
 "description":"",
-"message":"Continue juego"
+"message":"Continuar juego"
 },
 "CONTROLS":{
 "description":"",
@@ -291,10 +291,14 @@
 "description":"",
 "message":"Ocupación"
 },
-   "ENABLE_AUTOSAVE" : {
-      "description" : "Allow the game to autosave when docking",
-      "message" : "Activar Autosave"
-   },
+"ENABLE_ANISOTROPIC_FILTERING":{
+"description":"Use Anisotropic Filtering",
+"message":"Filtro Anisotrópico"
+},
+"ENABLE_AUTOSAVE" : {
+"description" : "Allow the game to autosave when docking",
+"message" : "Activar Autosave"
+},
 "ENABLE_COCKPIT":{
 "description":"",
 "message":"Habilitar cockpit (demo - maqueta no funcional)"
@@ -572,7 +576,8 @@
 "message":"Recepción"
 },
 "LOCAL_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Brazo de Orión"
+"description":"Arm of the Milky Way galaxy",
+"message":"Brazo de Orión"
 },
 "LOCATED_N_KM_FROM_THE_CENTRE_OF_NAME":{
 "description":"",
@@ -588,7 +593,7 @@
 },
 "LY":{
 "description":"",
-"message":"ly"
+"message":"Ly"
 },
 "MAKE_NEW_FACE":{
 "description":"",
@@ -743,7 +748,8 @@
 "message":"No está a la venta en esta estación."
 },
 "NORMA_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Brazo de Norma"
+"description":"Arm of the Milky Way galaxy",
+"message":"Brazo de Norma"
 },
 "NOTES":{
 "description":"",
@@ -802,20 +808,24 @@
 "message":"La velocidad de órbita circular es dada por una velocidad tangencial. La nave se debería mover en una dirección a 90° del eje de la nave/{name}.\n\nLa velocidad de descenso es un mínimo absoluto, y es también tangencial. Una velocidad o ángulo mas bajos resultará en un curso que intersecta con la superficie de {name}.\n\nLa velocidad de escape funcionará, en teoría, en cualquier dirección, mientras que la nave no colisione con {name} en la ruta.\n\t\t"
 },
 "OUTER_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Brazo Exterior"
+"description":"Arm of the Milky Way galaxy",
+"message":"Brazo Exterior"
 },
 "OUTSTANDING_FINES":{
-"description":"Unpaid fines for crimes committed","message":"Multas espectaculares"
+"description":"Unpaid fines for crimes committed",
+"message":"Multas espectaculares"
 },
 "OWED":{
-"description":"Player owing money to crew members","message":"Deuda"
+"description":"Player owing money to crew members",
+"message":"Deuda"
 },
 "PAY_FINE_OF_N":{
 "description":"",
 "message":"Pagar multa de {amount}"
 },
 "PERSEUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Brazo de Perseo"
+"description":"Arm of the Milky Way galaxy",
+"message":"Brazo de Perseo"
 },
 "PERSONAL_INFORMATION":{
 "description":"",
@@ -870,7 +880,8 @@
 "message":"Profesional"
 },
 "PUMP_DOWN":{
-"description":"Drain the fuel tank","message":"Pump down"
+"description":"Drain the fuel tank",
+"message":"Transferir a bodega"
 },
 "QUALIFICATION_SCORES":{
 "description":"",
@@ -898,7 +909,7 @@
 },
 "REFUEL":{
 "description":"",
-"message":"Recargar"
+"message":"Recargar de bodega"
 },
 "REFUEL_FULL":{
 "description":"",
@@ -945,7 +956,8 @@
 "message":"Premio"
 },
 "SAGITTARIUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Brazo de Sagitario"
+"description":"Arm of the Milky Way galaxy",
+"message":"Brazo de Sagitario"
 },
 "SAVE":{
 "description":"",
@@ -956,7 +968,8 @@
 "message":"Bahías de Recolectores"
 },
 "SCUTUM_CENTAURUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Brazo de Escudo-Centauro"
+"description":"Arm of the Milky Way galaxy",
+"message":"Brazo de Escudo-Centauro"
 },
 "SELECT":{
 "description":"",
@@ -1051,10 +1064,12 @@
 "message":"Estado"
 },
 "TECH_CERTIFIED":{
-"description":"Lobby screen shows the tech level (an integer number) of the station","message":"Esta estación mantiene un certificado de tecnología de nivel {tech_level}."
+"description":"Lobby screen shows the tech level (an integer number) of the station",
+"message":"Esta estación mantiene un certificado de tecnología de nivel {tech_level}."
 },
 "TECH_CERTIFIED_MILITARY":{
-"description":"Lobby screen shows the tech level of the station","message":"Esta instalación mantiene una autorización tecnológica militar."
+"description":"Lobby screen shows the tech level of the station",
+"message":"Esta instalación mantiene una autorización tecnológica militar."
 },
 "THANKS_AND_REMEMBER_TO_BUY_FUEL":{
 "description":"",
@@ -1069,7 +1084,8 @@
 "message":"La nave esta bajo control de la estación, Comandante."
 },
 "THREE_KPC_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Brazo 3KPC"
+"description":"Arm of the Milky Way galaxy",
+"message":"Brazo 3KPC"
 },
 "TOGGLE_MALE_FEMALE":{
 "description":"",
@@ -1160,7 +1176,8 @@
 "message":"No tenemos nada pendiente con usted, por el momento.\nNo obstante, recuerde respetar las reglas locales:\n\n* Aléjese al menos 5Km de la estación para Hipersalto.\n* No dispare sus cañones a menos de 100Km de la estación.\n* No comercie con productos ilegales.\n* No arroje ningún tipo de producto en la estación,\n y menos productos peligrosos para el medio ambiente.\n* No arroje residuos radioactivos al espacio\nen sistemas habitados.\n* Disparar o embestir a otra nave dentro de los \n 100Km de la estación, será considerado Piratería.\n* No transporte información local hacia otra facción.\n* Cumpla con las misiones pactadas,\n evite ser multado por Fraude o Abducción\n* No use el despegue manual para no pagar sus multas,\n esto es grave y será considerado Fuga.\n* Y... por favor... no mate a nadie."
 },
 "X_CANNOT_BE_TOLERATED_HERE":{
-"description":"Message to be sent over comms by police when crime is committed by player","message":"¡Aquí el {crime} no está tolerado!"
+"description":"Message to be sent over comms by police when crime is committed by player",
+"message":"¡Aquí el {crime} no está tolerado!"
 },
 "YES":{
 "description":"Positive answer to a question",
@@ -1203,6 +1220,7 @@
 "message":"Usted no tiene crédito suficiente."
 },
 "ZOOM":{
-"description":"Label for a zoom (magnification) control bar.","message":"Zoom"
+"description":"Label for a zoom (magnification) control bar.",
+"message":"Zoom"
 }
 }

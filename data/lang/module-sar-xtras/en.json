@@ -1,19 +1,7 @@
 {
-"ACTIVE":{
-"description":"",
-"message":"Active"
-},
 "ALERT_BRS":{
 "description":"",
 "message":"Alert! BRS has detected the ship {target_label} in emergency state."
-},
-"AU":{
-"description":"",
-"message":"AU"
-},
-"COMPLETED":{
-"description":"",
-"message":"Completed"
 },
 "CREWS_TO_BE_SENT":{
 "description":"",
@@ -22,26 +10,6 @@
 "CREWS_TO_PICK_UP":{
 "description":"",
 "message":"Crews to pick up:"
-},
-"KM":{
-"description":"sar",
-"message":"Km"
-},
-"LAST_KNOWN_LOCATION":{
-"description":"",
-"message":"Last known location:"
-},
-"LAT":{
-"description":"short latitude",
-"message":"Lat:"
-},
-"LON":{
-"description":"short latitude",
-"message":"Lon:"
-},
-"LY":{
-"description":"",
-"message":"Ly"
 },
 "COMMODITY_TO_DELIVERY":{
 "description":"",
@@ -67,22 +35,6 @@
 "description":"",
 "message":"Passengers to pick up:"
 },
-"REWARD":{
-"description":"ui-core",
-"message":"Reward:"
-},
-"TARGET_SHIP":{
-"description":"",
-"message":"ID of the ship in emergency:"
-},
-"THE_PLACE_OF_ASSISTANCE":{
-"description":"",
-"message":"The place of assistance."
-},
-"THE_REWARD_IS_PAID_IN":{
-"description":"",
-"message":"The reward is paid in:"
-},
 "TRIP_BACK":{
 "description":"",
 "message":"Return"
@@ -90,10 +42,6 @@
 "UNKNOWN":{
 "description":"sar",
 "message":"Unknown"
-},
-"ORBIT":{
-"description":"",
-"message":"Orbit"
 },
 "DANGER":{
 "description":"",

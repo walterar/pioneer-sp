@@ -1,4 +1,4 @@
--- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- modified for Pioneer Scout+ (c)2012-2015 by walterar <walterar2@gmail.com>
 -- Work in progress.
@@ -21,11 +21,13 @@ local utils      = import("utils")
 local Timer      = import("Timer")
 local Music      = import("Music")
 
-local InfoFace   = import("ui/InfoFace")
+local MsgBox   = import("ui/MessageBox")
+local InfoFace = import("ui/InfoFace")
+local SLButton = import("ui/SmallLabeledButton")
 
 -- Get the language resource
-local l   = Lang.GetResource("module-taxi") or Lang.GetResource("module-taxi","en")
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
+local l  = Lang.GetResource("module-taxi") or Lang.GetResource("module-taxi","en")
+local lm = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous","en")
 
 -- Get the UI class
 local ui = Engine.ui
@@ -146,7 +148,7 @@ local onChat = function (form, ref, option)
 			sectorx  = ad.location.sectorX,
 			sectory  = ad.location.sectorY,
 			sectorz  = ad.location.sectorZ,
-			dist     = string.format("%.2f", ad.dist)
+			dist     = ad.dist
 		})
 
 		form:SetMessage(introtext)
@@ -168,7 +170,7 @@ local onChat = function (form, ref, option)
 
 	elseif option == 3 then
 		if (MissionsSuccesses - MissionsFailures < 5) and ad.risk > 0 then
-			form:SetMessage(myl.have_enough_experience)
+			form:SetMessage(lm.HAVE_ENOUGH_EXPERIENCE)
 			return
 		end
 		if not Game.player.cabin_cap or Game.player.cabin_cap < ad.group then
@@ -195,12 +197,12 @@ local onChat = function (form, ref, option)
 
 		table.insert(missions,Mission.New(mission))
 
-		if Game.system.path ~= mission.location:GetStarSystem().path then
-			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
-		end
+--		if Game.system.path ~= mission.location:GetStarSystem().path then
+--			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
+--		end
 
 		form:SetMessage(l.EXCELLENT)
-
+		switchEvents()
 		return
 	elseif option == 4 then
 		if flavours[ad.flavour].single then
@@ -247,14 +249,16 @@ local makeAdvert = function (station)
 	local taxiplus = 1.8
 	if group > 1 then taxiplus = (taxiplus*group)-1 end
 	reward = tariff (dist,risk,urgency,location) * taxiplus
-	due    = term (dist,urgency)
+	due    = _remote_due(dist,urgency,false)
+
+	local dist_txt = _distTxt(location)
 
 	local ad = {
 		station  = station,
 		flavour  = flavour,
 		client   = client,
 		location = location,
-		dist     = dist,
+		dist     = dist_txt,
 		due      = due,
 		group    = group,
 		risk     = risk,
@@ -276,26 +280,27 @@ local makeAdvert = function (station)
 end
 
 local onCreateBB = function (station)
-	local num = Engine.rand:Integer(0, math.ceil(Game.system.population))
-	if num > 3 then num = 3 end
-	for i = 1,num do
-		makeAdvert(station)
+	local num = math.ceil(Game.system.population)
+	num = Engine.rand:Integer(0,num and num < 3 or 3)
+	if num > 0 then
+		for i = 1,num do
+			makeAdvert(station)
+		end
 	end
 end
 
 local onUpdateBB = function (station)
 	for ref,ad in pairs(ads) do
-		if ad.due < Game.time + 5*60*60*24 then
+		if ad.due < Game.time + 2*24*60*60 then
 			ad.station:RemoveAdvert(ref)
 		end
 	end
-	if Engine.rand:Integer(24*60*60) < 60*60 then -- roughly once every day
-		makeAdvert(station)
-	end
+	if Engine.rand:Integer(50) < 1 then makeAdvert(station) end
 end
 
 	local hostilactive = false
 local onFrameChanged = function (body)
+--print("Taxi onFrameChanged body="..body.label)
 	if hostilactive then return end
 	if body:isa("Ship") and body:IsPlayer() and body.frameBody ~= nil then
 		for ref,mission in pairs(missions) do
@@ -346,6 +351,7 @@ local onShipDocked = function (player, station)
 			missions[ref] = nil
 		end
 	end
+	switchEvents()
 end
 
 local onShipLanded = function (player, body)
@@ -367,13 +373,13 @@ local onShipLanded = function (player, body)
 			missions[ref] = nil
 		end
 	end
+	switchEvents()
 end
 
 local onShipUndocked = function (player, station)
 	if not player:IsPlayer() then return end
 	local current_passengers = Game.player:GetEquipCountOccupied("cabin")-(Game.player.cabin_cap or 0)
 	if current_passengers >= passengers then return end -- nothing changed, good
-
 	for ref,mission in pairs(missions) do
 		remove_passengers(mission.group)
 		_G.MissionsFailures = MissionsFailures + 1
@@ -381,6 +387,11 @@ local onShipUndocked = function (player, station)
 		mission:Remove()
 		missions[ref] = nil
 	end
+	switchEvents()
+end
+
+local onEnterSystem = function (ship)
+	if not ship:IsPlayer() or not switchEvents() then return end
 end
 
 local loaded_data
@@ -399,14 +410,28 @@ local onGameStart = function ()
 		missions     = loaded_data.missions
 		passengers   = loaded_data.passengers
 		hostilactive = loaded_data.hostilactive
-
+		switchEvents()
 		loaded_data = nil
 	end
 end
 
 
 local onClick = function (mission)
-	local dist = Game.system and string.format("%.2f", Game.system:DistanceTo(mission.location)) or "hyper "
+--	local dist = Game.system and string.format("%.2f", Game.system:DistanceTo(mission.location)) or "hyper "
+
+	local dist_txt = _distTxt(mission.location)--,false)
+
+	local setTargetButton = SLButton.New(lm.SET_TARGET, 'NORMAL')
+	setTargetButton.button.onClick:Connect(function ()
+		if not NavAssist then MsgBox.Message(lm.NOT_NAV_ASSIST) return end
+		if Game.system.path ~= mission.location:GetStarSystem().path then
+			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
+		else
+			Game.player:SetNavTarget(Space.GetBody(mission.location.bodyIndex))
+		end
+	end)
+
+
 	return ui:Grid({68,32},1)
 		:SetColumn(0,{ui:VBox(10):PackEnd({ui:MultiLineText((flavours[mission.flavour].introtext):interp({
 														name     = mission.client.name,
@@ -416,7 +441,7 @@ local onClick = function (mission)
 														sectory  = mission.location.sectorY,
 														sectorz  = mission.location.sectorZ,
 														cash     = showCurrency(mission.reward),
-														dist     = dist})
+														dist     = dist_txt})
 										),
 										ui:Margin(10),
 										ui:Grid(2,1)
@@ -485,7 +510,9 @@ local onClick = function (mission)
 											})
 											:SetColumn(1, {
 												ui:VBox():PackEnd({
-													ui:Label(dist.." "..l.LY)
+													ui:Label(dist_txt),
+													"",
+													setTargetButton.widget
 												})
 											})
 		})})
@@ -508,12 +535,29 @@ local unserialize = function (data)
 	loaded_data = data
 end
 
+switchEvents = function()
+	local status = false
+--print("Taxi Events deactivated")
+	Event.Deregister("onFrameChanged", onFrameChanged)
+	Event.Deregister("onShipDocked", onShipDocked)
+	Event.Deregister("onShipUndocked", onShipUndocked)
+	Event.Deregister("onShipLanded", onShipLanded)
+	for ref,mission in pairs(missions) do
+		if mission.location:IsSameSystem(Game.system.path) then
+--print("Taxi Events activate")
+			Event.Register("onFrameChanged", onFrameChanged)
+			Event.Register("onShipDocked", onShipDocked)
+			Event.Register("onShipUndocked", onShipUndocked)
+			Event.Register("onShipLanded", onShipLanded)
+			status = true
+		end
+	end
+	return status
+end
+
 Event.Register("onCreateBB", onCreateBB)
 Event.Register("onUpdateBB", onUpdateBB)
-Event.Register("onFrameChanged", onFrameChanged)
-Event.Register("onShipUndocked", onShipUndocked)
-Event.Register("onShipDocked", onShipDocked)
-Event.Register("onShipLanded", onShipLanded)
+Event.Register("onEnterSystem", onEnterSystem)
 Event.Register("onGameStart", onGameStart)
 
 Mission.RegisterType('Taxi',l.TAXI,onClick)

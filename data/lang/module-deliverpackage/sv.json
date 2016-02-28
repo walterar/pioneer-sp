@@ -65,7 +65,7 @@
 },
 "FLAVOUR_0_INTROTEXT":{
 "description":"",
-"message":"Hej, jag är {name}. Jag betalar dig {cash} om du levererar ett litet paket till {starport} i {system} ({sectorx}. {sectory}, {sectorz}) systemet. Ett avstånd på {dist} ly."
+"message":"Hej, jag är {name}. Jag betalar dig {cash} om du levererar ett litet paket till {starport} i {system} ({sectorx}. {sectory}, {sectorz}) systemet. Ett avstånd på {dist}."
 },
 "FLAVOUR_0_SUCCESSMSG":{
 "description":"",
@@ -85,7 +85,7 @@
 },
 "FLAVOUR_1_INTROTEXT":{
 "description":"",
-"message":"Hej! Jag är {name}. Jag är beredd att betala {cash} för att ett skepp skall föra med sig ett paket till {starport} ({sectorx}. {sectory}, {sectorz}) systemet. Ett avstånd på {dist} ly."
+"message":"Hej! Jag är {name}. Jag är beredd att betala {cash} för att ett skepp skall föra med sig ett paket till {starport} ({sectorx}. {sectory}, {sectorz}) systemet. Ett avstånd på {dist}."
 },
 "FLAVOUR_1_SUCCESSMSG":{
 "description":"",
@@ -105,7 +105,7 @@
 },
 "FLAVOUR_2_INTROTEXT":{
 "description":"",
-"message":"Hej! Jag är {name}. Jag är beredd att betala {cash} för att ett skepp skall föra med sig ett paket till {starport} ({sectorx}. {sectory}, {sectorz}) systemet. Ett avstånd på {dist} ly."
+"message":"Hej! Jag är {name}. Jag är beredd att betala {cash} för att ett skepp skall föra med sig ett paket till {starport} ({sectorx}. {sectory}, {sectorz}) systemet. Ett avstånd på {dist}."
 },
 "FLAVOUR_2_SUCCESSMSG":{
 "description":"",
@@ -125,7 +125,7 @@
 },
 "FLAVOUR_3_INTROTEXT":{
 "description":"",
-"message":"Hej! Jag är {name}. Jag är beredd att betala {cash} för att ett skepp skall föra med sig ett paket till {starport} ({sectorx}. {sectory}, {sectorz}) systemet. Ett avstånd på {dist} ly"
+"message":"Hej! Jag är {name}. Jag är beredd att betala {cash} för att ett skepp skall föra med sig ett paket till {starport} ({sectorx}. {sectory}, {sectorz}) systemet. Ett avstånd på {dist}"
 },
 "FLAVOUR_3_SUCCESSMSG":{
 "description":"",
@@ -145,7 +145,7 @@
 },
 "FLAVOUR_4_INTROTEXT":{
 "description":"",
-"message":"Hälsningar. Det här är ett automatiskt meddelande från Bedford och {name}s Kurirservice. Vi betalar {cash} för att åka till {starport} i {system} ({sectorx}, {sectory}, {sectorz}) systemet. Ett avstånd på {dist} ly."
+"message":"Hälsningar. Det här är ett automatiskt meddelande från Bedford och {name}s Kurirservice. Vi betalar {cash} för att åka till {starport} i {system} ({sectorx}, {sectory}, {sectorz}) systemet. Ett avstånd på {dist}."
 },
 "FLAVOUR_4_SUCCESSMSG":{
 "description":"",

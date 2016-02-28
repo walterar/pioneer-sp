@@ -1,4 +1,4 @@
--- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- modified for Pioneer Scout+ (c)2012-2015 by walterar <walterar2@gmail.com>
 -- Work in progress.
@@ -12,15 +12,16 @@ local MessageBox = import("ui/MessageBox")
 local Laws       = import("Laws")
 local Music      = import("Music")
 local Format     = import("Format")
+local ShipDef    = import("ShipDef")
 
 local SmallLabeledButton = import("ui/SmallLabeledButton")
 local InfoGauge          = import("ui/InfoGauge")
 
 local ui = Engine.ui
 
-local l = Lang.GetResource("ui-core");
+local l  = Lang.GetResource("ui-core");
 local lm = Lang.GetResource("module-moneylender");
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
+local ls = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous","en")
 
 local function trim(s) return s:find'^%s*$' and '' or s:match'^%s*(.*%S)' end
 
@@ -43,9 +44,11 @@ local econTrade = function ()
 
 	function updateCargoListWidget ()
 
-		local cargoNameColumn = {}
-		local cargoQuantityColumn = {}
-		local cargoJettisonColumn = {}
+		local cargoNameColumn       = {}
+		local cargoQuantityColumn   = {}
+		local cargoPricePaidColumn  = {}
+		local cargoPriceSumColumn   = {}
+		local cargoJettisonColumn   = {}
 
 		local count = {}
 		for k,et in pairs(Game.player:GetEquip("cargo")) do
@@ -56,21 +59,29 @@ local econTrade = function ()
 			table.insert(cargoNameColumn, ui:Label(et:GetName()))
 			table.insert(cargoQuantityColumn, ui:Label(nb.."t"))
 
+			if Game.player:GetDockedWith() then
+				table.insert(cargoPricePaidColumn,
+					ui:Label(showCurrency(Game.player:GetDockedWith():GetEquipmentPrice(et))))
+
+				table.insert(cargoPriceSumColumn,
+					ui:Label(showCurrency((Game.player:GetDockedWith():GetEquipmentPrice(et)) * nb)))
+			end
+
 			local jettisonButton = SmallLabeledButton.New(l.JETTISON)
 			jettisonButton.button.onClick:Connect(function ()
-
 				if player.flightState == "HYPERSPACE" then return end
-				if player:DistanceTo(player:FindNearestTo("SPACESTATION")) < 100e3
+				local target = player:FindNearestTo("SPACESTATION")
+				if target and player:DistanceTo(target) < 100e3
 					or (et == Eq.cargo.radioactives and Game.system.population > 0) then
 					local crime, fine
 					if et == Eq.cargo.radioactives then
 						crime = "ENVIRONMENTAL_DAMAGE"
 						fine = crime_fine(crime)
-						MessageBox.Message(myl.You_has_been_fined .. showCurrency(fine) .. myl.for_jettison .. et:GetName())
+						MessageBox.Message(ls.YOU_HAS_BEEN_FINED .. showCurrency(fine) .. ls.FOR_JETTISON .. et:GetName())
 					else
 						crime = "DUMPING"
 						fine = crime_fine(crime)
-						MessageBox.Message(myl.You_has_been_fined .. showCurrency(fine) .. myl.for_jettison .. et:GetName() .. myl.port_or_vecinity)
+						MessageBox.Message(ls.YOU_HAS_BEEN_FINED .. showCurrency(fine) .. ls.FOR_JETTISON .. et:GetName() .. ls.PORT_OR_VECINITY)
 					end
 					player:AddCrime(crime, fine)
 				end
@@ -84,13 +95,15 @@ local econTrade = function ()
 
 		-- Function returns a UI with which to populate the cargo list widget
 		return
-			ui:VBox(10):PackEnd({
+			ui:VBox(15):PackEnd({
 				ui:Label(l.CARGO):SetFont("HEADING_NORMAL"),
 				ui:Scroller():SetInnerWidget(
-					ui:Grid(3,1)
+					ui:Grid({40,8,15,22,25},1)
 						:SetColumn(0, { ui:VBox():PackEnd(cargoNameColumn) })
 						:SetColumn(1, { ui:VBox():PackEnd(cargoQuantityColumn) })
-						:SetColumn(2, { ui:VBox():PackEnd(cargoJettisonColumn) })
+						:SetColumn(2, { ui:VBox():PackEnd(cargoPricePaidColumn) })
+						:SetColumn(3, { ui:VBox():PackEnd(cargoPriceSumColumn) })
+						:SetColumn(4, { ui:VBox():PackEnd(cargoJettisonColumn) })
 				)
 			})
 	end
@@ -120,37 +133,57 @@ local econTrade = function ()
 	fuelGauge.gauge:Bind("valuePercent", Game.player, "fuel")
 
 	-- Define the refuel button
-	local refuelButton = SmallLabeledButton.New(l.REFUEL)
-	local refuelMaxButton = SmallLabeledButton.New(l.REFUEL_FULL)
+	local refuelOne = ui:Button("+1")
+	local refuelTen = ui:Button("+10")
+	local refuel100 = ui:Button("+100")
+	local pumpDownOne = ui:Button("-1")
+	local pumpDownTen = ui:Button("-10")
+	local pumpDown100 = ui:Button("-100")
 
 	local refuelButtonRefresh = function ()
+		if Game.player.fuel == 100 or Game.player:CountEquip(Eq.cargo.hydrogen) == 0 then
+			refuelOne:Disable()
+			refuelTen:Disable()
+			refuel100:Disable()
+		else
+			refuelOne:Enable()
+			refuelTen:Enable()
+			refuel100:Enable()
+		end
+		if Game.player.fuel == 0 or Game.player:GetEquipFree("cargo") == 0 then
+			pumpDownOne:Disable()
+			pumpDownTen:Disable()
+			pumpDown100:Disable()
+		else
+			pumpDownOne:Enable()
+			pumpDownTen:Enable()
+			pumpDown100:Enable()
+		end
 		local fuel_percent = Game.player.fuel/100
 		fuelGauge.gauge:SetValue(fuel_percent)
 		fuelGauge.label:SetValue(fuel_percent)
 	end
 	refuelButtonRefresh()
 
-	local refuel = function ()
+	local refuel = function (fuel)
 		-- UI button where the player clicks to refuel...
-		Game.player:Refuel(1)
+		Game.player:Refuel(fuel)
 		-- ...then we update the cargo list widget...
 		cargoListWidget:SetInnerWidget(updateCargoListWidget())
 
 		refuelButtonRefresh()
 	end
-	local refuelMax = function ()
-		while Game.player.fuel < 100 do
-			local removed = Game.player:Refuel(1)
-			if removed == 0 then
-				break
-			end
-		end
+
+	local pumpDown = function (fuel)
+		local fuelTankMass = ShipDef[Game.player.shipId].fuelTankMass
+		local availableFuel = math.floor(Game.player.fuel / 100 * fuelTankMass)
+		if fuel > availableFuel then fuel = availableFuel end
+		local drainedFuel = Game.player:AddEquip(Eq.cargo.hydrogen, fuel)
+		Game.player:SetFuelPercent(math.clamp(Game.player.fuel - drainedFuel * 100 / fuelTankMass, 0, 100))
+		cargoListWidget:SetInnerWidget(updateCargoListWidget())
 
 		refuelButtonRefresh()
 	end
-
-	refuelButton.button.onClick:Connect(refuel)
-	refuelMaxButton.button.onClick:Connect(refuelMax)
 
 	local deudaPendiente = l.NO
 	if deuda_total and deuda_total > 0 then deudaPendiente = showCurrency(deuda_total,2) end
@@ -170,6 +203,14 @@ local econTrade = function ()
 	else
 		valorCuota = showCurrency(deuda_valor_cuota)
 	end
+
+	refuelOne.onClick:Connect(function () refuel(1) end)
+	refuelTen.onClick:Connect(function () refuel(10) end)
+	refuel100.onClick:Connect(function () refuel(100) end)
+	pumpDownOne.onClick:Connect(function () pumpDown(1) end)
+	pumpDownTen.onClick:Connect(function () pumpDown(10) end)
+	pumpDown100.onClick:Connect(function () pumpDown(100) end)
+
 
 	return ui:Expand():SetInnerWidget(
 		ui:Grid({50,2,48},1)
@@ -230,8 +271,18 @@ local econTrade = function ()
 								}),
 								nil,
 								ui:VBox(5):PackEnd({
-									refuelButton.widget,
-									refuelMaxButton.widget,
+									ui:Label(l.REFUEL),
+									ui:HBox(5):PackEnd({
+										refuelOne,
+										refuelTen,
+										refuel100,
+									}):SetFont("XSMALL"),
+									ui:Label(l.PUMP_DOWN),
+									ui:HBox(5):PackEnd({
+										pumpDownOne,
+										pumpDownTen,
+										pumpDown100,
+									}):SetFont("XSMALL"),
 								}),
 							})
 					})

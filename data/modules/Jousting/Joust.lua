@@ -92,9 +92,11 @@ local joust = function (player)
 end
 
 local onEnterSystem = function (player)
-	if player:IsPlayer()
-		and Game.system.population == 0
-		and Engine.rand:Integer(3) < 1 then--XXX
+	if Game.system.population > 0
+		or DangerLevel == 0
+		or not player:IsPlayer()
+	then return end
+	if Engine.rand:Integer(3) < 1 then
 		multiplier = 100 - (100 * Game.system.lawlessness)
 		money = math.floor(player:GetMoney() * (multiplier/1000))
 		Event.Register("onShipHit", onShipHit)

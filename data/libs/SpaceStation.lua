@@ -1,4 +1,4 @@
--- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 local SpaceStation = import_core("SpaceStation")
@@ -68,7 +68,8 @@ function SpaceStation:GetEquipmentPrice (e)
 	if equipmentPrice[self][e] then
 		return equipmentPrice[self][e]
 	end
-	local mul = e:IsValidSlot("cargo") and ((100 + Game.system:GetCommodityBasePriceAlterations(e)) / 100) or 1
+	if e.purchasable == false then return e.price end
+	local mul = e:IsValidSlot("cargo") and ((100+(Game.system:GetCommodityBasePriceAlterations(e)*2))/100) or 1
 	return mul * e.price
 end
 

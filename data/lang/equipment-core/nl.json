@@ -205,6 +205,14 @@
 "description":"",
 "message":"Hoewel minder effectief dan een brandstofschep maakt het het binnenhalen van zowel brandstof als vracht mogelijk"
 },
+"NAV_ASSIST":{
+"description":"",
+"message":"Navigation assistant"
+},
+"NAV_ASSIST_DESCRIPTION":{
+"description":"",
+"message":"Software that adds a navigation assistant to the autopilot. It marks the next target."
+},
 "OUT_OF_SCANRANGE":{
 "description":"",
 "message":"Max scanbereik overschreden:"

@@ -1,4 +1,4 @@
--- Copyright © 2008-2015 Pioneer Developers. Author: impaktor / See AUTHORS.txt for details
+-- Copyright © 2008-2016 Pioneer Developers. Author: impaktor / See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 local Engine     = import("Engine")
@@ -174,21 +174,17 @@ end
 
 local onCreateBB = function (station)
 
--- instead of "for i = 1, Game.system.population do", get higher,
--- and more consistent resolution
---	local iter = 10
-
--- create one ad for each unit of population with some probability
---	for i = 1,iter do
---		if Engine.rand:Number(0,1) < N_equil * Game.system.population / iter then
---			makeAdvert(station)
---		end
---	end
---end
-
+	local num = math.ceil(Game.system.population)
+	num = Engine.rand:Integer(0,num and num < 3 or 2)
+	if num > 0 then
+		for i = 1,num do
+			makeAdvert(station)
+		end
+	end
+--[[
 	for i = 1, Engine.rand:Integer(1,math.abs(1 * (1 + Game.system.lawlessness) * 4)) do--XXX
 		makeAdvert(station)
-	end
+	end--]]
 end
 
 

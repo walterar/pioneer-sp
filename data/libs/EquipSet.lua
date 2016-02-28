@@ -1,4 +1,4 @@
--- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 local utils = import("utils")
@@ -13,6 +13,7 @@ EquipSet.default = {
 	autocombat=1,
 	beacon_receiver=1,
 	capacitor=1,
+	nav_assist=1,
 	cargo=0,
 	engine=1,
 	laser_front=1,

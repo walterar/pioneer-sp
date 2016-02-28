@@ -1,4 +1,4 @@
--- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 local Engine = import("Engine")
@@ -12,8 +12,8 @@ local ui = Engine.ui
 
 local MessageBox = import("ui/MessageBox")
 
-local l   = Lang.GetResource("ui-core")    or Lang.GetResource("ui-core","en")
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
+local l  = Lang.GetResource("ui-core")    or Lang.GetResource("ui-core","en")
+local ls = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous","en")
 
 local marketColumnValue = {
 	icon  = function (e) return e.icon_name and ui:Image("icons/goods/"..e.icon_name..".png") or "" end,
@@ -72,9 +72,9 @@ local commodityMarket = function (args)
 			marketTable:AddRow({
 				marketColumnValue["icon"](e),
 				ui:Expand("HORIZONTAL",marketColumnValue["name"](e)),	--names are aligned to the left (default)
-																		--expand the bame to make the whole row fill the horizontal space,
-																		--expands too much and cargo column is clipped by scrollbar, but fixed with margins on cargo column header (above) and rows (3 lines down)
---				ui:Align("RIGHT", marketColumnValue["price"](e)),		--numbers are aligned to the right for decimal places to be in the same spot
+-- expand the bame to make the whole row fill the horizontal space,
+-- expands too much and cargo column is clipped by scrollbar,
+--  but fixed with margins on cargo column header (above) and rows (3 lines down)
 				ui:Align("RIGHT", marketColumnValue["buy"](e)),		--numbers are aligned to the right for decimal places to be in the same spot
 				ui:Align("RIGHT", marketColumnValue["sell"](e)),		--numbers are aligned to the right for decimal places to be in the same spot
 				ui:Align("RIGHT", marketColumnValue["stock"](e)),
@@ -111,11 +111,17 @@ local commodityMarket = function (args)
 	local sellfromcargo = ui:Button(l.SELL)
 	local buyfrommarket = ui:Button(l.BUY)
 
-	local commonHeader = ui:HBox() --blank header for right pane, filled in by code once user has selected which commodity to trade in
-	local commonButtons = ui:HBox():PackEnd({ --pack all the buttons into one widget for future use, hbox lines up elements horizontally
+--blank header for right pane, filled in by code once user has selected which commodity to trade in
+	local commonHeader = ui:HBox()
 
---			sub100,						--first button does not need a left margin
---			ui:Margin(16,"LEFT",subten),	--all the following buttons needs a margin to separate it from the previous one
+--pack all the buttons into one widget for future use, hbox lines up elements horizontally
+	local commonButtons = ui:HBox():PackEnd({
+
+--first button does not need a left margin
+--			sub100,
+
+--all the following buttons needs a margin to separate it from the previous one
+--			ui:Margin(16,"LEFT",subten),
 --			ui:Margin(16,"LEFT",subone),
 
 			ui:Margin(2,"LEFT",tradereset),
@@ -147,7 +153,7 @@ local commodityMarket = function (args)
 				return
 			end
 			if price > playercash then
-				buysell:SetInnerWidget(ui:Label(l.YOU_NOT_ENOUGH_MONEY)
+				buysell:SetInnerWidget(ui:Label(l.INSUFFICIENT_FUNDS)
 					:SetFont("NORMAL")
 					:SetColor({ r = 1.0, g = 1.0, b = 0.0 }) --set the color of the message to lovely yellow
 				)
@@ -157,7 +163,7 @@ local commodityMarket = function (args)
 
 			if Game.player:GetEquipFree("cargo_life_support") > 0
 				and (tradecommodity == Eq.cargo.slaves or tradecommodity == Eq.cargo.live_animals) then
-				buysell:SetInnerWidget(ui:Label(myl.You_must_install_the_Life_Support_for_Cargo_Bay)
+				buysell:SetInnerWidget(ui:Label(ls.YOU_MUST_INSTALL_THE_LIFE_SUPPORT_FOR_CARGO_BAY)
 					:SetFont("NORMAL")
 					:SetColor({ r = 1.0, g = 1.0, b = 0.0 }) --set the color of the message to lovely yellow
 				)
@@ -175,8 +181,9 @@ local commodityMarket = function (args)
 		--how much would the desired amount of merchandise cost?
 		local tradecost = wantamount * price
 
-		--we cant trade more units than we have in stock
-		if delta > 0 and wantamount > stock then --this line is why stock needs to be initialized up there. its possible to get here without stock being set (?)
+--we cant trade more units than we have in stock
+--this line is why stock needs to be initialized up there. its possible to get here without stock being set (?)
+		if delta > 0 and wantamount > stock then
 			wantamount = stock
 		end
 
@@ -251,7 +258,7 @@ local commodityMarket = function (args)
 						--this widgetset is only show if the player has an amount of the commodity in cargo to sell
 						ui:Margin(32,"VERTICAL", --add some margins to separate it from the text above and confirm button below
 							ui:HBox():PackEnd({ --hbox lines up elements horizontally (left to right)
-								ui:Align("MIDDLE",ui:Label(n..myl.TONS_AVAILABLE_FOR)), --horizontally aligned as there is no free space left and right (no expand)
+								ui:Align("MIDDLE",ui:Label(n..ls.TONS_AVAILABLE_FOR)), --horizontally aligned as there is no free space left and right (no expand)
 								ui:Margin(16,"LEFT",sellfromcargo), --button to switch pane to selling
 							})
 						),
@@ -304,7 +311,7 @@ local commodityMarket = function (args)
 
 		if Game.player:GetEquipFree("cargo_life_support") > 0
 			and (tradecommodity == Eq.cargo.slaves or tradecommodity == Eq.cargo.live_animals) then
-				MessageBox.Message(myl.You_must_install_the_Life_Support_for_Cargo_Bay)
+				MessageBox.Message(ls.YOU_MUST_INSTALL_THE_LIFE_SUPPORT_FOR_CARGO_BAY)
 			return
 		end
 

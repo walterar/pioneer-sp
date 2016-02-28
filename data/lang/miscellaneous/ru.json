@@ -1,0 +1,304 @@
+{
+"ABDUCTION":{
+"description":"",
+"message":"Похищение"
+},
+"ACTIVE":{
+"description":"",
+"message":"Активно"
+},
+"AU":{
+"description":"ui-core",
+"message":"Au"
+},
+"AUTO_COMBAT_DEACTIVATE":{
+"description":"ui-core",
+"message":"WARNING! is disabled AutoCombat"
+},
+"ATTENTION_THIS_CAN_PROVE_COSTLY_YOUR_LIFE_IS_NOT_WORTH":{
+"description":"",
+"message":"Внимание! Это будет стоить вам дорого. Ваша жизнь не стоит "
+},
+"BUY":{
+"description":"Commodities and equipment prices","message":"покупка"
+},
+"CAPACITY":{
+"description":"",
+"message":"Емкость"
+},
+"CREW":{
+"description":"",
+"message":"Экипаж"
+},
+"CREW_VACANCIES":{
+"description":"",
+"message":"Экипаж Вакансия"
+},
+"CRIMINAL_RECORD":{
+"description":"police",
+"message":"Lo lamento Comandante. Sus antecedentes criminales son incompatibles con este tipo de tarea. Por favor, vuelva cuando resuelva ese tema."
+},
+"CHECK_WITH_THE_POLICE":{
+"description":"",
+"message":"Проверьте с Охрана"
+},
+"CURRENT_FACTION":{
+"description":"",
+"message":"Текущий фракцией:"
+},
+"CURRENT_POSITION":{
+"description":"",
+"message":"Текущее положение:"
+},
+"DAMAGE_REPORT":{
+"description":"",
+"message":"Отчет об Ущербе"
+},
+"ENTER_HIGH_ORBIT_AT_CURRENT_TARGET":{
+"description":"",
+"message":"Установить высокой орбите"
+},
+"ENTER_LOW_ORBIT_AT_CURRENT_TARGET":{
+"description":"",
+"message":"Ввести низкой орбите, на текущей цели"
+},
+"ENTER_MEDIUM_ORBIT_AT_CURRENT_TARGET":{
+"description":"",
+"message":"Ввести средних орбитах, на текущей цели"
+},
+"ENVIRONMENTAL_DAMAGE":{
+"description":"",
+"message":"экологического ущерба"
+},
+"ESCAPE":{
+"description":"",
+"message":"Побег"
+},
+"ESPIONAGE":{
+"description":"",
+"message":"Шпионаж"
+},
+"EXPERIENCE":{
+"description":"",
+"message":"опыта"
+},
+"FAILED":{
+"description":"",
+"message":"Не удалось"
+},
+"FEATURES":{
+"description":"",
+"message":"Особенности"
+},
+"FOR_JETTISON":{
+"description":"EconTrade",
+"message":" por arrojar "
+},
+"FRAUD":{
+"description":"",
+"message":"Мошенничество"
+},
+"FAILED_MISSIONS":{
+"description":"",
+"message":"неудачными миссиями:"
+},
+"HEAVY_SCOUT":{
+"description":"",
+"message":"Тяжелая Проводник"
+},
+"HYPERSPACE":{
+"description":"",
+"message":"Гиперпространственной"
+},
+"ILLEGAL_JUMP":{
+"description":"",
+"message":"Незаконное прыжок"
+},
+"INACTIVE":{
+"description":"",
+"message":"неактивный"
+},
+"IN_SPACE_OF":{
+"description":"",
+"message":"В пространстве "
+},
+"KM":{
+"description":"ui-core",
+"message":"Km"
+},
+"LIGHT_SCOUT":{
+"description":"",
+"message":"Свет Проводник"
+},
+"LIGHT_YEAR":{
+"description":"light_year",
+"message":" años luz"
+},
+"LY":{
+"description":"",
+"message":"Ly"
+},
+"LANDED_IN":{
+"description":"",
+"message":"Приземлился в "
+},
+"LOCAL":{
+"description":"",
+"message":"Местное"
+},
+"MAPPING":{
+"description":"",
+"message":"отображение"
+},
+"MAPPING_INTERRUPTED":{
+"description":"",
+"message":"СКАНИРОВАНИЕ ПРЕРВАНО. Слишком далеко от цели! Корректируйте орбиту."
+},
+"MEDIUM_SCOUT":{
+"description":"",
+"message":"Средний Проводник"
+},
+"MISSILE_BAYS":{
+"description":"",
+"message":"Ракетных отсеки"
+},
+"NEW_SHIPS_WITHOUT_STOCK":{
+"description":"",
+"message":"Рынок новых судов без складе\nво всей системе: "
+},
+"NOT_NAV_ASSIST":{
+"description":"ui-scout",
+"message":"To enable this feature you must install the Navigation Assistant"
+},
+"ORBIT":{
+"description":"ui-core",
+"message":"Orbit"
+},
+"ORIGIN":{
+"description":"",
+"message":"Происхождение:"
+},
+"PARTIAL":{
+"description":"",
+"message":"Partial"
+},
+"PORT_OR_VECINITY":{
+"description":"EconTrade",
+"message":" en puerto o cercanías."
+},
+"PREVIOUS_FACTION":{
+"description":"",
+"message":"Предыдущие фракцией:"
+},
+"PREVIOUS_POSITION":{
+"description":"",
+"message":"Оно происходит от:"
+},
+"REGISTRATION":{
+"description":"",
+"message":"регистрации:"
+},
+"REWARD":{
+"description":"ui-core",
+"message":"Reward:"
+},
+"RISK_AREA":{
+"description":"",
+"message":"Район риска"
+},
+"SELL":{
+"description":"Commodities and equipment prices","message":"продажа"
+},
+"SET_TARGET":{
+"description":"",
+"message":"Set Navigation Target"
+},
+"START_AT_ACHERNAR":{
+"description":"",
+"message":"Новый старт: Achernar"
+},
+"START_AT_LAVE":{
+"description":"",
+"message":"Новый старт: Lave"
+},
+"SUSPENDED":{
+"description":"",
+"message":"Подвесные"
+},
+"SHOTS_RECEIVED":{
+"description":"",
+"message":"Выстрелов поступила:"
+},
+"SHOTS_SUCCESSFUL":{
+"description":"",
+"message":"удачных выстрелов:"
+},
+"SUCCESSFUL_MISSIONS":{
+"description":"",
+"message":"Выполненные миссий:"
+},
+"SPACESHIP_PARTS":{
+"description":"",
+"message":"Spaceship Parts"
+},
+"TONS_AVAILABLE_FOR":{
+"description":"ui-scout",
+"message":"  Tons disponibles para"
+},
+"TRIP_BACK":{
+"description":"",
+"message":"Return"
+},
+"UNDOCK_AND_ENTER_LOW_ORBIT":{
+"description":"",
+"message":"Запуск и введите низкой орбите, на текущей цели"
+},
+"WARNING_YOU_MUST_GO_BACK":{
+"description":"Traffic",
+"message":"Предупреждение! Вы должны вернуть на станцию ​​сейчас или умереть."
+},
+"WEAPONS":{
+"description":"",
+"message":"Оружие"
+},
+"YOU_DESERVE_TO_BE_IMMORTAL":{
+"description":"",
+"message":"Вы заслуживаете быть бессмертным!"
+},
+"YOU_HAS_BEEN_FINED":{
+"description":"",
+"message":"Вы были оштрафованы на "
+},
+"YOU_HAVE_COMMITTED_A_CRIME_AND_MUST_PAY":{
+"description":"",
+"message":"Вы совершили преступление и должны платить "
+},
+"YOU_MUST_INSTALL_THE_LIFE_SUPPORT_FOR_CARGO_BAY":{
+"description":"",
+"message":"Необходимо установить жизнеобеспечения грузовой отсек"
+},
+"FOR_JETTISON":{
+"description":"",
+"message":" бросая "
+},
+"HAVE_ENOUGH_EXPERIENCE":{
+"description":"",
+"message":"У вас нет достаточного опыта для этой миссии."
+},
+"LIGHT_YEAR":{
+"description":"",
+"message":" световых лет"
+},
+"WARNING":{
+"description":"",
+"message":"WARNING! Attention Commander, {hostile} hostile ships are coming!"
+},
+"WORKING":{
+"description":"ui-scout",
+"message":"Working"
+},
+"PORT_OR_VECINITY":{
+"description":"",
+"message":" в порту или вблизи."
+}
+}

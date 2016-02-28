@@ -1,4 +1,4 @@
--- Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+-- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- modified for Pioneer Scout+ (c)2012-2015 by walterar <walterar2@gmail.com>
 -- Work in progress.
@@ -13,8 +13,8 @@ local NameGen    = import("NameGen")
 local Serializer = import("Serializer")
 local Eq         = import("Equipment")
 
-local l   = Lang.GetResource("module-goodstrader") or Lang.GetResource("module-goodstrader","en")
-local myl = Lang.GetResource("module-myl") or Lang.GetResource("module-myl","en")
+local l  = Lang.GetResource("module-goodstrader") or Lang.GetResource("module-goodstrader","en")
+local ls = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous","en")
 
 local num_names = 6 -- number of GOODS_TRADER_N names
 
@@ -66,7 +66,7 @@ local onChat = function (form, ref, option)
 		onClickBuy = function (ref, commodity)
 			if Game.player:GetEquipFree("cargo_life_support") > 0
 				and (commodity == Eq.cargo.slaves or commodity == Eq.cargo.live_animals) then
-					MessageBox.Message(myl.You_must_install_the_Life_Support_for_Cargo_Bay)
+					MessageBox.Message(ls.YOU_MUST_INSTALL_THE_LIFE_SUPPORT_FOR_CARGO_BAY)
 				return false
 			else
 				return onClick(ref)
@@ -100,7 +100,7 @@ local licon = "goods_trader"
 local onCreateBB = function (station)
 	local has_illegal_goods = false
 	for i,e in pairs(Eq.cargo) do
-		if not Game.system:IsCommodityLegal(e) then
+		if e.purchasable and not Game.system:IsCommodityLegal(e) then
 			has_illegal_goods = true
 		end
 	end
@@ -123,7 +123,7 @@ local onCreateBB = function (station)
 		ad.stock = {}
 		ad.price = {}
 		for _,e in pairs(Eq.cargo) do
-			if not Game.system:IsCommodityLegal(e) then
+			if e.purchasable and not Game.system:IsCommodityLegal(e) then
 				ad.stock[e] = Engine.rand:Integer(1,50)
 				-- going rate on the black market will be twice normal
 				ad.price[e] = ad.station:GetEquipmentPrice(e) * 2

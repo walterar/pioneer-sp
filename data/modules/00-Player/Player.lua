@@ -43,6 +43,7 @@ _G.MissileActive     = 0
 _G.autoCombat        = false
 _G.DEMPsystem        = false
 _G.MATTcapacitor     = false
+_G.NavAssist         = false
 _G.playerAlert       = "NONE"
 _G.damageControl     = ""
 _G.beaconReceiver    = false
@@ -103,6 +104,7 @@ local onEnterSystem = function (player)
 			local sbody = path:GetSystemBody()
 			if sbody.superType == "ROCKY_PLANET"
 				and sbody.type ~= "PLANET_ASTEROID" then
+--				and sbody.population == 0 then-- no funciona Mercury population > 0 / Moon population 0
 				for _=1, #nearbystations do
 					if nearbystations[_].path:GetSystemBody().parent == sbody then
 						sbody = nil
@@ -134,10 +136,10 @@ local onShipUndocked = function (ship, station)
 		Timer:CallAt(Game.time + timeundock, function ()
 			if trueSystem ~= Game.system then return end
 			local current_nav_target = ship:GetNavTarget()
---			if not current_nav_target then current_nav_target = ship:GetCombatTarget() end
+			if not current_nav_target then current_nav_target = ship:GetCombatTarget() end
 			if not current_nav_target or current_nav_target==station then
 				ship:AIEnterLowOrbit(target)
-			elseif current_nav_target:isa("Ship") then
+			elseif current_nav_target~=station then
 				ship:AIFlyTo(current_nav_target)
 			end
 		end)
@@ -166,6 +168,7 @@ local onGameStart = function ()
 		_G.autoCombat        = shipData.auto_combat or false
 		_G.DEMPsystem        = shipData.demp_system or false
 		_G.MATTcapacitor     = shipData.matt_capacitor or false
+		_G.NavAssist         = shipData.nav_assist or false
 		_G.playerAlert       = shipData.player_alert or "NONE"
 		_G.damageControl     = shipData.damage_control or ""
 		_G.beaconReceiver    = shipData.beacon_receiver or false
@@ -187,6 +190,7 @@ local onGameStart = function ()
 		_G.autoCombat        = false
 		_G.DEMPsystem        = false
 		_G.MATTcapacitor     = false
+		_G.NavAssist         = false
 		_G.playerAlert       = "NONE"
 		_G.damageControl     = ""
 		_G.beaconReceiver    = false
@@ -215,6 +219,7 @@ local onGameStart = function ()
 		local sbody = path:GetSystemBody()
 		if sbody.superType == "ROCKY_PLANET"
 			and sbody.type ~= "PLANET_ASTEROID" then
+--			and sbody.population == 0 then-- no funciona Mercury population > 0 / Moon population 0
 			for _=1, #nearbystations do
 				if nearbystations[_].path:GetSystemBody().parent == sbody then
 					sbody = nil
@@ -227,7 +232,7 @@ local onGameStart = function ()
 
 	loaded_data = nil
 
-	Timer:CallAt(Game.time + 1, function ()
+	Timer:CallAt(Game.time + 2, function ()
 		Comms.Message(l.YOUR_SHIP.." < "..Game.player.label.." > "..l.IS_REGISTERED_IN_OUR_DOMAIN,
 			Game.system.faction.militaryName)
 --		welcome()
@@ -367,14 +372,14 @@ local onShipFiring = function (ship)
 		if penalized then return end
 		penalized=true
 		local crime = "UNLAWFUL_WEAPONS_DISCHARGE"
-		Comms.ImportantMessage(string.interp(lc.X_CANNOT_BE_TOLERATED_HERE,
+		Comms.ImportantMessage(string.interp(lu.X_CANNOT_BE_TOLERATED_HERE,
 			{crime=Laws.CrimeType[crime].name}), Game.system.faction.policeName)
 		player:AddCrime(crime, crime_fine(crime))
 		Timer:CallAt(Game.time + 5, function ()
 			penalized = false
 		end)
 	else
-		if ship and ship:exists() and ship:DistanceTo(player) < 5000 and autoCombat then
+		if Game.system and ship and ship:exists() and ship:DistanceTo(player) < 5000 and autoCombat then
 			if Music.GetSongName() ~= FiringSong and Music.GetSongName() ~= dempSong then
 				Music.FadeIn(Music.GetSongName(), 0.5, false)
 				Music.Play(FiringSong, false)
@@ -434,8 +439,15 @@ Event.Register("onShipEquipmentChanged", function(ship, equipType)
 		_G.MATTcapacitor=false
 	end
 
+	if ship:GetEquipFree("nav_assist") < 1
+		and Game.player:GetEquipCountOccupied("autopilot") > 0 then
+		_G.NavAssist=true
+	else
+		_G.NavAssist=false
+	end
+
 	if Game.player:GetEquipCountOccupied("beacon_receiver") > 0
-			and Game.player:GetEquipCountOccupied("radar") > 0 then
+		and Game.player:GetEquipCountOccupied("radar") > 0 then
 		_G.beaconReceiver=true
 	else
 		_G.beaconReceiver=false
@@ -460,19 +472,19 @@ Event.Register("onAutoCombatON",function()
 		songOk()
 		local target = Game.player:GetCombatTarget()
 		if (target and target:exists()) and Game.player.flightState == "FLYING" then
-			if Game.player:DistanceTo(target) > 10000 then
-				Game.player:AIKamikaze(target)
-				Timer:CallEvery(1, function ()
-					if (target and target:exists()) and Game.player:DistanceTo(target) < 10000 then
-						Game.player:AIKill(target)
-						return true
-					else
-						return false
-					end
-				end)
-			else
+--			if Game.player:DistanceTo(target) > 10000 then
+--				Game.player:AIKamikaze(target)
+--				Timer:CallEvery(1, function ()
+--					if (target and target:exists()) and Game.player:DistanceTo(target) < 10000 then
+--						Game.player:AIKill(target)
+--						return true
+--					else
+--						return false
+--					end
+--				end)
+--			else
 				Game.player:AIKill(target)
-			end
+--			end
 		end
 	else
 		_G.autoCombat = false
@@ -507,6 +519,7 @@ local serialize = function ()
 			auto_combat        = autoCombat,
 			demp_system        = DEMPsystem,
 			matt_capacitor     = MATTcapacitor,
+			nav_assist         = NavAssist,
 			player_alert       = playerAlert,
 			damage_control     = damageControl,
 			beacon_eceiver     = beaconReceiver,
@@ -540,6 +553,7 @@ local onGameEnd = function ()
 	_G.autoCombat        = nil
 	_G.DEMPsystem        = nil
 	_G.MATTcapacitor     = nil
+	_G.NavAssist         = nil
 	_G.playerAlert       = nil
 	_G.damageControl     = nil
 	_G.beaconReceiver    = nil

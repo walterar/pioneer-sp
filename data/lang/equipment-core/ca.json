@@ -205,6 +205,14 @@
 "description":"",
 "message":"Although less effective than a fuel scoop it permits scooping of both cargo and fuel"
 },
+"NAV_ASSIST":{
+"description":"",
+"message":"Navigation assistant"
+},
+"NAV_ASSIST_DESCRIPTION":{
+"description":"",
+"message":"Software that adds a navigation assistant to the autopilot. It marks the next target."
+},
 "OUT_OF_SCANRANGE":{
 "description":"",
 "message":"Max scan range exceeded:"
@@ -246,7 +254,7 @@
 },
 "PULSECANNON_DUAL_2MW":{
 "description":"",
-"message":"2MW dual-fire pulse cannon"
+"message":"Canó de pulses d'2MW, doble"
 },
 "PULSECANNON_RAPID_2MW":{
 "description":"",

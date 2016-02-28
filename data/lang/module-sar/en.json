@@ -1,15 +1,23 @@
 {
+"AU":{
+"description":"",
+"message":"Au"
+},
 "BOARDED_PASSENGER":{
 "description":"",
 "message":"{name} has boarded the ship."
+},
+"COMMODITIES":{
+"description":"",
+"message":"Product"
 },
 "COULD_YOU_REPEAT_THE_ORIGINAL_REQUEST":{
 "description":"",
 "message":"Could you repeat the original request?"
 },
-"DANGER":{
+"CREW":{
 "description":"",
-"message":"Danger:"
+"message":"Crew"
 },
 "DEADLINE":{
 "description":"",
@@ -18,6 +26,10 @@
 "DELIVERED_PASSENGER":{
 "description":"",
 "message":"{name} has left the ship."
+},
+"DELIVERY":{
+"description":"",
+"message":"DELIVERY"
 },
 "DISTANCE":{
 "description":"",
@@ -209,7 +221,7 @@
 },
 "FLAVOUR_2_TYPEOFHELPTEXT":{
 "description":"",
-"message":"The pilot is requesting 1 ton of hydrogen fuel."
+"message":"The pilot is requesting {load} ton of {cargo} fuel."
 },
 "FLAVOUR_3_ADTEXT":{
 "description":"",
@@ -265,7 +277,7 @@
 },
 "FLAVOUR_4_SUCCESSMSG":{
 "description":"",
-"message":"Very good. We will recommend you for future assignments.."
+"message":"Very good. We will recommend you for future assignments."
 },
 "FLAVOUR_4_TRANSFERMSG":{
 "description":"",
@@ -273,7 +285,7 @@
 },
 "FLAVOUR_4_TYPEOFHELPTEXT":{
 "description":"",
-"message":"The pilot is asking for 1 ton of hydrogen fuel."
+"message":"The pilot is asking for {load} ton of {cargo} fuel."
 },
 "FLAVOUR_5_ADTEXT":{
 "description":"",
@@ -293,7 +305,7 @@
 },
 "FLAVOUR_5_LOCATIONTEXT":{
 "description":"",
-"message":"The target ship is currently drifting within {dist} km from here. You will have to track down the exact location yourself."
+"message":"The target ship is currently drifting within {dist} from here. You will have to track down the exact location yourself."
 },
 "FLAVOUR_5_SUCCESSMSG":{
 "description":"",
@@ -305,7 +317,7 @@
 },
 "FLAVOUR_5_TYPEOFHELPTEXT":{
 "description":"",
-"message":"We request the delivery of 1 ton of hydrogen fuel to the ship."
+"message":"We request the delivery of {load} ton of {cargo} fuel to the ship."
 },
 "FLAVOUR_6_ADTEXT":{
 "description":"",
@@ -325,7 +337,7 @@
 },
 "FLAVOUR_6_LOCATIONTEXT":{
 "description":"",
-"message":"Last known position was the surface of {planet}  Lat: {lat} / Lon: {long}, {system} system, [{sectorx},{sectory},{sectorz}], {dist} ly away from here."
+"message":"Last known position was the surface of {planet}  Lat: {lat} / Lon: {long}, {system} system, [{sectorx},{sectory},{sectorz}], {dist} away from here."
 },
 "FLAVOUR_6_SUCCESSMSG":{
 "description":"",
@@ -357,7 +369,7 @@
 },
 "FLAVOUR_7_LOCATIONTEXT":{
 "description":"",
-"message":"You will find the ship in the {system} [{sectorx},{sectory},{sectorz}] system, {dist} ly from here. It is being kept in orbit around {planet}."
+"message":"You will find the ship in the {system} [{sectorx},{sectory},{sectorz}] system, {dist} from here. It is being kept in orbit around {planet}."
 },
 "FLAVOUR_7_SUCCESSMSG":{
 "description":"",
@@ -370,6 +382,38 @@
 "FLAVOUR_7_TYPEOFHELPTEXT":{
 "description":"",
 "message":"We can't return the ship without minimal crew present. I am searching for someone willing to transport a replacement crew of {deliver_crew} to our starship immediately."
+},
+"FLAVOUR_8_ADTEXT":{
+"description":"",
+"message":"SHIP WITHOUT FUEL in system {system} to {dist}."
+},
+"FLAVOUR_8_FAILUREMSG":{
+"description":"",
+"message":"It's too late. Their services are no longer needed."
+},
+"FLAVOUR_8_HOWMUCHTIMETEXT":{
+"description":"",
+"message":"The pilot expects you to deliver the fuel before {due}."
+},
+"FLAVOUR_8_INTROTEXT":{
+"description":"",
+"message":"{starport} Air Traffic Control has been informed of a ship in distress in the system {system}. The ship <{ship} {shiplabel}> ran out of fuel. The pilot, pay {cash} for resupply."
+},
+"FLAVOUR_8_LOCATIONTEXT":{
+"description":"",
+"message":"The spacecraft is orbiting {planet} in {system} [{sectorx}, {sectory}, {sectorz}], {dist} from here."
+},
+"FLAVOUR_8_SUCCESSMSG":{
+"description":"",
+"message":"Good work! Count on our confidence in the future."
+},
+"FLAVOUR_8_TRANSFERMSG":{
+"description":"",
+"message":"{unit} ton of {fuel} has been transferred."
+},
+"FLAVOUR_8_TYPEOFHELPTEXT":{
+"description":"",
+"message":"The pilot requested {load} ton of {cargo}"
 },
 "FULL_CARGO":{
 "description":"",
@@ -399,21 +443,29 @@
 "description":"",
 "message":"Interaction distance reached. Please wait {seconds} seconds for the transfer."
 },
-"IN_SYSTEM":{
-"description":"",
-"message":"In System:"
-},
 "IT_MUST_BE_COMPLETED_BY":{
 "description":"",
-"message":"It must be completed by"
+"message":"It must be completed by "
 },
-"LOCATION":{
+"KM":{
 "description":"",
-"message":"Location:"
+"message":"Km"
+},
+"LAST_KNOWN_LOCATION":{
+"description":"",
+"message":"Last known location:"
+},
+"LAT":{
+"description":"",
+"message":"Lat:"
+},
+"LON":{
+"description":"",
+"message":"Lon:"
 },
 "LY":{
 "description":"",
-"message":"ly"
+"message":"Ly"
 },
 "MISSING_COMM":{
 "description":"",
@@ -427,13 +479,37 @@
 "description":"",
 "message":"Cannot complete transfer. Passengers missing."
 },
+"MISSING_PASSENGER":{
+"description":"",
+"message":"Cannot complete transfer. Passenger missing."
+},
 "OK_AGREED":{
 "description":"",
 "message":"Ok, agreed."
 },
+"ORBIT":{
+"description":"",
+"message":"Orbit"
+},
 "PARTIAL":{
 "description":"",
 "message":"Thank you for your efforts. I hope you will return to complete the task!"
+},
+"PASSENGERS":{
+"description":"",
+"message":"Passengers"
+},
+"PAYMENT_LOCATION":{
+"description":"",
+"message":"Payment location:"
+},
+"PICKUP":{
+"description":"",
+"message":"PICKUP"
+},
+"PLACE_OF_ASSISTANCE":{
+"description":"",
+"message":"At the place of assistance"
 },
 "PLEASE_LAND":{
 "description":"",
@@ -587,6 +663,10 @@
 "description":"",
 "message":"Return To:"
 },
+"REWARD":{
+"description":"",
+"message":"Reward:"
+},
 "SAR":{
 "description":"",
 "message":"Search & Rescue"
@@ -598,6 +678,10 @@
 "SYSTEM":{
 "description":"",
 "message":"System:"
+},
+"TARGET_SHIP_ID":{
+"description":"",
+"message":"Target ship ID:"
 },
 "THANK_YOU_ACCEPTANCE_TXT":{
 "description":"",

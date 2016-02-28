@@ -427,7 +427,7 @@
 },
 "GAME_LOAD_CANNOT_OPEN":{
 "description":"",
-"message":"Сохранить файл '%filename' не может быть найден (или игра не имеет доступа, чтобы открыть его)."
+"message":"Сохранение '%filename' не найдено или у игры нет доступа к файлу."
 },
 "GAME_LOAD_CORRUPT":{
 "description":"",

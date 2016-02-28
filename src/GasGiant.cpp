@@ -1,4 +1,4 @@
-// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "libs.h"
@@ -188,7 +188,7 @@ public:
 
 	double frac;
 
-	std::unique_ptr<unsigned short[]> indices;
+	std::unique_ptr<Uint32[]> indices;
 	RefCountedPtr<Graphics::IndexBuffer> indexBuffer;
 
 	GasPatchContext(const int _edgeLen) : edgeLen(_edgeLen) {
@@ -208,7 +208,7 @@ public:
 		indices.reset();
 	}
 
-	int GetIndices(std::vector<unsigned short> &pl)
+	int GetIndices(std::vector<Uint32> &pl)
 	{
 		// calculate how many tri's there are
 		const int tri_count = IDX_VBO_COUNT_ALL_IDX()/3;
@@ -229,8 +229,8 @@ public:
 		frac = 1.0 / double(edgeLen-1);
 
 		// also want vtx indices for tris not touching edge of patch 
-		indices.reset(new unsigned short[IDX_VBO_COUNT_ALL_IDX()]);
-		unsigned short *idx = indices.get();
+		indices.reset(new Uint32[IDX_VBO_COUNT_ALL_IDX()]);
+		Uint32 *idx = indices.get();
 		for (int x=0; x<edgeLen-1; x++) {
 			for (int y=0; y<edgeLen-1; y++) {
 				idx[0] = x + edgeLen*y;
@@ -246,18 +246,18 @@ public:
 		}
 
 		// these will hold the optimised indices
-		std::vector<unsigned short> pl_short;
+		std::vector<Uint32> pl_short;
 
 		// populate the N indices lists from the arrays built during InitTerrainIndices()
 		// iterate over each index list and optimize it
-		unsigned int tri_count = GetIndices(pl_short);
-		VertexCacheOptimizerUShort vco;
-		VertexCacheOptimizerUShort::Result res = vco.Optimize(&pl_short[0], tri_count);
+		Uint32 tri_count = GetIndices(pl_short);
+		VertexCacheOptimizerUInt vco;
+		VertexCacheOptimizerUInt::Result res = vco.Optimize(&pl_short[0], tri_count);
 		assert(0 == res);
 
 		//create buffer & copy
 		indexBuffer.Reset(Pi::renderer->CreateIndexBuffer(pl_short.size(), Graphics::BUFFER_USAGE_STATIC));
-		Uint16* idxPtr = indexBuffer->Map(Graphics::BUFFER_MAP_WRITE);
+		Uint32* idxPtr = indexBuffer->Map(Graphics::BUFFER_MAP_WRITE);
 		for (Uint32 j = 0; j < pl_short.size(); j++) {
 			idxPtr[j] = pl_short[j];
 		}
@@ -333,7 +333,7 @@ public:
 		if (!frustum.TestPoint(clipCentroid, clipRadius))
 			return;
 
-		Graphics::Material *mat = gasSphere->GetSurfaceMaterial();
+		RefCountedPtr<Graphics::Material> mat = gasSphere->GetSurfaceMaterial();
 		Graphics::RenderState *rs = gasSphere->GetSurfRenderState();
 
 		const vector3d relpos = clipCentroid - campos;
@@ -342,7 +342,7 @@ public:
 		Pi::statSceneTris += 2*(ctx->edgeLen-1)*(ctx->edgeLen-1);
 		++Pi::statNumPatches;
 
-		renderer->DrawBufferIndexed(m_vertexBuffer.get(), ctx->indexBuffer.Get(), rs, mat);
+		renderer->DrawBufferIndexed(m_vertexBuffer.get(), ctx->indexBuffer.Get(), rs, mat.Get());
 		renderer->GetStats().AddToStatCount(Graphics::Stats::STAT_PATCHES, 1);
 	}
 };
@@ -420,7 +420,7 @@ bool GasGiant::AddTextureFaceResult(STextureFaceResult *res)
 		const Graphics::TextureDescriptor texDesc(
 			Graphics::TEXTURE_RGBA_8888, 
 			dataSize, texSize, Graphics::LINEAR_CLAMP, 
-			true, false, 0, Graphics::TEXTURE_CUBE_MAP);
+			true, false, false, 0, Graphics::TEXTURE_CUBE_MAP);
 		m_surfaceTexture.Reset(Pi::renderer->CreateTexture(texDesc));
 
 		// update with buffer from above
@@ -439,7 +439,7 @@ bool GasGiant::AddTextureFaceResult(STextureFaceResult *res)
 		}
 
 		// change the planet texture for the new higher resolution texture
-		if( m_surfaceMaterial.get() ) {
+		if( m_surfaceMaterial.Get() ) {
 			m_surfaceMaterial->texture0 = m_surfaceTexture.Get();
 		}
 	}
@@ -476,7 +476,7 @@ void GasGiant::GenerateTexture()
 		const Graphics::TextureDescriptor texDesc(
 			Graphics::TEXTURE_RGBA_8888, 
 			dataSize, texSize, Graphics::LINEAR_CLAMP, 
-			false, false, 0, Graphics::TEXTURE_CUBE_MAP);
+			false, false, false, 0, Graphics::TEXTURE_CUBE_MAP);
 		m_surfaceTextureSmall.Reset(Pi::renderer->CreateTexture(texDesc));
 
 		const Terrain *pTerrain = GetTerrain();
@@ -549,6 +549,7 @@ void GasGiant::Update()
 
 void GasGiant::Render(Graphics::Renderer *renderer, const matrix4x4d &modelView, vector3d campos, const float radius, const std::vector<Camera::Shadow> &shadows)
 {
+	PROFILE_SCOPED()
 	if( !m_surfaceTexture.Valid() )
 	{
 		// Use the fact that we have a patch as a latch to prevent repeat generation requests.
@@ -595,7 +596,7 @@ void GasGiant::Render(Graphics::Renderer *renderer, const matrix4x4d &modelView,
 			// make atmosphere sphere slightly bigger than required so
 			// that the edges of the pixel shader atmosphere jizz doesn't
 			// show ugly polygonal angles
-			DrawAtmosphereSurface(renderer, trans, campos, m_materialParameters.atmosphere.atmosRadius*1.01, m_atmosRenderState, m_atmosphereMaterial.get());
+			DrawAtmosphereSurface(renderer, trans, campos, m_materialParameters.atmosphere.atmosRadius*1.01, m_atmosRenderState, m_atmosphereMaterial);
 		}
 	}
 
@@ -638,6 +639,7 @@ void GasGiant::SetUpMaterials()
 
 	//blended
 	rsd.blendMode = Graphics::BLEND_ALPHA_ONE;
+	rsd.cullMode = Graphics::CULL_NONE;
 	rsd.depthWrite = false;
 	m_atmosRenderState = Pi::renderer->CreateRenderState(rsd);
 
@@ -659,7 +661,7 @@ void GasGiant::SetUpMaterials()
 		surfDesc.quality |= Graphics::HAS_ECLIPSES;
 	}
 	surfDesc.textures = 1;
-	m_surfaceMaterial.reset(Pi::renderer->CreateMaterial(surfDesc));
+	m_surfaceMaterial.Reset(Pi::renderer->CreateMaterial(surfDesc));
 	assert(m_surfaceTextureSmall.Valid());
 	m_surfaceMaterial->texture0 = m_surfaceTexture.Valid() ? m_surfaceTexture.Get() : m_surfaceTextureSmall.Get();
 
@@ -670,7 +672,7 @@ void GasGiant::SetUpMaterials()
 		if (bEnableEclipse) {
 			skyDesc.quality |= Graphics::HAS_ECLIPSES;
 		}
-		m_atmosphereMaterial.reset(Pi::renderer->CreateMaterial(skyDesc));
+		m_atmosphereMaterial.Reset(Pi::renderer->CreateMaterial(skyDesc));
 	}
 }
 

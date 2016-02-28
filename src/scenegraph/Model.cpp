@@ -1,4 +1,4 @@
-// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "Model.h"
@@ -278,7 +278,7 @@ void Model::DrawCollisionMesh()
 	if( !m_collisionMeshVB.Valid() )
 	{
 		const std::vector<vector3f> &vertices = m_collMesh->GetGeomTree()->GetVertices();
-		const Uint16 *indices = m_collMesh->GetGeomTree()->GetIndices();
+		const Uint32 *indices = m_collMesh->GetGeomTree()->GetIndices();
 		const unsigned int *triFlags = m_collMesh->GetGeomTree()->GetTriFlags();
 		const unsigned int numIndices = m_collMesh->GetGeomTree()->GetNumTris() * 3;
 

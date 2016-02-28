@@ -1,4 +1,4 @@
-// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "LabelOverlay.h"
@@ -125,7 +125,7 @@ void LabelOverlay::DrawLabelText(const Marker &m, const vector2f &screen_pos)
 		Graphics::VertexArray va(Graphics::ATTRIB_POSITION | Graphics::ATTRIB_DIFFUSE | Graphics::ATTRIB_UV0);
 		m_font->PopulateString(va, m.text, 0.0f, 0.0f, Color::WHITE);
 		if (va.GetNumVerts() > 0) {
-			vb = m_font->CreateVertexBuffer(va, m.text);
+			vb = m_font->CreateVertexBuffer(va, m.text, true);
 			m_font->RenderBuffer(vb, m.color);
 		}
 	}

@@ -1,4 +1,4 @@
-// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "Win32Setup.h"
@@ -37,7 +37,7 @@ namespace FileSystem {
 		}
 
 		std::wstring path(appdata_path);
-		path += L"/Pioneersp";
+		path += L"/Pioneer";
 
 		if (!PathFileExistsW(path.c_str())) {
 			if (SHCreateDirectoryExW(0, path.c_str(), 0) != ERROR_SUCCESS) {

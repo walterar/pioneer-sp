@@ -1,4 +1,4 @@
-// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "Planet.h"
@@ -226,7 +226,7 @@ void Planet::GenerateRings(Graphics::Renderer *renderer)
 
 	const vector2f texSize(RING_TEXTURE_WIDTH, RING_TEXTURE_LENGTH);
 	const Graphics::TextureDescriptor texDesc(
-			Graphics::TEXTURE_RGBA_8888, texSize, Graphics::LINEAR_REPEAT, true);
+			Graphics::TEXTURE_RGBA_8888, texSize, Graphics::LINEAR_REPEAT, true, true, true, 0, Graphics::TEXTURE_2D);
 
 	m_ringTexture.Reset(renderer->CreateTexture(texDesc));
 	m_ringTexture->Update(

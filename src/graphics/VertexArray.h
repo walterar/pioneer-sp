@@ -1,4 +1,4 @@
-// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #ifndef _VERTEXARRAY_H
@@ -8,8 +8,6 @@
 #include "Types.h"
 
 namespace Graphics {
-
-typedef unsigned int AttributeSet;
 
 /*
  * VertexArray is a multi-purpose vertex container. Users specify
@@ -25,11 +23,11 @@ public:
 	~VertexArray();
 
 	//check presence of an attribute
-	bool HasAttrib(VertexAttrib v) const;
-	unsigned int GetNumVerts() const;
-	AttributeSet GetAttributeSet() const { return m_attribs; }
+	__inline bool HasAttrib(const VertexAttrib v) const	{ return (m_attribs & v) != 0; }
+	__inline size_t GetNumVerts() const { return position.size(); }
+	__inline AttributeSet GetAttributeSet() const { return m_attribs; }
 
-	bool IsEmpty() const { return position.empty(); }
+	__inline bool IsEmpty() const { return position.empty(); }
 
 	//removes vertices, does not deallocate space
 	void Clear();

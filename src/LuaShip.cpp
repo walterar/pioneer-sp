@@ -1,4 +1,4 @@
-// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "LuaObject.h"
@@ -180,17 +180,17 @@ static int l_ship_set_fuel_percent(lua_State *l)
 
 	Ship *s = LuaObject<Ship>::CheckFromLua(1);
 
-	float percent = 100;
+	double percent = 100;
 	if (lua_isnumber(l, 2)) {
-		percent = float(luaL_checknumber(l, 2));
-		if (percent < 0.0f || percent > 100.0f) {
+		percent = luaL_checknumber(l, 2);
+		if (percent < 0.0 || percent > 100.0) {
 			pi_lua_warn(l,
 				"argument out of range: Ship{%s}:SetFuelPercent(%g)",
 				s->GetLabel().c_str(), percent);
 		}
 	}
 
-	s->SetFuel(percent/100.f);
+	s->SetFuel(percent/100.0);
 
 	LUA_DEBUG_END(l, 0);
 
@@ -452,9 +452,11 @@ static int l_ship_undock(lua_State *l)
  *
  * > success = ship:BlastOff()
  *
+ * <Event.onShipBlastOff> will be triggered once unlanding is complete
+ *
  * Availability:
  *
- *  20151015
+ *  Scout+ 2015
  *
  * Status:
  *
@@ -582,6 +584,7 @@ static int l_ship_use_ecm(lua_State *l)
  *   path - a <SystemPath> for the destination system
  *
  *   warmup - the time, in seconds, needed for the engines to warm up.
+ *            Minimum time is one second, for saftey reasons.
  *
  *   duration - travel time, in seconds.
  *

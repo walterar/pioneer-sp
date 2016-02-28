@@ -1,4 +1,4 @@
-// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "Lua.h"
@@ -71,6 +71,23 @@
  *
  *   experimental
  */
+
+/*
+ * Attribute: fuelTankMass
+ *
+ * Total capacity propellant tank ship in tonnes.
+ * This is the value used when calculating hyperjump
+ * ranges and hull damage.?
+ *
+ * Availability:
+ *
+ *   unknown
+ *
+ * Status:
+ *
+ *   experimental
+ */
+
 
 /*
  * Attribute: basePrice
@@ -181,6 +198,52 @@
  * Table keyed on <Constants.EquipSlot>, containing maximum number of items
  * that can be held in that slot (ignoring mass)
  *
+ * example:
+ * local shipdefs = utils.build_array(utils.filter(function (_,def)
+ *  return def.tag == 'SHIP'
+ *    and def.basePrice > 0
+ *    and def.hyperdriveClass > 0
+ *    and def.equipSlotCapacity.atmo_shield > 0
+ *    and def.capacity > 29
+ *    and def.capacity < 501
+ *    and def.equipSlotCapacity.cabin >= pickup_pass
+ *    and def.maxCrew >= math.max(deliver_crew, pickup_crew)
+ *  end, pairs(ShipDef)))
+ *
+ * id
+ *
+ * name
+ *
+ * shipClass
+ *
+ * manufacturer
+ *
+ * modelName
+ *
+ * cockpitName
+ *
+ * tag
+ *
+ * angularThrust
+ *
+ * capacity
+ *
+ * hullMass
+ *
+ * fuelTankMass
+ *
+ * basePrice
+ *
+ * minCrew
+ *
+ * maxCrew
+ *
+ * hyperdriveClass
+ *
+ * effectiveExhaustVelocity
+ *
+ * thrusterFuelUse
+ *
  * Availability:
  *
  *   alpha 32
@@ -208,7 +271,7 @@ void LuaShipDef::Register()
 		pi_lua_settable(l, "shipClass",         st.shipClass.c_str());
 		pi_lua_settable(l, "manufacturer",      st.manufacturer.c_str());
 		pi_lua_settable(l, "modelName",         st.modelName.c_str());
-		pi_lua_settable(l, "cockpitName",		st.cockpitName.c_str());
+		pi_lua_settable(l, "cockpitName",       st.cockpitName.c_str());
 		pi_lua_settable(l, "tag",               EnumStrings::GetString("ShipTypeTag", st.tag));
 		pi_lua_settable(l, "angularThrust",     st.angThrust);
 		pi_lua_settable(l, "capacity",          st.capacity);
@@ -218,8 +281,8 @@ void LuaShipDef::Register()
 		pi_lua_settable(l, "minCrew",           st.minCrew);
 		pi_lua_settable(l, "maxCrew",           st.maxCrew);
 		pi_lua_settable(l, "hyperdriveClass",   st.hyperdriveClass);
-		pi_lua_settable(l, "effectiveExhaustVelocity", st.effectiveExhaustVelocity);
 		pi_lua_settable(l, "thrusterFuelUse",   st.GetFuelUseRate());
+		pi_lua_settable(l, "effectiveExhaustVelocity", st.effectiveExhaustVelocity);
 
 		lua_newtable(l);
 		for (int t = ShipType::THRUSTER_REVERSE; t < ShipType::THRUSTER_MAX; t++)

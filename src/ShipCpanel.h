@@ -1,4 +1,4 @@
-// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #ifndef _SHIPCPANEL_H
@@ -36,10 +36,15 @@ public:
 		OVERLAY_BOTTOM_RIGHT,
 		OVERLAY_BOTTOM_CENTER_1,
 		OVERLAY_BOTTOM_CENTER_2,
+		OVERLAY_MAX
 	};
 	void SetOverlayText(OverlayTextPos pos, const std::string &text);
 	void SetOverlayToolTip(OverlayTextPos pos, const std::string &text);
 	void ClearOverlay();
+	// Selects the specified button
+	// @param int gid the buttons group (0 = left, 1 = right)
+	// @param int idx the 0-based button index within the specified group
+	void SelectGroupButton(int gid, int idx);
 
 private:
 	void InitObject();
@@ -71,7 +76,6 @@ private:
 
 	sigc::connection m_connOnRotationDampingChanged;
 
-	MultiFuncSelectorWidget *m_mfsel;
 	ScannerWidget *m_scanner;
 	UseEquipWidget *m_useEquipWidget;
 	Gui::MultiStateImageButton *m_camButton;
@@ -82,7 +86,7 @@ private:
 	Gui::MultiStateImageButton *m_rotationDampingButton;
 	Gui::Image *m_alertLights[3];
 
-	Gui::Label *m_overlay[6];
+	Gui::Label *m_overlay[OVERLAY_MAX];
 };
 
 #endif /* _SHIP_CPANEL_H */

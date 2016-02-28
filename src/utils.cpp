@@ -1,4 +1,4 @@
-// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "utils.h"
@@ -159,9 +159,9 @@ std::string format_distance(double dist, int precision)
 	} else {
 		ss.precision(precision);
 		if (dist < AU*0.1) {
-			ss << (dist*0.001) << " km";
+			ss << (dist*0.001) << " Km";
 		} else {
-			ss << (dist/AU) << " AU";
+			ss << (dist/AU) << " Au";
 		}
 	}
 	return ss.str();

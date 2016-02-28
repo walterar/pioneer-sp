@@ -6,7 +6,7 @@
 const Uint32 MESSAGE_TIMEOUT  = 5000;
 const Uint32 FADE_TIME  = 1000;
 const Uint32 FADE_AFTER = MESSAGE_TIMEOUT - FADE_TIME;
-const Uint8 MAX_MESSAGES = 10;
+const Uint8 MAX_MESSAGES = 25;
 
 GameLog::Message::Message(const std::string &m, Uint32 t)
 	: msg(m), time(t), m_prevAlpha(0)
@@ -95,7 +95,7 @@ void GameLog::DrawHudMessages(Graphics::Renderer *r)
 			it->m_prevoffset = m_offset;
 			Graphics::VertexArray va(Graphics::ATTRIB_POSITION | Graphics::ATTRIB_DIFFUSE | Graphics::ATTRIB_UV0);
 			m_font->PopulateString(va, it->msg.c_str(), m_offset.x, m_offset.y + y, textColour);
-			it->m_vb.Reset( m_font->CreateVertexBuffer(va) );
+			it->m_vb.Reset( m_font->CreateVertexBuffer(va, true) );
 		}
 
 		m_font->RenderBuffer( it->m_vb.Get() );

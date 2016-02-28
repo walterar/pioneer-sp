@@ -1,3 +1,48 @@
+February 2016
+   * Minor changes and tweaks
+     * New behaviour of ESC button (#3618)
+
+   * Fixes
+     * Fix Character.lua / Ship.lua import relationship (#3617)
+     * Fix Search and Rescue bug not recognizing a competed mission (#3621)
+
+   * Internal Changes
+     * GL_INVALID_OPERATION warning (win32) (#3620)
+     * Reduce size of terrain patch skirts (#3622)
+     * Rendering cleanup, possible perf improvements (#3623)
+     * Cleaning up Pi.h (#3624)
+     * Fix terrain cracks (#3625)
+
+January 2016
+   * New Features
+     * Barnard's star update (#3584)
+     * Anisotropic Texture Filtering (#3586)
+
+   * Minor changes and tweaks
+     * Search and rescue missions tweaked and fixed #3589
+
+   * Fixes
+     * TextureDescriptor usage updated (#3591)
+     * Fix ObjectViewer crash/hang (#3588)
+     * Fix for broken SGM file loading (#3597)
+     * Show the correct pattern on the ship info screen (#3598)
+     * Fix serialization bug in S&R missions (#3607)
+     * Missing text fix (#3608)
+     * Fix for console window crash (#3611)
+     * Fix for #3602 and #3517 (#3603)
+     * Fix bad text size (#3612)
+     * Fix the vcacheopt type narrowing conversions that I caused (#3613)
+     * Fix number of police ships being opposite of lawlessness (#3614)
+
+   * Internal Changes
+     * Optional use of std::chrono for Profiler (#3593)
+     * SGM graceful failure (#3592)
+     * Convert geometry to use 32-bit indices (#3585)
+     * Remove TextureDescriptor default constructor arguments (#3594)
+     * Text rendering performance improvements (#3599)
+     * Fix #ifdef to allow compilation on various BSDs (#3600)
+     * MERRY HAPPY 2016 (#3615)
+
 December 2015
    * New Features
      * PgUp/PgDn increments time acceleration (configurable) (#3544)
@@ -21,6 +66,7 @@ December 2015
      * Fixed translations for the names of the Galactic arms (#3566)
      * Fixed OS X 10.11 OpenSSL issue (#3579)
      * Remove incorrect assertion on max planet detail (#3577)
+     * Fixed deprecated libraries in OS X 10.11 (#3580)
 
    * Internal Changes
      * Face parts (head/hair/eyes/nose/mouth) can now be non-gendered (#3548)

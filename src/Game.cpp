@@ -1,4 +1,4 @@
-// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "Game.h"
@@ -26,7 +26,7 @@
 #include "ui/Context.h"
 #include "galaxy/GalaxyGenerator.h"
 
-static const int  s_saveVersion   = 84;
+static const int  s_saveVersion   = 85;
 static const char s_saveStart[]   = "PIONEERSP";
 static const char s_saveEnd[]     = "END";
 
@@ -628,6 +628,9 @@ void Game::RequestTimeAccel(TimeAccel t, bool force)
 void Game::RequestTimeAccelInc(bool force)
 {
     switch(m_requestedTimeAccel) {
+        case Game::TIMEACCEL_PAUSED:
+            m_requestedTimeAccel = Game::TIMEACCEL_1X;
+            break;
         case Game::TIMEACCEL_1X:
             m_requestedTimeAccel = Game::TIMEACCEL_10X;
             break;
@@ -650,6 +653,9 @@ void Game::RequestTimeAccelInc(bool force)
 void Game::RequestTimeAccelDec(bool force)
 {
     switch(m_requestedTimeAccel) {
+        case Game::TIMEACCEL_1X:
+            m_requestedTimeAccel = Game::TIMEACCEL_PAUSED;
+            break;
         case Game::TIMEACCEL_10X:
             m_requestedTimeAccel = Game::TIMEACCEL_1X;
             break;

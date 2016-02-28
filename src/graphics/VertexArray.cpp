@@ -1,4 +1,4 @@
-// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "VertexArray.h"
@@ -28,16 +28,6 @@ VertexArray::VertexArray(AttributeSet attribs, int size)
 VertexArray::~VertexArray()
 {
 
-}
-
-bool VertexArray::HasAttrib(VertexAttrib v) const
-{
-	return (m_attribs & v) != 0;
-}
-
-unsigned int VertexArray::GetNumVerts() const
-{
-	return position.size();
 }
 
 void VertexArray::Clear()

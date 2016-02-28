@@ -1,4 +1,4 @@
-// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "LuaEngine.h"
@@ -359,6 +359,22 @@ static int l_engine_set_cockpit_enabled(lua_State *l)
 		Pi::player->InitCockpit();
 		if (enabled) Pi::player->OnCockpitActivated();
 	}
+	return 0;
+}
+
+static int l_engine_get_aniso_enabled(lua_State *l)
+{
+	lua_pushboolean(l, Pi::config->Int("UseAnisotropicFiltering") != 0);
+	return 1;
+}
+
+static int l_engine_set_aniso_enabled(lua_State *l)
+{
+	if (lua_isnone(l, 1))
+		return luaL_error(l, "SetAnisoEnabled takes one boolean argument");
+	const bool enabled = lua_toboolean(l, 1);
+	Pi::config->SetInt("UseAnisotropicFiltering", (enabled ? 1 : 0));
+	Pi::config->Save();
 	return 0;
 }
 
@@ -821,6 +837,9 @@ void LuaEngine::Register()
 
 		{ "GetCockpitEnabled", l_engine_get_cockpit_enabled },
 		{ "SetCockpitEnabled", l_engine_set_cockpit_enabled },
+
+		{ "GetAnisoFiltering", l_engine_get_aniso_enabled },
+		{ "SetAnisoFiltering", l_engine_set_aniso_enabled },
 
 		{ "GetAutosaveEnabled", l_engine_get_autosave_enabled },
 		{ "SetAutosaveEnabled", l_engine_set_autosave_enabled },

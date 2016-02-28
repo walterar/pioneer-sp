@@ -1,4 +1,4 @@
-// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "libs.h"
@@ -56,6 +56,7 @@ void SetupRenderer()
 	videoSettings.requestedSamples = s_config->Int("AntiAliasingMode");
 	videoSettings.vsync = false;
 	videoSettings.useTextureCompression = true;
+	videoSettings.useAnisotropicFiltering = true;
 	videoSettings.iconFile = OS::GetIconFilename();
 	videoSettings.title = "Model Compiler";
 	s_renderer.reset(Graphics::Init(videoSettings));

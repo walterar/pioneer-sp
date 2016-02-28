@@ -1,4 +1,4 @@
-// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "Context.h"
@@ -109,6 +109,15 @@ void Context::DropAllLayers()
 	m_layers.clear();
 	NewLayer();
 	m_needsLayout = true;
+}
+	
+void Context::HandleKeyDown(const KeyboardEvent &event) {
+	if (event.keysym.sym == SDLK_ESCAPE) {
+		if (m_layers.size()>1) {
+			// go back to previous layer
+			DropLayer();
+		}
+	}
 }
 
 Widget *Context::GetWidgetAt(const Point &pos)

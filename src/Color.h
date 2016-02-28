@@ -1,4 +1,4 @@
-// Copyright © 2008-2015 Pioneer Developers. See AUTHORS.txt for details
+// Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #ifndef _COLOR_H
@@ -59,6 +59,7 @@ struct Color4ub {
 	Color4ub operator/(const float f) const		{ return Color4ub(Uint8(r/f), Uint8(g/f), Uint8(b/f), Uint8(a/f)); }
 
 	friend bool operator==(const Color4ub& aIn, const Color4ub& bIn) { return ((aIn.r == bIn.r) && (aIn.g == bIn.g) && (aIn.b == bIn.b) && (aIn.a == bIn.a)); }
+	friend bool operator!=(const Color4ub& aIn, const Color4ub& bIn) { return ((aIn.r != bIn.r) || (aIn.g != bIn.g) || (aIn.b != bIn.b) || (aIn.a != bIn.a)); }
 
 	Color4f ToColor4f() const { return Color4f(r/255.0f, g/255.0f, b/255.0f, a/255.0f); }
 

@@ -53,8 +53,8 @@ local propellant = function()
 		prop = Eq.cargo.military_fuel
 --		prop = Eq.cargo.hydrogen
 	else
---		prop = Eq.cargo.hydrogen
-		prop = Eq.cargo.military_fuel
+		prop = Eq.cargo.hydrogen
+--		prop = Eq.cargo.military_fuel
 	end
 	return prop
 end

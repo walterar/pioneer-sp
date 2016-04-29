@@ -31,7 +31,6 @@ class TransferPlanner;
 class UIView;
 class View;
 class SDLGraphics;
-class ServerAgent;
 namespace Graphics { class Renderer; }
 namespace SceneGraph { class Model; }
 namespace Sound { class MusicPlayer; }
@@ -126,8 +125,6 @@ public:
 
 	static LuaNameGen *luaNameGen;
 
-	static ServerAgent *serverAgent;
-
 	static RefCountedPtr<UI::Context> ui;
 
 	static Random rng;
@@ -139,10 +136,10 @@ public:
 
 	static void SetAmountBackgroundStars(const float pc) { amountOfBackgroundStarsDisplayed = Clamp(pc, 0.01f, 1.0f); bRefreshBackgroundStars = true; }
 	static float GetAmountBackgroundStars() { return amountOfBackgroundStarsDisplayed; }
-	static bool MustRefreshBackgroundClearFlag() { 
+	static bool MustRefreshBackgroundClearFlag() {
 		const bool bRet = bRefreshBackgroundStars;
 		bRefreshBackgroundStars = false;
-		return bRet; 
+		return bRet;
 	}
 
 #if WITH_DEVKEYS

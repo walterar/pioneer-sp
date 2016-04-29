@@ -16,6 +16,8 @@ Table of Contents
 3 Building documentation
   3.1 Lua API - Natural Docs
   3.2 C++ source - Doxygen
+4 Faster startup
+  4.1 precompile models
 
 
 1 How to compile Pioneer
@@ -24,7 +26,7 @@ Table of Contents
 Pioneer is known to build on the following platforms and build systems:
 
 Linux: GNU Autotools with GCC or Clang
-Windows: Microsoft Visual C++ 2013 (Express Edition or Pro)
+Windows: Microsoft Visual C++ 2015 (Community or Pro)
 Windows: GNU Autotools with MXE (MinGW GCC) (cross-compile on Linux)
 OS X: XCode 4 or Homebrew or GNU Autotools
 
@@ -49,10 +51,10 @@ irc.freenode.net.
 
     Debian/Ubuntu
     -------------
-    g++
+    gcc >= 4.8.1 and < 5.0
+    g++ >= 4.8.1 and < 5.0
     automake
     pkg-config
-    libcurl-dev
     libsigc++-dev
     libsigc++-2.0-dev
     libsdl2-dev
@@ -60,7 +62,7 @@ irc.freenode.net.
     libfreetype6-dev
     libvorbis-dev
     libpng-dev
-    libassimp-dev >= 3.0
+    libassimp-dev >= 3.0 and < 3.2
     mesa-common-dev
 
    If your platform doesn't have assimp 3.0, you'll need to build it from
@@ -82,7 +84,7 @@ irc.freenode.net.
    in a directory side by side. Don't rename pioneer-thirdparty because the
    relative path to it is included in the project files.
 
-2. Open the pioneer solution from win32/vc2013Express.
+2. Open the pioneer solution from /win32/vc2015/pioneer.sln
 
 3. Build and run the project or solution.
 
@@ -96,7 +98,7 @@ irc.freenode.net.
 
    Now compile GCC and the dependencies needed for Pioneer:
 
-     make gcc freetype sdl2 sdl2_image vorbis libsigc++ assimp curl
+     make gcc freetype sdl2 sdl2_image vorbis libsigc++ assimp
 
 2. Now you can build Pioneer. Run ./bootstrap to generate your 'configure'
    file.
@@ -165,7 +167,7 @@ You will need the following libraries installed. The best method I found was to 
      libsdl2_image
      libvorbis
      libvorbisfile
-	
+
 Alternatively you can also run the script in the ./osx folder install_ports.sh
 
 The latest XCode project files are located in ./osx. Simply build the
@@ -292,3 +294,17 @@ visualizing inheritance as graphs. To enable LaTeX output, set GENERATE_LATEX
 1. Run doxygen from the doxygen/ folder.
 
 2. The html documentation will be available from doxygen/html/index.html
+
+
+
+4 Faster startup
+================
+
+4.1 Precompile model files
+--------------------------
+
+Long startup times for pioneer this can be alleviated by precompiling all
+models into *.sgm files. This uses the modelcompiler located in src/. From the
+pioneer root directory the following will batch compile all models
+
+1. ./src/modelcompiler -b inplace

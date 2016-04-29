@@ -30,7 +30,6 @@
 #include "LuaMusic.h"
 #include "LuaNameGen.h"
 #include "LuaRef.h"
-#include "LuaServerAgent.h"
 #include "LuaShipDef.h"
 #include "LuaSpace.h"
 #include "LuaTimer.h"
@@ -62,7 +61,6 @@
 #include "UIView.h"
 #include "KeyBindings.h"
 #include "EnumStrings.h"
-#include "ServerAgent.h"
 #include "galaxy/CustomSystem.h"
 #include "galaxy/GalaxyGenerator.h"
 #include "galaxy/StarSystem.h"
@@ -98,7 +96,6 @@ sigc::signal<void> Pi::onPlayerChangeFlightControlState;
 LuaSerializer *Pi::luaSerializer;
 LuaTimer *Pi::luaTimer;
 LuaNameGen *Pi::luaNameGen;
-ServerAgent *Pi::serverAgent;
 int Pi::keyModState;
 std::map<SDL_Keycode,bool> Pi::keyState; // XXX SDL2 SDLK_LAST
 char Pi::mouseButton[6];
@@ -281,7 +278,6 @@ static void LuaInit()
 	LuaLang::Register();
 	LuaEngine::Register();
 	LuaFileSystem::Register();
-	LuaServerAgent::Register();
 	LuaGame::Register();
 	LuaComms::Register();
 	LuaFormat::Register();
@@ -362,6 +358,7 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	FileSystem::userFiles.MakeDirectory("profiler");
 	profilerPath = FileSystem::JoinPathBelow(FileSystem::userFiles.GetRoot(), "profiler");
 #endif
+	PROFILE_SCOPED()
 
 	Pi::config = new GameConfig(options);
 
@@ -372,9 +369,9 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	if (strlen(PIONEERSP_EXTRAVERSION)) version += " (" PIONEERSP_EXTRAVERSION ")";
 	const char* platformName = SDL_GetPlatform();
 	if(platformName)
-		Output("Pioneer Scout Plus G26f %s on: %s\n\n", version.c_str(), platformName);
+		Output("Pioneer Scout Plus G27f %s on: %s\n\n", version.c_str(), platformName);
 	else
-		Output("Pioneer Scout Plus G26f %s but could not detect platform name.\n\n", version.c_str());
+		Output("Pioneer Scout Plus G27f %s but could not detect platform name.\n\n", version.c_str());
 
 	Output("%s\n", OS::GetOSInfoString().c_str());
 
@@ -416,7 +413,7 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	videoSettings.useAnisotropicFiltering = (config->Int("UseAnisotropicFiltering") != 0);
 	videoSettings.enableDebugMessages = (config->Int("EnableGLDebug") != 0);
 	videoSettings.iconFile = OS::GetIconFilename();
-	videoSettings.title = "Pioneer";
+	videoSettings.title = "Pioneer Scout Plus";
 
 	Pi::renderer = Graphics::Init(videoSettings);
 
@@ -469,19 +466,6 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 		Graphics::GetScreenWidth(),
 		Graphics::GetScreenHeight(),
 		ui_scale));
-
-	Pi::serverAgent = 0;
-	if (config->Int("EnableServerAgent")) {
-		const std::string endpoint(config->String("ServerEndpoint"));
-		if (endpoint.size() > 0) {
-			Output("Server agent enabled, endpoint: %s\n", endpoint.c_str());
-			Pi::serverAgent = new HTTPServerAgent(endpoint);
-		}
-	}
-	if (!Pi::serverAgent) {
-		Output("Server agent disabled\n");
-		Pi::serverAgent = new NullServerAgent();
-	}
 
 	LuaInit();
 
@@ -692,6 +676,9 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	planner = new TransferPlanner();
 
 	timer.Stop();
+#ifdef PIONEERSP_PROFILER
+	Profiler::dumphtml(profilerPath.c_str());
+#endif
 	Output("\n\nLoading took: %lf milliseconds\n", timer.millicycles());
 }
 
@@ -1013,13 +1000,15 @@ void Pi::HandleEscKey() {
 			if (view) {
 				// checks the template name
 				const char* tname = view->GetTemplateName();
-				if (!strcmp(tname, "GalacticView")) {
-					Pi::game->GetCpan()->SelectGroupButton(1, 0);
-					SetView(Pi::game->GetSectorView());
-				}
-				else if (!strcmp(tname, "InfoView") || !strcmp(tname, "StationView")) {
-					Pi::game->GetCpan()->SelectGroupButton(0, 0);
-					SetView(Pi::game->GetWorldView());
+				if(tname) {
+					if (!strcmp(tname, "GalacticView")) {
+						Pi::game->GetCpan()->SelectGroupButton(1, 0);
+						SetView(Pi::game->GetSectorView());
+					}
+					else if (!strcmp(tname, "InfoView") || !strcmp(tname, "StationView")) {
+						Pi::game->GetCpan()->SelectGroupButton(0, 0);
+						SetView(Pi::game->GetWorldView());
+					}
 				}
 			}
 		}
@@ -1146,7 +1135,6 @@ void Pi::Start()
 		_time += Pi::frameTime;
 		last_time = SDL_GetTicks();
 
-		Pi::serverAgent->ProcessResponses();
 	}
 
 	ui->DropAllLayers();
@@ -1222,8 +1210,6 @@ void Pi::MainLoop()
 #ifdef PIONEERSP_PROFILER
 		Profiler::reset();
 #endif
-
-		Pi::serverAgent->ProcessResponses();
 
 		const Uint32 newTicks = SDL_GetTicks();
 		double newTime = 0.001 * double(newTicks);

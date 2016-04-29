@@ -35,7 +35,8 @@ PlayerShipController::PlayerShipController() :
 	m_flightControlState(CONTROL_MANUAL),
 	m_lowThrustPower(0.25), // note: overridden by the default value in GameConfig.cpp (DefaultLowThrustPower setting)
 	m_mouseDir(0.0),
-	m_AutoCombatActivated(false)
+	m_AutoCombatActivated(false),
+	m_TracingJumpsActivated(false)
 {
 	const float deadzone = Pi::config->Float("JoystickDeadzone");
 	m_joystickDeadzone = Clamp(deadzone, 0.01f, 1.0f); // do not use (deadzone * deadzone) as values are 0<>1 range, aka: 0.1 * 0.1 = 0.01 or 1% deadzone!!! Not what player asked for!
@@ -51,6 +52,9 @@ PlayerShipController::PlayerShipController() :
 	m_AutoCombat = KeyBindings::AutoCombat.onPress.connect(
 		sigc::mem_fun(this, &PlayerShipController::AutoCombat));
 
+	m_TracingJumps = KeyBindings::TracingJumps.onPress.connect(
+		sigc::mem_fun(this, &PlayerShipController::TracingJumps));
+
 }
 
 PlayerShipController::~PlayerShipController()
@@ -58,6 +62,7 @@ PlayerShipController::~PlayerShipController()
 	m_connRotationDampingToggleKey.disconnect();
 	m_fireMissileKey.disconnect();
 	m_AutoCombat.disconnect();
+	m_TracingJumps.disconnect();
 }
 
 void PlayerShipController::SaveToJson(Json::Value &jsonObj, Space *space)
@@ -314,7 +319,7 @@ void PlayerShipController::PollControls(const float timeStep, const bool force_r
 				changeVec[axis] = (changeVec[axis] - dz) / (1.0f - dz);
 			}
 		}
-		
+
 		wantAngVel += changeVec;
 
 		if (wantAngVel.Length() >= 0.001 || force_rotation_damping || m_rotationDamping) {
@@ -450,6 +455,25 @@ void PlayerShipController::AutoCombat()
 		{
 			LuaEvent::Queue("onAutoCombatON", Pi::player);
 			m_AutoCombatActivated = true;
+			break;
+		}
+	}
+}
+
+void PlayerShipController::TracingJumps()
+{
+	switch (m_TracingJumpsActivated)
+		{
+		case true:
+		{
+			LuaEvent::Queue("onTracingJumpsOFF", Pi::player);
+			m_TracingJumpsActivated = false;
+			break;
+		}
+		case false:
+		{
+			LuaEvent::Queue("onTracingJumpsON", Pi::player);
+			m_TracingJumpsActivated = true;
 			break;
 		}
 	}

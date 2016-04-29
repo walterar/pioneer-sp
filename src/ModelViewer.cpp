@@ -12,6 +12,7 @@
 #include "scenegraph/DumpVisitor.h"
 #include "scenegraph/FindNodeVisitor.h"
 #include "scenegraph/BinaryConverter.h"
+#include "scenegraph/ModelSkin.h"
 #include "OS.h"
 #include "Pi.h"
 #include "StringF.h"
@@ -88,6 +89,7 @@ ModelViewer::ModelViewer(Graphics::Renderer *r, LuaManager *lm)
 : m_done(false)
 , m_screenshotQueued(false)
 , m_shieldIsHit(false)
+, m_settingColourSliders(false)
 , m_shieldHitPan(-1.48f)
 , m_frameTime(0.0)
 , m_renderer(r)
@@ -99,6 +101,7 @@ ModelViewer::ModelViewer(Graphics::Renderer *r, LuaManager *lm)
 , m_model(0)
 , m_modelName("")
 {
+	OS::RedirectStdio();
 	m_ui.Reset(new UI::Context(lm, r, Graphics::GetScreenWidth(), Graphics::GetScreenHeight()));
 	m_ui->SetMousePointer("icons/cursors/mouse_cursor.png", UI::Point(15, 8));
 
@@ -181,8 +184,7 @@ void ModelViewer::Run(const std::string &modelName)
 
 bool ModelViewer::OnPickModel(UI::List *list)
 {
-	SetModel(list->GetSelectedOption());
-	ResetCamera();
+	m_requestedModelName = list->GetSelectedOption();
 	return true;
 }
 
@@ -245,20 +247,44 @@ bool ModelViewer::OnToggleGuns(UI::CheckBox *w)
 	}
 
 	m_options.attachGuns = !m_options.attachGuns;
-	SceneGraph::Group *tagL = m_model->FindTagByName("tag_gun_left");
-	SceneGraph::Group *tagR = m_model->FindTagByName("tag_gun_right");
-	if (!tagL || !tagR) {
-		AddLog("Missing tags gun_left and gun_right in model");
+	SceneGraph::Model::TVecMT tags;
+	m_model->FindTagsByStartOfName("tag_gun_", tags);
+	if (tags.empty()) {
+		AddLog("Missing tags \"tag_gun_XXX\" in model");
 		return false;
 	}
 	if (m_options.attachGuns) {
-		tagL->AddChild(new SceneGraph::ModelNode(m_gunModel.get()));
-		tagR->AddChild(new SceneGraph::ModelNode(m_gunModel.get()));
+		for (auto tag : tags) {
+			tag->AddChild(new SceneGraph::ModelNode(m_gunModel.get()));
+		}
 	} else { //detach
 		//we know there's nothing else
-		tagL->RemoveChildAt(0);
-		tagR->RemoveChildAt(0);
+		for (auto tag : tags) {
+			tag->RemoveChildAt(0);
+		}
 	}
+	return true;
+}
+
+bool ModelViewer::OnRandomColor(UI::Widget*)
+{
+	if (!m_model) return false;
+
+	SceneGraph::ModelSkin skin;
+	skin.SetRandomColors(m_rng);
+	skin.Apply(m_model);
+
+	// We need this flag setting so that we don't override what we're changing in OnModelColorsChanged
+	m_settingColourSliders = true;
+	const std::vector<Color> &colors = skin.GetColors();
+	for(unsigned int i=0; i<3; i++) {
+		for(unsigned int j=0; j<3; j++) {
+			// use ToColor4f to get the colours in 0..1 range required
+			colorSliders[(i*3)+j]->SetValue(colors[i].ToColor4f()[j]);
+		}
+	}
+	m_settingColourSliders = false;
+
 	return true;
 }
 
@@ -568,6 +594,13 @@ void ModelViewer::MainLoop()
 
 		// end scene
 		m_renderer->SwapBuffers();
+
+		// if we've requested a different model then switch too it
+		if(!m_requestedModelName.empty()) {
+			SetModel(m_requestedModelName);
+			m_requestedModelName.clear();
+			ResetCamera();
+		}
 	}
 }
 
@@ -615,7 +648,8 @@ void ModelViewer::OnLightPresetChanged(unsigned int index, const std::string&)
 
 void ModelViewer::OnModelColorsChanged(float)
 {
-	if (!m_model) return;
+	if (!m_model || m_settingColourSliders) return;
+
 	//don't care about the float. Fetch values from all sliders.
 	std::vector<Color> colors;
 	colors.push_back(get_slider_color(colorSliders[0], colorSliders[1], colorSliders[2]));
@@ -876,6 +910,7 @@ void ModelViewer::SetModel(const std::string &filename)
 				it != loader.GetLogMessages().end(); ++it)
 			{
 				AddLog(*it);
+				Output("%s\n", (*it).c_str());
 			}
 		}
 
@@ -884,6 +919,7 @@ void ModelViewer::SetModel(const std::string &filename)
 		//set decal textures, max 4 supported.
 		//Identical texture at the moment
 		OnDecalChanged(0, "scout");
+		Output("\n\n");
 
 		SceneGraph::DumpVisitor d(m_model);
 		m_model->GetRoot()->Accept(d);
@@ -969,6 +1005,7 @@ void ModelViewer::SetupUI()
 	UI::SmallButton *reloadButton = nullptr;
 	UI::SmallButton *toggleGridButton = nullptr;
 	UI::SmallButton *hitItButton = nullptr;
+	UI::SmallButton *randomColours = nullptr;
 	UI::CheckBox *collMeshCheck = nullptr;
 	UI::CheckBox *showShieldsCheck = nullptr;
 	UI::CheckBox *gunsCheck = nullptr;
@@ -1010,6 +1047,11 @@ void ModelViewer::SetupUI()
 		add_pair(c, mainBox, hitItButton = c->SmallButton(), "Hit it!");
 		hitItButton->onClick.connect(sigc::bind(sigc::mem_fun(*this, &ModelViewer::OnHitIt), hitItButton));
 	}
+
+
+	add_pair(c, mainBox, randomColours = c->SmallButton(), "Random Colours");
+	randomColours->onClick.connect(sigc::bind(sigc::mem_fun(*this, &ModelViewer::OnRandomColor), randomColours));
+
 
 	//pattern selector
 	if (m_model->SupportsPatterns()) {

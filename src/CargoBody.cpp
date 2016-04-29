@@ -62,7 +62,7 @@ void CargoBody::Init()
 
 	SceneGraph::ModelSkin skin;
 	skin.SetColors(colors);
-	skin.SetDecal("pioneer");
+	skin.SetDecal("scout");
 	skin.Apply(GetModel());
 	GetModel()->SetColors(colors);
 

@@ -76,6 +76,7 @@ public:
 	void ToggleRotationDamping();
 	void FireMissile();
 	void AutoCombat();
+	void TracingJumps();
 
 	//targeting
 	//XXX AI should utilize one or more of these
@@ -100,6 +101,7 @@ private:
 	bool m_mouseActive;
 	bool m_rotationDamping;
 	bool m_AutoCombatActivated;
+	bool m_TracingJumpsActivated;
 	double m_mouseX;
 	double m_mouseY;
 	double m_setSpeed;
@@ -115,6 +117,7 @@ private:
 	sigc::connection m_connRotationDampingToggleKey;
 	sigc::connection m_fireMissileKey;
 	sigc::connection m_AutoCombat;
+	sigc::connection m_TracingJumps;
 };
 
 #endif

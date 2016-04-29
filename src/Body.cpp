@@ -203,13 +203,13 @@ void Body::SwitchToFrame(Frame *newFrame)
 
 void Body::UpdateFrame()
 {
-	if (!(m_flags & FLAG_CAN_MOVE_FRAME)) return;	
+	if (!(m_flags & FLAG_CAN_MOVE_FRAME)) return;
 
 	// falling out of frames
 	if (m_frame->GetRadius() < GetPosition().Length()) {
 		Frame *newFrame = GetFrame()->GetParent();
 		if (newFrame) { 						// don't fall out of root frame
-			Output("%s leaves frame %s\n", GetLabel().c_str(), GetFrame()->GetLabel().c_str());
+//			Output("%s leaves frame %s\n", GetLabel().c_str(), GetFrame()->GetLabel().c_str());
 			SwitchToFrame(newFrame);
 			return;
 		}
@@ -220,7 +220,7 @@ void Body::UpdateFrame()
 		const vector3d pos = GetPositionRelTo(kid);
 		if (pos.Length() >= kid->GetRadius()) continue;
 		SwitchToFrame(kid);
-		Output("%s enters frame %s\n", GetLabel().c_str(), kid->GetLabel().c_str());
+//		Output("%s enters frame %s\n", GetLabel().c_str(), kid->GetLabel().c_str());
 		break;
 	}
 }

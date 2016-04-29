@@ -429,7 +429,7 @@ bool Ship::OnDamage(Object *attacker, float kgDamage, const CollisionContact& co
 		m_stats.hull_mass_left -= dam;
 		Properties().Set("hullMassLeft", m_stats.hull_mass_left);
 		Properties().Set("hullPercent", 100.0f * (m_stats.hull_mass_left / float(m_type->hullMass)));
-		if (m_stats.hull_mass_left <= 0) {// menor que 0 ?
+		if (m_stats.hull_mass_left < 1) {// menor que 0 ?
 			if (attacker) {
 				if (attacker->IsType(Object::BODY))
 					LuaEvent::Queue("onShipDestroyed", this, dynamic_cast<Body*>(attacker));

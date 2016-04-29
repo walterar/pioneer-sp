@@ -31,8 +31,8 @@ Intro::Intro(Graphics::Renderer *r, int width, int height)
 	m_lights.push_back(Light(Graphics::Light::LIGHT_DIRECTIONAL, vector3f(0.f, 0.3f, 1.f), one, one));
 	m_lights.push_back(Light(Graphics::Light::LIGHT_DIRECTIONAL, vector3f(0.f, -1.f, 0.f), two, Color::BLACK));
 
-	m_skin.SetDecal("pioneer");
-	m_skin.SetLabel(Lang::PIONEER);
+	m_skin.SetDecal("scout");
+	m_skin.SetLabel(Lang::PIONEER_SCOUT_PLUS);
 
 	for (auto i : ShipType::player_ships) {
 		SceneGraph::Model *model = Pi::FindModel(ShipType::types[i].modelName)->MakeInstance();

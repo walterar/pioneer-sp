@@ -11,7 +11,7 @@
 #include <algorithm>
 #include <cerrno>
 
-#define WIN32_LEAN_AND_MEAN 
+#define WIN32_LEAN_AND_MEAN
 #define NOMINMAX
 #include <windows.h>
 // GetPiUserDir() needs these
@@ -37,7 +37,7 @@ namespace FileSystem {
 		}
 
 		std::wstring path(appdata_path);
-		path += L"/Pioneer";
+		path += L"/Pioneersp";
 
 		if (!PathFileExistsW(path.c_str())) {
 			if (SHCreateDirectoryExW(0, path.c_str(), 0) != ERROR_SUCCESS) {

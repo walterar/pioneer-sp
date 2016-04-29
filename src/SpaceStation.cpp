@@ -220,7 +220,7 @@ void SpaceStation::InitStation()
 	m_doorAnimation = model->FindAnimation("doors");
 
 	SceneGraph::ModelSkin skin;
-	skin.SetDecal("pioneer");
+	skin.SetDecal("scout");
 
 	if (model->SupportsPatterns()) {
 		skin.SetRandomColors(rand);

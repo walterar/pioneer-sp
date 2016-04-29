@@ -1,3 +1,52 @@
+April 2016
+   * New Features
+     * First commit of the Bluenose frieghter (#3668)
+     * Change to GetPosition and GetVelocity LuaShip functions (#3679)
+     * Back port some of Marcels hometowns mod (#3676)
+     * Scout+ Remove ServerAgent class for simple network communication (#3342)
+
+   * Fixes
+     * Fix ModelViewer crash (#3672)
+     * Fix editing the gas giants in ObjectViewer editor mode (#3677)
+
+   * Internal Changes
+     * NavLight Billboard Gathering (#3667)
+     * Change DrawPointSprites to really use Point Sprites (#3670)
+     * Lua debug tools, part one (#3675)
+     * Updated Xcode project to fix "missing vtable" error (#3686)
+     * Saving changes (#3684)
+     * SpawnShipNear velocity matching (#3674)
+     * Pre-convert to DDS more textures (#3687)
+     * Fire once warnings (#3689)
+
+March 2016
+   * New Features
+     * Ship stat planner addon for Blender. Exports ship.json (#3639)
+     * Bowfin fighter for Kaluri/CIW (#3641)
+     * Invisible disabled button for commodity market (#3605)
+     * Include modelcompiler in OSX build (#3660)
+
+   * Minor changes and tweaks
+     * gun locator tag fix (#3633)
+     * Ability to set Combat and Nav targets to null validly (#3634)
+     * Redirect stdout for modelviewer mode (#3640)
+     * Kanara resize (75%) (#3642)
+     * RandomColor Port for better random colours (#3644)
+     * Bowfin: Deleting some duplicate .dae mesh files (#3653)
+
+   * Fixes
+     * Fix rare crash. #3645
+     * Fix OSX shader compilation (#3652)
+     * Fix wrong price for Kanara (#3666)
+     * Fix crash on del/bkspc in sector map search for non-UTF8 char (#3662)
+
+   * Internal Changes
+     * Remove redundant LuaAPI function: SetEnabled() (#3491)
+     * vector2 template class (#3646)
+     * vector2 template class (#3646)
+     * Fix some GCC build warnings (#3661)
+     * Don't compress normal maps (#3663)
+
 February 2016
    * Minor changes and tweaks
      * New behaviour of ESC button (#3618)
@@ -5,6 +54,7 @@ February 2016
    * Fixes
      * Fix Character.lua / Ship.lua import relationship (#3617)
      * Fix Search and Rescue bug not recognizing a competed mission (#3621)
+     * Only get the SystemBody pointer on system bodies and NOT on ships (#3632)
 
    * Internal Changes
      * GL_INVALID_OPERATION warning (win32) (#3620)
@@ -12,6 +62,8 @@ February 2016
      * Rendering cleanup, possible perf improvements (#3623)
      * Cleaning up Pi.h (#3624)
      * Fix terrain cracks (#3625)
+     * Remove IGNORE_FLAG etc (#3628)
+     * Moar profiling (#3629)
 
 January 2016
    * New Features
@@ -240,7 +292,7 @@ March 2015
 February 2015
    * Fixes
      * Romanian characters added, fixes #3314 (#3318)
-     * Fix the libcurl linking for Profile, PreRelease and Debug (#3354)
+     * Fix the libcurl linking for Profile, PreRelease and Debug (#3354)-- not used in Scout+
 
    * Script and UI API changes
      * ServerAgent class for simple network communication (#3342)

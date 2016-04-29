@@ -89,13 +89,12 @@ static Body *_maybe_wrap_ship_with_cloud(Ship *ship, SystemPath *path, double du
  * Examples:
  *
  * > -- spawn a ship 5-6AU from the system centre
- * > local ship = Ship.Spawn("eagle_lrf", 5, 6)
+ * > local ship = Space.Spawn("eagle_lrf", 5, 6)
  *
  * > -- spawn a ship in the ~11AU hyperspace area and make it appear that it
  * > -- came from Sol and will arrive in ten minutes
- * > local ship = Ship.Spawn(
- * >     "flowerfairy", 9, 11,
- * >     { SystemPath:New(0,0,0), Game.time + 600 }
+ * > local ship = Space.Spawn("flowerfairy", 9, 11,
+ * >              { SystemPath:New(0,0,0), Game.time + 600 }
  * > )
  *
  * Availability:
@@ -152,7 +151,7 @@ static int l_space_spawn_ship(lua_State *l)
  *
  * Create a ship and place it in space near the given <Body>.
  *
- * > ship = Space.SpawnShip(type, body, min, max, hyperspace)
+ * > ship = Space.SpawnShipNear(type, body, dist, tune, hyperspace)
  *
  * Parameters:
  *
@@ -160,9 +159,9 @@ static int l_space_spawn_ship(lua_State *l)
  *
  *   body - the <Body> near which the ship should be spawned
  *
- *   min - minimum distance from the body to place the ship, in Km
+ *   dist - distance from the body to place the ship, in Km
  *
- *   max - maximum distance to place the ship
+ *   tune - fine tune to init vel (vel player + or - tune), in m/s
  *
  *   hyperspace - optional table containing hyperspace entry information. If
  *                this is provided the ship will not spawn directly. Instead,
@@ -177,8 +176,8 @@ static int l_space_spawn_ship(lua_State *l)
  *
  * Example:
  *
- * > -- spawn a ship 10km from the player
- * > local ship = Ship.SpawnNear("viper_police_craft", Game.player, 10, 10)
+ * > -- spawn a ship 10km from the player, to vel player + 10 m/s
+ * > local ship = Space.SpawnShipNear("viper_police_craft", Game.player, 10, 10)
  *
  * Availability:
  *
@@ -200,8 +199,8 @@ static int l_space_spawn_ship_near(lua_State *l)
 		luaL_error(l, "Unknown ship type '%s'", type);
 
 	Body *nearbody = LuaObject<Body>::CheckFromLua(2);
-	float min_dist = luaL_checknumber(l, 3);
-	float max_dist = luaL_checknumber(l, 4);
+	float dist = luaL_checknumber(l, 3);
+	float tune = luaL_checknumber(l, 4);
 
 	SystemPath *path = 0;
 	double due = -1;
@@ -214,7 +213,7 @@ static int l_space_spawn_ship_near(lua_State *l)
 
 	// XXX protect against spawning inside the body
 	Frame * newframe = nearbody->GetFrame();
-	const vector3d newPosition = (MathUtil::RandomPointOnSphere(min_dist, max_dist)* 1000.0) + nearbody->GetPosition();
+	const vector3d newPosition = (dist * 1000.0) + nearbody->GetPosition();
 
 	// If the frame is rotating and the chosen position is too far, use non-rotating parent.
 	// Otherwise the ship will be given a massive initial velocity when it's bumped out of the
@@ -227,6 +226,7 @@ static int l_space_spawn_ship_near(lua_State *l)
 	thing->SetFrame(newframe);;
 	thing->SetPosition(newPosition);
 	thing->SetVelocity(vector3d(0,0,0));
+	thing->SetVelocity(nearbody->GetVelocity() + tune);
 	Pi::game->GetSpace()->AddBody(thing);
 
 	LuaObject<Ship>::PushToLua(ship);
@@ -356,7 +356,7 @@ static int l_space_spawn_ship_parked(lua_State *l)
 	const matrix3x3d rot = matrix3x3d::RotateX(M_PI/2) * station->GetOrient();
 
 	ship->SetFrame(station->GetFrame());
-	ship->SetVelocity(vector3d(0.0));
+	ship->SetVelocity(vector3d(0,0,0));//0.0));
 	ship->SetPosition(parkPos);
 	ship->SetOrient(rot);
 
@@ -461,7 +461,7 @@ static int l_space_spawn_ship_landed(lua_State *l)
  * Example:
  *
  * > -- spawn a ship 10km from the player
- * > local ship = Ship.SpawnShipLandedNear("viper_police", Game.player, 10, 10)
+ * > local ship = Space.SpawnShipLandedNear("viper_police", Game.player, 10, 10)
  *
  * Availability:
  *

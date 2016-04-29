@@ -77,7 +77,6 @@ noinst_HEADERS = \
 	LuaRef.h \
 	LuaSerializer.h \
 	LuaShipDef.h \
-	LuaServerAgent.h \
 	LuaSpace.h \
 	LuaTable.h \
 	LuaTimer.h \
@@ -106,6 +105,8 @@ noinst_HEADERS = \
 	PropertyMap.h \
 	Quaternion.h \
 	Random.h \
+	RandomColor.h \
+	Range.h \
 	RefCounted.h \
 	SDLWrappers.h \
 	SectorView.h \
@@ -138,7 +139,6 @@ noinst_HEADERS = \
 	VideoLink.h \
 	View.h \
 	WorldView.h \
-	ServerAgent.h \
 	SmartPtr.h \
 	buildopts.h \
 	fixed.h \
@@ -217,7 +217,6 @@ pioneersp_SOURCES	= \
 	LuaPropertiedObject.cpp \
 	LuaRand.cpp \
 	LuaRef.cpp \
-	LuaServerAgent.cpp \
 	LuaSystemBody.cpp \
 	LuaSystemPath.cpp \
 	LuaSerializer.cpp \
@@ -246,11 +245,11 @@ pioneersp_SOURCES	= \
 	Polit.cpp \
 	Projectile.cpp \
 	PropertyMap.cpp \
+	RandomColor.cpp \
 	SDLWrappers.cpp \
 	SectorView.cpp \
 	Sensors.cpp \
 	Serializer.cpp \
-	ServerAgent.cpp \
 	StringF.cpp \
 	Sfx.cpp \
 	Shields.cpp \
@@ -301,7 +300,7 @@ pioneersp_LDADD = \
 pioneersp_LDADD += \
 	$(FREETYPE_LIBS) $(GL_LIBS) \
 	$(SDL2_LIBS) $(SIGC_LIBS) $(LUA_LIBS) $(VORBIS_LIBS) \
-	$(PNG_LIBS) $(CURL_LIBS) $(ASSIMP_LIBS) $(EXTRA_LIBS)
+	$(PNG_LIBS) $(ASSIMP_LIBS) $(EXTRA_LIBS)
 
 if BUILD_WIN32
 pioneersp_LDFLAGS = -Wl,-Map=pioneersp.map

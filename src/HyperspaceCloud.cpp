@@ -21,7 +21,7 @@
 using namespace Graphics;
 
 /** How long does a hyperspace cloud last for? 2 Days? */
-#define HYPERCLOUD_DURATION (60.0*60.0*24.0*2.0)
+#define HYPERCLOUD_DURATION (60.0)
 
 HyperspaceCloud::HyperspaceCloud(Ship *s, double dueDate, bool isArrival) : m_isBeingKilled(false)
 {

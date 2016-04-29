@@ -24,6 +24,7 @@ KEY_BINDING(targetObject, "BindTargetObject", Lang::TARGET_OBJECT_IN_SIGHTS, SDL
 KEY_BINDING(fireLaser, "BindFireLaser", Lang::FIRE_LASER, SDLK_SPACE, 0)
 KEY_BINDING(fireMissile, "BindFireMissile", Lang::FIRE_MISSILE, SDLK_m, 0)
 KEY_BINDING(AutoCombat, "BindAutoCombat", Lang::AUTO_COMBAT, SDLK_CAPSLOCK, 0)
+KEY_BINDING(TracingJumps, "BindTracingJumps", Lang::TRACING_JUMPS, SDLK_F12, 0)
 
 BINDING_GROUP(Lang::SHIP_ORIENTATION)
 KEY_BINDING(pitchUp, "BindPitchUp", Lang::PITCH_UP, SDLK_s, 0)

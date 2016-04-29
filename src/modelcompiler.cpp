@@ -1,4 +1,4 @@
-// Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
+// Copyright Â© 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 #include "libs.h"
@@ -33,6 +33,7 @@ static const std::string s_dummyPath("");
 
 void SetupRenderer()
 {
+	PROFILE_SCOPED()
 	s_config.reset(new GameConfig);
 
 	OS::RedirectStdio();
@@ -64,6 +65,7 @@ void SetupRenderer()
 
 void RunCompiler(const std::string &modelName, const std::string &filepath, const bool bInPlace)
 {
+	PROFILE_SCOPED()
 	Profiler::Timer timer;
 	timer.Start();
 	Output("\n---\nStarting compiler for (%s)\n", modelName.c_str());
@@ -141,9 +143,14 @@ int main(int argc, char** argv)
 	}
 
 start:
-	
+
 	// Init here since we'll need it for both batch and RunCompiler modes.
 	FileSystem::Init();
+	FileSystem::userFiles.MakeDirectory(""); // ensure the config directory exists
+#ifdef PIONEERSP_PROFILER
+	FileSystem::userFiles.MakeDirectory("profiler");
+	const std::string profilerPath = FileSystem::JoinPathBelow(FileSystem::userFiles.GetRoot(), "profiler");
+#endif
 
 	// what mode are we in?
 	switch (mode) {
@@ -238,6 +245,10 @@ start:
 			);
 			break;
 	}
+
+#ifdef PIONEERSP_PROFILER
+	Profiler::dumphtml(profilerPath.c_str());
+#endif
 
 	return 0;
 }

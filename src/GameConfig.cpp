@@ -43,7 +43,6 @@ GameConfig::GameConfig(const std::map<std::string,std::string> &override_)
 	map["SpeedLines"] = "1";
 	map["EnableCockpit"] = "0";
 	map["HudTrails"] = "1";
-	map["EnableServerAgent"] = "0";
 	map["AmountOfBackgroundStars"] = "0.5";
 	map["UseAnisotropicFiltering"] = "0";
 

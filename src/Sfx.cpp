@@ -108,47 +108,55 @@ void Sfx::TimeStepUpdate(const float timeStep)
 	switch (m_type) {
 		case TYPE_EXPLOSION:
 			//if (m_age > 0.5) m_type = TYPE_NONE;
-			if (m_age > 1.7) m_type = TYPE_NONE;
+			if (m_age > 1.8) m_type = TYPE_NONE;
 			break;
 		case TYPE_DAMAGE:
-			if (m_age > 1.5) m_type = TYPE_NONE;
+			if (m_age > 1.0) m_type = TYPE_NONE;
 			break;
 		case TYPE_SMOKE:
-			if (m_age > 8.0)
+			if (m_age > 0.5)
 				m_type = TYPE_NONE;
 			break;
 		case TYPE_NONE: break;
 	}
 }
-
+#pragma optimize("",off)
+float SizeToPixels(const matrix4x4d &trans, const float size)
+{
+	//some hand-tweaked scaling, to make the lights seem larger from distance (final size is in pixels)
+	const float pixrad = Clamp(Graphics::GetScreenHeight() / trans.GetTranslate().Length(), 1.0, 15.0);
+	return (size * Graphics::GetFovFactor()) * pixrad;
+}
+#pragma optimize("",off)
 void Sfx::Render(Renderer *renderer, const matrix4x4d &ftransform)
 {
 	PROFILE_SCOPED()
 	const vector3d fpos = ftransform * GetPosition();
 	const vector3f pos(fpos);
+	const matrix4x4d fposTrans(matrix4x4d::Translation(fpos));
 
-	switch (m_type) 
+	switch (m_type)
 	{
 		case TYPE_NONE: break;
-		case TYPE_EXPLOSION: 
+		case TYPE_EXPLOSION:
 		{
-			renderer->SetTransform(matrix4x4d::Translation(fpos));
-			const int spriteframe = Clamp( Uint32(m_age*20.0f), Uint32(0), NUM_EXPLOSION_TEXTURES-1 );
+			renderer->SetTransform(fposTrans);
+			const int spriteframe = Clamp( Uint32(m_age*18.0f), Uint32(0), NUM_EXPLOSION_TEXTURES-1 );
 			assert(explosionTextures[spriteframe]);
 			explosionParticle->texture0 = explosionTextures[spriteframe];
 			//face camera
 			renderer->SetTransform(matrix4x4f::Identity());
-			renderer->DrawPointSprites(1, &pos, alphaOneState, explosionParticle.get(), m_speed);
+			renderer->DrawPointSprites(1, &pos, alphaOneState, explosionParticle.get(), SizeToPixels(fposTrans, m_speed));
 			break;
-		} 
-		case TYPE_DAMAGE: 
+		}
+		case TYPE_DAMAGE:
 		{
-			renderer->SetTransform(matrix4x4d::Translation(fpos));
+			renderer->SetTransform(fposTrans);
 			damageParticle->diffuse = Color(255, 255, 0, (1.0f-(m_age/2.0f))*255);
-			renderer->DrawPointSprites(1, &pos, additiveAlphaState, damageParticle.get(), 20.f);
+			renderer->DrawPointSprites(1, &pos, additiveAlphaState, damageParticle.get(), SizeToPixels(fposTrans, 20.f));
 			break;
-		} 
-		case TYPE_SMOKE: 
+		}
+		case TYPE_SMOKE:
 		{
 			float var = Pi::rng.Double()*0.05f; //slightly variation to trail color
 			if (m_age < 0.5) { //start trail
@@ -157,10 +165,10 @@ void Sfx::Render(Renderer *renderer, const matrix4x4d &ftransform)
 				smokeParticle->diffuse = Color((0.75-var)*255, (0.75f-var)*255, (0.75f-var)*255, Clamp(0.5*0.5-(m_age/16.0),0.0,1.0)*255);
 			}
 
-			renderer->SetTransform(matrix4x4d::Translation(fpos));
+			renderer->SetTransform(fposTrans);
 
 			damageParticle->diffuse*=0.05;
-			renderer->DrawPointSprites(1, &pos, alphaState, smokeParticle.get(), (m_speed*m_age));
+			renderer->DrawPointSprites(1, &pos, alphaState, smokeParticle.get(), Clamp(SizeToPixels(fposTrans, (m_speed*m_age)), 0.1f, 50.0f));
 			break;
 		}
 	}
@@ -206,6 +214,8 @@ void Sfx::AddExplosion(Body *b, TYPE t)
 	if (b->IsType(Object::SHIP)) {
 		Ship *s = static_cast<Ship*>(b);
 		sfx->m_speed = s->GetAabb().radius*8.0;
+	} else {
+		sfx->m_speed = 200.0f;
 	}
 }
 
@@ -265,23 +275,26 @@ void Sfx::Init(Graphics::Renderer *r)
 	rsd.blendMode = Graphics::BLEND_ALPHA;
 	rsd.depthWrite = false;
 	alphaState = r->CreateRenderState(rsd);
+
 	rsd.blendMode = Graphics::BLEND_ALPHA_ONE;
 	additiveAlphaState = r->CreateRenderState(rsd);
+
 	rsd.depthWrite = true;
 	alphaOneState = r->CreateRenderState(rsd);
 
 	Graphics::MaterialDescriptor desc;
+	desc.effect = Graphics::EFFECT_BILLBOARD;
+	desc.textures = 1;
 	RefCountedPtr<Graphics::Material> explosionMat(r->CreateMaterial(desc));
 
-	desc.textures = 1;
 	damageParticle.reset( r->CreateMaterial(desc) );
-	damageParticle->texture0 = Graphics::TextureBuilder::Billboard("textures/smoke.dds").GetOrCreateTexture(r, "billboard");
+	damageParticle->texture0 = Graphics::TextureBuilder::Billboard("textures/smoke.png").GetOrCreateTexture(r, "billboard");
 	ecmParticle.reset( r->CreateMaterial(desc) );
 	ecmParticle->texture0 = Graphics::TextureBuilder::Billboard("textures/ecm.png").GetOrCreateTexture(r, "billboard");
 	smokeParticle.reset( r->CreateMaterial(desc) );
-	smokeParticle->texture0 = Graphics::TextureBuilder::Billboard("textures/smoke.dds").GetOrCreateTexture(r, "billboard");
+	smokeParticle->texture0 = Graphics::TextureBuilder::Billboard("textures/smoke.png").GetOrCreateTexture(r, "billboard");
 	explosionParticle.reset( r->CreateMaterial(desc) );
-	explosionParticle->texture0 = Graphics::TextureBuilder::Billboard("textures/smoke.dds").GetOrCreateTexture(r, "billboard");
+	explosionParticle->texture0 = Graphics::TextureBuilder::Billboard("textures/smoke.png").GetOrCreateTexture(r, "billboard");
 
 	// NB: 0-31
 	for( Uint32 i=0 ; i<NUM_EXPLOSION_TEXTURES ; i++ )

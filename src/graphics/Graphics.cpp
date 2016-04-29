@@ -67,7 +67,7 @@ Renderer* Init(Settings vs)
 		vs.height = modes.front().height;
 	}
 
-	WindowSDL *window = new WindowSDL(vs, "Pioneer");
+	WindowSDL *window = new WindowSDL(vs, "Scout");
 	if (vs.rendererType == Graphics::RENDERER_DUMMY) {
 		width = vs.width;
 		height = vs.height;

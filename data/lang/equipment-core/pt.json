@@ -308,6 +308,15 @@
 "description":"",
 "message":"A iniciar a pesquisa, a distância ao alvo é"
 },
+"TRACING_JUMPS":{
+"description":"",
+"message":"Tracing jumps"
+},
+"TRACING_JUMPS_DESCRIPTION":{
+"description":"",
+"message":"Detection and track of hyperjumps that occur in the vicinity of the player, 
+for possible persecution."
+},
 "TRADE_ANALYZER":{
 "description":"Ship equipment computing profitable commodities to trade between two systems","message":"Analisador de negócio"
 },

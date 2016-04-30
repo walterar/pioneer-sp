@@ -46,7 +46,7 @@ local GetLocalScoopables = function ()
 		local sbody = path:GetSystemBody()
 			if sbody.isScoopable and sbody.gravity < 26 then
 ----print("Gravedad de "..sbody.name.."  "..sbody.gravity)
-print("Scooping ******************* seed de "..sbody.name.."  "..sbody.seed)
+print(sbody.name.." seed "..sbody.seed)
 			table.insert(LocalScoopables, Space.GetBody(sbody.index).path)
 		end
 	end
@@ -195,11 +195,13 @@ local onChat = function (form, ref, option)
 
 		table.insert(missions,Mission.New(mission))
 
---		if Game.system.path ~= mission.location:GetStarSystem().path then
---			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
---		else
---			Game.player:SetNavTarget(Space.GetBody(mission.location.bodyIndex))
---		end
+		if NavAssist then
+			if Game.system.path ~= mission.location:GetStarSystem().path then
+				Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
+			else
+				Game.player:SetNavTarget(Space.GetBody(mission.location.bodyIndex))
+			end
+		end
 
 		form:SetMessage(l.Excellent_I_await_your_report)
 		switchEvents()
@@ -308,7 +310,7 @@ end
 local onCreateBB = function (station)
 ----print("Scooping onCreateBB"..station.label)
 	local num = math.ceil(Game.system.population)
-	num = Engine.rand:Integer(0,num and num < 3 or 2)
+	if num > 3 then num = 3 end
 	if num > 0 then
 		for i = 1,num do
 			makeAdvert(station)
@@ -404,9 +406,9 @@ local start_scooping = function(mission)
 					or Engine.rand:Integer(2) > 1)
 				then
 					local remotestations =
-						StarSystem:GetNearbyStationPaths(Engine.rand:Integer(10,20), nil,function (s) return
-							(s.type ~= 'STARPORT_SURFACE') or (s.parent.type ~= 'PLANET_ASTEROID')
-						end)
+						StarSystem:GetNearbyStationPaths(Engine.rand:Integer(10,20), nil,function (s)
+						return (s.type ~= 'STARPORT_SURFACE') or (s.parent.type ~= 'PLANET_ASTEROID')
+					end)
 					if remotestations and #remotestations > 0 then
 						mission.backstation = remotestations[Engine.rand:Integer(1,#remotestations)]
 						Comms.ImportantMessage(l.CHANGE_LOCATION, mission.client.name)
@@ -414,9 +416,9 @@ local start_scooping = function(mission)
 				end
 				old_location = mission.location
 				mission.location = mission.backstation
---				if Game.system.path ~= mission.location:GetStarSystem().path then
---					Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
---				end
+				if NavAssist and Game.system.path ~= mission.location:GetStarSystem().path then
+					Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
+				end
 				check = false
 				return true
 			end
@@ -532,6 +534,7 @@ local onClick = function (mission)
 
 	local setTargetButton = SLButton.New(lm.SET_TARGET, 'NORMAL')
 	setTargetButton.button.onClick:Connect(function ()
+		if not NavAssist then MsgBox.Message(lm.NOT_NAV_ASSIST) return end
 		if Game.system.path ~= mission.location:GetStarSystem().path then
 			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
 		else

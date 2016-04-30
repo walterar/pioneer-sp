@@ -1064,9 +1064,9 @@
 "description":"",
 "message":"Afstand til periapse"
 },
-"PIONEER":{
+"PIONEER_SCOUT_PLUS":{
 "description":"",
-"message":"PIONEER"
+"message":"SCOUT"
 },
 "PITCH":{
 "description":"",
@@ -1646,6 +1646,10 @@
 },
 "TOMBSTONE_EPITAPH":{
 "description":"shown on tombstone when player dies","message":"RIP OLD BEAN"
+},
+"TRACING_JUMPS":{
+"description":"",
+"message":"Tracing Jumps Off/On"
 },
 "TRADING_ILLEGAL_GOODS":{
 "description":"",

@@ -107,11 +107,16 @@ local function buyShip (sos)
 	player:SetSkin(sos.skin)
 	if sos.pattern then player.model:SetPattern(sos.pattern) end
 	player:SetLabel(sos.label)
-	if def.hyperdriveClass > 0 then
-		player:AddEquip(Equipment.hyperspace['hyperdrive_'..tostring(def.hyperdriveClass)])
-	end
-	player:SetFuelPercent()
 
+	if def.hyperdriveClass > 0 then
+		if string.sub(def.shipClass,-7) == "fighter" then
+			player:AddEquip(Equipment.hyperspace['hyperdrive_mil'..tostring(def.hyperdriveClass)])
+		else
+			player:AddEquip(Equipment.hyperspace['hyperdrive_'..tostring(def.hyperdriveClass)])
+		end
+	end
+
+	player:SetFuelPercent()
 	shipInfo:SetInnerWidget(
 		ui:MultiLineText(l.THANKS_AND_REMEMBER_TO_BUY_FUEL)
 	)
@@ -133,8 +138,19 @@ shipTable.onRowClicked:Connect(function (row)
 	currentShipOnSale = station:GetShipsOnSale()[row+1]
 	local def = currentShipOnSale.def
 
-	local hyperdrive_str = def.hyperdriveClass > 0 and
-		Equipment.hyperspace["hyperdrive_" .. def.hyperdriveClass]:GetName() or l.NONE
+	local hyperdrive_str
+	if def.hyperdriveClass > 0 then
+		if string.sub(def.shipClass,-7) == "fighter" then
+			hyperdrive_str = Equipment.hyperspace['hyperdrive_mil'..tostring(def.hyperdriveClass)]:GetName()
+		else
+			hyperdrive_str = Equipment.hyperspace['hyperdrive_'..tostring(def.hyperdriveClass)]:GetName()
+		end
+	else
+		hyperdrive_str = l.NONE
+	end
+
+--	local hyperdrive_str = def.hyperdriveClass > 0 and
+--		Equipment.hyperspace["hyperdrive_" .. def.hyperdriveClass]:GetName() or l.NONE
 
 	local forwardAccelEmpty =  def.linearThrust.FORWARD / (-9.81*1000*(def.hullMass+def.fuelTankMass))
 	local forwardAccelFull  =  def.linearThrust.FORWARD / (-9.81*1000*(def.hullMass+def.capacity+def.fuelTankMass))

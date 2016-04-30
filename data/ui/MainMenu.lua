@@ -12,6 +12,7 @@ local Player      = import("Player")
 local SystemPath  = import("SystemPath")
 local ErrorScreen = import("ErrorScreen")
 local equipment   = import("Equipment")
+local Character   = import("Character")
 
 local cargo      = equipment.cargo
 local misc       = equipment.misc
@@ -30,6 +31,7 @@ local setupPlayer1 = function ()
 	Game.player:AddEquip(laser.pulsecannon_1mw)
 	Game.player:AddEquip(misc.atmospheric_shielding)
 	Game.player:AddEquip(misc.autopilot)
+	Game.player:AddEquip(misc.nav_assist)
 	Game.player:AddEquip(misc.scanner)
 	Game.player:AddEquip(misc.missile_guided, 2)
 	Game.player:AddEquip(cargo.hydrogen, 1)
@@ -74,19 +76,22 @@ local setupPlayer5 = function ()
 	Game.player:SetShipType('cobra3_a')
 	Game.player:SetLabel(Ship.MakeRandomLabel('xx-probe'))
 	Game.player:AddEquip(misc.atmospheric_shielding)
+--	Game.player:AddEquip(misc.hypercloud_analyzer)
 	Game.player:AddEquip(hyperspace['hyperdrive_4'])
 	Game.player:AddEquip(cargo.hydrogen, 16)
 	Game.player:AddEquip(laser.pulsecannon_dual_2mw)
 	Game.player:AddEquip(misc.laser_cooling_booster)
 	Game.player:AddEquip(misc.shield_generator)
 	Game.player:AddEquip(misc.autopilot)
+	Game.player:AddEquip(misc.nav_assist)
+	Game.player:AddEquip(misc.tracing_jumps)
 	Game.player:AddEquip(misc.auto_combat)
 	Game.player:AddEquip(misc.demp)
 	Game.player:AddEquip(misc.radar_mapper)
 	Game.player:AddEquip(misc.scanner)
 	Game.player:AddEquip(misc.beacon_receiver)
 	Game.player:AddEquip(misc.fuel_scoop)
-	Game.player:AddEquip(misc.missile_naval, 2)
+	Game.player:AddEquip(misc.missile_naval, 4)
 	Game.player:AddEquip(misc.cabin, 5)
 	Game.player:SetMoney(100000)
 end
@@ -193,7 +198,7 @@ table.insert(anims, {
 	duration = 0.4,
 })
 
-local versionLabel = ui:Label("G26 full version"):SetFont("HEADING_XSMALL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 })
+local versionLabel = ui:Label("G27 full version"):SetFont("HEADING_XSMALL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 })
 table.insert(anims, {
 	widget = versionLabel,
 	type = "IN",

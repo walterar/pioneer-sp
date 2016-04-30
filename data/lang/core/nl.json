@@ -1107,9 +1107,9 @@
 "description":"",
 "message":"Periapsis afstand"
 },
-"PIONEER":{
+"PIONEER_SCOUT_PLUS":{
 "description":"",
-"message":"PIONIER"
+"message":"SCOUT"
 },
 "PITCH":{
 "description":"",
@@ -1706,6 +1706,10 @@
 "TOMBSTONE_EPITAPH":{
 "description":"shown on tombstone when player dies",
 "message":"RIP OUDE KNAR"
+},
+"TRACING_JUMPS":{
+"description":"",
+"message":"Tracing Jumps Off/On"
 },
 "TRADING_ILLEGAL_GOODS":{
 "description":"",

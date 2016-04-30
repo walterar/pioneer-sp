@@ -1107,9 +1107,9 @@
 "description":"",
 "message":"近拱点距离"
 },
-"PIONEER":{
+"PIONEER_SCOUT_PLUS":{
 "description":"",
-"message":"先锋"
+"message":"SCOUT"
 },
 "PITCH":{
 "description":"",
@@ -1706,6 +1706,10 @@
 "TOMBSTONE_EPITAPH":{
 "description":"shown on tombstone when player dies",
 "message":"缅怀老比恩"
+},
+"TRACING_JUMPS":{
+"description":"",
+"message":"Tracing Jumps Off/On"
 },
 "TRADING_ILLEGAL_GOODS":{
 "description":"",

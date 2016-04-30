@@ -105,7 +105,7 @@
 },
 "THE_SHIPS_HYPERDRIVE_HAS_BEEN_DESTROYED_BY_A_MALFUNCTION":{
 "description":"",
-"message":"El hipermotor de la nave se ha destruído por falta de revisión"
+"message":"El hipermotor se ha destruído por falta de mantenimiento"
 },
 "YOUR_DRIVE_HAS_NOT_BEEN_SERVICED":{
 "description":"",
@@ -121,6 +121,6 @@
 },
 "MAKE_HYPERDRIVE_REPAIR_BEFORE_IT_BREAKING":{
 "description":"Warning! Hyperdrive failure imminent! Shipyard service needed!",
-"message":"Debe hacer revisar el hipermotor antes de que se averíe."
+"message":"Haga revisar el hipermotor antes de que se averíe."
 }
 }

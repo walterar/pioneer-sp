@@ -167,6 +167,10 @@
 "description":"ui-scout",
 "message":"Mercado de Naves Nuevas sin stock\nen todo el sistema: "
 },
+"NOT_BEACON_RECEIVER":{
+"description":"ui-scout",
+"message":"Para activar esta función deberá instalar el Receptor de Radiobaliza"
+},
 "NOT_NAV_ASSIST":{
 "description":"ui-scout",
 "message":"Para activar esta función deberá instalar el Asistente de Navegación"
@@ -238,10 +242,6 @@
 "SUCCESSFUL_MISSIONS":{
 "description":"ui-scout",
 "message":"Misiones Cumplidas:"
-},
-"SPACESHIP_PARTS":{
-"description":"",
-"message":"Componentes de Naves"
 },
 "TONS_AVAILABLE_FOR":{
 "description":"ui-scout",

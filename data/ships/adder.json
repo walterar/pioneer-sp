@@ -29,8 +29,8 @@
       "scoop"              : 2
    },
 
-   "thruster_fuel_use" : 0.00015,
+   "thruster_fuel_use"          : 0.00015,
    "effective_exhaust_velocity" : -1.0,
-   "hyperdrive_class" : 3,
-   "price"            : 6e4
+   "hyperdrive_class"           : 3,
+   "price"                      : 6e4
 }

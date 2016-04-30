@@ -18,9 +18,9 @@ local Ship       = import("Ship")
 local utils      = import("utils")
 local Timer      = import("Timer")
 
-local MsgBox    = import("ui/MessageBox")
-local InfoFace  = import("ui/InfoFace")
-local SLButton  = import("ui/SmallLabeledButton")
+local MsgBox   = import("ui/MessageBox")
+local InfoFace = import("ui/InfoFace")
+local SLButton = import("ui/SmallLabeledButton")
 
 local l  = Lang.GetResource("module-cargorun") or Lang.GetResource("module-cargorun","en")
 local lm = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous","en")
@@ -378,9 +378,9 @@ local onChat = function (form, ref, option)
 		else
 			form:SetMessage(l["ACCEPTED_" .. Engine.rand:Integer(1, getNumberOfFlavours("ACCEPTED"))])
 		end
---		if Game.system.path ~= mission.location:GetStarSystem().path then
---			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
---		end
+		if NavAssist and Game.system.path ~= mission.location:GetStarSystem().path then
+			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
+		end
 		switchEvents()
 		return
 
@@ -673,7 +673,7 @@ local onShipDocked = function (player, station)
 				mission.cargo_picked_up = true
 				Comms.ImportantMessage(l.WE_HAVE_LOADED_UP_THE_CARGO_ON_YOUR_SHIP, mission.client.name)
 				mission.location = mission.domicile
-				if Game.system.path ~= mission.location:GetStarSystem().path then
+				if NavAssist and Game.system.path ~= mission.location:GetStarSystem().path then
 					Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
 				end
 			end

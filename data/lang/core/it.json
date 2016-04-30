@@ -1064,9 +1064,9 @@
 "description":"",
 "message":"Distanza dal periapside"
 },
-"PIONEER":{
+"PIONEER_SCOUT_PLUS":{
 "description":"",
-"message":"PIONEER"
+"message":"SCOUT"
 },
 "PITCH":{
 "description":"",
@@ -1646,6 +1646,10 @@
 },
 "TOMBSTONE_EPITAPH":{
 "description":"shown on tombstone when player dies","message":"R.I.P. Amico mio"
+},
+"TRACING_JUMPS":{
+"description":"",
+"message":"Tracing Jumps Off/On"
 },
 "TRADING_ILLEGAL_GOODS":{
 "description":"",

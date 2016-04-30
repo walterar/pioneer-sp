@@ -86,10 +86,6 @@
 "description":"",
 "message":"Megismételnéd a hirdetést?"
 },
-"CRIMINAL_RECORD":{
-"description":"",
-"message":"Sorry, Commander. His criminal record is inconsistent with this type of task. Please, return when you resolved this issue."
-},
 "DANGER":{
 "description":"the risk level","message":"Veszély:"
 },

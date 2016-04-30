@@ -445,7 +445,7 @@
 },
 "IT_MUST_BE_COMPLETED_BY":{
 "description":"",
-"message":"It must be completed by "
+"message":"Это должно быть завершено не позднее"
 },
 "KM":{
 "description":"",
@@ -457,7 +457,7 @@
 },
 "LAT":{
 "description":"",
-"message":"Lat:"
+"message":"Ш.:"
 },
 "LON":{
 "description":"",
@@ -489,7 +489,7 @@
 },
 "ORBIT":{
 "description":"",
-"message":"Orbit"
+"message":"Орбита"
 },
 "PARTIAL":{
 "description":"",

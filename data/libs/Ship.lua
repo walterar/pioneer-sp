@@ -578,7 +578,10 @@ end
 --
 --   experimental
 --
+local firemissile
 function Ship:FireMissileAt(which_missile, target)
+	if firemissile then return end
+	firemissile = true
 	local missile_object = false
 	local MissileNaval = false
 	if type(which_missile) == "number" then
@@ -613,12 +616,15 @@ function Ship:FireMissileAt(which_missile, target)
 	end
 
 	Timer:CallEvery(1, function ()
-		if not missile_object or not missile_object:exists()
+		if not missile_object
+			or not missile_object:exists()
+			or target.flightState ~= "FLYING"
 		then return true end
-		if missile_object:DistanceTo(self) < 500 then
-		return false end
-		if missile_object and(not target or not target:exists()) then
+		if missile_object:DistanceTo(self) < 500 then return false end
+		if missile_object
+			and(not target or not target:exists() or target.flightState ~= "FLYING") then
 			missile_object:Explode()
+			missile_object = nil
 			if _G.MissileActive > 0 then _G.MissileActive = MissileActive -1 end
 		return true end
 		if MissileNaval then
@@ -626,11 +632,11 @@ function Ship:FireMissileAt(which_missile, target)
 			target:SetInvulnerable(false)
 			target:SetHullPercent(0)
 		end
-		if missile_object then
-			missile_object:Arm()
-			return false
-		end
+		if missile_object then missile_object:Arm() return false end
 	end)
+
+	Timer:CallAt(Game.time+2, function () firemissile = false end)
+
 	return missile_object
 end
 

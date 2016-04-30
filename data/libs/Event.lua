@@ -505,19 +505,19 @@ Event = {
 --
 
 --
--- Event: onShipTakeOff
+-- Event: onShipBlastOff
 --
--- Triggered when a ship takes off from a surface
+-- Triggered when a ship blast-off from a surface
 -- (not from a spaceport).
 --
--- > local onShipTakeOff = function (ship, body) ... end
--- > Event.Register("onShipTakeOff", onShipTakeOff)
+-- > local onShipBlastOff = function (ship, body) ... end
+-- > Event.Register("onShipBlastOff", onShipBlastOff)
 --
 -- Parameters:
 --
---   ship - the <Ship> that took off
+--   ship - the <Ship> that blast off
 --
---   body - the <Body> the ship took off from
+--   body - the <Body> the ship blast off from
 --
 -- Availability:
 --

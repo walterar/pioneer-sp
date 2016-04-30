@@ -1,0 +1,62 @@
+{
+"AutoCombatOFF":{
+"description":"",
+"message":"Combate Automático: DESACTIVADO"
+},
+"AutoCombatON":{
+"description":"",
+"message":"Combate Automático: ACTIVADO"
+},
+"TracingJumpsOFF":{
+"description":"",
+"message":"Rastreador de saltos: DESACTIVADO"
+},
+"TracingJumpsON":{
+"description":"",
+"message":"Rastreador de saltos: ACTIVADO"
+},
+"Damage_Control_Autopilot":{
+"description":"",
+"message":"Control de daños: Atención! Piloto Automático destruído!"
+},
+"Damage_Control_Propellant":{
+"description":"",
+"message":"Control de daños: Atención! Se ha perdido el 50% de Propelente!"
+},
+"Damage_Control_Scanner":{
+"description":"",
+"message":"Control de daños: Atención! El Radar ha sido inutilizado!"
+},
+"Explored":{
+"description":"",
+"message":" - explorado"
+},
+"IS_REGISTERED_IN_OUR_DOMAIN":{
+"description":"",
+"message":" está registrada en nuestros dominios."
+},
+"POLICE_SHIP_LABEL":{
+"description":"",
+"message":"POLICÍA"
+},
+"System_uninhabited":{
+"description":"",
+"message":"Sistema deshabitado"
+},
+"Unexplored":{
+"description":"",
+"message":" - inexplorado"
+},
+"YOUR_SHIP":{
+"description":"",
+"message":"Su nave "
+},
+"You_are_in_space_controlled_by":{
+"description":"",
+"message":"Usted esta en espacio controlado por "
+},
+"neutralized_by":{
+"description":"",
+"message":" neutralizado por "
+}
+}

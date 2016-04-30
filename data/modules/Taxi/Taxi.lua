@@ -197,9 +197,9 @@ local onChat = function (form, ref, option)
 
 		table.insert(missions,Mission.New(mission))
 
---		if Game.system.path ~= mission.location:GetStarSystem().path then
---			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
---		end
+		if NavAssist and Game.system.path ~= mission.location:GetStarSystem().path then
+			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
+		end
 
 		form:SetMessage(l.EXCELLENT)
 		switchEvents()

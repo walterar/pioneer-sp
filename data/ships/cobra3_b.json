@@ -23,9 +23,7 @@
       "cabin" : 8,
       "cargo" : 80,
       "cargo_life_support" : 1,
-      "laser_front" : 1,
-      "laser_rear" : 0,
-      "missile" : 4,
+      "missile" : 6,
       "scoop" : 2
    },
 

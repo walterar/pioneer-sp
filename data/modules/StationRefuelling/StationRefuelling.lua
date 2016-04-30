@@ -9,10 +9,10 @@ local Format    = import("Format")
 local Equipment = import("Equipment")
 
 local l  = Lang.GetResource("module-stationrefuelling") or Lang.GetResource("module-stationrefuelling","en")
-local lp = Lang.GetResource("module-00-player") or Lang.GetResource("module-00-player","en")
+local lp = Lang.GetResource("module-00-utils0") or Lang.GetResource("module-00-utils0","en")
 
 local calculateFee = function (station)
-	local fee = math.ceil(4 * (2.0-Game.system.lawlessness))
+	local fee = math.ceil(10 * (2.0-Game.system.lawlessness))
 	local recharge = math.ceil(((Game.player.fuelMassLeft/Game.player.fuel)*100)-Game.player.fuelMassLeft)
 	fee = fee+(recharge*station:GetEquipmentPrice(Equipment.cargo.hydrogen))
 	return fee

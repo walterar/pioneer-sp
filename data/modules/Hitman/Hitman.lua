@@ -113,7 +113,7 @@ local onChat = function (form, ref, option)
 				status      = 'ACTIVE'
 			}
 			table.insert(missions,Mission.New(mission))
---			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
+			if NavAssist then Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path) end
 			form:SetMessage(l.EXCELLENT)
 			switchEvents()
 		end
@@ -130,11 +130,13 @@ end
 
 
 local makeAdvert = function (station)
+
 	if _nearbystationsRemotes
 		and #_nearbystationsRemotes > 0 then
 		location = _nearbystationsRemotes[Engine.rand:Integer(1,#_nearbystationsRemotes)]
 	end
 	if location == nil then return end
+
 	local client = Character.New()
 	local targetIsfemale = Engine.rand:Integer(1) > 0
 	rank = Engine.rand:Integer(1,num_titles)
@@ -143,10 +145,12 @@ local makeAdvert = function (station)
 						armour = true,
 						female = targetIsfemale
 						})
+
 	local dist = Game.system:DistanceTo(location)
 	local due = _remote_due(dist,Engine.rand:Number(0.8, 1,true))
 	local danger = Engine.rand:Integer(1,4)
 	local reward = Engine.rand:Number(11000*(1+(rank/25)), 15000*(1+(rank/25))) * (1+(danger/4))--XXX
+
 	local shipdefs = utils.build_array(utils.filter(function (k,def)
 		return
 			def.tag == 'SHIP'
@@ -235,7 +239,7 @@ local onShipDestroyed = function (ship, body)
 				end
 				local dist = mission.location:DistanceTo(Game.system)
 				mission.due = _remote_due(dist,Engine.rand:Number(0.8, 1,true))
---				Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
+				if NavAssist then Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path) end
 				mission.notplayer = 'FALSE'
 			end
 			mission.ship = nil
@@ -290,7 +294,6 @@ end
 
 	local escort
 local onShipUndocked = function (ship, station)
---print("Hitman onFrameChanged ship="..ship.label)
 	for ref,mission in pairs(missions) do
 		if mission.status ~= 'ACTIVE'
 			or (ship ~= mission.ship and ship ~= Game.player)
@@ -334,7 +337,7 @@ local onEnterSystem = function (ship)
 						local default_drive = shiptype.hyperdriveClass
 						local laserdefs = utils.build_array(pairs(Equipment.laser))
 						table.sort(laserdefs, function (l1, l2) return l1.price < l2.price end)
-						local laserdef = laserdefs[mission.danger+1]
+						local laserdef = laserdefs[mission.danger]
 						local count = default_drive ^ 2
 						mission.ship = Space.SpawnShipDocked(mission.shipid, station)
 						if mission.ship == nil then return end

@@ -17,6 +17,25 @@ local battle_active = false
 local max_hostiles = 5
 local hostil = {}
 
+local Exists = function (ship)
+	local exists = false
+	if ship:exists() then
+		exists = true
+	end
+	return exists
+end
+local ShipExists = function (ship)
+	if ship then
+		ok,val = pcall(Exists, ship)
+		if ok then
+			return val
+		else
+--print("NO ES UNA NAVE ACTIVA")
+			return false
+		end
+	end
+end
+
 local shipWithCannon = function (ship)
 	if ship:IsPlayer() then
 		if (ship:GetEquipFree("laser_front") < ship:GetEquipSlotCapacity("laser_front"))
@@ -62,8 +81,8 @@ Event.Register("onEnterSystem", function (ship)
 			if shipWithCannon(ship)
 				and DangerLevel > 0 and Engine.rand:Integer(2) < 1 then--XXX
 				Timer:CallAt(Game.time+Engine.rand:Integer(10,20), function ()
-					if hostil[1] and hostil[1]:exists() then hostil[1]:AIKill(ship) end
-					if hostil[n] and hostil[n]:exists() then hostil[n]:AIKill(ship) end
+					if ShipExists(hostil[1]) then hostil[1]:AIKill(ship) end
+					if ShipExists(hostil[n]) then hostil[n]:AIKill(ship) end
 				end)
 			end
 		end)
@@ -73,8 +92,8 @@ end)
 local t = 0
 Event.Register("onShipHit",  function (ship, attacker)
 	if battle_active == false
-		or not ship
-		or not attacker
+		or not ShipExists(ship)
+		or not ShipExists(attacker)
 		or ship:IsPlayer()
 		or attacker:IsPlayer() then
 	return end
@@ -88,7 +107,7 @@ Event.Register("onFrameChanged", function (body)
 		and battle_active
 	then
 		for i = 1, max_hostiles do
-			if hostil[i] and hostil[i]:exists() then
+			if ShipExists(hostil[i]) then
 --				print(hostil[i].label.." (RESTO DE BATTLE) ELIMINADA")
 				hostil[i]:Disappear()
 				hostil[i] = nil

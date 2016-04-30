@@ -167,6 +167,10 @@
 "description":"",
 "message":"Market of New Ships without stock\nin the entire system: "
 },
+"NOT_BEACON_RECEIVER":{
+"description":"ui-scout",
+"message":"To enable this feature you must install the Beacon Receiver"
+},
 "NOT_NAV_ASSIST":{
 "description":"ui-scout",
 "message":"To enable this feature you must install the Navigation Assistant"
@@ -239,10 +243,6 @@
 "description":"",
 "message":"Successful Missions:"
 },
-"SPACESHIP_PARTS":{
-"description":"",
-"message":"Spaceship Parts"
-},
 "TONS_AVAILABLE_FOR":{
 "description":"ui-scout",
 "message":"  Tons available for"
@@ -293,7 +293,7 @@
 },
 "WARNING":{
 "description":"",
-"message":"WARNING! Attention Commander, {hostile} hostile ships are coming!"
+"message":"Warning Commander! DANGER! {hostile} hostile ships are coming!"
 },
 "WORKING":{
 "description":"ui-scout",

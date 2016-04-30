@@ -42,16 +42,17 @@ local function setupLayerAnim (clickWidget)
 	end)
 end
 
-function MessageBox.Message (args)
+function MessageBox.Message (args, align)
 	if type(args) == 'string' then
 		args = { message = args }
 	end
 
 	local text = ui:MultiLineText(args.message)
 
+	local set = align or "MIDDLE"
 	local layer = ui:NewLayer(
 		ui:ColorBackground(0,0,0,0.5,
-			ui:Align("MIDDLE",
+			ui:Align(set,
 				ui:Background(
 					text
 				)
@@ -64,28 +65,30 @@ function MessageBox.Message (args)
 	setupLayerAnim(layer)
 end
 
-function MessageBox.OK (args)
+
+function MessageBox.OK (args,txt_button, align_box, align_txt, align_button)
 	if type(args) == 'string' then
 		args = { message = args }
 	end
-
 	local text = ui:MultiLineText(args.message)
-
-	local okButton = ui:Button("OK")
+	local txt_button = txt_button or "OK"
+	local okButton = ui:Button(txt_button)
 	okButton:AddShortcut("enter")
-
+--"MIDDLE""TOP""TOP_LEFT""TOP_RIGHT""BOTTOM""BOTTOM_LEFT""BOTTOM_RIGHT"
+	local align_box    = align_box    or "MIDDLE"
+	local align_txt    = align_txt    or "MIDDLE"
+	local align_button = align_button or "RIGHT"
 	ui:NewLayer(
 		ui:ColorBackground(0,0,0,0.5,
-			ui:Align("MIDDLE",
+			ui:Align(align_box,
 				ui:Background(
 					ui:VBox(10)
-						:PackEnd(ui:Align("MIDDLE", text))
-						:PackEnd(ui:Align("MIDDLE", okButton))
+						:PackEnd(ui:Align(align_txt, text))
+						:PackEnd(ui:Align(align_button, okButton))
 				)
 			)
 		)
 	)
-
 	setupLayerAnim (okButton)
 end
 

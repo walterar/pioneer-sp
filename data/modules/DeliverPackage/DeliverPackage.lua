@@ -11,6 +11,7 @@ local StarSystem = import("StarSystem")
 local Comms      = import("Comms")
 local Event      = import("Event")
 local Mission    = import("Mission")
+local Music      = import("Music")
 local Format     = import("Format")
 local Serializer = import("Serializer")
 local Character  = import("Character")
@@ -156,9 +157,9 @@ local onChat = function (form, ref, option)
 
 		table.insert(missions,Mission.New(mission))
 
---		if Game.system.path ~= mission.location:GetStarSystem().path then
---			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
---		end
+		if NavAssist and Game.system.path ~= mission.location:GetStarSystem().path then
+			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
+		end
 		form:SetMessage(l.EXCELLENT_I_WILL_LET_THE_RECIPIENT_KNOW_YOU_ARE_ON_YOUR_WAY)
 		switchEvents()
 		return
@@ -235,7 +236,7 @@ end
 
 local onCreateBB = function (station)
 	local num = math.ceil(Game.system.population)
-	num = Engine.rand:Integer(0,num and num < 3 or 3)
+	if num > 3 then num = 3 end
 	if num > 0 then
 		for i = 1,num do
 			makeAdvert(station)
@@ -378,8 +379,10 @@ local onClick = function (mission)
 	local setTargetButton = SLButton.New(lm.SET_TARGET, 'NORMAL')
 	setTargetButton.button.onClick:Connect(function ()
 		if not NavAssist then MsgBox.Message(lm.NOT_NAV_ASSIST) return end
+
 		if Game.system.path ~= mission.location:GetStarSystem().path then
 			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
+			Music.Play("music/core/fx/Ok", false)
 		else
 			Game.player:SetNavTarget(Space.GetBody(mission.location.bodyIndex))
 		end

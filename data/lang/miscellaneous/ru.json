@@ -166,6 +166,10 @@
 "description":"",
 "message":"Рынок новых судов без складе\nво всей системе: "
 },
+"NOT_BEACON_RECEIVER":{
+"description":"ui-scout",
+"message":"To enable this feature you must install the Beacon Receiver"
+},
 "NOT_NAV_ASSIST":{
 "description":"ui-scout",
 "message":"To enable this feature you must install the Navigation Assistant"
@@ -236,10 +240,6 @@
 "SUCCESSFUL_MISSIONS":{
 "description":"",
 "message":"Выполненные миссий:"
-},
-"SPACESHIP_PARTS":{
-"description":"",
-"message":"Spaceship Parts"
 },
 "TONS_AVAILABLE_FOR":{
 "description":"ui-scout",

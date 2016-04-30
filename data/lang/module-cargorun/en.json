@@ -91,10 +91,6 @@
 "description":"",
 "message":"Could you please repeat the original request?"
 },
-"CRIMINAL_RECORD":{
-"description":"",
-"message":"Sorry, Commander. Your criminal record is inconsistent with this type of task. Please, return when you resolved this issue."
-},
 "DANGER":{
 "description":"the risk level",
 "message":"Danger:"

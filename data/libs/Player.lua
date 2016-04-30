@@ -89,7 +89,7 @@ end
 --
 -- Availability:
 --
---   2014 Decemeber
+--   2015 September
 --
 -- Status:
 --

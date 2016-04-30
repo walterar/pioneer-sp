@@ -76,6 +76,7 @@ local ShipsAvailable = function ()
 			and def.equipSlotCapacity.atmo_shield > 0
 			and def.id ~= ('ac33')
 			and def.id ~= ('amphiesma')
+			and def.id ~= ('bowfin')
 			and def.id ~= ('nerodia')
 			and def.id ~= ('hullcutter')
 			and def.id ~= ('deneb')
@@ -110,6 +111,7 @@ local ShipsAvailable = function ()
 			and def.id ~= ('pumpkinseed')
 			and def.id ~= ('pumpkinseed_x2')
 			and def.id ~= ('wave')
+			and def.id ~= ('bowfin')
 			and def.id ~= ('nerodia')
 			and def.id ~= ('anax')
 			and def.id ~= ('ac33')
@@ -153,7 +155,7 @@ end
 
 
 local erase_old_spawn = function ()
-	if Game.player:GetCombatTarget() then return false end
+	if Game.player:GetCombatTarget() then return false end--XXX
 
 	local clear = function ()
 		TraffiShip   = {}
@@ -198,6 +200,27 @@ local erase_old_spawn = function ()
 end
 
 
+local addWeapons = function (ship)
+	local max_laser_size = ship.freeCapacity - Eq.misc.shield_generator.capabilities.mass
+	local laserdefs = utils.build_array(utils.filter(function (k,l)
+		return l:IsValidSlot('laser_front')
+			and l.capabilities.mass <= max_laser_size
+			and l.l10n_key:find("PULSECANNON")
+	end, pairs(Eq.laser)))
+	local laserdef = laserdefs[Engine.rand:Integer(1,#laserdefs)]
+	ship:AddEquip(laserdef)
+	if DangerLevel > 0 and Eq.misc.laser_cooling_booster.capabilities.mass < ship.freeCapacity then
+		ship:AddEquip(Eq.misc.laser_cooling_booster)
+	end
+	for i=1, DangerLevel+1 do
+		if Eq.misc.shield_generator.capabilities.mass < ship.freeCapacity then
+			ship:AddEquip(Eq.misc.shield_generator, 1)
+		else break
+		end
+	end
+end
+
+
 local replace_and_spawn = function (n)
 	TraffiShip[n] = nil
 	local truestation = basePort
@@ -225,14 +248,16 @@ local replace_and_spawn = function (n)
 			TraffiShip[n]:AddEquip(cargo.hydrogen,drive.capabilities.hyperclass ^ 2)
 		end
 		if not basePort.isGroundStation then TraffiShip[n]:AddEquip(misc.scanner) end
-		if TraffiShip[n]:CountEquip(misc.shield_generator) > 0 then
-			TraffiShip[n]:AddEquip(misc.atmospheric_shielding)
+		local ship_type = ShipDef[TraffiShip[n].shipId]
+		if ship_type.equipSlotCapacity.atmo_shield > 0 then
+			TraffiShip[n]:AddEquip(Eq.misc.atmospheric_shielding)
 		end
 		if Engine.rand:Integer(1) > 0 then
 			TraffiShip[n]:SetLabel(Ship.MakeRandomLabel(Game.system.faction.name))
 		else
 			TraffiShip[n]:SetLabel(Ship.MakeRandomLabel())
 		end
+		addWeapons(TraffiShip[n])
 		TraffiShip[n]:AIDockWith(basePort)
 	end)
 end
@@ -242,7 +267,6 @@ function activate (i)
 	if not basePort or not basePort:exists() then return end
 	local xtime = lastTime+Engine.rand:Integer(20,50)--XXX
 	lastTime = xtime
---print("Launch "..TraffiShip[i].label.." as of "..Format.Date(Game.time+lastTime))
 	local truestation = basePort
 	Timer:CallAt(Game.time+xtime, function ()
 		if not basePort
@@ -267,49 +291,56 @@ function activate (i)
 			local success = TraffiShip[i]:Undock()
 			x = (x or 0) + 1
 			if x > 10 then
-print(TraffiShip[i].label.." NO DESPEGÓ")
+print(TraffiShip[i].label.." NOT UNDOCK.")
 			break end
 		until success
 		local timeundock = Game.time + 20--XXX orbitals
 		if basePort.isGroundStation then timeundock = Game.time + 3 end
 		Timer:CallAt(timeundock, function ()
-			local target = Game.player:FindNearestTo("PLANET") or Game.player:FindNearestTo("STAR")
-			if not target or not ShipExists(TraffiShip[i]) then return end
---			if not target or not TraffiShip[i] or not TraffiShip[i]:exists() then return end
-			TraffiShip[i]:AIEnterLowOrbit(target)
+			if not ShipExists(TraffiShip[i])
+				or TraffiShip[i].flightState ~= "FLYING"
+			then return end
+			local ship = TraffiShip[i]
+			local nearbybodys = Space.GetBodies(function (body)
+				return body.superType == "ROCKY_PLANET"
+						and body.type ~= "PLANET_ASTEROID"
+			end)
+			local target, target_check
+			if nearbybodys and #nearbybodys > 1 then
+				target_check = nearbybodys[1]
+				for x = 2, #nearbybodys do
+					if x < #nearbybodys then
+						if ship:DistanceTo(target_check) > ship:DistanceTo(nearbybodys[x]) then
+							target_check = nearbybodys[x]
+						end
+					end
+				end
+			else
+				target_check = nearbybodys[1]
+			end
+			if target_check then
+				target = target_check
+--print("nearby body target found = "..target.label)
+			else
+				target = ship:FindNearestTo("PLANET") or ship:FindNearestTo("STAR")
+--print("nearby body target not found, target alternative = "..target.label)
+			end
+			if not target or not ShipExists(ship) then return end
+--print("ship "..ship.label.." to low orbit of "..target.label)
+			ship:AIEnterLowOrbit(target)
 			if Engine.rand:Integer(1) > 0 then-- XXX hyperspace
 				Timer:CallAt(Game.time + 5, function ()
-					if not ShipExists(TraffiShip[i])
---						or not TraffiShip[i]:exists()
-						or TraffiShip[i].flightState == "DOCKING"
-						or TraffiShip[i].flightState == "UNDOCKING"
+					if not ShipExists(ship)
+						or ship.flightState == "DOCKING"
+						or ship.flightState == "UNDOCKING"
 						or MissileActive > 0--XXX
 					then return end
-					local range = TraffiShip[i].hyperspaceRange
-					if range and range > 0 then
-						if range > 30 then range = 30 end
-						local nearbystations = _nearbystationsRemotes
-						local system_target
-						if nearbystations and #nearbystations > 0 then
-							system_target = nearbystations[Engine.rand:Integer(1,#nearbystations)]
-						end
-						if system_target == nil then return end
-						if TraffiShip[i].flightState == "DOCKING"
-							or TraffiShip[i].flightState == "UNDOCKING" then
-						return end
-
-						local status
-						if ShipExists(TraffiShip[i]) then-- and TraffiShip[i]:exists() then
-							status = TraffiShip[i]:HyperjumpTo(system_target)
-						end
-
-						if status == "OK" then
-							replace_and_spawn(i)
-						else
-							if ShipExists(TraffiShip[i]) then TraffiShip[i]:Explode() end
-							replace_and_spawn(i)
-						return end
-					end
+					if ShipJump(ship) then
+						replace_and_spawn(i)
+					else
+						if ShipExists(ship) then ship:Explode() end
+						replace_and_spawn(i)
+					return end
 				end)
 			end
 		end)
@@ -402,6 +433,7 @@ local spawnShipsDocked = function ()
 		else
 			TraffiShip[i]:AddEquip(misc.scanner)
 		end
+		addWeapons(TraffiShip[i])
 		if Engine.rand:Integer(1,2) > 1 then
 			TraffiShip[i]:SetLabel(Ship.MakeRandomLabel(Game.system.faction.name))
 		else
@@ -486,12 +518,14 @@ end
 local spawnShipsStatics = function ()
 	if Game.time < 10 then basePort = Game.player:GetDockedWith() end
 	if not basePort or (basePort and basePort.isGroundStation) then return end
-	local population = Game.system.population
-	if population == 0 then return end
+	local pop = Game.system.population
+	if pop == 0 then return end
+	local Rand= Engine.rand
 	local shipdefs = utils.build_array(utils.filter(function (k,def)
 		return def.tag == 'STATIC_SHIP' end, pairs(ShipDef)))
 	if #shipdefs > 0 then
-		StaticCount = math.min(2, math.floor((math.ceil(population)+2)/3)) or 1
+		StaticCount = Rand:Integer(0,math.min(Rand:Integer(0,4),1+math.floor(math.ceil(pop))))
+		if StaticCount < 1 then return end
 		for i=1, StaticCount do
 			ShipStatic[i] = Space.SpawnShipParked(shipdefs[Engine.rand:Integer(1,#shipdefs)].id, basePort)
 			if ShipStatic[i] then ShipStatic[i]:SetLabel(Ship.MakeRandomLabel()) end
@@ -510,7 +544,7 @@ local onShipCollided = function (ship, other)
 	if other == basePort then
 		for i=1, ShipsCount do
 			if ship == TraffiShip[i] then
-print(ShipDef[TraffiShip[i].shipId].name.." is collided by "..other.label.." and destroyed")
+print(ShipDef[TraffiShip[i].shipId].name.." "..ship.label.." is collided by "..other.label.." and destroyed")
 				TraffiShip[i]:Explode()
 				replace_and_spawn(i)
 			return end
@@ -520,10 +554,10 @@ end
 
 
 local onShipDestroyed = function (ship, attacker)
-	if ShipsCount or ShipsCount > 0 then
+	if ShipsCount and ShipsCount > 0 then
 		for i=1, ShipsCount do
 			if ship == TraffiShip[i] then
-print(ShipDef[TraffiShip[i].shipId].name.." is destroyed by "..attacker.label)
+--print(ShipDef[TraffiShip[i].shipId].name.." "..ship.label.." is destroyed by "..attacker.label)
 				replace_and_spawn(i)
 			break end
 		end
@@ -625,15 +659,20 @@ end
 local onFrameChanged = function (body)
 	if body:isa("Ship") and not body:IsPlayer() then return end
 	local target = Game.player:GetNavTarget()
-	if not target then return end
+	local NextNearbyStation = Game.player:FindNearestTo("SPACESTATION")
+	if lastPort == NextNearbyStation then return end
+	if not target and Game.player:DistanceTo(NextNearbyStation) < 20e3 then
+		target = Game.player:FindNearestTo("SPACESTATION")
+	end
+	if not target or Game.player:DistanceTo(target) > 100e3 then return end
 	if not basePort or target ~= basePort then
 		activateON = false
 	end
 	if activateON then return end
 	if target.superType == 'STARPORT' then
 		nextPort = target
-		dist = Game.player:DistanceTo(nextPort)
-		if dist < 200e3 then
+		local dist = Game.player:DistanceTo(nextPort)
+		if dist < 100e3 then
 			playerStatus = "inbound"
 			erase_old_spawn()
 			lastPort=basePort
@@ -696,6 +735,7 @@ local onShipUndocked = function (ship, station)
 	sensorDistance()
 end
 
+
 local onEnterSystem = function (ship)
 	if Game.system.population == 0 then return end
 	Event.Register("onShipDocked", onShipDocked)
@@ -735,6 +775,7 @@ end
 
 local onGameStart = function ()
 	if Game.system.population == 0 then return end
+
 	Event.Register("onShipDocked", onShipDocked)
 	Event.Register("onShipUndocked", onShipUndocked)
 	Event.Register("onAICompleted", onAICompleted)
@@ -762,10 +803,12 @@ local onGameStart = function ()
 		warning      = loaded_data.warning
 		fineDetect   = loaded_data.fineDetect
 
-		for i = 1, ShipsCount do
-			if TraffiShip[i] == "nc" then
-				print("NOT EXIST TraffiShip["..i.."] at init, REPLACE")
-				replace_and_spawn(i)
+		if ShipsCount and ShipsCount > 0 then
+			for i = 1, ShipsCount do
+				if not TraffiShip[i] then
+					print("NOT EXIST TraffiShip["..i.."] at init, REPLACE")
+					replace_and_spawn(i)
+				end
 			end
 		end
 
@@ -781,11 +824,13 @@ local onGameStart = function ()
 end
 
 
-
 local serialize = function ()
-	for i = 1, ShipsCount do
-		if not ShipExists(TraffiShip[i]) then
-			TraffiShip[i]="nc"
+	if ShipsCount and ShipsCount > 0 then
+		for i = 1, ShipsCount do
+			if not ShipExists(TraffiShip[i])
+				or TraffiShip[i].flightState == "HYPERSPACE" then
+				TraffiShip[i]= nil
+			end
 		end
 	end
 

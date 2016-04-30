@@ -1,4 +1,4 @@
--- ShipsResale.lua for Pioneer Scout+ (c)2012-2015 by walterar <walterar2@gmail.com>
+-- ShipsResale.lua for Pioneer Scout+ (c)2012-2016 by walterar <walterar2@gmail.com>
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- Work in progress.
 
@@ -173,11 +173,12 @@ local onGameStart = function ()
 		maxsales      = loaded_data.maxsales
 		loaded_data = nil
 	else
-	ads = {}
-	saleship = {}
-	my_ship_price = nil
-	maxsales = 10
+		ads = {}
+		saleship = {}
+		my_ship_price = nil
+		maxsales = 10
 	end
+	loaded_data = nil
 end
 
 local serialize = function ()
@@ -194,7 +195,6 @@ end
 
 local onGameEnd = function ()
 	ads = {}
-	loaded_data = nil
 	saleship = {}
 	my_shipDef,my_ship_name,my_ship_id,my_ship_price,shipdefs,maxsales = nil,nil,nil,nil,nil,nil
 	oksel = 0

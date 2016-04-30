@@ -1170,6 +1170,7 @@ local onGameStart = function ()
 		PlayerCharacter.player = true
 		-- Gave the player a missions table (for Misssions.lua)
 		PlayerCharacter.missions = {}
+		PlayerCharacter.hjumps = {}
 		-- Insert the player character into the persistent character
 		-- table.  Player won't be ennumerated with NPCs, because player
 		-- is not numerically keyed.

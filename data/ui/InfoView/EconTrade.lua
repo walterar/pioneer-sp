@@ -1,6 +1,6 @@
 -- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
--- modified for Pioneer Scout+ (c)2012-2015 by walterar <walterar2@gmail.com>
+-- modified for Pioneer Scout+ (c)2012-2016 by walterar <walterar2@gmail.com>
 -- Work in progress.
 
 local Engine     = import("Engine")

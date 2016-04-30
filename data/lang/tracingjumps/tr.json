@@ -1,0 +1,62 @@
+{
+"FORM_NAME":{
+"description":"",
+"message":"Tracing Jumps"
+},
+"SHIP_APPROACHING":{
+"description":"",
+"message":"Ship approaching"
+},
+"SHIP_LABEL":{
+"description":"Registry (label) ship",
+"message":"Registry"
+},
+"SHIP_NAME":{
+"description":"Nombre de la nave",
+"message":"Ship"
+},
+"TARGET_SHIP_FLYING_TO":{
+"description":"",
+"message":"The persecuted ship [ {label} ] is flying to {target}"
+},
+"HYPERDRIVE":{
+"description":"",
+"message":"Hyperdrive"
+},
+"JUMPED_TO":{
+"description":"",
+"message":"Jumped to"
+},
+"COMING_FROM":{
+"description":"",
+"message":"Coming from"
+},
+"GUNS":{
+"description":"",
+"message":"Gun"
+},
+"SHIELDS":{
+"description":"",
+"message":"Shields"
+},
+"ARRIVAL_DATE":{
+"description":"",
+"message":"Arrival date"
+},
+"NOT_JUMPS":{
+"description":"",
+"message":"No jumps registered"
+},
+"OK":{
+"description":"",
+"message":"Ok"
+},
+"IN_SITE":{
+"description":"",
+"message":"In site"
+},
+"SET_ROUTE":{
+"description":"",
+"message":"Set route"
+}
+}

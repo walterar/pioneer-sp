@@ -161,139 +161,139 @@
 },
 "FLAVOUR_1_ADTEXT":{
 "description":"",
-"message":"SHIP CRASH LANDED on {planet}."
+"message":"O NAVĂ S-A PRĂBUȘIT pe {planet}."
 },
 "FLAVOUR_1_FAILUREMSG":{
 "description":"",
-"message":"I can't believe you are just returning now! How much time has been wasted!"
+"message":"Nu pot să cred că abia acum vă întoarceți! Cât timp a fost irosit!"
 },
 "FLAVOUR_1_HOWMUCHTIMETEXT":{
 "description":"",
-"message":"For full reimbursement of expenses you have to be back by {due}."
+"message":"Pentru rambursarea completă a cheltuielilor trebuie să vă întoarceți până pe {due}."
 },
 "FLAVOUR_1_INTROTEXT":{
 "description":"",
-"message":"{starport} air traffic control needs your IMMEDIATE help responding to a crash landing of a {ship} type starship on {planet}. Status of life support systems is unknown. The ship has been insured by {starport} starport insurance and is covered for {cash} in emergency response reimbursement."
+"message":"Controlul aerian al portului stelar {starport} are nevoie de ajutorul dvs. URGENT pentru a salva o navă de tip {ship} care a aterizat forţat pe {planet}. Condiția sistemelor de susţinere a vieţii e necunoscută. Nava a fost asigurată de către portul stelar {starport} și este acoperită cu suma {cash} privind acţiunile de răspuns în situaţii de urgenţă."
 },
 "FLAVOUR_1_LOCATIONTEXT":{
 "description":"",
-"message":"Last known location for this ship was {planet} at latitude/longitude coordinates: {lat} / {long}. Ship ID is {shiplabel}."
+"message":"Ultima locație cunoscută a navei a fost pe {planet} la coordonatele latitudine/longitudine: {lat} / {long}. ID-ul navei este {shiplabel}."
 },
 "FLAVOUR_1_SUCCESSMSG":{
 "description":"",
-"message":"Thank you, this is a great relief! We will transmit the money momentarily."
+"message":"Mulțumim, ne-ați luat o piatră de pe inimă! Vă vom trece banii imediat în cont."
 },
 "FLAVOUR_1_TRANSFERMSG":{
 "description":"",
-"message":"{unit} has boarded the ship."
+"message":"{unit} s-a îmbarcat pe navă."
 },
 "FLAVOUR_1_TYPEOFHELPTEXT":{
 "description":"",
-"message":"A crew of {crew} and {pass} passengers are reported to be on board the ship. We need someone to locate the ship, pick up any survivors from the site and bring them here immediately."
+"message":"S-a raportat a fi la bordul navei un echipaj de {crew} și {pass} pasageri. Avem nevoie de cineva să localizeze nava, să salveze orice supraviețuitori și să-i aducă aici cât mai repede."
 },
 "FLAVOUR_2_ADTEXT":{
 "description":"",
-"message":"SHIP OUT OF FUEL in route to {starport}."
+"message":"NAVĂ RĂMASĂ FĂRĂ COMBUSTIBIL în drum spre {starport}."
 },
 "FLAVOUR_2_FAILUREMSG":{
 "description":"",
-"message":"I can't believe you kept me waiting out here this long! Forget about your payment!"
+"message":"Nu-mi vine să cred că m-ați lăsat să aștept atât de mult în mijlocul pustietății! Puteți uita de plată."
 },
 "FLAVOUR_2_HOWMUCHTIMETEXT":{
 "description":"",
-"message":"To recieve full payment you are asked to deliver the fuel by {due}."
+"message":"Pentru a primi plata integrală sunteți rugat să faceți livrarea până pe {due}."
 },
 "FLAVOUR_2_INTROTEXT":{
 "description":"",
-"message":"{starport} air traffic control just received notice that incoming flight {shiplabel} has run out of fuel and had to emergency land. The pilot is willing to pay {cash} for refueling services."
+"message":"Controlul aerian al portului stelar {starport} a primit de veste că nava așteptată {shiplabel} a rămas fără combustibil și a trebuit să aterizeze de urgență. Pilotul oferă {cash} pentru cine îl poate realimenta."
 },
 "FLAVOUR_2_LOCATIONTEXT":{
 "description":"",
-"message":"The ship is presently waiting at latitude {lat} / longitude {long} on planet {planet}."
+"message":"Nava așteaptă la latitudine {lat} / longitudine {long} pe planeta {planet}."
 },
 "FLAVOUR_2_SUCCESSMSG":{
 "description":"",
-"message":"Thank you so much! I have transfered the full reward."
+"message":"Mulțumesc foarte mult! Am transferat recompensa în întregime."
 },
 "FLAVOUR_2_TRANSFERMSG":{
 "description":"",
-"message":"{unit} ton of fuel has been transfered."
+"message":"{unit} tonă de combustibil a fost transferată."
 },
 "FLAVOUR_2_TYPEOFHELPTEXT":{
 "description":"",
-"message":"The pilot is requesting {load} ton of {cargo} fuel."
+"message":"Pilotul cere o tonă de combustibil din hidrogen."
 },
 "FLAVOUR_3_ADTEXT":{
 "description":"",
-"message":"MEDICAL EMERGENCY on ship close to {starport}."
+"message":"URGENȚĂ MEDICALĂ pe o navă aproape de {starport}."
 },
 "FLAVOUR_3_FAILUREMSG":{
 "description":"",
-"message":"Unacceptable performance! We will update our records accordingly."
+"message":"Performanță inacceptabilă! Vom actualiza înregistrările noastre în mod corespunzător."
 },
 "FLAVOUR_3_HOWMUCHTIMETEXT":{
 "description":"",
-"message":"The substitute pilot will need to reach the ship by {due}."
+"message":"Pilotul înlocuitor va trebui să ajungă la navă pana la {due}."
 },
 "FLAVOUR_3_INTROTEXT":{
 "description":"",
-"message":"My name is {name} from {starport} air traffic control. I am requesting help in response to a medical emergency involving the pilot of flight {shiplabel} headed for {starport}."
+"message":"Numele meu este {name}, de la controlul aerian din {starport}. Cer ajutor în numele unui pilot al zborului {shiplabel} către portul stelar {starport}, care ne-a anunțat că are o urgență medicală."
 },
 "FLAVOUR_3_LOCATIONTEXT":{
 "description":"",
-"message":"The ship had to emergency land at the coordinates: {lat} / {long}."
+"message":"Nava a trebuit să aterizeze de urgență la coordonatele: {lat} / {long}."
 },
 "FLAVOUR_3_SUCCESSMSG":{
 "description":"",
-"message":"Thank you, commander! Your help has been duly noted."
+"message":"Mulțumim, comandante! Ajutorul dvs. a fost apreciat corespunzător."
 },
 "FLAVOUR_3_TRANSFERMSG":{
 "description":"",
-"message":"{unit} has left the ship."
+"message":"{unit} a părăsit nava."
 },
 "FLAVOUR_3_TYPEOFHELPTEXT":{
 "description":"",
-"message":"Please transport a substitute pilot from {starport} to the ship so they can fly the ship back to {starport}."
+"message":"Vă rog să aduceți un pilot înlocuitor de la {starport} la navă ca să poată duce nava înapoi la {starport}."
 },
 "FLAVOUR_4_ADTEXT":{
 "description":"",
-"message":"SHIP OUT OF FUEL on {planet}."
+"message":"NAVĂ FĂRĂ COMBUSTIBIL pe {planet}."
 },
 "FLAVOUR_4_FAILUREMSG":{
 "description":"",
-"message":"I will send someone else. Don't bother anymore."
+"message":"O să trimit pe altcineva. Nu vă mai deranjați."
 },
 "FLAVOUR_4_HOWMUCHTIMETEXT":{
 "description":"",
-"message":"For full pay the pilot expects you to deliver the fuel by {due}."
+"message":"Pentru plata completă, pilotul așteaptă livrarea combustibilului până la {due}."
 },
 "FLAVOUR_4_INTROTEXT":{
 "description":"",
-"message":"{starport} air traffic control has been contacted by the pilot of flight {shiplabel}. They are stranded with an empty fuel tank and have promised to pay {cash} to anyone that will refuel the ship."
+"message":"Controlul aerian {starport} a fost contactat de un pilot al zborului {shiplabel}. Sunt sinistrați cu un rezervor gol și au promis să plătească {cash} oricui poate să le realimenteze nava."
 },
 "FLAVOUR_4_LOCATIONTEXT":{
 "description":"",
-"message":"The ship is stranded on {planet} at coordinates {lat} / {long}."
+"message":"Nava este sinistrată pe {planet} la coordonatele {lat} / {long}."
 },
 "FLAVOUR_4_SUCCESSMSG":{
 "description":"",
-"message":"Very good. We will recommend you for future assignments."
+"message":"Foarte bine. Vă vom recomanda pe viitor pentru misiuni viitoare."
 },
 "FLAVOUR_4_TRANSFERMSG":{
 "description":"",
-"message":"{unit} ton of fuel has been transfered."
+"message":"{unit} tonă de combustibil a fost transferată."
 },
 "FLAVOUR_4_TYPEOFHELPTEXT":{
 "description":"",
-"message":"The pilot is asking for {load} ton of {cargo} fuel."
+"message":"Pilotul cere 1 tonă de combustibil din hidrogen."
 },
 "FLAVOUR_5_ADTEXT":{
 "description":"",
-"message":"SHIP OUT OF FUEL close to {starport}."
+"message":"NAVĂ FĂRĂ COMBUSTIBIL aproape de {starport}."
 },
 "FLAVOUR_5_FAILUREMSG":{
 "description":"",
-"message":"People are just not dependable anymore."
+"message":"Nu te mai poți baza pe oameni în ziua de azi."
 },
 "FLAVOUR_5_HOWMUCHTIMETEXT":{
 "description":"",
@@ -313,7 +313,7 @@
 },
 "FLAVOUR_5_TRANSFERMSG":{
 "description":"",
-"message":"{unit} ton of fuel has been transfered."
+"message":"{unit} tonă de combustibil a fost transferată."
 },
 "FLAVOUR_5_TYPEOFHELPTEXT":{
 "description":"",
@@ -345,7 +345,7 @@
 },
 "FLAVOUR_6_TRANSFERMSG":{
 "description":"",
-"message":"{unit} has boarded the ship."
+"message":"{unit} s-a îmbarcat pe navă."
 },
 "FLAVOUR_6_TYPEOFHELPTEXT":{
 "description":"",
@@ -489,7 +489,7 @@
 },
 "ORBIT":{
 "description":"",
-"message":"Orbit"
+"message":"Orbită"
 },
 "PARTIAL":{
 "description":"",
@@ -669,7 +669,7 @@
 },
 "SAR":{
 "description":"",
-"message":"Search & Rescue"
+"message":"Căutare & Salvare"
 },
 "SHIP_UNRESPONSIVE":{
 "description":"",
@@ -677,7 +677,7 @@
 },
 "SYSTEM":{
 "description":"",
-"message":"System:"
+"message":"Sistem:"
 },
 "TARGET_SHIP_ID":{
 "description":"",
@@ -685,7 +685,7 @@
 },
 "THANK_YOU_ACCEPTANCE_TXT":{
 "description":"",
-"message":"Thank you so much. Your help is greatly appreciated."
+"message":"Mulțumesc foarte mult. Ajutorul dvs. este foarte apreciat."
 },
 "TONS_OF_FREE_CARGO_SPACE":{
 "description":"",

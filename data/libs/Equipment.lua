@@ -455,6 +455,7 @@ end
 -- laser_cooler - laser cooling booster
 -- cargo_life_support - cargo bay life support
 -- autopilot - autopilot
+-- nav_assist - autopilot software enhanced
 -- auto_combat - Combat Autopilot
 -- trade_analyzer - commodity trade analyzer computer module
 -- demp - Directional Electro Magnetic Pulse
@@ -615,7 +616,7 @@ local cargo = {
 		l10n_key="INDUSTRIAL_MACHINERY", l10n_resource = "core", slots="cargo", price=130,
 		capabilities={mass=1}, economy_type="industry",
 		purchasable=true, icon_name="Industrial_machinery"
-	}),
+	})
 }
 
 cargo.liquid_oxygen.requirements = { cargo.water, cargo.industrial_machinery }
@@ -721,9 +722,9 @@ misc.autopilot = EquipType.New({
 	l10n_key="AUTOPILOT", slots="autopilot", price=1400,
 	capabilities={mass=1, set_speed=1, autopilot=1}, purchasable=true
 })
-misc.enhanced_autopilot = EquipType.New({
+misc.nav_assist = EquipType.New({
 	l10n_key="NAV_ASSIST", slots="nav_assist", price=200,
-	capabilities={mass=0, enhanced_autopilot=1, software=1}, purchasable=true
+	capabilities={mass=0, nav_assist=1, software=1}, purchasable=true
 })
 misc.radar_mapper = EquipType.New({
 	l10n_key="RADAR_MAPPER", slots="radar", price=900,
@@ -753,6 +754,10 @@ misc.multi_scoop = EquipType.New({
 misc.hypercloud_analyzer = EquipType.New({
 	l10n_key="HYPERCLOUD_ANALYZER", slots="hypercloud", price=1500,
 	capabilities={mass=1, hypercloud_analyzer=1}, purchasable=true
+})
+misc.tracing_jumps  = EquipType.New({
+	l10n_key="TRACING_JUMPS", slots="tracingjumps", price=1200,
+	capabilities={mass=1, tracingjumps=1}, purchasable=true
 })
 misc.shield_energy_booster = EquipType.New({
 	l10n_key="SHIELD_ENERGY_BOOSTER", slots="energy_booster", price=10000,

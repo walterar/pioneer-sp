@@ -24,12 +24,9 @@
       "cargo" : 20,
       "cargo_life_support" : 0,
       "hull_autorepair" : 0,
-      "laser_front" : 1,
-      "laser_rear" : 0,
       "missile" : 2,
       "scoop" : 0
    },
-
    "thruster_fuel_use" : 0.0001,
    "effective_exhaust_velocity" : -1.0,
    "hyperdrive_class" : 1,

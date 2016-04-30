@@ -1,0 +1,62 @@
+{
+"FORM_NAME":{
+"description":"Nombre de la solapa",
+"message":"Seguimiento de Hipersaltos"
+},
+"SHIP_APPROACHING":{
+"description":"Nombre de la neve entrante",
+"message":"Entrando"
+},
+"SHIP_LABEL":{
+"description":"Registro (label) de la nave",
+"message":"Registro"
+},
+"SHIP_NAME":{
+"description":"Nombre de la nave",
+"message":"Nave"
+},
+"TARGET_SHIP_FLYING_TO":{
+"description":"",
+"message":"La nave en observación [ {label} ], se dirige a {target}"
+},
+"HYPERDRIVE":{
+"description":"Motor hiperespacial",
+"message":"Hipermotor"
+},
+"JUMPED_TO":{
+"description":"Destino del hipersalto",
+"message":"Destino"
+},
+"COMING_FROM":{
+"description":"",
+"message":"Origen"
+},
+"GUNS":{
+"description":"Armamento instalado en la nave",
+"message":"Armas"
+},
+"SHIELDS":{
+"description":"Escudos instalados en la nave",
+"message":"Escudos"
+},
+"ARRIVAL_DATE":{
+"description":"Fecha de arribo a destino hiperespacial",
+"message":"Arribo"
+},
+"NOT_JUMPS":{
+"description":"",
+"message":"Sin saltos registrados"
+},
+"OK":{
+"description":"",
+"message":"Aceptar"
+},
+"IN_SITE":{
+"description":"",
+"message":"En sitio"
+},
+"SET_ROUTE":{
+"description":"",
+"message":"Marcar ruta"
+}
+}

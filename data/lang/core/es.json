@@ -277,7 +277,7 @@
 },
 "DATE_DUE_N":{
 "description":"",
-"message":"Fecha de vencimiento: %date"
+"message":"Fecha de arribo: %date"
 },
 "DAY_LENGTH":{
 "description":"",
@@ -649,7 +649,7 @@
 },
 "KM_S_RELATIVE_TO":{
 "description":"",
-"message":"V-Rel: %frame %speed{f.2} Km/s"
+"message":"Vel: %speed{f.2} Km/s - Rel a: %frame"
 },
 "L4L5_DISPLAY_MODE_TOGGLE":{
 "description":"",
@@ -1107,9 +1107,9 @@
 "description":"",
 "message":"Periapsis"
 },
-"PIONEER":{
+"PIONEER_SCOUT_PLUS":{
 "description":"",
-"message":"PIONEER"
+"message":"SCOUT"
 },
 "PITCH":{
 "description":"",
@@ -1706,6 +1706,10 @@
 "TOMBSTONE_EPITAPH":{
 "description":"",
 "message":"R.I.P."
+},
+"TRACING_JUMPS":{
+"description":"",
+"message":"Rastreador de saltos Sí/No"
 },
 "TRADING_ILLEGAL_GOODS":{
 "description":"",

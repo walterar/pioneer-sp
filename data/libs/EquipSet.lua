@@ -11,8 +11,10 @@ local EquipSet = utils.inherits(nil, "EquipSet")
 
 EquipSet.default = {
 	autocombat=1,
+	tracingjumps = 1,
 	beacon_receiver=1,
 	capacitor=1,
+	demp=1,
 	nav_assist=1,
 	cargo=0,
 	engine=1,
@@ -20,7 +22,6 @@ EquipSet.default = {
 	laser_rear=0,
 	missile=0,
 	ecm=1,
-	demp=1,
 	scanner=1,
 	radar=1,
 	hypercloud=1,
@@ -34,7 +35,6 @@ EquipSet.default = {
 	cargo_life_support=1,
 	autopilot=1,
 	trade_analyzer=1,
-	converter=1,
 	sensor = 8,
 }
 

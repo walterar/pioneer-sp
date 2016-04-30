@@ -91,10 +91,6 @@
 "description":"",
 "message":"Pouvez-vous s'il vous plait répéter la requête originale ?"
 },
-"CRIMINAL_RECORD":{
-"description":"",
-"message":"Désolé, commandant. Son casier judiciaire est incompatible avec ce type de tâche. S'il vous plaît, revenez quand vous résolu ce problème."
-},
 "DANGER":{
 "description":"the risk level",
 "message":"Dangers:"

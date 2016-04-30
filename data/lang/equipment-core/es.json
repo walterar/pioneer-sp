@@ -311,6 +311,14 @@
 "description":"",
 "message":"Escaneo iniciado, la distancia al objetivo es"
 },
+"TRACING_JUMPS":{
+"description":"",
+"message":"Rastreador de saltos"
+},
+"TRACING_JUMPS_DESCRIPTION":{
+"description":"",
+"message":"Detecta los hypersaltos en torno la nave y los registra para una posible persecución."
+},
 "TRADE_ANALYZER":{
 "description":"Ship equipment computing profitable commodities to trade between two systems",
 "message":"Analizador de comercio"

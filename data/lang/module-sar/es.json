@@ -477,11 +477,7 @@
 },
 "MISSING_PASS":{
 "description":"",
-"message":"Transferencia incompleta. Pasajeros perdidos."
-},
-"MISSING_PASSENGER":{
-"description":"",
-"message":"No se puede completar la transferencia. Falta pasajero."
+"message":"Transferencia incompleta.  Falta pasajero."
 },
 "OK_AGREED":{
 "description":"",

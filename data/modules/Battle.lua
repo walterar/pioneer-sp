@@ -1,4 +1,4 @@
--- Battle.lua for Pioneer Scout+ (c)2012-2015 by walterar <walterar2@gmail.com>
+-- Battle.lua for Pioneer Scout+ (c)2012-2016 by walterar <walterar2@gmail.com>
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- Work in progress.
 
@@ -30,7 +30,6 @@ local ShipExists = function (ship)
 		if ok then
 			return val
 		else
---print("NO ES UNA NAVE ACTIVA")
 			return false
 		end
 	end
@@ -47,6 +46,7 @@ end
 
 Event.Register("onEnterSystem", function (ship)
 	if not ship:IsPlayer() or Game.system.population == 0 or DangerLevel < 1 then return end
+	battle_active = false
 	if Engine.rand:Integer(3) < 1 then--XXX
 		battle_active = true
 		Timer:CallAt(Game.time+Engine.rand:Integer(2,5), function ()
@@ -62,8 +62,8 @@ Event.Register("onEnterSystem", function (ship)
 			if n > max_hostiles then n = max_hostiles end
 			for i = 1, n do
 				hostil[i] = hostiles[Engine.rand:Integer(1,#hostiles)]
---				local default_drive = Eq.hyperspace['hyperdrive_'..tostring(hostil[i].hyperdriveClass)]
-				local max_laser_size = hostil[i].capacity-- - default_drive.capabilities.mass
+				local default_drive = Eq.hyperspace['hyperdrive_'..tostring(hostil[i].hyperdriveClass)]
+				local max_laser_size = hostil[i].capacity - default_drive.capabilities.mass
 				local laserdefs = utils.build_array(utils.filter(function (k,l)
 					return l:IsValidSlot('laser_front')
 						and l.capabilities.mass <= max_laser_size
@@ -71,16 +71,16 @@ Event.Register("onEnterSystem", function (ship)
 				end, pairs(Eq.laser)))
 				local laserdef = laserdefs[Engine.rand:Integer(1,#laserdefs)]
 				hostil[i] = Space.SpawnShipNear(hostil[i].id, ship,6,6)
---				hostil[i]:AddEquip(default_drive)
+				hostil[i]:AddEquip(default_drive)
 				hostil[i]:AddEquip(laserdef)
 				hostil[i]:SetLabel(Ship.MakeRandomLabel())
 			end
 			for i = 1, n-1 do
 				hostil[i]:AIKill(hostil[i+1])
 			end
-			if shipWithCannon(ship)
-				and DangerLevel > 0 and Engine.rand:Integer(2) < 1 then--XXX
-				Timer:CallAt(Game.time+Engine.rand:Integer(10,20), function ()
+			if ShipExists(hostil[n]) then hostil[n]:AIKill(hostil[1]) end
+			if shipWithCannon(ship) and Engine.rand:Integer(2) < 1 then--XXX
+				Timer:CallAt(Game.time + Engine.rand:Integer(10,20), function ()
 					if ShipExists(hostil[1]) then hostil[1]:AIKill(ship) end
 					if ShipExists(hostil[n]) then hostil[n]:AIKill(ship) end
 				end)
@@ -92,12 +92,11 @@ end)
 local t = 0
 Event.Register("onShipHit",  function (ship, attacker)
 	if battle_active == false
-		or not ShipExists(ship)
-		or not ShipExists(attacker)
-		or ship:IsPlayer()
-		or attacker:IsPlayer() then
-	return end
---	ship:SetHullPercent()
+		or not ShipExists(ship) or not ShipExists(attacker)
+		or ship:IsPlayer() or attacker:IsPlayer()
+	then
+		return
+	end
 	ship:AIKill(attacker)
 end)
 

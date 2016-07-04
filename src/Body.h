@@ -39,7 +39,7 @@ public:
 	void SetClipRadius(double r) { m_clipRadius = r; }
 	double GetClipRadius() const { return m_clipRadius; }
 	virtual double GetMass() const { assert(0); return 0; }
-	
+
 	// return true if to do collision response and apply damage
 	virtual bool OnCollision(Object *o, Uint32 flags, double relVel) { return false; }
 	// Attacker may be null
@@ -66,7 +66,7 @@ public:
 	matrix3x3d GetOrientRelTo(const Frame *) const;
 
 	// Should return pointer in Pi::currentSystem
-	virtual const SystemBody *GetSystemBody() const { return 0; }
+	virtual const SystemBody *GetSystemBody() const { return nullptr; }
 	// for putting on planet surface, oriented +y up
 	void OrientOnSurface(double radius, double latitude, double longitude);
 

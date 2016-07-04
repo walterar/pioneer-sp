@@ -30,7 +30,7 @@ extern "C" {
 #include "miniz/miniz.h"
 }
 
-static const int  s_saveVersion   = 86;
+static const int  s_saveVersion   = 87;
 static const char s_saveStart[]   = "PIONEERSP";
 static const char s_saveEnd[]     = "END";
 
@@ -249,7 +249,7 @@ void Game::TimeStep(float step)
 
 	// XXX ui updates, not sure if they belong here
 	m_gameViews->m_cpan->TimeStepUpdate(step);
-	Sfx::TimeStepAll(step, m_space->GetRootFrame());
+	SfxManager::TimeStepAll(step, m_space->GetRootFrame());
 	log->Update(m_timeAccel == Game::TIMEACCEL_PAUSED);
 
 	if (m_state == STATE_HYPERSPACE) {
@@ -851,6 +851,17 @@ Game *Game::LoadGame(const std::string &filename)
 	// file data is freed here
 }
 
+/*bool Game::CanLoadGame(const std::string &filename)
+{
+	Output("Game::CanLoadGame('%s')\n", filename.c_str());
+	auto file = FileSystem::userFiles.ReadFile(FileSystem::JoinPathBelow(Pi::SAVE_DIR_NAME, filename));
+	if (!file)
+		return false;
+
+	return true;
+	// file data is freed here
+}
+*/
 void Game::SaveGame(const std::string &filename, Game *game)
 {
 	PROFILE_SCOPED()
@@ -882,10 +893,10 @@ void Game::SaveGame(const std::string &filename, Game *game)
 	FILE *f = FileSystem::userFiles.OpenWriteStream(FileSystem::JoinPathBelow(Pi::SAVE_DIR_NAME, filename));
 	if (!f) throw CouldNotOpenFileException();
 
-	// compress in memory, write to open file 
+	// compress in memory, write to open file
 	size_t outSize = 0;
 	void *pCompressedData = tdefl_compress_mem_to_heap(jsonDataStr.data(), jsonDataStr.length(), &outSize, 128);
-	if (pCompressedData) 
+	if (pCompressedData)
 	{
 		size_t nwritten = fwrite(pCompressedData, outSize, 1, f);
 		mz_free(pCompressedData);
@@ -897,7 +908,7 @@ void Game::SaveGame(const std::string &filename, Game *game)
 		fclose(f);
 		throw CouldNotWriteToFileException();
 	}
-	
+
 #ifdef PIONEERSP_PROFILER
 	Profiler::dumphtml(profilerPath.c_str());
 #endif

@@ -583,6 +583,9 @@
 "description":"",
 "message":"¿Existe algún riesgo?"
 },
+"WRONG_SYSTEM":{
+"description":"Shown if system name is right, but coordinates are wrong","message":"El nombre del sistema es correcto, pero no coordenadas."
+},
 "YOU_DO_NOT_HAVE_ENOUGH_CABIN_SPACE_ON_YOUR_SHIP":{
 "description":"",
 "message":"Deberá instalar Cabina de Pasajeros para esta misión."

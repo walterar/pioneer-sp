@@ -83,6 +83,22 @@
 "description":"ui-scout",
 "message":"Experiencia"
 },
+"FACTION_CONFEDERATION":{
+"description":"Lobby.lua",
+"message":"Usted está en espacio controlado por la Confederación"
+},
+"FACTION_EMPIRE":{
+"description":"Lobby.lua",
+"message":"Usted está en espacio controlado por Imperio"
+},
+"FACTION_FEDERATION":{
+"description":"Lobby.lua",
+"message":"Usted está en espacio controlado por la Federación"
+},
+"FACTION_INDEPENDIENT":{
+"description":"Lobby.lua",
+"message":"Usted está en la zona libre e independiente de la galaxia"
+},
 "FAILED":{
 "description":"ui-core",
 "message":"Fallida"
@@ -122,6 +138,10 @@
 "IN_SPACE_OF":{
 "description":"ui.scout",
 "message":"En espacio de "
+},
+"JUMPING":{
+"description":"ui.scout",
+"message":"Saltando"
 },
 "KM":{
 "description":"ui-core",
@@ -254,6 +274,10 @@
 "UNDOCK_AND_ENTER_LOW_ORBIT":{
 "description":"ui-scout",
 "message":"Despegar y Establecer Órbita Baja"
+},
+"UNKNOWN":{
+"description":"ui-scout",
+"message":"Desconocida"
 },
 "WARNING_YOU_MUST_GO_BACK":{
 "description":"Traffic",

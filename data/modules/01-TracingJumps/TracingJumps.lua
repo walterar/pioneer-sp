@@ -88,7 +88,7 @@ _G.ShipJump = function (ship)
 				ship_name   = ship_name,
 				laser_front = laser_front,
 				engineClass = engineClass,
-				fuel_needed = nil,
+				mil_engine 	= nil,
 				shields     = shields,
 				dest_time   = nil,
 				dest_path   = dest_path,
@@ -99,8 +99,9 @@ _G.ShipJump = function (ship)
 			if status == "OK" then
 				local FreeTons = ship.freeCapacity
 				local FreeLaser = ship:GetEquipFree("laser_front")
+				local hyperdrive = table.unpack(ship:GetEquip("engine"))
 				shipx.dest_time = Game.time+duration+shipx.engineClass
-				shipx.fuel_needed = fuel
+				shipx.mil_engine = string.match (hyperdrive.l10n_key,'MIL') or false
 				table.insert(ships_jumped,shipx)
 				local cannon = "no"
 				if FreeLaser then
@@ -112,7 +113,7 @@ _G.ShipJump = function (ship)
 								 lh.SHIP_LABEL.." : ["..shipx.label..
 					"]\n"..lh.SHIP_NAME.." : ["..shipx.ship_name..
 					"]\n"..lh.JUMPED_TO.." : "..shipx.dest_path:GetStarSystem().name..
-					 "\n"..lh.HYPERDRIVE.." : "..Eq.hyperspace['hyperdrive_'..tostring(shipx.engineClass)]:GetName()..
+					 "\n"..lh.HYPERDRIVE.." : "..hyperdrive:GetName()..
 					 "\n"..lh.GUNS.." : "..cannon..
 					 "\n"..lh.SHIELDS.." : "..shipx.shields..
 					 "\n"..lh.ARRIVAL_DATE.." : "..Format.Date(shipx.dest_time),lh.OK, "TOP_LEFT", false, false)
@@ -135,25 +136,34 @@ end
 
 local IncomingJump = function ()
 	local incoming
+	ChekOverdue()
 	for i,v in pairs(ships_jumped) do
 		if Game.time < v.dest_time then
 			if v.dest_path:IsSameSystem(Game.system.path) then
 				incoming = true
 				switchEvents()
 				local cannon = "no"
+				local hyperdrive, hyperfuel
+				if v.mil_engine then
+					hyperdrive = Eq.hyperspace['hyperdrive_mil'..tostring(v.engineClass)]
+					hyperfuel = Eq.cargo.military_fuel
+				else
+					hyperdrive = Eq.hyperspace['hyperdrive_'..tostring(v.engineClass)]
+					hyperfuel = Eq.cargo.hydrogen
+				end
 				if v.laser_front then cannon = v.laser_front:GetName() end
 				MessageBox.OK(
 							 lh.SHIP_APPROACHING.." : ["..v.label..
 				"]\n"..lh.SHIP_NAME.." : ["..v.ship_name..
 				"]\n"..lh.COMING_FROM.." : "..v.from_path:GetStarSystem().name..
-				 "\n"..lh.HYPERDRIVE.." : "..Eq.hyperspace['hyperdrive_'..tostring(v.engineClass)]:GetName()..
+				 "\n"..lh.HYPERDRIVE.." : "..hyperdrive:GetName()..
 				 "\n"..lh.GUNS.." : "..cannon..
 				 "\n"..lh.SHIELDS.." : "..v.shields..
-				 "\n"..lh.ARRIVAL_DATE.." : "..Format.Date(v.dest_time),lh.OK, "TOP_LEFT", false, false)
+				 "\n"..lh.ARRIVAL_DATE.." : "..Format.Date(v.dest_time),lh.OK, "TOP_LEFT", false, false)--]]
 	 print("\n"..lh.SHIP_APPROACHING.." : ["..v.label..
 				"]\n"..lh.SHIP_NAME.." : ["..v.ship_name..
 				"]\n"..lh.COMING_FROM.." : "..v.from_path:GetStarSystem().name..
-				 "\n"..lh.HYPERDRIVE.." : "..Eq.hyperspace['hyperdrive_'..tostring(v.engineClass)]:GetName()..
+				 "\n"..lh.HYPERDRIVE.." : "..hyperdrive:GetName()..
 				 "\n"..lh.GUNS.." : "..cannon..
 				 "\n"..lh.SHIELDS.." : "..v.shields..
 				 "\n"..lh.ARRIVAL_DATE.." : "..Format.Date(v.dest_time).." <<<<<<<<<<<<<<<<<<<<<<<\n")
@@ -171,20 +181,17 @@ local IncomingJump = function ()
 						Timer:CallAt(Game.time+25, function ()
 							if ShipExists(targetShip) and targetShip.flightState ~= "HYPERSPACE"then
 								targetShip:SetLabel(v.label)
-								targetShip:AddEquip(Eq.hyperspace['hyperdrive_'..tostring(v.engineClass)])
-								targetShip:AddEquip(Eq.cargo.hydrogen,(math.floor(v.engineClass ^ 2) / 2))
+								targetShip:AddEquip(hyperdrive)
+								targetShip:AddEquip(hyperfuel,(math.floor(v.engineClass ^ 2) / 2))
 								targetShip:AddEquip(Eq.misc.atmospheric_shielding)
 								targetShip:AddEquip(Eq.misc.scanner)
 								targetShip:AddEquip(Eq.misc.autopilot)
 								targetShip:AddEquip(Eq.misc.shield_generator,v.shields)
 								targetShip:AddEquip(v.laser_front)
 								targetShip:SetFuelPercent()
---							targetShip:AddEquip(Eq.misc.shield_energy_booster)
---							targetShip:AddEquip(Eq.misc.ecm_advanced)
---							targetShip:AddEquip(Eq.misc.ecm_basic)
---							targetShip:AddEquip(Eq.misc.hull_autorepair)
---							targetShip:AddEquip(Eq.misc.cargo_life_support)
-								if targetShip:DistanceTo(Game.player) < 1e4 then
+								if targetShip:DistanceTo(Game.player) < 1e4
+								or Game.player:GetCombatTarget() == targetShip then
+									Game.player:SetNavTarget()
 									targetShip:AIKill(Game.player)
 									print(targetShip.label.." attacks to "..Game.player.label)
 								else
@@ -217,8 +224,6 @@ local IncomingJump = function ()
 					end)
 				end
 			end
-		else
-			ChekOverdue()
 		end
 	end
 	return incoming
@@ -226,43 +231,41 @@ end
 
 local onShipDocked = function (ship, station)
 	if ship:IsPlayer() then return end
-	local timeundock, pass
+	local hyperfuel, timeundock, pass
 	for i,v in pairs(ships_jumped) do
 		if v.label == ship.label then
+			if v.mil_engine then
+				hyperfuel = Eq.cargo.military_fuel
+			else
+				hyperfuel = Eq.cargo.hydrogen
+			end
 			local count = math.floor((v.engineClass ^ 2)/2)
-			count = count - ship:CountEquip(Eq.cargo.hydrogen)
-			ship:AddEquip(Eq.cargo.hydrogen,count)
+			count = count - ship:CountEquip(hyperfuel)
+			ship:AddEquip(hyperfuel,count)
 			ships_jumped = {}
 			pass = true
 			break
 		end
 	end
 	ChekOverdue()
-	local undocked
 	if pass then
+		local undocked = false
 		Timer:CallEvery(2, function ()
-			if undocked or not ShipExists(ship) then
-			return true end
+			if undocked then return true end
 			if Game.player:DistanceTo(station) < 1500 then
 				timeundock = Game.time + 60
 				Timer:CallAt(timeundock, function ()
-					local x
-					repeat--XXX
-						undocked = ship:Undock()
-						x = (x or 0) + 1
-						if x > 10 then
-							print(ship.label.." NOT UNDOCK.")
-						break end
-					until undocked
+					if undocked then return true end
+					undocked = ship:Undock()
 					if undocked then
 						timeundock = Game.time + 40--XXX orbitals
 						if station.isGroundStation then timeundock = Game.time + 5 end
 						Timer:CallAt(timeundock, function ()
 							ShipJump(ship)
 						end)
+						return true
 					end
 				end)
-				return true
 			end
 		end)
 	end
@@ -293,12 +296,14 @@ local onEnterSystem = function (ship)
 end
 
 local onGameStart = function ()
-	if loaded_data then
+	if type(loaded_data) == "table" then
 		ships_jumped = {}
 		ships_jumped = loaded_data.jumped
 		loaded_data = nil
 	end
-	IncomingJump()
+	Timer:CallAt(Game.time+2, function ()
+		IncomingJump()
+	end)
 end
 
 local serialize = function ()

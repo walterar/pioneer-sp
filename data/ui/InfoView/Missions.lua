@@ -86,7 +86,9 @@ local missions = function (tabGroup)
 	for ref,mission in pairs(Character.persistent.player.missions) do
 		-- Format the location
 		local missionLocationName
-		if mission.location.bodyIndex then
+		if mission.status == 'JUMPING' then
+			missionLocationName = lm.UNKNOWN
+		elseif mission.location.bodyIndex then
 			missionLocationName = string.format('%s\n%s [%d,%d,%d]', mission.location:GetSystemBody().name, mission.location:GetStarSystem().name, mission.location.sectorX, mission.location.sectorY, mission.location.sectorZ)
 		else
 			missionLocationName = string.format('%s\n[%d,%d,%d]', mission.location:GetStarSystem().name, mission.location.sectorX, mission.location.sectorY, mission.location.sectorZ)
@@ -96,7 +98,7 @@ local missions = function (tabGroup)
 		local distLabel
 		local dist = Game.system and Game.system:DistanceTo(mission.location) or 0
 
-		if Game.system then-- mi chequeo de hiperespacio favorito
+		if Game.system and mission.status ~= 'JUMPING' then-- mi chequeo de hiperespacio favorito
 			if ShipExists(mission.target) then
 				dist =  Game.player:DistanceTo(mission.target)/1000
 				if dist < 1495978 then
@@ -124,6 +126,8 @@ local missions = function (tabGroup)
 					distLabel:SetColor({ r = 1.0, g = 0.0, b = 0.0 }) -- red
 				end
 			end
+		elseif mission.status == 'JUMPING' then
+			distLabel = ui:Label(lm.JUMPING):SetColor({ r = 1.0, g = 0.0, b = 0.0 }) -- red
 		else
 			distLabel = ui:Label(lm.HYPERSPACE):SetColor({ r = 1.0, g = 0.0, b = 0.0 }) -- red
 		end

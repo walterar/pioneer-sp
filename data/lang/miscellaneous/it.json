@@ -82,6 +82,22 @@
 "description":"",
 "message":"Esperienza"
 },
+"FACTION_CONFEDERATION":{
+"description":"Lobby.lua",
+"message":"You're in space controlled by the Confederation"
+},
+"FACTION_EMPIRE":{
+"description":"Lobby.lua",
+"message":"You're in space controlled by the Empire"
+},
+"FACTION_FEDERATION":{
+"description":"Lobby.lua",
+"message":"You're in space controlled by the Federación"
+},
+"FACTION_INDEPENDIENT":{
+"description":"Lobby.lua",
+"message":"You are in the free and independent area of the galaxy"
+},
 "FAILED":{
 "description":"",
 "message":"Fallita"
@@ -121,6 +137,10 @@
 "IN_SPACE_OF":{
 "description":"",
 "message":"Nello spazio di "
+},
+"JUMPING":{
+"description":"ui.scout",
+"message":"Jumping"
 },
 "KM":{
 "description":"ui-core",
@@ -252,6 +272,10 @@
 "UNDOCK_AND_ENTER_LOW_ORBIT":{
 "description":"",
 "message":"Decolla ed entra in Orbita Bassa"
+},
+"UNKNOWN":{
+"description":"ui-scout",
+"message":"Unknown"
 },
 "WARNING_YOU_MUST_GO_BACK":{
 "description":"",

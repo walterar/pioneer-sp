@@ -414,6 +414,9 @@
     <ClCompile Include="..\..\src\Plane.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\GasGiantJobs.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\win32\TextUtils.cpp">
       <Filter>src\win32</Filter>
     </ClCompile>
@@ -846,6 +849,10 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\CollMesh.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    </ClInclude>
+    <ClInclude Include="..\..\src\GasGiantJobs.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Range.h">

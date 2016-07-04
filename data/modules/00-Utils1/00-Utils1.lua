@@ -95,14 +95,15 @@ _G.tariff = function (dist,risk,urgency,locate)--,base)
 end
 
 _G._local_due = function (station,location,urgency,round_trip)
+	urgency = urgency or 0
 	local AU = 149597870700
 	local dist = station:DistanceTo(Space.GetBody(location.bodyIndex))/AU
 	local double=1
-	if round_trip then double=2 end
+	if round_trip then double=2.25 end
 	local dist = dist*double
 	local due
-	if dist < 1 then
-		due = Game.time + ((dist/3)*24*60*60)+(3*60*60*(2-urgency))
+	if dist < 0.9 then
+		due = Game.time + ((dist/3)*24*60*60)+(4*60*60*(2-urgency))
 	else
 		due = Game.time + ((dist/3)*24*60*60)+((2*double*(2-urgency))*24*60*60)
 	end
@@ -112,7 +113,7 @@ end
 -- a time limit (due) calculator
 _G._remote_due = function (dist,urgency,round_trip)
 	local round=1
-	if round_trip then round=2 end
+	if round_trip then round=2.25 end
 	return Game.time + (math.sqrt(dist)*24*60*60)+((4*round*(2-urgency))*24*60*60)
 end
 
@@ -147,9 +148,13 @@ _G.ship_hostil = function (risk)
 			elseif target and target.type == 'STARPORT_SURFACE' then
 				hostil = Space.SpawnShipLandedNear(hostile.id, target,10,11)
 			elseif target and target:isa("Ship") then
-				hostil = Space.SpawnShipNear(hostile.id, target,15,400)
+				if target.flightState == 'LANDED' then
+					hostil = Space.SpawnShipNear(hostile.id, Game.player,50,100)
+				else
+					hostil = Space.SpawnShipNear(hostile.id, Game.player,15,30)
+				end
 			else
-				hostil = Space.SpawnShipNear(hostile.id, Game.player,30,400)
+				hostil = Space.SpawnShipNear(hostile.id, Game.player,30,30)
 			end
 			hostil:AddEquip(default_drive)
 			hostil:AddEquip(laserdef)

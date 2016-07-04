@@ -10,7 +10,7 @@ GameConfig::GameConfig(const std::map<std::string,std::string> &override_)
 	// set defaults
 	std::map<std::string, std::string> &map = m_map[""];
 	map["Lang"] = "en";
-	map["DisableEclipse"] = "0";
+	map["AMD_MESA_HACKS"] = "0";
 	map["DisableSound"] = "0";
 	map["StartFullscreen"] = "0";
 	map["ScrWidth"] = "800";
@@ -36,7 +36,7 @@ GameConfig::GameConfig(const std::map<std::string,std::string> &override_)
 	map["MaxPhysicsCyclesPerRender"] = "4";
 	map["AntiAliasingMode"] = "2";
 	map["JoystickDeadzone"] = "0.2"; // 20% deadzone is common
-	map["DefaultLowThrustPower"] = "0.25";
+	map["DefaultLowThrustPower"] = "0.015";
 	map["VSync"] = "1";
 	map["UseTextureCompression"] = "1";
 	map["WorkerThreads"] = "0";
@@ -52,6 +52,7 @@ GameConfig::GameConfig(const std::map<std::string,std::string> &override_)
 	map["RedirectStdio"] = "0";
 #endif
 	map["EnableGLDebug"] = "0";
+	map["EnableGPUJobs"] = "1";
 
 	Load();
 

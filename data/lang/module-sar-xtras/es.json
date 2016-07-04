@@ -23,9 +23,17 @@
 "description":"",
 "message":"¡Misión cumplida!"
 },
+"MISSION_ACCOMPLISHED_PARTIALLY":{
+"description":"",
+"message":"Misión parcialmente cumplida."
+},
 "NONE":{
 "description":"",
 "message":"No"
+},
+"OUT_OF_RANGE":{
+"description":"",
+"message":"Fuera de rango"
 },
 "PASSENGERS_TO_BE_SENT":{
 "description":"",

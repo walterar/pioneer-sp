@@ -1,5 +1,5 @@
--- Hitman.lua for Pioneer Scout+ (c)2012-2015 by walterar <walterar2@gmail.com>
--- (mod of Assasination.lua Copyright © 2008-2014 Pioneer Developers. See AUTHORS.txt for details)
+-- Hitman.lua for Pioneer Scout+ (c)2012-2016 by walterar <walterar2@gmail.com>
+-- (mod of Assasination.lua Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details)
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 local Engine     = import("Engine")
@@ -37,6 +37,24 @@ local ads = {}
 local missions = {}
 
 local rank
+
+local Exists = function (ship)
+	local exists = false
+	if ship:exists() then
+		exists = true
+	end
+	return exists
+end
+local ShipExists = function (ship)
+	if ship then
+		ok,val = pcall(Exists, ship)
+		if ok then
+			return val
+		else
+			return false
+		end
+	end
+end
 
 local onDelete = function (ref)
 	ads[ref] = nil
@@ -103,6 +121,7 @@ local onChat = function (form, ref, option)
 				client      = ad.client,
 				org         = ad.org,
 				danger      = ad.danger,
+				date        = Game.time,
 				due         = ad.due,
 				reward      = ad.reward,
 				target      = ad.target,
@@ -168,6 +187,7 @@ local makeAdvert = function (station)
 		client    = client,
 		org       = l["ORG_"..Engine.rand:Integer(1, 5)],
 		danger    = danger,
+		date      = Game.time,
 		due       = due,
 		faceseed  = Engine.rand:Integer(),
 		location  = location,
@@ -194,37 +214,37 @@ local makeAdvert = function (station)
 end
 
 local _start_launch_sequence = function (mission)
-	if mission.ship
-		and mission.ship:exists()
-		and mission.due >= Game.time
-		and (mission.ship.flightState == "DOCKED"
-			or mission.ship.flightState == "LANDED")
+	if ShipExists(mission.ship)
+		and mission.due-10 > Game.time
+		and mission.ship.flightState == "DOCKED"
 	then
-		Timer:CallAt(mission.due, function ()
+		Timer:CallAt(mission.due-10, function ()
 			if mission.status == 'TRIP_BACK'
-				or not mission.ship
-				or not mission.ship:exists()then
+				or not ShipExists(mission.ship)then
 			return end
-			if mission.ship.alertStatus == "NONE" then mission.ship:Undock() end
 			Timer:CallEvery(10, function ()
-				if mission.ship
-					and mission.ship:exists()
-					and mission.ship.flightState ~= "DOCKED"
-					and mission.ship.flightState ~= "LANDED"
-				then
-					return true
-				else
-					mission.ship:Undock()
+				if Game.player:GetDockedWith() == mission.ship:GetDockedWith()
+					and mission.ship.alertStatus ~= "NONE"
+					and mission.ship:GetDockedWith().type == "STARPORT_ORBITAL" then
 					return false
 				end
+				return mission.ship:Undock()
 			end)
 		end)
 	end
+	local launched = false
+	if mission.ship.flightState ~= "DOCKED" then
+		launched = true
+	end
+	return launched
 end
 
 local onShipDestroyed = function (ship, body)
 	for ref, mission in pairs(missions) do
-		if mission.ship  == ship and mission.status == 'ACTIVE' and mission.due < Game.time then
+		if mission.shipregid == ship.label
+			and mission.status == 'ACTIVE'
+			or  mission.status == 'JUMPING'
+		then
 			if not body:isa("Ship")
 			or not body:IsPlayer() then
 				mission.status = 'FAILED'
@@ -232,7 +252,9 @@ local onShipDestroyed = function (ship, body)
 			else
 				mission.status = 'TRIP_BACK'
 				mission.location = _nearbystationsRemotes[Engine.rand:Integer(1,#_nearbystationsRemotes)]
-				if Engine.rand:Integer(2) > 0 or mission.location == nil then
+				if (not mission.location or Engine.rand:Integer(2) > 0)
+					and Game.system:DistanceTo(mission.backstation) < 30
+				then
 					mission.location = mission.backstation
 				else
 					mission.backstation = mission.location
@@ -302,21 +324,44 @@ local onShipUndocked = function (ship, station)
 			ship:AIEnterMediumOrbit(ship:FindNearestTo("STAR"))
 		end
 		local taunt = string.interp(l["TAUNT_"..Engine.rand:Integer(1, 3)], {org = mission.org})
-		Timer:CallAt(Game.time+60, function ()
+		Timer:CallAt(Game.time+40, function ()
 			if escort then escort = nil return end
-			if mission.ship and mission.ship:exists() then
+			if ShipExists(mission.ship) then
 				if Game.player:GetCombatTarget() == mission.ship
 					and Game.player.flightState == "FLYING"
 					and mission.ship.flightState == "FLYING"
 				then
-					Music.Play("music/core/fx/escalating-danger",false)
-					Comms.ImportantMessage(taunt)
-					mission.ship:AIKill(Game.player)
-					escort = ship_hostil(mission.danger)
-					if escort then
-						Comms.ImportantMessage(l.WARNING..mission.danger..l.HOSTILE_SHIPS_APPROACHING)
+					if Engine.rand:Integer(0, 1) > 0 then-- XXX
+						Music.Play("music/core/fx/escalating-danger",false)
+						Comms.ImportantMessage(taunt)
+--						Game.player:CancelAI()--XXX
+						mission.ship:AIKill(Game.player)
+						escort = ship_hostil(mission.danger)
+						if escort then
+							Comms.ImportantMessage(l.WARNING..mission.danger..l.HOSTILE_SHIPS_APPROACHING)
+						end
+					else
+						if ShipJump(mission.ship) then
+							for i,v in pairs(Character.persistent.player.hjumps) do--XXX
+								if v.label == mission.ship.label then
+									mission.due = v.due + (60*60*24*30)-- XXX + 30 días a v.dest_time XXX
+								end
+							end
+							if tracingJumps then
+								mission.ship = nil--"jump"
+								mission.status = 'JUMPING'
+							else
+								mission.status = 'FAILED'
+							end
+						else
+							mission.ship:Explode()
+							mission.ship = nil
+							mission:Remove()
+							missions[ref] = nil
+						end
+						return
 					end
-				else
+				elseif mission.ship.flightState ~= "HYPERSPACE" then
 					mission.ship:AIDockWith(station)
 				end
 			end
@@ -324,11 +369,12 @@ local onShipUndocked = function (ship, station)
 	end
 end
 
+
 local onEnterSystem = function (ship)
 	if not ship:IsPlayer() or not switchEvents() then return end
 	local syspath = Game.system.path
 	for ref,mission in pairs(missions) do
-		if mission.status == 'ACTIVE' then
+		if mission.status == 'ACTIVE' or mission.status == 'JUMPING' then
 			if not mission.ship then
 				if mission.due > Game.time then
 					if mission.location:IsSameSystem(syspath) then
@@ -359,26 +405,39 @@ local onEnterSystem = function (ship)
 							mission.ship:AddEquip(Equipment.misc.shield_energy_booster)
 						end
 						_start_launch_sequence(mission)
-						mission.shipstate = 'docked'
 					end
 				else
-					mission.status = 'FAILED'
+					if mission.status ~= 'JUMPING' then mission.status = 'FAILED' end
 				end
-			else
-				if not mission.ship:exists() then
-					mission.ship = nil
-					if mission.due < Game.time then
-						mission.status = 'FAILED'
-					end
+			end
+		else
+			if not ShipExists(mission.ship) then
+				mission.ship = nil
+				if mission.due < Game.time then
+					mission.status = 'FAILED'
 				end
 			end
 		end
 	end
-	switchEvents()
 end
 
 local onCreateBB = function (station)
-	local num = Engine.rand:Integer(0,math.floor(0.8+Game.system.lawlessness))
+	for i = 1,Engine.rand:Integer(Engine.rand:Integer(0,_maxAdv),_maxAdv) do
+		makeAdvert(station)
+	end
+end
+
+local onUpdateBB = function (station)
+	local num = 0
+	local timeout = 24*60*60 -- default 1 day timeout
+	for ref,ad in pairs(ads) do
+		if ad.station == station then
+			if (Game.time - ad.date > timeout) then
+				station:RemoveAdvert(ref)
+				num = num + 1
+			end
+		end
+	end
 	if num > 0 then
 		for i = 1,num do
 			makeAdvert(station)
@@ -386,34 +445,6 @@ local onCreateBB = function (station)
 	end
 end
 
-local onUpdateBB = function (station)
-	for ref,ad in pairs(ads) do
-		if ad.due < Game.time+(24*60*60) then
-			ad.station:RemoveAdvert(ref)
-		end
-	end
-	if Engine.rand:Integer(50) < 1 then
-		makeAdvert(station)
-	end
-end
-
-	local loaded_data
-local onGameStart = function ()
-	ads = {}
-	missions = {}
-	if not loaded_data then return end
-	for k,ad in pairs(loaded_data.ads) do
-		local ref = ad.station:AddAdvert({
-			description = ad.desc,
-			icon        = "hitman",
-			onChat      = onChat,
-			onDelete    = onDelete})
-		ads[ref] = ad
-	end
-	missions = loaded_data.missions
-	switchEvents()
-	loaded_data = nil
-end
 
 local onClick = function (mission)
 
@@ -431,7 +462,7 @@ local onClick = function (mission)
 		end
 	end)
 
-	if mission.status =="ACTIVE" then
+	if mission.status == 'ACTIVE' then
 
 		return
 			ui:Grid({68,32},1)
@@ -489,6 +520,40 @@ local onClick = function (mission)
 						}),
 		})})
 				:SetColumn(1, {ui:VBox():PackEnd(InfoFace.New(mission.target))})
+
+	elseif mission.status == 'JUMPING' then
+
+		return
+			ui:Grid({68,32},1)
+				:SetColumn(0,{ui:VBox():PackEnd({
+					ui:Margin(10),
+					ui:Grid(2,1)
+						:SetColumn(0, {ui:VBox():PackEnd({ui:Label(l.CONTRACTOR)})})
+						:SetColumn(1, {ui:VBox():PackEnd({ui:MultiLineText(mission.org)})}),
+					ui:Grid(2,1)
+						:SetColumn(0, {ui:VBox():PackEnd({ui:Label(l.CONTACT)})})
+						:SetColumn(1, {ui:VBox():PackEnd({ui:MultiLineText(mission.client.name)})}),
+					ui:Grid(2,1)
+						:SetColumn(0, {ui:VBox():PackEnd({ui:Label(l.REWARD)})})
+						:SetColumn(1, {ui:VBox():PackEnd({ui:MultiLineText(showCurrency(mission.reward))})}),
+					ui:Margin(10),
+					ui:Grid(2,1)
+						:SetColumn(0, {ui:VBox():PackEnd({ui:Label(l.TARGET_NAME)})})
+						:SetColumn(1, {ui:VBox():PackEnd({ui:MultiLineText(
+											mission.target.title.." "..mission.target.name)})
+						}),
+					ui:Margin(5),
+					ui:Grid(2,1)
+						:SetColumn(0, {ui:VBox():PackEnd({ui:Label(l.SHIP)})})
+						:SetColumn(1, {ui:VBox():PackEnd({ui:MultiLineText(mission.shipname)})
+						}),
+					ui:Grid(2,1)
+						:SetColumn(0, {ui:VBox():PackEnd({ui:Label(l.SHIP_ID)})})
+						:SetColumn(1, {ui:VBox():PackEnd({ui:Label(mission.shipregid)})
+						}),
+		})})
+				:SetColumn(1, {ui:VBox():PackEnd(InfoFace.New(mission.target))})
+
 	elseif mission.status =="TRIP_BACK" then
 		return
 			ui:Grid({68,32},1)
@@ -555,7 +620,7 @@ local onClick = function (mission)
 											}),
 		})})
 		:SetColumn(1,{ui:VBox(10):PackEnd(InfoFace.New(mission.client))})
-	elseif mission.status =='FAILED' then
+	elseif mission.status == 'FAILED' then
 		Timer:CallAt(Game.time+2, function ()
 			local current_mission = mission
 			for ref,mission in pairs(missions) do
@@ -579,28 +644,46 @@ local onClick = function (mission)
 	end
 end
 
+local loaded_data
+local onGameStart = function ()
+	ads = {}
+	missions = {}
+	if type(loaded_data) == "table" then
+		for k,ad in pairs(loaded_data.ads) do
+			local ref = ad.station:AddAdvert({
+				description = ad.desc,
+				icon        = "hitman",
+				onChat      = onChat,
+				onDelete    = onDelete})
+			ads[ref] = ad
+		end
+		missions = loaded_data.missions
+		switchEvents()
+		loaded_data = nil
+		for k,mission in pairs(missions) do
+			if ShipExists(mission.ship) then
+				_start_launch_sequence(mission)
+			end
+		end
+	end
+end
+
 local serialize = function ()
 	return { ads = ads, missions = missions }
 end
 
 local unserialize = function (data)
 	loaded_data = data
-	for k,mission in pairs(loaded_data.missions) do
-		if mission.ship and mission.ship:exists() then
-			_start_launch_sequence(mission)
-		end
-	end
 end
 
 switchEvents = function()
 	local status = false
---print("Hitman Events deactivated")
 	Event.Deregister("onShipDocked", onShipDocked)
 	Event.Deregister("onShipUndocked", onShipUndocked)
 	Event.Deregister("onShipDestroyed", onShipDestroyed)
 	for ref,mission in pairs(missions) do
-		if mission.location:IsSameSystem(Game.system.path) then
---print("Hitman Events activate")
+		if mission.location:IsSameSystem(Game.system.path)
+			or mission.status == 'JUMPING' then
 			Event.Register("onShipDocked", onShipDocked)
 			Event.Register("onShipUndocked", onShipUndocked)
 			Event.Register("onShipDestroyed", onShipDestroyed)

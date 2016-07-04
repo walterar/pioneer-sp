@@ -3034,6 +3034,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				528422931CC0E81900A9BFA8 /* BillboardMaterial.cpp in Sources */,
+				528422941CC0E81A00A9BFA8 /* BillboardMaterial.h in Sources */,
 				525515751CA6EEE30055DAB8 /* RandomColor.cpp in Sources */,
 				525515761CA6EEE30055DAB8 /* RandomColor.h in Sources */,
 				4A6C4DD113532FC300FDD53F /* AmbientSounds.cpp in Sources */,
@@ -3513,6 +3515,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				528422911CC0E80700A9BFA8 /* BillboardMaterial.cpp in Sources */,
 				525515731CA6EE1C0055DAB8 /* RandomColor.cpp in Sources */,
 				52F4041D1C9490C70082B1F3 /* JsonUtils.cpp in Sources */,
 				52F4041E1C9490C70082B1F3 /* jsoncpp.cpp in Sources */,

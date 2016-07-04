@@ -1,7 +1,7 @@
 // Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 // Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
-#define WIN32_LEAN_AND_MEAN 
+#define WIN32_LEAN_AND_MEAN
 #define NOMINMAX
 #include "Win32Setup.h"
 
@@ -15,6 +15,17 @@
 #include <stdio.h>
 #include <wchar.h>
 #include <windows.h>
+
+
+extern "C" {
+	// This is the quickest and easiest way to enable using the nVidia GPU on a Windows laptop with a dedicated nVidia GPU and Optimus tech.
+	// enable optimus!
+    __declspec(dllexport) DWORD NvOptimusEnablement = 0x00000001;
+
+	// AMD have one too!!!
+	__declspec(dllexport) int AmdPowerXpressRequestHighPerformance = 1;
+}
+
 
 #ifdef RegisterClass
 #undef RegisterClass
@@ -119,7 +130,7 @@ const std::string GetHardwareInfo()
 
 	// Display the contents of the SYSTEM_INFO structure. 
 	char infoString[2048];
-	snprintf(infoString, 2048, 
+	snprintf(infoString, 2048,
 		"Hardware information: \n  \
 		OEM ID: %u\n  \
 		Number of processors: %u\n  \
@@ -127,14 +138,14 @@ const std::string GetHardwareInfo()
 		Processor type: %u\n  \
 		Minimum application address: %p\n  \
 		Maximum application address: %p\n  \
-		Active processor mask: %u\n\n", 
-		siSysInfo.dwOemId, 
-		siSysInfo.dwNumberOfProcessors, 
-		siSysInfo.dwPageSize, 
-		siSysInfo.dwProcessorType, 
-		siSysInfo.lpMinimumApplicationAddress, 
-		siSysInfo.lpMaximumApplicationAddress, 
-		siSysInfo.dwActiveProcessorMask); 
+		Active processor mask: %u\n\n",
+		siSysInfo.dwOemId,
+		siSysInfo.dwNumberOfProcessors,
+		siSysInfo.dwPageSize,
+		siSysInfo.dwProcessorType,
+		siSysInfo.lpMinimumApplicationAddress,
+		siSysInfo.lpMaximumApplicationAddress,
+		siSysInfo.dwActiveProcessorMask);
 
 	return std::string(infoString);
 }
@@ -183,8 +194,8 @@ const std::string GetOSInfoString()
 #ifdef WITH_BREAKPAD
 /////////////////////////////////////////////////////// Google Breakpad
 bool FilterCallback(void* context, EXCEPTION_POINTERS* exinfo,
-	MDRawAssertionInfo* assertion) 
-{	
+	MDRawAssertionInfo* assertion)
+{
 	return true;
 }
 

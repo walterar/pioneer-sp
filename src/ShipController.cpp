@@ -33,7 +33,7 @@ PlayerShipController::PlayerShipController() :
 	m_mouseY(0.0),
 	m_setSpeed(0.0),
 	m_flightControlState(CONTROL_MANUAL),
-	m_lowThrustPower(0.25), // note: overridden by the default value in GameConfig.cpp (DefaultLowThrustPower setting)
+	m_lowThrustPower(0.01), // note: overridden by the default value in GameConfig.cpp (DefaultLowThrustPower setting)
 	m_mouseDir(0.0),
 	m_AutoCombatActivated(false),
 	m_TracingJumpsActivated(false)

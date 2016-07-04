@@ -1,0 +1,330 @@
+{
+"ABDUCTION":{
+"description":"Laws Taxi",
+"message":"Abduction"
+},
+"ACTIVE":{
+"description":"ui-core",
+"message":"Active"
+},
+"AU":{
+"description":"ui-core",
+"message":"Au"
+},
+"AUTO_COMBAT_DEACTIVATE":{
+"description":"ui-core",
+"message":"WARNING! is disabled AutoCombat"
+},
+"ATTENTION_THIS_CAN_PROVE_COSTLY_YOUR_LIFE_IS_NOT_WORTH":{
+"description":"Traffic",
+"message":"Attention! This can prove costly. Your life is not worth "
+},
+"BUY":{
+"description":"Commodities and equipment prices",
+"message":"Buy"
+},
+"CAPACITY":{
+"description":"ShipInfo",
+"message":"Capacity"
+},
+"CREW":{
+"description":"ShipInfo",
+"message":"Crew"
+},
+"CREW_VACANCIES":{
+"description":"ShipInfo",
+"message":"Crew vacancies"
+},
+"CRIMINAL_RECORD":{
+"description":"Police Hitman CargoRun",
+"message":"I'm sorry Commander. Your criminal record is inconsistent with this type of task. Please check back when issue is resolved."
+},
+"CHECK_WITH_THE_POLICE":{
+"description":"",
+"message":"Check with the police"
+},
+"CURRENT_FACTION":{
+"description":"",
+"message":"Current Faction:"
+},
+"CURRENT_POSITION":{
+"description":"",
+"message":"Current Position:"
+},
+"DAMAGE_REPORT":{
+"description":"",
+"message":"Damage Report"
+},
+"ENTER_HIGH_ORBIT_AT_CURRENT_TARGET":{
+"description":"",
+"message":"Enter High Orbit at Current Target"
+},
+"ENTER_LOW_ORBIT_AT_CURRENT_TARGET":{
+"description":"",
+"message":"Enter Low Orbit at Current Target"
+},
+"ENTER_MEDIUM_ORBIT_AT_CURRENT_TARGET":{
+"description":"",
+"message":"Enter Medium Orbit at Current Target"
+},
+"ENVIRONMENTAL_DAMAGE":{
+"description":"Laws",
+"message":"Environmental Damage"
+},
+"ESCAPE":{
+"description":"Laws Traffic",
+"message":"Escape"
+},
+"ESPIONAGE":{
+"description":"Laws Scout Scooping",
+"message":"Espionage"
+},
+"EXPERIENCE":{
+"description":"",
+"message":"Experience"
+},
+"FACTION_CONFEDERATION":{
+"description":"Lobby.lua",
+"message":"You're in space controlled by the Confederation"
+},
+"FACTION_EMPIRE":{
+"description":"Lobby.lua",
+"message":"You're in space controlled by the Empire"
+},
+"FACTION_FEDERATION":{
+"description":"Lobby.lua",
+"message":"You're in space controlled by the Federación"
+},
+"FACTION_INDEPENDIENT":{
+"description":"Lobby.lua",
+"message":"You are in the free and independent area of the galaxy"
+},
+"FAILED":{
+"description":"",
+"message":"Failed"
+},
+"FEATURES":{
+"description":"ShipInfo",
+"message":"Features"
+},
+"FOR_JETTISON":{
+"description":"EconTrade",
+"message":" for jettisoning "
+},
+"FRAUD":{
+"description":"",
+"message":"Fraud"
+},
+"FAILED_MISSIONS":{
+"description":"",
+"message":"Failed Missions:"
+},
+"HEAVY_SCOUT":{
+"description":"",
+"message":"Heavy Scout"
+},
+"HYPERSPACE":{
+"description":"",
+"message":"Hyperspace"
+},
+"ILLEGAL_JUMP":{
+"description":"Traffic",
+"message":"Illegal jump"
+},
+"INACTIVE":{
+"description":"",
+"message":"Inactive"
+},
+"IN_SPACE_OF":{
+"description":"",
+"message":"In space of "
+},
+"JUMPING":{
+"description":"ui.scout",
+"message":"Jumping"
+},
+"KM":{
+"description":"ui-core",
+"message":"Km"
+},
+"LIGHT_SCOUT":{
+"description":"",
+"message":"Light Scout"
+},
+"LIGHT_YEAR":{
+"description":"light_year",
+"message":" light year"
+},
+"LY":{
+"description":"",
+"message":"Ly"
+},
+"LANDED_IN":{
+"description":"",
+"message":"Landed in "
+},
+"LOCAL":{
+"description":"",
+"message":"Local"
+},
+"MAPPING":{
+"description":"",
+"message":"Mapping"
+},
+"MAPPING_INTERRUPTED":{
+"description":"",
+"message":"MAPPING INTERRUPTED.Very far from the goal! Correct orbit."
+},
+"MEDIUM_SCOUT":{
+"description":"",
+"message":"Medium Scout"
+},
+"MISSILE_BAYS":{
+"description":"",
+"message":"Missile bays"
+},
+"NEW_SHIPS_WITHOUT_STOCK":{
+"description":"",
+"message":"Market of New Ships without stock\nin the entire system: "
+},
+"NOT_BEACON_RECEIVER":{
+"description":"ui-scout",
+"message":"To enable this feature you must install the Beacon Receiver"
+},
+"NOT_NAV_ASSIST":{
+"description":"ui-scout",
+"message":"To enable this feature you must install the Navigation Assistant"
+},
+"ORBIT":{
+"description":"ui-core",
+"message":"Orbit"
+},
+"ORIGIN":{
+"description":"",
+"message":"Origin:"
+},
+"PARTIAL":{
+"description":"",
+"message":"Partial"
+},
+"PORT_OR_VECINITY":{
+"description":"EconTrade",
+"message":" in port or vicinity."
+},
+"PREVIOUS_FACTION":{
+"description":"",
+"message":"Previous Faction:"
+},
+"PREVIOUS_POSITION":{
+"description":"",
+"message":"Previous Position:"
+},
+"REGISTRATION":{
+"description":"",
+"message":"Registration:"
+},
+"REWARD":{
+"description":"ui-core",
+"message":"Reward:"
+},
+"RISK_AREA":{
+"description":"",
+"message":"Risk Area"
+},
+"SELL":{
+"description":"Commodities and equipment prices",
+"message":"Sell"
+},
+"SET_TARGET":{
+"description":"",
+"message":"Set Navigation Target"
+},
+"START_AT_ACHERNAR":{
+"description":"",
+"message":"Start at Achernar"
+},
+"START_AT_LAVE":{
+"description":"",
+"message":"Start at Lave"
+},
+"SUSPENDED":{
+"description":"",
+"message":"Suspended"
+},
+"SHOTS_RECEIVED":{
+"description":"",
+"message":"Shots received:"
+},
+"SHOTS_SUCCESSFUL":{
+"description":"",
+"message":"Shots successful:"
+},
+"SUCCESSFUL_MISSIONS":{
+"description":"",
+"message":"Successful Missions:"
+},
+"TONS_AVAILABLE_FOR":{
+"description":"ui-scout",
+"message":"  Tons available for"
+},
+"TRIP_BACK":{
+"description":"",
+"message":"Return"
+},
+"UNDOCK_AND_ENTER_LOW_ORBIT":{
+"description":"",
+"message":"Undock and Enter Low Orbit"
+},
+"UNKNOWN":{
+"description":"ui-scout",
+"message":"Unknown"
+},
+"WARNING_YOU_MUST_GO_BACK":{
+"description":"Traffic",
+"message":"Warning! You must go back to the Station now or you will die soon."
+},
+"WEAPONS":{
+"description":"",
+"message":"Weapons"
+},
+"YOU_DESERVE_TO_BE_IMMORTAL":{
+"description":"",
+"message":"You deserve to be immortal!"
+},
+"YOU_HAS_BEEN_FINED":{
+"description":"EconTrade Traffic",
+"message":"You has been fined "
+},
+"YOU_HAVE_COMMITTED_A_CRIME_AND_MUST_PAY":{
+"description":"Traffic",
+"message":"You have committed a crime and must pay "
+},
+"YOU_MUST_INSTALL_THE_LIFE_SUPPORT_FOR_CARGO_BAY":{
+"description":"",
+"message":"You must install Cargo Bay Life Support"
+},
+"FOR_JETTISON":{
+"description":"",
+"message":" for jettisoning "
+},
+"HAVE_ENOUGH_EXPERIENCE":{
+"description":"",
+"message":"You do not have enough experience for this mission."
+},
+"LIGHT_YEAR":{
+"description":"",
+"message":" light year"
+},
+"WARNING":{
+"description":"",
+"message":"Warning Commander! DANGER! {hostile} hostile ships are coming!"
+},
+"WORKING":{
+"description":"ui-scout",
+"message":"Working"
+},
+"PORT_OR_VECINITY":{
+"description":"",
+"message":" in port or vicinity."
+}
+}

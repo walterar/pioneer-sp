@@ -1,4 +1,4 @@
--- Autosave.lua for Pioneer Scout+ by walterar Copyright © 2012-2015 <walterar2@gmail.com>
+-- Autosave.lua for Pioneer Scout+ by walterar Copyright © 2012-2016 <walterar2@gmail.com>
 -- this is an code adapted for Scout+ of idea and code of John Bartholomew
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- Work in progress.--
@@ -11,7 +11,7 @@ local Timer = import("Timer")
 local function Saver(savename)
 	return function (ship)
 		if ship and ship:IsPlayer() and Engine.GetAutosaveEnabled() then
-			Timer:CallAt(Game.time+4, function ()--XXX
+			Timer:CallAt(Game.time+5, function ()--XXX
 			Game.SaveGame(savename)
 			end)
 		end

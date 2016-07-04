@@ -32,7 +32,7 @@ SystemInfoView::SystemInfoView(Game* game) : UIView(), m_game(game)
 void SystemInfoView::OnBodySelected(SystemBody *b)
 {
 	{
-//		Output("\n");
+		Output("\n");
 		Output("Gas, liquid, ice: %f, %f, %f\n", b->GetVolatileGas(), b->GetVolatileLiquid(), b->GetVolatileIces());
 	}
 
@@ -508,6 +508,7 @@ void SystemInfoView::Draw3D()
 
 static bool IsShownInInfoView(const SystemBody* sb)
 {
+	if(!sb) return false; // sanity check
 	SystemBody::BodySuperType superType = sb->GetSuperType();
 	return superType == SystemBody::SUPERTYPE_STAR || superType == SystemBody::SUPERTYPE_GAS_GIANT ||
 		superType == SystemBody::SUPERTYPE_ROCKY_PLANET ||
@@ -546,7 +547,7 @@ SystemInfoView::RefreshType SystemInfoView::NeedsRefresh()
 		}
 	} else {
 		Body *navTarget = Pi::player->GetNavTarget();
-		if (navTarget && IsShownInInfoView(navTarget->GetSystemBody())) {
+		if (navTarget && (navTarget->GetSystemBody()!=nullptr) && IsShownInInfoView(navTarget->GetSystemBody())) {
 			// Navigation target is something we show in the info view
 			if (navTarget->GetSystemBody()->GetPath() != m_selectedBodyPath)
 				return REFRESH_SELECTED_BODY; // and wasn't selected, yet
@@ -608,7 +609,7 @@ void SystemInfoView::UpdateIconSelections()
 		if (currentSys && currentSys->GetPath() == m_system->GetPath()) {
 			//navtarget can be only set in current system
 			Body* navtarget = Pi::player->GetNavTarget();
-			if (navtarget && !navtarget->IsType(Body::SHIP)) {
+			if ( navtarget && !navtarget->IsType(Body::SHIP) ) {
 				const SystemPath& navpath = navtarget->GetSystemBody()->GetPath();
 				if (bodyIcon.first == navpath.bodyIndex) {
 					bodyIcon.second->SetSelectColor(Color(0, 255, 0, 255));

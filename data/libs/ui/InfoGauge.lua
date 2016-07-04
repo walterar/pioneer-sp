@@ -13,8 +13,8 @@ function InfoGauge.New (args)
 	local formatter = args.formatter or function (v) return string.format("%.2f / 1.00", v) end
 	local label = args.label or ui:Label(formatter(0))
 
-	local warningLevel = args.warningLevel
-	local criticalLevel = args.criticalLevel
+	local warningLevel   = args.warningLevel
+	local criticalLevel  = args.criticalLevel
 	local levelAscending = args.levelAscending
 
 	local gauge = ui:Gauge()
@@ -24,16 +24,16 @@ function InfoGauge.New (args)
 	if criticalLevel  ~= nil then gauge:SetCriticalLevel(criticalLevel) end
 	if levelAscending ~= nil then gauge:SetLevelAscending(levelAscending) end
 
-    local self = {
-        widget    = box,
+	local self = {
+		widget    = box,
 		gauge     = gauge,
 		label     = label,
-        formatter = formatter,
-    }
+		formatter = formatter
+		}
 
 	setmetatable(self, {
 		__index = InfoGauge,
-		class = "UI.InfoGauge",
+		class = "UI.InfoGauge"
 	})
 
 	return self

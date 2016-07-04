@@ -623,10 +623,6 @@
 "description":"",
 "message":"Widok wewnętrzny"
 },
-"INT_LY":{
-"description":"integer number of light years",
-"message":"%scale lś"
-},
 "IN_TRANSIT":{
 "description":"",
 "message":"Przelot"
@@ -708,8 +704,7 @@
 "message":"zablokowany"
 },
 "LONGITUDE":{
-"description":"Longitude",
-"message":"Lon: %longitude"
+"description":"Short for longitude","message":"Dł.: %longitude"
 },
 "MAJOR_EXPORTS":{
 "description":"",
@@ -1734,6 +1729,13 @@
 "UNEXPLORED_SYSTEM_STAR_INFO_ONLY":{
 "description":"",
 "message":"System niezbadany. Informacje o gwieździe uzyskano przez teleskop, brak danych o planetach."
+},
+"UNIT_AU":{
+"description":"Distance unit: an astronomical unit, radius of Earth's orbit","message":"AU"
+},
+"UNIT_LY":{
+"description":"Distance unit: a light year",
+"message":"lś"
 },
 "UNKNOWN":{
 "description":"",

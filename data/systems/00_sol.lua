@@ -536,7 +536,7 @@ local uranus_moons = {
 }
 
 local neptune = CustomSystemBody:new('Neptune', 'PLANET_GAS_GIANT')-- #55
-	:seed(1365118445)
+	:seed(2833709870)-- 1365118445
 	:radius(f(38,10))
 	:mass(f(17147,1000))
 	:temp(72)

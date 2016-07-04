@@ -578,6 +578,24 @@ end
 --
 --   experimental
 --
+local Exists = function (ship)
+	local exists = false
+	if ship:exists() then
+		exists = true
+	end
+	return exists
+end
+local ShipExists = function (ship)
+	if ship then
+		ok,val = pcall(Exists, ship)
+		if ok then
+			return val
+		else
+			return false
+		end
+	end
+end
+
 local firemissile
 function Ship:FireMissileAt(which_missile, target)
 	if firemissile then return end
@@ -595,48 +613,43 @@ function Ship:FireMissileAt(which_missile, target)
 	else
 		for i,m in pairs(self:GetEquip("missile")) do
 			if (which_missile == m) or (which_missile == "any") then
-				if m.missile_type == "missile_naval" then
-					MissileNaval = true
-					target:CancelAI()
-				end
 				missile_object = self:SpawnMissile(m.missile_type)
 				if missile_object ~= nil then
 					self:SetEquip("missile", i)
+					if m.missile_type == "missile_naval" then
+						MissileNaval = true
+						target:CancelAI()--XXX
+					end
 					break
 				end
 			end
 		end
 	end
-
-	if not missile_object or not missile_object:exists() then return end
-
-	if target and target:exists() then
+	if not ShipExists(missile_object) then return end
+	if ShipExists(target) and target.flightState ~= "HYPERSPACE"then
 		missile_object:AIKamikaze(target)
-		_G.MissileActive = MissileActive +1
+		_G.MissileActive = MissileActive + 1
 	end
-
 	Timer:CallEvery(1, function ()
-		if not missile_object
-			or not missile_object:exists()
-			or target.flightState ~= "FLYING"
-		then return true end
-		if missile_object:DistanceTo(self) < 500 then return false end
-		if missile_object
-			and(not target or not target:exists() or target.flightState ~= "FLYING") then
-			missile_object:Explode()
-			missile_object = nil
-			if _G.MissileActive > 0 then _G.MissileActive = MissileActive -1 end
-		return true end
-		if MissileNaval then
-			MissileNaval = false
-			target:SetInvulnerable(false)
-			target:SetHullPercent(0)
+		if ShipExists(missile_object) then
+			if not ShipExists(target) or target.flightState == "HYPERSPACE" then
+				missile_object:Explode()
+				missile_object = nil
+				if _G.MissileActive > 0 then _G.MissileActive = MissileActive -1 end
+				return true
+			end
+			if missile_object:DistanceTo(self) < 500 then return false end
+			if MissileNaval then
+				MissileNaval = false
+				target:SetInvulnerable(false)
+				target:SetHullPercent(0)
+			end
+			missile_object:Arm()
+		else
+			return true
 		end
-		if missile_object then missile_object:Arm() return false end
 	end)
-
 	Timer:CallAt(Game.time+2, function () firemissile = false end)
-
 	return missile_object
 end
 

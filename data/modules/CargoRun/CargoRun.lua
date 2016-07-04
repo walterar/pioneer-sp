@@ -363,6 +363,7 @@ local onChat = function (form, ref, option)
 			introtext       = ad.introtext,
 			risk            = ad.risk,
 			reward          = ad.reward,
+			date            = ad.date,
 			due             = ad.due,
 			amount          = ad.amount,
 			branch          = ad.branch,
@@ -513,6 +514,7 @@ local makeAdvert = function (station)
 		pickup        = pickup,
 		introtext     = introtext,
 		dist          = dist_txt,
+		date          = Game.time,
 		due           = due,
 		amount        = amount,
 		branch        = branch,
@@ -549,28 +551,28 @@ local makeAdvert = function (station)
 end
 
 local onCreateBB = function (station)
-	local num = math.ceil(Game.system.population)
-	num = Engine.rand:Integer(0,num and num < 3 or 3)
+	for i = 1,Engine.rand:Integer(Engine.rand:Integer(0,_maxAdv),_maxAdv) do
+		makeAdvert(station)
+	end
+end
+
+local onUpdateBB = function (station)
+	local num = 0
+	local timeout = 24*60*60 -- default 1 day timeout for inter-system
+	for ref,ad in pairs(ads) do
+		if ad.station == station then
+			if ad.localdelivery then timeout = 60*60 end -- 1 hour timeout for locals
+			if (Game.time - ad.date > timeout) then
+				station:RemoveAdvert(ref)
+				num = num + 1--Engine.rand:Integer(1)-- 50% of the time, give away 1
+			end
+		end
+	end
 	if num > 0 then
 		for i = 1,num do
 			makeAdvert(station)
 		end
 	end
-end
-
-local onUpdateBB = function (station)
-	for ref,ad in pairs(ads) do
-		if ad.localdelivery then
-			if ad.due < Game.time + 24*60*60 then -- 1 day timeout for locals
-				ad.station:RemoveAdvert(ref)
-			end
-		else
-			if ad.due < Game.time + 2*24*60*60 then -- 2 day timeout for inter-system
-				ad.station:RemoveAdvert(ref)
-			end
-		end
-	end
-	if Engine.rand:Integer(50) < 1 then makeAdvert(station) end
 end
 
 	local hostilactive = false
@@ -605,8 +607,9 @@ local onFrameChanged = function (body)
 						locationx = mission.return_trip:GetSystemBody().name
 					end
 					local pirate_greeting
+					local truesystem  = Game.system
 					Timer:CallEvery(1, function ()
-						if hostilactive then return true end
+						if hostilactive or truesystem ~= Game.system then return true end
 						if body:DistanceTo(Space.GetBody(target_trip)) > 100000e3 then return false end
 						ship = ship_hostil(risk)
 						if ship then
@@ -631,9 +634,12 @@ end
 local onShipDocked = function (player, station)
 	if not player:IsPlayer() then return end
 	hostilactive = false
+	local remove = false
 	for ref,mission in pairs(missions) do
-		if (mission.location == station.path and not mission.pickup)
-		or (mission.domicile == station.path and mission.pickup and mission.cargo_picked_up)
+
+		if mission.status ~= "CLOSED"
+			and ((mission.location == station.path and not mission.pickup)
+			or (mission.domicile == station.path and mission.pickup and mission.cargo_picked_up))
 		then
 			if Game.time <= mission.due then-- dentro de fecha
 				_G.MissionsSuccesses = MissionsSuccesses + 1
@@ -663,8 +669,8 @@ local onShipDocked = function (player, station)
 				player:AddMoney((amount - mission.amount) * mission.cargotype.price) -- pay for the missing
 				Comms.ImportantMessage(l.I_HAVE_DEBITED_YOUR_ACCOUNT, mission.client.name)
 			end
-			mission:Remove()
-			missions[ref] = nil
+			remove = true
+
 		elseif mission.location == station.path and mission.pickup and not mission.cargo_picked_up then
 			if Game.player.freeCapacity < mission.amount then
 				Comms.ImportantMessage(l.YOU_DO_NOT_HAVE_ENOUGH_EMPTY_CARGO_SPACE, mission.client.name)
@@ -677,51 +683,33 @@ local onShipDocked = function (player, station)
 					Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
 				end
 			end
-		elseif mission.status == "ACTIVE" and Game.time > mission.due then
-			mission.status = 'FAILED'
-		end
 
-		if check_crime(mission,"FRAUD") then--XXX
+		elseif mission.status == "ACTIVE" and Game.time > mission.due then
+			mission.status = "FAILED"
+		end
+		if (mission.status == "ACTIVE" or mission.status == "FAILED")
+			and check_crime(mission,"FRAUD")
+		then--XXX
 			Comms.ImportantMessage(l.WHAT_IS_THIS, mission.client.name)
 			local amount = Game.player:RemoveEquip(mission.cargotype, mission.amount, "cargo")
 			if amount < mission.amount then
 				player:AddMoney((amount - mission.amount) * mission.cargotype.price * 10) -- pay x10 the missing
 				Comms.ImportantMessage(l.I_HAVE_DEBITED_YOUR_ACCOUNT, mission.client.name)
 			end
+			remove = true
+		end
+		if remove then
+			print("CargoRun Cierra misión\nmission.status = "..mission.status.."\nmission.location = "..mission.location:GetSystemBody().name)
+
+			mission.status = "CLOSED"
 			mission:Remove()
 			missions[ref] = nil
+			remove = false
+
+			print("CargoRun misión cerrada\nmission.status = "..mission.status.."\nmission.location = "..mission.location:GetSystemBody().name)
 		end
 	end
 	switchEvents()
-end
-
-
-	local loaded_data
-local onGameStart = function ()
-	if loaded_data then
-		ads = {}
-		missions = {}
-		custom_cargo = {}
-		custom_cargo_weight_sum = 0
-
-		for k,ad in pairs(loaded_data.ads) do
-			local ref = ad.station:AddAdvert({
-				description = ad.desc,
-				icon        = ad.risk > 0 and "cargorun_danger" or "cargorun",
-				onChat      = onChat,
-				onDelete    = onDelete,
-				isEnabled   = isEnabled })
-			ads[ref] = ad
-		end
-		missions                = loaded_data.missions
-		custom_cargo            = loaded_data.custom_cargo
-		custom_cargo_weight_sum = loaded_data.custom_cargo_weight_sum
-		hostilactive            = loaded_data.hostilactive or false
-		way_trip                = loaded_data.way_trip
-		return_trip             = loaded_data.return_trip
-		switchEvents()
-		loaded_data = nil
-	end
 end
 
 
@@ -1025,6 +1013,34 @@ local onEnterSystem = function (ship)
 	if not ship:IsPlayer() or not switchEvents() then return end
 end
 
+
+	local loaded_data
+local onGameStart = function ()
+	if type(loaded_data) == "table" then
+		ads = {}
+		missions = {}
+		custom_cargo = {}
+		custom_cargo_weight_sum = 0
+		for k,ad in pairs(loaded_data.ads) do
+			local ref = ad.station:AddAdvert({
+				description = ad.desc,
+				icon        = ad.risk > 0 and "cargorun_danger" or "cargorun",
+				onChat      = onChat,
+				onDelete    = onDelete,
+				isEnabled   = isEnabled })
+			ads[ref] = ad
+		end
+		missions                = loaded_data.missions
+		custom_cargo            = loaded_data.custom_cargo
+		custom_cargo_weight_sum = loaded_data.custom_cargo_weight_sum
+		hostilactive            = loaded_data.hostilactive or false
+		way_trip                = loaded_data.way_trip
+		return_trip             = loaded_data.return_trip
+		switchEvents()
+		loaded_data = nil
+	end
+end
+
 local serialize = function ()
 	return {
 					ads                     = ads,
@@ -1045,8 +1061,8 @@ switchEvents = function()
 	Event.Deregister("onFrameChanged", onFrameChanged)
 	Event.Deregister("onShipDocked", onShipDocked)
 --	Event.Deregister("onShipLanded", onShipLanded)
-	for ref,mission in pairs(missions) do
-		if mission.location:IsSameSystem(Game.system.path) then
+	for ref,m in pairs(missions) do
+		if m.location and m.location:IsSameSystem(Game.system.path) then
 --print("CargoRun Events activate")
 			Event.Register("onFrameChanged", onFrameChanged)
 			Event.Register("onShipDocked", onShipDocked)

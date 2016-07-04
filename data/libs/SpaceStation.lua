@@ -1,19 +1,21 @@
 -- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
+-- Modified for Pioneer Scout Plus by Walter Arnolfo <walterar2@gmail.com>
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
+-- Work in progress.
 
 local SpaceStation = import_core("SpaceStation")
-local Event = import("Event")
-local Space = import("Space")
-local utils = import("utils")
-local ShipDef = import("ShipDef")
-local Engine = import("Engine")
-local Timer = import("Timer")
-local Game = import("Game")
-local Ship = import("Ship")
-local Model = import("SceneGraph.Model")
-local ModelSkin = import("SceneGraph.ModelSkin")
-local Serializer = import("Serializer")
-local Equipment = import("Equipment")
+local Event        = import("Event")
+local Space        = import("Space")
+local utils        = import("utils")
+local ShipDef      = import("ShipDef")
+local Engine       = import("Engine")
+local Timer        = import("Timer")
+local Game         = import("Game")
+local Ship         = import("Ship")
+local Model        = import("SceneGraph.Model")
+local ModelSkin    = import("SceneGraph.ModelSkin")
+local Serializer   = import("Serializer")
+local Equipment    = import("Equipment")
 
 --
 -- Class: SpaceStation
@@ -27,10 +29,10 @@ local function updateEquipmentStock (station)
 	local hydrogen = Equipment.cargo.hydrogen
 	for _,slot in pairs{"cargo","laser", "hyperspace", "misc"} do
 		for key, e in pairs(Equipment[slot]) do
-			if e:IsValidSlot("cargo") then      -- is cargo
+			if e:IsValidSlot("cargo") then         -- is cargo
 				local min = e == hydrogen and 1 or 0 -- always stock hydrogen
 				equipmentStock[station][e] = Engine.rand:Integer(min,100) * Engine.rand:Integer(1,100)
-			else                                     -- is ship equipment
+			else                                   -- is ship equipment
 				equipmentStock[station][e] = Engine.rand:Integer(0,100)
 			end
 		end
@@ -129,7 +131,6 @@ end
 function SpaceStation:AddEquipmentStock (e, stock)
 	equipmentStock[self][e] = (equipmentStock[self][e] or 0) + stock
 end
-
 
 
 local shipsOnSale = {}
@@ -503,28 +504,22 @@ function SpaceStation:UnlockAdvert (ref)
 	end
 end
 
-local function updateSystem ()
-	local stations = Space.GetBodies(function (b) return b.superType == "STARPORT" end)
+local stations
+local function createStations ()
+	if not Game.system or not stations then return end
 	for i=1,#stations do
+		createShipMarket(stations[i])
 		updateEquipmentStock(stations[i])
 		updateShipsOnSale(stations[i])
 		updateAdverts(stations[i])
 	end
 end
 
-local function createSystem()
-	local stations = Space.GetBodies(function (b) return b.superType == "STARPORT" end)
-	for i=1,#stations do
-		createShipMarket(stations[i])
-	end
-end
-
-local function destroySystem ()
+local function destroyStations ()
 	equipmentStock = {}
 	equipmentPrice = {}
-
 	shipsOnSale = {}
-
+	stations = nil
 	for station,ads in pairs(SpaceStation.adverts) do
 		for ref,ad in pairs(ads) do
 			station:RemoveAdvert(ref)
@@ -533,11 +528,9 @@ local function destroySystem ()
 	SpaceStation.adverts = {}
 end
 
-
 local loaded_data
-
 Event.Register("onGameStart", function ()
-	if (loaded_data) then
+	if type(loaded_data) == "table" then
 		equipmentStock = loaded_data.equipmentStock
 		equipmentPrice = loaded_data.equipmentPrice or {} -- handle missing in old saves
 		for station,list in pairs(loaded_data.shipsOnSale) do
@@ -556,25 +549,33 @@ Event.Register("onGameStart", function ()
 		end
 		loaded_data = nil
 	end
-
-	createSystem()
-	updateSystem()
-	Timer:CallEvery(3600, updateSystem)
+	stations = Space.GetBodies(function (b) return b.superType == "STARPORT" end)
+	createStations()
 end)
-Event.Register("onEnterSystem", function (ship)
+
+Event.Register("onShipDocked", function (ship, station)
 	if ship ~= Game.player then return end
-	createSystem()
-	updateSystem()
+	updateEquipmentStock(station)
+	updateShipsOnSale(station)
+	updateAdverts(station)
+end)
+
+Event.Register("onEnterSystem", function (ship)
+	if ship ~= Game.player or Game.system.population == 0 then return end
+	Timer:CallAt(Game.time + 2, function ()
+		if not Game.system then return 1 end
+		stations = Space.GetBodies(function (b) return b.superType == "STARPORT" end)
+		createStations()
+	end)
 end)
 
 Event.Register("onLeaveSystem", function (ship)
 	if ship ~= Game.player then return end
-	destroySystem()
+	destroyStations()
 end)
-Event.Register("onGameEnd", function ()
-	destroySystem()
 
-	-- XXX clean up for next game
+Event.Register("onGameEnd", function ()
+	destroyStations()
 	nextRef = 0
 	equipmentStock = {}
 	equipmentPrice = {}
@@ -582,30 +583,27 @@ Event.Register("onGameEnd", function ()
 end)
 
 
-Serializer:Register("SpaceStation",
-	function ()
-		local data = {
-			equipmentStock = equipmentStock,
-			equipmentPrice = equipmentPrice,
-			shipsOnSale = {}
-		}
-		for station,list in pairs(shipsOnSale) do
-			data.shipsOnSale[station] = {}
-			for i,entry in pairs(shipsOnSale[station]) do
-				data.shipsOnSale[station][i] = {
-					id      = entry.def.id,
-					skin    = entry.skin,
-					pattern = entry.pattern,
-					label   = entry.label
-				}
-			end
+Serializer:Register("SpaceStation", function ()
+	local data = {
+		equipmentStock = equipmentStock,
+		equipmentPrice = equipmentPrice,
+		shipsOnSale = {}
+	}
+	for station,list in pairs(shipsOnSale) do
+		data.shipsOnSale[station] = {}
+		for i,entry in pairs(shipsOnSale[station]) do
+			data.shipsOnSale[station][i] = {
+				id      = entry.def.id,
+				skin    = entry.skin,
+				pattern = entry.pattern,
+				label   = entry.label }
 		end
-		return data
-	end,
-	function (data)
-		loaded_data = data
 	end
-)
+	return data
+end,
+function (data)
+	loaded_data = data
+end)
 
 
 return SpaceStation

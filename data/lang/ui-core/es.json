@@ -473,7 +473,7 @@
 },
 "INACTIVE":{
 "description":"",
-"message":"Inactivo"
+"message":"Inactiva"
 },
 "INCOMPETENT":{
 "description":"For player reputation",
@@ -1095,6 +1095,10 @@
 "description":"",
 "message":"Nave sin capacidad para su tripulación."
 },
+"TOO_SMALL_TO_TRANSSHIP" : {
+"description" : "",
+"message" : "Nave demasiado pequeña para transbordar la carga."
+},
 "TOTAL":{
 "description":"",
 "message":"Total:"
@@ -1177,7 +1181,7 @@
 },
 "X_CANNOT_BE_TOLERATED_HERE":{
 "description":"Message to be sent over comms by police when crime is committed by player",
-"message":"¡Aquí el {crime} no está tolerado!"
+"message":"¡{crime} no es tolerado aquí!"
 },
 "YES":{
 "description":"Positive answer to a question",

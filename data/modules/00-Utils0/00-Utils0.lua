@@ -23,9 +23,8 @@ local le = Lang.GetResource("equipment-core") or Lang.GetResource("equipment-cor
 local lc = Lang.GetResource("core") or Lang.GetResource("core","en")
 local lu = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
 
-local LibsData = {}
 local loaded_data
-local damaged = false
+
 local shipNeutralized = false
 local max_dist = 30
 
@@ -110,9 +109,11 @@ end
 
 local onLeaveSystem = function (ship)
 	if ship:IsPlayer() then
+		ship:CancelAI()
 		_G._nearbystationsRemotes = nil
 		_G._nearbystationsLocals = nil
 		_G._localPlanetsWithoutStations = nil
+		_G.maxAdv = nil
 	end
 end
 
@@ -124,6 +125,9 @@ local onEnterSystem = function (ship)
 			return (s.type ~= 'STARPORT_SURFACE') or (s.parent.type ~= 'PLANET_ASTEROID')
 		end)
 		_G._nearbystationsLocals = Game.system:GetStationPaths()
+		_G._maxAdv = math.ceil(#_nearbystationsLocals/3) or 1
+		if _maxAdv > 3 then _G._maxAdv = 3 end
+
 		local nearbystations = Space.GetBodies(function (body)
 			return body.superType == 'STARPORT'
 		end)
@@ -159,7 +163,7 @@ local onShipUndocked = function (player, station)
 		local ship = player
 		local nearbybodys = Space.GetBodies(function (body)
 			return body.superType == "ROCKY_PLANET"
-					and body.type ~= "PLANET_ASTEROID"
+							and body.type ~= "PLANET_ASTEROID"
 		end)
 		local target, target_check
 		if nearbybodys and #nearbybodys > 1 then
@@ -182,7 +186,7 @@ local onShipUndocked = function (player, station)
 		if not target then return end
 		local trueSystem = Game.system
 		Timer:CallAt(Game.time + 4, function ()
-			if trueSystem ~= Game.system then return end
+			if trueSystem ~= Game.system then return true end
 			player:AIEnterLowOrbit(target)
 		end)
 	end
@@ -211,6 +215,7 @@ end
 	local dempSong = "music/core/fx/demp"
 	local trigger = 0
 	local player
+	local damaged = false
 local onShipHit = function (ship, attacker)
 	if ShipExists(ship) and ship.label == lc.MISSILE then return end--XXX
 	if ship:IsPlayer() then
@@ -288,7 +293,7 @@ end
 	local penalized
 	local FiringSong = ("music/core/fx/combat0"..tostring(Engine.rand:Integer(1,4)))
 local onShipFiring = function (ship)
-	if not ship then return end
+	if not ShipExists(ship) then return end
 	local player = Game.player
 	if ship == player
 		and policingArea()
@@ -321,6 +326,7 @@ local onShipFiring = function (ship)
 		or player.flightState ~= "FLYING"
 		or ship.label == lu.POLICE--XXX
 	then return end
+
 	local target = player:GetCombatTarget()
 	if (not target and player:DistanceTo(ship) < 5000)
 		or (target and target ~= ship and player:DistanceTo(ship) < player:DistanceTo(target))
@@ -345,13 +351,13 @@ local checkEquipment = function (ship)
 		_G.MATTcapacitor=false
 	end
 	if ship:GetEquipFree("nav_assist") < 1
-		and Game.player:GetEquipCountOccupied("autopilot") > 0 then
+		and ship:GetEquipCountOccupied("autopilot") > 0 then
 		_G.NavAssist=true
 	else
 		_G.NavAssist=false
 	end
-	if Game.player:GetEquipFree("beacon_receiver") < 1
-		and Game.player:GetEquipCountOccupied("radar") > 0 then
+	if ship:GetEquipFree("beacon_receiver") < 1
+		and ship:GetEquipCountOccupied("radar") > 0 then
 		_G.beaconReceiver=true
 	else
 		_G.beaconReceiver=false
@@ -377,7 +383,6 @@ Event.Register("onShipTypeChanged", function(ship)
 	checkEquipment(ship)
 end)
 
-
 Event.Register("onTracingJumpsON",function()
 	if Game.player:GetEquipFree("tracingjumps") < 1 then
 		_G.tracingJumps = true
@@ -385,10 +390,10 @@ Event.Register("onTracingJumpsON",function()
 		songOk()
 	end
 end)
-
-
 Event.Register("onTracingJumpsOFF",function()
-	if Game.player:GetEquipFree("tracingjumps") < 1 then
+	if Game.player:GetEquipFree("tracingjumps") < 1
+		or tracingJumps
+	then
 		_G.tracingJumps = false
 		Comms.Message(l.TracingJumpsOFF)
 		songOk()
@@ -403,25 +408,12 @@ Event.Register("onAutoCombatON",function()
 		songOk()
 		local target = Game.player:GetCombatTarget()
 		if ShipExists(target) and Game.player.flightState == "FLYING" then
-			if Game.player:DistanceTo(target) > 20000 then
-				Game.player:AIKamikaze(target)
-				Timer:CallEvery(1, function ()
-					if ShipExists(target) and Game.player:DistanceTo(target) < 15000 then
-						Game.player:AIKill(target)
-						return true
-					else
-						return false
-					end
-				end)
-			else
-				Game.player:AIKill(target)
-			end
+			Game.player:AIKill(target)
 		end
 	else
 		_G.autoCombat = false
 	end
 end)
-
 
 Event.Register("onAutoCombatOFF",function()
 	if Game.player:GetEquipFree("autocombat") < 1 then
@@ -435,39 +427,44 @@ Event.Register("onAutoCombatOFF",function()
 end)
 
 
+local CommodityRefStringToObject = function (ref)
+	local slot = Eq.cargo
+	for cname,obj in pairs(slot) do
+		if cname == ref and type(obj) == "table" then
+--		return obj
+		end
+	end
+end
+
+
 local onGameStart = function ()
 
-	if loaded_data then
+	if type(loaded_data) == "table" then
 
-		for k,v in pairs (loaded_data.LibsData) do
-			LibsData[k] = v
-		end
+		_G.MissionsSuccesses = loaded_data.missions_successes or 0
+		_G.MissionsFailures  = loaded_data.missions_failures or 0
+		_G.ShotsSuccessful   = loaded_data.shots_succesful or 0
+		_G.ShotsReceived     = loaded_data.shots_received or 0
+		_G.OriginFaction     = loaded_data.init_faction or "no"
+		_G.ShipFaction       = loaded_data.ship_faction or "no"
+		_G.PrevPos           = loaded_data.prev_pos or "no"
+		_G.PrevFac           = loaded_data.prev_fac or "no"
+		_G.MissileActive     = loaded_data.missile_active or 0
+		_G.autoCombat        = loaded_data.auto_combat or false
+		_G.tracingJumps      = loaded_data.tracing_jumps or false
+		_G.DEMPsystem        = loaded_data.demp_system or false
+		_G.MATTcapacitor     = loaded_data.matt_capacitor or false
+		_G.NavAssist         = loaded_data.nav_assist or false
+		_G.playerAlert       = loaded_data.player_alert or "NONE"
+		_G.damageControl     = loaded_data.damage_control or ""
+		_G.beaconReceiver    = loaded_data.beacon_receiver or false
 
-		_G.MissionsSuccesses = LibsData.missions_successes or 0
-		_G.MissionsFailures  = LibsData.missions_failures or 0
-		_G.ShotsSuccessful   = LibsData.shots_succesful or 0
-		_G.ShotsReceived     = LibsData.shots_received or 0
-		_G.OriginFaction     = LibsData.init_faction or "no"
-		_G.ShipFaction       = LibsData.ship_faction or "no"
-		_G.PrevPos           = LibsData.prev_pos or "no"
-		_G.PrevFac           = LibsData.prev_fac or "no"
---		_G.DangerLevel       = LibsData.danger_level or 0
-		_G.MissileActive     = LibsData.missile_active or 0
-		_G.autoCombat        = LibsData.auto_combat or false
-		_G.tracingJumps      = LibsData.tracing_jumps or false
-		_G.DEMPsystem        = LibsData.demp_system or false
-		_G.MATTcapacitor     = LibsData.matt_capacitor or false
-		_G.NavAssist         = LibsData.nav_assist or false
-		_G.playerAlert       = LibsData.player_alert or "NONE"
-		_G.damageControl     = LibsData.damage_control or ""
-		_G.beaconReceiver    = LibsData.beacon_receiver or false
+		_G.targetShip         = loaded_data.target_ship or nil
 
-		_G.targetShip         = LibsData.terget_ship or nil
-
-		_G.deuda_total        = LibsData.deuda_total or nil
-		_G.deuda_valor_cuota  = LibsData.deuda_valor_cuota or nil
-		_G.deuda_fecha_p_pago = LibsData.deuda_fecha_p_pago or nil
-		_G.deuda_resto_cuotas = LibsData.deuda_resto_cuotas or nil
+		_G.deuda_total        = loaded_data.deuda_total or nil
+		_G.deuda_valor_cuota  = loaded_data.deuda_valor_cuota or nil
+		_G.deuda_fecha_p_pago = loaded_data.deuda_fecha_p_pago or nil
+		_G.deuda_resto_cuotas = loaded_data.deuda_resto_cuotas or nil
 
 	else
 
@@ -500,6 +497,8 @@ local onGameStart = function ()
 	_G._nearbystationsRemotes = StarSystem:GetNearbyStationPaths(max_dist, nil,function (s)
 			return s.parent.type ~= 'PLANET_ASTEROID' end)
 	_G._nearbystationsLocals = Game.system:GetStationPaths()
+	_G._maxAdv = math.ceil(#_nearbystationsLocals/3) or 1
+	if _maxAdv > 3 then _G._maxAdv = 3 end
 
 	local nearbystations = Space.GetBodies(function (body)
 		return body.superType == 'STARPORT'
@@ -523,18 +522,14 @@ local onGameStart = function ()
 	loaded_data = nil
 
 	Timer:CallAt(Game.time + 2, function ()
-		Comms.Message(l.YOUR_SHIP.." < "..Game.player.label.." > "..l.IS_REGISTERED_IN_OUR_DOMAIN,
-			Game.system.faction.militaryName)
---		welcome()
-
-		Game.player:UpdateEquipStats()
+		if Game.system.faction.name == ShipFaction then
+			Comms.Message(l.YOUR_SHIP.." < "..Game.player.label.." > "..l.IS_REGISTERED_IN_OUR_DOMAIN,
+				Game.system.faction.militaryName)
+		end
 		checkEquipment(Game.player)
 		if autoCombat then
 			Comms.Message(l.AutoCombatON)
 			songOk()
---		else
---			Comms.Message(l.AutoCombatOFF)
---			songOk()
 		end
 	end)
 end
@@ -544,7 +539,7 @@ local serialize = function ()
 	if not ShipExists(targetShip) then
 		_G.targetShip = false
 	end
-	LibsData = {
+	return {
 		missions_successes = MissionsSuccesses,
 		missions_failures  = MissionsFailures,
 		shots_received     = ShotsReceived,
@@ -553,7 +548,6 @@ local serialize = function ()
 		ship_faction       = ShipFaction,
 		prev_pos           = PrevPos,
 		prev_fac           = PrevFac,
---		danger_level       = DangerLevel,
 		missile_active     = MissileActive,
 		auto_combat        = autoCombat,
 		tracing_jumps      = tracingJumps,
@@ -567,16 +561,15 @@ local serialize = function ()
 		deuda_valor_cuota  = deuda_valor_cuota,
 		deuda_fecha_p_pago = deuda_fecha_p_pago,
 		deuda_resto_cuotas = deuda_resto_cuotas,
-		terget_ship        = targetShip
+		target_ship        = targetShip
 	}
 
-	return {LibsData = LibsData}
 end
 
 
 local unserialize = function (data)
-	danger_level()
 	loaded_data = data
+	danger_level()
 end
 
 
@@ -588,7 +581,6 @@ local onGameEnd = function ()
 	_G.ShotsReceived     = nil
 	_G.OriginFaction     = nil
 	_G.ShipFaction       = nil
---	_G.DangerLevel       = nil
 	_G.PrevPos           = nil
 	_G.PrevFac           = nil
 	_G.MissileActive     = nil

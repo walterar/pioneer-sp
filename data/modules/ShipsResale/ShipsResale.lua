@@ -161,7 +161,7 @@ end
 local onGameStart = function ()
 	my_shipDef = ShipDef[Game.player.shipId]
 	my_ship_name = my_shipDef.name
-	if loaded_data then
+	if type(loaded_data) == "table" then
 		for k,ad in pairs(loaded_data.ads) do
 			ads[ad.station:AddAdvert({
 			description = ad.title,
@@ -178,7 +178,6 @@ local onGameStart = function ()
 		my_ship_price = nil
 		maxsales = 10
 	end
-	loaded_data = nil
 end
 
 local serialize = function ()

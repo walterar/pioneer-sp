@@ -14,7 +14,7 @@ local Serializer = import("Serializer")
 local Eq         = import("Equipment")
 
 local l  = Lang.GetResource("module-goodstrader") or Lang.GetResource("module-goodstrader","en")
-local ls = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous","en")
+local lm = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous","en")
 
 local num_names = 6 -- number of GOODS_TRADER_N names
 
@@ -37,7 +37,8 @@ local onChat = function (form, ref, option)
 		if not ads[ref].ispolice then
 			return true
 		end
-
+		local Music      = import("Music")
+		Music.Play("music/core/fx/warning",false)
 		local crime = "TRADING_ILLEGAL_GOODS"
 		Game.player:AddCrime(crime, crime_fine(crime))
 		form:GotoPolice()
@@ -66,7 +67,7 @@ local onChat = function (form, ref, option)
 		onClickBuy = function (ref, commodity)
 			if Game.player:GetEquipFree("cargo_life_support") > 0
 				and (commodity == Eq.cargo.slaves or commodity == Eq.cargo.live_animals) then
-					MessageBox.Message(ls.YOU_MUST_INSTALL_THE_LIFE_SUPPORT_FOR_CARGO_BAY)
+					MessageBox.Message(lm.YOU_MUST_INSTALL_THE_LIFE_SUPPORT_FOR_CARGO_BAY)
 				return false
 			else
 				return onClick(ref)
@@ -143,18 +144,16 @@ local loaded_data
 
 local onGameStart = function ()
 	ads = {}
-
-	if not loaded_data then return end
-
-	for k,ad in pairs(loaded_data.ads) do
-		local ref = ad.station:AddAdvert({
-			description = ad.flavour,
-			icon        = licon,
-			onChat      = onChat,
-			onDelete    = onDelete})
-		ads[ref] = ad
+	if type(loaded_data) == "table" then
+		for k,ad in pairs(loaded_data.ads) do
+			local ref = ad.station:AddAdvert({
+				description = ad.flavour,
+				icon        = licon,
+				onChat      = onChat,
+				onDelete    = onDelete})
+			ads[ref] = ad
+		end
 	end
-
 	loaded_data = nil
 end
 

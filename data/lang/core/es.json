@@ -45,7 +45,7 @@
 },
 "AR_ATMOSPHERE":{
 "description":"",
-"message":"\" Atmósfera de argón\""
+"message":"\" Atmósfera de Argón\""
 },
 "ASTEROID":{
 "description":"",
@@ -622,10 +622,6 @@
 "INTERNAL_VIEW":{
 "description":"",
 "message":"Vista interior"
-},
-"INT_LY":{
-"description":"integer number of light years",
-"message":"%scale Ly"
 },
 "IN_TRANSIT":{
 "description":"",
@@ -1734,6 +1730,14 @@
 "UNEXPLORED_SYSTEM_STAR_INFO_ONLY":{
 "description":"",
 "message":"Sistema inexplorado. Información estelar recogida por medio de telescopio remoto. No existe información planetaria."
+},
+"UNIT_AU":{
+"description" : "Distance unit: an astronomical unit, radius of Earth's orbit",
+"message":"Au"
+},
+"UNIT_LY":{
+"description":"Distance unit: a light year",
+"message":"Yl"
 },
 "UNKNOWN":{
 "description":"",

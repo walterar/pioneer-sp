@@ -1967,7 +1967,6 @@ void WorldView::Draw()
 {
 	assert(m_game);
 	assert(Pi::player);
-	assert(!Pi::player->IsDead());
 
 	m_renderer->ClearDepthBuffer();
 
@@ -1999,7 +1998,7 @@ void WorldView::Draw()
 	DrawCombatTargetIndicator(m_combatTargetIndicator, m_targetLeadIndicator, red);
 
 	// glLineWidth(1.0f);
-	m_renderer->CheckRenderErrors();
+	m_renderer->CheckRenderErrors(__FUNCTION__,__LINE__);
 
 	// normal crosshairs
 	if (GetCamType() == CAM_INTERNAL) {

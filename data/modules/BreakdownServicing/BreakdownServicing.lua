@@ -215,14 +215,7 @@ local loaded_data
 local onGameStart = function ()
 	ads = {}
 
-	if not loaded_data then
-		service_history = {
-			lastdate = 0, -- Default will be overwritten on game start
-			company = nil, -- Name of company that did the last service
-			service_period = onemonth, -- default
-			jumpcount = 0 -- Number of jumps made after the service_period
-		}
-	else
+	if type(loaded_data) == "table" then
 		for k,ad in pairs(loaded_data.ads) do
 			ads[ad.station:AddAdvert({
 			description = ad.title,
@@ -232,6 +225,13 @@ local onGameStart = function ()
 		end
 		service_history = loaded_data.service_history
 		loaded_data = nil
+	else
+		service_history = {
+			lastdate = 0, -- Default will be overwritten on game start
+			company = nil, -- Name of company that did the last service
+			service_period = onemonth, -- default
+			jumpcount = 0 -- Number of jumps made after the service_period
+		}
 	end
 end
 
@@ -244,15 +244,12 @@ end
 
 
 local onEnterSystem = function (ship)
-	if ship:IsPlayer() then
-		if service_history.jumpcount > 0 and damageControl == "" then
-			Comms.Message(alertMsg)
-			_G.damageControl = alertMsg
-		end
-		print(('DEBUG: Jumps since warranty: %d, chance of failure (if > 0): 1/%d\nWarranty expires: %s'):format(service_history.jumpcount,max_jumps_unserviced-service_history.jumpcount,Format.Date(service_history.lastdate + service_history.service_period)))
-	else
-		return -- Don't care about NPC ships
+	if not ship:IsPlayer() then return end
+	if service_history.lastdate + service_history.service_period < Game.time and damageControl == "" then
+		Comms.Message(alertMsg)
+		_G.damageControl = alertMsg
 	end
+	print(('DEBUG: Jumps since warranty: %d, chance of failure (if > 0): 1/%d\nWarranty expires: %s'):format(service_history.jumpcount,max_jumps_unserviced-service_history.jumpcount,Format.Date(service_history.lastdate + service_history.service_period)))
 	local saved_by_this_guy = savedByCrew(ship)
 	if (service_history.lastdate + service_history.service_period < Game.time)
 		and not saved_by_this_guy then

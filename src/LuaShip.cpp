@@ -723,6 +723,9 @@ static int l_ship_set_invulnerable(lua_State *l)
  *
  *   target - the <Ship> to destroy
  *
+ * Returns:
+ *   true if the command could be enacted, false otherwise
+ *
  * Availability:
  *
  *  alpha 10
@@ -736,9 +739,14 @@ static int l_ship_ai_kill(lua_State *l)
 	Ship *s = LuaObject<Ship>::CheckFromLua(1);
 	if (s->GetFlightState() == Ship::HYPERSPACE)
 		return luaL_error(l, "Ship:AIKill() cannot be called on a ship in hyperspace");
-	Ship *target = LuaObject<Ship>::CheckFromLua(2);
-	s->AIKill(target);
-	return 0;
+	Ship *target = LuaObject<Ship>::GetFromLua(2);
+	if (target != nullptr) {
+		s->AIKill(target);
+		lua_pushboolean(l, true);
+	} else {
+		lua_pushboolean(l, false);
+	}
+	return 1;
 }
 
 /*
@@ -751,6 +759,9 @@ static int l_ship_ai_kill(lua_State *l)
  * Parameters:
  *
  *   target - the <Ship> to destroy
+ *
+ * Returns:
+ *   true if the command could be enacted, false otherwise
  *
  * Availability:
  *
@@ -766,8 +777,13 @@ static int l_ship_ai_kamikaze(lua_State *l)
 	if (s->GetFlightState() == Ship::HYPERSPACE)
 		return luaL_error(l, "Ship:AIKamikaze() cannot be called on a ship in hyperspace");
 	Ship *target = LuaObject<Ship>::GetFromLua(2);
-	s->AIKamikaze(target);
-	return 0;
+	if (target != nullptr) {
+		s->AIKamikaze(target);
+		lua_pushboolean(l, true);
+	} else {
+		lua_pushboolean(l, false);
+	}
+	return 1;
 }
 
 /*
@@ -993,7 +1009,11 @@ static int l_ship_update_equip_stats(lua_State *l)
 static int l_ship_get_velocity(lua_State *l)
 {
 	Ship *s = LuaObject<Ship>::CheckFromLua(1);
-	LuaVector::PushToLua(l, s->GetVelocity());
+	vector3d v = s->GetVelocity();
+	lua_newtable(l);
+	pi_lua_settable(l, "x", v.x);
+	pi_lua_settable(l, "y", v.y);
+	pi_lua_settable(l, "z", v.z);
 	return 1;
 }
 
@@ -1015,9 +1035,14 @@ static int l_ship_get_velocity(lua_State *l)
 static int l_ship_get_position(lua_State *l)
 {
 	Ship *s = LuaObject<Ship>::CheckFromLua(1);
-	LuaVector::PushToLua(l, s->GetPosition());
+	vector3d v = s->GetPosition();
+	lua_newtable(l);
+	pi_lua_settable(l, "x", v.x);
+	pi_lua_settable(l, "y", v.y);
+	pi_lua_settable(l, "z", v.z);
 	return 1;
 }
+
 
 template <> const char *LuaObject<Ship>::s_type = "Ship";
 

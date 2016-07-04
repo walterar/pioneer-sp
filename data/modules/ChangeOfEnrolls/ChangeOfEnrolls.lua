@@ -81,7 +81,7 @@ end
 
 local onGameStart = function ()
 	ads = {}
-	if loaded_data then
+	if type(loaded_data) == "table" then
 		for k,ad in pairs(loaded_data.ads) do
 			ads[ad.station:AddAdvert({
 			description = ad.title,

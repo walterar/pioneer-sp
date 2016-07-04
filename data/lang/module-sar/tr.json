@@ -479,10 +479,6 @@
 "description":"",
 "message":"Cannot complete transfer. Passengers missing."
 },
-"MISSING_PASSENGER":{
-"description":"",
-"message":"Cannot complete transfer. Passenger missing."
-},
 "OK_AGREED":{
 "description":"",
 "message":"Tamam, anlaştık."

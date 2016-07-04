@@ -171,6 +171,7 @@ local onChat = function (form, ref, option)
 			location    = ad.location,
 			risk        = ad.risk,
 			reward      = ad.reward,
+			date        = ad.date,
 			due         = ad.due,
 			flavour     = ad.flavour,
 			status      = 'ACTIVE'
@@ -270,6 +271,7 @@ local makeAdvert = function (station)
 		client   = client,
 		location = location,
 		dist     = dist_txt,
+		date     = Game.time,
 		due      = due,
 		risk     = risk,
 		urgency  = urgency,
@@ -298,26 +300,28 @@ local makeAdvert = function (station)
 end
 
 local onCreateBB = function (station)
-	local num = math.ceil(Game.system.population)
-	if num > 3 then num = 3 end
+	for i = 1,Engine.rand:Integer(Engine.rand:Integer(0,_maxAdv),_maxAdv) do
+		makeAdvert(station)
+	end
+end
+
+local onUpdateBB = function (station)
+	local num = 0
+	local timeout = 24*60*60 -- default 1 day timeout for inter-system
+	for ref,ad in pairs(ads) do
+		if ad.station == station then
+			if flavours[ad.flavour].localscout then timeout = 60*60 end -- 1 hour timeout for locals
+			if (Game.time - ad.date > timeout) then
+				station:RemoveAdvert(ref)
+				num = num + 1--Engine.rand:Integer(1)-- 50% of the time, give away 1
+			end
+		end
+	end
 	if num > 0 then
 		for i = 1,num do
 			makeAdvert(station)
 		end
 	end
-end
-
-local onUpdateBB = function (station)
-	for ref,ad in pairs(ads) do
-		if flavours[ad.flavour].localscout == false
-			and ad.due < Game.time+(2*24*60*60) then
-			ad.station:RemoveAdvert(ref)
-		elseif flavours[ad.flavour].localscout == true
-			and ad.due < Game.time+(24*60*60) then
-			ad.station:RemoveAdvert(ref)
-		end
-	end
-	if Engine.rand:Integer(50) < 1 then makeAdvert(station) end
 end
 
 
@@ -681,11 +685,11 @@ local onEnterSystem = function (ship)
 	if not ship:IsPlayer() or not switchEvents() then return end
 end
 
-	local loaded_data
+local loaded_data
 local onGameStart = function ()
 	ads = {}
 	missions = {}
-	if loaded_data then
+	if type(loaded_data) == "table" then
 		for k,ad in pairs(loaded_data.ads) do
 			ads[ad.station:AddAdvert({
 				description = ad.desc,
@@ -694,8 +698,10 @@ local onGameStart = function ()
 				onDelete    = onDelete})] = ad
 		end
 		missions = loaded_data.missions
+		switchEvents()
 		loaded_data = nil
 	end
+
 	if not Game.player.frameBody then return end
 	outhostiles = false
 	for ref,mission in pairs(missions) do
@@ -712,7 +718,6 @@ local onGameStart = function ()
 			end
 		end
 	end
-	switchEvents()
 end
 
 local serialize = function ()

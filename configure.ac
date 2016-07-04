@@ -247,7 +247,7 @@ AC_ARG_WITH([thirdparty], AS_HELP_STRING([--with-thirdparty], [Location of pione
     else
 	    PKG_CONFIG_PATH="$withval/usr/lib/pkgconfig:$PKG_CONFIG_PATH"
 	    export PKG_CONFIG_PATH
-	    EXTRA_LIBS="$EXTRA_LIBS -ldl -lrt"
+	    EXTRA_LIBS="$EXTRA_LIBS -ldl -lrt -lz"
     fi
 	CFLAGS="-isystem $withval/usr/include"
 	LIBS="-L$withval/usr/lib -Wl,-rpath,$withval/usr/lib"
@@ -286,7 +286,7 @@ if test "x$cross_compiling" = "xno" ; then
 	old_cxxflags="$CXXFLAGS"
 	old_libs="$LIBS"
 	CXXFLAGS="$ASSIMP_CFLAGS"
-	LIBS="$ASSIMP_LIBS $assimp_rpath"
+	LIBS="$ASSIMP_LIBS $EXTRA_LIBS $assimp_rpath"
 	AC_LANG_PUSH([C++])
 	AC_RUN_IFELSE([AC_LANG_PROGRAM([[#include <assimp/defs.h>
 	                                 #include <assimp/version.h>]],

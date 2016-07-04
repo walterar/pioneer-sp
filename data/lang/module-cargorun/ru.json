@@ -341,7 +341,7 @@
 },
 "PICKUP_FROM":{
 "description":"from a location",
-"message":"Забрать груз на..."
+"message":"Забрать груз на:"
 },
 "PIRATE_GRIPES_1":{
 "description":"",

@@ -190,6 +190,7 @@ local onChat = function (form, ref, option)
 			location = ad.location,
 			risk     = ad.risk,
 			reward   = ad.reward,
+			date     = ad.date,
 			due      = ad.due,
 			group    = ad.group,
 			flavour  = ad.flavour
@@ -259,6 +260,7 @@ local makeAdvert = function (station)
 		client   = client,
 		location = location,
 		dist     = dist_txt,
+		date     = Game.time,
 		due      = due,
 		group    = group,
 		risk     = risk,
@@ -280,22 +282,28 @@ local makeAdvert = function (station)
 end
 
 local onCreateBB = function (station)
-	local num = math.ceil(Game.system.population)
-	num = Engine.rand:Integer(0,num and num < 3 or 3)
+	for i = 1,Engine.rand:Integer(Engine.rand:Integer(0,_maxAdv),_maxAdv) do
+		makeAdvert(station)
+	end
+end
+
+local onUpdateBB = function (station)
+	local num = 0--Engine.rand:Integer(1)-- 50% of the time, give away 1
+	local timeout = 24*60*60 -- default 1 day timeout for inter-system
+	for ref,ad in pairs(ads) do
+		if ad.station == station then
+--			if flavours[ad.flavour].localdelivery then timeout = 60*60 end -- 1 hour timeout for locals
+			if (Game.time - ad.date > timeout) then
+				station:RemoveAdvert(ref)
+				num = num + 1--Engine.rand:Integer(1)-- 50% of the time, give away 1
+			end
+		end
+	end
 	if num > 0 then
 		for i = 1,num do
 			makeAdvert(station)
 		end
 	end
-end
-
-local onUpdateBB = function (station)
-	for ref,ad in pairs(ads) do
-		if ad.due < Game.time + 2*24*60*60 then
-			ad.station:RemoveAdvert(ref)
-		end
-	end
-	if Engine.rand:Integer(50) < 1 then makeAdvert(station) end
 end
 
 	local hostilactive = false
@@ -399,7 +407,7 @@ local onGameStart = function ()
 	ads = {}
 	missions = {}
 	passengers = 0
-	if loaded_data then
+	if type(loaded_data) == "table" then
 		for k,ad in pairs(loaded_data.ads) do
 			ads[ad.station:AddAdvert({
 				description = ad.desc,

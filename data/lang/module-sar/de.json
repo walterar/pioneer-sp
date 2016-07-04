@@ -1,7 +1,7 @@
 {
 "AU":{
 "description":"",
-"message":"Au"
+"message":"AE"
 },
 "BOARDED_PASSENGER":{
 "description":"",
@@ -9,7 +9,7 @@
 },
 "COMMODITIES":{
 "description":"",
-"message":"Product"
+"message":"Waren"
 },
 "COULD_YOU_REPEAT_THE_ORIGINAL_REQUEST":{
 "description":"",
@@ -29,7 +29,7 @@
 },
 "DELIVERY":{
 "description":"",
-"message":"DELIVERY"
+"message":"LIEFERUNG"
 },
 "DISTANCE":{
 "description":"",
@@ -165,15 +165,15 @@
 },
 "FLAVOUR_1_FAILUREMSG":{
 "description":"",
-"message":"Ich kann nicht glauben, dass du erst jetzt zurückkommst! So viel verschwendete Zeit!"
+"message":"Ich kann nicht glauben, dass Sie erst jetzt zurückkommen! So viel verschwendete Zeit!"
 },
 "FLAVOUR_1_HOWMUCHTIMETEXT":{
 "description":"",
-"message":"Für die komplette Erstattung der Auslagen musst du bis {due} zurück sein."
+"message":"Für die komplette Erstattung der Auslagen müssen Sie bis {due} zurück sein."
 },
 "FLAVOUR_1_INTROTEXT":{
 "description":"",
-"message":"{starport} Raumverkehrskontrolle braucht deine SOFORTIGE Hilfe an der Absturzstelle eines Raumschiffes des Types {ship} auf {planet}. Der Status der Lebenserhaltungssysteme ist unbekannt. Das Schiff ist bei {starport} Versicherungen versichert, diese zahlt die Summe von {cash} für die sichere Bergung des Schiffes."
+"message":"{starport} Raumverkehrskontrolle braucht deine SOFORTIGE Hilfe an der Absturzstelle eines Raumschiffes des Typs {ship} auf {planet}. Der Status der Lebenserhaltungssysteme ist unbekannt. Das Schiff ist bei {starport} Versicherungen versichert, diese zahlt die Summe von {cash} für die sichere Bergung des Schiffes."
 },
 "FLAVOUR_1_LOCATIONTEXT":{
 "description":"",
@@ -197,11 +197,11 @@
 },
 "FLAVOUR_2_FAILUREMSG":{
 "description":"",
-"message":"Ich kann nicht glauben, dass du mich so lange warten lassen hast! Deine Zahlung kannst du vergessen!"
+"message":"Ich kann nicht glauben, dass Sie mich so lange warten gelassen haben! Ihre Zahlung können Sie vergessen!"
 },
 "FLAVOUR_2_HOWMUCHTIMETEXT":{
 "description":"",
-"message":"Um volle Zahlung zu erhalten sollst du bis {due} liefern."
+"message":"Um volle Zahlung zu erhalten, sollten Sie bis {due} liefern."
 },
 "FLAVOUR_2_INTROTEXT":{
 "description":"",
@@ -277,7 +277,7 @@
 },
 "FLAVOUR_4_SUCCESSMSG":{
 "description":"",
-"message":"Sehr gut. Wir werden dich für weitere Aufträge empfehlen."
+"message":"Sehr gut. Wir werden Sie für weitere Aufträge weiterempfehlen."
 },
 "FLAVOUR_4_TRANSFERMSG":{
 "description":"",
@@ -325,7 +325,7 @@
 },
 "FLAVOUR_6_FAILUREMSG":{
 "description":"",
-"message":"Was für eine Katastrophe! Das ist ein Todesurteil für unsere armen Kollegen!"
+"message":"Was für eine Katastrophe! Das ist das Todesurteil für unsere armen Kollegen!"
 },
 "FLAVOUR_6_HOWMUCHTIMETEXT":{
 "description":"",
@@ -333,7 +333,7 @@
 },
 "FLAVOUR_6_INTROTEXT":{
 "description":"",
-"message":"Mein Name ist {name} und ich komme von {entitiy}. Wir haben Kontakt mit unserem {ship} {shiplabel} aufgrund von {problem} verloren. Wir sind bereit, {cash} für sofortige Hilfe zu zahlen."
+"message":"Mein Name ist {name} und ich komme von {entity}. Wir haben Kontakt mit unserem {ship} {shiplabel} aufgrund von {problem} verloren. Wir sind bereit, {cash} für sofortige Hilfe zu zahlen."
 },
 "FLAVOUR_6_LOCATIONTEXT":{
 "description":"",
@@ -365,11 +365,11 @@
 },
 "FLAVOUR_7_INTROTEXT":{
 "description":"",
-"message":"Ich bin {name} von {entitiy}. Unser einziges Schiff, genannt „{shiplabel}“ und vom Typ {ship}, treibt mit einem verbleibenden Crewmitglied an Bord, aufgrund von {problem}. Ich bin bereit, {cash} für sofortige Hilfe zu zahlen."
+"message":"Ich bin {name} von {entity}. Unser einziges Schiff, genannt „{shiplabel}“ und vom Typ {ship}, treibt mit einem verbleibenden Crewmitglied an Bord, aufgrund von {problem}. Ich bin bereit, {cash} für sofortige Hilfe zu zahlen."
 },
 "FLAVOUR_7_LOCATIONTEXT":{
 "description":"",
-"message":"Sie finden das Schiff im System {system} [{sectorx},{sectory},{sectorz}], {dist} von hier. Es befindet sich im Orbit um {planet}."
+"message":"Sie finden das Schiff im System {system} [{sectorx},{sectory},{sectorz}], {dist} Lj von hier. Es befindet sich im Orbit um {planet}."
 },
 "FLAVOUR_7_SUCCESSMSG":{
 "description":"",
@@ -445,7 +445,7 @@
 },
 "IT_MUST_BE_COMPLETED_BY":{
 "description":"",
-"message":"Es muss fertiggestellt werden bis "
+"message":"Es muss fertiggestellt werden bis"
 },
 "KM":{
 "description":"",
@@ -453,7 +453,7 @@
 },
 "LAST_KNOWN_LOCATION":{
 "description":"",
-"message":"Last known location:"
+"message":"Letzte bekannte Position:"
 },
 "LAT":{
 "description":"",
@@ -479,17 +479,13 @@
 "description":"",
 "message":"Transfer kann nicht fertiggestellt werden. Passagiere fehlen."
 },
-"MISSING_PASSENGER":{
-"description":"",
-"message":"Transfer kann nicht fertiggestellt werden. Passagier fehlt."
-},
 "OK_AGREED":{
 "description":"",
 "message":"Okay, ich werde den Flug übernehmen."
 },
 "ORBIT":{
 "description":"",
-"message":"Orbit"
+"message":"Bahn"
 },
 "PARTIAL":{
 "description":"",
@@ -497,19 +493,19 @@
 },
 "PASSENGERS":{
 "description":"",
-"message":"Passengers"
+"message":"Passagiere"
 },
 "PAYMENT_LOCATION":{
 "description":"",
-"message":"Payment location:"
+"message":"Bezahlungsort:"
 },
 "PICKUP":{
 "description":"",
-"message":"PICKUP"
+"message":"ABHOLUNG"
 },
 "PLACE_OF_ASSISTANCE":{
 "description":"",
-"message":"At the place of assistance"
+"message":"Am Ort der Unterstützung"
 },
 "PLEASE_LAND":{
 "description":"",
@@ -593,7 +589,7 @@
 },
 "PROBLEM_GENERAL_9":{
 "description":"",
-"message":"einem Neustart des Haupscomputers"
+"message":"einem Neustart des Hauptcomputers"
 },
 "PROBLEM_RESEARCH_1":{
 "description":"",
@@ -665,7 +661,7 @@
 },
 "REWARD":{
 "description":"",
-"message":"Reward:"
+"message":"Belohnung:"
 },
 "SAR":{
 "description":"",
@@ -681,7 +677,7 @@
 },
 "TARGET_SHIP_ID":{
 "description":"",
-"message":"Target ship ID:"
+"message":"Zielschiffs-ID:"
 },
 "THANK_YOU_ACCEPTANCE_TXT":{
 "description":"",

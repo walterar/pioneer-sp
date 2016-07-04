@@ -151,6 +151,7 @@ local onChat = function (form, ref, option)
 			location = ad.location,
 			risk     = ad.risk,
 			reward   = ad.reward,
+			date     = ad.date,
 			due      = ad.due,
 			flavour  = ad.flavour
 		}
@@ -190,7 +191,8 @@ local makeAdvert = function (station)
 		if not location or location == station.path then return end
 
 		local AU = 149597870700
-		local dist = station:DistanceTo(Space.GetBody(location.bodyIndex))/AU
+		dist = station:DistanceTo(Space.GetBody(location.bodyIndex))/AU
+		if dist > 60 then return end
 		due = _local_due(station,location,urgency,false)
 
 		local reward_base = 250
@@ -215,6 +217,7 @@ local makeAdvert = function (station)
 		client   = client,
 		location = location,
 		dist     = dist_txt,
+		date     = Game.time,
 		due      = due,
 		risk     = risk,
 		urgency  = urgency,
@@ -235,29 +238,27 @@ local makeAdvert = function (station)
 end
 
 local onCreateBB = function (station)
-	local num = math.ceil(Game.system.population)
-	if num > 3 then num = 3 end
-	if num > 0 then
-		for i = 1,num do
-			makeAdvert(station)
-		end
+	for i = 1,Engine.rand:Integer(Engine.rand:Integer(0,_maxAdv),_maxAdv) do
+		makeAdvert(station)
 	end
 end
 
 local onUpdateBB = function (station)
+	local num = 0
+	local timeout = 24*60*60 -- default 1 day timeout for inter-system
 	for ref,ad in pairs(ads) do
-		if flavours[ad.flavour].localdelivery then
-			if ad.due < Game.time + 24*60*60 then -- 1 day timeout for locals
-				ad.station:RemoveAdvert(ref)
-			end
-		else
-			if ad.due < Game.time + 2*24*60*60 then -- 2 day timeout for inter-system
-				ad.station:RemoveAdvert(ref)
+		if ad.station == station then
+			if flavours[ad.flavour].localdelivery then timeout = 60*60 end -- 1 hour timeout for locals
+			if (Game.time - ad.date > timeout) then
+				station:RemoveAdvert(ref)
+				num = num + 1--Engine.rand:Integer(1)-- 50% of the time, give away 1
 			end
 		end
 	end
-	if Engine.rand:Integer(50) < 1 then
-		makeAdvert(station)
+	if num > 0 then
+		for i = 1,num do
+			makeAdvert(station)
+		end
 	end
 end
 
@@ -296,9 +297,9 @@ local onFrameChanged = function (body)
 	end
 end
 
-local onShipDocked = function (player, station)
+local onShipDocked = function (ship, station)
 --print("DeliverPackage onFrameChanged player="..player.label)
-	if not player:IsPlayer() then return end
+	if not ship:IsPlayer() then return end
 	hostilactive = false
 	for ref,mission in pairs(missions) do
 		if check_crime(mission,"FRAUD") then
@@ -306,14 +307,14 @@ local onShipDocked = function (player, station)
 			missions[ref] = nil
 --			return
 		end
-		if mission and mission.location == station.path then
+		if mission.location == station.path then
 			if Game.time > mission.due then
 				Comms.ImportantMessage(flavours[mission.flavour].failuremsg, mission.client.name)
 				_G.MissionsFailures = MissionsFailures + 1
 			else
 				Comms.ImportantMessage(flavours[mission.flavour].successmsg, mission.client.name)
 				_G.MissionsSuccesses = MissionsSuccesses + 1
-				player:AddMoney(mission.reward)
+				ship:AddMoney(mission.reward)
 			end
 			mission:Remove()
 			missions[ref] = nil
@@ -355,7 +356,7 @@ local loaded_data
 local onGameStart = function ()
 	ads = {}
 	missions = {}
-	if loaded_data then
+	if type(loaded_data) == "table" then
 		for k,ad in pairs(loaded_data.ads) do
 			ads[ad.station:AddAdvert({
 				description = ad.desc,

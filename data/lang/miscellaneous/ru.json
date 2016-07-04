@@ -82,6 +82,22 @@
 "description":"",
 "message":"опыта"
 },
+"FACTION_CONFEDERATION":{
+"description":"Lobby.lua",
+"message":"You're in space controlled by the Confederation"
+},
+"FACTION_EMPIRE":{
+"description":"Lobby.lua",
+"message":"You're in space controlled by the Empire"
+},
+"FACTION_FEDERATION":{
+"description":"Lobby.lua",
+"message":"You're in space controlled by the Federación"
+},
+"FACTION_INDEPENDIENT":{
+"description":"Lobby.lua",
+"message":"You are in the free and independent area of the galaxy"
+},
 "FAILED":{
 "description":"",
 "message":"Не удалось"
@@ -121,6 +137,10 @@
 "IN_SPACE_OF":{
 "description":"",
 "message":"В пространстве "
+},
+"JUMPING":{
+"description":"ui.scout",
+"message":"Jumping"
 },
 "KM":{
 "description":"ui-core",

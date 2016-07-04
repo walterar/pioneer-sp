@@ -130,8 +130,8 @@ local To_pay = function (cobrar_cuotas)
 end
 
 local onShipDocked = function (ship, station)
-	if ship == Game.player and deuda.total and Game.time > deuda.fecha_p_pago then
-		local cobrar_cuotas = math.floor((Game.time - (deuda.fecha_p_pago-(60*60*24*30))) / (60*60*24*30))
+	if ship == Game.player and deuda_total and Game.time >= deuda_fecha_p_pago then
+		local cobrar_cuotas = math.floor((Game.time - (deuda_fecha_p_pago-(60*60*24*30))) / (60*60*24*30))
 --print("cobrar_cuotas = "..cobrar_cuotas)
 		if cobrar_cuotas < 1 then cobrar_cuotas = 1 end
 		if (deuda.total - deuda.valor_cuota) < deuda.valor_cuota then
@@ -158,7 +158,7 @@ end
 	local loaded_data
 local onGameStart = function ()
 	ads = {}
-	if loaded_data and loaded_data.ads then
+	if type(loaded_data) == "table" then
 		for k,ad in pairs(loaded_data.ads) do
 			ads[ad.station:AddAdvert({
 				description = ad.title,

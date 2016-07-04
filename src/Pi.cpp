@@ -126,7 +126,7 @@ bool Pi::joystickEnabled;
 bool Pi::mouseYInvert;
 bool Pi::compactScanner;
 std::map<SDL_JoystickID,Pi::JoystickState> Pi::joysticks;
-bool Pi::navTunnelDisplayed;
+bool Pi::navTunnelDisplayed = false;
 bool Pi::speedLinesDisplayed = false;
 bool Pi::hudTrailsDisplayed = false;
 bool Pi::bRefreshBackgroundStars = true;
@@ -340,6 +340,53 @@ std::string Pi::GetSaveDir()
 	return FileSystem::JoinPath(FileSystem::GetUserDir(), Pi::SAVE_DIR_NAME);
 }
 
+void TestGPUJobsSupport()
+{
+	bool supportsGPUJobs = (Pi::config->Int("EnableGPUJobs") == 1);
+	if (supportsGPUJobs) 
+	{
+		Uint32 octaves = 8;
+		for (Uint32 i = 0; i<6; i++) 
+		{
+			std::unique_ptr<Graphics::Material> material;
+			Graphics::MaterialDescriptor desc;
+			desc.effect = Graphics::EFFECT_GEN_GASGIANT_TEXTURE;
+			desc.quality = (octaves << 16) | i;
+			desc.textures = 3;
+			material.reset(Pi::renderer->CreateMaterial(desc));
+			supportsGPUJobs &= material->IsProgramLoaded();
+		}
+		if (!supportsGPUJobs) 
+		{
+			// failed - retry
+
+			// reset the GPU jobs flag
+			supportsGPUJobs = true;
+
+			// retry the shader compilation
+			octaves = 5; // reduce the number of octaves
+			for (Uint32 i = 0; i<6; i++)
+			{
+				std::unique_ptr<Graphics::Material> material;
+				Graphics::MaterialDescriptor desc;
+				desc.effect = Graphics::EFFECT_GEN_GASGIANT_TEXTURE;
+				desc.quality = (octaves << 16) | i;
+				desc.textures = 3;
+				material.reset(Pi::renderer->CreateMaterial(desc));
+				supportsGPUJobs &= material->IsProgramLoaded();
+			}
+			
+			if (!supportsGPUJobs)
+			{
+				// failed
+				Warning("EnableGPUJobs DISABLED");
+				Pi::config->SetInt("EnableGPUJobs", 0);		// disable GPU Jobs
+				Pi::config->Save();
+			}
+		}
+	}
+}
+
 void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 {
 #ifdef PIONEERSP_PROFILER
@@ -369,9 +416,9 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	if (strlen(PIONEERSP_EXTRAVERSION)) version += " (" PIONEERSP_EXTRAVERSION ")";
 	const char* platformName = SDL_GetPlatform();
 	if(platformName)
-		Output("Pioneer Scout Plus G27f %s on: %s\n\n", version.c_str(), platformName);
+		Output("Pioneer Scout Plus G28f %s on: %s\n\n", version.c_str(), platformName);
 	else
-		Output("Pioneer Scout Plus G27f %s but could not detect platform name.\n\n", version.c_str());
+		Output("Pioneer Scout Plus G28f %s but could not detect platform name.\n\n", version.c_str());
 
 	Output("%s\n", OS::GetOSInfoString().c_str());
 
@@ -434,6 +481,8 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	navTunnelDisplayed = (config->Int("DisplayNavTunnel")) ? true : false;
 	speedLinesDisplayed = (config->Int("SpeedLines")) ? true : false;
 	hudTrailsDisplayed = (config->Int("HudTrails")) ? true : false;
+
+	TestGPUJobsSupport();
 
 	EnumStrings::Init();
 
@@ -541,7 +590,7 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	draw_progress(gauge, label, 0.75f);
 
 	Output("Sfx::Init\n");
-	Sfx::Init(Pi::renderer);
+	SfxManager::Init(Pi::renderer);
 	draw_progress(gauge, label, 0.8f);
 
 	if (!no_gui && !config->Int("DisableSound")) {
@@ -694,7 +743,7 @@ void Pi::Quit()
 	delete Pi::luaConsole;
 	NavLights::Uninit();
 	Shields::Uninit();
-	Sfx::Uninit();
+	SfxManager::Uninit();
 	Sound::Uninit();
 	CityOnPlanet::Uninit();
 	BaseSphere::Uninit();
@@ -1073,6 +1122,7 @@ void Pi::StartGame()
 {
 	Pi::player->onDock.connect(sigc::ptr_fun(&OnPlayerDockOrUndock));
 	Pi::player->onUndock.connect(sigc::ptr_fun(&OnPlayerDockOrUndock));
+	Pi::player->onLanded.connect(sigc::ptr_fun(&OnPlayerDockOrUndock));
 	Pi::game->GetCpan()->ShowAll();
 	DrawGUI = true;
 	Pi::game->GetCpan()->SetAlertState(Ship::ALERT_NONE);
@@ -1204,12 +1254,12 @@ void Pi::MainLoop()
 	double accumulator = Pi::game->GetTimeStep();
 	Pi::gameTickAlpha = 0;
 
+#ifdef PIONEERSP_PROFILER
+	Profiler::reset();
+#endif
+
 	while (Pi::game) {
 		PROFILE_SCOPED()
-
-#ifdef PIONEERSP_PROFILER
-		Profiler::reset();
-#endif
 
 		const Uint32 newTicks = SDL_GetTicks();
 		double newTime = 0.001 * double(newTicks);
@@ -1266,7 +1316,7 @@ void Pi::MainLoop()
 		}
 
 		Pi::BeginRenderTarget();
-
+		Pi::renderer->SetViewport(0, 0, Graphics::GetScreenWidth(), Graphics::GetScreenHeight());
 		Pi::renderer->BeginFrame();
 		Pi::renderer->SetTransform(matrix4x4f::Identity());
 
@@ -1424,6 +1474,10 @@ void Pi::MainLoop()
 			Screendump(fname.c_str(), Graphics::GetScreenWidth(), Graphics::GetScreenHeight());
 		}
 #endif /* MAKING_VIDEO */
+
+#ifdef PIONEERSP_PROFILER
+		Profiler::reset();
+#endif
 	}
 }
 

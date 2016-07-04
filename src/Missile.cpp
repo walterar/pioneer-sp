@@ -127,7 +127,7 @@ void Missile::Explode()
 		}
 	}
 
-	Sfx::Add(this, Sfx::TYPE_EXPLOSION);
+	SfxManager::Add(this, TYPE_EXPLOSION);
 }
 
 void Missile::NotifyRemoved(const Body* const removedBody)
@@ -135,6 +135,7 @@ void Missile::NotifyRemoved(const Body* const removedBody)
 	if (m_owner == removedBody) {
 		m_owner = 0;
 	}
+	Ship::NotifyRemoved(removedBody);
 }
 
 void Missile::Arm()

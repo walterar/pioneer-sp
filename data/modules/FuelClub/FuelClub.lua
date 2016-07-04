@@ -27,13 +27,6 @@ local l = Lang.GetResource("module-fuelclub") or Lang.GetResource("module-fuelcl
 -- Default numeric values --
 ----------------------------
 local oneyear = 31557600 -- One standard Julian year
--- 10, guaranteed random by D16 dice roll.
--- This is to make the BBS name different from the station welcome character.
-
--- 27, guaranteed random by D100 dice roll.
--- This is to make the BBS name different from the station welcome character.
--- This will be unnecessary once ported to Character
-local seedbump = 27
 local ads = {}
 local memberships = {
 -- some_club = {
@@ -45,19 +38,6 @@ local memberships = {
 
 -- 1 / probability that you'll see one in a BBS
 local chance_of_availability = 1
-
-local flavours = {
-	{
-		clubname = l.FLAVOUR_0_CLUBNAME,
-		welcome = l.FLAVOUR_0_WELCOME,
-		nonmember_intro = l.FLAVOUR_0_NONMEMBER_INTRO,
-		member_intro = l.FLAVOUR_0_MEMBER_INTRO,
-		annual_fee = 400
-	}
-}
-
-local loaded_data -- empty unless the game is loaded
-
 
 local onDelete = function (ref)
 	-- ad has been destroyed; forget its details
@@ -73,7 +53,6 @@ onChat = function (form, ref, option)
 	form:SetFace(ad.character)
 	form:SetTitle(ad.flavour.welcome:interp({clubname = ad.flavour.clubname}))
 	local membership = memberships[ad.flavour.clubname]
-
 	if membership and (membership.joined + membership.expiry > Game.time) then
 		-- members get refuelled, whether or not the station managed to do it
 		Game.player:SetFuelPercent()
@@ -103,14 +82,14 @@ onChat = function (form, ref, option)
 			getBuyPrice = function (ref, commodity)
 				return ad.station:GetEquipmentPrice(commodity) * ({
 					[Equipment.cargo.hydrogen] = 0.5, -- half price Hydrogen
-					[Equipment.cargo.military_fuel] = 0.50, -- half price Milfuel
+					[Equipment.cargo.military_fuel] = 0.5, -- half price Milfuel
 					[Equipment.cargo.radioactives] = 0, -- Radioactives go free
 				})[commodity]
 			end,
 			getSellPrice = function (ref, commodity)
 				return ad.station:GetEquipmentPrice(commodity) * ({
 					[Equipment.cargo.hydrogen] = 0.5, -- half price Hydrogen
-					[Equipment.cargo.military_fuel] = 0.50, -- half price Milfuel
+					[Equipment.cargo.military_fuel] = 0.5, -- half price Milfuel
 					[Equipment.cargo.radioactives] = 0, -- Radioactives go free
 				})[commodity]
 			end,
@@ -192,27 +171,28 @@ onChat = function (form, ref, option)
 end
 
 local onCreateBB = function (station)
-	-- deterministically generate our instance
-	local rand = Rand.New(station.seed + seedbump)
-	if rand:Integer(1,chance_of_availability) == 1 then
-		-- Create our bulletin board ad
-		local ad = {station = station, stock = {}, price = {}}
-		ad.flavour = flavours[rand:Integer(1,#flavours)]
-		ad.character = Character.New({
-			title = ad.flavour.clubname,
-			armour = false
-		})
-		ads[station:AddAdvert({
-			description = ad.flavour.clubname,
-			icon        = "fuel_club",
-			onChat      = onChat,
-			onDelete    = onDelete})] = ad
-	end
+	local ad = {station = station, stock = {}, price = {}}
+	ad.flavour = 	{
+		clubname = l.FLAVOUR_0_CLUBNAME,
+		welcome = l.FLAVOUR_0_WELCOME,
+		nonmember_intro = l.FLAVOUR_0_NONMEMBER_INTRO,
+		member_intro = l.FLAVOUR_0_MEMBER_INTRO,
+		annual_fee = 400
+	}
+	ad.character = Character.New({
+		title = ad.flavour.clubname,
+		armour = false
+	})
+	ads[station:AddAdvert({
+		description = ad.flavour.clubname,
+		icon        = "fuel_club",
+		onChat      = onChat,
+		onDelete    = onDelete})] = ad
 end
 
+local loaded_data
 local onGameStart = function ()
-
-	if loaded_data then
+	if type(loaded_data) == "table" then
 		-- rebuild saved adverts
 		for k,ad in pairs(loaded_data.ads) do
 			ads[ad.station:AddAdvert({

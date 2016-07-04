@@ -479,10 +479,6 @@
 "description":"",
 "message":"Impossibile completare il trasferimento. Mancano passeggeri."
 },
-"MISSING_PASSENGER":{
-"description":"",
-"message":"Impossibile completare il trasferimento. Passeggero mancante."
-},
 "OK_AGREED":{
 "description":"",
 "message":"Ok, accordato."

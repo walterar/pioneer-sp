@@ -98,7 +98,7 @@ local onEnterSystem = function (player)
 	then return end
 	if Engine.rand:Integer(3) < 1 then
 		multiplier = 100 - (100 * Game.system.lawlessness)
-		money = math.floor(player:GetMoney() * (multiplier/1000))
+		money = math.floor(math.min(1e5, player:GetMoney()) * (multiplier/1000))
 		Event.Register("onShipHit", onShipHit)
 		Event.Register("onShipDestroyed", onShipDestroyed)
 		joust(player)

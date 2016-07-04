@@ -25,7 +25,7 @@ using namespace Graphics;
 
 namespace
 {
-	static std::unique_ptr<Graphics::Texture> s_defaultCubeMap;
+	static RefCountedPtr<Graphics::Texture> s_defaultCubeMap;
 
 	static Uint32 GetNumSkyboxes()
 	{
@@ -84,9 +84,9 @@ UniverseBox::~UniverseBox()
 void UniverseBox::Init()
 {
 	// Load default cubemap
-	if(!s_defaultCubeMap.get()) {
+	if(!s_defaultCubeMap.Valid()) {
 		TextureBuilder texture_builder = TextureBuilder::Cube("textures/skybox/default.dds");
-		s_defaultCubeMap.reset( texture_builder.CreateTexture(m_renderer) );
+		s_defaultCubeMap.Reset( texture_builder.GetOrCreateTexture(m_renderer,std::string("cube")) );
 	}
 
 	// Create skybox geometry
@@ -178,13 +178,13 @@ void UniverseBox::LoadCubeMap(Random &rand)
 			// Load new one
 			const std::string os = stringf("textures/skybox/ub%0{d}.dds", (new_ubox_index - 1));
 			TextureBuilder texture_builder = TextureBuilder::Cube(os.c_str());
-			m_cubemap.reset( texture_builder.CreateTexture(m_renderer) );
-			m_material->texture0 = m_cubemap.get();
+			m_cubemap.Reset( texture_builder.GetOrCreateTexture(m_renderer, std::string("cube")) );
+			m_material->texture0 = m_cubemap.Get();
 		}
 	} else {
 		// use default cubemap
-		m_cubemap.reset();
-		m_material->texture0 = s_defaultCubeMap.get();
+		m_cubemap.Reset();
+		m_material->texture0 = s_defaultCubeMap.Get();
 	}
 }
 
@@ -305,34 +305,34 @@ MilkyWay::MilkyWay(Graphics::Renderer *renderer)
 	float theta;
 	for (theta=0.0; theta < 2.f*float(M_PI); theta+=0.1f) {
 		bottom->Add(
-				vector3f(100.0f*sin(theta), float(-40.0 - 30.0*noise(sin(theta),1.0,cos(theta))), 100.0f*cos(theta)),
+				vector3f(100.0f*sin(theta), float(-40.0 - 30.0*noise(vector3d(sin(theta),1.0,cos(theta)))), 100.0f*cos(theta)),
 				dark);
 		bottom->Add(
-			vector3f(100.0f*sin(theta), float(5.0*noise(sin(theta),0.0,cos(theta))), 100.0f*cos(theta)),
+			vector3f(100.0f*sin(theta), float(5.0*noise(vector3d(sin(theta),0.0,cos(theta)))), 100.0f*cos(theta)),
 			bright);
 	}
 	theta = 2.f*float(M_PI);
 	bottom->Add(
-		vector3f(100.0f*sin(theta), float(-40.0 - 30.0*noise(sin(theta),1.0,cos(theta))), 100.0f*cos(theta)),
+		vector3f(100.0f*sin(theta), float(-40.0 - 30.0*noise(vector3d(sin(theta),1.0,cos(theta)))), 100.0f*cos(theta)),
 		dark);
 	bottom->Add(
-		vector3f(100.0f*sin(theta), float(5.0*noise(sin(theta),0.0,cos(theta))), 100.0f*cos(theta)),
+		vector3f(100.0f*sin(theta), float(5.0*noise(vector3d(sin(theta),0.0,cos(theta)))), 100.0f*cos(theta)),
 		bright);
 	//top
 	for (theta=0; theta < 2.f*float(M_PI); theta+=0.1f) {
 		top->Add(
-			vector3f(100.0f*sin(theta), float(5.0*noise(sin(theta),0.0,cos(theta))), 100.0f*cos(theta)),
+			vector3f(100.0f*sin(theta), float(5.0*noise(vector3d(sin(theta),0.0,cos(theta)))), 100.0f*cos(theta)),
 			bright);
 		top->Add(
-			vector3f(100.0f*sin(theta), float(40.0 + 30.0*noise(sin(theta),-1.0,cos(theta))), 100.0f*cos(theta)),
+			vector3f(100.0f*sin(theta), float(40.0 + 30.0*noise(vector3d(sin(theta),-1.0,cos(theta)))), 100.0f*cos(theta)),
 			dark);
 	}
 	theta = 2.f*float(M_PI);
 	top->Add(
-		vector3f(100.0f*sin(theta), float(5.0*noise(sin(theta),0.0,cos(theta))), 100.0f*cos(theta)),
+		vector3f(100.0f*sin(theta), float(5.0*noise(vector3d(sin(theta),0.0,cos(theta)))), 100.0f*cos(theta)),
 		bright);
 	top->Add(
-		vector3f(100.0f*sin(theta), float(40.0 + 30.0*noise(sin(theta),-1.0,cos(theta))), 100.0f*cos(theta)),
+		vector3f(100.0f*sin(theta), float(40.0 + 30.0*noise(vector3d(sin(theta),-1.0,cos(theta)))), 100.0f*cos(theta)),
 		dark);
 
 	Graphics::MaterialDescriptor desc;

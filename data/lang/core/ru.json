@@ -324,7 +324,7 @@
 },
 "DRAW_OUT_RANGE_LABELS":{
 "description":"",
-"message":"Маркеры далёких систем"
+"message":"Маркеры систем все досягаемости"
 },
 "DRAW_UNINHABITED_LABELS":{
 "description":"",
@@ -360,7 +360,7 @@
 },
 "EQUATORIAL_RADIUS_TO_POLAR_RADIUS_RATIO":{
 "description":"",
-"message":"Соотн. экваториального к полярному радиусу"
+"message":"Соотн. экваториального радиуса к полярному"
 },
 "EXACT_MATCH_X":{
 "description":"",
@@ -602,9 +602,6 @@
 "description":"",
 "message":"Обзор"
 },
-"INT_LY":{
-"description":"integer number of light years","message":"%scale СвЛ"
-},
 "IN_TRANSIT":{
 "description":"",
 "message":"Проход через гипертоннель"
@@ -614,7 +611,7 @@
 "message":"Прыжок в систему %system [%x,%y,%z]"
 },
 "JOY":{
-"description":"Short for Joystick","message":"Joy"
+"description":"Short for Joystick","message":"Джойстик"
 },
 "JOYSTICK_INPUT":{
 "description":"",
@@ -925,7 +922,7 @@
 "message":"Не найдено, макс.совпадение: %system"
 },
 "NOW":{
-"description":"In System Orbit View","message":"Now"
+"description":"In System Orbit View","message":"Сейчас"
 },
 "NO_ALERT":{
 "description":"",
@@ -1107,7 +1104,7 @@
 "description":"For system orbit view","message":"Radial delta-v. Click to reset to zero."
 },
 "PLANNER_RESET_START":{
-"description":"For system orbit view","message":"Maneuver start. Click to reset to default."
+"description":"For system orbit view","message":"Начало маневра. Нажмите, чтобы сбросить настройки."
 },
 "PLASTICS":{
 "description":"",
@@ -1537,7 +1534,7 @@
 "message":"Температура на поверхности"
 },
 "SWITCHED_TO_PARENT":{
-"description":"Show ship's heading, coordinates are on the celestial sphere (defined by the ecliptic).","message":"Switched heading display to system-wide coordinates."
+"description":"Show ship's heading, coordinates are on the celestial sphere (defined by the ecliptic).","message":"Передний экран переключен в режим координат системы."
 },
 "SWITCHED_TO_ROTATIONAL":{
 "description":"Show ship's heading in planetary coordinates. heading 0 = north, 90 = east, 180 = south, 270 = west.","message":"Switched heading display to planetary coordinates."
@@ -1671,6 +1668,13 @@
 "UNEXPLORED_SYSTEM_STAR_INFO_ONLY":{
 "description":"",
 "message":"Неизведанная система. Информация о звезде была собрана с удалённого телескопа, по этому информация о планетах не доступна."
+},
+"UNIT_AU":{
+"description":"Distance unit: an astronomical unit, radius of Earth's orbit","message":"АЕ"
+},
+"UNIT_LY":{
+"description":"Distance unit: a light year",
+"message":"Ly"
 },
 "UNKNOWN":{
 "description":"",

@@ -1,7 +1,7 @@
 {
 "ACCEPTED_1":{
 "description":"",
-"message":"Sgoinneil. Luchdaidh mi am bathar dhan t-soitheach agad."
+"message":"Sgoinneil. Luchdaichidh mi am bathar dhan t-soitheach agad."
 },
 "ACCEPTED_2":{
 "description":"",
@@ -60,40 +60,48 @@
 "message":"SEIRBHEIS CARAGO. Tha sinn feumach air soitheach airson lìbhrigeadh gu {system}."
 },
 "ALUMINIUM_TUBES":{
-"description":"custom cargo","message":"Pìoban almain"
+"description":"custom cargo",
+"message":"Pìoban almain"
 },
 "AMOUNT":{
-"description":"Shown in mission summary. The amount of cargo","message":"Uiread:"
+"description":"Shown in mission summary. The amount of cargo",
+"message":"Uiread:"
 },
 "ART_OBJECTS":{
-"description":"custom cargo","message":"Obair-ealain"
+"description":"custom cargo",
+"message":"Obair-ealain"
 },
 "CARGO":{
 "description":"",
 "message":"Carago:"
 },
 "CARGORUN":{
-"description":"Name of mission type","message":"Ruith carago"
+"description":"Name of mission type",
+"message":"Ruith carago"
 },
 "CEASE_FIRE":{
 "description":"",
 "message":"Stad an losgaidh, stad an losgaidh! 'S ann air do thaobh-sa a tha mi!"
 },
 "CLUS":{
-"description":"custom cargo","message":"Bogsaichean-fuirich"
+"description":"custom cargo",
+"message":"Bogsaichean-fuirich"
 },
 "COULD_YOU_REPEAT_THE_ORIGINAL_REQUEST":{
 "description":"",
 "message":"Dè an t-iarrtas a bh' agaibh a-rithist?"
 },
 "DANGER":{
-"description":"the risk level","message":"Cunnart:"
+"description":"the risk level",
+"message":"Cunnart:"
 },
 "DEADLINE":{
-"description":"Must be delivered by","message":"Ceann-là:"
+"description":"Must be delivered by",
+"message":"Ceann-là:"
 },
 "DELIVER_TO":{
-"description":"Deliver to this location","message":"Lìbhrig gu:"
+"description":"Deliver to this location",
+"message":"Lìbhrig gu:"
 },
 "DENY_1":{
 "description":"",
@@ -120,16 +128,20 @@
 "message":"Till nuair a bhios barrachd eòlais ort."
 },
 "DIAMONDS":{
-"description":"custom cargo","message":"Daoimeanan"
+"description":"custom cargo",
+"message":"Daoimeanan"
 },
 "DIGESTERS":{
-"description":"custom cargo","message":"Innealan-meirbhidh"
+"description":"custom cargo",
+"message":"Innealan-meirbhidh"
 },
 "DISTANCE":{
-"description":"distance in space, between two locations","message":"Astar:"
+"description":"distance in space, between two locations",
+"message":"Astar:"
 },
 "ELECTRICAL_APPLIANCES":{
-"description":"custom cargo","message":"Innealan leatronach"
+"description":"custom cargo",
+"message":"Innealan leatronach"
 },
 "ESCORT_CHATTER_1":{
 "description":"",
@@ -152,7 +164,8 @@
 "message":"Hò hò 's beiridh mi air."
 },
 "EXPLOSIVES":{
-"description":"custom cargo","message":"Stuth-spreadhaidh"
+"description":"custom cargo",
+"message":"Stuth-spreadhaidh"
 },
 "FAILUREMSG_1":{
 "description":"",
@@ -175,31 +188,40 @@
 "message":"A bhèist air do chasan! Thug thu ro fhada leis an lìbhrigeadh seo. Fhuair na peataichean clòimheach uile agam bàs leis an acras!"
 },
 "FURNITURE":{
-"description":"custom cargo","message":"Àirneas"
+"description":"custom cargo",
+"message":"Àirneas"
 },
 "GREENHOUSES":{
-"description":"custom cargo","message":"Seòmraichean-glainne"
+"description":"custom cargo",
+"message":"Seòmraichean-glainne"
 },
 "GUNS_GUNS_GUNS":{
-"description":"Military radio call to avoid friendly fire. It indicates that the cannon has been activated and should ensure that other friendly pilots do not maneuver into the path of harm.","message":"Gunnachan, gunnachan, gunnachan."
+"description":"Military radio call to avoid friendly fire. It indicates that the cannon has been activated and should ensure that other friendly pilots do not maneuver into the path of harm.",
+"message":"Gunnachan, gunnachan, gunnachan."
 },
 "HAZARDOUS_SUBSTANCES":{
-"description":"custom cargo","message":"Stuthan cunnartach"
+"description":"custom cargo",
+"message":"Stuthan cunnartach"
 },
 "HOWMUCH_1":{
-"description":"regarding mass, always more than 1t","message":"{amount} tunna meatrach."
+"description":"regarding mass, always more than 1t",
+"message":"{amount} tunna meatrach."
 },
 "HOWMUCH_2":{
-"description":"regarding mass, always more than 1t","message":"{amount}t"
+"description":"regarding mass, always more than 1t",
+"message":"{amount}t"
 },
 "HOWMUCH_3":{
-"description":"regarding mass, always more than 1t","message":"'S e {amount}t a tha san tomad."
+"description":"regarding mass, always more than 1t",
+"message":"'S e {amount}t a tha san tomad."
 },
 "HOWMUCH_4":{
-"description":"regarding mass, always more than 1t","message":"Tha {amount}t ann."
+"description":"regarding mass, always more than 1t",
+"message":"Tha {amount}t ann."
 },
 "HOWMUCH_SINGULAR_1":{
-"description":"This string is only used for 1 metric tons (singular)","message":"Chan e ach {amount}t a th' ann."
+"description":"This string is only used for 1 metric tons (singular)",
+"message":"Chan e ach {amount}t a th' ann."
 },
 "HOWMUCH_WHOLESALER_1":{
 "description":"",
@@ -222,7 +244,8 @@
 "message":"Haoigh, 's mise {name}. Pàighidh mi {cash} dhut ma bheir thu {cargoname} gu {starport} ann an siostam {system} ({sectorx}, {sectory}, {sectorz}), tha seo {dist} bliadhna-sholais a dh'astar."
 },
 "INTROTEXT_2":{
-"description":"{name} is the full name of a person","message":"Latha math! Tha Seirbheisean Giùlain {name} feumach ort ach an lìbhrig thu {cargoname} gu {starport} ann an siostam {system} ({sectorx}, {sectory}, {sectorz}), tha seo {dist} bliadhna-sholais a dh'astar. Pàighidh sinn {cash} airson lìbhrigeadh slàn sàbhailte."
+"description":"{name} is the full name of a person",
+"message":"Latha math! Tha Seirbheisean Giùlain {name} feumach ort ach an lìbhrig thu {cargoname} gu {starport} ann an siostam {system} ({sectorx}, {sectory}, {sectorz}), tha seo {dist} bliadhna-sholais a dh'astar. Pàighidh sinn {cash} airson lìbhrigeadh slàn sàbhailte."
 },
 "INTROTEXT_3":{
 "description":"",
@@ -233,7 +256,8 @@
 "message":"Shin thu. Tha sinn feumach air eòlaiche airson turas gu {starport} ann an siostam {system} ({sectorx}, {sectory}, {sectorz}) a dh'fhaodas a bhith cunnartach. Pàighidh sinn {cash}. Tha e {dist} bliadhna-sholais a dh'astar."
 },
 "INTROTEXT_FLUFFY_1":{
-"description":"this is used for the delivery of Quibbles, which is a nod to Tribble (star trek ref. see wikipedia)","message":"Haoigh, is mise {name}. Tha carago clòimheach dhe {cargoname} agam gus a thoirt gu {starport} ann an siostam {system} ({sectorx}, {sectory}, {sectorz}). Tha seo {dist} bliadhna-sholais a dh'astar. Pàighidh mi {cash} airson na lìbhrigidh seo."
+"description":"this is used for the delivery of Quibbles, which is a nod to Tribble (star trek ref. see wikipedia)",
+"message":"Haoigh, is mise {name}. Tha carago clòimheach dhe {cargoname} agam gus a thoirt gu {starport} ann an siostam {system} ({sectorx}, {sectory}, {sectorz}). Tha seo {dist} bliadhna-sholais a dh'astar. Pàighidh mi {cash} airson na lìbhrigidh seo."
 },
 "INTROTEXT_INFRASTRUCTURE_1":{
 "description":"",
@@ -252,7 +276,8 @@
 "message":"'S mise {name} is feumaidh mi gun lìbhrigear {cargoname} gu cliant ann an {starport}. Pàighidh mi {cash} airson seo."
 },
 "INTROTEXT_MINING_1":{
-"description":"{name} is the full name of a person","message":"Shin thu. Tha Companaidh Mèinearrachd {name} airson {cargoname} a lìbhrigeadh gu {starport} ann an siostam {system} ({sectorx}, {sectory}, {sectorz}) ach an tog iad mèinn ùr, tha seo {dist} bliadhna-sholais a dh'astar. Thèid {cash} a phàigheadh."
+"description":"{name} is the full name of a person",
+"message":"Shin thu. Tha Companaidh Mèinearrachd {name} airson {cargoname} a lìbhrigeadh gu {starport} ann an siostam {system} ({sectorx}, {sectory}, {sectorz}) ach an tog iad mèinn ùr, tha seo {dist} bliadhna-sholais a dh'astar. Thèid {cash} a phàigheadh."
 },
 "INTROTEXT_PICKUP_1":{
 "description":"",
@@ -299,10 +324,12 @@
 "message":"bl-sol"
 },
 "MACHINE_TOOLS":{
-"description":"custom cargo","message":"Beart-innealan"
+"description":"custom cargo",
+"message":"Beart-innealan"
 },
 "NEPTUNIUM":{
-"description":"custom cargo","message":"Neiptiunium"
+"description":"custom cargo",
+"message":"Neiptiunium"
 },
 "OK_AGREED":{
 "description":"",
@@ -313,7 +340,8 @@
 "message":"Picked cargo in..."
 },
 "PICKUP_FROM":{
-"description":"from a location","message":"Tog carago o..."
+"description":"from a location",
+"message":"Tog carago o..."
 },
 "PIRATE_GRIPES_1":{
 "description":"",
@@ -324,7 +352,8 @@
 "message":"Ochan ò. Mo shoithich bhochd!"
 },
 "PIRATE_GRIPES_3":{
-"description":"said with vengeance","message":"Leigidh mise fhaicinn dhut!"
+"description":"said with vengeance",
+"message":"Leigidh mise fhaicinn dhut!"
 },
 "PIRATE_TAUNTS_1":{
 "description":"",
@@ -355,10 +384,12 @@
 "message":"Tha am mì-shealbh ort!"
 },
 "PLUTONIUM":{
-"description":"custom cargo","message":"Plutonium"
+"description":"custom cargo",
+"message":"Plutonium"
 },
 "QUIBBLES":{
-"description":"custom cargo, also used in the NewsEventCommodity module, a nod to Star Trek's Tribble (check wikipedia)","message":"Quibbles"
+"description":"custom cargo, also used in the NewsEventCommodity module, a nod to Star Trek's Tribble (check wikipedia)",
+"message":"Quibbles"
 },
 "RISK_1":{
 "description":"",
@@ -413,14 +444,24 @@
 "message":"Bidh thu fo chunnart mòr. Ach thig coimheadaiche leat gus do chumail sàbhailte."
 },
 "SEMI_FINISHED_PRODUCTS":{
-"description":"custom cargo","message":"Bathar leth-dhèanta"
+"description":"custom cargo",
+"message":"Bathar leth-dhèanta"
+},
+"SET_AS_TARGET":{
+"description":"",
+"message":"Cuir ceann-uidhe na seòladaireachd air"
+},
+"SET_RETURN_ROUTE":{
+"description":"",
+"message":"Suidhich cùrsa tillidh"
 },
 "SPACEPORT":{
 "description":"",
 "message":"Port-fhànais:"
 },
 "SPACESHIP_PARTS":{
-"description":"custom cargo","message":"Co-phàirtean soithich-fhànais"
+"description":"custom cargo",
+"message":"Co-phàirtean soithich-fhànais"
 },
 "SUCCESSMSG_1":{
 "description":"",
@@ -439,7 +480,8 @@
 "message":"Mòran taing! Molaidh mi thu gu dearbh. Chaidh an t-airgead a thar-chur."
 },
 "SUCCESSMSG_FLUFFY_1":{
-"description":"Said when receiving a shipment of Quibbles (see wikipedia Tribble)","message":"Obh ochan ò, dè nì mi le uiread nam beathaichean clòimheach a tha seo. Co-dhiù no co-dheth, chaidh airgead a chur thugad."
+"description":"Said when receiving a shipment of Quibbles (see wikipedia Tribble)",
+"message":"Obh ochan ò, dè nì mi le uiread nam beathaichean clòimheach a tha seo. Co-dhiù no co-dheth, chaidh airgead a chur thugad."
 },
 "SYSTEM":{
 "description":"",
@@ -450,13 +492,16 @@
 "message":"Chaidh an t-amas a mhilleadh."
 },
 "TITANIUM":{
-"description":"custom cargo","message":"Titanium"
+"description":"custom cargo",
+"message":"Titanium"
 },
 "TUNGSTEN":{
-"description":"custom cargo","message":"Tungstan"
+"description":"custom cargo",
+"message":"Tungstan"
 },
 "URANIUM":{
-"description":"custom cargo","message":"Uranium"
+"description":"custom cargo",
+"message":"Uranium"
 },
 "URGENCY_1":{
 "description":"",
@@ -487,7 +532,8 @@
 "message":"Feumaidh e bhith ann gu ruige {date} air sàilleibh ùine leth-bheatha an iosa-tòp seo."
 },
 "WEDDING_DRESSES":{
-"description":"custom cargo","message":"Trusganan bainnse"
+"description":"custom cargo",
+"message":"Trusganan bainnse"
 },
 "WE_HAVE_LOADED_UP_THE_CARGO_ON_YOUR_SHIP":{
 "description":"",

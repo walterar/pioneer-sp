@@ -25,6 +25,11 @@ public:
 	bool IsActive() const { return m_active; }
 	void AddOutput(const std::string &line);
 
+/*#ifdef REMOTE_LUA_REPL
+	void OpenTCPDebugConnection(int portnumber);
+	void HandleTCPDebugConnections();
+#endif
+*/
 	static void Register();
 private:
 	bool OnKeyDown(const UI::KeyboardEvent &event);
@@ -32,12 +37,19 @@ private:
 	void OnEnter(const std::string &text);
 
 	void ExecOrContinue(const std::string &stmt);
+//	void ExecOrContinue(const std::string &stmt, bool repeatStatement=true);
 
 	void OnKeyPressed(const SDL_Keysym*);
 	void OnTextChanged();
 	void UpdateCompletion(const std::string & statement);
 	void RegisterAutoexec();
 
+/*#ifdef REMOTE_LUA_REPL
+	void HandleNewDebugTCPConnection(int socket);
+	void HandleDebugTCPConnection(int socket);
+	void BroadcastToDebuggers(const std::string &message);
+#endif
+*/
 	bool m_active;
 
 	RefCountedPtr<UI::Widget> m_container;

@@ -1,4 +1,4 @@
--- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
+-- Missions.lua Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- modified for Pioneer Scout+ (c)2012-2015 by walterar <walterar2@gmail.com>
 -- Work in progress.
@@ -19,6 +19,12 @@ local l  = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
 local lm = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous","en")
 
 local AU = 149597870700
+
+local red    = { r = 1.0, g = 0.0, b = 0.0 }
+local green  = { r = 0.0, g = 1.0, b = 0.0 }
+local blue   = { r = 0.0, g = 0.0, b = 1.0 }
+local yellow = { r = 1.0, g = 1.0, b = 0.2 }
+
 
 local Exists = function (ship)
 	local exists = false
@@ -103,33 +109,33 @@ local missions = function (tabGroup)
 				dist =  Game.player:DistanceTo(mission.target)/1000
 				if dist < 1495978 then
 					distLabel = ui:Label(string.format('%.2f %s', dist, lm.KM))
-					distLabel:SetColor({ r = 0.0, g = 1.0, b = 0.2 }) -- green
+					distLabel:SetColor(green)
 				else
 					distLabel = ui:Label(string.format('%.2f %s', dist/149597870, lm.AU))
-					distLabel:SetColor({ r = 1.0, g = 1.0, b = 0.2 }) -- yellow
+					distLabel:SetColor(yellow)
 				end
 			elseif dist == 0 then
 				dist = Game.player:DistanceTo(Space.GetBody(mission.location.bodyIndex))/AU
 				if dist < 0.01 then
 					dist =  Game.player:DistanceTo(Space.GetBody(mission.location.bodyIndex))/1000
 					distLabel = ui:Label(string.format('%.2f %s', dist, lm.KM))
-					distLabel:SetColor({ r = 0.0, g = 1.0, b = 0.2 }) -- green
+					distLabel:SetColor(green)
 				else
 					distLabel = ui:Label(string.format('%.2f %s', dist, lm.AU))
-					distLabel:SetColor({ r = 1.0, g = 1.0, b = 0.2 }) -- yellow
+					distLabel:SetColor(yellow)
 				end
 			else
 				distLabel = ui:Label(string.format('%.2f %s', dist, lm.LY))
 				if Game.player:GetHyperspaceDetails(mission.location) == 'OK' then
-					distLabel:SetColor({ r = 0.0, g = 1.0, b = 0.2 }) -- green
+					distLabel:SetColor(green)
 				else
-					distLabel:SetColor({ r = 1.0, g = 0.0, b = 0.0 }) -- red
+					distLabel:SetColor(red)
 				end
 			end
 		elseif mission.status == 'JUMPING' then
-			distLabel = ui:Label(lm.JUMPING):SetColor({ r = 1.0, g = 0.0, b = 0.0 }) -- red
+			distLabel = ui:Label(lm.JUMPING):SetColor(red)
 		else
-			distLabel = ui:Label(lm.HYPERSPACE):SetColor({ r = 1.0, g = 0.0, b = 0.0 }) -- red
+			distLabel = ui:Label(lm.HYPERSPACE):SetColor(red)
 		end
 
 		-- Pack location and distance
@@ -138,14 +144,19 @@ local missions = function (tabGroup)
 
 		-- Format Due info
 		local dueLabel = ui:Label(Format.Date(mission.due))
-		local days = math.max(0, (mission.due - Game.time) / (24*60*60))
-		local daysLabel = ui:Label(string.format(l.D_DAYS_LEFT, days)):SetColor({ r = 1.0, g = 0.0, b = 1.0 }) -- purple
+		local color = green
+		local time_left = TimeLeft(mission.due)
+		if not time_left then
+			color = red
+			time_left = string.format(l.D_DAYS_LEFT,0).." 00:00:00"
+		end
+		local daysLabel = ui:Label(time_left):SetColor(color)
 		local dueBox = ui:VBox(2):PackEnd(dueLabel):PackEnd(daysLabel)
 
 		local moreButton = SmallLabeledButton.New(l.MORE_INFO)
 		moreButton.button.onClick:Connect(function ()
 			MissionScreen:SetInnerWidget(ui:VBox(10)
-				:PackEnd({ui:Label(l.MISSION_DETAILS):SetFont('HEADING_LARGE'):SetColor({ r = 0.0, g = 1.0, b = 0.2 })})
+				:PackEnd({ui:Label(l.MISSION_DETAILS):SetFont('HEADING_LARGE'):SetColor(green)})
 				:PackEnd((mission:GetClick())(mission)))
 		end)
 
@@ -156,7 +167,7 @@ local missions = function (tabGroup)
 			{data = mission.client.name},
 			{data = dist, widget = locationBox},
 			{data = mission.due, widget = dueBox},
-			{data = mission.reward, widget = ui:Label(showCurrency(mission.reward)):SetColor({ r = 0.0, g = 1.0, b = 0.2 })}, -- green
+			{data = mission.reward, widget = ui:Label(showCurrency(mission.reward)):SetColor(green)},
 			-- nil description means mission type isn't registered.
 			{data = (description and lm[mission.status]) or l.INACTIVE},
 			{widget = moreButton.widget}

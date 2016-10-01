@@ -55,6 +55,14 @@
 "description":"ui-scout",
 "message":"Informe de Daños"
 },
+"DO_NOT_FORGET_TO_VISIT":{
+"description":"Traffic.lua",
+"message":"No olvide visitar {station}, a solo {dist} de aquí."
+},
+"DO_NOT_JUMP_TO_HYPERSPACE":{
+"description":"Traffic.lua",
+"message":"¡ATENCIÓN! No salte al hiperespacio a menos de {legalDist} de la estación"
+},
 "ENTER_HIGH_ORBIT_AT_CURRENT_TARGET":{
 "description":"ui-scout",
 "message":"Establecer Órbita Alta"

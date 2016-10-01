@@ -28,7 +28,8 @@
 "message":"发生了一个错误"
 },
 "ATMOSPHERIC_SHIELDING":{
-"description":"Used in ShipInfo view, followed by a yes/no depending on if the ship can carry atmospheric shields","message":"可安装大气护盾"
+"description":"Used in ShipInfo view, followed by a yes/no depending on if the ship can carry atmospheric shields",
+"message":"可安装大气护盾"
 },
 "ATTEMPT_TO_REPAIR_HULL":{
 "description":"",
@@ -51,27 +52,32 @@
 "message":"公告板"
 },
 "BUY":{
-"description":"Commodities and equipment prices","message":"购买"
+"description":"Commodities and equipment prices",
+"message":"购买"
 },
 "BUY_SHIP":{
 "description":"",
 "message":"购买飞船"
 },
 "CABINS":{
-"description":"For passengers","message":"客舱"
+"description":"For passengers",
+"message":"客舱"
 },
 "CABIN_FREE":{
-"description":"Free capacity for passengers","message":"{amount} 空闲"
+"description":"Free capacity for passengers",
+"message":"{amount} 空闲"
 },
 "CABIN_USED":{
-"description":"Passengers using cabins","message":"{amount} 已使用"
+"description":"Passengers using cabins",
+"message":"{amount} 已使用"
 },
 "CANCEL":{
 "description":"",
 "message":"取消"
 },
 "CAPACITY":{
-"description":"Capacity of ship to fit more equipment","message":"容量"
+"description":"Capacity of ship to fit more equipment",
+"message":"容量"
 },
 "CAPACITY_USED":{
 "description":"",
@@ -90,10 +96,12 @@
 "message":"货仓空间已被占用"
 },
 "CARGO_T_FREE":{
-"description":"t for tonne","message":"{amount} t 空闲"
+"description":"t for tonne",
+"message":"{amount} t 空闲"
 },
 "CARGO_T_USED":{
-"description":"t for tonne","message":"{amount} t 已使用"
+"description":"t for tonne",
+"message":"{amount} t 已使用"
 },
 "CASH":{
 "description":"",
@@ -104,7 +112,8 @@
 "message":"现金: {money}"
 },
 "CHANGE_BINDING":{
-"description":"Key binding option","message":"改变绑定"
+"description":"Key binding option",
+"message":"改变绑定"
 },
 "CHIEF_MECHANIC":{
 "description":"",
@@ -115,20 +124,24 @@
 "message":"圆形轨道速度"
 },
 "CITY_DETAIL_LEVEL":{
-"description":"Game graphics option","message":"城市细节等级"
+"description":"Game graphics option",
+"message":"城市细节等级"
 },
 "CLEAN":{
-"description":"Legal status of player","message":"无记录"
+"description":"Legal status of player",
+"message":"无记录"
 },
 "CLEAR":{
-"description":"Clear an option in game settings/options menu","message":"清除"
+"description":"Clear an option in game settings/options menu",
+"message":"清除"
 },
 "CLIENT":{
 "description":"",
 "message":"客户端"
 },
 "COMBAT":{
-"description":"Headline for kills and combat rating","message":"战斗"
+"description":"Headline for kills and combat rating",
+"message":"战斗"
 },
 "COMMANDER":{
 "description":"",
@@ -139,17 +152,20 @@
 "message":"商品市场"
 },
 "COMPACT_SCANNER":{
-"description":"Game settings option","message":"小型扫描仪"
+"description":"Game settings option",
+"message":"小型扫描仪"
 },
 "COMPETENT":{
-"description":"Combat rating","message":"胜任"
+"description":"Combat rating",
+"message":"胜任"
 },
 "COMPLETED":{
 "description":"",
 "message":"已完成"
 },
 "COMPRESS_TEXTURES":{
-"description":"graphics option in game settings menu ","message":"压缩贴图文件"
+"description":"graphics option in game settings menu ",
+"message":"压缩贴图文件"
 },
 "CONFIRM_PURCHASE":{
 "description":"",
@@ -180,7 +196,8 @@
 "message":"无法加载游戏:"
 },
 "CREDIBLE":{
-"description":"For player reputation","message":"可信的"
+"description":"For player reputation",
+"message":"可信的"
 },
 "CREW_CABINS":{
 "description":"",
@@ -191,26 +208,32 @@
 "message":"船员名册"
 },
 "CRIMINAL_RECORD":{
-"description":"Past crimes / crime history of character","message":"犯罪记录"
+"description":"Past crimes / crime history of character",
+"message":"犯罪记录"
 },
 "DANGEROUS":{
-"description":"Player combat rating","message":"危险"
+"description":"Player combat rating",
+"message":"危险"
 },
 "DEADLY":{
-"description":"Player combat rating","message":"致命的"
+"description":"Player combat rating",
+"message":"致命的"
 },
 "DELTA_V":{
 "description":"",
 "message":"速度增量"
 },
 "DELTA_V_EMPTY":{
-"description":"Delta-v capacity of a ship with no cargo or upgrades","message":"速度增量(空载)"
+"description":"Delta-v capacity of a ship with no cargo or upgrades",
+"message":"速度增量(空载)"
 },
 "DELTA_V_FULL":{
-"description":"Delta-v capacity of a ship with maximum cargo","message":"速度增量(满载)"
+"description":"Delta-v capacity of a ship with maximum cargo",
+"message":"速度增量(满载)"
 },
 "DELTA_V_MAX":{
-"description":"Delta-v capacity of a ship with cargo bay fully loaded with propellant","message":"速度增量(最大)"
+"description":"Delta-v capacity of a ship with cargo bay fully loaded with propellant",
+"message":"速度增量(最大)"
 },
 "DESCENT_TO_GROUND_SPEED":{
 "description":"",
@@ -221,27 +244,32 @@
 "message":"摧毁敌人飞船"
 },
 "DISMISS":{
-"description":"Terminate crew memeber's contract","message":"解散"
+"description":"Terminate crew memeber's contract",
+"message":"解散"
 },
 "DISPLAY_HUD_TRAILS":{
 "description":"",
 "message":"显示HUD轨迹"
 },
 "DISPLAY_NAV_TUNNELS":{
-"description":"Settings option: hyperspace tunnel effect","message":"显示导航路径"
+"description":"Settings option: hyperspace tunnel effect",
+"message":"显示导航路径"
 },
 "DISPLAY_SPEED_LINES":{
-"description":"Settings option: effect when travelling in space","message":"显示速度矢量"
+"description":"Settings option: effect when travelling in space",
+"message":"显示速度矢量"
 },
 "DOCK_AT_CURRENT_TARGET":{
 "description":"",
 "message":"停靠在当前目标"
 },
 "DUE":{
-"description":"mission deadline date","message":"应有"
+"description":"mission deadline date",
+"message":"应有"
 },
 "DUMPING":{
-"description":"The illegal act of dumping waste","message":"Dumping"
+"description":"The illegal act of dumping waste",
+"message":"Dumping"
 },
 "D_DAYS_LEFT":{
 "description":"",
@@ -256,27 +284,32 @@
 "message":"影响:"
 },
 "ELITE":{
-"description":"Player combat rating","message":"精英"
+"description":"Player combat rating",
+"message":"精英"
 },
 "EMPLOYMENT":{
 "description":"",
 "message":"雇佣"
 },
 "ENABLE_ANISOTROPIC_FILTERING":{
-"description":"Use Anisotropic Filtering","message":"Anisotropic Filtering"
+"description":"Use Anisotropic Filtering",
+"message":"Anisotropic Filtering"
 },
 "ENABLE_AUTOSAVE":{
-"description":"Allow the game to autosave when docking","message":"Enable Autosave"
+"description":"Allow the game to autosave when docking",
+"message":"Enable Autosave"
 },
 "ENABLE_COCKPIT":{
-"description":"Game settings option: to use a cockpit 3D model","message":"启用座舱(实验性)"
+"description":"Game settings option: to use a cockpit 3D model",
+"message":"启用座舱(实验性)"
 },
 "ENABLE_JOYSTICK":{
 "description":"",
 "message":"启用摇杆"
 },
 "ENGINEERING":{
-"description":"Engineering skills of crew","message":"工程:"
+"description":"Engineering skills of crew",
+"message":"工程:"
 },
 "EQUIPMENT":{
 "description":"",
@@ -303,13 +336,16 @@
 "message":"退出游戏"
 },
 "EXPERIENCED":{
-"description":"For player reputation","message":"有经验的"
+"description":"For player reputation",
+"message":"有经验的"
 },
 "EXPERT":{
-"description":"For player reputation","message":"专家"
+"description":"For player reputation",
+"message":"专家"
 },
 "FAILED":{
-"description":"When failed mission","message":"失败"
+"description":"When failed mission",
+"message":"失败"
 },
 "FEMALE":{
 "description":"",
@@ -332,7 +368,8 @@
 "message":"分形细节"
 },
 "FREE":{
-"description":"Used in Ship Information view as in Capacity: 10t (5t free)","message":"空闲"
+"description":"Used in Ship Information view as in Capacity: 10t (5t free)",
+"message":"空闲"
 },
 "FRONT_WEAPON":{
 "description":"",
@@ -371,7 +408,8 @@
 "message":"挂断."
 },
 "HARMLESS":{
-"description":"Player combat rating","message":"人畜无害的"
+"description":"Player combat rating",
+"message":"人畜无害的"
 },
 "HEAVY_CARGO_SHUTTLE":{
 "description":"",
@@ -398,7 +436,8 @@
 "message":"重型客运船"
 },
 "HIGH":{
-"description":"Game settings option: for graphics resolution","message":"高"
+"description":"Game settings option: for graphics resolution",
+"message":"高"
 },
 "HULL_DOES_NOT_REQUIRE_REPAIR":{
 "description":"",
@@ -428,6 +467,10 @@
 "description":"",
 "message":"超空间范围"
 },
+"ILLEGAL_JUMP":{
+"description":"A finable crime",
+"message":"Reckless hyperjump registered"
+},
 "IM_TIRED_OF_WORKING_FOR_NOTHING_DONT_YOU_KNOW_WHAT_A_CONTRACT_IS":{
 "description":"",
 "message":"我受够了给别人白干活儿. 你难道不知道什么叫合同吗?"
@@ -437,10 +480,12 @@
 "message":"未启用"
 },
 "INCOMPETENT":{
-"description":"For player reputation","message":"无能的"
+"description":"For player reputation",
+"message":"无能的"
 },
 "INEXPERIENCED":{
-"description":"For player reputation","message":"缺乏经验的"
+"description":"For player reputation",
+"message":"缺乏经验的"
 },
 "INSUFFICIENT_FUNDS":{
 "description":"",
@@ -535,7 +580,8 @@
 "message":"大厅"
 },
 "LOCAL_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"猎户臂"
+"description":"Arm of the Milky Way galaxy",
+"message":"猎户臂"
 },
 "LOCATED_N_KM_FROM_THE_CENTRE_OF_NAME":{
 "description":"",
@@ -550,7 +596,8 @@
 "message":"低"
 },
 "LY":{
-"description":"Light year","message":"ly"
+"description":"Light year",
+"message":"ly"
 },
 "MAKE_NEW_FACE":{
 "description":"",
@@ -573,10 +620,12 @@
 "message":"质量"
 },
 "MASTER":{
-"description":"For player reputation","message":"大师"
+"description":"For player reputation",
+"message":"大师"
 },
 "MASTER_VOL":{
-"description":"Master sound in settings option","message":"主音量:"
+"description":"Master sound in settings option",
+"message":"主音量:"
 },
 "MAX":{
 "description":"",
@@ -587,7 +636,8 @@
 "message":"最大船员"
 },
 "MEDIUM":{
-"description":"Game settings option: graphics resolution","message":"中等"
+"description":"Game settings option: graphics resolution",
+"message":"中等"
 },
 "MEDIUM_CARGO_SHUTTLE":{
 "description":"",
@@ -662,10 +712,12 @@
 "message":"静音"
 },
 "NAME_OBJECT":{
-"description":"For an item or object","message":"名称"
+"description":"For an item or object",
+"message":"名称"
 },
 "NAME_PERSON":{
-"description":"For a person","message":"姓名"
+"description":"For a person",
+"message":"姓名"
 },
 "NAVIGATION":{
 "description":"",
@@ -684,10 +736,12 @@
 "message":"下一项支付"
 },
 "NO":{
-"description":"Negative answer to a question","message":"否"
+"description":"Negative answer to a question",
+"message":"否"
 },
 "NOBODY":{
-"description":"For player reputation","message":"无名小卒"
+"description":"For player reputation",
+"message":"无名小卒"
 },
 "NONE":{
 "description":"",
@@ -698,7 +752,8 @@
 "message":"None for sale in this station."
 },
 "NORMA_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"天鹅臂"
+"description":"Arm of the Milky Way galaxy",
+"message":"天鹅臂"
 },
 "NOTES":{
 "description":"",
@@ -740,6 +795,10 @@
 "description":"",
 "message":"OK"
 },
+"OPEN_USER_FOLDER":{
+"description":"",
+"message":"User Folder"
+},
 "OPTIONS":{
 "description":"",
 "message":"选项"
@@ -757,20 +816,24 @@
 "message":"环绕速度是指飞船的轨道速度在垂直于(90度)飞船-{name}方向上的分量.\n\n下降速度取最小绝对值, 同时也是切向的. 一个较慢的轨道速度或较低的角度会导致飞船的轨道与 {name} 表面交会.\n\n逃逸速度在任何方向上都相同, 除非飞船的轨道与 {name} 表面交会.\n\\t\\t"
 },
 "OUTER_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"外部臂"
+"description":"Arm of the Milky Way galaxy",
+"message":"外部臂"
 },
 "OUTSTANDING_FINES":{
-"description":"Unpaid fines for crimes committed","message":"Outstanding fines"
+"description":"Unpaid fines for crimes committed",
+"message":"Outstanding fines"
 },
 "OWED":{
-"description":"Player owing money to crew members","message":"拖欠"
+"description":"Player owing money to crew members",
+"message":"拖欠"
 },
 "PAY_FINE_OF_N":{
 "description":"",
 "message":"缴纳 {amount} 罚金"
 },
 "PERSEUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"英仙臂"
+"description":"Arm of the Milky Way galaxy",
+"message":"英仙臂"
 },
 "PERSONAL_INFORMATION":{
 "description":"",
@@ -805,10 +868,12 @@
 "message":"警察"
 },
 "POOR":{
-"description":"Player combat rating","message":"穷"
+"description":"Player combat rating",
+"message":"穷"
 },
 "POSITION":{
-"description":"The job title/position of crew memeber","message":"位置"
+"description":"The job title/position of crew memeber",
+"message":"位置"
 },
 "PRESS_A_KEY_OR_CONTROLLER_BUTTON":{
 "description":"",
@@ -819,10 +884,12 @@
 "message":"价格"
 },
 "PROFESSIONAL":{
-"description":"For player reputation","message":"专家"
+"description":"For player reputation",
+"message":"专家"
 },
 "PUMP_DOWN":{
-"description":"Drain the fuel tank","message":"Pump down"
+"description":"Drain the fuel tank",
+"message":"Pump down"
 },
 "QUALIFICATION_SCORES":{
 "description":"",
@@ -833,7 +900,8 @@
 "message":"退出"
 },
 "QUIT_CONFIRMATION":{
-"description":"For the checkbox in settings window","message":"Quit confirmation"
+"description":"For the checkbox in settings window",
+"message":"Quit confirmation"
 },
 "RANK":{
 "description":"",
@@ -856,7 +924,8 @@
 "message":"补满燃料"
 },
 "RELIABLE":{
-"description":"For player reputation","message":"可靠的"
+"description":"For player reputation",
+"message":"可靠的"
 },
 "REPAIR_X_HULL_DAMAGE_FOR_X":{
 "description":"",
@@ -895,17 +964,20 @@
 "message":"报酬"
 },
 "SAGITTARIUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"射手臂"
+"description":"Arm of the Milky Way galaxy",
+"message":"射手臂"
 },
 "SAVE":{
 "description":"",
 "message":"保存"
 },
 "SCOOP_MOUNTS":{
-"description":"How many slots or mounts exist on the ship for fitting SCOOPS (e.g. cargo scoop, fuel scoop, multi-scoop) ","message":"收集器挂点"
+"description":"How many slots or mounts exist on the ship for fitting SCOOPS (e.g. cargo scoop, fuel scoop, multi-scoop) ",
+"message":"收集器挂点"
 },
 "SCUTUM_CENTAURUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"半人马臂"
+"description":"Arm of the Milky Way galaxy",
+"message":"半人马臂"
 },
 "SELECT":{
 "description":"",
@@ -924,7 +996,8 @@
 "message":"载入游戏..."
 },
 "SELL":{
-"description":"Commodities and equipment prices","message":"价格"
+"description":"Commodities and equipment prices",
+"message":"价格"
 },
 "SENSORS":{
 "description":"",
@@ -933,6 +1006,10 @@
 "SENSORS_AND_DEFENCE":{
 "description":"",
 "message":"传感器与防御"
+},
+"SET_AS_TARGET":{
+"description":"",
+"message":"Set destination as navigation target."
 },
 "SHIP":{
 "description":"",
@@ -983,7 +1060,8 @@
 "message":"从地球开始"
 },
 "START_AT_NEW_HOPE":{
-"description":"New Hope is an in game location","message":"从新希望开始"
+"description":"New Hope is an in game location",
+"message":"从新希望开始"
 },
 "STAR_FIELD_DENSITY":{
 "description":"",
@@ -998,10 +1076,12 @@
 "message":"状态"
 },
 "TECH_CERTIFIED":{
-"description":"Lobby screen shows the tech level (an integer number) of the station","message":"This station holds a level {tech_level} technology certificate."
+"description":"Lobby screen shows the tech level (an integer number) of the station",
+"message":"This station holds a level {tech_level} technology certificate."
 },
 "TECH_CERTIFIED_MILITARY":{
-"description":"Lobby screen shows the tech level of the station","message":"This installation holds a military technology clearance."
+"description":"Lobby screen shows the tech level of the station",
+"message":"This installation holds a military technology clearance."
 },
 "THANKS_AND_REMEMBER_TO_BUY_FUEL":{
 "description":"",
@@ -1016,10 +1096,12 @@
 "message":"飞船处于空间站控制下了, 指挥官."
 },
 "THREE_KPC_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"3k秒差距旋臂"
+"description":"Arm of the Milky Way galaxy",
+"message":"3k秒差距旋臂"
 },
 "TOGGLE_MALE_FEMALE":{
-"description":"player gender","message":"切换 男/女"
+"description":"player gender",
+"message":"切换 男/女"
 },
 "TOO_SMALL_FOR_CURRENT_CREW":{
 "description":"",
@@ -1042,7 +1124,8 @@
 "message":"交易非法货物"
 },
 "TRUSTWORTHY":{
-"description":"For player reputation","message":"可信的"
+"description":"For player reputation",
+"message":"可信的"
 },
 "TYPE":{
 "description":"",
@@ -1065,10 +1148,12 @@
 "message":"已使用"
 },
 "VERY_HIGH":{
-"description":"Game settings option: graphic resolution","message":"非常高"
+"description":"Game settings option: graphic resolution",
+"message":"非常高"
 },
 "VERY_LOW":{
-"description":"Game settings option: graphic resolution","message":"非常低"
+"description":"Game settings option: graphic resolution",
+"message":"非常低"
 },
 "VIDEO":{
 "description":"",
@@ -1083,10 +1168,12 @@
 "message":"视频分辨率"
 },
 "VSYNC":{
-"description":"For the checkbox in settings window","message":"VSync"
+"description":"For the checkbox in settings window",
+"message":"VSync"
 },
 "WAGE":{
-"description":"Salary of crew shown in crew roster","message":"工资"
+"description":"Salary of crew shown in crew roster",
+"message":"工资"
 },
 "WEIGHT_EMPTY":{
 "description":"",
@@ -1101,13 +1188,16 @@
 "message":"进入超空间,指挥官."
 },
 "WE_HAVE_NO_BUSINESS_WITH_YOU":{
-"description":"Said by the police to law abiding player","message":"我们现在跟你没生意做."
+"description":"Said by the police to law abiding player",
+"message":"我们现在跟你没生意做."
 },
 "X_CANNOT_BE_TOLERATED_HERE":{
-"description":"Message to be sent over comms by police when crime is committed by player","message":"{crime} cannot be tolerated here!"
+"description":"Message to be sent over comms by police when crime is committed by player",
+"message":"{crime} cannot be tolerated here!"
 },
 "YES":{
-"description":"Positive answer to a question","message":"是"
+"description":"Positive answer to a question",
+"message":"是"
 },
 "YOURE_GOING_TO_REGRET_SACKING_ME":{
 "description":"",
@@ -1146,6 +1236,7 @@
 "message":"你没有足够的钱."
 },
 "ZOOM":{
-"description":"Label for a zoom (magnification) control bar.","message":"Zoom"
+"description":"Label for a zoom (magnification) control bar.",
+"message":"Zoom"
 }
 }

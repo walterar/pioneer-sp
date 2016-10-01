@@ -295,14 +295,14 @@ void Ship::PostLoadFixup(Space *space)
 	m_controller->PostLoadFixup(space);
 }
 
-Ship::Ship(ShipType::Id shipId): DynamicBody(),
+Ship::Ship(const ShipType::Id &shipId): DynamicBody(),
+	m_flightState(FLYING),
+	m_alertState(ALERT_NONE),
 	m_controller(0),
 	m_thrusterFuel(1.0),
 	m_reserveFuel(0.0),
 	m_landingGearAnimation(nullptr)
 {
-	m_flightState = FLYING;
-	m_alertState = ALERT_NONE;
 	Properties().Set("flightState", EnumStrings::GetString("ShipFlightState", m_flightState));
 	Properties().Set("alertStatus", EnumStrings::GetString("ShipAlertStatus", m_alertState));
 
@@ -341,7 +341,8 @@ Ship::Ship(ShipType::Id shipId): DynamicBody(),
 	m_skin.SetRandomColors(Pi::rng);
 	m_skin.SetDecal(m_type->manufacturer);
 	m_skin.Apply(GetModel());
-	GetModel()->SetPattern(Pi::rng.Int32(0, GetModel()->GetNumPatterns()));
+	if(GetModel()->SupportsPatterns())
+		GetModel()->SetPattern(Pi::rng.Int32(0, GetModel()->GetNumPatterns()-1));
 
 	Init();
 	SetController(new ShipController());
@@ -737,7 +738,7 @@ void Ship::SetFlightState(Ship::FlightState newState)
 		case DOCKING:		SetMoving(false);	SetColliding(false);	SetStatic(false);	break;
 		case UNDOCKING:	SetMoving(false);	SetColliding(false);	SetStatic(false);	break;
 // TODO: set collision index? dynamic stations... use landed for open-air?
-		case DOCKED:		SetMoving(false);	SetColliding(false);	SetStatic(false);	break;
+		case DOCKED:		SetMoving(false);	SetColliding(true);	SetStatic(true);	break;
 		case LANDED:		SetMoving(false);	SetColliding(true);		SetStatic(true);	break;
 		case JUMPING:		SetMoving(true);	SetColliding(false);	SetStatic(false);	break;
 		case HYPERSPACE:	SetMoving(false);	SetColliding(false);	SetStatic(false);	break;
@@ -1246,6 +1247,11 @@ void Ship::StaticUpdate(const float timeStep)
 				m_hyperspace.countdown = 0;
 				m_hyperspace.now = true;
 				SetFlightState(JUMPING);
+
+				// We have to fire it here, because the event isn't actually fired until
+				// after the whole physics update, which means the flight state on next
+				// step would be HYPERSPACE, thus breaking quite a few things.
+				LuaEvent::Queue("onLeaveSystem", this);
 			}
 		}
 	}
@@ -1324,7 +1330,7 @@ void Ship::Render(Graphics::Renderer *renderer, const Camera *camera, const vect
 
 	//strncpy(params.pText[0], GetLabel().c_str(), sizeof(params.pText));
 	RenderModel(renderer, camera, viewCoords, viewTransform);
-
+	m_navLights->Render(renderer);
 	renderer->GetStats().AddToStatCount(Graphics::Stats::STAT_SHIPS, 1);
 
 	if (m_ecmRecharge > 0.0f) {
@@ -1370,6 +1376,7 @@ bool Ship::SpawnCargo(CargoBody * c_body) const
 void Ship::EnterHyperspace() {
 	assert(GetFlightState() != Ship::HYPERSPACE);
 
+	// Is it still a good idea, with the onLeaveSystem moved elsewhere?
 	Ship::HyperjumpStatus status = CheckHyperjumpCapability();
 	if (status != HYPERJUMP_OK && status != HYPERJUMP_INITIATED) {
 		if (m_flightState == JUMPING)
@@ -1379,8 +1386,6 @@ void Ship::EnterHyperspace() {
 
 	// Clear ships cached list of nearby bodies so we don't try to access them.
 	m_nearbyBodies.clear();
-
-	LuaEvent::Queue("onLeaveSystem", this);
 
 	SetFlightState(Ship::HYPERSPACE);
 
@@ -1458,6 +1463,11 @@ void Ship::SetSkin(const SceneGraph::ModelSkin &skin)
 {
 	m_skin = skin;
 	m_skin.Apply(GetModel());
+}
+
+void Ship::SetPattern(const unsigned int num)
+{
+	GetModel()->SetPattern(num);
 }
 
 Uint8 Ship::GetRelations(Body *other) const

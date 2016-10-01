@@ -669,7 +669,7 @@
 },
 "SHIP_UNRESPONSIVE":{
 "description":"",
-"message":"La nave no responde. Quizá sea demasiado tarde."
+"message":"En la nave no hay signos de vida. Quizá sea demasiado tarde."
 },
 "SYSTEM":{
 "description":"",

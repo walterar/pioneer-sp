@@ -12,7 +12,8 @@
 "message":"Příslušnost:"
 },
 "ALT":{
-"description":"Alt key on keyboard","message":"Alt"
+"description":"Alt key on keyboard",
+"message":"Alt"
 },
 "ALT_IN_KM":{
 "description":"",
@@ -51,10 +52,12 @@
 "message":"Asteroid"
 },
 "AUTOMATIC_SYSTEM_SELECTION":{
-"description":"for star map, select star system when mouse close to it","message":"Automatický výběr systému"
+"description":"for star map, select star system when mouse close to it",
+"message":"Automatický výběr systému"
 },
 "AUTOPILOT_CONTROL":{
-"description":"Indicating that ship is flying under autopilot control","message":"Autopilot control"
+"description":"Indicating that ship is flying under autopilot control",
+"message":"Autopilot control"
 },
 "AUTOPILOT_DOCK_WITH_STATION":{
 "description":"",
@@ -89,7 +92,8 @@
 "message":"Sklon rotační osy"
 },
 "A_FEW_THOUSAND":{
-"description":"regarding population","message":"Pouze několik tisíc"
+"description":"regarding population",
+"message":"Pouze několik tisíc"
 },
 "BATTLE_WEAPONS":{
 "description":"",
@@ -100,7 +104,8 @@
 "message":"Binární systém"
 },
 "BODIES":{
-"description":"space bodies","message":"tělesy"
+"description":"space bodies",
+"message":"tělesy"
 },
 "BODY":{
 "description":"",
@@ -203,7 +208,8 @@
 "message":", vysoce vulkanická"
 },
 "COMMODITY_NONE":{
-"description":"When no commodities exist","message":"Nic"
+"description":"When no commodities exist",
+"message":"Nic"
 },
 "COMMODITY_TRADE_ANALYSIS_COMPARE":{
 "description":"",
@@ -262,10 +268,12 @@
 "message":"\" oxido-uhelnatou atmosférou\""
 },
 "CTRL":{
-"description":"Ctrl key on keyboard","message":"Ctrl"
+"description":"Ctrl key on keyboard",
+"message":"Ctrl"
 },
 "CURRENT_SYSTEM":{
-"description":"selected current star system","message":"Aktuální systém"
+"description":"selected current star system",
+"message":"Aktuální systém"
 },
 "DATE_DUE_N":{
 "description":"",
@@ -296,7 +304,8 @@
 "message":"Destinace"
 },
 "DIRECTION":{
-"description":"Direction","message":"\" směr \""
+"description":"Direction",
+"message":"\" směr \""
 },
 "DISTANCE_FROM_SHIP_TO_NAV_TARGET":{
 "description":"",
@@ -419,7 +428,8 @@
 "message":"Sběrač paliva aktivní. Nyní máte %quantity t paliva."
 },
 "GALACTIC_VIEW":{
-"description":"view galactic map","message":"Galaktický náhled"
+"description":"view galactic map",
+"message":"Galaktický náhled"
 },
 "GALAXY_SECTOR_VIEW":{
 "description":"",
@@ -454,7 +464,8 @@
 "message":"Druh vlády:"
 },
 "GRAIN":{
-"description":"like wheat or barley","message":"Obilí"
+"description":"like wheat or barley",
+"message":"Obilí"
 },
 "HAND_WEAPONS":{
 "description":"",
@@ -465,29 +476,36 @@
 "message":"Naprostý kapitalismus - žádný státní sociální systém"
 },
 "HAT":{
-"description":"Hat switch: Is the top button on a joystick","message":"\" klobouk\""
+"description":"Hat switch: Is the top button on a joystick",
+"message":"\" klobouk\""
 },
 "HEADING_LOCK_ANTINORMAL":{
-"description":"Autopilot direction (perpendicular, down), relative to plane of orbit","message":"Hold anti-normal"
+"description":"Autopilot direction (perpendicular, down), relative to plane of orbit",
+"message":"Hold anti-normal"
 },
 "HEADING_LOCK_BACKWARD":{
-"description":"Autopilot points/holds/faces you retrograde (backwards rel. orbital direction)","message":"Hold retrograde"
+"description":"Autopilot points/holds/faces you retrograde (backwards rel. orbital direction)",
+"message":"Hold retrograde"
 },
 "HEADING_LOCK_FORWARD":{
-"description":"Autopilot points/holds/faces you prograde (tangent to the orbit, i.e. forward), http://wiki.kerbalspaceprogram.com/wiki/Maneuver_node","message":"Hold prograde"
+"description":"Autopilot points/holds/faces you prograde (tangent to the orbit, i.e. forward), http://wiki.kerbalspaceprogram.com/wiki/Maneuver_node",
+"message":"Hold prograde"
 },
 "HEADING_LOCK_KILLROT":{
 "description":"",
 "message":"Zastavit rotaci"
 },
 "HEADING_LOCK_NORMAL":{
-"description":"Autopilot direction (perpendicular, up), relative to plane of orbit. ","message":"Hold normal"
+"description":"Autopilot direction (perpendicular, up), relative to plane of orbit. ",
+"message":"Hold normal"
 },
 "HEADING_LOCK_RADIALLY_INWARD":{
-"description":"Autopilot direction, relative to orbit (face towards planet)","message":"Hold radially in"
+"description":"Autopilot direction, relative to orbit (face towards planet)",
+"message":"Hold radially in"
 },
 "HEADING_LOCK_RADIALLY_OUTWARD":{
-"description":"Autopilot direction, relative to orbit (face away from palent)","message":"Hold radially out"
+"description":"Autopilot direction, relative to orbit (face away from palent)",
+"message":"Hold radially out"
 },
 "HEAVY_INDUSTRY":{
 "description":"",
@@ -538,14 +556,24 @@
 "message":"Odletové hyperprostorové okno"
 },
 "HYPERSPACE_JUMP_ABORT":{
-"description":"Mouse over text for hyperdrive button on ship control panel","message":"Disengage Hyperdrive"
+"description":"Mouse over text for hyperdrive button on ship control panel",
+"message":"Disengage Hyperdrive"
 },
 "HYPERSPACE_JUMP_ABORTED":{
 "description":"",
 "message":"Hyperprostorový skok zrušen."
 },
+"HYPERSPACE_JUMP_DISABLED":{
+"description":"Mouse over text for hyperdrive button on ship control panel",
+"message":"Hyperdrive disabled"
+},
 "HYPERSPACE_JUMP_ENGAGE":{
-"description":"Mouse over text for hyperdrive button on ship control panel","message":"Engage Hyperdrive"
+"description":"Mouse over text for hyperdrive button on ship control panel",
+"message":"Engage Hyperdrive"
+},
+"HYPERSPACE_JUMP_FORBIDDEN":{
+"description":"Mouse over text for hyperdrive button on ship control panel",
+"message":"Hyperdrive forbidden zone"
 },
 "HYPERSPACE_TARGET":{
 "description":"",
@@ -564,7 +592,8 @@
 "message":"\" ledová planeta\""
 },
 "ILLEGAL_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of commodity (singular) status in the system the player is currently in","message":"Ilegalní (current system):"
+"description":"Short (tooltip) description of commodity (singular) status in the system the player is currently in",
+"message":"Ilegalní (current system):"
 },
 "ILLEGAL_GOODS":{
 "description":"",
@@ -611,31 +640,40 @@
 "message":"Na cestě do %system [%x,%y,%z]"
 },
 "JOY":{
-"description":"Short for Joystick","message":"Joy"
+"description":"Short for Joystick",
+"message":"Joy"
 },
 "JOYSTICK_INPUT":{
 "description":"",
 "message":"Ovládání joystickem"
 },
 "JOY_AXIS":{
-"description":"Regarding joystick","message":"%{sign}%joyname osa %axis"
+"description":"Regarding joystick",
+"message":"%{sign}%joyname osa %axis"
+},
+"JUMP_COMPLETE":{
+"description":"",
+"message":"Jump complete: %percent%%"
 },
 "KM_S_RELATIVE_TO":{
 "description":"",
 "message":"%speed{f.2} km/s relativně k %frame"
 },
 "L4L5_DISPLAY_MODE_TOGGLE":{
-"description":"Either show L4/L5 points or don't","message":"Switch between Lagrange L4/L5 point display modes."
+"description":"Either show L4/L5 points or don't",
+"message":"Switch between Lagrange L4/L5 point display modes."
 },
 "LANDED":{
 "description":"",
 "message":"Landed"
 },
 "LANG_NAME":{
-"description":"The name that native speakers use for this language. This will be used in the language selection screen.","message":"Česky"
+"description":"The name that native speakers use for this language. This will be used in the language selection screen.",
+"message":"Česky"
 },
 "LARGE":{
-"description":"regarding terrestrial planet size (mass actually)","message":"Velká"
+"description":"regarding terrestrial planet size (mass actually)",
+"message":"Velká"
 },
 "LARGE_GAS_GIANT":{
 "description":"",
@@ -650,7 +688,8 @@
 "message":"Lat: %latitude"
 },
 "LEGAL_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of commodity (singular) status in the system the player is currently in","message":"Legální (current system):"
+"description":"Short (tooltip) description of commodity (singular) status in the system the player is currently in",
+"message":"Legální (current system):"
 },
 "LIBERAL_DEMOCRACY":{
 "description":"",
@@ -673,7 +712,8 @@
 "message":"Živá zvířata"
 },
 "LOCKED":{
-"description":"to lock a hyperspace target","message":"zaměřen"
+"description":"to lock a hyperspace target",
+"message":"zaměřen"
 },
 "LONGITUDE":{
 "description":"Longitude",
@@ -684,14 +724,16 @@
 "message":"Hlavní export:"
 },
 "MAJOR_EXPORT_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in","message":"Hlavní export (aktuální systém)"
+"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+"message":"Hlavní export (aktuální systém)"
 },
 "MAJOR_IMPORTS":{
 "description":"",
 "message":"Hlavní import:"
 },
 "MAJOR_IMPORT_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in","message":"Hlavní import (aktuální systém)"
+"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+"message":"Hlavní import (aktuální systém)"
 },
 "MANUAL_CONTROL":{
 "description":"",
@@ -790,7 +832,8 @@
 "message":"Zpráva od %sender:"
 },
 "META":{
-"description":"'Meta' key on keyboard","message":"Meta"
+"description":"'Meta' key on keyboard",
+"message":"Meta"
 },
 "METAL_ALLOYS":{
 "description":"",
@@ -821,14 +864,16 @@
 "message":"Drobný export:"
 },
 "MINOR_EXPORT_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in","message":"Drobný export (aktuální systém)"
+"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+"message":"Drobný export (aktuální systém)"
 },
 "MINOR_IMPORTS":{
 "description":"",
 "message":"Drobný import:"
 },
 "MINOR_IMPORT_CURRENT_SYSTEM":{
-"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in","message":"Drobný import (aktuální systém)"
+"description":"Short (tooltip) description of how much one commodity trades in the system the player is currently in",
+"message":"Drobný import (aktuální systém)"
 },
 "MISCELLANEOUS":{
 "description":"",
@@ -895,10 +940,12 @@
 "message":"%speed{f.0} m/s relativně k %frame"
 },
 "NAME_OBJECT":{
-"description":"For an item or object","message":"Jméno"
+"description":"For an item or object",
+"message":"Jméno"
 },
 "NAME_PERSON":{
-"description":"For a person","message":"Jméno"
+"description":"For a person",
+"message":"Jméno"
 },
 "NARCOTICS":{
 "description":"",
@@ -917,14 +964,16 @@
 "message":"Nervový plyn"
 },
 "NOT_FOUND":{
-"description":"searching star system in sector view","message":"Nenalezen"
+"description":"searching star system in sector view",
+"message":"Nenalezen"
 },
 "NOT_FOUND_BEST_MATCH_X":{
 "description":"",
 "message":"Nenalezen, nejbližší výsledek: %system"
 },
 "NOW":{
-"description":"In System Orbit View","message":"Now"
+"description":"In System Orbit View",
+"message":"Now"
 },
 "NO_ALERT":{
 "description":"",
@@ -955,20 +1004,24 @@
 "message":"%days{f.0} dnů"
 },
 "NUMBER_DECIMAL_POINT":{
-"description":"Decimal delimiter used in numbers.","message":"."
+"description":"Decimal delimiter used in numbers.",
+"message":"."
 },
 "NUMBER_G":{
 "description":"",
 "message":"%acceleration{f.1} G"
 },
 "NUMBER_GROUP_MIN":{
-"description":"Smallest number to start grouping of digits for. (E.g. if \"10000\" start grouping thousands with 10,000, and not 1,000).","message":"1000"
+"description":"Smallest number to start grouping of digits for. (E.g. if \"10000\" start grouping thousands with 10,000, and not 1,000).",
+"message":"1000"
 },
 "NUMBER_GROUP_NUM":{
-"description":"For large number, group digits by this many. European languages use 3 (group thousands). 0 means no grouping.","message":"3"
+"description":"For large number, group digits by this many. European languages use 3 (group thousands). 0 means no grouping.",
+"message":"3"
 },
 "NUMBER_GROUP_SEP":{
-"description":"For large number, separator used when grouping digits. E.g. 1,000 or 1 000 or 1'000.","message":","
+"description":"For large number, separator used when grouping digits. E.g. 1,000 or 1 000 or 1'000.",
+"message":","
 },
 "NUMBER_HOURS":{
 "description":"",
@@ -1011,7 +1064,8 @@
 "message":"%mass{f.3} %units"
 },
 "N_WHATEVER_RADII":{
-"description":"Used in system info view. E.g. for Barnard's star: \"0.17 Solar radii (118235 km)\"","message":"%radius{f.3} %units"
+"description":"Used in system info view. E.g. for Barnard's star: \"0.17 Solar radii (118235 km)\"",
+"message":"%radius{f.3} %units"
 },
 "N_YEARS":{
 "description":"",
@@ -1094,19 +1148,24 @@
 "message":"Plánované hospodářství"
 },
 "PLANNER_RESET_FACTOR":{
-"description":"For system orbit view","message":"Rate of increase of delta-v values. Click to reset to default."
+"description":"For system orbit view",
+"message":"Rate of increase of delta-v values. Click to reset to default."
 },
 "PLANNER_RESET_NORMAL":{
-"description":"For system orbit view","message":"Normal delta-v. Click to reset to zero."
+"description":"For system orbit view",
+"message":"Normal delta-v. Click to reset to zero."
 },
 "PLANNER_RESET_PROGRADE":{
-"description":"For system orbit view","message":"Prograde delta-v. Click to reset to zero."
+"description":"For system orbit view",
+"message":"Prograde delta-v. Click to reset to zero."
 },
 "PLANNER_RESET_RADIAL":{
-"description":"For system orbit view","message":"Radial delta-v. Click to reset to zero."
+"description":"For system orbit view",
+"message":"Radial delta-v. Click to reset to zero."
 },
 "PLANNER_RESET_START":{
-"description":"For system orbit view","message":"Maneuver start. Click to reset to default."
+"description":"For system orbit view",
+"message":"Maneuver start. Click to reset to default."
 },
 "PLASTICS":{
 "description":"",
@@ -1127,10 +1186,6 @@
 "PRESSURE_N_ATMOSPHERES":{
 "description":"",
 "message":"Tlak: %pressure{f.2} atm"
-},
-"PROBABILITY_OF_ARRIVAL_X_PERCENT":{
-"description":"",
-"message":"Pravděpodobnost příletu: %probability%%"
 },
 "QUADRUPLE_SYSTEM":{
 "description":"",
@@ -1221,7 +1276,8 @@
 "message":"Ovládání radaru"
 },
 "SCOOP":{
-"description":"Is followed by a number, repersenting scoop mounts/slots available to fit cargo scoop and/or fuel scoop","message":"Scoop"
+"description":"Is followed by a number, repersenting scoop mounts/slots available to fit cargo scoop and/or fuel scoop",
+"message":"Scoop"
 },
 "SCREENSHOT_FILENAME_TEMPLATE":{
 "description":"",
@@ -1296,14 +1352,16 @@
 "message":"Síla štítů: %shields{f.2}"
 },
 "SHIFT":{
-"description":"Shift key on keyboard","message":"Shift"
+"description":"Shift key on keyboard",
+"message":"Shift"
 },
 "SHIP":{
 "description":"",
 "message":"Loď"
 },
 "SHIPS_DISPLAY_MODE_TOGGLE":{
-"description":"Either show no ships, show ships, or show ships + their orbits","message":"Switch between ship display modes."
+"description":"Either show no ships, show ships, or show ships + their orbits",
+"message":"Switch between ship display modes."
 },
 "SHIP_ALTITUDE_ABOVE_TERRAIN":{
 "description":"",
@@ -1338,7 +1396,8 @@
 "message":"Rychlost vzhledem k referenčnímu objektu"
 },
 "SIDEREAL_VIEW":{
-"description":"camera view setting","message":"Pohled hvězdný"
+"description":"camera view setting",
+"message":"Pohled hvězdný"
 },
 "SIMULATING_UNIVERSE_EVOLUTION_N_BYEARS":{
 "description":"",
@@ -1377,7 +1436,8 @@
 "message":"Důlní činnost malého rozsahu."
 },
 "SOURCE":{
-"description":"tell source system of hyperjump entry cloud","message":"Původ"
+"description":"tell source system of hyperjump entry cloud",
+"message":"Původ"
 },
 "SPEED_CONTROL_MODE":{
 "description":"",
@@ -1536,13 +1596,16 @@
 "message":"Povrchová teplota"
 },
 "SWITCHED_TO_PARENT":{
-"description":"Show ship's heading, coordinates are on the celestial sphere (defined by the ecliptic).","message":"Switched heading display to system-wide coordinates."
+"description":"Show ship's heading, coordinates are on the celestial sphere (defined by the ecliptic).",
+"message":"Switched heading display to system-wide coordinates."
 },
 "SWITCHED_TO_ROTATIONAL":{
-"description":"Show ship's heading in planetary coordinates. heading 0 = north, 90 = east, 180 = south, 270 = west.","message":"Switched heading display to planetary coordinates."
+"description":"Show ship's heading in planetary coordinates. heading 0 = north, 90 = east, 180 = south, 270 = west.",
+"message":"Switched heading display to planetary coordinates."
 },
 "SYSTEM":{
-"description":"star system","message":"Systém"
+"description":"star system",
+"message":"Systém"
 },
 "SYSTEM_NUMBER":{
 "description":"",
@@ -1569,7 +1632,8 @@
 "message":"Označit cíl v zaměřovači"
 },
 "TENUOUS":{
-"description":"atmosphere thickness","message":"velmi řídkou"
+"description":"atmosphere thickness",
+"message":"velmi řídkou"
 },
 "TEXTILES":{
 "description":"",
@@ -1620,7 +1684,8 @@
 "message":"Drobná"
 },
 "TOGGLE_EQUIPMENT_VIEW":{
-"description":"Tooltip for the Equipment View button","message":"Equipment View"
+"description":"Tooltip for the Equipment View button",
+"message":"Equipment View"
 },
 "TOGGLE_HUD_MODE":{
 "description":"",
@@ -1635,14 +1700,16 @@
 "message":"Tlumení rotace"
 },
 "TOGGLE_SCANNER_VIEW":{
-"description":"Tooltip for the Scanner View button","message":"Scanner View"
+"description":"Tooltip for the Scanner View button",
+"message":"Scanner View"
 },
 "TOGGLE_SCAN_MODE":{
 "description":"",
 "message":"Mód radaru"
 },
 "TOMBSTONE_EPITAPH":{
-"description":"shown on tombstone when player dies","message":"R.I.P."
+"description":"shown on tombstone when player dies",
+"message":"R.I.P."
 },
 "TRACING_JUMPS":{
 "description":"",
@@ -1657,7 +1724,8 @@
 "message":"Trinární systém"
 },
 "UNDOCKING":{
-"description":"Flight state of ship when leaving station","message":"Undocking"
+"description":"Flight state of ship when leaving station",
+"message":"Undocking"
 },
 "UNEXPLORED_SYSTEM_NO_DATA":{
 "description":"",
@@ -1672,11 +1740,32 @@
 "message":"Neprozkoumaný systém. Informace o hvězdě získány pomocí dálkového teleskopu, ale nejsou k dispozici žádné informace o planetách."
 },
 "UNIT_AU":{
-"description":"Distance unit: an astronomical unit, radius of Earth's orbit","message":"AU"
+"description":"Distance unit: an astronomical unit, radius of Earth's orbit",
+"message":"AU"
+},
+"UNIT_DAYS":{
+"description":"Duration unit: one 24-hour day",
+"message":"d"
+},
+"UNIT_HOURS":{
+"description":"Duration unit: one 60-minute hour",
+"message":"h"
 },
 "UNIT_LY":{
 "description":"Distance unit: a light year",
 "message":"ly"
+},
+"UNIT_MINUTES":{
+"description":"Duration unit: one 60-second minute",
+"message":"m"
+},
+"UNIT_SECONDS":{
+"description":"Duration unit: one second",
+"message":"s"
+},
+"UNIT_WEEKS":{
+"description":"Duration unit: one 7-day week",
+"message":"w"
 },
 "UNKNOWN":{
 "description":"",
@@ -1743,10 +1832,12 @@
 "message":"\" bez výrazné atmosféry\""
 },
 "X":{
-"description":"keybinding: x axis","message":"X"
+"description":"keybinding: x axis",
+"message":"X"
 },
 "Y":{
-"description":"keybinding: y axis","message":"Y"
+"description":"keybinding: y axis",
+"message":"Y"
 },
 "YAW":{
 "description":"",
@@ -1769,7 +1860,8 @@
 "message":"Nemáte žádné peníze."
 },
 "Z":{
-"description":"keybinding: z axis","message":"Z"
+"description":"keybinding: z axis",
+"message":"Z"
 },
 "ZOOM_IN":{
 "description":"",

@@ -174,15 +174,15 @@ dnl Compiler warning options
 AC_ARG_WITH([extra-warnings], AS_HELP_STRING([--without-extra-warnings], [Disable lots of extra compiler warnings]), [], [with_extra_warnings=yes])
 if test "x$with_extra_warnings" != xno; then
   for warn_opt in \
--Wformat				\
--Wstrict-aliasing=2			\
--Wmissing-format-attribute		\
--Wmissing-noreturn			\
--Wdisabled-optimization			\
--Wfloat-equal				\
--Wshadow				\
--Wcast-qual				\
--Wcast-align				\
+-Wformat \
+-Wstrict-aliasing=2 \
+-Wmissing-format-attribute \
+-Wmissing-noreturn \
+-Wdisabled-optimization \
+-Wfloat-equal \
+-Wshadow \
+-Wcast-qual \
+-Wcast-align \
   ; do
     PIONEERSP_WARN_C_CXX_FLAG([$warn_opt])
   done
@@ -191,15 +191,15 @@ if test "x$with_extra_warnings" != xno; then
   dnl and therefore -Wformat should already be in WARN_CXXFLAGS
   _PIONEERSP_COMPILER_FLAG([C], [WARN], [C], [-Wformat -Wformat-security], [$CC/$CXX], [WARN_CXXFLAGS="$WARN_CXXFLAGS -Wformat-security"])
   for warn_opt in \
--Wno-format-zero-length			\
--Werror-implicit-function-declaration	\
+-Wno-format-zero-length \
+-Werror-implicit-function-declaration \
   ; do
     PIONEERSP_WARN_CFLAG([$warn_opt])
   done
   for warn_opt in \
--Wstrict-null-sentinel			\
--Wold-style-cast			\
--Wsign-promo				\
+-Wstrict-null-sentinel \
+-Wold-style-cast \
+-Wsign-promo \
   ; do
     PIONEERSP_WARN_CXXFLAG([$warn_opt])
   done

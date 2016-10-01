@@ -69,7 +69,7 @@ local econTrade = function ()
 
 			local jettisonButton = SmallLabeledButton.New(l.JETTISON)
 			jettisonButton.button.onClick:Connect(function ()
-				if player.flightState == "HYPERSPACE" then return end
+				if not Game.system then return end
 				local target = player:FindNearestTo("SPACESTATION")
 				if target and player:DistanceTo(target) < 100e3
 					or (et == Eq.cargo.radioactives and Game.system.population > 0) then
@@ -185,6 +185,13 @@ local econTrade = function ()
 		refuelButtonRefresh()
 	end
 
+	refuelOne.onClick:Connect(function () refuel(1) end)
+	refuelTen.onClick:Connect(function () refuel(10) end)
+	refuel100.onClick:Connect(function () refuel(100) end)
+	pumpDownOne.onClick:Connect(function () pumpDown(1) end)
+	pumpDownTen.onClick:Connect(function () pumpDown(10) end)
+	pumpDown100.onClick:Connect(function () pumpDown(100) end)
+
 	local deudaPendiente = l.NO
 	if deuda_total and deuda_total > 0 then deudaPendiente = showCurrency(deuda_total,2) end
 
@@ -203,14 +210,6 @@ local econTrade = function ()
 	else
 		valorCuota = showCurrency(deuda_valor_cuota)
 	end
-
-	refuelOne.onClick:Connect(function () refuel(1) end)
-	refuelTen.onClick:Connect(function () refuel(10) end)
-	refuel100.onClick:Connect(function () refuel(100) end)
-	pumpDownOne.onClick:Connect(function () pumpDown(1) end)
-	pumpDownTen.onClick:Connect(function () pumpDown(10) end)
-	pumpDown100.onClick:Connect(function () pumpDown(100) end)
-
 
 	return ui:Expand():SetInnerWidget(
 		ui:Grid({50,2,48},1)

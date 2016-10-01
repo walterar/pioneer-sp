@@ -28,7 +28,8 @@
 "message":"Si è verificato un errore"
 },
 "ATMOSPHERIC_SHIELDING":{
-"description":"Used in ShipInfo view, followed by a yes/no depending on if the ship can carry atmospheric shields","message":"Scudi atmosferici"
+"description":"Used in ShipInfo view, followed by a yes/no depending on if the ship can carry atmospheric shields",
+"message":"Scudi atmosferici"
 },
 "ATTEMPT_TO_REPAIR_HULL":{
 "description":"",
@@ -51,27 +52,32 @@
 "message":"Bacheca Annunci"
 },
 "BUY":{
-"description":"Commodities and equipment prices","message":"Compra"
+"description":"Commodities and equipment prices",
+"message":"Compra"
 },
 "BUY_SHIP":{
 "description":"",
 "message":"Compra Astronave"
 },
 "CABINS":{
-"description":"For passengers","message":"Alloggi"
+"description":"For passengers",
+"message":"Alloggi"
 },
 "CABIN_FREE":{
-"description":"Free capacity for passengers","message":"{amount} liberi"
+"description":"Free capacity for passengers",
+"message":"{amount} liberi"
 },
 "CABIN_USED":{
-"description":"Passengers using cabins","message":"{amount} occupati"
+"description":"Passengers using cabins",
+"message":"{amount} occupati"
 },
 "CANCEL":{
 "description":"",
 "message":"Annulla"
 },
 "CAPACITY":{
-"description":"Capacity of ship to fit more equipment","message":"Capacità"
+"description":"Capacity of ship to fit more equipment",
+"message":"Capacità"
 },
 "CAPACITY_USED":{
 "description":"",
@@ -90,10 +96,12 @@
 "message":"Capacità di carico usata"
 },
 "CARGO_T_FREE":{
-"description":"t for tonne","message":"{amount}t disponibili"
+"description":"t for tonne",
+"message":"{amount}t disponibili"
 },
 "CARGO_T_USED":{
-"description":"t for tonne","message":"{amount}t occupate"
+"description":"t for tonne",
+"message":"{amount}t occupate"
 },
 "CASH":{
 "description":"",
@@ -104,7 +112,8 @@
 "message":"Denaro: {money}"
 },
 "CHANGE_BINDING":{
-"description":"Key binding option","message":"Cambia associazioni"
+"description":"Key binding option",
+"message":"Cambia associazioni"
 },
 "CHIEF_MECHANIC":{
 "description":"",
@@ -115,20 +124,24 @@
 "message":"Velocità orbita circolare"
 },
 "CITY_DETAIL_LEVEL":{
-"description":"Game graphics option","message":"Livello dettaglio città"
+"description":"Game graphics option",
+"message":"Livello dettaglio città"
 },
 "CLEAN":{
-"description":"Legal status of player","message":"Pulito"
+"description":"Legal status of player",
+"message":"Pulito"
 },
 "CLEAR":{
-"description":"Clear an option in game settings/options menu","message":"Pulisci"
+"description":"Clear an option in game settings/options menu",
+"message":"Pulisci"
 },
 "CLIENT":{
 "description":"",
 "message":"Cliente"
 },
 "COMBAT":{
-"description":"Headline for kills and combat rating","message":"Combattimento"
+"description":"Headline for kills and combat rating",
+"message":"Combattimento"
 },
 "COMMANDER":{
 "description":"",
@@ -139,17 +152,20 @@
 "message":"Mercato dei beni di scambio"
 },
 "COMPACT_SCANNER":{
-"description":"Game settings option","message":"Scanner compatto"
+"description":"Game settings option",
+"message":"Scanner compatto"
 },
 "COMPETENT":{
-"description":"Combat rating","message":"Competente"
+"description":"Combat rating",
+"message":"Competente"
 },
 "COMPLETED":{
 "description":"",
 "message":"Completato"
 },
 "COMPRESS_TEXTURES":{
-"description":"graphics option in game settings menu ","message":"Compressione Texture"
+"description":"graphics option in game settings menu ",
+"message":"Compressione Texture"
 },
 "CONFIRM_PURCHASE":{
 "description":"",
@@ -180,7 +196,8 @@
 "message":"Impossibile caricare la partita:"
 },
 "CREDIBLE":{
-"description":"For player reputation","message":"Credibile"
+"description":"For player reputation",
+"message":"Credibile"
 },
 "CREW_CABINS":{
 "description":"",
@@ -191,26 +208,32 @@
 "message":"Equipaggio"
 },
 "CRIMINAL_RECORD":{
-"description":"Past crimes / crime history of character","message":"Fedina penale"
+"description":"Past crimes / crime history of character",
+"message":"Fedina penale"
 },
 "DANGEROUS":{
-"description":"Player combat rating","message":"Pericoloso"
+"description":"Player combat rating",
+"message":"Pericoloso"
 },
 "DEADLY":{
-"description":"Player combat rating","message":"Letale"
+"description":"Player combat rating",
+"message":"Letale"
 },
 "DELTA_V":{
 "description":"",
 "message":"Delta-V"
 },
 "DELTA_V_EMPTY":{
-"description":"Delta-v capacity of a ship with no cargo or upgrades","message":"Delta-v (vuoto)"
+"description":"Delta-v capacity of a ship with no cargo or upgrades",
+"message":"Delta-v (vuoto)"
 },
 "DELTA_V_FULL":{
-"description":"Delta-v capacity of a ship with maximum cargo","message":"Delta-v (pieno)"
+"description":"Delta-v capacity of a ship with maximum cargo",
+"message":"Delta-v (pieno)"
 },
 "DELTA_V_MAX":{
-"description":"Delta-v capacity of a ship with cargo bay fully loaded with propellant","message":"Delta-v (max)"
+"description":"Delta-v capacity of a ship with cargo bay fully loaded with propellant",
+"message":"Delta-v (max)"
 },
 "DESCENT_TO_GROUND_SPEED":{
 "description":"",
@@ -221,27 +244,32 @@
 "message":"Distruggi l'astronave nemica"
 },
 "DISMISS":{
-"description":"Terminate crew memeber's contract","message":"Licenzia"
+"description":"Terminate crew memeber's contract",
+"message":"Licenzia"
 },
 "DISPLAY_HUD_TRAILS":{
 "description":"",
 "message":"Mostra scie nel HUD"
 },
 "DISPLAY_NAV_TUNNELS":{
-"description":"Settings option: hyperspace tunnel effect","message":"Mostra tunnel di navigazione"
+"description":"Settings option: hyperspace tunnel effect",
+"message":"Mostra tunnel di navigazione"
 },
 "DISPLAY_SPEED_LINES":{
-"description":"Settings option: effect when travelling in space","message":"Mostra effetti di velocità"
+"description":"Settings option: effect when travelling in space",
+"message":"Mostra effetti di velocità"
 },
 "DOCK_AT_CURRENT_TARGET":{
 "description":"",
 "message":"Attracca alla destinazione selezionata"
 },
 "DUE":{
-"description":"mission deadline date","message":"Scadenza"
+"description":"mission deadline date",
+"message":"Scadenza"
 },
 "DUMPING":{
-"description":"The illegal act of dumping waste","message":"Scaricare"
+"description":"The illegal act of dumping waste",
+"message":"Scaricare"
 },
 "D_DAYS_LEFT":{
 "description":"",
@@ -256,27 +284,32 @@
 "message":"Effetti:"
 },
 "ELITE":{
-"description":"Player combat rating","message":"ELITE"
+"description":"Player combat rating",
+"message":"ELITE"
 },
 "EMPLOYMENT":{
 "description":"",
 "message":"Impiego"
 },
 "ENABLE_ANISOTROPIC_FILTERING":{
-"description":"Use Anisotropic Filtering","message":"Filtro Anisotropico"
+"description":"Use Anisotropic Filtering",
+"message":"Filtro Anisotropico"
 },
 "ENABLE_AUTOSAVE":{
-"description":"Allow the game to autosave when docking","message":"Abilita salvataggio automatico"
+"description":"Allow the game to autosave when docking",
+"message":"Abilita salvataggio automatico"
 },
 "ENABLE_COCKPIT":{
-"description":"Game settings option: to use a cockpit 3D model","message":"Abilita abitacolo (SPERIMENTALE)"
+"description":"Game settings option: to use a cockpit 3D model",
+"message":"Abilita abitacolo (SPERIMENTALE)"
 },
 "ENABLE_JOYSTICK":{
 "description":"",
 "message":"Abilita Joystick"
 },
 "ENGINEERING":{
-"description":"Engineering skills of crew","message":"Ingegneria:"
+"description":"Engineering skills of crew",
+"message":"Ingegneria:"
 },
 "EQUIPMENT":{
 "description":"",
@@ -303,13 +336,16 @@
 "message":"Esci dalla partita"
 },
 "EXPERIENCED":{
-"description":"For player reputation","message":"Competente"
+"description":"For player reputation",
+"message":"Competente"
 },
 "EXPERT":{
-"description":"For player reputation","message":"Esperto"
+"description":"For player reputation",
+"message":"Esperto"
 },
 "FAILED":{
-"description":"When failed mission","message":"Fallito"
+"description":"When failed mission",
+"message":"Fallito"
 },
 "FEMALE":{
 "description":"",
@@ -332,7 +368,8 @@
 "message":"Dettaglo frattali"
 },
 "FREE":{
-"description":"Used in Ship Information view as in Capacity: 10t (5t free)","message":"liberi"
+"description":"Used in Ship Information view as in Capacity: 10t (5t free)",
+"message":"liberi"
 },
 "FRONT_WEAPON":{
 "description":"",
@@ -371,7 +408,8 @@
 "message":"Riaggancia."
 },
 "HARMLESS":{
-"description":"Player combat rating","message":"Innocuo"
+"description":"Player combat rating",
+"message":"Innocuo"
 },
 "HEAVY_CARGO_SHUTTLE":{
 "description":"",
@@ -398,7 +436,8 @@
 "message":"Trasporto passeggeri pesante"
 },
 "HIGH":{
-"description":"Game settings option: for graphics resolution","message":"Alto"
+"description":"Game settings option: for graphics resolution",
+"message":"Alto"
 },
 "HULL_DOES_NOT_REQUIRE_REPAIR":{
 "description":"",
@@ -428,6 +467,10 @@
 "description":"",
 "message":"Portata iperspaziale"
 },
+"ILLEGAL_JUMP":{
+"description":"A finable crime",
+"message":"Salto pericoloso illegale registrato"
+},
 "IM_TIRED_OF_WORKING_FOR_NOTHING_DONT_YOU_KNOW_WHAT_A_CONTRACT_IS":{
 "description":"",
 "message":"Sono stanco di lavorare gratis. Ha idea di cosa sia un contratto?"
@@ -437,10 +480,12 @@
 "message":"Inattivo"
 },
 "INCOMPETENT":{
-"description":"For player reputation","message":"Incompetente"
+"description":"For player reputation",
+"message":"Incompetente"
 },
 "INEXPERIENCED":{
-"description":"For player reputation","message":"Inesperto"
+"description":"For player reputation",
+"message":"Inesperto"
 },
 "INSUFFICIENT_FUNDS":{
 "description":"",
@@ -535,7 +580,8 @@
 "message":"Anticamera"
 },
 "LOCAL_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Braccio locale"
+"description":"Arm of the Milky Way galaxy",
+"message":"Braccio locale"
 },
 "LOCATED_N_KM_FROM_THE_CENTRE_OF_NAME":{
 "description":"",
@@ -550,7 +596,8 @@
 "message":"Basso"
 },
 "LY":{
-"description":"Light year","message":"AL"
+"description":"Light year",
+"message":"AL"
 },
 "MAKE_NEW_FACE":{
 "description":"",
@@ -573,10 +620,12 @@
 "message":"Massa"
 },
 "MASTER":{
-"description":"For player reputation","message":"Maestro"
+"description":"For player reputation",
+"message":"Maestro"
 },
 "MASTER_VOL":{
-"description":"Master sound in settings option","message":"Principale:"
+"description":"Master sound in settings option",
+"message":"Principale:"
 },
 "MAX":{
 "description":"",
@@ -587,7 +636,8 @@
 "message":"Equipaggio massimo"
 },
 "MEDIUM":{
-"description":"Game settings option: graphics resolution","message":"Medio"
+"description":"Game settings option: graphics resolution",
+"message":"Medio"
 },
 "MEDIUM_CARGO_SHUTTLE":{
 "description":"",
@@ -662,10 +712,12 @@
 "message":"Muto"
 },
 "NAME_OBJECT":{
-"description":"For an item or object","message":"Nome"
+"description":"For an item or object",
+"message":"Nome"
 },
 "NAME_PERSON":{
-"description":"For a person","message":"Nome"
+"description":"For a person",
+"message":"Nome"
 },
 "NAVIGATION":{
 "description":"",
@@ -684,10 +736,12 @@
 "message":"Prossima paga"
 },
 "NO":{
-"description":"Negative answer to a question","message":"No"
+"description":"Negative answer to a question",
+"message":"No"
 },
 "NOBODY":{
-"description":"For player reputation","message":"Nessuno"
+"description":"For player reputation",
+"message":"Nessuno"
 },
 "NONE":{
 "description":"",
@@ -698,7 +752,8 @@
 "message":"Nulla in vendita, in questa stazione."
 },
 "NORMA_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Braccio Regolo-Cigno"
+"description":"Arm of the Milky Way galaxy",
+"message":"Braccio Regolo-Cigno"
 },
 "NOTES":{
 "description":"",
@@ -740,6 +795,10 @@
 "description":"",
 "message":"Ok"
 },
+"OPEN_USER_FOLDER":{
+"description":"",
+"message":"Cartella Utente"
+},
 "OPTIONS":{
 "description":"",
 "message":"Opzioni"
@@ -757,20 +816,24 @@
 "message":"La velocità di orbita circolare è data come velocità tangenziale. L'astronave deve muoversi in una direzione di 90° rispetto all'asse astronave/{name}.\n\nLa velocità di discesa è un minimo assoluto, ed è anch'essa tangenziale. Una velocità od un angolo inferiori porteranno ad una traiettoria che interseca con la superficie di {name}.\n\nLa velocità di fuga si applica teoricamente ad ogni direzione, fintanto che l'astronave non entra in rotta di collisione con {name}."
 },
 "OUTER_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Braccio Esterno"
+"description":"Arm of the Milky Way galaxy",
+"message":"Braccio Esterno"
 },
 "OUTSTANDING_FINES":{
-"description":"Unpaid fines for crimes committed","message":"Multe pendenti"
+"description":"Unpaid fines for crimes committed",
+"message":"Multe pendenti"
 },
 "OWED":{
-"description":"Player owing money to crew members","message":"Dovuto"
+"description":"Player owing money to crew members",
+"message":"Dovuto"
 },
 "PAY_FINE_OF_N":{
 "description":"",
 "message":"Paga multa di {amount}"
 },
 "PERSEUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Braccio di Perseo"
+"description":"Arm of the Milky Way galaxy",
+"message":"Braccio di Perseo"
 },
 "PERSONAL_INFORMATION":{
 "description":"",
@@ -805,10 +868,12 @@
 "message":"Polizia"
 },
 "POOR":{
-"description":"Player combat rating","message":"Scarso"
+"description":"Player combat rating",
+"message":"Scarso"
 },
 "POSITION":{
-"description":"The job title/position of crew memeber","message":"Posizione"
+"description":"The job title/position of crew memeber",
+"message":"Posizione"
 },
 "PRESS_A_KEY_OR_CONTROLLER_BUTTON":{
 "description":"",
@@ -819,10 +884,12 @@
 "message":"Prezzo"
 },
 "PROFESSIONAL":{
-"description":"For player reputation","message":"Professionista"
+"description":"For player reputation",
+"message":"Professionista"
 },
 "PUMP_DOWN":{
-"description":"Drain the fuel tank","message":"Scarica"
+"description":"Drain the fuel tank",
+"message":"Scarica"
 },
 "QUALIFICATION_SCORES":{
 "description":"",
@@ -833,7 +900,8 @@
 "message":"Esci"
 },
 "QUIT_CONFIRMATION":{
-"description":"For the checkbox in settings window","message":"Conferma uscita"
+"description":"For the checkbox in settings window",
+"message":"Conferma uscita"
 },
 "RANK":{
 "description":"",
@@ -856,7 +924,8 @@
 "message":"Rifornimento completo"
 },
 "RELIABLE":{
-"description":"For player reputation","message":"Affidabile"
+"description":"For player reputation",
+"message":"Affidabile"
 },
 "REPAIR_X_HULL_DAMAGE_FOR_X":{
 "description":"",
@@ -895,17 +964,20 @@
 "message":"Ricompensa"
 },
 "SAGITTARIUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Braccio Carena-Sagittario"
+"description":"Arm of the Milky Way galaxy",
+"message":"Braccio Carena-Sagittario"
 },
 "SAVE":{
 "description":"",
 "message":"Salva"
 },
 "SCOOP_MOUNTS":{
-"description":"How many slots or mounts exist on the ship for fitting SCOOPS (e.g. cargo scoop, fuel scoop, multi-scoop) ","message":"Supporti per raccoglitori"
+"description":"How many slots or mounts exist on the ship for fitting SCOOPS (e.g. cargo scoop, fuel scoop, multi-scoop) ",
+"message":"Supporti per raccoglitori"
 },
 "SCUTUM_CENTAURUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Braccio Scudo-Croce"
+"description":"Arm of the Milky Way galaxy",
+"message":"Braccio Scudo-Croce"
 },
 "SELECT":{
 "description":"",
@@ -924,7 +996,8 @@
 "message":"Seleziona la partita da caricare..."
 },
 "SELL":{
-"description":"Commodities and equipment prices","message":"Vendi"
+"description":"Commodities and equipment prices",
+"message":"Vendi"
 },
 "SENSORS":{
 "description":"",
@@ -933,6 +1006,10 @@
 "SENSORS_AND_DEFENCE":{
 "description":"",
 "message":"Sensori e difesa"
+},
+"SET_AS_TARGET":{
+"description":"",
+"message":"Imposta la destinazione come destinazione di navigazione."
 },
 "SHIP":{
 "description":"",
@@ -983,7 +1060,8 @@
 "message":"Parti dalla Terra"
 },
 "START_AT_NEW_HOPE":{
-"description":"New Hope is an in game location","message":"Parti da New Hope"
+"description":"New Hope is an in game location",
+"message":"Parti da New Hope"
 },
 "STAR_FIELD_DENSITY":{
 "description":"",
@@ -998,10 +1076,12 @@
 "message":"Stato"
 },
 "TECH_CERTIFIED":{
-"description":"Lobby screen shows the tech level (an integer number) of the station","message":"Questa stazione detiene un certificato di tecnologia livello {tech_level}."
+"description":"Lobby screen shows the tech level (an integer number) of the station",
+"message":"Questa stazione detiene un certificato di tecnologia livello {tech_level}."
 },
 "TECH_CERTIFIED_MILITARY":{
-"description":"Lobby screen shows the tech level of the station","message":"Questa installazione detiene un'autorizzazione tecnologica di livello militare."
+"description":"Lobby screen shows the tech level of the station",
+"message":"Questa installazione detiene un'autorizzazione tecnologica di livello militare."
 },
 "THANKS_AND_REMEMBER_TO_BUY_FUEL":{
 "description":"",
@@ -1016,10 +1096,12 @@
 "message":"La sua astronave è sotto il controllo della stazione, Comandante."
 },
 "THREE_KPC_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Braccio dei 3-kpc"
+"description":"Arm of the Milky Way galaxy",
+"message":"Braccio dei 3-kpc"
 },
 "TOGGLE_MALE_FEMALE":{
-"description":"player gender","message":"Cambia maschio/femmina"
+"description":"player gender",
+"message":"Cambia maschio/femmina"
 },
 "TOO_SMALL_FOR_CURRENT_CREW":{
 "description":"",
@@ -1027,7 +1109,7 @@
 },
 "TOO_SMALL_TO_TRANSSHIP":{
 "description":"",
-"message":"Ship is too small to transship your cargo."
+"message":"L'astronave è troppo piccola per trasbordarvi il carico."
 },
 "TOTAL":{
 "description":"",
@@ -1042,7 +1124,8 @@
 "message":"Commercio di merci Illegali"
 },
 "TRUSTWORTHY":{
-"description":"For player reputation","message":"Fidato"
+"description":"For player reputation",
+"message":"Fidato"
 },
 "TYPE":{
 "description":"",
@@ -1065,10 +1148,12 @@
 "message":"Utilizzato"
 },
 "VERY_HIGH":{
-"description":"Game settings option: graphic resolution","message":"Molto alto"
+"description":"Game settings option: graphic resolution",
+"message":"Molto alto"
 },
 "VERY_LOW":{
-"description":"Game settings option: graphic resolution","message":"Molto basso"
+"description":"Game settings option: graphic resolution",
+"message":"Molto basso"
 },
 "VIDEO":{
 "description":"",
@@ -1083,10 +1168,12 @@
 "message":"Risoluzione video"
 },
 "VSYNC":{
-"description":"For the checkbox in settings window","message":"Sincronia verticale"
+"description":"For the checkbox in settings window",
+"message":"Sincronia verticale"
 },
 "WAGE":{
-"description":"Salary of crew shown in crew roster","message":"Stipendio"
+"description":"Salary of crew shown in crew roster",
+"message":"Stipendio"
 },
 "WEIGHT_EMPTY":{
 "description":"",
@@ -1101,13 +1188,16 @@
 "message":"Siamo nell'iperspazio, Comandante."
 },
 "WE_HAVE_NO_BUSINESS_WITH_YOU":{
-"description":"Said by the police to law abiding player","message":"Al momento non ha pendenze con la Polizia."
+"description":"Said by the police to law abiding player",
+"message":"Al momento non ha pendenze con la Polizia."
 },
 "X_CANNOT_BE_TOLERATED_HERE":{
-"description":"Message to be sent over comms by police when crime is committed by player","message":"{crime} non è tollerato qui!"
+"description":"Message to be sent over comms by police when crime is committed by player",
+"message":"{crime} non è tollerato qui!"
 },
 "YES":{
-"description":"Positive answer to a question","message":"Sì"
+"description":"Positive answer to a question",
+"message":"Sì"
 },
 "YOURE_GOING_TO_REGRET_SACKING_ME":{
 "description":"",
@@ -1146,6 +1236,7 @@
 "message":"Crediti insufficienti"
 },
 "ZOOM":{
-"description":"Label for a zoom (magnification) control bar.","message":"Zoom"
+"description":"Label for a zoom (magnification) control bar.",
+"message":"Zoom"
 }
 }

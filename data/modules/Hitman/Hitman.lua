@@ -242,8 +242,7 @@ end
 local onShipDestroyed = function (ship, body)
 	for ref, mission in pairs(missions) do
 		if mission.shipregid == ship.label
-			and mission.status == 'ACTIVE'
-			or  mission.status == 'JUMPING'
+			and (mission.status == 'ACTIVE' or mission.status == 'JUMPING')
 		then
 			if not body:isa("Ship")
 			or not body:IsPlayer() then
@@ -324,7 +323,7 @@ local onShipUndocked = function (ship, station)
 			ship:AIEnterMediumOrbit(ship:FindNearestTo("STAR"))
 		end
 		local taunt = string.interp(l["TAUNT_"..Engine.rand:Integer(1, 3)], {org = mission.org})
-		Timer:CallAt(Game.time+40, function ()
+		Timer:CallAt(Game.time+50, function ()
 			if escort then escort = nil return end
 			if ShipExists(mission.ship) then
 				if Game.player:GetCombatTarget() == mission.ship
@@ -615,7 +614,7 @@ local onClick = function (mission)
 											})
 											:SetColumn(1, {
 												ui:VBox():PackEnd({
-													ui:Label(Format.Date(mission.due))
+													ui:Label(TimeLeft(mission.due))
 												})
 											}),
 		})})
@@ -682,7 +681,8 @@ switchEvents = function()
 	Event.Deregister("onShipUndocked", onShipUndocked)
 	Event.Deregister("onShipDestroyed", onShipDestroyed)
 	for ref,mission in pairs(missions) do
-		if mission.location:IsSameSystem(Game.system.path)
+		if Game.time > mission.due
+			or mission.location:IsSameSystem(Game.system.path)
 			or mission.status == 'JUMPING' then
 			Event.Register("onShipDocked", onShipDocked)
 			Event.Register("onShipUndocked", onShipUndocked)

@@ -60,40 +60,48 @@
 "message":"LIEFERSERVICE. Wir brauchen ein Schiff für eine Lieferung zum System {system}."
 },
 "ALUMINIUM_TUBES":{
-"description":"custom cargo","message":"Aluminiumrohre"
+"description":"custom cargo",
+"message":"Aluminiumrohre"
 },
 "AMOUNT":{
-"description":"Shown in mission summary. The amount of cargo","message":"Anzahl:"
+"description":"Shown in mission summary. The amount of cargo",
+"message":"Anzahl:"
 },
 "ART_OBJECTS":{
-"description":"custom cargo","message":"Kunstobjekte"
+"description":"custom cargo",
+"message":"Kunstobjekte"
 },
 "CARGO":{
 "description":"",
 "message":"Fracht:"
 },
 "CARGORUN":{
-"description":"Name of mission type","message":"Expresslieferung"
+"description":"Name of mission type",
+"message":"Expresslieferung"
 },
 "CEASE_FIRE":{
 "description":"",
 "message":"Nicht schießen! Nicht schießen! Ich bin auf Ihrer Seite!"
 },
 "CLUS":{
-"description":"custom cargo","message":"Containerisierte Lebensformen"
+"description":"custom cargo",
+"message":"Containerisierte Lebensformen"
 },
 "COULD_YOU_REPEAT_THE_ORIGINAL_REQUEST":{
 "description":"",
 "message":"Was war nochmal die anfängliche Frage?"
 },
 "DANGER":{
-"description":"the risk level","message":"Gefahr:"
+"description":"the risk level",
+"message":"Gefahr:"
 },
 "DEADLINE":{
-"description":"Must be delivered by","message":"Termin:"
+"description":"Must be delivered by",
+"message":"Termin:"
 },
 "DELIVER_TO":{
-"description":"Deliver to this location","message":"Zu liefern nach:"
+"description":"Deliver to this location",
+"message":"Zu liefern nach:"
 },
 "DENY_1":{
 "description":"",
@@ -120,16 +128,20 @@
 "message":"Kommen Sie wieder, wenn Sie erfahrener sind."
 },
 "DIAMONDS":{
-"description":"custom cargo","message":"Diamanten"
+"description":"custom cargo",
+"message":"Diamanten"
 },
 "DIGESTERS":{
-"description":"custom cargo","message":"Faulbehälter"
+"description":"custom cargo",
+"message":"Faulbehälter"
 },
 "DISTANCE":{
-"description":"distance in space, between two locations","message":"Distanz:"
+"description":"distance in space, between two locations",
+"message":"Distanz:"
 },
 "ELECTRICAL_APPLIANCES":{
-"description":"custom cargo","message":"Elektrische Geräte"
+"description":"custom cargo",
+"message":"Elektrische Geräte"
 },
 "ESCORT_CHATTER_1":{
 "description":"",
@@ -152,7 +164,8 @@
 "message":"Das wird heute mein erster Fang sein."
 },
 "EXPLOSIVES":{
-"description":"custom cargo","message":"Sprengstoffe"
+"description":"custom cargo",
+"message":"Sprengstoffe"
 },
 "FAILUREMSG_1":{
 "description":"",
@@ -175,31 +188,40 @@
 "message":"Sie Monster! Sie haben zu lange für diese Lieferung gewartet. Meine ganzen flauschigen Haustiere sind verhungert!"
 },
 "FURNITURE":{
-"description":"custom cargo","message":"Möbel"
+"description":"custom cargo",
+"message":"Möbel"
 },
 "GREENHOUSES":{
-"description":"custom cargo","message":"Gewächshäuser"
+"description":"custom cargo",
+"message":"Gewächshäuser"
 },
 "GUNS_GUNS_GUNS":{
-"description":"Military radio call to avoid friendly fire. It indicates that the cannon has been activated and should ensure that other friendly pilots do not maneuver into the path of harm.","message":"Halten Sie sich von der Schusslinie fern!"
+"description":"Military radio call to avoid friendly fire. It indicates that the cannon has been activated and should ensure that other friendly pilots do not maneuver into the path of harm.",
+"message":"Halten Sie sich von der Schusslinie fern!"
 },
 "HAZARDOUS_SUBSTANCES":{
-"description":"custom cargo","message":"Gefahrstoffe"
+"description":"custom cargo",
+"message":"Gefahrstoffe"
 },
 "HOWMUCH_1":{
-"description":"regarding mass, always more than 1t","message":"{amount} Tonnen."
+"description":"regarding mass, always more than 1t",
+"message":"{amount} Tonnen."
 },
 "HOWMUCH_2":{
-"description":"regarding mass, always more than 1t","message":"{amount}t"
+"description":"regarding mass, always more than 1t",
+"message":"{amount}t"
 },
 "HOWMUCH_3":{
-"description":"regarding mass, always more than 1t","message":"Die Masse ist {amount}t."
+"description":"regarding mass, always more than 1t",
+"message":"Die Masse ist {amount}t."
 },
 "HOWMUCH_4":{
-"description":"regarding mass, always more than 1t","message":"Dies sind {amount}t."
+"description":"regarding mass, always more than 1t",
+"message":"Dies sind {amount}t."
 },
 "HOWMUCH_SINGULAR_1":{
-"description":"This string is only used for 1 metric tons (singular)","message":"Es sind nur {amount}t."
+"description":"This string is only used for 1 metric tons (singular)",
+"message":"Es sind nur {amount}t."
 },
 "HOWMUCH_WHOLESALER_1":{
 "description":"",
@@ -219,25 +241,27 @@
 },
 "INTROTEXT_1":{
 "description":"",
-"message":"Hallo, ich bin {name}. Ich zahle Ihnen {cash}, wenn sie {cargoname} für mich bei {starport} im System {system} ({sectorx}, {sectory}, {sectorz}), {dist} Lj enfernt, abliefern."
+"message":"Hallo, ich bin {name}. Ich zahle Ihnen {cash}, wenn sie {cargoname} für mich bei {starport} im System {system} ({sectorx}, {sectory}, {sectorz}), {dist} enfernt, abliefern."
 },
 "INTROTEXT_2":{
-"description":"{name} is the full name of a person","message":"Hallo! {name}-Transporte braucht Sie, um {cargoname} nach {starport} im System {system} ({sectorx}, {sectory}, {sectorz}), {dist} Dj entfernt, abzuliefern. Wir zahlen {cash} für eine sichere und vollständige Lieferung."
+"description":"{name} is the full name of a person",
+"message":"Hallo! {name}-Transporte braucht Sie, um {cargoname} nach {starport} im System {system} ({sectorx}, {sectory}, {sectorz}), {dist} entfernt, abzuliefern. Wir zahlen {cash} für eine sichere und vollständige Lieferung."
 },
 "INTROTEXT_3":{
 "description":"",
-"message":"Guten Tag. Ich bin {name}, Gründer von {name} GmbH. Ich brauche eine vertrauenswürdige Person, um {cargoname} nach {starport} im System {system} ({sectorx}, {sectory}, {sectorz}) abzuliefern. Ich werde {cash} für den {dist} Lj langen Flug bezahlen."
+"message":"Guten Tag. Ich bin {name}, Gründer von {name} GmbH. Ich brauche eine vertrauenswürdige Person, um {cargoname} nach {starport} im System {system} ({sectorx}, {sectory}, {sectorz}) abzuliefern. Ich werde {cash} für den {dist} langen Flug bezahlen."
 },
 "INTROTEXT_EXPENSIVE_1":{
 "description":"",
-"message":"Hallo. Wir brauchen einen Erfahrenen für eine potentiell gefährliche Expresslieferung nach {starport} im System {system} ({sectorx}, {sectory}, {sectorz}). Wir zahlen {cash}. Die Entfernung ist {dist} Lj."
+"message":"Hallo. Wir brauchen einen Erfahrenen für eine potentiell gefährliche Expresslieferung nach {starport} im System {system} ({sectorx}, {sectory}, {sectorz}). Wir zahlen {cash}. Die Entfernung ist {dist}."
 },
 "INTROTEXT_FLUFFY_1":{
-"description":"this is used for the delivery of Quibbles, which is a nod to Tribble (star trek ref. see wikipedia)","message":"Hallo, mein Name ist {name}. Ich habe eine fluffige Fracht von {cargoname} für einen Lieferauftrag nach {starport} im System {system} ({sectorx}, {sectory}, {sectorz}). Die Entfernung ist {dist} Lj. Für diese Lieferung werde ich Ihnen {cash} zahlen."
+"description":"this is used for the delivery of Quibbles, which is a nod to Tribble (star trek ref. see wikipedia)",
+"message":"Hallo, mein Name ist {name}. Ich habe eine fluffige Fracht von {cargoname} für einen Lieferauftrag nach {starport} im System {system} ({sectorx}, {sectory}, {sectorz}). Die Entfernung ist {dist}. Für diese Lieferung werde ich Ihnen {cash} zahlen."
 },
 "INTROTEXT_INFRASTRUCTURE_1":{
 "description":"",
-"message":"Guten Tag! Ich bin {name}. Die Regierung von {system} möchte {cargoname} nach {starport} im System {system} ({sectorx}, {sectory}, {sectorz}) liefern. Die Bezahlung ist {cash}. {system} ist {dist} Lj von hier entfernt."
+"message":"Guten Tag! Ich bin {name}. Die Regierung von {system} möchte {cargoname} nach {starport} im System {system} ({sectorx}, {sectory}, {sectorz}) liefern. Die Bezahlung ist {cash}. {system} ist {dist} von hier entfernt."
 },
 "INTROTEXT_LOCAL_1":{
 "description":"",
@@ -252,7 +276,8 @@
 "message":"Mein Name ist {name} und ich muss {cargoname} zu einem Kunden nach {starport} geliefert haben. Ich werde Ihnen {cash} für diese Expresslieferung bezahlen."
 },
 "INTROTEXT_MINING_1":{
-"description":"{name} is the full name of a person","message":"Hallo. Das Bergbauunternehmen {name} möchte {cargoname} nach {starport} im System {system} ({sectorx}, {sectory}, {sectorz}), {dist} Lj entfernt, liefern, um eine neue Mine zu bauen. Die Bezahlung ist {cash}."
+"description":"{name} is the full name of a person",
+"message":"Hallo. Das Bergbauunternehmen {name} möchte {cargoname} nach {starport} im System {system} ({sectorx}, {sectory}, {sectorz}), {dist} entfernt, liefern, um eine neue Mine zu bauen. Die Bezahlung ist {cash}."
 },
 "INTROTEXT_PICKUP_1":{
 "description":"",
@@ -260,7 +285,7 @@
 },
 "INTROTEXT_PICKUP_2":{
 "description":"",
-"message":"Wie geht's? Mein Name ist {name}. Einer meiner Kunden möchte {cargoname} aus {starport} ({sectorx}, {sectory}, {sectorz}), {dist} Lj entfernt, importieren. Er bezahlt {cash} für diese Expresslieferung. Kehren Sie anschließend zu {dom_starport} im System {dom_system} ({dom_sectorx}, {dom_sectory}, {dom_sectorz}) zurück, um die Fracht zu entladen."
+"message":"Wie geht's? Mein Name ist {name}. Einer meiner Kunden möchte {cargoname} aus {starport} ({sectorx}, {sectory}, {sectorz}), {dist} entfernt, importieren. Er bezahlt {cash} für diese Expresslieferung. Kehren Sie anschließend zu {dom_starport} im System {dom_system} ({dom_sectorx}, {dom_sectory}, {dom_sectorz}) zurück, um die Fracht zu entladen."
 },
 "INTROTEXT_PICKUP_LOCAL_1":{
 "description":"",
@@ -272,15 +297,15 @@
 },
 "INTROTEXT_WEDDING_1":{
 "description":"",
-"message":"Hallo. Haben Sie von der Hochzeitssaison von {starport} im System {system} ({sectorx}, {sectory}, {sectorz}) gehört? Wir wollen {cargoname} dorthin transportieren. Es ist {dist} Lj entfernt. Die Bezahlung ist {cash}. Wie wäre es?"
+"message":"Hallo. Haben Sie von der Hochzeitssaison von {starport} im System {system} ({sectorx}, {sectory}, {sectorz}) gehört? Wir wollen {cargoname} dorthin transportieren. Es ist {dist} entfernt. Die Bezahlung ist {cash}. Wie wäre es?"
 },
 "INTROTEXT_WHOLESALER_1":{
 "description":"",
-"message":"Hallo, mein Name ist {name} und ich bin ein Großhändler im System {system}. Ich bezahle {cash} für eine Expresslieferung nach {starport} im System {system} ({sectorx}, {sectory}, {sectorz}), {dist} Lj entfernt,"
+"message":"Hallo, mein Name ist {name} und ich bin ein Großhändler im System {system}. Ich bezahle {cash} für eine Expresslieferung nach {starport} im System {system} ({sectorx}, {sectory}, {sectorz}), {dist} entfernt,"
 },
 "INTROTEXT_WHOLESALER_2":{
 "description":"",
-"message":"Hallo, mein Name ist {name} und ich arbeite für Haber Corp. Wir bezahlen {cash} für die Expresslieferung nach {starport} im System {system} ({sectorx}, {sectory}, {sectorz}), für eine Distanz von {dist} Lj."
+"message":"Hallo, mein Name ist {name} und ich arbeite für Haber Corp. Wir bezahlen {cash} für die Expresslieferung nach {starport} im System {system} ({sectorx}, {sectory}, {sectorz}), für eine Distanz von {dist}."
 },
 "I_AM_ON_MY_WAY":{
 "description":"",
@@ -299,10 +324,12 @@
 "message":"Lj"
 },
 "MACHINE_TOOLS":{
-"description":"custom cargo","message":"Maschinenwerkzeuge"
+"description":"custom cargo",
+"message":"Maschinenwerkzeuge"
 },
 "NEPTUNIUM":{
-"description":"custom cargo","message":"Neptunium"
+"description":"custom cargo",
+"message":"Neptunium"
 },
 "OK_AGREED":{
 "description":"",
@@ -313,7 +340,8 @@
 "message":"Picked cargo in..."
 },
 "PICKUP_FROM":{
-"description":"from a location","message":"Fracht abholen von:"
+"description":"from a location",
+"message":"Fracht abholen von:"
 },
 "PIRATE_GRIPES_1":{
 "description":"",
@@ -324,7 +352,8 @@
 "message":"Oh, nein! Mein armes Schiff!"
 },
 "PIRATE_GRIPES_3":{
-"description":"said with vengeance","message":"Na warte, dir werd ich's zeigen!"
+"description":"said with vengeance",
+"message":"Na warte, dir werd ich's zeigen!"
 },
 "PIRATE_TAUNTS_1":{
 "description":"",
@@ -355,10 +384,12 @@
 "message":"Dein Glück ist aufgebraucht!"
 },
 "PLUTONIUM":{
-"description":"custom cargo","message":"Plutonium"
+"description":"custom cargo",
+"message":"Plutonium"
 },
 "QUIBBLES":{
-"description":"custom cargo, also used in the NewsEventCommodity module, a nod to Star Trek's Tribble (check wikipedia)","message":"Quibbles"
+"description":"custom cargo, also used in the NewsEventCommodity module, a nod to Star Trek's Tribble (check wikipedia)",
+"message":"Quibbles"
 },
 "RISK_1":{
 "description":"",
@@ -413,14 +444,24 @@
 "message":"Das Risiko ist hoch. Aber eine Eskorte steht bereit, um Ihnen zur Seite zu stehen."
 },
 "SEMI_FINISHED_PRODUCTS":{
-"description":"custom cargo","message":"Halbfertige Produkte"
+"description":"custom cargo",
+"message":"Halbfertige Produkte"
+},
+"SET_AS_TARGET":{
+"description":"",
+"message":"Als Navigationsziel setzen"
+},
+"SET_RETURN_ROUTE":{
+"description":"",
+"message":"Rückkehrroute setzen"
 },
 "SPACEPORT":{
 "description":"",
 "message":"Raumhafen:"
 },
 "SPACESHIP_PARTS":{
-"description":"custom cargo","message":"Raumschiffteile"
+"description":"custom cargo",
+"message":"Raumschiffteile"
 },
 "SUCCESSMSG_1":{
 "description":"",
@@ -439,7 +480,8 @@
 "message":"Danke! Ich werde Sie auf jeden Fall weiterempfehlen. Das Geld wurde überwiesen."
 },
 "SUCCESSMSG_FLUFFY_1":{
-"description":"Said when receiving a shipment of Quibbles (see wikipedia Tribble)","message":"Ohje, was soll ich mit nur so vielen fluffigen Wesen anstellen? Wie auch immer, das Geld wurde überwiesen."
+"description":"Said when receiving a shipment of Quibbles (see wikipedia Tribble)",
+"message":"Ohje, was soll ich mit nur so vielen fluffigen Wesen anstellen? Wie auch immer, das Geld wurde überwiesen."
 },
 "SYSTEM":{
 "description":"",
@@ -450,13 +492,16 @@
 "message":"Ziel zerstört."
 },
 "TITANIUM":{
-"description":"custom cargo","message":"Titan"
+"description":"custom cargo",
+"message":"Titan"
 },
 "TUNGSTEN":{
-"description":"custom cargo","message":"Wolfram"
+"description":"custom cargo",
+"message":"Wolfram"
 },
 "URANIUM":{
-"description":"custom cargo","message":"Uran"
+"description":"custom cargo",
+"message":"Uran"
 },
 "URGENCY_1":{
 "description":"",
@@ -487,7 +532,8 @@
 "message":"Aufgrund der Halbwertszeit dieses Isotops muss die Lieferung vor {date} abgeschlossen werden."
 },
 "WEDDING_DRESSES":{
-"description":"custom cargo","message":"Hochzeitkleider"
+"description":"custom cargo",
+"message":"Hochzeitkleider"
 },
 "WE_HAVE_LOADED_UP_THE_CARGO_ON_YOUR_SHIP":{
 "description":"",

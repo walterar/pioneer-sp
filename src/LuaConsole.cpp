@@ -14,6 +14,22 @@
 #include <stack>
 #include <algorithm>
 
+/*
+#ifdef REMOTE_LUA_REPL
+// for networking
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <sys/select.h>
+#include <sys/time.h>
+#include <fcntl.h>
+#include <netinet/tcp.h>
+// end networking
+#endif
+*/
+
 #define TRUSTED_CONSOLE 1
 
 #if TRUSTED_CONSOLE
@@ -25,7 +41,11 @@ static const char CONSOLE_CHUNK_NAME[] = "console";
 LuaConsole::LuaConsole():
 	m_active(false),
 	m_precompletionStatement(),
-	m_completionList() {
+	m_completionList()
+//#ifdef REMOTE_LUA_REPL
+//	, m_debugSocket(0)
+//#endif
+{
 
 	m_output = Pi::ui->MultiLineText("");
 	m_entry = Pi::ui->TextEntry();
@@ -308,8 +328,14 @@ void LuaConsole::UpdateCompletion(const std::string & statement) {
 
 void LuaConsole::AddOutput(const std::string &line) {
 	m_output->AppendText(line + "\n");
+//	std::string actualLine = line + "\n";
+//	m_output->AppendText(actualLine);
+//#ifdef REMOTE_LUA_REPL
+//	BroadcastToDebuggers(actualLine);
+//#endif
 }
 
+//void LuaConsole::ExecOrContinue(const std::string &stmt, bool repeatStatement) {
 void LuaConsole::ExecOrContinue(const std::string &stmt) {
 	int result;
 	lua_State *L = Lua::manager->GetLuaState();
@@ -364,6 +390,16 @@ void LuaConsole::ExecOrContinue(const std::string &stmt) {
 	while(!stmt_stream.eof()) {
 		std::getline(stmt_stream, string_buffer);
 		AddOutput("  " + string_buffer);
+
+/*	if (repeatStatement) {
+		std::getline(stmt_stream, string_buffer);
+		AddOutput("> " + string_buffer);
+
+		while(!stmt_stream.eof()) {
+			std::getline(stmt_stream, string_buffer);
+			AddOutput("  " + string_buffer);
+		}
+*/
 	}
 
 	// perform a protected call

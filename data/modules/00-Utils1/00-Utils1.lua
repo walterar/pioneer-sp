@@ -65,6 +65,25 @@ _G.check_crime = function (mission,crime)
 	end
 end
 
+--[[
+		local days, seconds = math.modf (time_left / (24*60*60))
+		days = string.format(l.D_DAYS_LEFT, days)
+		seconds = seconds*24*60*60
+		local hours = string.format("%02.f", math.floor(seconds/3600));
+		local mins = string.format("%02.f", math.floor(seconds/60-(hours*60)));
+		local secs = string.format("%02.f", math.floor(seconds-hours*3600-mins*60));
+--]]
+
+_G.TimeLeft = function (due)
+	if due < Game.time then return end
+	local time_left = (due - Game.time)
+	local secs = string.format("%02.f",time_left%60)
+	local mins = string.format("%02.f",(time_left/60)%60)
+	local hours = string.format("%02.f",(time_left/60/60)%24)
+	local days = string.format(lu.D_DAYS_LEFT,(time_left/60/60/24))
+	return days.." "..hours..":"..mins..":"..secs
+end
+
 
 --_G._reward_time(mission,base)
 -- a tariff (reward) calculator
@@ -102,10 +121,10 @@ _G._local_due = function (station,location,urgency,round_trip)
 	if round_trip then double=2.25 end
 	local dist = dist*double
 	local due
-	if dist < 0.9 then
-		due = Game.time + ((dist/3)*24*60*60)+(4*60*60*(2-urgency))
+	if dist < 0.5 then
+		due = Game.time + ((dist/3)*24*60*60)+(4*60*60*(2.5-urgency))
 	else
-		due = Game.time + ((dist/3)*24*60*60)+((2*double*(2-urgency))*24*60*60)
+		due = Game.time + ((math.sqrt(dist))*24*60*60)+((2*double*(2.5-urgency))*24*60*60)
 	end
 	return due
 end
@@ -114,7 +133,7 @@ end
 _G._remote_due = function (dist,urgency,round_trip)
 	local round=1
 	if round_trip then round=2.25 end
-	return Game.time + (math.sqrt(dist)*24*60*60)+((4*round*(2-urgency))*24*60*60)
+	return Game.time + (math.sqrt(dist)*24*60*60)+((4*round*(2.5-urgency))*24*60*60)
 end
 
 -- a attackers (hostile - pirates) generator
@@ -307,6 +326,11 @@ Output:
 ($22,333,444.56)
 NEG $22,333,444.563
 --]]
+
+function _G._bodyPathToBody(BodyPath)
+	local body = Space.GetBody(BodyPath.bodyIndex) or false
+	return body
+end
 
 function _G.policingArea(ship)
 	local ship = ship or Game.player

@@ -1,6 +1,63 @@
+September 2016
+   * New Features
+     * Set ship texture patterns from lua (#3811)
+
+   * Fixes
+     * Model pattern range and status checking (#3814)
+     * New seed and new locations of star ports for New Hope in Epsilon Eridani (#3818)
+
+   * Internal Changes
+     * Update GasGiant config, detail and initialisation timing (#3792)
+     * Change SAR mission rewards (#3806)
+     * Made NavLights responsible for their billboard rendering (#3809)
+     * Adding an editorconfig file to define coding style (#3810)
+     * Add annotations to ShipDef (#3812)
+     * Additional mesh optimisation (#3813)
+     * Unused files from JobSwarm experiments 4 years ago! (#3816)
+     * Belt and braces approach to sanity checking for patterns (#3817)
+     * Brighter luminosity for random colours (#3815)
+
+August 2016
+   * New Features
+     * F3 and F4 Toggles between worldview and their thing (#3765)
+     * Navbutton added to mission screens (#3736)
+     * Add a TCP Lua console (#3768)
+     * Low altitude hyperjumps are illegal (#3753)
+     * Add button to Settings menus so user can open their Pioneer folder (#3790)
+     * Navigation button update to allow for dynamicBodies as nav targets (SAR and general) (#3789)
+     * Loads of SAR improvements ! (#3795)
+
+   * Fixes
+     * Fix crash in by Search & Rescue missions (#3770)
+     * NaN in your numbers (#3772)
+     * Fix hyperspace star streaks (#3773)
+     * prefix std:: to isnan so it builds on Linux (#3775)
+     * Use ImageMagick to fix the iCCP profile problem (#3778)
+     * Fix crash when jumping into empty system (#3791)
+     * Fix risk of game crash from SAR when landing on wrong planet (#3797)
+     * Fix potential instability in SAR (#3802)
+
+   * Internal Changes
+     * Add a function for typesetting time intervals (#3764)
+     * Restore Starfield colourisation (#3774)
+     * Animated city buildings, instancing improvement (#3777)
+     * Small code cleanup in SAR (#3798)
+     * Make colour range of stars more narrow (#3793)
+
 July 2016
+   * New Features
+     * Point sprite background stars (#3757)
+
+   * Fixes
+     * SAR: fix fuel transfer (#3755)
+     * SAR: fix wrong distance (#3650)
+     * Fix grammar error in module-cargorun (#3748)
+
    * Internal Changes
      * Swap LuaVector for a table (#3747)
+     * Faster float convert (#3751)
+     * Revert my changes to use atoi and atoll (#3754)
+     * XCode now compiles again (#3759)
 
 June 2016
    * New Features

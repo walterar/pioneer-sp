@@ -28,7 +28,8 @@
 "message":"Thachair mearachd"
 },
 "ATMOSPHERIC_SHIELDING":{
-"description":"Used in ShipInfo view, followed by a yes/no depending on if the ship can carry atmospheric shields","message":"Dìonadh àile"
+"description":"Used in ShipInfo view, followed by a yes/no depending on if the ship can carry atmospheric shields",
+"message":"Dìonadh àile"
 },
 "ATTEMPT_TO_REPAIR_HULL":{
 "description":"",
@@ -51,27 +52,32 @@
 "message":"Bòrd-brath"
 },
 "BUY":{
-"description":"Commodities and equipment prices","message":"Ceannaich"
+"description":"Commodities and equipment prices",
+"message":"Ceannaich"
 },
 "BUY_SHIP":{
 "description":"",
 "message":"Ceannaich soitheach"
 },
 "CABINS":{
-"description":"For passengers","message":"Cèibinnean"
+"description":"For passengers",
+"message":"Cèibinnean"
 },
 "CABIN_FREE":{
-"description":"Free capacity for passengers","message":"{amount} saor"
+"description":"Free capacity for passengers",
+"message":"{amount} saor"
 },
 "CABIN_USED":{
-"description":"Passengers using cabins","message":"{amount} 'ga chleachdadh"
+"description":"Passengers using cabins",
+"message":"{amount} 'ga chleachdadh"
 },
 "CANCEL":{
 "description":"",
 "message":"Sguir dheth"
 },
 "CAPACITY":{
-"description":"Capacity of ship to fit more equipment","message":"Tomhas-lìonaidh"
+"description":"Capacity of ship to fit more equipment",
+"message":"Tomhas-lìonaidh"
 },
 "CAPACITY_USED":{
 "description":"",
@@ -90,10 +96,12 @@
 "message":"Rum a chleachdas an carago"
 },
 "CARGO_T_FREE":{
-"description":"t for tonne","message":"{amount}t saor"
+"description":"t for tonne",
+"message":"{amount}t saor"
 },
 "CARGO_T_USED":{
-"description":"t for tonne","message":"{amount}t 'ga chleachdadh"
+"description":"t for tonne",
+"message":"{amount}t 'ga chleachdadh"
 },
 "CASH":{
 "description":"",
@@ -104,7 +112,8 @@
 "message":"Airgead: {money}"
 },
 "CHANGE_BINDING":{
-"description":"Key binding option","message":"Atharraich an nasgadh"
+"description":"Key binding option",
+"message":"Atharraich an nasgadh"
 },
 "CHIEF_MECHANIC":{
 "description":"",
@@ -115,20 +124,24 @@
 "message":"Luaths cuairteach na reul-chuairte"
 },
 "CITY_DETAIL_LEVEL":{
-"description":"Game graphics option","message":"Leibheil mion-shealladh nam bailtean"
+"description":"Game graphics option",
+"message":"Leibheil mion-shealladh nam bailtean"
 },
 "CLEAN":{
-"description":"Legal status of player","message":"Glan"
+"description":"Legal status of player",
+"message":"Glan"
 },
 "CLEAR":{
-"description":"Clear an option in game settings/options menu","message":"Falamhaich"
+"description":"Clear an option in game settings/options menu",
+"message":"Falamhaich"
 },
 "CLIENT":{
 "description":"",
 "message":"Ceannaiche"
 },
 "COMBAT":{
-"description":"Headline for kills and combat rating","message":"Còmhrag"
+"description":"Headline for kills and combat rating",
+"message":"Còmhrag"
 },
 "COMMANDER":{
 "description":"",
@@ -136,20 +149,23 @@
 },
 "COMMODITY_MARKET":{
 "description":"",
-"message":"Margaid bathair-àmh"
+"message":"Margadh bathair-àmh"
 },
 "COMPACT_SCANNER":{
-"description":"Game settings option","message":"Sganair teannta"
+"description":"Game settings option",
+"message":"Sganair teannta"
 },
 "COMPETENT":{
-"description":"Combat rating","message":"Comasach"
+"description":"Combat rating",
+"message":"Comasach"
 },
 "COMPLETED":{
 "description":"",
 "message":"Coileanta"
 },
 "COMPRESS_TEXTURES":{
-"description":"graphics option in game settings menu ","message":"Dùmhlaich na h-innich"
+"description":"graphics option in game settings menu ",
+"message":"Dùmhlaich na h-innich"
 },
 "CONFIRM_PURCHASE":{
 "description":"",
@@ -180,7 +196,8 @@
 "message":"Cha b' urrainn dhuinn an geama a luchdadh:"
 },
 "CREDIBLE":{
-"description":"For player reputation","message":"Creideasach"
+"description":"For player reputation",
+"message":"Creideasach"
 },
 "CREW_CABINS":{
 "description":"",
@@ -191,26 +208,32 @@
 "message":"Clàr an sgioba"
 },
 "CRIMINAL_RECORD":{
-"description":"Past crimes / crime history of character","message":"Clàr nan eucoir"
+"description":"Past crimes / crime history of character",
+"message":"Clàr nan eucoir"
 },
 "DANGEROUS":{
-"description":"Player combat rating","message":"Cunnartach"
+"description":"Player combat rating",
+"message":"Cunnartach"
 },
 "DEADLY":{
-"description":"Player combat rating","message":"Marbhtach"
+"description":"Player combat rating",
+"message":"Marbhtach"
 },
 "DELTA_V":{
 "description":"",
 "message":"Delta-v"
 },
 "DELTA_V_EMPTY":{
-"description":"Delta-v capacity of a ship with no cargo or upgrades","message":"Delta-v (falamh)"
+"description":"Delta-v capacity of a ship with no cargo or upgrades",
+"message":"Delta-v (falamh)"
 },
 "DELTA_V_FULL":{
-"description":"Delta-v capacity of a ship with maximum cargo","message":"Delta-v (làn)"
+"description":"Delta-v capacity of a ship with maximum cargo",
+"message":"Delta-v (làn)"
 },
 "DELTA_V_MAX":{
-"description":"Delta-v capacity of a ship with cargo bay fully loaded with propellant","message":"Delta-v (as motha)"
+"description":"Delta-v capacity of a ship with cargo bay fully loaded with propellant",
+"message":"Delta-v (as motha)"
 },
 "DESCENT_TO_GROUND_SPEED":{
 "description":"",
@@ -221,27 +244,32 @@
 "message":"Mill soitheach an nàmhaid"
 },
 "DISMISS":{
-"description":"Terminate crew memeber's contract","message":"Leig seachad"
+"description":"Terminate crew memeber's contract",
+"message":"Leig seachad"
 },
 "DISPLAY_HUD_TRAILS":{
 "description":"",
 "message":"Seall staranan HUD"
 },
 "DISPLAY_NAV_TUNNELS":{
-"description":"Settings option: hyperspace tunnel effect","message":"Seall tunailean seòladaireachd"
+"description":"Settings option: hyperspace tunnel effect",
+"message":"Seall tunailean seòladaireachd"
 },
 "DISPLAY_SPEED_LINES":{
-"description":"Settings option: effect when travelling in space","message":"Seall loidhnichean luaiths"
+"description":"Settings option: effect when travelling in space",
+"message":"Seall loidhnichean luaiths"
 },
 "DOCK_AT_CURRENT_TARGET":{
 "description":"",
 "message":"Docaich aig an targaid làithreach"
 },
 "DUE":{
-"description":"mission deadline date","message":"Ceann-latha pàighidh"
+"description":"mission deadline date",
+"message":"Ceann-latha pàighidh"
 },
 "DUMPING":{
-"description":"The illegal act of dumping waste","message":"Dumpadh"
+"description":"The illegal act of dumping waste",
+"message":"Dumpadh"
 },
 "D_DAYS_LEFT":{
 "description":"",
@@ -256,27 +284,32 @@
 "message":"Èifeachdan:"
 },
 "ELITE":{
-"description":"Player combat rating","message":"SEANN-EÒLACH"
+"description":"Player combat rating",
+"message":"SEANN-EÒLACH"
 },
 "EMPLOYMENT":{
 "description":"",
 "message":"Obair"
 },
 "ENABLE_ANISOTROPIC_FILTERING":{
-"description":"Use Anisotropic Filtering","message":"Criathradh an-iosa-tropach"
+"description":"Use Anisotropic Filtering",
+"message":"Criathradh an-iosa-tropach"
 },
 "ENABLE_AUTOSAVE":{
-"description":"Allow the game to autosave when docking","message":"Cuir fèin-sàbhaladh an comas"
+"description":"Allow the game to autosave when docking",
+"message":"Cuir fèin-sàbhaladh an comas"
 },
 "ENABLE_COCKPIT":{
-"description":"Game settings option: to use a cockpit 3D model","message":"Cuir cockpit an comas (DEUCHAINNEACH)"
+"description":"Game settings option: to use a cockpit 3D model",
+"message":"Cuir cockpit an comas (DEUCHAINNEACH)"
 },
 "ENABLE_JOYSTICK":{
 "description":"",
 "message":"Cuir joystick an comas"
 },
 "ENGINEERING":{
-"description":"Engineering skills of crew","message":"Innleadaireachd:"
+"description":"Engineering skills of crew",
+"message":"Innleadaireachd:"
 },
 "EQUIPMENT":{
 "description":"",
@@ -284,7 +317,7 @@
 },
 "EQUIPMENT_MARKET":{
 "description":"",
-"message":"Margaid uidheamachd"
+"message":"Margadh uidheamachd"
 },
 "EQUIPPED":{
 "description":"",
@@ -303,13 +336,16 @@
 "message":"Fàg an geama seo"
 },
 "EXPERIENCED":{
-"description":"For player reputation","message":"Eòlach"
+"description":"For player reputation",
+"message":"Eòlach"
 },
 "EXPERT":{
-"description":"For player reputation","message":"Fiosrachail"
+"description":"For player reputation",
+"message":"Fiosrachail"
 },
 "FAILED":{
-"description":"When failed mission","message":"Air fhàilligeadh"
+"description":"When failed mission",
+"message":"Air fhàilligeadh"
 },
 "FEMALE":{
 "description":"",
@@ -332,7 +368,8 @@
 "message":"Mion-shealladh fractalach"
 },
 "FREE":{
-"description":"Used in Ship Information view as in Capacity: 10t (5t free)","message":"saor"
+"description":"Used in Ship Information view as in Capacity: 10t (5t free)",
+"message":"saor"
 },
 "FRONT_WEAPON":{
 "description":"",
@@ -371,7 +408,8 @@
 "message":"Cuir crìoch air a' ghairm."
 },
 "HARMLESS":{
-"description":"Player combat rating","message":"Neoichiontach"
+"description":"Player combat rating",
+"message":"Neoichiontach"
 },
 "HEAVY_CARGO_SHUTTLE":{
 "description":"",
@@ -398,7 +436,8 @@
 "message":"Soitheach thaistealach trom"
 },
 "HIGH":{
-"description":"Game settings option: for graphics resolution","message":"Àrd"
+"description":"Game settings option: for graphics resolution",
+"message":"Àrd"
 },
 "HULL_DOES_NOT_REQUIRE_REPAIR":{
 "description":"",
@@ -428,6 +467,10 @@
 "description":"",
 "message":"Rainse os-fhànais"
 },
+"ILLEGAL_JUMP":{
+"description":"A finable crime",
+"message":"Reckless hyperjump registered"
+},
 "IM_TIRED_OF_WORKING_FOR_NOTHING_DONT_YOU_KNOW_WHAT_A_CONTRACT_IS":{
 "description":"",
 "message":"Tha mi sgìth dhen a bhith 'g obair gun phàigheadh. Nach eil fhios agaibh dè th' ann an cùmhnant?"
@@ -437,10 +480,12 @@
 "message":"Neo-ghnìomhach"
 },
 "INCOMPETENT":{
-"description":"For player reputation","message":"Neo-chomasach"
+"description":"For player reputation",
+"message":"Neo-chomasach"
 },
 "INEXPERIENCED":{
-"description":"For player reputation","message":"Aineolach"
+"description":"For player reputation",
+"message":"Aineolach"
 },
 "INSUFFICIENT_FUNDS":{
 "description":"",
@@ -535,7 +580,8 @@
 "message":"Lobaidh"
 },
 "LOCAL_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Gobhal ionadail"
+"description":"Arm of the Milky Way galaxy",
+"message":"Gobhal ionadail"
 },
 "LOCATED_N_KM_FROM_THE_CENTRE_OF_NAME":{
 "description":"",
@@ -550,7 +596,8 @@
 "message":"Ìseal"
 },
 "LY":{
-"description":"Light year","message":"bl-shol"
+"description":"Light year",
+"message":"bl-shol"
 },
 "MAKE_NEW_FACE":{
 "description":"",
@@ -573,10 +620,12 @@
 "message":"Tomad"
 },
 "MASTER":{
-"description":"For player reputation","message":"Maighstir"
+"description":"For player reputation",
+"message":"Maighstir"
 },
 "MASTER_VOL":{
-"description":"Master sound in settings option","message":"Iomlan:"
+"description":"Master sound in settings option",
+"message":"Iomlan:"
 },
 "MAX":{
 "description":"",
@@ -587,7 +636,8 @@
 "message":"An sgioba as motha"
 },
 "MEDIUM":{
-"description":"Game settings option: graphics resolution","message":"Meadhanach"
+"description":"Game settings option: graphics resolution",
+"message":"Meadhanach"
 },
 "MEDIUM_CARGO_SHUTTLE":{
 "description":"",
@@ -662,10 +712,12 @@
 "message":"Mùch"
 },
 "NAME_OBJECT":{
-"description":"For an item or object","message":"Ainm"
+"description":"For an item or object",
+"message":"Ainm"
 },
 "NAME_PERSON":{
-"description":"For a person","message":"Ainm"
+"description":"For a person",
+"message":"Ainm"
 },
 "NAVIGATION":{
 "description":"",
@@ -684,10 +736,12 @@
 "message":"An t-ath phàigheadh"
 },
 "NO":{
-"description":"Negative answer to a question","message":"Chan eil"
+"description":"Negative answer to a question",
+"message":"Chan eil"
 },
 "NOBODY":{
-"description":"For player reputation","message":"Gun urram"
+"description":"For player reputation",
+"message":"Gun urram"
 },
 "NONE":{
 "description":"",
@@ -698,7 +752,8 @@
 "message":"Chan eil gin 'ga reic san stèisean seo."
 },
 "NORMA_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Gobhal na Riaghailte"
+"description":"Arm of the Milky Way galaxy",
+"message":"Gobhal na Riaghailte"
 },
 "NOTES":{
 "description":"",
@@ -722,7 +777,7 @@
 },
 "N_OCCUPIED_PASSENGER_CABINS":{
 "description":"",
-"message":"{quantity} cèibinnean taistealaich air an còmhnadh"
+"message":"{quantity} cèibinn(ean) taistealaich air an còmhnadh"
 },
 "N_SHIELD_GENERATORS":{
 "description":"",
@@ -730,7 +785,7 @@
 },
 "N_UNOCCUPIED_PASSENGER_CABINS":{
 "description":"",
-"message":"{quantity} cèibinnean taistealaich gun chòmhnadh"
+"message":"{quantity} cèibinn(ean) taistealaich gun chòmhnadh"
 },
 "OFF":{
 "description":"",
@@ -739,6 +794,10 @@
 "OK":{
 "description":"",
 "message":"Ceart ma-thà"
+},
+"OPEN_USER_FOLDER":{
+"description":"",
+"message":"User Folder"
 },
 "OPTIONS":{
 "description":"",
@@ -754,23 +813,27 @@
 },
 "ORBITAL_ANALYSIS_NOTES":{
 "description":"",
-"message":"Thèid luaths cearcallach na reul-cuairte a shealltainn mar luaths beantanach. Mu chòir dhan long a bhith a' siubhal le 90° an comhair aiseal na luinge/{name}.\n\nTha an luaths teàrnaidh cho beag 's a ghabhas agus tha e beantanach cuideachd. Bheir luaths as ìsle le ceum as ìsle cùrsa dhut a dh'eadar-ghearras ris an uachdar aig {name}.\n\nBu chòir don luaths teichidh obrachadh air comhair sam bith cho fad 's nach buail an long ri {name} air an t-slighe.\n\t\t"
+"message":"Thèid luaths cearcallach na reul-cuairte a shealltainn mar luaths beantanach. Mu chòir dhan t-soitheach a bhith a' siubhal le 90° an comhair aiseal an t-soithich/{name}.\n\nTha an luaths teàrnaidh cho beag 's a ghabhas agus tha e beantanach cuideachd. Bheir luaths as ìsle le ceum as ìsle cùrsa dhut a dh'eadar-ghearras ris an uachdar aig {name}.\n\nBu chòir don luaths teichidh obrachadh air comhair sam bith cho fad 's nach buail an soitheach ri {name} air an t-slighe.\n\t\t"
 },
 "OUTER_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Gobhal a-muigh"
+"description":"Arm of the Milky Way galaxy",
+"message":"Gobhal a-muigh"
 },
 "OUTSTANDING_FINES":{
-"description":"Unpaid fines for crimes committed","message":"Càintean ri am pàigheadh"
+"description":"Unpaid fines for crimes committed",
+"message":"Càintean ri am pàigheadh"
 },
 "OWED":{
-"description":"Player owing money to crew members","message":"Fiachan"
+"description":"Player owing money to crew members",
+"message":"Fiachan"
 },
 "PAY_FINE_OF_N":{
 "description":"",
 "message":"Pàigh càin de {amount}"
 },
 "PERSEUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Gobhal Pherseus"
+"description":"Arm of the Milky Way galaxy",
+"message":"Gobhal Pherseus"
 },
 "PERSONAL_INFORMATION":{
 "description":"",
@@ -805,10 +868,12 @@
 "message":"A' phoileas"
 },
 "POOR":{
-"description":"Player combat rating","message":"Bochd"
+"description":"Player combat rating",
+"message":"Bochd"
 },
 "POSITION":{
-"description":"The job title/position of crew memeber","message":"Dreuchd"
+"description":"The job title/position of crew memeber",
+"message":"Dreuchd"
 },
 "PRESS_A_KEY_OR_CONTROLLER_BUTTON":{
 "description":"",
@@ -819,10 +884,12 @@
 "message":"Prìs"
 },
 "PROFESSIONAL":{
-"description":"For player reputation","message":"Ceàirdeach"
+"description":"For player reputation",
+"message":"Ceàirdeach"
 },
 "PUMP_DOWN":{
-"description":"Drain the fuel tank","message":"Pump sìos"
+"description":"Drain the fuel tank",
+"message":"Pump sìos"
 },
 "QUALIFICATION_SCORES":{
 "description":"",
@@ -833,7 +900,8 @@
 "message":"Fàg an-seo"
 },
 "QUIT_CONFIRMATION":{
-"description":"For the checkbox in settings window","message":"Dearbhadh an fhàgail"
+"description":"For the checkbox in settings window",
+"message":"Dearbhadh an fhàgail"
 },
 "RANK":{
 "description":"",
@@ -856,7 +924,8 @@
 "message":"Lìon an connadh"
 },
 "RELIABLE":{
-"description":"For player reputation","message":"Earbsach"
+"description":"For player reputation",
+"message":"Earbsach"
 },
 "REPAIR_X_HULL_DAMAGE_FOR_X":{
 "description":"",
@@ -895,17 +964,20 @@
 "message":"Duais"
 },
 "SAGITTARIUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Gobhal a' Bhoghadair"
+"description":"Arm of the Milky Way galaxy",
+"message":"Gobhal a' Bhoghadair"
 },
 "SAVE":{
 "description":"",
 "message":"Sàbhail"
 },
 "SCOOP_MOUNTS":{
-"description":"How many slots or mounts exist on the ship for fitting SCOOPS (e.g. cargo scoop, fuel scoop, multi-scoop) ","message":"Tàthaidhean sgioba"
+"description":"How many slots or mounts exist on the ship for fitting SCOOPS (e.g. cargo scoop, fuel scoop, multi-scoop) ",
+"message":"Tàthaidhean sgioba"
 },
 "SCUTUM_CENTAURUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Gobhal Scutum-Centaurus"
+"description":"Arm of the Milky Way galaxy",
+"message":"Gobhal Scutum-Centaurus"
 },
 "SELECT":{
 "description":"",
@@ -924,7 +996,8 @@
 "message":"Tagh geama gus a luchdadh..."
 },
 "SELL":{
-"description":"Commodities and equipment prices","message":"Reic"
+"description":"Commodities and equipment prices",
+"message":"Reic"
 },
 "SENSORS":{
 "description":"",
@@ -933,6 +1006,10 @@
 "SENSORS_AND_DEFENCE":{
 "description":"",
 "message":"Mothaichearan 's dìon"
+},
+"SET_AS_TARGET":{
+"description":"",
+"message":"Suidhich an ceann-uidhe mar cheann-uidhe na seòladaireachd."
 },
 "SHIP":{
 "description":"",
@@ -960,7 +1037,7 @@
 },
 "SHIP_MARKET":{
 "description":"",
-"message":"Margaidh shoithichean"
+"message":"Margadh shoithichean"
 },
 "SHIP_REPAIRS":{
 "description":"",
@@ -983,7 +1060,8 @@
 "message":"Tòisich air an Talamh"
 },
 "START_AT_NEW_HOPE":{
-"description":"New Hope is an in game location","message":"Tòisich air Dòchas Ùr"
+"description":"New Hope is an in game location",
+"message":"Tòisich air Dòchas Ùr"
 },
 "STAR_FIELD_DENSITY":{
 "description":"",
@@ -998,10 +1076,12 @@
 "message":"Staid"
 },
 "TECH_CERTIFIED":{
-"description":"Lobby screen shows the tech level (an integer number) of the station","message":"Tha teisteanas teicneolais ìre {tech_level} aig an stèisean seo."
+"description":"Lobby screen shows the tech level (an integer number) of the station",
+"message":"Tha teisteanas teicneolais ìre {tech_level} aig an stèisean seo."
 },
 "TECH_CERTIFIED_MILITARY":{
-"description":"Lobby screen shows the tech level of the station","message":"Tha cead airson teicneolas an airm aig an ionad seo."
+"description":"Lobby screen shows the tech level of the station",
+"message":"Tha cead airson teicneolas an airm aig an ionad seo."
 },
 "THANKS_AND_REMEMBER_TO_BUY_FUEL":{
 "description":"",
@@ -1016,10 +1096,12 @@
 "message":"Tha an soitheach fo smachd an stèisein, a Chomandair."
 },
 "THREE_KPC_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Gobhal 3kpc"
+"description":"Arm of the Milky Way galaxy",
+"message":"Gobhal 3kpc"
 },
 "TOGGLE_MALE_FEMALE":{
-"description":"player gender","message":"Toglaich fireann/boireann"
+"description":"player gender",
+"message":"Toglaich fireann/boireann"
 },
 "TOO_SMALL_FOR_CURRENT_CREW":{
 "description":"",
@@ -1027,7 +1109,7 @@
 },
 "TOO_SMALL_TO_TRANSSHIP":{
 "description":"",
-"message":"Ship is too small to transship your cargo."
+"message":"Tha an soitheach ro bheag airson an carago agad a ghiùlan."
 },
 "TOTAL":{
 "description":"",
@@ -1042,7 +1124,8 @@
 "message":"Malart bathar mì-laghail"
 },
 "TRUSTWORTHY":{
-"description":"For player reputation","message":"Urrasach"
+"description":"For player reputation",
+"message":"Urrasach"
 },
 "TYPE":{
 "description":"",
@@ -1065,10 +1148,12 @@
 "message":"'Ga chleachdadh"
 },
 "VERY_HIGH":{
-"description":"Game settings option: graphic resolution","message":"Glè àrd"
+"description":"Game settings option: graphic resolution",
+"message":"Glè àrd"
 },
 "VERY_LOW":{
-"description":"Game settings option: graphic resolution","message":"Glè ìseal"
+"description":"Game settings option: graphic resolution",
+"message":"Glè ìseal"
 },
 "VIDEO":{
 "description":"",
@@ -1083,10 +1168,12 @@
 "message":"Dùmhlachd-bhreacaidh"
 },
 "VSYNC":{
-"description":"For the checkbox in settings window","message":"VSync"
+"description":"For the checkbox in settings window",
+"message":"VSync"
 },
 "WAGE":{
-"description":"Salary of crew shown in crew roster","message":"Tuarastal"
+"description":"Salary of crew shown in crew roster",
+"message":"Tuarastal"
 },
 "WEIGHT_EMPTY":{
 "description":"",
@@ -1101,13 +1188,16 @@
 "message":"Tha sinn san os-fhànais, a Chomandair."
 },
 "WE_HAVE_NO_BUSINESS_WITH_YOU":{
-"description":"Said by the police to law abiding player","message":"Chan eil gnothach againn ruibh aig an àm seo."
+"description":"Said by the police to law abiding player",
+"message":"Chan eil gnothach againn ruibh aig an àm seo."
 },
 "X_CANNOT_BE_TOLERATED_HERE":{
-"description":"Message to be sent over comms by police when crime is committed by player","message":"Chan fhulaing sinn {crime} ann a sheo!"
+"description":"Message to be sent over comms by police when crime is committed by player",
+"message":"Chan fhulaing sinn {crime} ann a sheo!"
 },
 "YES":{
-"description":"Positive answer to a question","message":"Tha"
+"description":"Positive answer to a question",
+"message":"Tha"
 },
 "YOURE_GOING_TO_REGRET_SACKING_ME":{
 "description":"",
@@ -1146,6 +1236,7 @@
 "message":"Chan eil airgead gu leòr agad"
 },
 "ZOOM":{
-"description":"Label for a zoom (magnification) control bar.","message":"Sùm"
+"description":"Label for a zoom (magnification) control bar.",
+"message":"Sùm"
 }
 }

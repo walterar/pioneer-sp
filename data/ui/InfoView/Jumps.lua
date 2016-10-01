@@ -127,8 +127,9 @@ local jumps = function (tabGroup)
 
 		-- Format Due info
 		local dueLabel = ui:Label(Format.Date(jump.due))
-		local days = math.max(0, (jump.due - Game.time) / (24*60*60))
-		local daysLabel = ui:Label(string.format(l.D_DAYS_LEFT, days)):SetColor({ r = 1.0, g = 0.0, b = 1.0 }) -- purple
+
+--		local days = math.max(0, (jump.due - Game.time) / (24*60*60))
+		local daysLabel = ui:Label(TimeLeft(jump.due)):SetColor({ r = 1.0, g = 0.0, b = 1.0 }) -- purple
 		local dueBox = ui:VBox(2):PackEnd(dueLabel):PackEnd(daysLabel)
 
 		local moreButton = SmallLabeledButton.New(lh.SET_ROUTE)

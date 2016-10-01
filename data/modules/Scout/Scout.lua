@@ -735,7 +735,7 @@ switchEvents = function()
 	Event.Deregister("onShipDocked", onShipDocked)
 	Event.Deregister("onShipLanded", onShipLanded)
 	for ref,mission in pairs(missions) do
-		if mission.location:IsSameSystem(Game.system.path) then
+		if Game.time > mission.due or mission.location:IsSameSystem(Game.system.path) then
 --print("Scout Events activate")
 			Event.Register("onFrameChanged", onFrameChanged)
 			Event.Register("onShipDocked", onShipDocked)

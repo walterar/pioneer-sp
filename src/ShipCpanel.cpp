@@ -325,6 +325,8 @@ void ShipCpanel::OnChangeInfoView(Gui::MultiStateImageButton *b)
 	Pi::BoinkNoise();
 	if (Pi::GetView() != m_game->GetInfoView())
 		Pi::SetView(m_game->GetInfoView());
+	else
+		Pi::SetView(m_game->GetWorldView());
 }
 
 void ShipCpanel::OnChangeToMapView(Gui::MultiStateImageButton *b)
@@ -375,7 +377,11 @@ void ShipCpanel::OnClickTimeaccel(Game::TimeAccel val)
 void ShipCpanel::OnClickComms(Gui::MultiStateImageButton *b)
 {
 	Pi::BoinkNoise();
-	if (Pi::player->GetFlightState() == Ship::DOCKED) Pi::SetView(m_game->GetSpaceStationView());
+	if (Pi::player->GetFlightState() == Ship::DOCKED)
+		if (Pi::GetView() == m_game->GetSpaceStationView())
+			Pi::SetView(m_game->GetWorldView());
+		else
+			Pi::SetView(m_game->GetSpaceStationView());
 	else {
 		Pi::SetView(m_game->GetWorldView());
 		m_game->GetWorldView()->ToggleTargetActions();

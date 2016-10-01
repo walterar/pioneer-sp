@@ -27,6 +27,8 @@ local lm = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous"
 -- Get the UI class
 local ui = Engine.ui
 
+local AU = 149597870700
+
 local num_pirate_taunts = 10
 
 -- minimum $150 reward in local missions
@@ -190,7 +192,6 @@ local makeAdvert = function (station)
 		end
 		if not location or location == station.path then return end
 
-		local AU = 149597870700
 		dist = station:DistanceTo(Space.GetBody(location.bodyIndex))/AU
 		if dist > 60 then return end
 		due = _local_due(station,location,urgency,false)
@@ -380,7 +381,6 @@ local onClick = function (mission)
 	local setTargetButton = SLButton.New(lm.SET_TARGET, 'NORMAL')
 	setTargetButton.button.onClick:Connect(function ()
 		if not NavAssist then MsgBox.Message(lm.NOT_NAV_ASSIST) return end
-
 		if Game.system.path ~= mission.location:GetStarSystem().path then
 			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
 			Music.Play("music/core/fx/Ok", false)
@@ -504,7 +504,7 @@ switchEvents = function()
 	Event.Deregister("onShipDocked", onShipDocked)
 	Event.Deregister("onShipLanded", onShipLanded)
 	for ref,mission in pairs(missions) do
-		if mission.location:IsSameSystem(Game.system.path) then
+		if Game.time > mission.due or mission.location:IsSameSystem(Game.system.path) then
 --print("DeliverPackage Events activate")
 			Event.Register("onFrameChanged", onFrameChanged)
 			Event.Register("onShipDocked", onShipDocked)

@@ -309,8 +309,7 @@ local onChat = function (form, ref, option)
 		if ad.wholesaler then
 			howmuch = string.interp(l["HOWMUCH_WHOLESALER_" .. Engine.rand:Integer(1, getNumberOfFlavours("HOWMUCH_WHOLESALER"))], {
 				amount    = ad.amount,
-				cargoname = ad.cargotype:GetName(),
-			})
+				cargoname = ad.cargotype:GetName()})
 		else
 			if ad.amount > 1 then
 				howmuch = string.interp(l["HOWMUCH_" .. Engine.rand:Integer(1,getNumberOfFlavours("HOWMUCH"))],
@@ -324,7 +323,7 @@ local onChat = function (form, ref, option)
 
 	elseif option == 3 then
 		if (Game.player.freeCapacity < ad.amount and not ad.pickup)
-			or ShipDef[Game.player.shipId].capacity < ad.amount
+			or Game.player.totalCargo < ad.amount
 		then
 			form:SetMessage(l.YOU_DO_NOT_HAVE_ENOUGH_CARGO_SPACE_ON_YOUR_SHIP)
 			return
@@ -428,6 +427,8 @@ local randomCargo = function()
 end
 
 
+
+local AU = 149597870700
 local makeAdvert = function (station)
 	local reward, due, location, way_trip, return_trip, dist, amount
 	local risk, wholesaler, pickup, branch, cargotype, missiontype
@@ -450,7 +451,6 @@ local makeAdvert = function (station)
 		wholesaler = false -- no local wholesaler delivery
 		pickup = Engine.rand:Number(0, 1) > 0.75 and true or false
 
-		local AU = 149597870700
 		local dist = station:DistanceTo(Space.GetBody(location.bodyIndex))/AU
 		local reward_base = 350
 
@@ -577,7 +577,6 @@ end
 
 	local hostilactive = false
 local onFrameChanged = function (body)
-----print("CargoRun onFrameChanged body="..body.label)
 	if hostilactive then return end
 	if body:isa("Ship") and body:IsPlayer() and body.frameBody ~= nil then
 		for ref,mission in pairs(missions) do
@@ -699,14 +698,10 @@ local onShipDocked = function (player, station)
 			remove = true
 		end
 		if remove then
-			print("CargoRun Cierra misión\nmission.status = "..mission.status.."\nmission.location = "..mission.location:GetSystemBody().name)
-
 			mission.status = "CLOSED"
 			mission:Remove()
 			missions[ref] = nil
 			remove = false
-
-			print("CargoRun misión cerrada\nmission.status = "..mission.status.."\nmission.location = "..mission.location:GetSystemBody().name)
 		end
 	end
 	switchEvents()
@@ -1057,13 +1052,11 @@ end
 
 switchEvents = function()
 	local status = false
---print("CargoRun Events deactivated")
 	Event.Deregister("onFrameChanged", onFrameChanged)
 	Event.Deregister("onShipDocked", onShipDocked)
 --	Event.Deregister("onShipLanded", onShipLanded)
 	for ref,m in pairs(missions) do
-		if m.location and m.location:IsSameSystem(Game.system.path) then
---print("CargoRun Events activate")
+		if Game.time > m.due or m.location:IsSameSystem(Game.system.path) then
 			Event.Register("onFrameChanged", onFrameChanged)
 			Event.Register("onShipDocked", onShipDocked)
 --			Event.Register("onShipLanded", onShipLanded)

@@ -17,6 +17,7 @@ local Eq         = import("Equipment")
 local StarSystem = import("StarSystem")--XXX
 local Laws       = import("Laws")
 local Format     = import("Format")
+local Music      = import("Music")
 
 local misc       = Eq.misc
 local laser      = Eq.laser
@@ -332,7 +333,7 @@ print(TraffiShip[i].label.." NOT UNDOCK.")
 			ship:AIEnterLowOrbit(target)
 			if Engine.rand:Integer(1) < 1
 				or ship == Game.player:GetCombatTarget() then-- XXX hyperspace
-				Timer:CallAt(Game.time + 5, function ()
+				Timer:CallAt(Game.time+ShipDef[ship.shipId].hyperdriveClass+5, function ()
 					if not ShipExists(ship)
 						or ship.flightState == "DOCKING"
 						or ship.flightState == "UNDOCKING"
@@ -618,6 +619,7 @@ local actionPolice = function ()
 			Police:AddEquip(misc.laser_cooling_booster)
 		end
 		local crime = "ESCAPE"
+		Music.Play("music/core/fx/PoliceSiren",false)
 		player:AddCrime(crime, crime_fine(crime))
 		pol_ai_compl = false
 		Police:SetInvulnerable(false)
@@ -650,6 +652,9 @@ function sensorDistance (every)
 	local spawnErased = false
 	local distance_reached = false
 	local system = Game.system
+	local police = system.faction.policeName.." "..basePort.label
+	local legalDist = 5000
+	local alert = string.interp(lm.DO_NOT_JUMP_TO_HYPERSPACE,{legalDist = Format.Distance(legalDist)})
 	Timer:CallEvery(every, function ()
 		if Game.system ~= system then return true end-- verifica no salto hiperespacial aquí
 		if not basePort then return false end
@@ -658,6 +663,7 @@ function sensorDistance (every)
 		if playerStatus == "outbound" then
 			if distance > 300 and distance_reached == false then--XXX
 				distance_reached = true
+				Comms.ImportantMessage(alert, police)
 				if fineDetect then
 					warning = false
 					actionPolice()
@@ -784,6 +790,8 @@ end
 local onLeaveSystem = function (ship)
 	if ship:IsPlayer() then
 		ship:CancelAI()
+--		local distance = ship:DistanceTo(Game.player:FindNearestTo("SPACESTATION"))
+--		local latitude, longitude, altitude = ship:GetGroundPosition()
 		if distance and distance < 2500 then
 			local money = crime_fine("ILLEGAL_JUMP")
 			Game.player:AddCrime("ILLEGAL_JUMP", money)
@@ -846,6 +854,13 @@ local onGameStart = function ()
 
 		activateON = false
 		traffic_docked()
+		if basePort and Game.player.flightState == "FLYING"
+			and Game.player:DistanceTo(basePort) < 1000 then
+			playerStatus = "outbound"
+			sensorDistance(1)
+			local target = Game.player:FindNearestTo("PLANET") or ship:FindNearestTo("STAR")
+			Game.player:AIEnterLowOrbit(target)
+		end
 	else
 		reinitialize()
 		spawnShipsStatics()

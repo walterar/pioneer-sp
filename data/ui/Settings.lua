@@ -434,8 +434,9 @@ ui.templates.SettingsInGame = function ()
 				end
 			},
 			{ text = l.RETURN_TO_GAME, onClick = Game.SwitchView },
-			{ text = l.EXIT_THIS_GAME, onClick = Game.EndGame }
---			{ text = l.EXIT_THIS_GAME, onClick = Game.EndGame, last_exit_game() }
+			{ text = l.EXIT_THIS_GAME, onClick = function () Engine.Quit() end },
+--			{ text = l.EXIT_THIS_GAME, onClick = Game.EndGame },
+--			{ text = l.OPEN_USER_FOLDER, onClick = Engine.OpenBrowseUserFolder, toDisable = function () return Engine.CanBrowseUserFolder==false end }
 		}
 	})
 end

@@ -45,12 +45,12 @@ end
 
 local ChekOverdue = function ()
 	for i,v in pairs(Character.persistent.player.hjumps) do
-		if Game.time > v.due+60 then
+		if Game.time >= v.due+60 then
 			table.remove(Character.persistent.player.hjumps,i)
 		end
 	end
 	for i,v in pairs(ships_jumped) do
-		if Game.time > v.dest_time+60 then
+		if Game.time >= v.dest_time+60 then
 			table.remove(ships_jumped,i)
 		end
 	end
@@ -94,6 +94,8 @@ _G.ShipJump = function (ship)
 				dest_path   = dest_path,
 				from_path   = from_path
 			}
+			if Game.player:GetNavTarget() == ship then Game.player:SetNavTarget() end
+			if Game.player:GetCombatTarget() == ship then Game.player:SetCombatTarget() end
 			status, fuel, duration = ship:HyperjumpTo(dest_path)
 			if not tracingJumps then ship = nil return true end
 			if status == "OK" then
@@ -135,6 +137,34 @@ _G.ShipJump = function (ship)
 end
 
 local IncomingJump = function ()
+--[[-- WIP
+	if ShipExists(targetShip) then
+		local direction, distance, velocity
+		local target = {}
+		Timer:CallEvery(2, function ()
+
+			if targetShip.flightState == "FLYING" then
+				target = targetShip:FindNearestTo("SPACESTATION")
+				target.typ = "SPACESTATION"
+				if not target then target = targetShip:FindNearestTo("PLANET")
+				target.typ = "PLANET"
+				if not target then target = targetShip:FindNearestTo("STAR")
+				target.typ = "STAR"
+				distance = targetShip:DistanceTo(target)
+				velocity = targetShip:GetVelocity()
+				if distance > 500 and velocity < 1000000--XXX then
+					direction = distance
+
+			ShipJump(targetShip)
+
+		end
+	end
+
+	if ship.flightState == "DOCKING"
+		or ship.flightState == "UNDOCKING"
+		or ship.flightState == "HYPERSPACE" then
+	return end
+--]]
 	local incoming
 	ChekOverdue()
 	for i,v in pairs(ships_jumped) do
@@ -182,6 +212,7 @@ local IncomingJump = function ()
 							if ShipExists(targetShip) and targetShip.flightState ~= "HYPERSPACE"then
 								targetShip:SetLabel(v.label)
 								targetShip:AddEquip(hyperdrive)
+--								targetShip:AddEquip('HYDROGEN',(math.floor(v.engineClass ^ 2) / 2))-- old style
 								targetShip:AddEquip(hyperfuel,(math.floor(v.engineClass ^ 2) / 2))
 								targetShip:AddEquip(Eq.misc.atmospheric_shielding)
 								targetShip:AddEquip(Eq.misc.scanner)
@@ -189,8 +220,14 @@ local IncomingJump = function ()
 								targetShip:AddEquip(Eq.misc.shield_generator,v.shields)
 								targetShip:AddEquip(v.laser_front)
 								targetShip:SetFuelPercent()
+--							targetShip:AddEquip(Eq.misc.shield_energy_booster)
+--							targetShip:AddEquip(Eq.misc.ecm_advanced)
+--							targetShip:AddEquip(Eq.misc.ecm_basic)
+--							targetShip:AddEquip(Eq.misc.hull_autorepair)
+--							targetShip:AddEquip(Eq.misc.cargo_life_support)
 								if targetShip:DistanceTo(Game.player) < 1e4
 								or Game.player:GetCombatTarget() == targetShip then
+--									Game.player:SetCombatTarget()
 									Game.player:SetNavTarget()
 									targetShip:AIKill(Game.player)
 									print(targetShip.label.." attacks to "..Game.player.label)
@@ -316,9 +353,11 @@ end
 
 switchEvents = function()
 	local status = false
+--print("Hyperjumps Events deactivated")
 	Event.Deregister("onShipDocked", onShipDocked)
 	Event.Deregister("onShipDestroyed", onShipDestroyed)
 	if (ships_jumped and #ships_jumped > 0) or ShipExists(targetShip) then
+--print("Hyperjumps Events activate")
 		Event.Register("onShipDocked", onShipDocked)
 		Event.Register("onShipDestroyed", onShipDestroyed)
 		status = true
@@ -326,6 +365,8 @@ switchEvents = function()
 	return status
 end
 
+--Event.Register("onShipDocked", onShipDocked)
+--Event.Register("onShipDestroyed", onShipDestroyed)
 Event.Register("onGameStart", onGameStart)
 Event.Register("onEnterSystem", onEnterSystem)
 

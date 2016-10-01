@@ -79,7 +79,7 @@ Event = {
 	Register = function (name, cb)
 		if not callbacks[name] then callbacks[name] = {} end
 		callbacks[name][cb] = cb;
-        if not do_callback[name] then do_callback[name] = do_callback_normal end
+		if not do_callback[name] then do_callback[name] = do_callback_normal end
 	end,
 
 	--

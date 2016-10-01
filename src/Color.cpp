@@ -23,7 +23,7 @@ const Color4ub Color::BLUE      = Color(0, 0, 255, 255);
 const Color4ub Color::YELLOW    = Color(255, 255, 0, 255);
 const Color4ub Color::GRAY      = Color(128,128,128,255);
 const Color4ub Color::STEELBLUE = Color(68, 130, 181, 255);
-const Color4ub Color::BLANK = Color(0, 0, 0, 0);
+const Color4ub Color::BLANK     = Color(0, 0, 0, 0);
 const Color4ub Color::LINES     = Color(45,45,90,255);
 const Color4ub Color::TRAIL     = Color(90,90,45,255);
 

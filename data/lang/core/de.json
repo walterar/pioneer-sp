@@ -563,9 +563,17 @@
 "description":"",
 "message":"Hyperraumsprung abgebrochen."
 },
+"HYPERSPACE_JUMP_DISABLED":{
+"description":"Mouse over text for hyperdrive button on ship control panel",
+"message":"Hyperraumantrieb deaktiviert"
+},
 "HYPERSPACE_JUMP_ENGAGE":{
 "description":"Mouse over text for hyperdrive button on ship control panel",
 "message":"Hyperraumantrieb anschalten"
+},
+"HYPERSPACE_JUMP_FORBIDDEN":{
+"description":"Mouse over text for hyperdrive button on ship control panel",
+"message":"Hyperraumantriebverbotszone"
 },
 "HYPERSPACE_TARGET":{
 "description":"",
@@ -642,6 +650,10 @@
 "JOY_AXIS":{
 "description":"Regarding joystick",
 "message":"%{sign}%joyname %axis Achse"
+},
+"JUMP_COMPLETE":{
+"description":"",
+"message":"Sprungfortschritt: %percent%%"
 },
 "KM_S_RELATIVE_TO":{
 "description":"",
@@ -1174,10 +1186,6 @@
 "PRESSURE_N_ATMOSPHERES":{
 "description":"",
 "message":"Druck: %pressure{f.2} atm"
-},
-"PROBABILITY_OF_ARRIVAL_X_PERCENT":{
-"description":"",
-"message":"Ankunftswahrscheinlichkeit: %probability%%"
 },
 "QUADRUPLE_SYSTEM":{
 "description":"",
@@ -1732,11 +1740,32 @@
 "message":"Unerforschtes System. Informationen über den Zentralstern wurden per Teleskop gesammelt, aber es sind keine Informationen über Planeten verfügbar."
 },
 "UNIT_AU":{
-"description":"Distance unit: an astronomical unit, radius of Earth's orbit","message":"AE"
+"description":"Distance unit: an astronomical unit, radius of Earth's orbit",
+"message":"AE"
+},
+"UNIT_DAYS":{
+"description":"Duration unit: one 24-hour day",
+"message":"d"
+},
+"UNIT_HOURS":{
+"description":"Duration unit: one 60-minute hour",
+"message":"h"
 },
 "UNIT_LY":{
 "description":"Distance unit: a light year",
 "message":"Lj"
+},
+"UNIT_MINUTES":{
+"description":"Duration unit: one 60-second minute",
+"message":"min"
+},
+"UNIT_SECONDS":{
+"description":"Duration unit: one second",
+"message":"s"
+},
+"UNIT_WEEKS":{
+"description":"Duration unit: one 7-day week",
+"message":"W."
 },
 "UNKNOWN":{
 "description":"",

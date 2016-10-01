@@ -9,11 +9,11 @@
 },
 "BODIES":{
 "description":"",
-"message":"Cuerpos"
+"message":"cuerpos mayores"
 },
 "BODY":{
 "description":"",
-"message":"cuerpo"
+"message":"cuerpo mayor"
 },
 "DISCOVERED_HIDDEN_BASES":{
 "description":"",
@@ -21,7 +21,7 @@
 },
 "EXPLORING_SYSTEM":{
 "description":"",
-"message":"Explorando sistema con {bodycount} {bodies} mayores."
+"message":"Explorando sistema con {bodycount} {bodies}"
 },
 "YOUR_FUEL_TANK_IS_ALMOST_EMPTY":{
 "description":"",

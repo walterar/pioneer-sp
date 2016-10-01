@@ -563,9 +563,17 @@
 "description":"",
 "message":"Hipersalto abortado."
 },
-"HYPERSPACE_JUMP_ENGAGE" : {
-"description" : "Mouse over text for hyperdrive button on ship control panel",
-"message" : "Iniciar Hipersalto"
+"HYPERSPACE_JUMP_DISABLED":{
+"description":"Mouse over text for hyperdrive button on ship control panel",
+"message":"Hiperimpulsor no funcional"
+},
+"HYPERSPACE_JUMP_ENGAGE":{
+"description":"Mouse over text for hyperdrive button on ship control panel",
+"message":"Iniciar Hipersalto"
+},
+"HYPERSPACE_JUMP_FORBIDDEN":{
+"description":"Mouse over text for hyperdrive button on ship control panel",
+"message":"Zona prohibida para hiperimpulsor"
 },
 "HYPERSPACE_TARGET":{
 "description":"",
@@ -642,6 +650,10 @@
 "JOY_AXIS":{
 "description":"Regarding joystick",
 "message":"Eje %{sign}%joyname %axis"
+},
+"JUMP_COMPLETE":{
+"description":"",
+"message":"Salto completado: %percent%%"
 },
 "KM_S_RELATIVE_TO":{
 "description":"",
@@ -1175,10 +1187,6 @@
 "description":"",
 "message":"P: %pressure{f.2} atm"
 },
-"PROBABILITY_OF_ARRIVAL_X_PERCENT":{
-"description":"",
-"message":"Progreso: %probability%%"
-},
 "QUADRUPLE_SYSTEM":{
 "description":"",
 "message":"Sistema cuádruple"
@@ -1221,15 +1229,15 @@
 },
 "ROLL":{
 "description":"",
-"message":"Girar"
+"message":"Alabeo"
 },
 "ROLL_LEFT":{
 "description":"",
-"message":"Rolar izquierda"
+"message":"Alabeo a izquierda"
 },
 "ROLL_RIGHT":{
 "description":"",
-"message":"Rolar derecha"
+"message":"Alabeo a derecha"
 },
 "ROTATE_DOWN":{
 "description":"",
@@ -1735,9 +1743,29 @@
 "description" : "Distance unit: an astronomical unit, radius of Earth's orbit",
 "message":"Au"
 },
+"UNIT_DAYS":{
+"description":"Duration unit: one 24-hour day",
+"message":"d"
+},
+"UNIT_HOURS":{
+"description":"Duration unit: one 60-minute hour",
+"message":"h"
+},
 "UNIT_LY":{
 "description":"Distance unit: a light year",
-"message":"Yl"
+"message":"Ly"
+},
+"UNIT_MINUTES":{
+"description":"Duration unit: one 60-second minute",
+"message":"m"
+},
+"UNIT_SECONDS":{
+"description":"Duration unit: one second",
+"message":"s"
+},
+"UNIT_WEEKS":{
+"description":"Duration unit: one 7-day week",
+"message":"s"
 },
 "UNKNOWN":{
 "description":"",
@@ -1813,15 +1841,15 @@
 },
 "YAW":{
 "description":"",
-"message":"Girar"
+"message":"Guiñada"
 },
 "YAW_LEFT":{
 "description":"",
-"message":"Girar izquierda"
+"message":"Guiñada izquierda"
 },
 "YAW_RIGHT":{
 "description":"",
-"message":"Girar derecha"
+"message":"Guiñada derecha"
 },
 "YOUNG_FARMING_COLONY":{
 "description":"",

@@ -20,7 +20,8 @@
 "message":"Внимание! Это будет стоить вам дорого. Ваша жизнь не стоит "
 },
 "BUY":{
-"description":"Commodities and equipment prices","message":"покупка"
+"description":"Commodities and equipment prices",
+"message":"покупка"
 },
 "CAPACITY":{
 "description":"",
@@ -53,6 +54,14 @@
 "DAMAGE_REPORT":{
 "description":"",
 "message":"Отчет об Ущербе"
+},
+"DO_NOT_FORGET_TO_VISIT":{
+"description":"Traffic.lua",
+"message":"Do not forget to visit {station}, just {dist} from here."
+},
+"DO_NOT_JUMP_TO_HYPERSPACE":{
+"description":"Traffic.lua",
+"message":"WARNING! Do not jump to hyperspace less than {legalDist} from the station"
 },
 "ENTER_HIGH_ORBIT_AT_CURRENT_TARGET":{
 "description":"",
@@ -231,7 +240,8 @@
 "message":"Район риска"
 },
 "SELL":{
-"description":"Commodities and equipment prices","message":"продажа"
+"description":"Commodities and equipment prices",
+"message":"продажа"
 },
 "SET_TARGET":{
 "description":"",
@@ -272,6 +282,10 @@
 "UNDOCK_AND_ENTER_LOW_ORBIT":{
 "description":"",
 "message":"Запуск и введите низкой орбите, на текущей цели"
+},
+"UNKNOWN":{
+"description":"ui-scout",
+"message":"Unknown"
 },
 "WARNING_YOU_MUST_GO_BACK":{
 "description":"Traffic",

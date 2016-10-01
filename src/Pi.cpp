@@ -96,6 +96,7 @@ sigc::signal<void> Pi::onPlayerChangeFlightControlState;
 LuaSerializer *Pi::luaSerializer;
 LuaTimer *Pi::luaTimer;
 LuaNameGen *Pi::luaNameGen;
+//ServerAgent *Pi::serverAgent;
 int Pi::keyModState;
 std::map<SDL_Keycode,bool> Pi::keyState; // XXX SDL2 SDLK_LAST
 char Pi::mouseButton[6];
@@ -278,6 +279,7 @@ static void LuaInit()
 	LuaLang::Register();
 	LuaEngine::Register();
 	LuaFileSystem::Register();
+//	LuaServerAgent::Register();
 	LuaGame::Register();
 	LuaComms::Register();
 	LuaFormat::Register();
@@ -416,9 +418,9 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 	if (strlen(PIONEERSP_EXTRAVERSION)) version += " (" PIONEERSP_EXTRAVERSION ")";
 	const char* platformName = SDL_GetPlatform();
 	if(platformName)
-		Output("Pioneer Scout Plus G28f %s on: %s\n\n", version.c_str(), platformName);
+		Output("Pioneer Scout Plus G29f %s on: %s\n\n", version.c_str(), platformName);
 	else
-		Output("Pioneer Scout Plus G28f %s but could not detect platform name.\n\n", version.c_str());
+		Output("Pioneer Scout Plus G29f %s but could not detect platform name.\n\n", version.c_str());
 
 	Output("%s\n", OS::GetOSInfoString().c_str());
 
@@ -516,6 +518,19 @@ void Pi::Init(const std::map<std::string,std::string> &options, bool no_gui)
 		Graphics::GetScreenHeight(),
 		ui_scale));
 
+/*	Pi::serverAgent = 0;
+	if (config->Int("EnableServerAgent")) {
+		const std::string endpoint(config->String("ServerEndpoint"));
+		if (endpoint.size() > 0) {
+			Output("Server agent enabled, endpoint: %s\n", endpoint.c_str());
+			Pi::serverAgent = new HTTPServerAgent(endpoint);
+		}
+	}
+	if (!Pi::serverAgent) {
+		Output("Server agent disabled\n");
+		Pi::serverAgent = new NullServerAgent();
+	}
+*/
 	LuaInit();
 
 	// Gui::Init shouldn't initialise any VBOs, since we haven't tested
@@ -1128,6 +1143,13 @@ void Pi::StartGame()
 	Pi::game->GetCpan()->SetAlertState(Ship::ALERT_NONE);
 	SetView(game->GetWorldView());
 
+/*#ifdef REMOTE_LUA_REPL
+	#ifndef REMOTE_LUA_REPL_PORT
+	#define REMOTE_LUA_REPL_PORT 12345
+	#endif
+	luaConsole->OpenTCPDebugConnection(REMOTE_LUA_REPL_PORT);
+#endif
+*/
 	// fire event before the first frame
 	LuaEvent::Queue("onGameStart");
 	LuaEvent::Emit();
@@ -1185,6 +1207,7 @@ void Pi::Start()
 		_time += Pi::frameTime;
 		last_time = SDL_GetTicks();
 
+//		Pi::serverAgent->ProcessResponses();
 	}
 
 	ui->DropAllLayers();
@@ -1261,6 +1284,8 @@ void Pi::MainLoop()
 	while (Pi::game) {
 		PROFILE_SCOPED()
 
+//		Pi::serverAgent->ProcessResponses();
+
 		const Uint32 newTicks = SDL_GetTicks();
 		double newTime = 0.001 * double(newTicks);
 		Pi::frameTime = newTime - currentTime;
@@ -1305,6 +1330,7 @@ void Pi::MainLoop()
 					Pi::SetView(0);
 					Pi::TombStoneLoop();
 					Pi::EndGame();
+					Pi::Quit();
 					break;
 				}
 			} else {
@@ -1333,6 +1359,11 @@ void Pi::MainLoop()
 		// Gui::Draw so that labels drawn to screen can have mouse events correctly
 		// detected. Gui::Draw wipes memory of label positions.
 		Pi::HandleEvents();
+
+/*#ifdef REMOTE_LUA_REPL
+		Pi::luaConsole->HandleTCPDebugConnections();
+#endif
+*/
 		if( Pi::bRequestEndGame ) {
 			Pi::EndGame();
 		}

@@ -1,28 +1,37 @@
 -- Autosave.lua for Pioneer Scout+ by walterar Copyright © 2012-2016 <walterar2@gmail.com>
--- this is an code adapted for Scout+ of idea and code of John Bartholomew
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- Work in progress.--
 
-local Game  = import("Game")
+local Game   = import("Game")
 local Engine = import("Engine")
-local Event = import("Event")
-local Timer = import("Timer")
+local Event  = import("Event")
+local Timer  = import("Timer")
 
-local function Saver(savename)
-	return function (ship)
-		if ship and ship:IsPlayer() and Engine.GetAutosaveEnabled() then
-			Timer:CallAt(Game.time+5, function ()--XXX
-			Game.SaveGame(savename)
-			end)
-		end
-	end
+local onShipDocked = function (ship, station)
+	if not ship:IsPlayer() or not Engine.GetAutosaveEnabled() then return end
+	Timer:CallAt(Game.time+5, function ()--XXX
+		Game.SaveGame('docked-in_'..station.label)
+	end)
 end
 
---	if Engine.GetAutosaveEnable == 0 then
---		return
---	end
+local onShipLanded = function (ship, body)
+	if not ship:IsPlayer() or not Engine.GetAutosaveEnabled() then return end
+	Timer:CallAt(Game.time+5, function ()--XXX
+		Game.SaveGame('landed-in_'..body.label)
+	end)
+end
 
-local SaveDocked   = Saver('_last-docked')
+local onShipUndocked = function (ship, station)
+	if not ship:IsPlayer() or not Engine.GetAutosaveEnabled() then return end
+	Game.SaveGame('undock-of_'..station.label)
+end
 
-Event.Register('onShipDocked', SaveDocked)
-Event.Register('onShipLanded', SaveDocked)
+local onShipBlastOff = function (ship, body)
+	if not ship:IsPlayer() or not Engine.GetAutosaveEnabled() then return end
+	Game.SaveGame('blast-of_'..body.label)
+end
+
+Event.Register("onShipBlastOff", onShipBlastOff)
+Event.Register("onShipUndocked", onShipUndocked)
+Event.Register('onShipDocked', onShipDocked)
+Event.Register('onShipLanded', onShipLanded)

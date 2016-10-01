@@ -447,6 +447,14 @@
 "description":"custom cargo",
 "message":"Semi-terminados"
 },
+"SET_AS_TARGET":{
+"description":"",
+"message":"Establecer ruta de navegación"
+},
+"SET_RETURN_ROUTE":{
+"description":"",
+"message":"Establecer ruta de retorno"
+},
 "SPACEPORT":{
 "description":"",
 "message":"Puerto espacial:"

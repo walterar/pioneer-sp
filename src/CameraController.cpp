@@ -9,10 +9,10 @@
 #include "json/JsonUtils.h"
 
 CameraController::CameraController(RefCountedPtr<CameraContext> camera, const Ship *ship) :
-m_camera(camera),
-m_ship(ship),
-m_pos(0.0),
-m_orient(matrix3x3d::Identity())
+	m_camera(camera),
+	m_ship(ship),
+	m_pos(0.0),
+	m_orient(matrix3x3d::Identity())
 {
 }
 
@@ -190,11 +190,11 @@ void InternalCameraController::LoadFromJson(const Json::Value &jsonObj)
 }
 
 ExternalCameraController::ExternalCameraController(RefCountedPtr<CameraContext> camera, const Ship *ship) :
-MoveableCameraController(camera, ship),
-m_dist(200), m_distTo(m_dist),
-m_rotX(0),
-m_rotY(0),
-m_extOrient(matrix3x3d::Identity())
+	MoveableCameraController(camera, ship),
+	m_dist(200), m_distTo(m_dist),
+	m_rotX(0),
+	m_rotY(0),
+	m_extOrient(matrix3x3d::Identity())
 {
 }
 
@@ -298,9 +298,9 @@ void ExternalCameraController::LoadFromJson(const Json::Value &jsonObj)
 }
 
 SiderealCameraController::SiderealCameraController(RefCountedPtr<CameraContext> camera, const Ship *ship) :
-MoveableCameraController(camera, ship),
-m_dist(200), m_distTo(m_dist),
-m_sidOrient(matrix3x3d::Identity())
+	MoveableCameraController(camera, ship),
+	m_dist(200), m_distTo(m_dist),
+	m_sidOrient(matrix3x3d::Identity())
 {
 }
 

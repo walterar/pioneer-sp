@@ -221,13 +221,11 @@ void SpaceStation::InitStation()
 
 	SceneGraph::ModelSkin skin;
 	skin.SetDecal("scout");
-
+	
+	skin.SetRandomColors(rand);
+	skin.Apply(model);
 	if (model->SupportsPatterns()) {
-		skin.SetRandomColors(rand);
-		skin.Apply(model);
-		model->SetPattern(rand.Int32(0, model->GetNumPatterns()));
-	} else {
-		skin.Apply(model);
+		model->SetPattern(rand.Int32(0, model->GetNumPatterns()-1));
 	}
 }
 
@@ -620,6 +618,7 @@ void SpaceStation::Render(Graphics::Renderer *r, const Camera *camera, const vec
 		m_adjacentCity->Render(r, camera->GetContext()->GetFrustum(), this, viewCoords, viewTransform);
 
 		RenderModel(r, camera, viewCoords, viewTransform, false);
+		m_navLights->Render(r);
 
 		ResetLighting(r, oldLights, oldAmbient);
 

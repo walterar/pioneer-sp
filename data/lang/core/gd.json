@@ -563,9 +563,17 @@
 "description":"",
 "message":"Chaidh sgur dhen leum os-fhànais."
 },
+"HYPERSPACE_JUMP_DISABLED":{
+"description":"Mouse over text for hyperdrive button on ship control panel",
+"message":"Os-dhraibh à comas"
+},
 "HYPERSPACE_JUMP_ENGAGE":{
 "description":"Mouse over text for hyperdrive button on ship control panel",
 "message":"Cuir an draibh os-fhànais air"
+},
+"HYPERSPACE_JUMP_FORBIDDEN":{
+"description":"Mouse over text for hyperdrive button on ship control panel",
+"message":"Chan eil os-dhraibh ceadaichte an-seo"
 },
 "HYPERSPACE_TARGET":{
 "description":"",
@@ -642,6 +650,10 @@
 "JOY_AXIS":{
 "description":"Regarding joystick",
 "message":"%{sign}%joyname aiseal %axis"
+},
+"JUMP_COMPLETE":{
+"description":"",
+"message":"Tha %percent%% dhen leum coileanta"
 },
 "KM_S_RELATIVE_TO":{
 "description":"",
@@ -1174,10 +1186,6 @@
 "PRESSURE_N_ATMOSPHERES":{
 "description":"",
 "message":"B: %pressure{f.2} atm"
-},
-"PROBABILITY_OF_ARRIVAL_X_PERCENT":{
-"description":"",
-"message":"Coltachd na ruigsinn: %probability%%"
 },
 "QUADRUPLE_SYSTEM":{
 "description":"",
@@ -1732,11 +1740,32 @@
 "message":"Siostam gun rùrachadh. Chaidh fiosrachadh rèile a chruinneachadh le prosbaig aig astar, ach chan eil fiosrachadh mu na planaidean ri làimh."
 },
 "UNIT_AU":{
-"description":"Distance unit: an astronomical unit, radius of Earth's orbit","message":"AU"
+"description":"Distance unit: an astronomical unit, radius of Earth's orbit",
+"message":"AU"
+},
+"UNIT_DAYS":{
+"description":"Duration unit: one 24-hour day",
+"message":"l"
+},
+"UNIT_HOURS":{
+"description":"Duration unit: one 60-minute hour",
+"message":"u"
 },
 "UNIT_LY":{
 "description":"Distance unit: a light year",
 "message":"Ly"
+},
+"UNIT_MINUTES":{
+"description":"Duration unit: one 60-second minute",
+"message":"m"
+},
+"UNIT_SECONDS":{
+"description":"Duration unit: one second",
+"message":"d"
+},
+"UNIT_WEEKS":{
+"description":"Duration unit: one 7-day week",
+"message":"s"
 },
 "UNKNOWN":{
 "description":"",

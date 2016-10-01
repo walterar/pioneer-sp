@@ -60,40 +60,48 @@
 "message":"SERVIZIO CARGO. Richiediamo un'astronave per una consegna verso il sistema {system}."
 },
 "ALUMINIUM_TUBES":{
-"description":"custom cargo","message":"Tubi di alluminio"
+"description":"custom cargo",
+"message":"Tubi di alluminio"
 },
 "AMOUNT":{
-"description":"Shown in mission summary. The amount of cargo","message":"Quantità:"
+"description":"Shown in mission summary. The amount of cargo",
+"message":"Quantità:"
 },
 "ART_OBJECTS":{
-"description":"custom cargo","message":"Oggetti d'arte"
+"description":"custom cargo",
+"message":"Oggetti d'arte"
 },
 "CARGO":{
 "description":"",
 "message":"Cargo:"
 },
 "CARGORUN":{
-"description":"Name of mission type","message":"Trasporto cargo"
+"description":"Name of mission type",
+"message":"Trasporto cargo"
 },
 "CEASE_FIRE":{
 "description":"",
 "message":"Cessare il fuoco, cessare il fuoco! Sono dalla tua parte!"
 },
 "CLUS":{
-"description":"custom cargo","message":"Container per esseri viventi"
+"description":"custom cargo",
+"message":"Container per esseri viventi"
 },
 "COULD_YOU_REPEAT_THE_ORIGINAL_REQUEST":{
 "description":"",
 "message":"Potrebbe ripetere la richiesta iniziale?"
 },
 "DANGER":{
-"description":"the risk level","message":"Pericolo:"
+"description":"the risk level",
+"message":"Pericolo:"
 },
 "DEADLINE":{
-"description":"Must be delivered by","message":"Scadenza:"
+"description":"Must be delivered by",
+"message":"Scadenza:"
 },
 "DELIVER_TO":{
-"description":"Deliver to this location","message":"Consegnare a:"
+"description":"Deliver to this location",
+"message":"Consegnare a:"
 },
 "DENY_1":{
 "description":"",
@@ -120,16 +128,20 @@
 "message":"Ritorna quando avrai più esperienza."
 },
 "DIAMONDS":{
-"description":"custom cargo","message":"Diamanti"
+"description":"custom cargo",
+"message":"Diamanti"
 },
 "DIGESTERS":{
-"description":"custom cargo","message":"Digestivi"
+"description":"custom cargo",
+"message":"Digestivi"
 },
 "DISTANCE":{
-"description":"distance in space, between two locations","message":"Distanza:"
+"description":"distance in space, between two locations",
+"message":"Distanza:"
 },
 "ELECTRICAL_APPLIANCES":{
-"description":"custom cargo","message":"Apparecchi elettrici"
+"description":"custom cargo",
+"message":"Apparecchi elettrici"
 },
 "ESCORT_CHATTER_1":{
 "description":"",
@@ -152,7 +164,8 @@
 "message":"Buona caccia. Questa sarà la mia prima preda di oggi."
 },
 "EXPLOSIVES":{
-"description":"custom cargo","message":"Esplosivi"
+"description":"custom cargo",
+"message":"Esplosivi"
 },
 "FAILUREMSG_1":{
 "description":"",
@@ -175,31 +188,40 @@
 "message":"Tu, mostro! Ci hai messo troppo per questa consegna. Tutti i miei cuccioli batuffolosi stan morendo di fame!"
 },
 "FURNITURE":{
-"description":"custom cargo","message":"Mobilie"
+"description":"custom cargo",
+"message":"Mobilie"
 },
 "GREENHOUSES":{
-"description":"custom cargo","message":"Serre"
+"description":"custom cargo",
+"message":"Serre"
 },
 "GUNS_GUNS_GUNS":{
-"description":"Military radio call to avoid friendly fire. It indicates that the cannon has been activated and should ensure that other friendly pilots do not maneuver into the path of harm.","message":"Armi pronte. Fuori dalla traiettoria di tiro."
+"description":"Military radio call to avoid friendly fire. It indicates that the cannon has been activated and should ensure that other friendly pilots do not maneuver into the path of harm.",
+"message":"Armi pronte. Fuori dalla traiettoria di tiro."
 },
 "HAZARDOUS_SUBSTANCES":{
-"description":"custom cargo","message":"Sostanze pericolose"
+"description":"custom cargo",
+"message":"Sostanze pericolose"
 },
 "HOWMUCH_1":{
-"description":"regarding mass, always more than 1t","message":"{amount} tonnellate metriche."
+"description":"regarding mass, always more than 1t",
+"message":"{amount} tonnellate metriche."
 },
 "HOWMUCH_2":{
-"description":"regarding mass, always more than 1t","message":"{amount}t"
+"description":"regarding mass, always more than 1t",
+"message":"{amount}t"
 },
 "HOWMUCH_3":{
-"description":"regarding mass, always more than 1t","message":"La massa è {amount}t."
+"description":"regarding mass, always more than 1t",
+"message":"La massa è {amount}t."
 },
 "HOWMUCH_4":{
-"description":"regarding mass, always more than 1t","message":"Sono {amount}t."
+"description":"regarding mass, always more than 1t",
+"message":"Sono {amount}t."
 },
 "HOWMUCH_SINGULAR_1":{
-"description":"This string is only used for 1 metric tons (singular)","message":"Sono solo {amount}t."
+"description":"This string is only used for 1 metric tons (singular)",
+"message":"Sono solo {amount}t."
 },
 "HOWMUCH_WHOLESALER_1":{
 "description":"",
@@ -222,7 +244,8 @@
 "message":"Ciao, sono {name}. Ti pagherò {cash} se consegnerai {cargoname} a {starport} nel sistema {system} ({sectorx}, {sectory}, {sectorz}), distante {dist} anni luce."
 },
 "INTROTEXT_2":{
-"description":"{name} is the full name of a person","message":"Salve! {Name} Servizi Trasporto vi richiede di consegnare {cargoname} a {starport} nel sistema {system} ({sectorx}, {sectory}, {sectorz}), lontano {dist} AL. Pagheremo {cash} per consegna completa e sicura."
+"description":"{name} is the full name of a person",
+"message":"Salve! {Name} Servizi Trasporto vi richiede di consegnare {cargoname} a {starport} nel sistema {system} ({sectorx}, {sectory}, {sectorz}), lontano {dist} AL. Pagheremo {cash} per consegna completa e sicura."
 },
 "INTROTEXT_3":{
 "description":"",
@@ -233,7 +256,8 @@
 "message":"Ciao. Abbiamo bisogno di qualcuno con esperienza per una consegna potenzialmente pericolosa verso {starport} nel sistema {system} ({sectorx}, {sectory}, {sectorz}). Pagheremo {cash}. La distanza è di {dist} AL."
 },
 "INTROTEXT_FLUFFY_1":{
-"description":"this is used for the delivery of Quibbles, which is a nod to Tribble (star trek ref. see wikipedia)","message":"Ciao, mi chiamo {name}. Ho una batuffolosa spedizione di {cargoname} da consegnare a {starport} nel sistema {system} ({sectorx}, {sectory}, {sectorz}). La distanza è di {dist} AL. Per questa consegna verranno pagati {cash}."
+"description":"this is used for the delivery of Quibbles, which is a nod to Tribble (star trek ref. see wikipedia)",
+"message":"Ciao, mi chiamo {name}. Ho una batuffolosa spedizione di {cargoname} da consegnare a {starport} nel sistema {system} ({sectorx}, {sectory}, {sectorz}). La distanza è di {dist} AL. Per questa consegna verranno pagati {cash}."
 },
 "INTROTEXT_INFRASTRUCTURE_1":{
 "description":"",
@@ -252,7 +276,8 @@
 "message":"Mi chiamo {name} e necessito che vengano consegnati {cargoname} ad un cliente a {starport}. La pagherò {cash} per questa consegna."
 },
 "INTROTEXT_MINING_1":{
-"description":"{name} is the full name of a person","message":"Ciao. La Compagnia Mineraria {name} desidera consegnare {cargoname} a {starport} nel sistema {system} ({sectorx}, {sectory}, {sectorz}), distante {dist} anni luce, per allestire una nuova miniera. La paga è di {cash}."
+"description":"{name} is the full name of a person",
+"message":"Ciao. La Compagnia Mineraria {name} desidera consegnare {cargoname} a {starport} nel sistema {system} ({sectorx}, {sectory}, {sectorz}), distante {dist} anni luce, per allestire una nuova miniera. La paga è di {cash}."
 },
 "INTROTEXT_PICKUP_1":{
 "description":"",
@@ -299,10 +324,12 @@
 "message":"AL"
 },
 "MACHINE_TOOLS":{
-"description":"custom cargo","message":"Macchine utensili"
+"description":"custom cargo",
+"message":"Macchine utensili"
 },
 "NEPTUNIUM":{
-"description":"custom cargo","message":"Nettunio"
+"description":"custom cargo",
+"message":"Nettunio"
 },
 "OK_AGREED":{
 "description":"",
@@ -313,7 +340,8 @@
 "message":"Picked cargo in..."
 },
 "PICKUP_FROM":{
-"description":"from a location","message":"Prelevare cargo da:"
+"description":"from a location",
+"message":"Prelevare cargo da:"
 },
 "PIRATE_GRIPES_1":{
 "description":"",
@@ -324,7 +352,8 @@
 "message":"Oh no. La mia povera nave!"
 },
 "PIRATE_GRIPES_3":{
-"description":"said with vengeance","message":"Ora ti farò vedere io."
+"description":"said with vengeance",
+"message":"Ora ti farò vedere io."
 },
 "PIRATE_TAUNTS_1":{
 "description":"",
@@ -355,10 +384,12 @@
 "message":"La tua fortuna s'è esaurita!"
 },
 "PLUTONIUM":{
-"description":"custom cargo","message":"Plutonio"
+"description":"custom cargo",
+"message":"Plutonio"
 },
 "QUIBBLES":{
-"description":"custom cargo, also used in the NewsEventCommodity module, a nod to Star Trek's Tribble (check wikipedia)","message":"Quibble"
+"description":"custom cargo, also used in the NewsEventCommodity module, a nod to Star Trek's Tribble (check wikipedia)",
+"message":"Quibble"
 },
 "RISK_1":{
 "description":"",
@@ -413,14 +444,24 @@
 "message":"Il rischio è elevato, ma c'è una scorta pronta a sorvegliarti."
 },
 "SEMI_FINISHED_PRODUCTS":{
-"description":"custom cargo","message":"Prodotti semilavorati"
+"description":"custom cargo",
+"message":"Prodotti semilavorati"
+},
+"SET_AS_TARGET":{
+"description":"",
+"message":"Imposta come destinazione di navigazione"
+},
+"SET_RETURN_ROUTE":{
+"description":"",
+"message":"Imposta rotta di ritorno"
 },
 "SPACEPORT":{
 "description":"",
 "message":"Astroporto:"
 },
 "SPACESHIP_PARTS":{
-"description":"custom cargo","message":"Parti di astronave"
+"description":"custom cargo",
+"message":"Parti di astronave"
 },
 "SUCCESSMSG_1":{
 "description":"",
@@ -439,7 +480,8 @@
 "message":"Grazie! La raccomanderò certamente. L'ammontare di denaro è stato trasferito."
 },
 "SUCCESSMSG_FLUFFY_1":{
-"description":"Said when receiving a shipment of Quibbles (see wikipedia Tribble)","message":"Ohimè, cosa farne di così tanti esseri pelosi... Ad ogni modo, il denaro è stato inviato."
+"description":"Said when receiving a shipment of Quibbles (see wikipedia Tribble)",
+"message":"Ohimè, cosa farne di così tanti esseri pelosi... Ad ogni modo, il denaro è stato inviato."
 },
 "SYSTEM":{
 "description":"",
@@ -450,13 +492,16 @@
 "message":"Bersaglio distrutto."
 },
 "TITANIUM":{
-"description":"custom cargo","message":"Titanio"
+"description":"custom cargo",
+"message":"Titanio"
 },
 "TUNGSTEN":{
-"description":"custom cargo","message":"Tungsteno"
+"description":"custom cargo",
+"message":"Tungsteno"
 },
 "URANIUM":{
-"description":"custom cargo","message":"Uranio"
+"description":"custom cargo",
+"message":"Uranio"
 },
 "URGENCY_1":{
 "description":"",
@@ -487,7 +532,8 @@
 "message":"A causa del tempo di emivita di questo isotopo, la consegna dev'essere completata entro il {date}."
 },
 "WEDDING_DRESSES":{
-"description":"custom cargo","message":"Abiti da matrimionio"
+"description":"custom cargo",
+"message":"Abiti da matrimionio"
 },
 "WE_HAVE_LOADED_UP_THE_CARGO_ON_YOUR_SHIP":{
 "description":"",

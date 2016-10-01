@@ -467,6 +467,10 @@
 "description":"",
 "message":"Autonomía"
 },
+"ILLEGAL_JUMP":{
+"description":"A finable crime",
+"message":"Hipersalto ilegal registrado"
+},
 "IM_TIRED_OF_WORKING_FOR_NOTHING_DONT_YOU_KNOW_WHAT_A_CONTRACT_IS":{
 "description":"",
 "message":"Estoy harto de trabajar por nada. ¿Conoce la palabra contrato?"
@@ -791,6 +795,10 @@
 "description":"",
 "message":"Ok"
 },
+"OPEN_USER_FOLDER":{
+"description":"",
+"message":"Carpeta de usuario"
+},
 "OPTIONS":{
 "description":"",
 "message":"Configuración"
@@ -998,6 +1006,10 @@
 "SENSORS_AND_DEFENCE":{
 "description":"",
 "message":"Detección y defensa"
+},
+"SET_AS_TARGET":{
+"description":"",
+"message":"Establecer objetivo de navegación."
 },
 "SHIP":{
 "description":"",

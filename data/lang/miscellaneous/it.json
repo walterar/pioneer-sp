@@ -54,6 +54,14 @@
 "description":"",
 "message":"Rapporto Danni"
 },
+"DO_NOT_FORGET_TO_VISIT":{
+"description":"Traffic.lua",
+"message":"Do not forget to visit {station}, just {dist} from here."
+},
+"DO_NOT_JUMP_TO_HYPERSPACE":{
+"description":"Traffic.lua",
+"message":"WARNING! Do not jump to hyperspace less than {legalDist} from the station"
+},
 "ENTER_HIGH_ORBIT_AT_CURRENT_TARGET":{
 "description":"",
 "message":"Stabilire Orbita Alta"

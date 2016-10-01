@@ -28,7 +28,8 @@
 "message":"A survenit o eroare"
 },
 "ATMOSPHERIC_SHIELDING":{
-"description":"Used in ShipInfo view, followed by a yes/no depending on if the ship can carry atmospheric shields","message":"Scut atmosferic"
+"description":"Used in ShipInfo view, followed by a yes/no depending on if the ship can carry atmospheric shields",
+"message":"Scut atmosferic"
 },
 "ATTEMPT_TO_REPAIR_HULL":{
 "description":"",
@@ -51,27 +52,32 @@
 "message":"Avizier"
 },
 "BUY":{
-"description":"Commodities and equipment prices","message":"Cumpără"
+"description":"Commodities and equipment prices",
+"message":"Cumpără"
 },
 "BUY_SHIP":{
 "description":"",
 "message":"Cumpără Nava"
 },
 "CABINS":{
-"description":"For passengers","message":"Cabine"
+"description":"For passengers",
+"message":"Cabine"
 },
 "CABIN_FREE":{
-"description":"Free capacity for passengers","message":"{amount} libere"
+"description":"Free capacity for passengers",
+"message":"{amount} libere"
 },
 "CABIN_USED":{
-"description":"Passengers using cabins","message":"{amount} ocupate"
+"description":"Passengers using cabins",
+"message":"{amount} ocupate"
 },
 "CANCEL":{
 "description":"",
 "message":"Anulează"
 },
 "CAPACITY":{
-"description":"Capacity of ship to fit more equipment","message":"Capacitate"
+"description":"Capacity of ship to fit more equipment",
+"message":"Capacitate"
 },
 "CAPACITY_USED":{
 "description":"",
@@ -90,10 +96,12 @@
 "message":"Spațiu depozit folosit"
 },
 "CARGO_T_FREE":{
-"description":"t for tonne","message":"{amount}t libere"
+"description":"t for tonne",
+"message":"{amount}t libere"
 },
 "CARGO_T_USED":{
-"description":"t for tonne","message":"{amount}t folosite"
+"description":"t for tonne",
+"message":"{amount}t folosite"
 },
 "CASH":{
 "description":"",
@@ -104,7 +112,8 @@
 "message":"Bani: {money}"
 },
 "CHANGE_BINDING":{
-"description":"Key binding option","message":"Înlocuire tastă"
+"description":"Key binding option",
+"message":"Înlocuire tastă"
 },
 "CHIEF_MECHANIC":{
 "description":"",
@@ -115,20 +124,24 @@
 "message":"Viteza pt. orbită circulară"
 },
 "CITY_DETAIL_LEVEL":{
-"description":"Game graphics option","message":"Nivel detalii oraşe"
+"description":"Game graphics option",
+"message":"Nivel detalii oraşe"
 },
 "CLEAN":{
-"description":"Legal status of player","message":"Curat"
+"description":"Legal status of player",
+"message":"Curat"
 },
 "CLEAR":{
-"description":"Clear an option in game settings/options menu","message":"Șterge"
+"description":"Clear an option in game settings/options menu",
+"message":"Șterge"
 },
 "CLIENT":{
 "description":"",
 "message":"Client"
 },
 "COMBAT":{
-"description":"Headline for kills and combat rating","message":"Statistici de luptă"
+"description":"Headline for kills and combat rating",
+"message":"Statistici de luptă"
 },
 "COMMANDER":{
 "description":"",
@@ -139,17 +152,20 @@
 "message":"Piață de Produse"
 },
 "COMPACT_SCANNER":{
-"description":"Game settings option","message":"Scaner compact"
+"description":"Game settings option",
+"message":"Scaner compact"
 },
 "COMPETENT":{
-"description":"Combat rating","message":"Competent"
+"description":"Combat rating",
+"message":"Competent"
 },
 "COMPLETED":{
 "description":"",
 "message":"Terminat"
 },
 "COMPRESS_TEXTURES":{
-"description":"graphics option in game settings menu ","message":"Comprimarea Texturilor"
+"description":"graphics option in game settings menu ",
+"message":"Comprimarea Texturilor"
 },
 "CONFIRM_PURCHASE":{
 "description":"",
@@ -180,7 +196,8 @@
 "message":"Nu am putut încărca jocul:"
 },
 "CREDIBLE":{
-"description":"For player reputation","message":"Credibil"
+"description":"For player reputation",
+"message":"Credibil"
 },
 "CREW_CABINS":{
 "description":"",
@@ -191,26 +208,32 @@
 "message":"Listă Echipaj"
 },
 "CRIMINAL_RECORD":{
-"description":"Past crimes / crime history of character","message":"Cazier judiciar"
+"description":"Past crimes / crime history of character",
+"message":"Cazier judiciar"
 },
 "DANGEROUS":{
-"description":"Player combat rating","message":"Periculos"
+"description":"Player combat rating",
+"message":"Periculos"
 },
 "DEADLY":{
-"description":"Player combat rating","message":"Mortal"
+"description":"Player combat rating",
+"message":"Mortal"
 },
 "DELTA_V":{
 "description":"",
 "message":"Delta-v"
 },
 "DELTA_V_EMPTY":{
-"description":"Delta-v capacity of a ship with no cargo or upgrades","message":"Delta-v (goală)"
+"description":"Delta-v capacity of a ship with no cargo or upgrades",
+"message":"Delta-v (goală)"
 },
 "DELTA_V_FULL":{
-"description":"Delta-v capacity of a ship with maximum cargo","message":"Delta-v (plină)"
+"description":"Delta-v capacity of a ship with maximum cargo",
+"message":"Delta-v (plină)"
 },
 "DELTA_V_MAX":{
-"description":"Delta-v capacity of a ship with cargo bay fully loaded with propellant","message":"Delta-v (max)"
+"description":"Delta-v capacity of a ship with cargo bay fully loaded with propellant",
+"message":"Delta-v (max)"
 },
 "DESCENT_TO_GROUND_SPEED":{
 "description":"",
@@ -221,27 +244,32 @@
 "message":"Distruge navă inamică"
 },
 "DISMISS":{
-"description":"Terminate crew memeber's contract","message":"Concediază"
+"description":"Terminate crew memeber's contract",
+"message":"Concediază"
 },
 "DISPLAY_HUD_TRAILS":{
 "description":"",
 "message":"Afișează marcaje HUD"
 },
 "DISPLAY_NAV_TUNNELS":{
-"description":"Settings option: hyperspace tunnel effect","message":"Afișare tunele de navigație"
+"description":"Settings option: hyperspace tunnel effect",
+"message":"Afișare tunele de navigație"
 },
 "DISPLAY_SPEED_LINES":{
-"description":"Settings option: effect when travelling in space","message":"Afișează linii viteză"
+"description":"Settings option: effect when travelling in space",
+"message":"Afișează linii viteză"
 },
 "DOCK_AT_CURRENT_TARGET":{
 "description":"",
 "message":"Andocare la ținta curentă"
 },
 "DUE":{
-"description":"mission deadline date","message":"Termen"
+"description":"mission deadline date",
+"message":"Termen"
 },
 "DUMPING":{
-"description":"The illegal act of dumping waste","message":"Aruncare gunoi"
+"description":"The illegal act of dumping waste",
+"message":"Aruncare gunoi"
 },
 "D_DAYS_LEFT":{
 "description":"",
@@ -256,27 +284,32 @@
 "message":"Efecte:"
 },
 "ELITE":{
-"description":"Player combat rating","message":"ELITĂ"
+"description":"Player combat rating",
+"message":"ELITĂ"
 },
 "EMPLOYMENT":{
 "description":"",
 "message":"Ocupație"
 },
 "ENABLE_ANISOTROPIC_FILTERING":{
-"description":"Use Anisotropic Filtering","message":"Filtrare Anizotropă"
+"description":"Use Anisotropic Filtering",
+"message":"Filtrare Anizotropă"
 },
 "ENABLE_AUTOSAVE":{
-"description":"Allow the game to autosave when docking","message":"Activează salvarea automată"
+"description":"Allow the game to autosave when docking",
+"message":"Activează salvarea automată"
 },
 "ENABLE_COCKPIT":{
-"description":"Game settings option: to use a cockpit 3D model","message":"Activează carlingă (EXPERIMENTAL)"
+"description":"Game settings option: to use a cockpit 3D model",
+"message":"Activează carlingă (EXPERIMENTAL)"
 },
 "ENABLE_JOYSTICK":{
 "description":"",
 "message":"Activare jozstick"
 },
 "ENGINEERING":{
-"description":"Engineering skills of crew","message":"Inginerie:"
+"description":"Engineering skills of crew",
+"message":"Inginerie:"
 },
 "EQUIPMENT":{
 "description":"",
@@ -303,13 +336,16 @@
 "message":"Ieșiți din acest joc"
 },
 "EXPERIENCED":{
-"description":"For player reputation","message":"Experimentat"
+"description":"For player reputation",
+"message":"Experimentat"
 },
 "EXPERT":{
-"description":"For player reputation","message":"Expert"
+"description":"For player reputation",
+"message":"Expert"
 },
 "FAILED":{
-"description":"When failed mission","message":"Eșuat"
+"description":"When failed mission",
+"message":"Eșuat"
 },
 "FEMALE":{
 "description":"",
@@ -332,7 +368,8 @@
 "message":"Detalii fractali"
 },
 "FREE":{
-"description":"Used in Ship Information view as in Capacity: 10t (5t free)","message":"liber"
+"description":"Used in Ship Information view as in Capacity: 10t (5t free)",
+"message":"liber"
 },
 "FRONT_WEAPON":{
 "description":"",
@@ -371,7 +408,8 @@
 "message":"Închide."
 },
 "HARMLESS":{
-"description":"Player combat rating","message":"Inofensiv"
+"description":"Player combat rating",
+"message":"Inofensiv"
 },
 "HEAVY_CARGO_SHUTTLE":{
 "description":"",
@@ -398,7 +436,8 @@
 "message":"Transportor masiv de pasageri"
 },
 "HIGH":{
-"description":"Game settings option: for graphics resolution","message":"Mare"
+"description":"Game settings option: for graphics resolution",
+"message":"Mare"
 },
 "HULL_DOES_NOT_REQUIRE_REPAIR":{
 "description":"",
@@ -428,6 +467,10 @@
 "description":"",
 "message":"Rază de acțiune salt hiperspațiu"
 },
+"ILLEGAL_JUMP":{
+"description":"A finable crime",
+"message":"Reckless hyperjump registered"
+},
 "IM_TIRED_OF_WORKING_FOR_NOTHING_DONT_YOU_KNOW_WHAT_A_CONTRACT_IS":{
 "description":"",
 "message":"M-am săturat să muncesc pe degeaba. Nu știți ce înseamnă un contract?"
@@ -437,10 +480,12 @@
 "message":"Inactiv"
 },
 "INCOMPETENT":{
-"description":"For player reputation","message":"Incompetent"
+"description":"For player reputation",
+"message":"Incompetent"
 },
 "INEXPERIENCED":{
-"description":"For player reputation","message":"Fără experiență"
+"description":"For player reputation",
+"message":"Fără experiență"
 },
 "INSUFFICIENT_FUNDS":{
 "description":"",
@@ -535,7 +580,8 @@
 "message":"Antreu"
 },
 "LOCAL_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Braț local"
+"description":"Arm of the Milky Way galaxy",
+"message":"Braț local"
 },
 "LOCATED_N_KM_FROM_THE_CENTRE_OF_NAME":{
 "description":"",
@@ -550,7 +596,8 @@
 "message":"Scăzut"
 },
 "LY":{
-"description":"Light year","message":"al"
+"description":"Light year",
+"message":"al"
 },
 "MAKE_NEW_FACE":{
 "description":"",
@@ -573,10 +620,12 @@
 "message":"Masă"
 },
 "MASTER":{
-"description":"For player reputation","message":"Maestru"
+"description":"For player reputation",
+"message":"Maestru"
 },
 "MASTER_VOL":{
-"description":"Master sound in settings option","message":"Principal:"
+"description":"Master sound in settings option",
+"message":"Principal:"
 },
 "MAX":{
 "description":"",
@@ -587,7 +636,8 @@
 "message":"Personal maxim"
 },
 "MEDIUM":{
-"description":"Game settings option: graphics resolution","message":"Mediu"
+"description":"Game settings option: graphics resolution",
+"message":"Mediu"
 },
 "MEDIUM_CARGO_SHUTTLE":{
 "description":"",
@@ -662,10 +712,12 @@
 "message":"Mut"
 },
 "NAME_OBJECT":{
-"description":"For an item or object","message":"Nume"
+"description":"For an item or object",
+"message":"Nume"
 },
 "NAME_PERSON":{
-"description":"For a person","message":"Nume"
+"description":"For a person",
+"message":"Nume"
 },
 "NAVIGATION":{
 "description":"",
@@ -684,10 +736,12 @@
 "message":"Plata urm."
 },
 "NO":{
-"description":"Negative answer to a question","message":"Nu"
+"description":"Negative answer to a question",
+"message":"Nu"
 },
 "NOBODY":{
-"description":"For player reputation","message":"Un nimeni"
+"description":"For player reputation",
+"message":"Un nimeni"
 },
 "NONE":{
 "description":"",
@@ -698,7 +752,8 @@
 "message":"None for sale in this station."
 },
 "NORMA_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Brațul Norma"
+"description":"Arm of the Milky Way galaxy",
+"message":"Brațul Norma"
 },
 "NOTES":{
 "description":"",
@@ -740,6 +795,10 @@
 "description":"",
 "message":"Ok"
 },
+"OPEN_USER_FOLDER":{
+"description":"",
+"message":"User Folder"
+},
 "OPTIONS":{
 "description":"",
 "message":"Opțiuni"
@@ -757,20 +816,24 @@
 "message":"Viteza pentru orbita circulară este dată pentru o viteză tangențială. Nava ar trebui să se miște întro direcție la 90° față de axa navei/corpului ceresc {name}.\n\nViteza de coborâre este un minim absolut, și este de asemenea tangențială. O viteză mai mica sau un unghi mai mic va rezulta intr-un curs care se intersectează cu suprafața corpului ceresc {name}.\n\nViteza de ieșire din atmosferă va merge în teorie în orice direcție, atâta timp cât nava nu intră în {name} în drum.\n⇥⇥"
 },
 "OUTER_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Brațul exterior"
+"description":"Arm of the Milky Way galaxy",
+"message":"Brațul exterior"
 },
 "OUTSTANDING_FINES":{
-"description":"Unpaid fines for crimes committed","message":"Amenzi neplătite"
+"description":"Unpaid fines for crimes committed",
+"message":"Amenzi neplătite"
 },
 "OWED":{
-"description":"Player owing money to crew members","message":"Datorat"
+"description":"Player owing money to crew members",
+"message":"Datorat"
 },
 "PAY_FINE_OF_N":{
 "description":"",
 "message":"Plătește amenda de {amount}"
 },
 "PERSEUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Brațul Perseus"
+"description":"Arm of the Milky Way galaxy",
+"message":"Brațul Perseus"
 },
 "PERSONAL_INFORMATION":{
 "description":"",
@@ -805,10 +868,12 @@
 "message":"Poliție"
 },
 "POOR":{
-"description":"Player combat rating","message":"Slab"
+"description":"Player combat rating",
+"message":"Slab"
 },
 "POSITION":{
-"description":"The job title/position of crew memeber","message":"Poziția"
+"description":"The job title/position of crew memeber",
+"message":"Poziția"
 },
 "PRESS_A_KEY_OR_CONTROLLER_BUTTON":{
 "description":"",
@@ -819,10 +884,12 @@
 "message":"Preț"
 },
 "PROFESSIONAL":{
-"description":"For player reputation","message":"Profesionist"
+"description":"For player reputation",
+"message":"Profesionist"
 },
 "PUMP_DOWN":{
-"description":"Drain the fuel tank","message":"Golește rezervorul"
+"description":"Drain the fuel tank",
+"message":"Golește rezervorul"
 },
 "QUALIFICATION_SCORES":{
 "description":"",
@@ -833,7 +900,8 @@
 "message":"Ieşire"
 },
 "QUIT_CONFIRMATION":{
-"description":"For the checkbox in settings window","message":"Confirmare anulare"
+"description":"For the checkbox in settings window",
+"message":"Confirmare anulare"
 },
 "RANK":{
 "description":"",
@@ -856,7 +924,8 @@
 "message":"Reaprovizionează complet"
 },
 "RELIABLE":{
-"description":"For player reputation","message":"De încredere"
+"description":"For player reputation",
+"message":"De încredere"
 },
 "REPAIR_X_HULL_DAMAGE_FOR_X":{
 "description":"",
@@ -895,17 +964,20 @@
 "message":"Recompensă"
 },
 "SAGITTARIUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Brațul Sagittarius"
+"description":"Arm of the Milky Way galaxy",
+"message":"Brațul Sagittarius"
 },
 "SAVE":{
 "description":"",
 "message":"Salvează"
 },
 "SCOOP_MOUNTS":{
-"description":"How many slots or mounts exist on the ship for fitting SCOOPS (e.g. cargo scoop, fuel scoop, multi-scoop) ","message":"Monturi colectoare"
+"description":"How many slots or mounts exist on the ship for fitting SCOOPS (e.g. cargo scoop, fuel scoop, multi-scoop) ",
+"message":"Monturi colectoare"
 },
 "SCUTUM_CENTAURUS_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"Brațul Scutum-Centaurus"
+"description":"Arm of the Milky Way galaxy",
+"message":"Brațul Scutum-Centaurus"
 },
 "SELECT":{
 "description":"",
@@ -924,7 +996,8 @@
 "message":"Selectează jocul pentru încărcare..."
 },
 "SELL":{
-"description":"Commodities and equipment prices","message":"Vinde"
+"description":"Commodities and equipment prices",
+"message":"Vinde"
 },
 "SENSORS":{
 "description":"",
@@ -933,6 +1006,10 @@
 "SENSORS_AND_DEFENCE":{
 "description":"",
 "message":"Senzori și apărare"
+},
+"SET_AS_TARGET":{
+"description":"",
+"message":"Set destination as navigation target."
 },
 "SHIP":{
 "description":"",
@@ -983,7 +1060,8 @@
 "message":"Pornește de pe Pamânt"
 },
 "START_AT_NEW_HOPE":{
-"description":"New Hope is an in game location","message":"Pornește din New Hope"
+"description":"New Hope is an in game location",
+"message":"Pornește din New Hope"
 },
 "STAR_FIELD_DENSITY":{
 "description":"",
@@ -998,10 +1076,12 @@
 "message":"Statut"
 },
 "TECH_CERTIFIED":{
-"description":"Lobby screen shows the tech level (an integer number) of the station","message":"Această stație deține un certificat de tehnologie de nivelul {tech_level}."
+"description":"Lobby screen shows the tech level (an integer number) of the station",
+"message":"Această stație deține un certificat de tehnologie de nivelul {tech_level}."
 },
 "TECH_CERTIFIED_MILITARY":{
-"description":"Lobby screen shows the tech level of the station","message":"Această unitate deține autorizație de tehnologie militară."
+"description":"Lobby screen shows the tech level of the station",
+"message":"Această unitate deține autorizație de tehnologie militară."
 },
 "THANKS_AND_REMEMBER_TO_BUY_FUEL":{
 "description":"",
@@ -1016,10 +1096,12 @@
 "message":"Nava este sub controlul stației, Comandante."
 },
 "THREE_KPC_ARM":{
-"description":"Arm of the Milky Way galaxy","message":"braț de 3kpc"
+"description":"Arm of the Milky Way galaxy",
+"message":"braț de 3kpc"
 },
 "TOGGLE_MALE_FEMALE":{
-"description":"player gender","message":"Comutare sex masculin/feminin"
+"description":"player gender",
+"message":"Comutare sex masculin/feminin"
 },
 "TOO_SMALL_FOR_CURRENT_CREW":{
 "description":"",
@@ -1027,7 +1109,7 @@
 },
 "TOO_SMALL_TO_TRANSSHIP":{
 "description":"",
-"message":"Ship is too small to transship your cargo."
+"message":"Nava e prea mică pentru a transporta marfa dvs."
 },
 "TOTAL":{
 "description":"",
@@ -1042,7 +1124,8 @@
 "message":"Se negociază bunurile ilegale"
 },
 "TRUSTWORTHY":{
-"description":"For player reputation","message":"De mare încredere"
+"description":"For player reputation",
+"message":"De mare încredere"
 },
 "TYPE":{
 "description":"",
@@ -1065,10 +1148,12 @@
 "message":"Folosit"
 },
 "VERY_HIGH":{
-"description":"Game settings option: graphic resolution","message":"Foarte mare"
+"description":"Game settings option: graphic resolution",
+"message":"Foarte mare"
 },
 "VERY_LOW":{
-"description":"Game settings option: graphic resolution","message":"Foarte scăzută"
+"description":"Game settings option: graphic resolution",
+"message":"Foarte scăzută"
 },
 "VIDEO":{
 "description":"",
@@ -1083,10 +1168,12 @@
 "message":"Rezoluție video"
 },
 "VSYNC":{
-"description":"For the checkbox in settings window","message":"VSync"
+"description":"For the checkbox in settings window",
+"message":"VSync"
 },
 "WAGE":{
-"description":"Salary of crew shown in crew roster","message":"Salariu"
+"description":"Salary of crew shown in crew roster",
+"message":"Salariu"
 },
 "WEIGHT_EMPTY":{
 "description":"",
@@ -1101,13 +1188,16 @@
 "message":"Suntem în hiperspațiu, Comandante."
 },
 "WE_HAVE_NO_BUSINESS_WITH_YOU":{
-"description":"Said by the police to law abiding player","message":"Nu avem nici o treabă cu dumneavoastră pentru moment."
+"description":"Said by the police to law abiding player",
+"message":"Nu avem nici o treabă cu dumneavoastră pentru moment."
 },
 "X_CANNOT_BE_TOLERATED_HERE":{
-"description":"Message to be sent over comms by police when crime is committed by player","message":"Nu este tolerat(ă) {crime} aici!"
+"description":"Message to be sent over comms by police when crime is committed by player",
+"message":"Nu este tolerat(ă) {crime} aici!"
 },
 "YES":{
-"description":"Positive answer to a question","message":"Da"
+"description":"Positive answer to a question",
+"message":"Da"
 },
 "YOURE_GOING_TO_REGRET_SACKING_ME":{
 "description":"",
@@ -1146,6 +1236,7 @@
 "message":"Nu aveți destui bani"
 },
 "ZOOM":{
-"description":"Label for a zoom (magnification) control bar.","message":"Zoom"
+"description":"Label for a zoom (magnification) control bar.",
+"message":"Zoom"
 }
 }

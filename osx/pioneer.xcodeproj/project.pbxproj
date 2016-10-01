@@ -25,9 +25,9 @@
 		37074B911B1C653D00AFE2CE /* libbz2.1.0.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 37074B8E1B1C653D00AFE2CE /* libbz2.1.0.6.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
 		37074B921B1C653D00AFE2CE /* libpng16.16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 37074B8F1B1C653D00AFE2CE /* libpng16.16.dylib */; };
 		37074B931B1C653D00AFE2CE /* libz.1.2.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 37074B901B1C653D00AFE2CE /* libz.1.2.8.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
-		37074B941B1C6DDC00AFE2CE /* libbz2.1.0.6.dylib in Copy SubLibraries */ = {isa = PBXBuildFile; fileRef = 37074B8E1B1C653D00AFE2CE /* libbz2.1.0.6.dylib */; };
-		37074B951B1C6DDC00AFE2CE /* libpng16.16.dylib in Copy SubLibraries */ = {isa = PBXBuildFile; fileRef = 37074B8F1B1C653D00AFE2CE /* libpng16.16.dylib */; };
-		37074B961B1C6DDC00AFE2CE /* libz.1.2.8.dylib in Copy SubLibraries */ = {isa = PBXBuildFile; fileRef = 37074B901B1C653D00AFE2CE /* libz.1.2.8.dylib */; };
+		37074B941B1C6DDC00AFE2CE /* libbz2.1.0.6.dylib in Copy SubLibraries */ = {isa = PBXBuildFile; fileRef = 37074B8E1B1C653D00AFE2CE /* libbz2.1.0.6.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		37074B951B1C6DDC00AFE2CE /* libpng16.16.dylib in Copy SubLibraries */ = {isa = PBXBuildFile; fileRef = 37074B8F1B1C653D00AFE2CE /* libpng16.16.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		37074B961B1C6DDC00AFE2CE /* libz.1.2.8.dylib in Copy SubLibraries */ = {isa = PBXBuildFile; fileRef = 37074B901B1C653D00AFE2CE /* libz.1.2.8.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		378563521B19769A0039F2BC /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 378563511B19769A0039F2BC /* OpenGL.framework */; };
 		3785635D1B197CF90039F2BC /* JsonUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 378563581B197CF90039F2BC /* JsonUtils.cpp */; };
 		3785635F1B197CF90039F2BC /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3785635C1B197CF90039F2BC /* jsoncpp.cpp */; };
@@ -94,9 +94,11 @@
 		3785643C1B197E8B0039F2BC /* StarSystemGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 378564361B197E8B0039F2BC /* StarSystemGenerator.cpp */; };
 		3785644B1B197EB60039F2BC /* PicoDDS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 378564431B197EB60039F2BC /* PicoDDS.cpp */; };
 		3785644D1B197EB60039F2BC /* Profiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 378564471B197EB60039F2BC /* Profiler.cpp */; };
-		44B75A971B1C259200EC500F /* libfreetype.6.dylib in Copy SubLibraries */ = {isa = PBXBuildFile; fileRef = 3701C5851B1ABDA2000F4A72 /* libfreetype.6.dylib */; };
-		44B75A981B1C259500EC500F /* libassimp.3.0.0.dylib in Copy SubLibraries */ = {isa = PBXBuildFile; fileRef = 4ACDB6D316787A6A0069FA03 /* libassimp.3.0.0.dylib */; };
-		44B75A991B1C259600EC500F /* libsigc-2.0.0.dylib in Copy SubLibraries */ = {isa = PBXBuildFile; fileRef = 4A6C4EA1135452FF00FDD53F /* libsigc-2.0.0.dylib */; };
+		378564521B197FAE0039F2BC /* LuaServerAgent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3785644E1B197FAE0039F2BC /* LuaServerAgent.cpp */; };
+		378564531B197FAE0039F2BC /* ServerAgent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 378564501B197FAE0039F2BC /* ServerAgent.cpp */; };
+		44B75A971B1C259200EC500F /* libfreetype.6.dylib in Copy SubLibraries */ = {isa = PBXBuildFile; fileRef = 3701C5851B1ABDA2000F4A72 /* libfreetype.6.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		44B75A981B1C259500EC500F /* libassimp.3.0.0.dylib in Copy SubLibraries */ = {isa = PBXBuildFile; fileRef = 4ACDB6D316787A6A0069FA03 /* libassimp.3.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		44B75A991B1C259600EC500F /* libsigc-2.0.0.dylib in Copy SubLibraries */ = {isa = PBXBuildFile; fileRef = 4A6C4EA1135452FF00FDD53F /* libsigc-2.0.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		4A01889715A59908002F540B /* SystemPath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A01889615A59908002F540B /* SystemPath.cpp */; };
 		4A0F25CE165CF00D00208507 /* LuaSmallButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A0F25CB165CF00D00208507 /* LuaSmallButton.cpp */; };
 		4A0F25CF165CF00D00208507 /* SmallButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A0F25CC165CF00D00208507 /* SmallButton.cpp */; };
@@ -477,10 +479,10 @@
 		5221A7591C958923002F4CD1 /* lvm.c in Sources */ = {isa = PBXBuildFile; fileRef = 4A190430138AA39C00E0229C /* lvm.c */; };
 		5221A75A1C958923002F4CD1 /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = 4A190433138AA39C00E0229C /* lzio.c */; };
 		5221A75B1C958949002F4CD1 /* libliblua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5221A7301C9588D8002F4CD1 /* libliblua.a */; };
-		522E333C1C1B1E9400AB01D3 /* libvorbisfile.3.dylib in Copy Libraries */ = {isa = PBXBuildFile; fileRef = 52025F7E1C05BD3400254BB5 /* libvorbisfile.3.dylib */; };
-		522E333D1C1B1E9400AB01D3 /* libvorbis.0.dylib in Copy Libraries */ = {isa = PBXBuildFile; fileRef = 52025F7A1C05BBAC00254BB5 /* libvorbis.0.dylib */; };
-		522E334C1C1B26AD00AB01D3 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 522E334A1C1B26AD00AB01D3 /* SDL2_image.framework */; };
-		522E334D1C1B26AD00AB01D3 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 522E334B1C1B26AD00AB01D3 /* SDL2.framework */; };
+		522B22CB1C06323C00109BB0 /* libcurl.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 522B22CA1C06323C00109BB0 /* libcurl.4.dylib */; };
+		522B22CC1C06324A00109BB0 /* libcurl.4.dylib in Copy Libraries */ = {isa = PBXBuildFile; fileRef = 522B22CA1C06323C00109BB0 /* libcurl.4.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		522E333C1C1B1E9400AB01D3 /* libvorbisfile.3.dylib in Copy Libraries */ = {isa = PBXBuildFile; fileRef = 52025F7E1C05BD3400254BB5 /* libvorbisfile.3.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		522E333D1C1B1E9400AB01D3 /* libvorbis.0.dylib in Copy Libraries */ = {isa = PBXBuildFile; fileRef = 52025F7A1C05BBAC00254BB5 /* libvorbis.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		522E334E1C1B26C300AB01D3 /* SDL2_image.framework in Copy Libraries */ = {isa = PBXBuildFile; fileRef = 522E334A1C1B26AD00AB01D3 /* SDL2_image.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		522E334F1C1B26C300AB01D3 /* SDL2.framework in Copy Libraries */ = {isa = PBXBuildFile; fileRef = 522E334B1C1B26AD00AB01D3 /* SDL2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		523C0C5E1C33F90800802DC7 /* libcrypto.1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 523C0C5D1C33F90800802DC7 /* libcrypto.1.0.0.dylib */; };
@@ -502,8 +504,6 @@
 		52B054A91C184D0800BAAE57 /* LabelOverlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52B054A51C184D0800BAAE57 /* LabelOverlay.cpp */; };
 		52B054AA1C184D0800BAAE57 /* LuaGalaxyMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52B054A71C184D0800BAAE57 /* LuaGalaxyMap.cpp */; };
 		52F310271C90810E00F8A082 /* modelcompiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 52F3101A1C907E2800F8A082 /* modelcompiler.cpp */; };
-		52F310281C90834B00F8A082 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 522E334B1C1B26AD00AB01D3 /* SDL2.framework */; };
-		52F310291C90835D00F8A082 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 522E334A1C1B26AD00AB01D3 /* SDL2_image.framework */; };
 		52F3102B1C90937400F8A082 /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A9174FD15187C17006A15A9 /* Color.cpp */; };
 		52F3102C1C90937400F8A082 /* FileSourceZip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC9FE51545901D00116131 /* FileSourceZip.cpp */; };
 		52F3102D1C90937400F8A082 /* FileSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4A305FCC151341170076D414 /* FileSystem.cpp */; };
@@ -604,6 +604,17 @@
 		52F404FA1C9498F90082B1F3 /* liblibscenegraph.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52F404631C9496AA0082B1F3 /* liblibscenegraph.a */; };
 		52F404FB1C9498F90082B1F3 /* liblibtext.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52F404431C9495FD0082B1F3 /* liblibtext.a */; };
 		52F404FC1C9499BA0082B1F3 /* libfreetype.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3701C5851B1ABDA2000F4A72 /* libfreetype.6.dylib */; };
+		F87E479A1D35E63A0008F233 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87E47981D35E63A0008F233 /* SDL2_image.framework */; };
+		F87E479B1D35E63A0008F233 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87E47991D35E63A0008F233 /* SDL2.framework */; };
+		F87E479C1D35E7480008F233 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87E47981D35E63A0008F233 /* SDL2_image.framework */; };
+		F87E479D1D35E7480008F233 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87E47991D35E63A0008F233 /* SDL2.framework */; };
+		F87E47A01D36A46F0008F233 /* GasGiantJobs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F87E479E1D36A46F0008F233 /* GasGiantJobs.cpp */; };
+		F87E47A11D36A46F0008F233 /* GasGiantJobs.h in Headers */ = {isa = PBXBuildFile; fileRef = F87E479F1D36A46F0008F233 /* GasGiantJobs.h */; };
+		F8FD8D721D3C0CA20075FEA1 /* GasGiantJobs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F87E479E1D36A46F0008F233 /* GasGiantJobs.cpp */; };
+		F8FD8D771D3C13920075FEA1 /* GenGasGiantColourMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8FD8D731D3C13920075FEA1 /* GenGasGiantColourMaterial.cpp */; };
+		F8FD8D781D3C13920075FEA1 /* GenGasGiantColourMaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = F8FD8D741D3C13920075FEA1 /* GenGasGiantColourMaterial.h */; };
+		F8FD8D7B1D3C13FA0075FEA1 /* GenGasGiantColourMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8FD8D731D3C13920075FEA1 /* GenGasGiantColourMaterial.cpp */; };
+		F8FD8D7C1D3C13FA0075FEA1 /* GenGasGiantColourMaterial.h in Sources */ = {isa = PBXBuildFile; fileRef = F8FD8D741D3C13920075FEA1 /* GenGasGiantColourMaterial.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -657,6 +668,7 @@
 				522E334F1C1B26C300AB01D3 /* SDL2.framework in Copy Libraries */,
 				522E333C1C1B1E9400AB01D3 /* libvorbisfile.3.dylib in Copy Libraries */,
 				522E333D1C1B1E9400AB01D3 /* libvorbis.0.dylib in Copy Libraries */,
+				522B22CC1C06324A00109BB0 /* libcurl.4.dylib in Copy Libraries */,
 			);
 			name = "Copy Libraries";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -825,6 +837,10 @@
 		378564441B197EB60039F2BC /* PicoDDS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicoDDS.h; sourceTree = "<group>"; };
 		378564471B197EB60039F2BC /* Profiler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Profiler.cpp; sourceTree = "<group>"; };
 		378564481B197EB60039F2BC /* Profiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profiler.h; sourceTree = "<group>"; };
+		3785644E1B197FAE0039F2BC /* LuaServerAgent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LuaServerAgent.cpp; sourceTree = "<group>"; };
+		3785644F1B197FAE0039F2BC /* LuaServerAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LuaServerAgent.h; sourceTree = "<group>"; };
+		378564501B197FAE0039F2BC /* ServerAgent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ServerAgent.cpp; sourceTree = "<group>"; };
+		378564511B197FAE0039F2BC /* ServerAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerAgent.h; sourceTree = "<group>"; };
 		4A01889615A59908002F540B /* SystemPath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SystemPath.cpp; sourceTree = "<group>"; };
 		4A0F25CB165CF00D00208507 /* LuaSmallButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LuaSmallButton.cpp; sourceTree = "<group>"; };
 		4A0F25CC165CF00D00208507 /* SmallButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SmallButton.cpp; sourceTree = "<group>"; };
@@ -1450,6 +1466,7 @@
 		52161F511C343532005D3B25 /* libogg.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libogg.0.dylib; path = ../../../../../opt/local/lib/libogg.0.dylib; sourceTree = "<group>"; };
 		5221A6DD1C958273002F4CD1 /* liblibposix.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibposix.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5221A7301C9588D8002F4CD1 /* libliblua.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libliblua.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		522B22CA1C06323C00109BB0 /* libcurl.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcurl.4.dylib; path = ../../../../../opt/local/lib/libcurl.4.dylib; sourceTree = "<group>"; };
 		522E334A1C1B26AD00AB01D3 /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
 		522E334B1C1B26AD00AB01D3 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 		523C0C5D1C33F90800802DC7 /* libcrypto.1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.1.0.0.dylib; path = ../../../../../opt/local/lib/libcrypto.1.0.0.dylib; sourceTree = "<group>"; };
@@ -1477,6 +1494,12 @@
 		52F4049F1C9497440082B1F3 /* liblibgraphicsdummy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibgraphicsdummy.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		52F404A91C9497820082B1F3 /* liblibgraphics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibgraphics.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		52F404DA1C94985F0082B1F3 /* liblibgui.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibgui.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F87E47981D35E63A0008F233 /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../Desktop/SDL2_image.framework; sourceTree = "<group>"; };
+		F87E47991D35E63A0008F233 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../Desktop/SDL2.framework; sourceTree = "<group>"; };
+		F87E479E1D36A46F0008F233 /* GasGiantJobs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GasGiantJobs.cpp; sourceTree = "<group>"; };
+		F87E479F1D36A46F0008F233 /* GasGiantJobs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GasGiantJobs.h; sourceTree = "<group>"; };
+		F8FD8D731D3C13920075FEA1 /* GenGasGiantColourMaterial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GenGasGiantColourMaterial.cpp; path = opengl/GenGasGiantColourMaterial.cpp; sourceTree = "<group>"; };
+		F8FD8D741D3C13920075FEA1 /* GenGasGiantColourMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GenGasGiantColourMaterial.h; path = opengl/GenGasGiantColourMaterial.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1484,12 +1507,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				522E334C1C1B26AD00AB01D3 /* SDL2_image.framework in Frameworks */,
-				522E334D1C1B26AD00AB01D3 /* SDL2.framework in Frameworks */,
+				F87E479C1D35E7480008F233 /* SDL2_image.framework in Frameworks */,
+				F87E479D1D35E7480008F233 /* SDL2.framework in Frameworks */,
 				52161F521C343532005D3B25 /* libogg.0.dylib in Frameworks */,
 				37074B911B1C653D00AFE2CE /* libbz2.1.0.6.dylib in Frameworks */,
 				523C0C5E1C33F90800802DC7 /* libcrypto.1.0.0.dylib in Frameworks */,
 				37074B921B1C653D00AFE2CE /* libpng16.16.dylib in Frameworks */,
+				522B22CB1C06323C00109BB0 /* libcurl.4.dylib in Frameworks */,
 				37074B931B1C653D00AFE2CE /* libz.1.2.8.dylib in Frameworks */,
 				52025F7C1C05BBAC00254BB5 /* libvorbis.0.dylib in Frameworks */,
 				3701C5861B1ABDA2000F4A72 /* libfreetype.6.dylib in Frameworks */,
@@ -1520,8 +1544,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52F310291C90835D00F8A082 /* SDL2_image.framework in Frameworks */,
-				52F310281C90834B00F8A082 /* SDL2.framework in Frameworks */,
+				F87E479A1D35E63A0008F233 /* SDL2_image.framework in Frameworks */,
+				F87E479B1D35E63A0008F233 /* SDL2.framework in Frameworks */,
 				52F404FC1C9499BA0082B1F3 /* libfreetype.6.dylib in Frameworks */,
 				5221A6E11C9583B3002F4CD1 /* libsigc-2.0.0.dylib in Frameworks */,
 				5221A6E21C9583DB002F4CD1 /* libassimp.3.0.0.dylib in Frameworks */,
@@ -1873,8 +1897,11 @@
 		4A20B0E1135319770020F43E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F87E47981D35E63A0008F233 /* SDL2_image.framework */,
+				F87E47991D35E63A0008F233 /* SDL2.framework */,
 				522E334A1C1B26AD00AB01D3 /* SDL2_image.framework */,
 				522E334B1C1B26AD00AB01D3 /* SDL2.framework */,
+				522B22CA1C06323C00109BB0 /* libcurl.4.dylib */,
 				52025F7E1C05BD3400254BB5 /* libvorbisfile.3.dylib */,
 				52025F7A1C05BBAC00254BB5 /* libvorbis.0.dylib */,
 				4A20B0E4135319770020F43E /* Other Frameworks */,
@@ -1963,6 +1990,8 @@
 				4A4F25BB14F524D400FD14A6 /* Frustum.cpp */,
 				4A4F25BC14F524D400FD14A6 /* Frustum.h */,
 				4A4F25BD14F524D400FD14A6 /* Graphics.cpp */,
+				F8FD8D731D3C13920075FEA1 /* GenGasGiantColourMaterial.cpp */,
+				F8FD8D741D3C13920075FEA1 /* GenGasGiantColourMaterial.h */,
 				4A4F25BE14F524D400FD14A6 /* Graphics.h */,
 				4AEC8A1815C7886A00B281C3 /* Light.cpp */,
 				4AEC8A1915C7886A00B281C3 /* Light.h */,
@@ -2009,6 +2038,8 @@
 				4A6C4C0213532FC300FDD53F /* Body.cpp */,
 				4A6C4C0313532FC300FDD53F /* Body.h */,
 				4A6392C4136BD51E008352F1 /* buildopts.h */,
+				F87E479F1D36A46F0008F233 /* GasGiantJobs.h */,
+				F87E479E1D36A46F0008F233 /* GasGiantJobs.cpp */,
 				4A305FCB151341170076D414 /* ByteRange.h */,
 				4A84CB82146027DC0051C848 /* Camera.cpp */,
 				4A84CB83146027DC0051C848 /* Camera.h */,
@@ -2142,6 +2173,8 @@
 				4AAB884615FDEA6F00AAF8A8 /* LuaRef.h */,
 				4A99373A1368355500EA0EE5 /* LuaSerializer.cpp */,
 				4A99373B1368355500EA0EE5 /* LuaSerializer.h */,
+				3785644E1B197FAE0039F2BC /* LuaServerAgent.cpp */,
+				3785644F1B197FAE0039F2BC /* LuaServerAgent.h */,
 				4A99373C1368355500EA0EE5 /* LuaShip.cpp */,
 				4AA84A2316D0E18700220311 /* LuaShipDef.cpp */,
 				4AA84A2416D0E18700220311 /* LuaShipDef.h */,
@@ -2219,6 +2252,8 @@
 				3785637E1B197D740039F2BC /* Sensors.h */,
 				4A6C4D4A13532FC300FDD53F /* Serializer.cpp */,
 				4A6C4D4B13532FC300FDD53F /* Serializer.h */,
+				378564501B197FAE0039F2BC /* ServerAgent.cpp */,
+				378564511B197FAE0039F2BC /* ServerAgent.h */,
 				4A6C4D4C13532FC300FDD53F /* Sfx.cpp */,
 				4A6C4D4D13532FC300FDD53F /* Sfx.h */,
 				378563811B197D740039F2BC /* Shields.cpp */,
@@ -2644,7 +2679,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8FD8D781D3C13920075FEA1 /* GenGasGiantColourMaterial.h in Headers */,
 				525515741CA6EE1C0055DAB8 /* RandomColor.h in Headers */,
+				F87E47A11D36A46F0008F233 /* GasGiantJobs.h in Headers */,
 				528422921CC0E80700A9BFA8 /* BillboardMaterial.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2941,7 +2978,7 @@
 		4A20B0D01353194B0020F43E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0730;
 				TargetAttributes = {
 					5221A72F1C9588D8002F4CD1 = {
 						CreatedOnToolsVersion = 7.2;
@@ -2954,7 +2991,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4A20B0D31353194B0020F43E /* Build configuration list for PBXProject "Pioneer" */;
+			buildConfigurationList = 4A20B0D31353194B0020F43E /* Build configuration list for PBXProject "pioneer" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -3011,7 +3048,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#\n# The following script is used to update all the included libraries with the install_name_tool so that we can create a self\n# contained app bundle with all the included libraries without the user having to hunt down extra libraries etc. Just launch\n# and go! (its the apple way!).\n#\nfunction relocateLibInApp() {\n    install_name_tool -change $1$2 @executable_path/../Frameworks/$2 $CONFIGURATION_BUILD_DIR/$EXECUTABLE_PATH\n    install_name_tool -id @executable_path/../Frameworks/$2 $CONFIGURATION_BUILD_DIR/$FRAMEWORKS_FOLDER_PATH/$2\n}\n\nfunction idLib() {\n    install_name_tool -id @executable_path/../Frameworks/$1 $CONFIGURATION_BUILD_DIR/$FRAMEWORKS_FOLDER_PATH/$1\n}\n\nfunction relocateSubLib() {\n    install_name_tool -change $1$3 @executable_path/../Frameworks/$3 $CONFIGURATION_BUILD_DIR/$FRAMEWORKS_FOLDER_PATH/$2   \n}\n\nfunction lnk() {\n    ln -f $CONFIGURATION_BUILD_DIR/$FRAMEWORKS_FOLDER_PATH/$1 $CONFIGURATION_BUILD_DIR/$FRAMEWORKS_FOLDER_PATH/$2\n}\n\n# freetype dylibs\nrelocateLibInApp /opt/local/lib/ libfreetype.6.dylib\nrelocateSubLib /opt/local/lib/ libfreetype.6.dylib libz.1.dylib\nrelocateSubLib /opt/local/lib/ libfreetype.6.dylib libbz2.1.0.dylib\nrelocateSubLib /opt/local/lib/ libfreetype.6.dylib libpng16.16.dylib\n\n# libassimp\nlnk libassimp.3.0.0.dylib libassimp.3.dylib\nrelocateLibInApp /opt/local/lib/ libassimp.3.dylib\nrelocateSubLib /opt/local/lib/ libassimp.3.0.0.dylib libz.1.dylib\n\n# sigcxx\nrelocateLibInApp /opt/local/lib/ libsigc-2.0.0.dylib\n\n#bz2\nlnk libbz2.1.0.6.dylib libbz2.1.0.dylib\nrelocateLibInApp /opt/local/lib/ libbz2.1.0.dylib\n\n# png\nidLib libpng16.16.dylib\nrelocateSubLib /opt/local/lib/ libpng16.16.dylib libz.1.dylib\nrelocateLibInApp /opt/local/lib/ libpng16.16.dylib\n\n# ogg\nrelocateLibInApp /opt/local/lib/ libogg.0.dylib\n\n# vorbis\nrelocateLibInApp /opt/local/lib/ libvorbis.0.dylib\nrelocateSubLib /opt/local/lib/ libvorbis.0.dylib libogg.0.dylib\nrelocateLibInApp /opt/local/lib/ libvorbisfile.3.dylib\nrelocateSubLib /opt/local/lib/ libvorbisfile.3.dylib libvorbis.0.dylib\nrelocateSubLib /opt/local/lib/ libvorbisfile.3.dylib libogg.0.dylib\n\n# zlib\nlnk libz.1.2.8.dylib libz.1.dylib\nrelocateLibInApp /opt/local/lib/ libz.1.dylib\nidLib libz.1.2.8.dylib\n\n# Crypto\nrelocateLibInApp /opt/local/lib/ libcrypto.1.0.0.dylib\n\n# OpenSSL\nrelocateLibInApp /opt/local/lib/ libssl.1.0.0.dylib\nrelocateSubLib /opt/local/lib/ libssl.1.0.0.dylib libcrypto.1.0.0.dylib\n";
+			shellScript = "#\n# The following script is used to update all the included libraries with the install_name_tool so that we can create a self\n# contained app bundle with all the included libraries without the user having to hunt down extra libraries etc. Just launch\n# and go! (its the apple way!).\n#\nfunction relocateLibInApp() {\n    install_name_tool -change $1$2 @executable_path/../Frameworks/$2 $CONFIGURATION_BUILD_DIR/$EXECUTABLE_PATH\n    install_name_tool -id @executable_path/../Frameworks/$2 $CONFIGURATION_BUILD_DIR/$FRAMEWORKS_FOLDER_PATH/$2\n}\n\nfunction idLib() {\n    install_name_tool -id @executable_path/../Frameworks/$1 $CONFIGURATION_BUILD_DIR/$FRAMEWORKS_FOLDER_PATH/$1\n}\n\nfunction relocateSubLib() {\n    install_name_tool -change $1$3 @executable_path/../Frameworks/$3 $CONFIGURATION_BUILD_DIR/$FRAMEWORKS_FOLDER_PATH/$2   \n}\n\nfunction lnk() {\n    ln -f $CONFIGURATION_BUILD_DIR/$FRAMEWORKS_FOLDER_PATH/$1 $CONFIGURATION_BUILD_DIR/$FRAMEWORKS_FOLDER_PATH/$2\n}\n\n# freetype dylibs\nrelocateLibInApp /opt/local/lib/ libfreetype.6.dylib\nrelocateSubLib /opt/local/lib/ libfreetype.6.dylib libz.1.dylib\nrelocateSubLib /opt/local/lib/ libfreetype.6.dylib libbz2.1.0.dylib\nrelocateSubLib /opt/local/lib/ libfreetype.6.dylib libpng16.16.dylib\n\n# libassimp\nlnk libassimp.3.0.0.dylib libassimp.3.dylib\nrelocateLibInApp /opt/local/lib/ libassimp.3.dylib\nrelocateSubLib /opt/local/lib/ libassimp.3.0.0.dylib libz.1.dylib\n\n# sigcxx\nrelocateLibInApp /opt/local/lib/ libsigc-2.0.0.dylib\n\n#bz2\nlnk libbz2.1.0.6.dylib libbz2.1.0.dylib\nrelocateLibInApp /opt/local/lib/ libbz2.1.0.dylib\n\n# png\nidLib libpng16.16.dylib\nrelocateSubLib /opt/local/lib/ libpng16.16.dylib libz.1.dylib\nrelocateLibInApp /opt/local/lib/ libpng16.16.dylib\n\n# ogg\nrelocateLibInApp /opt/local/lib/ libogg.0.dylib\n\n# vorbis\nrelocateLibInApp /opt/local/lib/ libvorbis.0.dylib\nrelocateSubLib /opt/local/lib/ libvorbis.0.dylib libogg.0.dylib\nrelocateLibInApp /opt/local/lib/ libvorbisfile.3.dylib\nrelocateSubLib /opt/local/lib/ libvorbisfile.3.dylib libvorbis.0.dylib\nrelocateSubLib /opt/local/lib/ libvorbisfile.3.dylib libogg.0.dylib\n\n# zlib\nlnk libz.1.2.8.dylib libz.1.dylib\nrelocateLibInApp /opt/local/lib/ libz.1.dylib\nidLib libz.1.2.8.dylib\n\n# Crypto\nrelocateLibInApp /opt/local/lib/ libcrypto.1.0.0.dylib\n\n# OpenSSL\nrelocateLibInApp /opt/local/lib/ libssl.1.0.0.dylib\nrelocateSubLib /opt/local/lib/ libssl.1.0.0.dylib libcrypto.1.0.0.dylib\n\n# curl\nrelocateLibInApp /opt/local/lib/ libcurl.4.dylib\nrelocateSubLib /opt/local/lib/ libcurl.4.dylib libssl.1.0.0.dylib\nrelocateSubLib /opt/local/lib/ libcurl.4.dylib libcrypto.1.0.0.dylib\n";
 		};
 		4AE970701436A65D00424F91 /* GenGitVersion */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -3034,6 +3071,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8FD8D7B1D3C13FA0075FEA1 /* GenGasGiantColourMaterial.cpp in Sources */,
+				F8FD8D7C1D3C13FA0075FEA1 /* GenGasGiantColourMaterial.h in Sources */,
+				F8FD8D721D3C0CA20075FEA1 /* GasGiantJobs.cpp in Sources */,
 				528422931CC0E81900A9BFA8 /* BillboardMaterial.cpp in Sources */,
 				528422941CC0E81A00A9BFA8 /* BillboardMaterial.h in Sources */,
 				525515751CA6EEE30055DAB8 /* RandomColor.cpp in Sources */,
@@ -3071,6 +3111,7 @@
 				4A6C4E8013532FC300FDD53F /* Sfx.cpp in Sources */,
 				4A6C4E8113532FC300FDD53F /* Ship-AI.cpp in Sources */,
 				52B054A21C184CAE00BAAE57 /* OverlayStack.cpp in Sources */,
+				378564521B197FAE0039F2BC /* LuaServerAgent.cpp in Sources */,
 				378563C11B197DBB0039F2BC /* Animation.cpp in Sources */,
 				4A6C4E8213532FC300FDD53F /* Ship.cpp in Sources */,
 				4A6C4E8313532FC300FDD53F /* ShipAICmd.cpp in Sources */,
@@ -3184,6 +3225,7 @@
 				378563981B197D740039F2BC /* GeoPatchID.cpp in Sources */,
 				4A24077413F5240F002A5C12 /* Lang.cpp in Sources */,
 				52B054AA1C184D0800BAAE57 /* LuaGalaxyMap.cpp in Sources */,
+				378564531B197FAE0039F2BC /* ServerAgent.cpp in Sources */,
 				4A24078513F524E6002A5C12 /* GuiStack.cpp in Sources */,
 				4A6B59CC1429F14500ADC7C8 /* StringF.cpp in Sources */,
 				52B054A11C184CAE00BAAE57 /* LuaOverlayStack.cpp in Sources */,
@@ -3516,9 +3558,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				528422911CC0E80700A9BFA8 /* BillboardMaterial.cpp in Sources */,
+				F87E47A01D36A46F0008F233 /* GasGiantJobs.cpp in Sources */,
 				525515731CA6EE1C0055DAB8 /* RandomColor.cpp in Sources */,
 				52F4041D1C9490C70082B1F3 /* JsonUtils.cpp in Sources */,
 				52F4041E1C9490C70082B1F3 /* jsoncpp.cpp in Sources */,
+				F8FD8D771D3C13920075FEA1 /* GenGasGiantColourMaterial.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3687,7 +3731,9 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_CXX0X_EXTENSIONS = YES;
+				ENABLE_TESTABILITY = YES;
 				HEADER_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME)";
 				PRODUCT_NAME = "${PRODUCT_NAME:c99extidentifier}";
 				SDKROOT = macosx;
@@ -3711,6 +3757,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3759,6 +3806,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = "-headerpad_max_install_names";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.pioneerspacesim.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
 				WRAPPER_EXTENSION = app;
@@ -3769,6 +3817,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3816,6 +3865,7 @@
 				LLVM_LTO = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				OTHER_LDFLAGS = "-headerpad_max_install_names";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.pioneerspacesim.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STANDARD_C_PLUS_PLUS_LIBRARY_TYPE = static;
 				WRAPPER_EXTENSION = app;
@@ -3853,6 +3903,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -3911,6 +3962,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -3962,6 +4014,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -4005,6 +4058,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -4158,6 +4212,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -4216,6 +4271,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -4267,6 +4323,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -4325,6 +4382,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -4376,6 +4434,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -4434,6 +4493,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -4485,6 +4545,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -4543,6 +4604,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -4594,6 +4656,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -4652,6 +4715,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -4703,6 +4767,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -4761,6 +4826,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -4812,6 +4878,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -4870,6 +4937,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -4921,6 +4989,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -4979,6 +5048,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -5030,6 +5100,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -5088,6 +5159,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -5125,7 +5197,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4A20B0D31353194B0020F43E /* Build configuration list for PBXProject "Pioneer" */ = {
+		4A20B0D31353194B0020F43E /* Build configuration list for PBXProject "pioneer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4A20B0D51353194B0020F43E /* Debug */,

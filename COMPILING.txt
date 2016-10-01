@@ -51,8 +51,8 @@ irc.freenode.net.
 
     Debian/Ubuntu
     -------------
-    gcc >= 4.8.1 and < 5.0
-    g++ >= 4.8.1 and < 5.0
+    gcc >= 4.8 and < 5.0
+    g++ >= 4.8 and < 5.0
     automake
     pkg-config
     libsigc++-dev

@@ -1,6 +1,6 @@
 -- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
--- modified for Pioneer Scout+ (c)2012-2015 by walterar <walterar2@gmail.com>
+-- modified for Pioneer Scout+ (c)2012-2016 by walterar <walterar2@gmail.com>
 -- Work in progress.
 
 local Game      = import("Game")
@@ -96,10 +96,11 @@ local onShipHit = function (ship, attacker)
 	if attacker == Game.player and not penalizedHit then
 		if ship then
 			PlayerDamagedShips[ship]=true
-			if policingArea() and playerAlert ~= "SHIP_FIRING" then
+			if policingArea() and Game.player.ShipAlertStatus ~= "SHIP_FIRING" then
 				penalizedHit = true
 				local crime = "PIRACY"
-				Comms.ImportantMessage(string.interp(lu.X_CANNOT_BE_TOLERATED_HERE, {crime=Laws.CrimeType[crime].name}), Game.system.faction.policeName)
+				Comms.ImportantMessage(string.interp(lu.X_CANNOT_BE_TOLERATED_HERE,
+						{crime=Laws.CrimeType[crime].name}), Game.system.faction.policeName)
 				Game.player:AddCrime(crime, crime_fine(crime))
 				Timer:CallAt(Game.time + 5, function ()
 					penalizedHit = false

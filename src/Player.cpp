@@ -38,7 +38,7 @@ static void registerEquipChangeListener(Player *player) {
 	LUA_DEBUG_END(l, 0);
 }
 
-Player::Player(ShipType::Id shipId): Ship(shipId)
+Player::Player(const ShipType::Id &shipId): Ship(shipId)
 {
 	SetController(new PlayerShipController());
 	InitCockpit();
@@ -161,7 +161,7 @@ void Player::NotifyRemoved(const Body* const removedBody)
 	if (GetNavTarget() == removedBody)
 		SetNavTarget(0);
 
-	else if (GetCombatTarget() == removedBody) {
+	if (GetCombatTarget() == removedBody) {
 		SetCombatTarget(0);
 
 		if (!GetNavTarget() && removedBody->IsType(Object::SHIP))

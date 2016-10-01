@@ -36,21 +36,16 @@ GameConfig::GameConfig(const std::map<std::string,std::string> &override_)
 	map["MaxPhysicsCyclesPerRender"] = "4";
 	map["AntiAliasingMode"] = "2";
 	map["JoystickDeadzone"] = "0.2"; // 20% deadzone is common
-	map["DefaultLowThrustPower"] = "0.015";
+	map["DefaultLowThrustPower"] = "0.25";
 	map["VSync"] = "1";
 	map["UseTextureCompression"] = "1";
 	map["WorkerThreads"] = "0";
 	map["SpeedLines"] = "1";
 	map["EnableCockpit"] = "0";
 	map["HudTrails"] = "1";
-	map["AmountOfBackgroundStars"] = "0.5";
+	map["AmountOfBackgroundStars"] = "0.6";
 	map["UseAnisotropicFiltering"] = "0";
-
-#ifdef _WIN32
 	map["RedirectStdio"] = "1";
-#else
-	map["RedirectStdio"] = "0";
-#endif
 	map["EnableGLDebug"] = "0";
 	map["EnableGPUJobs"] = "1";
 

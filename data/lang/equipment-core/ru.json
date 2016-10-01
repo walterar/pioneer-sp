@@ -1,7 +1,7 @@
 {
 "ADVANCED_RADAR_MAPPER":{
 "description":"",
-"message":"Расширенный радарный топограф"
+"message":"Улучшенный радарный топограф"
 },
 "ADVANCED_RADAR_MAPPER_DESCRIPTION":{
 "description":"",
@@ -161,7 +161,7 @@
 },
 "LASER_COOLING_BOOSTER":{
 "description":"",
-"message":"Доп.орудийный охладитель"
+"message":"Доп. орудийный охладитель"
 },
 "LASER_COOLING_BOOSTER_DESCRIPTION":{
 "description":"",
@@ -225,7 +225,7 @@
 },
 "PLANETSCANNER":{
 "description":"Scans the nearest body for resources",
-"message":"Сканер Небесных Тел"
+"message":"Сканер небесных тел"
 },
 "PLANETSCANNER_DESCRIPTION":{
 "description":"",
@@ -317,8 +317,7 @@
 },
 "TRACING_JUMPS_DESCRIPTION":{
 "description":"",
-"message":"Detection and track of hyperjumps that occur in the vicinity of the player, 
-for possible persecution."
+"message":"Detection and track of hyperjumps that occur in the vicinity of the player, for possible persecution."
 },
 "TRADE_ANALYZER":{
 "description":"Ship equipment computing profitable commodities to trade between two systems",

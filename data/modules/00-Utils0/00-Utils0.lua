@@ -1,4 +1,4 @@
--- 00-Utils0.lua for Pioneer Scout+ (c)2012-2015 by walterar <walterar2@gmail.com>
+-- 00-Utils0.lua for Pioneer Scout+ (c)2012-2016 by walterar <walterar2@gmail.com>
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 -- Work in progress.
 
@@ -22,6 +22,8 @@ local l  = Lang.GetResource("module-00-utils0") or Lang.GetResource("module-00-u
 local le = Lang.GetResource("equipment-core") or Lang.GetResource("equipment-core","en")
 local lc = Lang.GetResource("core") or Lang.GetResource("core","en")
 local lu = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
+local ls = Lang.GetResource("module-system") or Lang.GetResource("module-system","en")
+
 
 local loaded_data
 
@@ -49,7 +51,6 @@ _G.beaconReceiver    = false
 _G.tracingJumps      = false
 
 _G.MissileActive     = 0
-_G.playerAlert       = "NONE"
 _G.targetShip        = false
 
 _G.deuda_total        = nil
@@ -117,6 +118,29 @@ local onLeaveSystem = function (ship)
 	end
 end
 
+local exploreSystem = function (system)
+	system:Explore()
+	local starports = #Space.GetBodies(function (body) return body.superType == 'STARPORT' end)
+	local major_bodies = #Space.GetBodies(function (body) return body.superType and body.superType ~= 'STARPORT' and body.superType ~= 'NONE' end)
+	local bodies
+	if major_bodies == 1 then
+		bodies = ls.BODY
+	else
+		bodies = ls.BODIES
+	end
+	Comms.Message(ls.EXPLORING_SYSTEM:interp({bodycount=major_bodies, bodies=bodies}))
+	if starports > 0 then
+		local bases
+		if starports == 1 then
+			bases = ls.BASE
+		else
+			bases = ls.BASES
+		end
+		Timer:CallAt(Game.time+5, function ()
+			Comms.ImportantMessage(l.DISCOVERED_HIDDEN_BASES:interp({portcount=starports, bases=bases}))
+		end)
+	end
+end
 
 local onEnterSystem = function (ship)
 	if not ship:IsPlayer() then return end
@@ -147,6 +171,8 @@ local onEnterSystem = function (ship)
 		_G._localPlanetsWithoutStations = localplanets
 		shipNeutralized = false
 		welcome()
+	elseif not Game.system.explored then
+		exploreSystem(Game.system)
 	end
 end
 
@@ -200,17 +226,6 @@ local shipWithCannon = function (ship)
 	end
 end
 
-
-local onShipAlertChanged = function (ship, alert)
-	if ship:IsPlayer() then
-		if (DEMPsystem or autoCombat) and alert == "SHIP_FIRING" then
-			ship:SetInvulnerable(true)
-		else
-			ship:SetInvulnerable(false)
-		end
-		_G.playerAlert = alert
-	end
-end
 
 	local dempSong = "music/core/fx/demp"
 	local trigger = 0
@@ -297,7 +312,7 @@ local onShipFiring = function (ship)
 	local player = Game.player
 	if ship == player
 		and policingArea()
-		and playerAlert ~= "SHIP_FIRING"
+		and player.alertStatus ~= "SHIP_FIRING"
 	then
 		if penalized then return end
 		penalized=true
@@ -427,16 +442,6 @@ Event.Register("onAutoCombatOFF",function()
 end)
 
 
-local CommodityRefStringToObject = function (ref)
-	local slot = Eq.cargo
-	for cname,obj in pairs(slot) do
-		if cname == ref and type(obj) == "table" then
---		return obj
-		end
-	end
-end
-
-
 local onGameStart = function ()
 
 	if type(loaded_data) == "table" then
@@ -455,7 +460,6 @@ local onGameStart = function ()
 		_G.DEMPsystem        = loaded_data.demp_system or false
 		_G.MATTcapacitor     = loaded_data.matt_capacitor or false
 		_G.NavAssist         = loaded_data.nav_assist or false
-		_G.playerAlert       = loaded_data.player_alert or "NONE"
 		_G.damageControl     = loaded_data.damage_control or ""
 		_G.beaconReceiver    = loaded_data.beacon_receiver or false
 
@@ -480,7 +484,6 @@ local onGameStart = function ()
 		_G.DEMPsystem        = false
 		_G.MATTcapacitor     = false
 		_G.NavAssist         = false
-		_G.playerAlert       = "NONE"
 		_G.damageControl     = ""
 		_G.beaconReceiver    = false
 		_G.targetShip        = false
@@ -508,7 +511,6 @@ local onGameStart = function ()
 		local sbody = path:GetSystemBody()
 		if sbody.superType == "ROCKY_PLANET"
 			and sbody.type ~= "PLANET_ASTEROID" then
---			and sbody.population == 0 then-- no funciona Mercury population > 0 / Moon population 0
 			for _=1, #nearbystations do
 				if nearbystations[_].path:GetSystemBody().parent == sbody then
 					sbody = nil
@@ -522,7 +524,7 @@ local onGameStart = function ()
 	loaded_data = nil
 
 	Timer:CallAt(Game.time + 2, function ()
-		if Game.system.faction.name == ShipFaction then
+		if Game.system.faction.name == ShipFaction and Game.player.flightState == 'FLYING' then
 			Comms.Message(l.YOUR_SHIP.." < "..Game.player.label.." > "..l.IS_REGISTERED_IN_OUR_DOMAIN,
 				Game.system.faction.militaryName)
 		end
@@ -554,7 +556,7 @@ local serialize = function ()
 		demp_system        = DEMPsystem,
 		matt_capacitor     = MATTcapacitor,
 		nav_assist         = NavAssist,
-		player_alert       = playerAlert,
+		player_alert       = playerAlert,--XXX
 		damage_control     = damageControl,
 		beacon_eceiver     = beaconReceiver,
 		deuda_total        = deuda_total,
@@ -589,7 +591,6 @@ local onGameEnd = function ()
 	_G.DEMPsystem        = nil
 	_G.MATTcapacitor     = nil
 	_G.NavAssist         = nil
-	_G.playerAlert       = nil
 	_G.damageControl     = nil
 	_G.beaconReceiver    = nil
 
@@ -604,7 +605,6 @@ end
 
 
 Event.Register("onShipHit", onShipHit)
-Event.Register("onShipAlertChanged", onShipAlertChanged)
 Event.Register("onGameStart", onGameStart)
 Event.Register("onShipFiring", onShipFiring)
 Event.Register("onShipUndocked", onShipUndocked)

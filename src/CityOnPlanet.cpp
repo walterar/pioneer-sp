@@ -33,7 +33,7 @@ CityOnPlanet::citybuildinglist_t CityOnPlanet::s_buildingList = {
 
 CityOnPlanet::cityflavourdef_t CityOnPlanet::cityflavour[CITYFLAVOURS];
 
-void CityOnPlanet::PutCityBit(Random &rand, const matrix4x4d &rot, vector3d p1, vector3d p2, vector3d p3, vector3d p4)
+void CityOnPlanet::PutCityBit(Random &rand, const matrix4x4d &rot, const vector3d &p1, const vector3d &p2, const vector3d &p3, const vector3d &p4)
 {
 	double rad = (p1-p2).Length()*0.5;
 	Uint32 instIndex(0);
@@ -192,6 +192,7 @@ void CityOnPlanet::LookupBuildingListModels(citybuildinglist_t *list)
 	for (auto m = models.begin(), itEnd = models.end(); m != itEnd; ++m, i++) {
 		list->buildings[i].instIndex = i;
 		list->buildings[i].resolvedModel = *m;
+		list->buildings[i].idle = (*m)->FindAnimation("idle");
 		list->buildings[i].collMesh = (*m)->CreateCollisionMesh();
 		const Aabb &aabb = list->buildings[i].collMesh->GetAabb();
 		const double maxx = std::max(fabs(aabb.max.x), fabs(aabb.min.x));
@@ -248,7 +249,8 @@ void CityOnPlanet::SetCityModelPatterns(const SystemPath &path)
 		if (!m->SupportsPatterns()) continue;
 		skin.SetRandomColors(rand);
 		skin.Apply(m);
-		m->SetPattern(rand.Int32(0, m->GetNumPatterns()));
+		if(m->SupportsPatterns())
+			m->SetPattern(rand.Int32(0, m->GetNumPatterns()-1));
 	}
 }
 
@@ -376,6 +378,15 @@ void CityOnPlanet::Render(Graphics::Renderer *r, const Graphics::Frustum &frustu
 	for (int i=0; i<4; i++) {
 		for (int e=0; e<16; e++) {
 			rotf[i][e] = float(rot[i][e]);
+		}
+	}
+
+	// update any idle animations
+	for(Uint32 i=0; i<s_buildingList.numBuildings; i++) {
+		SceneGraph::Animation *pAnim = s_buildingList.buildings[i].idle;
+		if(pAnim) {
+			pAnim->SetProgress(fmod(pAnim->GetProgress() + (Pi::game->GetTimeStep() / pAnim->GetDuration()), 1.0));
+			pAnim->Interpolate();
 		}
 	}
 

@@ -40,12 +40,13 @@ local max_close_dist   = 1000--Km
 local max_interaction_dist    = 50 -- [meters] 0 to max distance for successful interaction with target
 local target_interaction_time =  5 -- [sec] interaction time to load/unload one unit of cargo/person
 
+local AU = 149597870700
+local beacon_receiver_range = AU/2
+
 -- global containers and variables
 local aircontrol_chars = {}    -- saving specific aircontrol character per spacestation
 local ads              = {}    -- currently active ads in the system
 local missions         = {}    -- accepted missions that are currently active
-
-local AU = 149597870700
 
 local cargo_item = function()
 	local item
@@ -263,50 +264,10 @@ for i = 1,#flavours do
 	f.transfermsg     = ls["FLAVOUR_" .. f.id .. "_TRANSFERMSG"]
 end
 
-
-local arraySize = function (array)
--- Return the size (length) of an array that contains arbitrary entries.
-	local n = 0
-	for _,_ in pairs(array) do n = n + 1 end
-	return n
-end
-
 local containerContainsKey = function (container, key)
 -- Return true if key is in container and false if not.
 	return container[key] ~= nil
 end
-
-local copyTable = function (orig)
--- Return a copy of a table. Copies only the direct children (no deep copy!).
--- Taken from http://lua-users.org/wiki/CopyTable.
-	local orig_type = type(orig)
-	local copy
-	if orig_type == 'table' then
-		copy = {}
-		for orig_key, orig_value in pairs(orig) do
-			copy[orig_key] = orig_value
-		end
-	else -- number, string, boolean, etc
-		copy = orig
-	end
-	return copy
-end
-
-local compressTableKeys = function (t)
--- Return the table with all keys in numerical order without gaps.
--- Taken from http://www.computercraft.info/forums2/index.php?/topic/18380-how-do-i-remove-gaps-in-an-ordered-list/.
-	local keySet = {}
-	for i in pairs(t) do
-		table.insert(keySet, i)
-	end
-	table.sort(keySet)
-	local retVal = {}
-	for i = 1, #keySet do
-		retVal[i] = t[keySet[i]]
-	end
-	return retVal
-end
-
 
 local removeMission = function (mission)
 	local ref, cabins
@@ -1019,10 +980,6 @@ end
 	local findBeaconDone = false
 local findBeacon = function ()
 	if beaconReceiver then
---		if _G.autoCombat == true then
---			Comms.ImportantMessage(lm.AUTO_COMBAT_DEACTIVATE)
---			_G.autoCombat = false--XXX
---		end
 		local beaconDistance
 		for ref,mission in pairs(missions) do
 			if Game.system.path == mission.system_target:GetStarSystem().path
@@ -1030,7 +987,7 @@ local findBeacon = function ()
 			then
 				if findBeaconDone then return end
 				if mission.flavour.loctype == "REMOTE_SPACE" or mission.flavour.loctype == "LOCAL_SPACE" then
-					beaconDistance = 400e6-- 400.000 km
+					beaconDistance = beacon_receiver_range
 				elseif mission.target.flightState == "LANDED" then
 					beaconDistance = 50e6-- 50.000 km
 				end
@@ -1094,22 +1051,14 @@ local closeMission = function (mission)
 	end
 end
 
-local InteractionDistance = function (mission)--XXX funcion protegida
-	local dist = Game.player:DistanceTo(mission.target)
-	if dist <= max_interaction_dist then
---print("InteractionDistance  true")
-		return true
-	else
---print("InteractionDistance  false")
-		return false
-	end
-end
-local targetInteractionDistance = function (mission)
-	ok,val = pcall(InteractionDistance, mission)
-	if ok then
-		return val
-	else
-		return false
+local InteractionDistance = function (mission)
+	if Game.system then
+		local dist = Game.player:DistanceTo(mission.target)
+		if dist <= max_interaction_dist then
+			return true
+		else
+			return false
+		end
 	end
 end
 
@@ -1277,7 +1226,7 @@ local interactionCounter = function (counter, total_interaction_time)
 end
 
 local interactWithTarget = function (mission)
-	if not targetInteractionDistance(mission) then return end
+	if not InteractionDistance(mission) then return end
 	if StopAction(mission) or missionStatus(mission) == "COMPLETE" then
 		return true
 	end
@@ -1308,7 +1257,7 @@ local interactWithTarget = function (mission)
 			return true
 		end
 		local done = true
-		if not targetInteractionDistance(mission) then
+		if not InteractionDistance(mission) then
 			Comms.ImportantMessage(ls.INTERACTION_ABORTED)
 			searchForTarget()
 			return true
@@ -1332,7 +1281,6 @@ local interactWithTarget = function (mission)
 				done = deliverCargo(mission)
 			end
 			if done and missionStatus(mission) == "COMPLETE" then
-				Game.player:SetNavTarget()
 				if mission.flavour.reward_immediate == true then--2 3 4 5 7 8 / pago inmediato termina mision
 --[[
 		2 suministra combustible y cobra / la nave va a puerto? o explota? / "THIS_PLANET"
@@ -1349,6 +1297,8 @@ local interactWithTarget = function (mission)
 							Game.player:AIEnterLowOrbit(mission.target:FindNearestTo('PLANET'))
 						end -- el jugador se aleja y decide su futuro
 								-- la nave vuela a diferentes objetivos o salta hiperespacio
+						if Game.player:GetNavTarget() == mission.target then Game.player:SetNavTarget() end
+						if Game.player:GetCombatTarget() == mission.target then Game.player:SetCombatTarget() end
 						Timer:CallAt(Game.time + 5, function ()-- mission.target despega
 							if StopAction(mission) then return end
 							if mission.target.flightState == "LANDED" then mission.target:BlastOff() end
@@ -1392,6 +1342,9 @@ local interactWithTarget = function (mission)
 --						mission.due = _remote_due(dist,0,false)
 --					end
 					mission.location = mission.station_orig
+					if NavAssist and Game.system.path ~= mission.location:GetStarSystem().path then
+						Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
+					end
 					Timer:CallAt(Game.time + 5, function ()
 						if StopAction(mission) then return end
 						if beaconReceiver then
@@ -1441,7 +1394,7 @@ function searchForTarget()
 			then
 				if Game.player.frameBody == mission.target.frameBody then
 					mission.searching = true
-					local message_counter = {INTERACTION_DISTANCE_REACHED = 1}
+					local distance_reached = true
 					local true_system = Game.system
 					Timer:CallEvery(1, function ()
 						if Game.system ~= true_system then
@@ -1467,10 +1420,10 @@ function searchForTarget()
 									end
 								end)
 							end
-							if not targetInteractionDistance(mission) then
-								if message_counter.INTERACTION_DISTANCE_REACHED == 0 then
+							if not InteractionDistance(mission) then
+								if not distance_reached then
 									Comms.ImportantMessage(ls.INTERACTION_ABORTED)
-									message_counter.INTERACTION_DISTANCE_REACHED = 1
+									distance_reached = true
 								end
 								return false
 							else
@@ -1479,8 +1432,8 @@ function searchForTarget()
 									mission.status = "FAILED"
 									return true
 								else
-									interactWithTarget(mission)
 									mission.searching = false
+									interactWithTarget(mission)
 									return true
 								end
 							end
@@ -1531,10 +1484,6 @@ local onClick = function (mission)
 		else
 			if ShipExists(mission.target) and Game.player:DistanceTo(mission.target) < 50e6 then
 				if beaconReceiver then
---					if _G.autoCombat == true then
---						Comms.ImportantMessage(lm.AUTO_COMBAT_DEACTIVATE)
---						_G.autoCombat = false--XXX
---					end
 					Game.player:SetNavTarget(mission.target)
 				end
 			else
@@ -1543,28 +1492,12 @@ local onClick = function (mission)
 		end
 	end)
 
-	local danger
-
---[[	if mission.flavour.risk == 0 then
-		if Engine.rand:Integer(1) == 0 then
-			danger = (lx.I_HIGHLY_DOUBT_IT)
-		else
-			danger = (lx.NOT_ANY_MORE_THAN_USUAL)
-		end
-	elseif mission.flavour.risk == 1 then
-		danger = (lx.YOU_SHOULD_KEEP_YOUR_EYES_OPEN)
-	elseif mission.flavour.risk == 2 then
-		danger = (lx.IT_COULD_BE_DANGEROUS)
-	elseif mission.flavour.risk == 3 then
-		danger = (lx.THIS_IS_VERY_RISKY)
-	end--]]
-
 	local dist_txt = lx.OUT_OF_RANGE
 	if Game.system then
 		if ShipExists(mission.target) then
 			if Game.player:DistanceTo(mission.target)/AU > 0.01 then
 				dist_txt = _distTxt(mission.location)
-			elseif Game.player:DistanceTo(mission.target) < 300e6 then
+			elseif Game.player:DistanceTo(mission.target) < beacon_receiver_range then
 				dist_txt = Game.player:DistanceTo(mission.target)/1000
 				dist_txt = string.format("%.2f",dist_txt).." "..lm.KM
 			end
@@ -1662,10 +1595,6 @@ local onClick = function (mission)
 					ui:Grid(2,1)
 						:SetColumn(0, {ui:VBox():PackEnd({ui:Label(ls.DEADLINE)})})
 						:SetColumn(1, {ui:VBox():PackEnd({ui:Label(Format.Date(mission.due))})}),
---[[					ui:Margin(5),
-					ui:Grid(2,1)
-						:SetColumn(0, {ui:VBox():PackEnd({ui:Label(ls.DANGER)})})
-						:SetColumn(1, {ui:VBox():PackEnd({ui:MultiLineText(danger)})}),--]]
 		})})
 		:SetColumn(1, {ui:VBox(10):PackEnd(InfoFace.New(mission.client))})
 end
@@ -1694,7 +1623,9 @@ local onShipDocked = function (player, station)
 	outhostiles = false
 	findBeaconDone = false--XXX
 	for ref, mission in pairs(missions) do
-		if Space.GetBody(mission.station_orig.bodyIndex) == station then
+		if Game.time > mission.due
+			or (mission.station_orig:IsSameSystem(Game.system.path)
+			and Space.GetBody(mission.station_orig.bodyIndex) == station) then
 			closeMission(mission)
 		end
 	end
@@ -1773,7 +1704,7 @@ switchEvents = function()
 	Event.Deregister("onShipUndocked", onShipUndocked)
 	Event.Deregister("onShipDestroyed", onShipDestroyed)
 	for ref,mission in pairs(missions) do
-		if mission.location:IsSameSystem(Game.system.path) then
+		if Game.time > mission.due or mission.location:IsSameSystem(Game.system.path) then
 			Event.Register("onFrameChanged", onFrameChanged)
 			Event.Register("onShipDocked", onShipDocked)
 			Event.Register("onShipUndocked", onShipUndocked)

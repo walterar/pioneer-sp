@@ -256,6 +256,26 @@ static int l_ship_disappear(lua_State *l)
 	return 0;
 }
 
+/*
+ * Method: GetSkin
+ *
+ * Get the current skin object of the ship.
+ *
+ * > ship:GetSkin()
+ *
+ * Parameters:
+ *
+ *
+ *
+ * Example:
+ *
+ * > ship:GetSkin()
+ *
+ * Status:
+ *
+ *  experimental
+ */
+
 static int l_ship_get_skin(lua_State *l)
 {
 	Ship *s = LuaObject<Ship>::CheckFromLua(1);
@@ -263,11 +283,65 @@ static int l_ship_get_skin(lua_State *l)
 	return 1;
 }
 
+/*
+ * Method: SetSkin
+ *
+ * Set the skin of the ship.
+ *
+ * > ship:SetSkin(skin)
+ *
+ * Parameters:
+ *
+ *   skin - the skin object of the ship
+ *   this can be created using SceneGraph.ModelSkin.New()
+ *
+ * Example:
+ *
+ * > ship:GetSkin(skin)
+ *
+ * Status:
+ *
+ *  experimental
+ */
 static int l_ship_set_skin(lua_State *l)
 {
 	Ship *s = LuaObject<Ship>::CheckFromLua(1);
 	const SceneGraph::ModelSkin *skin = LuaObject<SceneGraph::ModelSkin>::CheckFromLua(2);
 	s->SetSkin(*skin);
+	return 0;
+}
+
+/*
+ * Method: SetPattern
+ *
+ * Changes the pattern used for texturing the ship.
+ *
+ * > ship:SetPattern(num)
+ *
+ * Parameters:
+ *
+ *   num - the pattern number
+ *
+ * Example:
+ *
+ * > ship:SetPattern(5)
+ *
+ * Status:
+ *
+ *  experimental
+ */
+static int l_ship_set_pattern(lua_State *l)
+{
+	Ship *s = LuaObject<Ship>::CheckFromLua(1);
+	unsigned int num = lua_tointeger(l, 2);
+
+	SceneGraph::Model *model = s->GetModel();
+	if(model && model->SupportsPatterns()) {
+		if (num > model->GetNumPatterns()-1)
+			return luaL_error(l, "This pattern does not exist for this ship");
+
+		s->SetPattern(num);
+	}
 	return 0;
 }
 
@@ -576,7 +650,10 @@ static int l_ship_use_ecm(lua_State *l)
 /*
  * Method: InitiateHyperjumpTo
  *
- *   Ready the ship to jump to the given system.
+ *   Ready the ship to jump to the given system. This does not perform
+ *   any check regarding hyperdrive class, range, fuel. Nor does it
+ *   respect minimum legal distance for hyperjump. For those features use
+ *   <Ship.HyperjumpTo> instead.
  *
  * > status = ship:InitiateHyperjumpTo(path, warmup, duration, checks)
  *
@@ -1059,6 +1136,7 @@ template <> void LuaObject<Ship>::RegisterClass()
 
 		{ "GetSkin",    l_ship_get_skin    },
 		{ "SetSkin",    l_ship_set_skin    },
+		{ "SetPattern", l_ship_set_pattern },
 		{ "SetLabel",   l_ship_set_label   },
 		{ "SetShipName",	l_ship_set_ship_name   },
 

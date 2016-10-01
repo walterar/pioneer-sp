@@ -245,40 +245,43 @@ end
 
 local onEnterSystem = function (ship)
 	if not ship:IsPlayer() then return end
-	if service_history.lastdate + service_history.service_period < Game.time and damageControl == "" then
-		Comms.Message(alertMsg)
-		_G.damageControl = alertMsg
-	end
-	print(('DEBUG: Jumps since warranty: %d, chance of failure (if > 0): 1/%d\nWarranty expires: %s'):format(service_history.jumpcount,max_jumps_unserviced-service_history.jumpcount,Format.Date(service_history.lastdate + service_history.service_period)))
-	local saved_by_this_guy = savedByCrew(ship)
-	if (service_history.lastdate + service_history.service_period < Game.time)
-		and not saved_by_this_guy then
-		service_history.jumpcount = service_history.jumpcount + 1
-		if Game.system.population > 0
-			and damageControl == alertMsg
-			and ((service_history.jumpcount > max_jumps_unserviced)
-			or (Engine.rand:Integer(max_jumps_unserviced - service_history.jumpcount) < 1))
-		then
-			-- Destroy the engine
-			local engine = ship:GetEquip('engine',1)
-			local engine_mass = engine.capabilities.mass
-			ship:RemoveEquip(engine)
-			ship:AddEquip(Eq.cargo.rubbish, engine_mass)
-			_G.damageControl = l.THE_SHIPS_HYPERDRIVE_HAS_BEEN_DESTROYED_BY_A_MALFUNCTION
-			Comms.ImportantMessage(damageControl)
-		end
-	end
-	if saved_by_this_guy then
-		-- Brag to the player
-		if saved_by_this_guy.player then
+	Timer:CallAt(Game.time+1, function ()
+		print(('DEBUG: Jumps since warranty: %d, chance of failure (if > 0): 1/%d\nWarranty expires: %s'):format
+(service_history.jumpcount,max_jumps_unserviced-service_history.jumpcount,Format.Date(service_history.lastdate + service_history.service_period)))
+		if service_history.jumpcount and service_history.jumpcount > 0 then--and damageControl == "" then
 			Comms.Message(alertMsg)
-		else
-			Comms.Message(l.I_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN,saved_by_this_guy.name)
+			_G.damageControl = alertMsg
 		end
+		local saved_by_this_guy = savedByCrew(ship)
+		if (service_history.lastdate + service_history.service_period < Game.time)
+			and not saved_by_this_guy then
+			service_history.jumpcount = service_history.jumpcount + 1
+			if Game.system.population > 0
+				and damageControl == alertMsg
+				and ((service_history.jumpcount > max_jumps_unserviced)
+				or (Engine.rand:Integer(max_jumps_unserviced - service_history.jumpcount) < 1))
+			then
+			-- Destroy the engine
+				local engine = ship:GetEquip('engine',1)
+				local engine_mass = engine.capabilities.mass
+				ship:RemoveEquip(engine)
+				ship:AddEquip(Eq.cargo.rubbish, engine_mass)
+				_G.damageControl = l.THE_SHIPS_HYPERDRIVE_HAS_BEEN_DESTROYED_BY_A_MALFUNCTION
+				Comms.ImportantMessage(damageControl)
+			end
+		end
+		if saved_by_this_guy then
+		-- Brag to the player
+			if not saved_by_this_guy.player then
+--				Comms.Message(alertMsg)
+--			else
+				Comms.Message(l.I_FIXED_THE_HYPERDRIVE_BEFORE_IT_BROKE_DOWN,saved_by_this_guy.name)
+			end
 		-- Rewind the servicing countdown by a random amount based on crew member's ability
-		local fixup = saved_by_this_guy.engineering - saved_by_this_guy.DiceRoll()
-		if fixup > 0 then service_history.jumpcount = service_history.jumpcount - fixup end
-	end
+			local fixup = saved_by_this_guy.engineering - saved_by_this_guy.DiceRoll()
+			if fixup > 0 then service_history.jumpcount = service_history.jumpcount - fixup end
+		end
+	end)
 end
 
 local serialize = function ()

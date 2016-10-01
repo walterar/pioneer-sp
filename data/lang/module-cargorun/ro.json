@@ -60,40 +60,48 @@
 "message":"SERVICIU LIVRARE. Avem nevoie de o navă pentru livrare în sistemul {system}."
 },
 "ALUMINIUM_TUBES":{
-"description":"custom cargo","message":"Tuburi de aluminiu"
+"description":"custom cargo",
+"message":"Tuburi de aluminiu"
 },
 "AMOUNT":{
-"description":"Shown in mission summary. The amount of cargo","message":"Cantitate:"
+"description":"Shown in mission summary. The amount of cargo",
+"message":"Cantitate:"
 },
 "ART_OBJECTS":{
-"description":"custom cargo","message":"Obiecte de artă"
+"description":"custom cargo",
+"message":"Obiecte de artă"
 },
 "CARGO":{
 "description":"",
 "message":"Marfă:"
 },
 "CARGORUN":{
-"description":"Name of mission type","message":"Livrare"
+"description":"Name of mission type",
+"message":"Livrare"
 },
 "CEASE_FIRE":{
 "description":"",
 "message":"Nu trageți, nu trageți! Sunt de partea voastră!"
 },
 "CLUS":{
-"description":"custom cargo","message":"Unități de locuință modularizate"
+"description":"custom cargo",
+"message":"Unități de locuință modularizate"
 },
 "COULD_YOU_REPEAT_THE_ORIGINAL_REQUEST":{
 "description":"",
 "message":"Puteți vă rog să repetați solicitarea inițială?"
 },
 "DANGER":{
-"description":"the risk level","message":"Pericol:"
+"description":"the risk level",
+"message":"Pericol:"
 },
 "DEADLINE":{
-"description":"Must be delivered by","message":"Termen limită:"
+"description":"Must be delivered by",
+"message":"Termen limită:"
 },
 "DELIVER_TO":{
-"description":"Deliver to this location","message":"Livrare la:"
+"description":"Deliver to this location",
+"message":"Livrare la:"
 },
 "DENY_1":{
 "description":"",
@@ -120,16 +128,20 @@
 "message":"Veniți înapoi când aveți mai multă experiență."
 },
 "DIAMONDS":{
-"description":"custom cargo","message":"Diamante"
+"description":"custom cargo",
+"message":"Diamante"
 },
 "DIGESTERS":{
-"description":"custom cargo","message":"Autoclave"
+"description":"custom cargo",
+"message":"Autoclave"
 },
 "DISTANCE":{
-"description":"distance in space, between two locations","message":"Distanța:"
+"description":"distance in space, between two locations",
+"message":"Distanța:"
 },
 "ELECTRICAL_APPLIANCES":{
-"description":"custom cargo","message":"Aparate electrice"
+"description":"custom cargo",
+"message":"Aparate electrice"
 },
 "ESCORT_CHATTER_1":{
 "description":"",
@@ -152,7 +164,8 @@
 "message":"O ho ho. Asta o să fie prima mea captură pe ziua de azi."
 },
 "EXPLOSIVES":{
-"description":"custom cargo","message":"Explozive"
+"description":"custom cargo",
+"message":"Explozive"
 },
 "FAILUREMSG_1":{
 "description":"",
@@ -175,31 +188,40 @@
 "message":"Monstrule! Am așteptat prea mult această livrare. Toate animăluțele mele pufoase au murit de foame."
 },
 "FURNITURE":{
-"description":"custom cargo","message":"Mobilă"
+"description":"custom cargo",
+"message":"Mobilă"
 },
 "GREENHOUSES":{
-"description":"custom cargo","message":"Sere"
+"description":"custom cargo",
+"message":"Sere"
 },
 "GUNS_GUNS_GUNS":{
-"description":"Military radio call to avoid friendly fire. It indicates that the cannon has been activated and should ensure that other friendly pilots do not maneuver into the path of harm.","message":"Arme, arme, arme."
+"description":"Military radio call to avoid friendly fire. It indicates that the cannon has been activated and should ensure that other friendly pilots do not maneuver into the path of harm.",
+"message":"Arme, arme, arme."
 },
 "HAZARDOUS_SUBSTANCES":{
-"description":"custom cargo","message":"Substanțe hazardoase"
+"description":"custom cargo",
+"message":"Substanțe hazardoase"
 },
 "HOWMUCH_1":{
-"description":"regarding mass, always more than 1t","message":"{amount} tone metrice."
+"description":"regarding mass, always more than 1t",
+"message":"{amount} tone metrice."
 },
 "HOWMUCH_2":{
-"description":"regarding mass, always more than 1t","message":"{amount}t"
+"description":"regarding mass, always more than 1t",
+"message":"{amount}t"
 },
 "HOWMUCH_3":{
-"description":"regarding mass, always more than 1t","message":"Masa este de {amount}t."
+"description":"regarding mass, always more than 1t",
+"message":"Masa este de {amount}t."
 },
 "HOWMUCH_4":{
-"description":"regarding mass, always more than 1t","message":"Sunt {amount}t."
+"description":"regarding mass, always more than 1t",
+"message":"Sunt {amount}t."
 },
 "HOWMUCH_SINGULAR_1":{
-"description":"This string is only used for 1 metric tons (singular)","message":"Sunt doar {amount}t."
+"description":"This string is only used for 1 metric tons (singular)",
+"message":"Sunt doar {amount}t."
 },
 "HOWMUCH_WHOLESALER_1":{
 "description":"",
@@ -222,7 +244,8 @@
 "message":"Salut, sunt {name}. Plătesc {cash} dacă îmi livrați {cargoname} la {starport} în sistemul {system} ({sectorx}, {sectory}, {sectorz}) care este la {dist} a.l."
 },
 "INTROTEXT_2":{
-"description":"{name} is the full name of a person","message":"Salutări! Serviciile de Transport {name} au nevoie de dumneavoastră să livrați {cargoname} la {starport} în sistemul {system} ({sectorx}, {sectory}, {sectorz}), la distanță de {dist} a.l. Plătim {cash} pentru o livrare sigură și completă."
+"description":"{name} is the full name of a person",
+"message":"Salutări! Serviciile de Transport {name} au nevoie de dumneavoastră să livrați {cargoname} la {starport} în sistemul {system} ({sectorx}, {sectory}, {sectorz}), la distanță de {dist} a.l. Plătim {cash} pentru o livrare sigură și completă."
 },
 "INTROTEXT_3":{
 "description":"",
@@ -233,7 +256,8 @@
 "message":"Salut. Avem nevoie de cineva experimentat pentru o livrare posibil periculoasă la {starport} în sistemul {system} ({sectorx}, {sectory}, {sectorz}). Plătesc {cash}. Distanța e de {dist} a.l."
 },
 "INTROTEXT_FLUFFY_1":{
-"description":"this is used for the delivery of Quibbles, which is a nod to Tribble (star trek ref. see wikipedia)","message":"Salut, mă numesc {name}. Am niște animăluțe pufoase: {cargoname} de livrat la {starport} în sistemul {system} ({sectorx}, {sectory}, {sectorz}). Distanța e de {dist} a.l. Pentru această livrare vă plătesc {cash}."
+"description":"this is used for the delivery of Quibbles, which is a nod to Tribble (star trek ref. see wikipedia)",
+"message":"Salut, mă numesc {name}. Am niște animăluțe pufoase: {cargoname} de livrat la {starport} în sistemul {system} ({sectorx}, {sectory}, {sectorz}). Distanța e de {dist} a.l. Pentru această livrare vă plătesc {cash}."
 },
 "INTROTEXT_INFRASTRUCTURE_1":{
 "description":"",
@@ -252,7 +276,8 @@
 "message":"Numele meu este {name} și am nevoie de produsul: {cargoname} livrat la un client din {starport}. Vă plătesc cu {cash} pentru această livrare."
 },
 "INTROTEXT_MINING_1":{
-"description":"{name} is the full name of a person","message":"Salut. Compania Minieră {name} dorește să livreze {cargoname} la {starport} în sistemul ({sectorx}, {sectory}, {sectorz}) care este la distanță de {dist} a.l. în vederea construirii unei noi mine. Plata este de {cash}."
+"description":"{name} is the full name of a person",
+"message":"Salut. Compania Minieră {name} dorește să livreze {cargoname} la {starport} în sistemul ({sectorx}, {sectory}, {sectorz}) care este la distanță de {dist} a.l. în vederea construirii unei noi mine. Plata este de {cash}."
 },
 "INTROTEXT_PICKUP_1":{
 "description":"",
@@ -299,10 +324,12 @@
 "message":"a.l."
 },
 "MACHINE_TOOLS":{
-"description":"custom cargo","message":"Unelte pentru mașinării"
+"description":"custom cargo",
+"message":"Unelte pentru mașinării"
 },
 "NEPTUNIUM":{
-"description":"custom cargo","message":"Neptuniu"
+"description":"custom cargo",
+"message":"Neptuniu"
 },
 "OK_AGREED":{
 "description":"",
@@ -313,7 +340,8 @@
 "message":"Picked cargo in..."
 },
 "PICKUP_FROM":{
-"description":"from a location","message":"Ridicare marfă de la..."
+"description":"from a location",
+"message":"Ridicare marfă de la..."
 },
 "PIRATE_GRIPES_1":{
 "description":"",
@@ -324,7 +352,8 @@
 "message":"Oh, nu. Nava mea!"
 },
 "PIRATE_GRIPES_3":{
-"description":"said with vengeance","message":"Stai că-ți arăt eu."
+"description":"said with vengeance",
+"message":"Stai că-ți arăt eu."
 },
 "PIRATE_TAUNTS_1":{
 "description":"",
@@ -355,10 +384,12 @@
 "message":"Ți s-a terminat norocul!"
 },
 "PLUTONIUM":{
-"description":"custom cargo","message":"Plutoniu"
+"description":"custom cargo",
+"message":"Plutoniu"
 },
 "QUIBBLES":{
-"description":"custom cargo, also used in the NewsEventCommodity module, a nod to Star Trek's Tribble (check wikipedia)","message":"Pufoșenii"
+"description":"custom cargo, also used in the NewsEventCommodity module, a nod to Star Trek's Tribble (check wikipedia)",
+"message":"Pufoșenii"
 },
 "RISK_1":{
 "description":"",
@@ -413,14 +444,24 @@
 "message":"Riscul e mare. Dar o escortă e gata să vă apere."
 },
 "SEMI_FINISHED_PRODUCTS":{
-"description":"custom cargo","message":"Produse semi-fabricate"
+"description":"custom cargo",
+"message":"Produse semi-fabricate"
+},
+"SET_AS_TARGET":{
+"description":"",
+"message":"Set as navigation target"
+},
+"SET_RETURN_ROUTE":{
+"description":"",
+"message":"Set return route"
 },
 "SPACEPORT":{
 "description":"",
 "message":"Port spațial:"
 },
 "SPACESHIP_PARTS":{
-"description":"custom cargo","message":"Componente aeronave"
+"description":"custom cargo",
+"message":"Componente aeronave"
 },
 "SUCCESSMSG_1":{
 "description":"",
@@ -439,7 +480,8 @@
 "message":"Mulțumesc! O să vă recomand cu siguranță. Banii au fost transferați."
 },
 "SUCCESSMSG_FLUFFY_1":{
-"description":"Said when receiving a shipment of Quibbles (see wikipedia Tribble)","message":"Oh, Doamne, ce-o să fac cu atâtea vietăți pufoase? Oricum, banii v-au fost transferați."
+"description":"Said when receiving a shipment of Quibbles (see wikipedia Tribble)",
+"message":"Oh, Doamne, ce-o să fac cu atâtea vietăți pufoase? Oricum, banii v-au fost transferați."
 },
 "SYSTEM":{
 "description":"",
@@ -450,13 +492,16 @@
 "message":"Ținta distrusă."
 },
 "TITANIUM":{
-"description":"custom cargo","message":"Titan"
+"description":"custom cargo",
+"message":"Titan"
 },
 "TUNGSTEN":{
-"description":"custom cargo","message":"Wolfram"
+"description":"custom cargo",
+"message":"Wolfram"
 },
 "URANIUM":{
-"description":"custom cargo","message":"Uraniu"
+"description":"custom cargo",
+"message":"Uraniu"
 },
 "URGENCY_1":{
 "description":"",
@@ -487,7 +532,8 @@
 "message":"Din cauza perioadei de înjumătățire a acestui izotop, livrarea trebuie făcută până pe {date}."
 },
 "WEDDING_DRESSES":{
-"description":"custom cargo","message":"Rochii de mireasă"
+"description":"custom cargo",
+"message":"Rochii de mireasă"
 },
 "WE_HAVE_LOADED_UP_THE_CARGO_ON_YOUR_SHIP":{
 "description":"",

@@ -52,7 +52,7 @@ class Ship: public DynamicBody {
 	friend class PlayerShipController;
 public:
 	OBJDEF(Ship, DynamicBody, SHIP);
-	Ship(ShipType::Id shipId);
+	Ship(const ShipType::Id &shipId);
 	Ship() {} //default constructor used before Load
 	virtual ~Ship();
 
@@ -218,6 +218,8 @@ public:
 
 	const SceneGraph::ModelSkin &GetSkin() const { return m_skin; }
 	void SetSkin(const SceneGraph::ModelSkin &skin);
+
+	void SetPattern(unsigned int num);
 
 	void SetLabel(const std::string &label);
 	void SetShipName(const std::string &shipName);

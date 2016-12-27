@@ -5,11 +5,11 @@
 },
 "Change_of_enrolls_His_new_register_is":{
 "description":"",
-"message":"CHANGE OF REGISTRATION\n You are now registered with us as: "
+"message":"CHANGE OF REGISTRATION\n\nYou are now registered with us as: "
 },
 "Change_your_registration_and_clean_criminal_record":{
 "description":"",
-"message":"Hello Commander. Change your registration and clean your criminal record for just "
+"message":"Hello Commander.\n\nChange your registration and clean your criminal record for just "
 },
 "Hang":{
 "description":"",
@@ -25,14 +25,14 @@
 },
 "Work_we_do":{
 "description":"",
-"message":"Hello Commander. You can change the registration of your ship for only $ 100.\n\n"
+"message":"Hello Commander.\n\nYou can change the registration of your ship for only "
 },
 "You_are_owner_of_the_registration":{
 "description":"",
-"message":"We will change your registration from: "
+"message":"We will change your registration: "
 },
 "cannot_change_your_registration":{
 "description":"",
-"message":"Hello Commander. Unfortunately we can not change your registration. You have police fines for "
+"message":"Hello Commander.\n\nUnfortunately we can not change your registration.\n\nYou have police fines for "
 }
 }

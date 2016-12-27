@@ -36,6 +36,7 @@ EquipSet.default = {
 	autopilot=1,
 	trade_analyzer=1,
 	sensor = 8,
+	thruster = 1
 }
 
 function EquipSet.New (slots)

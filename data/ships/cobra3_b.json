@@ -27,6 +27,13 @@
       "scoop" : 2
    },
 
+   "thrust_upgrades" : {
+      "thruster_1" : 1.1,
+      "thruster_2" : 1.2,
+      "thruster_3" : 1.3
+   },
+
+
    "thruster_fuel_use" : 0.00015,
    "effective_exhaust_velocity" : -1.0,
    "hyperdrive_class" : 3,

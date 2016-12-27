@@ -92,6 +92,7 @@ end
 
 local onEnterSystem = function (player)
 	if Game.system.population > 0
+		or not Game.system.explored
 		or DangerLevel == 0
 		or not player:IsPlayer()
 	then return end

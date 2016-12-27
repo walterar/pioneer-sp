@@ -113,7 +113,27 @@
 },
 "DRIVE_MIL4":{
 "description":"",
-"message":"4. szintű katonai hajtómű"
+"message":"4. szintű katonai hiperhajtómű"
+},
+"DRIVE_MIL5":{
+"description":"",
+"message":"5. szintű katonai hiperhajtómű"
+},
+"DRIVE_MIL6":{
+"description":"",
+"message":"6. szintű katonai hiperhajtómű"
+},
+"DRIVE_MIL7":{
+"description":"",
+"message":"7. szintű katonai hiperhajtómű"
+},
+"DRIVE_MIL8":{
+"description":"",
+"message":"8. szintű katonai hiperhajtómű"
+},
+"DRIVE_MIL9":{
+"description":"",
+"message":"9. szintű katonai hiperhajtómű"
 },
 "ECM_ADVANCED":{
 "description":"",
@@ -310,6 +330,30 @@
 "STARTING_SCAN":{
 "description":"",
 "message":"Felmérés indul, célpont távolsága:"
+},
+"THRUSTERS_BASIC":{
+"description":"",
+"message":"Modified Thrusters"
+},
+"THRUSTERS_BASIC_DESCRIPTION":{
+"description":"",
+"message":"A modified type of thrusters approved for your ship."
+},
+"THRUSTERS_BEST":{
+"description":"",
+"message":"Bespoke Thrusters"
+},
+"THRUSTERS_BEST_DESCRIPTION":{
+"description":"",
+"message":"Custom made thrusters that provide the best possible output."
+},
+"THRUSTERS_MEDIUM":{
+"description":"",
+"message":"Optimised Thrusters"
+},
+"THRUSTERS_MEDIUM_DESCRIPTION":{
+"description":"",
+"message":"Thrusters that have been optimised to reduce inneficienies and improve power output."
 },
 "TRACING_JUMPS":{
 "description":"",

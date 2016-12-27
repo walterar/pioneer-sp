@@ -101,7 +101,7 @@
 },
 "FACTION_FEDERATION":{
 "description":"Lobby.lua",
-"message":"You're in space controlled by the Federación"
+"message":"You're in space controlled by the Federation"
 },
 "FACTION_INDEPENDIENT":{
 "description":"Lobby.lua",

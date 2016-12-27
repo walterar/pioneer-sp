@@ -237,7 +237,7 @@
 },
 "FLAVOUR_3_INTROTEXT":{
 "description":"",
-"message":"Sono {name} del controllo traffico aereo di {starport}. Chiedo aiuto in risposta ad un'emergenza medica riguardante il pilota del volo {shiplabel} diretto a {starport}."
+"message":"Sono {name} del controllo traffico aereo di {starport}. Chiedo aiuto in risposta ad un'emergenza medica riguardante il pilota del volo {shiplabel} diretto a {starport}. Una ricompensa di {cash} verrà pagato per questa missione"
 },
 "FLAVOUR_3_LOCATIONTEXT":{
 "description":"",

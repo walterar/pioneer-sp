@@ -927,6 +927,10 @@
 "description":"For player reputation",
 "message":"De încredere"
 },
+"RENDERER":{
+"description":"Renderer list",
+"message":"Renderer"
+},
 "REPAIR_X_HULL_DAMAGE_FOR_X":{
 "description":"",
 "message":"Repară {damage}% avarii fuzelaj la prețul {price}"

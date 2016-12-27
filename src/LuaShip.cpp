@@ -1097,7 +1097,7 @@ static int l_ship_get_velocity(lua_State *l)
 /*
  * Method: GetPosition
  *
- * Get the ships velocity
+ * Get the ships position
  *
  * > ship:GetPosition()
  *

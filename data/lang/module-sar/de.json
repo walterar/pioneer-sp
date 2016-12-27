@@ -237,7 +237,7 @@
 },
 "FLAVOUR_3_INTROTEXT":{
 "description":"",
-"message":"Mein Name ist {name} von {starport} Raumverkehrskontrolle. Ich fordere Hilfe an, als Antwort auf die Meldung eines medizinischen Notfalls, betreffend dem Piloten des Fluges {shiplabel}, das auf dem Weg zu {starport} ist."
+"message":"Mein Name ist {name} von {starport} Raumverkehrskontrolle. Ich fordere Hilfe an, als Antwort auf die Meldung eines medizinischen Notfalls, betreffend dem Piloten des Fluges {shiplabel}, das auf dem Weg zu {starport} ist. Eine Belohnung von {cash} wird für diese Mission bezahlt."
 },
 "FLAVOUR_3_LOCATIONTEXT":{
 "description":"",

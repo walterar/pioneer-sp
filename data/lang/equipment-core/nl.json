@@ -115,6 +115,26 @@
 "description":"",
 "message":"Klasse 4 Militaire aandrijving"
 },
+"DRIVE_MIL5":{
+"description":"",
+"message":"Klasse 5 Militaire aandrijving"
+},
+"DRIVE_MIL6":{
+"description":"",
+"message":"Class 6 Military drive"
+},
+"DRIVE_MIL7":{
+"description":"",
+"message":"Klasse 7 Militaire aandrijving"
+},
+"DRIVE_MIL8":{
+"description":"",
+"message":"Klasse 8 Militaire aandrijving"
+},
+"DRIVE_MIL9":{
+"description":"",
+"message":"Klasse 9 Militaire aandrijving"
+},
 "ECM_ADVANCED":{
 "description":"",
 "message":"Geavanceerd ECM systeem"
@@ -207,7 +227,6 @@
 "description":"",
 "message":"Hoewel minder effectief dan een brandstofinlaat maakt het het binnenhalen van zowel brandstof als vracht mogelijk"
 },
-
 "NAV_ASSIST":{
 "description":"",
 "message":"Navigation assistant"
@@ -311,6 +330,30 @@
 "STARTING_SCAN":{
 "description":"",
 "message":"Scan starten. Afstand tot doel is"
+},
+"THRUSTERS_BASIC":{
+"description":"",
+"message":"Modified Thrusters"
+},
+"THRUSTERS_BASIC_DESCRIPTION":{
+"description":"",
+"message":"A modified type of thrusters approved for your ship."
+},
+"THRUSTERS_BEST":{
+"description":"",
+"message":"Bespoke Thrusters"
+},
+"THRUSTERS_BEST_DESCRIPTION":{
+"description":"",
+"message":"Custom made thrusters that provide the best possible output."
+},
+"THRUSTERS_MEDIUM":{
+"description":"",
+"message":"Optimised Thrusters"
+},
+"THRUSTERS_MEDIUM_DESCRIPTION":{
+"description":"",
+"message":"Thrusters that have been optimised to reduce inneficienies and improve power output."
 },
 "TRACING_JUMPS":{
 "description":"",

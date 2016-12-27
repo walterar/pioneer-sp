@@ -1,0 +1,162 @@
+{
+"BASE":{
+"description":"",
+"message":"base"
+},
+"BASES":{
+"description":"",
+"message":"bases"
+},
+"BASES2":{
+"description":"",
+"message":"Bases"
+},
+"BODIES":{
+"description":"",
+"message":"Cuerpos: "
+},
+"BODIES2":{
+"description":"",
+"message":"Cuerpos"
+},
+"BODIES_LABEL":{
+"description":"",
+"message":"Número de cuerpos mayores:"
+},
+"BODY":{
+"description":"",
+"message":"Cuerpo: "
+},
+"CHIEF_OF_REPORTS":{
+"description":"",
+"message":"Jefe de reportes"
+},
+"COMPLETE_EXPLORATION":{
+"description":"",
+"message":"EXPLORACIÓN COMPLETA"
+},
+"DATE":{
+"description":"",
+"message":"Fecha: "
+},
+"DISCOVERED_HIDDEN_BASES":{
+"description":"",
+"message":"¡Se han descubierto {portcount} {bases} ocultas!"
+},
+"DISTANCE":{
+"description":"",
+"message":"Distancia"
+},
+"DISTANCE_LABEL":{
+"description":"",
+"message":"Distancia actual al sistema:"
+},
+"EXPLORED":{
+"description":"",
+"message":"Explorado"
+},
+"EXPLORED_SYSTEMS":{
+"description":"",
+"message":"Sistemas explorados: "
+},
+"EXPLORED_SYSTEM_LOG":{
+"description":"",
+"message":"Sistemas explorados"
+},
+"EXPLORING_SYSTEM":{
+"description":"",
+"message":"Explorando sistema < {system} >\nSe detectan {bodycount} cuerpos mayores.\n\nEl planeta < {body_label} > está aportando mayores datos."
+},
+"FLOW_INTERRUPTED":{
+"description":"",
+"message":"El flujo se ha interumpido por interferencia no identificada.\nPor favor, despegue y vuelva a aterrizar"
+},
+"FULLY_MAPPED":{
+"description":"",
+"message":"El sistema {system} ha sido totalmente mapeado."
+},
+"LY":{
+"description":"",
+"message":"LY"
+},
+"NEW_SYSTEM":{
+"description":"",
+"message":"Nuevo sistema explorado:"
+},
+"NO_ACTION":{
+"description":"",
+"message":"Ninguna"
+},
+"NO":{
+"description":"",
+"message":"No"
+},
+"NO_EXPLORED_SYSTEMS":{
+"description":"",
+"message":"No hay sistemas explorados no reportados."
+},
+"NO_ROCKY_PLANETS":{
+"description":"",
+"message":"Sistema inexplorado, no se han detectado planetas rocosos."
+},
+"OK":{
+"description":"",
+"message":"OK"
+},
+"PRICE_OF_MAPS":{
+"description":"",
+"message":"Pagamos {price} por cada cuerpo de nuevo sistema explorado."
+},
+"REPORT":{
+"description":"",
+"message":"Reportar"
+},
+"REPORTED":{
+"description":"",
+"message":"Reportado"
+},
+"REWARD_LABEL":{
+"description":"",
+"message":"Monto total acreditado:"
+},
+"SECTOR":{
+"description":"",
+"message":"Sector: "
+},
+"SECTOR2":{
+"description":"",
+"message":"Sector"
+},
+"SECTOR_LABEL":{
+"description":"",
+"message":"Coordenadas del sector:"
+},
+"TITLE":{
+"description":"",
+"message":"Reporte de exploración"
+},
+"TEXTO1":{
+"description":"",
+"message":"Hola Comandante, mi nombre es {name} y estoy a cargo del registro de nuevos sistemas mapeados en {starport}, sistema {system}, {faction}"
+},
+"UNEXPLORED_SYSTEM_DETECTED":{
+"description":"",
+"message":"Sistema inexplorado, se ha detectado un planeta cercano a {dist}\nSi usted desea explorar este sistema debe aterrizar en él."
+},
+"SYSTEM":{
+"description":"",
+"message":"Sistema: "
+},
+"SYSTEM2":{
+"description":"",
+"message":"Sistema"
+},
+"PLEASE_WAIT":{
+"description":"",
+"message":"Por favor, espere {minutes} minutos."
+},
+"YES":{
+"description":"",
+"message":"Sí"
+}
+}

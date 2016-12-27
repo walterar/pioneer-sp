@@ -9,7 +9,7 @@
 },
 "Change_your_registration_and_clean_criminal_record":{
 "description":"",
-"message":"Ciao comandante. Cambia la tua registrazione e ripulire la fedina penale per solo "
+"message":"Ciao comandante.\n\nCambia la tua registrazione e ripulire la fedina penale per solo "
 },
 "Hang":{
 "description":"",
@@ -25,7 +25,7 @@
 },
 "Work_we_do":{
 "description":"",
-"message":"Salve Comandante.\nPuò modificare la registrazione della sua nave per soli "
+"message":"Salve Comandante.\n\nPuò modificare la registrazione della sua nave per soli "
 },
 "You_are_owner_of_the_registration":{
 "description":"",
@@ -33,6 +33,6 @@
 },
 "cannot_change_your_registration":{
 "description":"",
-"message":"Ciao comandante. Purtroppo non siamo in grado di cambiare la vostra registrazione. Avete multe della polizia per "
+"message":"Ciao comandante.\n\nPurtroppo non siamo in grado di cambiare la vostra registrazione.\n\nAvete multe della polizia per "
 }
 }

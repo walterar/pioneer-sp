@@ -142,7 +142,7 @@ local mars = CustomSystemBody:new('Mars', 'PLANET_TERRESTRIAL')-- #15
 	:atmos_density(f(489,1000))
 	:atmos_oxidizing(f(950001,1000000))
 	:ocean_cover(f(10,100))
-	:ice_cover(f(440,1000))  --
+	:ice_cover(f(440,1000))
 	:life(f(10,100))
 	:orbital_phase_at_start(fixed.deg2rad(f(12,1)))
 
@@ -214,7 +214,7 @@ local jupiter_moons = {
 	CustomSystemBody:new('Metis', 'PLANET_ASTEROID')-- #23
 		:seed(-98)
 		:radius(f(337,100000))
-		:mass(f(6,100000000000000))
+		:mass(f(6,1000000000))
 		:temp(123)
 		:semi_major_axis(f(855,1000000))
 		:eccentricity(f(2,10000))
@@ -227,7 +227,7 @@ local jupiter_moons = {
 	CustomSystemBody:new('Adrastea', 'PLANET_ASTEROID')-- #24
 		:seed(-3981)
 		:radius(f(338,100000))
-		:mass(f(6,100000000000000))
+		:mass(f(6,1000000000))
 		:temp(122)
 		:semi_major_axis(f(862,1000000))
 		:eccentricity(f(15,10000))
@@ -239,7 +239,7 @@ local jupiter_moons = {
 	CustomSystemBody:new('Amalthea', 'PLANET_ASTEROID')-- #25
 		:seed(-9982)
 		:radius(f(13,1000))
-		:mass(f(3,10000000000))
+		:mass(f(3,1000000000))
 		:temp(112)
 		:semi_major_axis(f(121,100000))
 		:eccentricity(f(3,1000))
@@ -266,8 +266,8 @@ local jupiter_moons = {
 			:longitude(math.deg2rad(21.2)),
 	},
 
-	CustomSystemBody:new('Io', 'PLANET_TERRESTRIAL')-- #28
-		:seed(-4)
+	CustomSystemBody:new('Io', 'PLANET_TERRESTRIAL')
+		:seed(-4955979)
 		:radius(f(286,1000))
 		:mass(f(15,1000))
 		:temp(130)
@@ -275,13 +275,13 @@ local jupiter_moons = {
 		:eccentricity(f(41,10000))
 		:inclination(math.deg2rad(2.21))
 		:rotation_period(f(177,100))
-		:metallicity(f(7,10))
-		:volcanicity(f(2,10))
+		:metallicity(f(9,10))
+		:volcanicity(f(7,10))
 		:atmos_density(f(100,1225))
 		:atmos_oxidizing(f(12,100))
 		:ocean_cover(f(0,1))
 		:ice_cover(f(0,1))
-		:life(f(0,1)),
+		:life(f(1,10)),
 	{
 		CustomSystemBody:new('Dante\'s Base', 'STARPORT_SURFACE')-- #29
 			:latitude(math.deg2rad(-56.38))
@@ -335,6 +335,7 @@ local jupiter_moons = {
 		:eccentricity(f(74,10000))
 		:inclination(math.deg2rad(0.192))
 		:rotation_period(f(167,10)),
+
 	CustomSystemBody:new('Discovery Base', 'STARPORT_ORBITAL')-- #35
 		:semi_major_axis(f(14,1000))
 		:rotation_period(f(204,10)),
@@ -342,7 +343,7 @@ local jupiter_moons = {
 	CustomSystemBody:new('Themisto', 'PLANET_ASTEROID')-- #36
 		:seed(134102334)
 		:radius(f(627,1000000))
-		:mass(f(115,100000000000))
+		:mass(f(115,1000000000))
 		:temp(124)
 		:semi_major_axis(f(494,10000))
 		:eccentricity(f(2006,10000))
@@ -406,7 +407,7 @@ local jupiter_moons = {
 	CustomSystemBody:new('Aega', 'PLANET_ASTEROID')-- #41
 		:seed(6953)
 		:radius(f(313,1000000))
-		:mass(f(1456,100000000000000))
+		:mass(f(1456,1000000000))
 		:temp(113)
 		:semi_major_axis(f(808,10000))
 		:eccentricity(f(21,100))

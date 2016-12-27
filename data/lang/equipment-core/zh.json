@@ -115,6 +115,26 @@
 "description":"",
 "message":"等级 4 军用推进器"
 },
+"DRIVE_MIL5":{
+"description":"",
+"message":"等级 5 军用推进器"
+},
+"DRIVE_MIL6":{
+"description":"",
+"message":"等级 6 军用推进器"
+},
+"DRIVE_MIL7":{
+"description":"",
+"message":"等级 7 军用推进器"
+},
+"DRIVE_MIL8":{
+"description":"",
+"message":"等级 8 军用推进器e"
+},
+"DRIVE_MIL9":{
+"description":"",
+"message":"等级 9 军用推进器"
+},
 "ECM_ADVANCED":{
 "description":"",
 "message":"高级电子战反制系统"
@@ -310,6 +330,30 @@
 "STARTING_SCAN":{
 "description":"",
 "message":"Starting scan, target distance is"
+},
+"THRUSTERS_BASIC":{
+"description":"",
+"message":"Modified Thrusters"
+},
+"THRUSTERS_BASIC_DESCRIPTION":{
+"description":"",
+"message":"A modified type of thrusters approved for your ship."
+},
+"THRUSTERS_BEST":{
+"description":"",
+"message":"Bespoke Thrusters"
+},
+"THRUSTERS_BEST_DESCRIPTION":{
+"description":"",
+"message":"Custom made thrusters that provide the best possible output."
+},
+"THRUSTERS_MEDIUM":{
+"description":"",
+"message":"Optimised Thrusters"
+},
+"THRUSTERS_MEDIUM_DESCRIPTION":{
+"description":"",
+"message":"Thrusters that have been optimised to reduce inneficienies and improve power output."
 },
 "TRACING_JUMPS":{
 "description":"",

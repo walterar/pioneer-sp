@@ -149,7 +149,7 @@ local onShipDocked = function (ship, station)
 						To_pay(1)
 						cobrar_cuotas = cobrar_cuotas -1
 					end
-				until cobrar_cuotas < 1
+				until cobrar_cuotas < 1 or not deuda.valor_cuota
 			end
 		end)
 	end

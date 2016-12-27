@@ -1189,7 +1189,7 @@
 },
 "WE_HAVE_NO_BUSINESS_WITH_YOU":{
 "description":"Said by the police to law abiding player",
-"message":"Al momento non ha pendenze con la Polizia."
+"message":"Non abbiamo nulla contro di voi, per ora.\n\nTuttavia, ricorda di rispettare le nostre regole di base:\n\n* Non saltare nell'iperspazio a meno di 5 km dalla stazione.\n* Non sparare le armi meno di 100 km dalla stazione.\n* Non acquistare o vendere prodotti illegali.\n* Non jettison qualsiasi prodotto nella stazione,\nfiguriamoci se sono pericolosi per l'ambiente.\n* Non contaminare lo spazio esterno con scorie radioattive,\nin particolare nei sistemi abitati.\n* Spara le armi o da una collisione con un'altra nave,\na meno di 100 km da una stazione spaziale, sarà considerato Pirateria.\n* Non trasportare informazioni locali ad un'altra fazione.\n* Rispettare le missioni concordate,\nevitare di essere multato per Frode o Sequestro di persona.\n* Non utilizzare disaccoppiamento manuale per non pagare le multe,\nquesto è molto grave e sarà considerato Fuga.\n* E ... per favore ... non uccidere nessuno."
 },
 "X_CANNOT_BE_TOLERATED_HERE":{
 "description":"Message to be sent over comms by police when crime is committed by player",

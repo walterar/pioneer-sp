@@ -1,4 +1,5 @@
 -- Copyright © 2008-2016 Pioneer Developers. See AUTHORS.txt for details
+-- Modified 2012-2016 by walterar for Pioneer Scout Plus
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 local Character  = import("Character")
@@ -9,12 +10,15 @@ local Lang       = import("Lang")
 local Player     = import("Player")
 local Rand       = import("Rand")
 local Space      = import("Space")
+local StarSystem = import("StarSystem")
+local Eq         = import("Equipment")
 
 local InfoFace   = import("ui/InfoFace")
 local MessageBox = import("ui/MessageBox")
 
 local l  = Lang.GetResource("ui-core")
 local lm = Lang.GetResource("miscellaneous")
+local le = Lang.GetResource("module-explore") or Lang.GetResource("module-explore","en")
 
 local ui = Engine.ui
 
@@ -63,6 +67,9 @@ local lobby = function (tab)
 		end
 	until success or #_nearbystationsLocals < 2
 
+	local PRICE_OF_MAPS = string.interp(le.PRICE_OF_MAPS,
+			{price = showCurrency(Game.player:GetDockedWith():GetEquipmentPrice(Eq.cargo.hydrogen)*100)})
+
 	return
 		ui:Grid({60,1,39},1)
 			:SetColumn(0, {
@@ -72,6 +79,8 @@ local lobby = function (tab)
 					ui:Label(faction_msg),
 					ui:HBox(5),
 					ui:Label(near_station_msg),
+					ui:HBox(5),
+					ui:Label(PRICE_OF_MAPS),
 
 					ui:Expand(),
 					ui:Align("MIDDLE", launchButton),

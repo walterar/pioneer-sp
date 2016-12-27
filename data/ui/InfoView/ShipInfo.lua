@@ -8,6 +8,7 @@ local Lang      = import("Lang")
 local Game      = import("Game")
 local Equip     = import("Equipment")
 local ShipDef   = import("ShipDef")
+local Character = import("Character")
 
 local ModelSpinner = import("UI.Game.ModelSpinner")
 
@@ -40,9 +41,20 @@ local shipInfo = function (args)
 	frontWeapon = frontWeapon or nil
 	rearWeapon  = rearWeapon  or nil
 
-	local shipNameEntry = ui:TextEntry(player.shipName):SetFont("HEADING_NORMAL")
+	local kills = Character.persistent.player.killcount >= 32
+	local explored = explored_count >= 50
+	local missions = MissionsSuccesses - MissionsFailures >= 50
+
+	local shipNameEntry = ui:TextEntry(player.label):SetFont("HEADING_NORMAL")
+
 	shipNameEntry.onChange:Connect(function (newName)
-		player:SetShipName(newName)
+		if not player:CriminalRecord()
+			and Game.system.faction.name == ShipFaction
+			and player:GetDockedWith().label
+			and (missions or kills or explored)
+		then
+			player:SetLabel(newName)
+		end
 	end )
 
 	local mass_with_fuel = player.staticMass + player.fuelMassLeft

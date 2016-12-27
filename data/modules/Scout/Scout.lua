@@ -204,6 +204,16 @@ local onDelete = function (ref)
 	ads[ref] = nil
 end
 
+local validsystem = function(remotesystem)
+	local valid = true
+	for _,explored in pairs(explored_systems) do
+		if explored.system == remotesystem then
+			valid = false
+		end
+	end
+	return valid
+end
+
 local makeAdvert = function (station)
 	local reward, due, location, remotesystem
 	local client = Character.New()
@@ -228,14 +238,15 @@ local makeAdvert = function (station)
 		due =_local_due(station,location,urgency,true)
 
 --		due    = Game.time + (((dist/3)*24*60*60)+(4*(1.9-urgency)*24*60*60))
-		local reward_base = 250
+		local reward_base = 500
 		reward = reward_base*math.sqrt(dist)*(1+urgency)*(1+Game.system.lawlessness)
 
 	else
 
 -- remote system
 		local remotesystems = Game.system:GetNearbySystems(max_dist,
-			function (s) return #s:GetBodyPaths() > 0 and s.population == 0 end)
+			function (s) return #s:GetBodyPaths() > 0
+				and s.population == 0 and s.explored end)
 		if #remotesystems == 0 then return end
 		remotesystem = remotesystems[Engine.rand:Integer(1,#remotesystems)]
 		local dist = Game.system:DistanceTo(remotesystem)
@@ -244,12 +255,14 @@ local makeAdvert = function (station)
 		while checkedBodies <= #remotebodies do
 			location = remotebodies[Engine.rand:Integer(1,#remotebodies)]
 			currentBody = location:GetSystemBody()
-			if currentBody.superType == "ROCKY_PLANET"
-				and currentBody.type ~= "PLANET_ASTEROID"
-			then break end
-			checkedBodies = checkedBodies + 1
+			if validsystem(remotesystem.path)
+				and currentBody.superType == "ROCKY_PLANET"
+				and currentBody.type ~= "PLANET_ASTEROID" then
+				break
+			end
 			location = nil
 			currentBody = nil
+			checkedBodies = checkedBodies + 1
 		end
 		if not location then return end
 		local multiplier = Engine.rand:Number(1.5,1.6)
@@ -336,9 +349,6 @@ local start_mapping = function(mission)
 	if DangerLevel == 2 then
 		radius_min = 1.3
 		radius_max = 1.4
-	else
-		radius_min = 1.5
-		radius_max = 1.6
 	end
 	local count = Engine.rand:Integer(15,40)
 	Timer:CallEvery(xTimeUp, function ()
@@ -495,6 +505,7 @@ local onClick = function (mission)
 
 	local setTargetButton = SLButton.New(lm.SET_TARGET, 'NORMAL')
 	setTargetButton.button.onClick:Connect(function ()
+		if not Game.system then return end
 		if not NavAssist then MsgBox.Message(lm.NOT_NAV_ASSIST) return end
 		if Game.system.path ~= mission.location:GetStarSystem().path then
 			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)

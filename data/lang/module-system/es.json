@@ -17,7 +17,7 @@
 },
 "DISCOVERED_HIDDEN_BASES":{
 "description":"",
-"message":"Has descubierto {portcount} {bases} ocultas!"
+"message":"Se han descubierto {portcount} {bases} ocultas!"
 },
 "EXPLORING_SYSTEM":{
 "description":"",

@@ -1193,7 +1193,7 @@
 },
 "WE_HAVE_NO_BUSINESS_WITH_YOU":{
 "description":"Said by the police to law abiding player",
-"message":"We have no business with you at the moment."
+"message":"We have no business with you at the moment.\nHowever, remember to respect the local rules:\n\n* Move at least 5Km from the station to hyperjump.\n* Do not fire your weapons within 100km of the station.\n* Do not buy or sell illegal products.\n* Do not dispose of any product in the station,\n especially if it is hazardous to the environment.\n* Do not jettison radioactive waste into space\nin inhabited systems.\n* Shooting at or colliding another ship within 100km of station\n will be considered Piracy.\n* Do not carry local information to another faction.\n* Comply with the agreed missions, avoid being fined\n for Fraud or Abduction\n* Do not take off manually to avoid paying your fines,\n this is serious and will be treated as an Escape.\n* And... please... do not kill anyone."
 },
 "X_CANNOT_BE_TOLERATED_HERE":{
 "description":"Message to be sent over comms by police when crime is committed by player",

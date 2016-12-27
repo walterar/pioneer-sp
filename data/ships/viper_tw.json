@@ -1,7 +1,7 @@
 {
    "name"         : "Viper TW",
    "model"        : "viper_tw",
-   "ship_class"   : "medium_freighter",
+   "ship_class"   : "medium_scout",
    "manufacturer" : "p66",
    "cockpit"      : "",
 
@@ -29,6 +29,12 @@
       "laser_rear" : 0,
       "missile" : 4,
       "scoop" : 2
+   },
+
+   "thrust_upgrades" : {
+      "thruster_1" : 1.1,
+      "thruster_2" : 1.2,
+      "thruster_3" : 1.3
    },
 
    "effective_exhaust_velocity" : -1.0,

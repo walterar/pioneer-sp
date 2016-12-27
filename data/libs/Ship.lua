@@ -533,6 +533,11 @@ compat.equip.new2old = {
 	[hyperspace.hyperdrive_mil2]     = "DRIVE_MIL2",
 	[hyperspace.hyperdrive_mil3]     = "DRIVE_MIL3",
 	[hyperspace.hyperdrive_mil4]     = "DRIVE_MIL4",
+	[hyperspace.hyperdrive_mil5]     = "DRIVE_MIL5",
+	[hyperspace.hyperdrive_mil6]     = "DRIVE_MIL6",
+	[hyperspace.hyperdrive_mil7]     = "DRIVE_MIL7",
+	[hyperspace.hyperdrive_mil8]     = "DRIVE_MIL8",
+	[hyperspace.hyperdrive_mil9]     = "DRIVE_MIL9",
 	[laser.pulsecannon_1mw]          = "PULSECANNON_1MW",
 	[laser.pulsecannon_dual_1mw]     = "PULSECANNON_DUAL_1MW",
 	[laser.pulsecannon_2mw]          = "PULSECANNON_2MW",
@@ -730,7 +735,6 @@ Ship.Refuel = function (self,amount)
 	self:SetFuelPercent(math.clamp(self.fuel + removed * 100 / fuelTankMass, 0, 100))
 	return removed
 end
-
 
 --
 -- Method: Jettison

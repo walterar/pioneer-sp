@@ -237,7 +237,7 @@
 },
 "FLAVOUR_3_INTROTEXT":{
 "description":"",
-"message":"My name is {name} from {starport} air traffic control. I am requesting help in response to a medical emergency involving the pilot of flight {shiplabel} headed for {starport}."
+"message":"My name is {name} from {starport} air traffic control. I am requesting help in response to a medical emergency involving the pilot of flight {shiplabel} headed for {starport}. A reward of {cash} will be paid for this mission."
 },
 "FLAVOUR_3_LOCATIONTEXT":{
 "description":"",

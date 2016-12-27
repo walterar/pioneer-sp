@@ -2,8 +2,8 @@
 -- Licensed under the terms of the GPL v3. See licenses/GPL-3.txt
 
 local Engine = import("Engine")
-local Game = import("Game")
-local Space = import("Space")
+local Game   = import("Game")
+local Space  = import("Space")
 
 local ui = Engine.ui
 
@@ -11,9 +11,9 @@ local NavButton = {}
 
 function NavButton.New (text, target)
 	local self = {
-		button	= ui:SmallButton(),
-		label	= ui:Label(text),
-		target	= target,
+		button = ui:SmallButton(),
+		label  = ui:Label(text),
+		target = target,
 	}
 	self.widget = ui:HBox(10):PackEnd({ self.button, self.label })
 

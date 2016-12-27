@@ -143,18 +143,25 @@ local crewRoster = function ()
 			end,
 
 			UNDOCK_AND_ENTER_LOW_ORBIT = function ()
-				local state = Game.player.flightState
-				if state == "DOCKED" or state == "LANDED" then
-					local sbody = Game.player:GetDockedWith().path:GetSystemBody()
-					local body = Space.GetBody(sbody.parent.index)
-					local crewMember = checkPilotLockout() and testCrewMember('piloting')
-					if not crewMember then
-						feedback:SetText(l.THERE_IS_NOBODY_ELSE_ON_BOARD_ABLE_TO_FLY_THIS_SHIP)
-						pilotLockout()
-					else
-						feedback:SetText(l.PILOT_SEAT_IS_NOW_OCCUPIED_BY_NAME:interp({name = crewMember.name,repairPercent = repairPercent}))
-					Game.player:Undock()
-					Game.player:AIEnterLowOrbit(body)
+				local crewMember = checkPilotLockout() and testCrewMember('piloting')
+				if not crewMember then
+					feedback:SetText(l.THERE_IS_NOBODY_ELSE_ON_BOARD_ABLE_TO_FLY_THIS_SHIP)
+					pilotLockout()
+				else
+					feedback:SetText(l.PILOT_SEAT_IS_NOW_OCCUPIED_BY_NAME:interp({name = crewMember.name,repairPercent = repairPercent}))
+					local state = Game.player.flightState
+					if state == "DOCKED" or state == "LANDED" then
+						local sbody
+						local body
+						if state == "DOCKED" then
+							sbody = Game.player:GetDockedWith().path:GetSystemBody()
+							body = Space.GetBody(sbody.parent.index)
+							Game.player:Undock()
+						else
+							body = Game.player:FindNearestTo("PLANET")
+							Game.player:BlastOff()
+						end
+						Game.player:AIEnterLowOrbit(body)
 					end
 				end
 			end,

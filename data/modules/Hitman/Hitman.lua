@@ -451,6 +451,7 @@ local onClick = function (mission)
 
 	local setTargetButton = SLButton.New(lm.SET_TARGET, 'NORMAL')
 	setTargetButton.button.onClick:Connect(function ()
+		if not Game.system then return end
 		if not NavAssist then MsgBox.Message(lm.NOT_NAV_ASSIST) return end
 		if Game.system.path ~= mission.location:GetStarSystem().path then--si es en otro Sistema
 			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)--paso 1 - selecciona Sistema

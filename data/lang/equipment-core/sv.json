@@ -115,6 +115,26 @@
 "description":"",
 "message":"Klass 4 militär motor"
 },
+"DRIVE_MIL5":{
+"description":"",
+"message":"Klass 5 militär motor"
+},
+"DRIVE_MIL6":{
+"description":"",
+"message":"Klass 6 militär motor"
+},
+"DRIVE_MIL7":{
+"description":"",
+"message":"Klass 7 militär motor"
+},
+"DRIVE_MIL8":{
+"description":"",
+"message":"Klass 8 militär motor"
+},
+"DRIVE_MIL9":{
+"description":"",
+"message":"Klass 9 militär motor"
+},
 "ECM_ADVANCED":{
 "description":"",
 "message":"Avancerat ECM system"
@@ -310,6 +330,30 @@
 "STARTING_SCAN":{
 "description":"",
 "message":"Påbörjar scan, målavstånd är"
+},
+"THRUSTERS_BASIC":{
+"description":"",
+"message":"Modified Thrusters"
+},
+"THRUSTERS_BASIC_DESCRIPTION":{
+"description":"",
+"message":"A modified type of thrusters approved for your ship."
+},
+"THRUSTERS_BEST":{
+"description":"",
+"message":"Bespoke Thrusters"
+},
+"THRUSTERS_BEST_DESCRIPTION":{
+"description":"",
+"message":"Custom made thrusters that provide the best possible output."
+},
+"THRUSTERS_MEDIUM":{
+"description":"",
+"message":"Optimised Thrusters"
+},
+"THRUSTERS_MEDIUM_DESCRIPTION":{
+"description":"",
+"message":"Thrusters that have been optimised to reduce inneficienies and improve power output."
 },
 "TRACING_JUMPS":{
 "description":"",

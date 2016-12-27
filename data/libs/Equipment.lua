@@ -169,8 +169,6 @@ local LaserType = utils.inherits(EquipType, "LaserType")
 function LaserType:Install(ship, num, slot)
 	if num > 1 then num = 1 end -- FIXME: support installing multiple lasers (e.g., in the "cargo" slot?)
 	if LaserType.Super().Install(self, ship, 1, slot) < 1 then return 0 end
-
---	local prefix = slot..'_'
 	local prefix = (slot or "laser_front").."_"
 	for k,v in pairs(self.laser_stats) do
 		ship:setprop(prefix..k, v)
@@ -767,6 +765,21 @@ misc.hull_autorepair = EquipType.New({
 	l10n_key="HULL_AUTOREPAIR", slots="hull_autorepair", price=16000,
 	capabilities={mass=40, hull_autorepair=1}, purchasable=true
 })
+misc.thrusters_basic = EquipType.New({
+	l10n_key="THRUSTERS_BASIC", slots="thruster", price=3000,
+	capabilities={mass=0, thruster_power=1}, purchasable=true,
+	icon_name="thrusters_basic"
+})
+misc.thrusters_medium = EquipType.New({
+	l10n_key="THRUSTERS_MEDIUM", slots="thruster", price=6500,
+	capabilities={mass=0, thruster_power=2}, purchasable=true,
+	icon_name="thrusters_medium"
+})
+misc.thrusters_best = EquipType.New({
+	l10n_key="THRUSTERS_BEST", slots="thruster", price=14000,
+	capabilities={mass=0, thruster_power=3}, purchasable=true,
+	icon_name="thrusters_best"
+})
 misc.trade_analyzer = EquipType.New({
 	l10n_key="TRADE_ANALYZER", slots="trade_analyzer", price=50,
 	capabilities={mass=0, trade_analyzer=1, software=1}, purchasable=true
@@ -818,19 +831,39 @@ hyperspace.hyperdrive_9 = HyperdriveType.New({
 })
 hyperspace.hyperdrive_mil1 = HyperdriveType.New({
 	l10n_key="DRIVE_MIL1", fuel=cargo.military_fuel, byproduct=cargo.radioactives, slots="engine",
-	price=23000, capabilities={mass=2, hyperclass=2}, purchasable=true
+	price=23000, capabilities={mass=2, hyperclass=1}, purchasable=true
 })
 hyperspace.hyperdrive_mil2 = HyperdriveType.New({
 	l10n_key="DRIVE_MIL2", fuel=cargo.military_fuel, byproduct=cargo.radioactives, slots="engine",
-	price=47000, capabilities={mass=6, hyperclass=3}, purchasable=true
+	price=47000, capabilities={mass=6, hyperclass=2}, purchasable=true
 })
 hyperspace.hyperdrive_mil3 = HyperdriveType.New({
 	l10n_key="DRIVE_MIL3", fuel=cargo.military_fuel, byproduct=cargo.radioactives, slots="engine",
-	price=85000, capabilities={mass=9, hyperclass=4}, purchasable=true
+	price=85000, capabilities={mass=9, hyperclass=3}, purchasable=true
 })
 hyperspace.hyperdrive_mil4 = HyperdriveType.New({
 	l10n_key="DRIVE_MIL4", fuel=cargo.military_fuel, byproduct=cargo.radioactives, slots="engine",
-	price=214000, capabilities={mass=12, hyperclass=5}, purchasable=true
+	price=170000, capabilities={mass=12, hyperclass=4}, purchasable=true
+})
+hyperspace.hyperdrive_mil5 = HyperdriveType.New({
+	l10n_key="DRIVE_MIL5", fuel=cargo.military_fuel, byproduct=cargo.radioactives, slots="engine",
+	price=340000, capabilities={mass=20, hyperclass=5}, purchasable=true
+})
+hyperspace.hyperdrive_mil6 = HyperdriveType.New({
+	l10n_key="DRIVE_MIL6", fuel=cargo.military_fuel, byproduct=cargo.radioactives, slots="engine",
+	price=680000, capabilities={mass=30, hyperclass=6}, purchasable=true
+})
+hyperspace.hyperdrive_mil7 = HyperdriveType.New({
+	l10n_key="DRIVE_MIL7", fuel=cargo.military_fuel, byproduct=cargo.radioactives, slots="engine",
+	price=1360000, capabilities={mass=40, hyperclass=7}, purchasable=true
+})
+hyperspace.hyperdrive_mil8 = HyperdriveType.New({
+	l10n_key="DRIVE_MIL8", fuel=cargo.military_fuel, byproduct=cargo.radioactives, slots="engine",
+	price=2720000, capabilities={mass=60, hyperclass=8}, purchasable=true
+})
+hyperspace.hyperdrive_mil9 = HyperdriveType.New({
+	l10n_key="DRIVE_MIL9", fuel=cargo.military_fuel, byproduct=cargo.radioactives, slots="engine",
+	price=5440000, capabilities={mass=90, hyperclass=9}, purchasable=true
 })
 
 local laser = {}

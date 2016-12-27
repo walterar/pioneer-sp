@@ -8,7 +8,7 @@ local ui = Engine.ui
 
 local _DefaultSort = function (self, cmp)
 	if not cmp then
-		cmp = function (a,b) return a.data[col] <= b.data[col] end
+		cmp = function (a,b) return (a.data[col] or "0") <= (b.data[col] or "0") end
 	end
 	col = self.sortCol
 	self.table = utils.stable_sort(self.table, cmp)

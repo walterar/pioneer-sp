@@ -115,6 +115,26 @@
 "description":"",
 "message":"Motor Hiperespacial M4"
 },
+"DRIVE_MIL5":{
+"description":"",
+"message":"Motor Hiperespacial M5"
+},
+"DRIVE_MIL6":{
+"description":"",
+"message":"Motor Hiperespacial M6"
+},
+"DRIVE_MIL7":{
+"description":"",
+"message":"Motor Hiperespacial M7"
+},
+"DRIVE_MIL8":{
+"description":"",
+"message":"Motor Hiperespacial M8"
+},
+"DRIVE_MIL9":{
+"description":"",
+"message":"Motor Hiperespacial M9"
+},
 "ECM_ADVANCED":{
 "description":"",
 "message":"Sistema ECM avanzado"
@@ -310,6 +330,30 @@
 "STARTING_SCAN":{
 "description":"",
 "message":"Escaneo iniciado, la distancia al objetivo es"
+},
+"THRUSTERS_BASIC":{
+"description":"",
+"message":"Impulsores modificados"
+},
+"THRUSTERS_BASIC_DESCRIPTION":{
+"description":"",
+"message":"Un tipo modificado de propulsores aprobado para su nave."
+},
+"THRUSTERS_BEST":{
+"description":"",
+"message":"Impulsores mejorados"
+},
+"THRUSTERS_BEST_DESCRIPTION":{
+"description":"",
+"message":"Propulsores hechos a la medida que proporcionan la mejor salida posible."
+},
+"THRUSTERS_MEDIUM":{
+"description":"",
+"message":"Impulsores optimizados"
+},
+"THRUSTERS_MEDIUM_DESCRIPTION":{
+"description":"",
+"message":"Propulsores que se han optimizado para reducir las ineficiencias y mejorar la potencia de salida."
 },
 "TRACING_JUMPS":{
 "description":"",

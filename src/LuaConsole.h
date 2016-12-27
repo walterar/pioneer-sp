@@ -65,6 +65,11 @@ private:
 	std::string m_precompletionStatement;
 	std::vector<std::string> m_completionList;
 	unsigned int m_currentCompletion;
+
+//#ifdef REMOTE_LUA_REPL
+//	int m_debugSocket;
+//	std::vector<int> m_debugConnections;
+//#endif
 };
 
 #endif /* _LUACONSOLE_H */

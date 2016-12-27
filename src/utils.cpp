@@ -125,7 +125,7 @@ void Warning(const char *format, ...)
 	va_end(ap);
 
 	Output("warning: %s\n", buf);
-	SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_WARNING, "PioneerSP warning", buf, 0);
+	SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_WARNING, "Scout warning", buf, 0);
 }
 
 void Output(const char *format, ...)

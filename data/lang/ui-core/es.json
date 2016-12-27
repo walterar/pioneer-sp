@@ -237,7 +237,7 @@
 },
 "DESCENT_TO_GROUND_SPEED":{
 "description":"",
-"message":"Velocidad de descenso a tierra:"
+"message":"Velocidad de descenso:"
 },
 "DESTROY_ENEMY_SHIP":{
 "description":"",
@@ -849,7 +849,7 @@
 },
 "PILOT_SEAT_IS_NOW_OCCUPIED_BY_NAME":{
 "description":"",
-"message":"Actualmente el puesto de piloto esta ocupado por {name}"
+"message":"La nave está siendo piloteada ahora por {name}"
 },
 "PIRACY":{
 "description":"",
@@ -926,6 +926,10 @@
 "RELIABLE":{
 "description":"For player reputation",
 "message":"Confiable"
+},
+"RENDERER":{
+"description":"Renderer list",
+"message":"Procesador"
 },
 "REPAIR_X_HULL_DAMAGE_FOR_X":{
 "description":"",
@@ -1189,7 +1193,7 @@
 },
 "WE_HAVE_NO_BUSINESS_WITH_YOU":{
 "description":"",
-"message":"No tenemos nada pendiente con usted, por el momento.\nNo obstante, recuerde respetar las reglas locales:\n\n* Aléjese al menos 5Km de la estación para Hipersalto.\n* No dispare sus cañones a menos de 100Km de la estación.\n* No comercie con productos ilegales.\n* No arroje ningún tipo de producto en la estación,\n y menos productos peligrosos para el medio ambiente.\n* No arroje residuos radioactivos al espacio\nen sistemas habitados.\n* Disparar o embestir a otra nave dentro de los \n 100Km de la estación, será considerado Piratería.\n* No transporte información local hacia otra facción.\n* Cumpla con las misiones pactadas,\n evite ser multado por Fraude o Abducción\n* No use el despegue manual para no pagar sus multas,\n esto es grave y será considerado Fuga.\n* Y... por favor... no mate a nadie."
+"message":"No tenemos nada pendiente con usted, por el momento.\nNo obstante, recuerde respetar las reglas locales:\n\n* Aléjese al menos 5Km de la estación para Hipersalto.\n* No dispare sus cañones a menos de 100Km de la estación.\n* No comercie con productos ilegales.\n* No arroje ningún tipo de producto en la estación,\n y menos productos peligrosos para el medio ambiente.\n* No arroje residuos radioactivos al espacio\nen sistemas habitados.\n* Disparar o embestir a otra nave dentro de los \n 100Km de la estación, será considerado Piratería.\n* No transporte información local hacia otra facción.\n* Cumpla con las misiones pactadas,\n evite ser multado por Fraude o Rapto\n* No use el despegue manual para no pagar sus multas,\n esto es grave y será considerado Fuga.\n* Y... por favor... no mate a nadie."
 },
 "X_CANNOT_BE_TOLERATED_HERE":{
 "description":"Message to be sent over comms by police when crime is committed by player",

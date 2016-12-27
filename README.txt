@@ -1,12 +1,14 @@
 Pioneer Scout Plus
 ~~~~~~~~~~~~~~~~~~
 
-A game of missions, trade and space combat in the 31st century using the
-Pioneer Space Sim engine with many additions and improvements.
+A game of exploration of new worlds, risk missions, trade, and space combat
+in the 31st century using the Pioneer Space Sim engine with many additions
+and improvements.
+
 
 For more information or join the community, see:
 
-  http://spacesimcentral.com/ssc/topic/3229-new-game-mod-pioneer-scout/
+http://spacesimcentral.com/forum/discussion/3229/new-game-mod-pioneer-scout/p23
 
 
 Pioneer Space Simulator

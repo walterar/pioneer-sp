@@ -1,0 +1,162 @@
+{
+"BASE":{
+"description":"",
+"message":"base"
+},
+"BASES":{
+"description":"",
+"message":"bases"
+},
+"BASES2":{
+"description":"",
+"message":"Bases"
+},
+"BODIES":{
+"description":"",
+"message":"Bodies: "
+},
+"BODIES2":{
+"description":"",
+"message":"Bodies"
+},
+"BODIES_LABEL":{
+"description":"",
+"message":"Number of main bodies:"
+},
+"BODY":{
+"description":"",
+"message":"Body: "
+},
+"CHIEF_OF_REPORTS":{
+"description":"",
+"message":"Chief of reports"
+},
+"COMPLETE_EXPLORATION":{
+"description":"",
+"message":"COMPLETE EXPLORATION"
+},
+"DATE":{
+"description":"",
+"message":"Date: "
+},
+"DISCOVERED_HIDDEN_BASES":{
+"description":"",
+"message":"You have discovered {portcount} hidden {bases}!"
+},
+"DISTANCE":{
+"description":"",
+"message":"Distance"
+},
+"DISTANCE_LABEL":{
+"description":"",
+"message":"Current distance to system:"
+},
+"EXPLORED":{
+"description":"",
+"message":"Explored"
+},
+"EXPLORED_SYSTEMS":{
+"description":"",
+"message":"Explored Systems: "
+},
+"EXPLORED_SYSTEM_LOG":{
+"description":"",
+"message":"Explored Systems"
+},
+"EXPLORING_SYSTEM":{
+"description":"",
+"message":"Exploring < {system} > system.\n{bodycount} major bodies detected.\n\nThe planet < {body_label} > is providing major data"
+},
+"FLOW_INTERRUPTED":{
+"description":"",
+"message":"The flow has been interrupted by unidentified interference.\nPlease, take off and land again"
+},
+"FULLY_MAPPED":{
+"description":"",
+"message":"The system {system} has been fully mapped."
+},
+"LY":{
+"description":"",
+"message":"LY"
+},
+"NEW_SYSTEM":{
+"description":"",
+"message":"New system explored:"
+},
+"NO_ACTION":{
+"description":"",
+"message":"No action"
+},
+"NO":{
+"description":"",
+"message":"No"
+},
+"NO_EXPLORED_SYSTEMS":{
+"description":"",
+"message":"There are no unreported explored systems."
+},
+"NO_ROCKY_PLANETS":{
+"description":"",
+"message":"Unexplored system, no rocky planets have been detected."
+},
+"OK":{
+"description":"",
+"message":"OK"
+},
+"PRICE_OF_MAPS":{
+"description":"",
+"message":"We paid {price} for each body of new system explored."
+},
+"REPORT":{
+"description":"",
+"message":"Report"
+},
+"REPORTED":{
+"description":"",
+"message":"Reported"
+},
+"REWARD_LABEL":{
+"description":"",
+"message":"Total amount credited:"
+},
+"SECTOR":{
+"description":"",
+"message":"Sector: "
+},
+"SECTOR2":{
+"description":"",
+"message":"Sector"
+},
+"SECTOR_LABEL":{
+"description":"",
+"message":"Coordinates of the sector:"
+},
+"TITLE":{
+"description":"",
+"message":"Exploration report"
+},
+"TEXTO1":{
+"description":"",
+"message":"Hello Commander, my name is {name} and I'm in charge of registering new systems maps in {starport}, system {system}, {faction}"
+},
+"UNEXPLORED_SYSTEM_DETECTED":{
+"description":"",
+"message":"Unexplored system, the nearest planet has been detected to {dist}\nIf you want to explore this system you must land on it."
+},
+"SYSTEM":{
+"description":"",
+"message":"System: "
+},
+"SYSTEM2":{
+"description":"",
+"message":"System"
+},
+"PLEASE_WAIT":{
+"description":"",
+"message":"Please wait {minutes} minutes."
+},
+"YES":{
+"description":"",
+"message":"Yes"
+}
+}

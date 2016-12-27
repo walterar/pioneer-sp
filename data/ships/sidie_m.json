@@ -17,7 +17,7 @@
    "right_thrust"   :  3000000.0,
    "left_thrust"    :  3000000.0,
 
-   "max_crew" : 1,
+   "max_crew" : 2,
    "min_crew" : 1,
    "slots" : {
       "cabin" : 1,
@@ -28,6 +28,12 @@
       "laser_rear" : 0,
       "missile" : 2,
       "scoop" : 1
+   },
+
+   "thrust_upgrades" : {
+      "thruster_1" : 1.1,
+      "thruster_2" : 1.2,
+      "thruster_3" : 1.3
    },
 
    "thruster_fuel_use" : 0.0001,

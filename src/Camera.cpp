@@ -88,7 +88,7 @@ Camera::Camera(RefCountedPtr<CameraContext> context, Graphics::Renderer *rendere
 	desc.textures = 1;
 
 	m_billboardMaterial.reset(m_renderer->CreateMaterial(desc));
-	m_billboardMaterial->texture0 = Graphics::TextureBuilder::Billboard("textures/planet_billboard.png").GetOrCreateTexture(m_renderer, "billboard");
+	m_billboardMaterial->texture0 = Graphics::TextureBuilder::Billboard("textures/planet_billboard.dds").GetOrCreateTexture(m_renderer, "billboard");
 }
 
 static void position_system_lights(Frame *camFrame, Frame *frame, std::vector<Camera::LightSource> &lights)
@@ -128,7 +128,9 @@ void Camera::Update()
 		attrs.billboard = false; // false by default
 
 		// determine position and transform for draw
-		Frame::GetFrameTransform(b->GetFrame(), camFrame, attrs.viewTransform);
+//		Frame::GetFrameTransform(b->GetFrame(), camFrame, attrs.viewTransform);		// doesn't use interp coords, so breaks in some cases
+		attrs.viewTransform = b->GetFrame()->GetInterpOrientRelTo(camFrame);
+		attrs.viewTransform.SetTranslate(b->GetFrame()->GetInterpPositionRelTo(camFrame));
 		attrs.viewCoords = attrs.viewTransform * b->GetInterpPosition();
 
 		// cull off-screen objects

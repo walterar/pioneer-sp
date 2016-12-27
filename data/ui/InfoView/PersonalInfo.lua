@@ -12,6 +12,7 @@ local SmallLabeledButton = import("ui/SmallLabeledButton")
 
 local ui = Engine.ui
 local l  = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
+local le = Lang.GetResource("module-explore") or Lang.GetResource("module-explore","en")
 local ls = Lang.GetResource("miscellaneous") or Lang.GetResource("miscellaneous","en")
 
 local personalInfo = function ()
@@ -90,6 +91,7 @@ local personalInfo = function ()
 				ui:Table():AddRows({
 					ui:Label(ls.EXPERIENCE):SetFont("HEADING_NORMAL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 }),
 					ui:Table():SetColumnSpacing(10):AddRows({
+						{ le.EXPLORED_SYSTEMS, (explored_count)},
 						{ ls.SUCCESSFUL_MISSIONS, (MissionsSuccesses or 0)},
 						{ ls.FAILED_MISSIONS, (MissionsFailures or 0)},
 					"",
@@ -118,7 +120,6 @@ local personalInfo = function ()
 					ui:Table():SetColumnSpacing(10):AddRows({--return string.format("%.f %%", z);
 						{ l.HULL_INTEGRITY..": "..string.format("%.1f %%",Game.player.hullPercent) },
 					damageControl,
-					"",
 					CurrentDanger,
 					})
 				})

@@ -87,7 +87,7 @@ local setupPlayer5 = function ()
 	Game.player:AddEquip(misc.tracing_jumps)
 	Game.player:AddEquip(misc.auto_combat)
 	Game.player:AddEquip(misc.demp)
-	Game.player:AddEquip(misc.radar_mapper)
+	Game.player:AddEquip(misc.advanced_radar_mapper)
 	Game.player:AddEquip(misc.scanner)
 	Game.player:AddEquip(misc.beacon_receiver)
 	Game.player:AddEquip(misc.fuel_scoop)
@@ -149,8 +149,8 @@ local hearth   = SystemPath.New(0,0,0,0,Engine.rand:Integer(4,9))
 local newhope  = SystemPath.New(1,-1,-1,0,Engine.rand:Integer(4,7))
 local achernar = SystemPath.New(4,-9,-16,0,Engine.rand:Integer(16,20))
 local lave     = SystemPath.New(-2,1,90,0,2)
---local user     = SystemPath.New(-1,6,2,0,4)---1562,0,0,0,1)--,v(-0.75,0.13,0.27))--(-13,23,11,1,3)
-local user     = SystemPath.New(0,0,0,0,4)---1562,0,0,0,1)--,v(-0.75,0.13,0.27))--(-13,23,11,1,3)
+local user     = SystemPath.New(-72,-13,9,0,2)---1562,0,0,0,1)--,v(-0.75,0.13,0.27))--(-13,23,11,1,3)
+--local user     = SystemPath.New(0,0,0,0,4)---1562,0,0,0,1)--,v(-0.75,0.13,0.27))--(-13,23,11,1,3)
 
 local buttonDefs = {
 	{  l.START_AT_EARTH,    function () Game.StartGame(hearth,timehearth)     setupPlayer1() end },
@@ -199,7 +199,7 @@ table.insert(anims, {
 	duration = 0.4,
 })
 
-local versionLabel = ui:Label("G29 full version"):SetFont("HEADING_XSMALL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 })
+local versionLabel = ui:Label("G30 full version"):SetFont("HEADING_XSMALL"):SetColor({ r = 0.8, g = 1.0, b = 0.4 })
 table.insert(anims, {
 	widget = versionLabel,
 	type = "IN",

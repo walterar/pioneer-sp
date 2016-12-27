@@ -25,6 +25,12 @@
       "cargoscoop" : 0
    },
 
+   "thrust_upgrades" : {
+      "thruster_1" : 1.1,
+      "thruster_2" : 1.2,
+      "thruster_3" : 1.3
+   },
+
    "thruster_fuel_use" : -1.0,
    "effective_exhaust_velocity" : 55123000.0,
    "hyperdrive_class" : 0,

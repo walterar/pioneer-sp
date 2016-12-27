@@ -65,15 +65,6 @@ _G.check_crime = function (mission,crime)
 	end
 end
 
---[[
-		local days, seconds = math.modf (time_left / (24*60*60))
-		days = string.format(l.D_DAYS_LEFT, days)
-		seconds = seconds*24*60*60
-		local hours = string.format("%02.f", math.floor(seconds/3600));
-		local mins = string.format("%02.f", math.floor(seconds/60-(hours*60)));
-		local secs = string.format("%02.f", math.floor(seconds-hours*3600-mins*60));
---]]
-
 _G.TimeLeft = function (due)
 	if due < Game.time then return end
 	local time_left = (due - Game.time)
@@ -84,7 +75,6 @@ _G.TimeLeft = function (due)
 	return days.." "..hours..":"..mins..":"..secs
 end
 
-
 --_G._reward_time(mission,base)
 -- a tariff (reward) calculator
 _G.tariff = function (dist,risk,urgency,locate)--,base)
@@ -92,7 +82,6 @@ _G.tariff = function (dist,risk,urgency,locate)--,base)
 	local typ = 70 -- $70 * light year, basic.(+risk+urgency+lawlessness-population)*multiplier
 
 	local sectorz = math.abs(locate.sectorZ)
-	if sectorz > 50 then sectorz = 50 end
 
 	local multiplier = 1 + ((math.abs(locate.sectorX) + math.abs(locate.sectorY) + sectorz)/100)
 	if string.sub(Game.player.label,1,2) == string.upper(string.sub(Game.system.faction.name,1,2)) then
@@ -136,6 +125,24 @@ _G._remote_due = function (dist,urgency,round_trip)
 	return Game.time + (math.sqrt(dist)*24*60*60)+((4*round*(2.5-urgency))*24*60*60)
 end
 
+local Exists = function (ship)
+	local exists = false
+	if ship:exists() then
+		exists = true
+	end
+	return exists
+end
+local ShipExists = function (ship)
+	if ship then
+		ok,val = pcall(Exists, ship)
+		if ok then
+			return val
+		else
+			return false
+		end
+	end
+end
+
 -- a attackers (hostile - pirates) generator
 _G.ship_hostil = function (risk)
 	if risk < 1 then return end
@@ -163,9 +170,9 @@ _G.ship_hostil = function (risk)
 			local laserdef = laserdefs[Engine.rand:Integer(1,#laserdefs)]
 			local target = Game.player:GetNavTarget()
 			if target and target.type == 'STARPORT_ORBITAL' then
-				hostil = Space.SpawnShipNear(hostile.id, target,15,20)
+				hostil = Space.SpawnShipNear(hostile.id, target,10,10)--15,20)
 			elseif target and target.type == 'STARPORT_SURFACE' then
-				hostil = Space.SpawnShipLandedNear(hostile.id, target,10,11)
+				hostil = Space.SpawnShipLandedNear(hostile.id, target,50,100)
 			elseif target and target:isa("Ship") then
 				if target.flightState == 'LANDED' then
 					hostil = Space.SpawnShipNear(hostile.id, Game.player,50,100)
@@ -175,10 +182,15 @@ _G.ship_hostil = function (risk)
 			else
 				hostil = Space.SpawnShipNear(hostile.id, Game.player,30,30)
 			end
-			hostil:AddEquip(default_drive)
-			hostil:AddEquip(laserdef)
-			hostil:SetLabel(Ship.MakeRandomLabel())
-			hostil:AIKill(Game.player)
+			if ShipExists(hostil) then
+				hostil:AddEquip(default_drive)
+				hostil:AddEquip(laserdef)
+				hostil:SetLabel(Ship.MakeRandomLabel())
+				if hostil.flightState == 'LANDED' then hostil:BlastOff() end
+				hostil:AIKill(Game.player)
+			else
+				hostil = nil
+			end
 		end
 	end
 	return hostil-- el último hostil manda mensaje intimidatorio

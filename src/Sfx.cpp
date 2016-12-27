@@ -70,14 +70,13 @@ void Sfx::LoadFromJson(const Json::Value &jsonObj)
 	if (!jsonObj.isMember("sfx")) throw SavedGameCorruptException();
 	Json::Value sfxObj = jsonObj["sfx"];
 	if (!sfxObj.isMember("pos")) throw SavedGameCorruptException();
-	if (!sfxObj.isMember("vel")) throw SavedGameCorruptException();
-	if (!sfxObj.isMember("age")) throw SavedGameCorruptException();
-	if (!sfxObj.isMember("type")) throw SavedGameCorruptException();
-
 	JsonToVector(&m_pos, sfxObj, "pos");
+	if (!sfxObj.isMember("vel")) throw SavedGameCorruptException();
 	JsonToVector(&m_vel, sfxObj, "vel");
+	if (!sfxObj.isMember("age")) throw SavedGameCorruptException();
 	m_age = StrToFloat(sfxObj["age"].asString());
-	m_type = static_cast<SFX_TYPE>(sfxObj["type"].asInt());
+	if (!sfxObj.isMember("type")) throw SavedGameCorruptException();
+	m_type = static_cast < SFX_TYPE > (sfxObj["type"].asInt());
 }
 
 void Sfx::SetPosition(const vector3d &p)
@@ -105,7 +104,7 @@ float Sfx::AgeBlend() const
 		case TYPE_EXPLOSION: return (1.8 - m_age) / 1.8;
 		case TYPE_DAMAGE:    return (1.0 - m_age) / 1.0;
 		case TYPE_SMOKE:     return (0.5 - m_age) / 0.5;
-		case TYPE_NONE:			return 0.0f;
+		case TYPE_NONE:      return 0.0f;
 	}
 	return 0.0f;
 }

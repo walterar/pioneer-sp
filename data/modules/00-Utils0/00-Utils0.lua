@@ -17,13 +17,13 @@ local Timer      = import("Timer")
 local Eq         = import("Equipment")
 local Laws       = import("Laws")
 local StarSystem = import("StarSystem")
+local MessageBox = import("ui/MessageBox")
+local utils      = import("utils")
 
 local l  = Lang.GetResource("module-00-utils0") or Lang.GetResource("module-00-utils0","en")
 local le = Lang.GetResource("equipment-core") or Lang.GetResource("equipment-core","en")
 local lc = Lang.GetResource("core") or Lang.GetResource("core","en")
 local lu = Lang.GetResource("ui-core") or Lang.GetResource("ui-core","en")
-local ls = Lang.GetResource("module-system") or Lang.GetResource("module-system","en")
-
 
 local loaded_data
 
@@ -58,6 +58,8 @@ _G.deuda_valor_cuota  = nil
 _G.deuda_fecha_p_pago = nil
 _G.deuda_resto_cuotas = nil
 
+--_G.explored_systems = {}
+local function trim(s) return s:find'^%s*$' and '' or s:match'^%s*(.*%S)' end
 
 local danger_level = function ()
 	local lawlessness = Game.system.lawlessness
@@ -91,14 +93,15 @@ end
 
 
 local welcome = function ()
-	if (not Game.system) then return end
+	if not Game.system then return end
 	local factionName = Game.system.faction.name
 	if PrevFac ~= factionName then
-		Comms.Message(l.You_are_in_space_controlled_by.." " .. factionName, Game.system.faction.militaryName)
-		Music.Play("music/core/faction/"..Game.system.faction.name,false)
+		local explored
 		if Game.system.population == 0 then
 			if Game.system.explored == true then
 				explored = l.Explored
+				Comms.Message(l.You_are_in_space_controlled_by.." " .. factionName, Game.system.faction.militaryName)
+				Music.Play("music/core/faction/"..Game.system.faction.name,false)
 			else
 				explored = l.Unexplored
 			end
@@ -106,6 +109,14 @@ local welcome = function ()
 		end
 	end
 	danger_level()
+end
+
+local onShipEquipmentChanged = function (ship, equipType)
+	if ship:IsPlayer() and equipType == Eq.cargo.hydrogen
+		and damageControl == l.Damage_Control_Propellant
+	then
+		_G.damageControl = ""
+	end
 end
 
 local onLeaveSystem = function (ship)
@@ -118,30 +129,6 @@ local onLeaveSystem = function (ship)
 	end
 end
 
-local exploreSystem = function (system)
-	system:Explore()
-	local starports = #Space.GetBodies(function (body) return body.superType == 'STARPORT' end)
-	local major_bodies = #Space.GetBodies(function (body) return body.superType and body.superType ~= 'STARPORT' and body.superType ~= 'NONE' end)
-	local bodies
-	if major_bodies == 1 then
-		bodies = ls.BODY
-	else
-		bodies = ls.BODIES
-	end
-	Comms.Message(ls.EXPLORING_SYSTEM:interp({bodycount=major_bodies, bodies=bodies}))
-	if starports > 0 then
-		local bases
-		if starports == 1 then
-			bases = ls.BASE
-		else
-			bases = ls.BASES
-		end
-		Timer:CallAt(Game.time+5, function ()
-			Comms.ImportantMessage(l.DISCOVERED_HIDDEN_BASES:interp({portcount=starports, bases=bases}))
-		end)
-	end
-end
-
 local onEnterSystem = function (ship)
 	if not ship:IsPlayer() then return end
 	if Game.system.population > 0 then
@@ -151,7 +138,6 @@ local onEnterSystem = function (ship)
 		_G._nearbystationsLocals = Game.system:GetStationPaths()
 		_G._maxAdv = math.ceil(#_nearbystationsLocals/3) or 1
 		if _maxAdv > 3 then _G._maxAdv = 3 end
-
 		local nearbystations = Space.GetBodies(function (body)
 			return body.superType == 'STARPORT'
 		end)
@@ -171,8 +157,6 @@ local onEnterSystem = function (ship)
 		_G._localPlanetsWithoutStations = localplanets
 		shipNeutralized = false
 		welcome()
-	elseif not Game.system.explored then
-		exploreSystem(Game.system)
 	end
 end
 
@@ -212,7 +196,7 @@ local onShipUndocked = function (player, station)
 		if not target then return end
 		local trueSystem = Game.system
 		Timer:CallAt(Game.time + 4, function ()
-			if trueSystem ~= Game.system then return true end
+			if not Game.system or trueSystem ~= Game.system then return true end
 			player:AIEnterLowOrbit(target)
 		end)
 	end
@@ -238,13 +222,15 @@ local onShipHit = function (ship, attacker)
 		_G.ShotsReceived = (ShotsReceived or 0) + 1
 		if ShipExists(attacker) then
 			trigger = trigger + 1
-			if attacker ~= player:GetCombatTarget() then
+			if player:DistanceTo(attacker) > 4000 then
+--			if attacker ~= player:GetCombatTarget() then
 				trigger = 0
 			return end
 		else
 			trigger = 0
 			player:SetInvulnerable(true)
-		return end
+			return
+		end
 		if trigger > 3 and DEMPsystem then
 			shipNeutralized = true
 			attacker:CancelAI()
@@ -260,7 +246,7 @@ local onShipHit = function (ship, attacker)
 		if hullIntegrity == 100 then damaged = false
 		elseif hullIntegrity < 90 and damageControl == "" and not damaged then
 			damaged = true
-			local chance = Engine.rand:Integer(0,9)
+			local chance = Engine.rand:Integer(9)
 			if chance == 0 then
 				player:SetFuelPercent(ship.fuel/2)
 				_G.damageControl = l.Damage_Control_Propellant
@@ -442,6 +428,79 @@ Event.Register("onAutoCombatOFF",function()
 end)
 
 
+local ScanEquipment = function (ship)
+	ship = ship or Game.player
+	local object
+--	local slot = Eq.cargo
+print("\nEquipamiento de "..ship.label)
+	for sname,vslot in pairs(ship.equipSet.slots) do
+--		print("Slot: "..sname)
+		--if sname == "misc" then
+		if sname ~= "cargo" or sname ~= "hyperspace" then
+			for cname,obj in pairs(vslot) do
+				if type(obj) == "table" then
+					if object ~= obj then
+--			print(item.l10n_key)
+						local count = ship:CountEquip(obj)
+						if count > 0 then
+							local equip = obj.l10n_key
+							if count < 2 then count = "" end
+							print(obj:GetName().." "..count)
+--							print("Cantidad  = "..count)
+
+--local missile = table.unpack(Game.player:GetEquip("missile"))
+--print("missile = "..missile)
+						end
+						object = obj
+					end
+				end
+			end
+		end
+	end
+end
+
+
+local CommRefStrToObj = function (ref)
+	local slot = Eq.cargo
+	for cname,obj in pairs(slot) do
+		if cname == ref and type(obj) == "table" then
+		return obj
+		end
+	end
+end
+
+--[[
+local function unformat_date(fdate)
+	local year, day, hhmmss
+	year = string.sub (fdate, 1, 4)
+	local lcmonth = {
+		lc.MONTH_JAN,
+		lc.MONTH_FEB,
+		lc.MONTH_MAR,
+		lc.MONTH_APR,
+		lc.MONTH_MAY,
+		lc.MONTH_JUN,
+		lc.MONTH_JUL,
+		lc.MONTH_AUG,
+		lc.MONTH_SEP,
+		lc.MONTH_OCT,
+		lc.MONTH_NOV,
+		lc.MONTH_DEC
+		}
+	for i=1, 12 do
+		if lcmonth[i] == string.sub (fdate, 6, 8)	then
+			month = i
+			break
+		end
+	end
+	day  = trim(string.sub (fdate, 9, 10))
+	if string.len(month) < 2 then month = "0"..month end
+	if string.len(day) < 2 then day ="0"..day end
+	local udate = year..month..day
+	return udate
+end
+--]]
+
 local onGameStart = function ()
 
 	if type(loaded_data) == "table" then
@@ -494,6 +553,7 @@ local onGameStart = function ()
 		_G.deuda_valor_cuota  = nil
 		_G.deuda_fecha_p_pago = nil
 		_G.deuda_resto_cuotas = nil
+
 	end
 	danger_level()
 
@@ -511,6 +571,7 @@ local onGameStart = function ()
 		local sbody = path:GetSystemBody()
 		if sbody.superType == "ROCKY_PLANET"
 			and sbody.type ~= "PLANET_ASTEROID" then
+--			and sbody.population == 0 then-- no funciona Mercury population > 0 / Moon population 0
 			for _=1, #nearbystations do
 				if nearbystations[_].path:GetSystemBody().parent == sbody then
 					sbody = nil
@@ -600,10 +661,10 @@ local onGameEnd = function ()
 	_G.deuda_valor_cuota  = nil
 	_G.deuda_fecha_p_pago = nil
 	_G.deuda_resto_cuotas = nil
-
 end
 
 
+Event.Register("onShipEquipmentChanged", onShipEquipmentChanged)
 Event.Register("onShipHit", onShipHit)
 Event.Register("onGameStart", onGameStart)
 Event.Register("onShipFiring", onShipFiring)

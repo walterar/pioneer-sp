@@ -46,7 +46,7 @@ local GetLocalScoopables = function ()
 		local sbody = path:GetSystemBody()
 			if sbody.isScoopable and sbody.gravity < 26 then
 ----print("Gravedad de "..sbody.name.."  "..sbody.gravity)
-print(sbody.name.." seed "..sbody.seed)
+--print(sbody.name.." seed "..sbody.seed)
 			table.insert(LocalScoopables, Space.GetBody(sbody.index).path)
 		end
 	end
@@ -221,6 +221,16 @@ local onDelete = function (ref)
 	ads[ref] = nil
 end
 
+local validsystem = function(remotesystem)
+	local valid = true
+	for _,explored in pairs(explored_systems) do
+		if explored.system == remotesystem then
+			valid = false
+		end
+	end
+	return valid
+end
+
 local makeAdvert = function (station)
 --print("Scooping makeAdvert: "..station.label.." Distancia: ".._distTxt(station.path))
 	local reward, due, location, targetBody, remotesystem
@@ -245,21 +255,24 @@ local makeAdvert = function (station)
 
 	else-- remote system
 		local remotesystems = Game.system:GetNearbySystems(max_dist,
-			function (s) return #s:GetBodyPaths() > 0 and s.population == 0  and s.explored end)
+			function (s) return #s:GetBodyPaths() > 0
+				and s.population == 0 and s.explored end)
 		if #remotesystems == 0 then return end
 		remotesystem = remotesystems[Engine.rand:Integer(1,#remotesystems)]
 		local dist = Game.system:DistanceTo(remotesystem)
 		local remotebodies = remotesystem:GetBodyPaths()
-		local checkedBodies = 0
+		local checkedBodies = 1
 		while checkedBodies <= #remotebodies do
 			location = remotebodies[Engine.rand:Integer(1,#remotebodies)]
 			targetBody = location:GetSystemBody()
-			if targetBody.isScoopable and targetBody.gravity < 26 then
-----print("Scooping location:GetSystemBody().seed = "..location:GetSystemBody().seed)
-			break end
-			checkedBodies = checkedBodies + 1
+			if validsystem(remotesystem.path)
+				and targetBody.isScoopable
+				and targetBody.gravity < 26 then
+				break
+			end
 			location = nil
 			targetBody = nil
+			checkedBodies = checkedBodies + 1
 		end
 		if not location then return end
 		local multiplier = Engine.rand:Number(1.5,1.6)
@@ -536,6 +549,7 @@ local onClick = function (mission)
 
 	local setTargetButton = SLButton.New(lm.SET_TARGET, 'NORMAL')
 	setTargetButton.button.onClick:Connect(function ()
+		if not Game.system then return end
 		if not NavAssist then MsgBox.Message(lm.NOT_NAV_ASSIST) return end
 		if Game.system.path ~= mission.location:GetStarSystem().path then
 			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)

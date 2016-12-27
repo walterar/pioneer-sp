@@ -703,6 +703,15 @@ local onDelete = function (ref)
 	ads[ref] = nil
 end
 
+local validsystem = function(remotesystem)
+	local valid = true
+	for _,explored in pairs(explored_systems) do
+		if explored.system == remotesystem then
+			valid = false
+		end
+	end
+	return valid
+end
 
 local makeAdvert = function (station)
 
@@ -798,7 +807,7 @@ local makeAdvert = function (station)
 	elseif flavour.loctype == "REMOTE_SPACE" or flavour.loctype == "REMOTE_PLANET" then
 
 		local remotesystems = Game.system:GetNearbySystems(15,
-			function (s) return #s:GetBodyPaths() > 0 and s.population == 0 end)
+			function (s) return #s:GetBodyPaths() > 0 and s.population == 0 and s.explored == true end)
 		if #remotesystems == 0 then return end
 		remotesystem = remotesystems[Engine.rand:Integer(1,#remotesystems)]
 		local remotebodies = remotesystem:GetBodyPaths()
@@ -806,14 +815,17 @@ local makeAdvert = function (station)
 		while checkedBodies <= #remotebodies do
 			location = remotebodies[Engine.rand:Integer(1,#remotebodies)]
 			currentBody = location:GetSystemBody()
-			if currentBody.superType == "ROCKY_PLANET"
-				and currentBody.type ~= "PLANET_ASTEROID"
-			then break end
+			if validsystem(remotesystem.path)
+				and currentBody.superType == "ROCKY_PLANET"
+				and currentBody.type ~= "PLANET_ASTEROID" then
+				break
+			end
+			location = nil
+			currentBody = nil
 			checkedBodies = checkedBodies + 1
 		end
-		if not currentBody or currentBody.superType ~= "ROCKY_PLANET" then return end
+		if not currentBody or not location then return end
 		planet_target = location
-		if not planet_target then return nil end
 		if flavour.loctype == "REMOTE_PLANET" then lat, long, dist = randomLatLong() end
 		system_target = remotesystem.path
 		local multiplier = Engine.rand:Number(1.5,1.6)
@@ -1057,6 +1069,14 @@ local InteractionDistance = function (mission)
 		if dist <= max_interaction_dist then
 			return true
 		else
+
+			if Game.player:GetNavTarget() == mission.target
+				and Game.player:GetCombatTarget() == mission.target
+			then
+				Game.player:SetNavTarget()
+				Game.player:SetCombatTarget()
+			end
+
 			return false
 		end
 	end
@@ -1225,11 +1245,14 @@ local interactionCounter = function (counter, total_interaction_time)
 	end
 end
 
+local working
 local interactWithTarget = function (mission)
-	if not InteractionDistance(mission) then return end
+	if working or not InteractionDistance(mission) then return end
 	if StopAction(mission) or missionStatus(mission) == "COMPLETE" then
+		working = false
 		return true
 	end
+	working = true
 	local packages = (
 		target_interaction_time+(mission.quantity_cargo or 0 )+mission.pickup_crew+
 		mission.pickup_pass+mission.deliver_crew+mission.deliver_pass )
@@ -1254,12 +1277,14 @@ local interactWithTarget = function (mission)
 		if StopAction(mission)
 		or (done and missionStatus(mission) == "COMPLETE")
 		then
+			working = false
 			return true
 		end
 		local done = true
 		if not InteractionDistance(mission) then
 			Comms.ImportantMessage(ls.INTERACTION_ABORTED)
 			searchForTarget()
+			working = false
 			return true
 		end
 		local actiontime
@@ -1330,6 +1355,7 @@ local interactWithTarget = function (mission)
 						end)
 					end)
 					closeMission(mission)-- cuidado donde se ubica esto XXX
+					working = false
 				else-- el jugador retorna con tripulantes o pasajeros 1 6
 --		1 recoge tripulantes o pasajeros y retorna / la nave explota / "LOCAL_PLANET"
 --		6 recoge tripulantes o pasajeros y retorna / la nave explota / "REMOTE_PLANET"
@@ -1364,8 +1390,10 @@ local interactWithTarget = function (mission)
 					findBeaconDone = false
 					findBeacon()
 				end)
+				working = false
 				return true
 			else
+				working = false
 				return false
 			end
 		end
@@ -1460,7 +1488,7 @@ local onUpdateBB = function (station)
 				or ad.flavour.loctype == "LOCAL_SPACE") then
 				timeout = 60*60 -- 1 hour timeout for locals
 			end
-			if (Game.time - ad.date > timeout) then
+			if (Game.time - ad.date >= timeout) then
 				station:RemoveAdvert(ref)
 				num = num + 1--Engine.rand:Integer(1)-- 50% of the time, give away 1
 			end
@@ -1477,6 +1505,7 @@ end
 local onClick = function (mission)
 	local setTargetButton = SLButton.New(lm.SET_TARGET, 'NORMAL')
 	setTargetButton.button.onClick:Connect(function ()
+		if not Game.system then return end
 		if not NavAssist then MsgBox.Message(lm.NOT_NAV_ASSIST) return end
 		if not beaconReceiver then MsgBox.Message(lm.NOT_BEACON_RECEIVER) return end
 		if Game.system.path ~= mission.location:GetStarSystem().path then

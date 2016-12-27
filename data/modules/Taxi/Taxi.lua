@@ -115,6 +115,24 @@ local ads = {}
 local missions = {}
 local passengers = 0
 
+local Exists = function (ship)
+	local exists = false
+	if ship:exists() then
+		exists = true
+	end
+	return exists
+end
+local ShipExists = function (ship)
+	if ship then
+		ok,val = pcall(Exists, ship)
+		if ok then
+			return val
+		else
+			return false
+		end
+	end
+end
+
 local add_passengers = function (group)
 	Game.player:RemoveEquip(eq.misc.cabin,  group)
 	Game.player:AddEquip(eq.misc.cabin_occupied, group)
@@ -308,7 +326,6 @@ end
 
 	local hostilactive = false
 local onFrameChanged = function (body)
---print("Taxi onFrameChanged body="..body.label)
 	if hostilactive then return end
 	if body:isa("Ship") and body:IsPlayer() and body.frameBody ~= nil then
 		for ref,mission in pairs(missions) do
@@ -317,17 +334,19 @@ local onFrameChanged = function (body)
 			if mission.status == "ACTIVE" and mission.location:IsSameSystem(Game.system.path) then
 				local target_distance_from_entry = body:DistanceTo(Space.GetBody(mission.location.bodyIndex))
 				if target_distance_from_entry > 500000e3 then return end
-				Timer:CallEvery(1, function ()
+				Timer:CallEvery(3, function ()
 					if hostilactive then return true end
 					if body:DistanceTo(Space.GetBody(mission.location.bodyIndex)) > 100000e3 then return false end
 					ship = ship_hostil(risk)
-					if ship then
+					if ShipExists(ship) then
 						hostilactive = true
 						local hostile_greeting = string.interp(
 									l["PIRATE_TAUNTS_"..Engine.rand:Integer(1,num_pirate_taunts)-1],
 										{client = mission.client.name})
 						Comms.ImportantMessage(hostile_greeting, ship.label)
 						Music.Play("music/core/fx/escalating-danger",false)
+						return true
+					else
 						return true
 					end
 				end)
@@ -431,6 +450,7 @@ local onClick = function (mission)
 
 	local setTargetButton = SLButton.New(lm.SET_TARGET, 'NORMAL')
 	setTargetButton.button.onClick:Connect(function ()
+		if not Game.system then return end
 		if not NavAssist then MsgBox.Message(lm.NOT_NAV_ASSIST) return end
 		if Game.system.path ~= mission.location:GetStarSystem().path then
 			Game.player:SetHyperspaceTarget(mission.location:GetStarSystem().path)
@@ -438,7 +458,6 @@ local onClick = function (mission)
 			Game.player:SetNavTarget(Space.GetBody(mission.location.bodyIndex))
 		end
 	end)
-
 
 	return ui:Grid({68,32},1)
 		:SetColumn(0,{ui:VBox(10):PackEnd({ui:MultiLineText((flavours[mission.flavour].introtext):interp({
